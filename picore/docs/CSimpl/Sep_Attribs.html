@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory Sep_Attribs (Isabelle2018: August 2018)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory Sep_Attribs</h1>
+
+<span class="command">theory</span> <span class="name">Sep_Attribs</span><br/>
+<span class="keyword">imports</span> <a href="Sep_Tactic_Helpers.html"><span class="name">Sep_Tactic_Helpers</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+ * Copyright 2014, NICTA
+ *
+ * This software may be distributed and modified according to the terms of
+ * the BSD 2-Clause license. Note that NO WARRANTY is provided.
+ * See &quot;LICENSE_BSD2.txt&quot; for details.
+ *
+ * @TAG(NICTA_BSD)
+ *)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>Sep_Attribs</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>Separation_Algebra</span><span> </span><span>Sep_Tactic_Helpers</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* Beyond the tactics above, there is also a set of attributes implemented to make proving
+       things in separation logic easier. These rules should be considered internals and are not
+       intended for direct use. *}</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>sep_curry_atomised</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;(&#8896;s. (P &#8743;* Q) s &#10230; R s); P s &#10215; &#10233; (Q &#10230;* R) s&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>clarsimp</span><span> </span><span>simp</span><span class="delimiter">:</span><span> </span><span>sep_conj_sep_impl</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>sep_remove_pure_imp_sep_imp</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;( P &#10230;* (&#955;s. P&#39; &#10230; Q s)) s &#10233; P&#39; &#10233; (P &#10230;* Q) s&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>clarsimp</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>sep_backward</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;&#8896;s. P s &#10230; (Q &#8743;* T) s; (P &#8743;* (Q &#10230;* R)) s &#10215; &#10233; (T &#8743;* R) s&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>sep_conj_commute</span><span> </span><span>sep_conj_impl1</span><span> </span><span>sep_mp_frame</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>sep_remove_conj</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;(P &#8743;* R) s ; Q&#10215; &#10233; ((&#955;s. P s &#8743; Q) &#8743;* R) s &quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>clarsimp</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>curry</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(P &#10230; Q &#10230; R) &#10233; (P &#8743; Q) &#10230; R&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>safe</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">ML</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{*
+local
+  fun atomize_thm ctxt thm = Conv.fconv_rule (Object_Logic.atomize ctxt) thm
+  fun setup_simpset ctxt = put_simpset HOL_basic_ss ctxt addsimps [(sym OF [@{thm sep_conj_assoc}])]
+  fun simp ctxt thm = simplify (setup_simpset ctxt) thm
+
+  fun REPEAT_TRYOF_N _ thm2 0 = thm2
+    | REPEAT_TRYOF_N thm1 thm2 n = REPEAT_TRYOF_N thm1 (thm1 OF [thm2]) (n-1)
+
+  fun REPEAT_TRYOF&#39;_N thm1 _    0 = thm1
+    | REPEAT_TRYOF&#39;_N thm1 thm2 n = REPEAT_TRYOF&#39;_N (thm1 OF [thm2]) thm2 (n-1)
+
+  fun attribute_thm ctxt thm  thm&#39; =
+    REPEAT_TRYOF_N @{thm sep_remove_pure_imp_sep_imp} (thm OF [atomize_thm ctxt thm&#39;]) (Thm.nprems_of thm&#39; - 1)
+
+  fun attribute_thm&#39; thm ctxt thm&#39; =
+    thm OF [REPEAT_TRYOF_N @{thm curry} (thm&#39; |&gt; atomize_thm ctxt o simp ctxt) (Thm.nprems_of thm&#39; - 1)]
+
+in
+
+(*
+ By attributing a theorem with [sep_curry], we can now take a rule (A &#8743;* B) &#10233; C and turn it into A &#10233; (B &#10230;* C)
+*)
+
+fun sep_curry_inner ctxt = attribute_thm ( ctxt) @{thm sep_curry_atomised}
+val sep_curry = Thm.rule_attribute [] (fn ctxt =&gt; sep_curry_inner (Context.proof_of ctxt))
+
+(*
+ The attribute sep_back takes a rule of the form A &#10233; B and returns a rule (A &#8743;* (B &#10230;* R)) &#10233; R.
+ The R then matches with any conclusion. If the theorem is of form (A &#8743;* B) &#10233; C, it is advised to
+ use sep_curry on the theorem first, and then sep_back. This aids sep_cancel in simplifying the result.
+*)
+
+fun backward ctxt thm =
+  REPEAT_TRYOF&#39;_N (attribute_thm&#39; @{thm sep_backward} ctxt thm) @{thm sep_remove_conj} (Thm.nprems_of thm - 1)
+
+fun backward&#39; ctxt thm = backward (Context.proof_of ctxt) thm
+
+val sep_backward = Thm.rule_attribute [] (backward&#39;)
+
+end
+*}</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">attribute_setup</span></span><span> </span><span>sep_curry</span><span> </span><span class="delimiter">=</span><span>  </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* Scan.succeed sep_curry *}</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">attribute_setup</span></span><span> </span><span>sep_backward</span><span> </span><span class="delimiter">=</span><span>  </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* Scan.succeed sep_backward *}</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span></pre>
+
+</div>
+</body>
+</html>

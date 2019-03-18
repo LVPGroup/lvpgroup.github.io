@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory SIMP_semantics (Isabelle2018: August 2018)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory SIMP_semantics</h1>
+
+<span class="command">theory</span> <span class="name">SIMP_semantics</span><br/>
+<span class="keyword">imports</span> <a href="SIMP_lang.html"><span class="name">SIMP_lang</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+Created by Yongwang Zhao (zhaoyw@buaa.edu.cn)
+School of Computer Science &amp; Engineering, Beihang University, China
+*)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Operational Semantics of SIMP language&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>SIMP_semantics</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;SIMP_lang&quot;</span></span></span><span> 
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="tfree">&#39;s</span><span> </span><span>imp_pconf</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;((&#39;s prog) option) &#215; &#39;s&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">inductive_set</span></span><span>
+</span><span>  </span><span>ptran</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s imp_pconf &#215; &#39;s imp_pconf) set&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">and</span></span><span> </span><span>ptran&#39;</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;s imp_pconf &#8658; &#39;s imp_pconf &#8658; bool&quot;</span></span></span><span>   </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ -impc&#8594; _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>81</span><span class="delimiter">,</span><span>81</span><span class="delimiter">]</span><span> </span><span>80</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">and</span></span><span> </span><span>ptrans</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;s imp_pconf &#8658; &#39;s imp_pconf &#8658; bool&quot;</span></span></span><span>   </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ -impc*&#8594; _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>81</span><span class="delimiter">,</span><span>81</span><span class="delimiter">]</span><span> </span><span>80</span><span class="delimiter">)</span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;P -impc&#8594; Q &#8801; (P,Q) &#8712; ptran&quot;</span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;P -impc*&#8594; Q &#8801; (P,Q) &#8712;ptran^*&quot;</span></span></span><span> 
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Basic</span><span class="delimiter">:</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;(Some (Basic f), s) -impc&#8594; (None, f s)&quot;</span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>Seq1</span><span class="delimiter">:</span><span>   </span><span class="string"><span class="delete"><span class="delete">&quot;(Some P0, s) -impc&#8594; (None, t) &#10233; (Some (Seq P0 P1), s) -impc&#8594; (Some P1, t)&quot;</span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>Seq2</span><span class="delimiter">:</span><span>    </span><span class="string"><span class="delete"><span class="delete">&quot;(Some P0, s) -impc&#8594; (Some P2, t) &#10233; (Some(Seq P0 P1), s) -impc&#8594; (Some(Seq P2 P1), t)&quot;</span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>CondT</span><span class="delimiter">:</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;s&#8712;b  &#10233; (Some(Cond b P1 P2), s) -impc&#8594; (Some P1, s)&quot;</span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>CondF</span><span class="delimiter">:</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;s&#8713;b &#10233; (Some(Cond b P1 P2), s) -impc&#8594; (Some P2, s)&quot;</span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>WhileF</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;s&#8713;b &#10233; (Some(While b P), s) -impc&#8594; (None, s)&quot;</span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>WhileT</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;s&#8712;b  &#10233; (Some(While b P), s) -impc&#8594; (Some(Seq P (While b P)), s)&quot;</span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>Await</span><span class="delimiter">:</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;s&#8712;b; (Some P, s) -impc*&#8594; (None, t)&#10215; &#10233; (Some(Await b P), s) -impc&#8594; (None, t)&quot;</span></span></span><span> 
+</span><span class="delimiter">|</span><span> </span><span>Nondt</span><span class="delimiter">:</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;(s,t)&#8712;r &#10233; (Some(Nondt r), s) -impc&#8594; (None, t)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">monos</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;rtrancl_mono&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Lemmas&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">subsubsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;programs&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>list_eq_if</span><span> </span><span class="delimiter">[</span><span>rule_format</span><span class="delimiter">]</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;ys. xs=ys &#10230; (length xs = length ys) &#10230; (&#8704;i&lt;length xs. xs!i=ys!i)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>induct</span><span> </span><span>xs</span><span class="delimiter">)</span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>list_eq</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(length xs = length ys &#8743; (&#8704;i&lt;length xs. xs!i=ys!i)) = (xs=ys)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>rule</span><span> </span><span>iffI</span><span class="delimiter">)</span><span>
+</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>clarify</span><span>
+</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>erule</span><span> </span><span>nth_equalityI</span><span class="delimiter">)</span><span>
+</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span class="delimiter">+</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>nth_tl</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; ys!0=a; ys&#8800;[] &#10215; &#10233; ys=(a#(tl ys))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>cases</span><span> </span><span>ys</span><span class="delimiter">)</span><span> </span><span>simp_all</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>nth_tl_if</span><span> </span><span class="delimiter">[</span><span>rule_format</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ys&#8800;[] &#10230; ys!0=a &#10230; P ys &#10230; P (a#(tl ys))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>induct</span><span> </span><span>ys</span><span class="delimiter">)</span><span> </span><span>simp_all</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>nth_tl_onlyif</span><span> </span><span class="delimiter">[</span><span>rule_format</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ys&#8800;[] &#10230; ys!0=a &#10230; P (a#(tl ys)) &#10230; P ys&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>induct</span><span> </span><span>ys</span><span class="delimiter">)</span><span> </span><span>simp_all</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>seq_not_eq1</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Seq c1 c2&#8800;c1&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>induct</span><span> </span><span>c1</span><span class="delimiter">)</span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>seq_not_eq2</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Seq c1 c2&#8800;c2&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>induct</span><span> </span><span>c2</span><span class="delimiter">)</span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>if_not_eq1</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Cond b c1 c2 &#8800;c1&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>induct</span><span> </span><span>c1</span><span class="delimiter">)</span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>if_not_eq2</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Cond b c1 c2&#8800;c2&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>induct</span><span> </span><span>c2</span><span class="delimiter">)</span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemmas</span></span><span> </span><span>seq_and_if_not_eq</span><span> </span><span class="delimiter">[</span><span>simp</span><span class="delimiter">]</span><span> </span><span class="delimiter">=</span><span> </span><span>seq_not_eq1</span><span> </span><span>seq_not_eq2</span><span> 
+</span><span>seq_not_eq1</span><span> </span><span class="delimiter">[</span><span>THEN</span><span> </span><span>not_sym</span><span class="delimiter">]</span><span> </span><span>seq_not_eq2</span><span> </span><span class="delimiter">[</span><span>THEN</span><span> </span><span>not_sym</span><span class="delimiter">]</span><span> 
+</span><span>if_not_eq1</span><span> </span><span>if_not_eq2</span><span> </span><span>if_not_eq1</span><span> </span><span class="delimiter">[</span><span>THEN</span><span> </span><span>not_sym</span><span class="delimiter">]</span><span> </span><span>if_not_eq2</span><span> </span><span class="delimiter">[</span><span>THEN</span><span> </span><span>not_sym</span><span class="delimiter">]</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>prog_not_eq_in_ctran_aux</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>c</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(P,s) -impc&#8594; (Q,t)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;P&#8800;Q&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>c</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>induct</span><span> </span><span>x1</span><span> </span><span class="delimiter">&#8801;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(P,s)&quot;</span></span></span><span> </span><span>x2</span><span> </span><span class="delimiter">&#8801;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(Q,t)&quot;</span></span></span><span> </span><span>arbitrary</span><span class="delimiter">:</span><span> </span><span>P</span><span> </span><span>s</span><span> </span><span>Q</span><span> </span><span>t</span><span class="delimiter">)</span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>prog_not_eq_in_ctran</span><span> </span><span class="delimiter">[</span><span>simp</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#172; (P,s) -impc&#8594; (P,t)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>clarify</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>drule</span><span> </span><span>prog_not_eq_in_ctran_aux</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>

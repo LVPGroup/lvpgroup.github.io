@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory picore_SIMP (Isabelle2018: August 2018)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory picore_SIMP</h1>
+
+<span class="command">theory</span> <span class="name">picore_SIMP</span><br/>
+<span class="keyword">imports</span> <a href="PiCore_RG_Invariant.html"><span class="name">PiCore_RG_Invariant</span></a> <a href="SIMP_plus.html"><span class="name">SIMP_plus</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+Created by Yongwang Zhao (zhaoyw@buaa.edu.cn)
+School of Computer Science &amp; Engineering, Beihang University, China
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Integrating the SIMP language into Picore&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>picore_SIMP</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PiCore.PiCore_RG_Invariant&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;SIMP_plus&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">print_locale</span></span><span> </span><span>event_validity</span><span>
+</span><span class="keyword1"><span class="command">print_locale</span></span><span> </span><span>event_hoare</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span>ptranI</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;Env &#8658; (&#39;a conf &#215; &#39;a conf) set&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ptranI &#915; &#8801; ctran&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span>petranI</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;Env &#8658; &#39;a conf &#8658; &#39;a conf &#8658; bool&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;petranI &#915; &#8801; etran&#39;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span>cpts_pI</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;Env &#8658; &#39;a confs set&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;cpts_pI &#915; &#8801; cptn&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span>cpts_of_pI</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;Env &#8658; (&#39;a com) option &#8658; &#39;a &#8658; (&#39;a confs) set&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;cpts_of_pI &#915; &#8801; cp&quot;</span></span></span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span>prog_validityI</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;Env &#8658; (&#39;a com) option &#8658; &#39;a set &#8658; (&#39;a &#215; &#39;a) set &#8658; (&#39;a &#215; &#39;a) set &#8658; &#39;a set &#8658; bool&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;prog_validityI &#915; P &#8801; prog_validity P&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span>assume_pI</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;Env &#8658; (&#39;a set &#215; (&#39;a &#215; &#39;a) set) &#8658; (&#39;a confs) set&quot;</span></span></span><span> 
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;assume_pI &#915; &#8801; assum&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span>commit_pI</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;Env &#8658; ((&#39;a &#215; &#39;a) set &#215; &#39;a set) &#8658; (&#39;a confs) set&quot;</span></span></span><span> 
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;commit_pI &#915; &#8801; comm&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span>rghoare_pI</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;Env &#8658; [(&#39;a com) option, &#39;a set, (&#39;a &#215; &#39;a) set, (&#39;a &#215; &#39;a) set, &#39;a set] &#8658; bool&quot;</span></span></span><span>
+</span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ &#8866;<span class="hidden">&#8681;</span><sub>I</sub> _ sat<span class="hidden">&#8681;</span><sub>p</sub> [_, _, _, _]&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>60</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">]</span><span> </span><span>45</span><span class="delimiter">)</span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;rghoare_pI &#915; &#8801; rghoare_p&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>cpts_pI_ne_empty</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[] &#8713; cpts_pI &#915;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>petran_simpsI</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;petranI &#915; (a, b) (c, d) &#10233; a = c&quot;</span></span></span><span> 
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>etran.simps</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>none_no_tranI&#39;</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;((Q, s),(P,t)) &#8712; ptranI &#915; &#10233; Q &#8800; None&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>simp</span><span class="delimiter">)</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>rule</span><span> </span><span>ctran.cases</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span class="delimiter">+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>none_no_tranI</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;((None, s),(P,t)) &#8713; ptranI &#915;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>none_no_tranI&#39;</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fast</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>ptran_neqI</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;((P, s),(P,t)) &#8713; ptranI &#915;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">interpretation</span></span><span> </span><span>event</span><span> </span><span>ptranI</span><span> </span><span>petranI</span><span> </span><span>None</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>petran_simpsI</span><span> </span><span>none_no_tranI</span><span> </span><span>ptran_neqI</span><span> 
+</span><span>        </span><span>event.intro</span><span class="delimiter">[</span><span>of</span><span> </span><span>petranI</span><span> </span><span>None</span><span> </span><span>ptranI</span><span class="delimiter">]</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">thm</span></span><span> </span><span>ptran&#39;_def</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>cpts_p_simpsI</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;((&#8707;P s. aa = [(P, s)]) &#8744;
+   (&#8707;P t xs s. aa = (P, s) # (P, t) # xs &#8743; (P, t) # xs &#8712; cpts_pI &#915;) &#8744;
+   (&#8707;P s Q t xs. aa = (P, s) # (Q, t) # xs &#8743; ptran&#39; &#915; (P, s) (Q, t) &#8743; (Q, t) # xs &#8712; cpts_pI &#915;))
+  &#10233; (aa &#8712; cpts_pI &#915;)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>ptran&#39;_def</span><span class="delimiter">)</span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>cptn.simps</span><span class="delimiter">[</span><span>of</span><span> </span><span>aa</span><span class="delimiter">]</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*lemma cpts_of_p_defI: &quot;cpts_of_pI &#915; P s &#8801; {l. l!0=(P,s) &#8743; l &#8712; cpts_pI &#915;}&quot; 
+  by(simp add:cpts_pI_def cpts_of_pI_def cpts_of_p_def)*)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>cpts_of_p_defI</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;l!0=(P,s) &#8743; l &#8712; cpts_pI &#915; &#10233; l &#8712; cpts_of_pI &#915; P s&quot;</span></span></span><span> 
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>cp_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">interpretation</span></span><span> </span><span>event_comp</span><span> </span><span>ptranI</span><span> </span><span>petranI</span><span> </span><span>None</span><span> </span><span>cpts_pI</span><span> </span><span>cpts_of_pI</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>cpts_pI_ne_empty</span><span> </span><span>cpts_p_simpsI</span><span> </span><span>cpts_of_p_defI</span><span> </span><span>petran_simpsI</span><span> </span><span>none_no_tranI</span><span> </span><span>ptran_neqI</span><span> 
+</span><span>        </span><span>event_comp.intro</span><span class="delimiter">[</span><span>of</span><span> </span><span>ptranI</span><span> </span><span>petranI</span><span> </span><span>None</span><span> </span><span>cpts_pI</span><span> </span><span>cpts_of_pI</span><span class="delimiter">]</span><span> </span><span>event.intro</span><span class="delimiter">[</span><span>of</span><span> </span><span>petranI</span><span> </span><span>None</span><span> </span><span>ptranI</span><span class="delimiter">]</span><span> 
+</span><span>        </span><span>event_comp_axioms.intro</span><span class="delimiter">[</span><span>of</span><span> </span><span>cpts_pI</span><span> </span><span>ptranI</span><span> </span><span>cpts_of_pI</span><span class="delimiter">]</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>ptran&#39;_def</span><span class="delimiter">)</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+lemma prog_validity_defI: &quot;prog_validityI &#915; P pre rely guar post &#8801; 
+   &#8704;s. cpts_of_pI &#915; P s &#8745; assume_pI &#915; (pre, rely) &#8838; commit_pI &#915; (guar, post)&quot;
+by (simp add:prog_validityI_def cpts_of_pI_def assume_pI_def commit_pI_def prog_validity_def)
+*)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>prog_validity_defI</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;prog_validityI &#915; P pre rely guar post &#10233; 
+   &#8704;s. cpts_of_pI &#915; P s &#8745; assume_pI &#915; (pre, rely) &#8838; commit_pI &#915; (guar, post)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>prog_validity_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>assume_p_defI</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;snd (c!0) &#8712; pre &#8743; (&#8704;i. Suc i&lt;length c &#10230; 
+               petranI &#915; (c!i) (c!(Suc i)) &#10230; (snd (c!i), snd (c!Suc i)) &#8712; rely) &#10233; c &#8712; assume_pI &#915; (pre, rely)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">by</span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>assum_def</span><span> </span><span>PiCore_Semantics.gets_p_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>commit_p_defI</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;c &#8712; commit_pI &#915; (guar, post) &#10233; (&#8704;i. Suc i&lt;length c &#10230; 
+               (c!i,c!(Suc i)) &#8712; ptranI &#915;  &#10230; (snd (c!i), snd (c!Suc i)) &#8712; guar) &#8743; 
+               (fst (last c) = None &#10230; snd (last c) &#8712; post)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">by</span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>comm_def</span><span> </span><span>PiCore_Semantics.getspc_p_def</span><span> 
+</span><span>      </span><span>PiCore_Semantics.gets_p_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>rgsound_pI</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;rghoare_pI &#915; P pre rely guar post &#10230; prog_validityI &#915; P pre rely guar post&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>rgsound_p</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">interpretation</span></span><span> </span><span>event_hoare</span><span> </span><span>ptranI</span><span> </span><span>petranI</span><span> </span><span>None</span><span> </span><span>cpts_pI</span><span> </span><span>cpts_of_pI</span><span> </span><span>prog_validityI</span><span> </span><span>assume_pI</span><span> </span><span>commit_pI</span><span> </span><span>rghoare_pI</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>cpts_pI_ne_empty</span><span> </span><span>cpts_p_simpsI</span><span> </span><span>cpts_of_p_defI</span><span> </span><span>petran_simpsI</span><span> </span><span>none_no_tranI</span><span> </span><span>ptran_neqI</span><span> 
+</span><span>        </span><span>prog_validity_defI</span><span> </span><span>assume_p_defI</span><span> </span><span>commit_p_defI</span><span> </span><span>rgsound_pI</span><span>
+</span><span>        </span><span>event_comp_axioms.intro</span><span class="delimiter">[</span><span>of</span><span> </span><span>cpts_pI</span><span> </span><span>ptranI</span><span> </span><span>cpts_of_pI</span><span class="delimiter">]</span><span>
+</span><span>        </span><span>event_comp.intro</span><span class="delimiter">[</span><span>of</span><span> </span><span>ptranI</span><span> </span><span>petranI</span><span> </span><span>None</span><span> </span><span>cpts_pI</span><span> </span><span>cpts_of_pI</span><span class="delimiter">]</span><span> </span><span>event.intro</span><span class="delimiter">[</span><span>of</span><span> </span><span>petranI</span><span> </span><span>None</span><span> </span><span>ptranI</span><span class="delimiter">]</span><span> 
+</span><span>        </span><span>event_validity_axioms.intro</span><span class="delimiter">[</span><span>of</span><span> </span><span>prog_validityI</span><span> </span><span>cpts_of_pI</span><span> </span><span>assume_pI</span><span> </span><span>commit_pI</span><span> </span><span>petranI</span><span> </span><span>ptranI</span><span> </span><span>None</span><span class="delimiter">]</span><span> 
+</span><span>        </span><span>event_validity.intro</span><span class="delimiter">[</span><span>of</span><span> </span><span>ptranI</span><span> </span><span>petranI</span><span> </span><span>None</span><span> </span><span>cpts_pI</span><span> </span><span>cpts_of_pI</span><span> </span><span>prog_validityI</span><span> </span><span>assume_pI</span><span> </span><span>commit_pI</span><span class="delimiter">]</span><span>
+</span><span>        </span><span>event_hoare.intro</span><span class="delimiter">[</span><span>of</span><span> </span><span>ptranI</span><span> </span><span>petranI</span><span> </span><span>None</span><span> </span><span>cpts_pI</span><span> </span><span>cpts_of_pI</span><span> </span><span>prog_validityI</span><span> </span><span>assume_pI</span><span> </span><span>commit_pI</span><span> </span><span>rghoare_pI</span><span class="delimiter">]</span><span>
+</span><span>        </span><span>event_hoare_axioms.intro</span><span class="delimiter">[</span><span>of</span><span> </span><span>rghoare_pI</span><span> </span><span>prog_validityI</span><span class="delimiter">]</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>ptran&#39;_def</span><span> </span><span>gets_p_def</span><span> </span><span>getspc_p_def</span><span class="delimiter">)</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">thm</span></span><span> </span><span>invariant_theorem</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*print_theorems*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>stable_eq</span><span class="delimiter">[</span><span>simp</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;stable_e = stable&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">by</span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>stable_e_def</span><span> </span><span>stable_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span></pre>
+
+</div>
+</body>
+</html>

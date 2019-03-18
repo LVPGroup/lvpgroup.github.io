@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory Sep_MP (Isabelle2018: August 2018)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory Sep_MP</h1>
+
+<span class="command">theory</span> <span class="name">Sep_MP</span><br/>
+<span class="keyword">imports</span> <a href="Sep_Provers.html"><span class="name">Sep_Provers</span></a> <a href="Sep_Cancel_Set.html"><span class="name">Sep_Cancel_Set</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+ * Copyright 2014, NICTA
+ *
+ * This software may be distributed and modified according to the terms of
+ * the BSD 2-Clause license. Note that NO WARRANTY is provided.
+ * See &quot;LICENSE_BSD2.txt&quot; for details.
+ *
+ * @TAG(NICTA_BSD)
+ *)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>Sep_MP</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>Sep_Tactic_Helpers</span><span> </span><span>Sep_Provers</span><span> </span><span>Sep_Cancel_Set</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>sep_mp_gen</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;((Q &#10230;* R) &#8743;* Q&#39;) s &#10233; (&#8896;s. Q&#39; s &#10233; Q s) &#10233; R s&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>clarsimp</span><span> </span><span>simp</span><span class="delimiter">:</span><span> </span><span>sep_conj_def</span><span> </span><span>sep_impl_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>sep_mp_frame_gen</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;((Q &#10230;* R) &#8743;* Q&#39; &#8743;* R&#39;) s; (&#8896;s. Q&#39; s &#10233; Q s)&#10215; &#10233; (R &#8743;* R&#39;) s&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>sep_conj_left_commute</span><span> </span><span>sep_globalise</span><span> </span><span>sep_mp_frame</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>sep_impl_simpl</span><span class="delimiter">:</span><span>
+</span><span>     </span><span class="string"><span class="delete"><span class="delete">&quot;(P &#8743;* Q &#10230;* R) s &#10233; (P &#10230;* Q &#10230;* R) s&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>erule</span><span> </span><span>sep_conj_sep_impl</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>erule</span><span> </span><span>sep_conj_sep_impl</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>clarsimp</span><span> </span><span>simp</span><span class="delimiter">:</span><span> </span><span>sep_conj_assoc</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>erule</span><span> </span><span>sep_mp</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>sep_wand_frame_lens</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;((P &#10230;* Q) &#8743;* R) s &#10233; (&#8896;s. T s = R s) ==&gt; ((P &#10230;* Q) &#8743;* T) s&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>sep_conj_commute</span><span> </span><span>sep_conj_impl1</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">ML</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{*
+  fun sep_wand_frame_drule ctxt =
+     let val lens  = dresolve_tac ctxt [@{thm sep_wand_frame_lens}]
+         val lens&#39; = dresolve_tac ctxt [@{thm sep_asm_eq}]
+         val r = rotator&#39; ctxt
+         val sep_cancel_thms = rev (SepCancel_Rules.get ctxt)
+      in sep_apply_tactic ctxt (dresolve_tac ctxt [@{thm sep_mp_frame_gen}]) sep_cancel_thms |&gt; r lens |&gt; r lens&#39;
+   end;
+
+   fun sep_mp_solver ctxt  =
+    let val sep_mp = sep_apply_tactic ctxt (dresolve0_tac [@{thm sep_mp_gen}]) ((rev o SepCancel_Rules.get) ctxt)
+        val taclist = [sep_drule_comb_tac false [@{thm sep_empty_imp}] ctxt,
+                       sep_drule_tac sep_mp ctxt,
+                       sep_drule_tac (sep_drule_tactic ctxt [@{thm sep_impl_simpl}]) ctxt,
+                       sep_wand_frame_drule ctxt ]
+        val check = DETERM o (sep_drule_tac (sep_select_tactic (dresolve0_tac [@{thm sep_wand_frame_lens}]) [1] ctxt) ctxt)
+
+   in  CHANGED_PROP o (check THEN_ALL_NEW REPEAT_ALL_NEW ( FIRST&#39; taclist) )
+   end;
+
+   val sep_mp_method = SIMPLE_METHOD&#39; o sep_mp_solver
+*}</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">method_setup</span></span><span> </span><span>sep_mp</span><span> </span><span class="delimiter">=</span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* Scan.succeed sep_mp_method *}</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span></pre>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" type="text/css" href="isabelle.css"/>
+<title>The PiCore Framework in Isabelle/HOL 2018</title>
+</head>
+
+
+<body>
+<h2>PiCore: A Rely-guarantee Reasoning Framework for Concurrent Reactive Systems</h2>
+
+<div class="sessions">
+
+<p> Developed in Isabelle/HOL 2018 </p>
+
+<h3> PiCore Framework </h3>
+<p>
+PiCore is an event-based and parametric rely-guarantee framework for concurrent reactive systems (e.g., concurrent OS kernels, control systems, communication systems).
+We introduce ``events'' and their compositions into the rely-guarantee method for system reactions. Our approach supports compositional verification of functional correctness and safety as well as deals with concurrency in systems (e.g. multicore concurrency and interruptible concurrency). PiCore decouples the rely-guarantee reasoning of programs from that of the events by a clear rely-guarantee interface. It is thus able to integrate existing imperative languages for programs and their rely-guarantee proof systems. 
+ </p>
+
+<p><a href="./docs/PiCore/">Browse the Isabelle/HOL sources of PiCore</a></p>
+
+<h3> PiCore_CSimpl: CSimpl instance of PiCore </h3>
+<p>
+CSimpl is a generic and realistic imperative language by extending the Simpl language and providing a rely-guarantee proof system in Isabelle/HOL. Simpl is able to represent a large subset of C99 code supported by a translation tool C-to-Isabelle parser. Simpl and its verification framework with a Floyd/Hoare-like logic have been applied to the formal verification of seL4 OS kernel at C code level. 
+</p>
+<p>
+We have integrated the CSimpl language and its rely-guarantee proof system into PiCore without changing any source code of CSimpl. 
+<p><a href="./docs/CSimpl/">Browse the Isabelle/HOL sources of CSimpl</a></p>
+<p><a href="./docs/PiCore_CSimpl/">Browse the Isabelle/HOL sources of PiCore_CSimpl</a></p>
+
+</p>
+<h3> PiCore_SIMP: SIMP instance of PiCore </h3>
+<p>
+SIMP is a simple imperative language with a rely-guarantee proof system in Isabelle/HOL as the HOL-Hoare_Parallel lib (under the directory of Isabelle2018/src/HOL/Hoare_Parallel). 
+</p>
+<p>
+We have integrated the SIMP language and its rely-guarantee proof system into PiCore without changing any source code of HOL-Hoare_Parallel. 
+We extend SIMP by some new rely-guarantee proof rules. Two examples, an stepper motor and an ARINC 653 OS, are created using PiCore_SIMP. 
+<p><a href="./docs/PiCore_SIMP/SIMP.html">Browse the Isabelle/HOL sources of SIMP</a></p>
+<p><a href="./docs/PiCore_SIMP/">Browse the Isabelle/HOL sources of PiCore_SIMP</a></p>
+
+
+<h3> Formal specification and verification of Zephyr using PiCore_SIMP </h3>
+<p>
+We use the PiCore_SIMP to formally specify and verify the concurrent memory management of Zephyr RTOS. The C code is ~ 400 lines, not counting blank lines and comments. 
+We develop a fine-grained low level formal specification of buddy memory management. The specification has a basically line-to-line correspondence with the Zephyr C code, covering all the data structures and imperative statements present in the implementation. 
+During the formal verification, we found 3 bugs in the C code of Zephyr which are: an incorrect block split, an incorrect return, and non-termination of a loop in the k_mem_pool_alloc service. 
+</p>
+<p><a href="./docs/PiCore_SIMP_mempool/">Browse the Isabelle/HOL sources of Zephyr</a></p>
+
+
+</div>
+
+<b>
+copyrights by Yongwang Zhao (zhaoyw@buaa.edu.cn) </br>
+School of Computer Science and Enginerring, </br>
+Beihang University, Beijing, China 
+</b>
+</body>
