@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory FuncDef (repository version)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory FuncDef</h1>
+
+<span class="command">theory</span> <span class="name">FuncDef</span><br/>
+<span class="keyword">imports</span> <a href="SegregatedList.html"><span class="name">SegregatedList</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="keyword1"><span class="command">theory</span></span><span> </span><span>FuncDef</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>SegregatedList</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>mapping_insert</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; nat &#8658; (nat&#215;nat)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;mapping_insert cfg r &#8801; 
+          if (sm cfg) = 0 then
+             (if r &lt;((2^(sm cfg)) + 1) then  (0,0)
+              else (r_gt_sm_0_i r,0))
+          else (if r &lt;(2^(sm cfg)) then (0,r_lt_sm_gt_0_j cfg r)
+                else (r_gt_sm_gt_0_i cfg r,r_gt_sm_gt_0_j cfg r))&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>mapping_insert_r_in_l2_set</span><span class="delimiter">:</span><span>
+</span><span>      </span><span class="string"><span class="delete"><span class="delete">&quot;sm cfg &#8805; l cfg &#10233;
+       (i,j) = mapping_insert cfg r &#10233;
+       r&#8712;l2_set cfg i j &#8743; j &lt; sl cfg&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_insert_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>cases</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;sm cfg = 0&quot;</span></span></span><span class="delimiter">)</span><span> 
+</span><span>   </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>cases</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r&lt; (2 ^ sm cfg) + 1&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>all_r_in_l2_sm_0_r_lt_sm</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>One_nat_def</span><span> </span><span>all_r_in_l2_sm_0_r_geqt_sm</span><span> </span><span>le_less_linear</span><span> </span><span>le_numeral_extra</span><span class="delimiter">(</span><span>3</span><span class="delimiter">)</span><span> </span><span>numeral_2_eq_2</span><span> </span><span>plus_1_eq_Suc</span><span> </span><span>power_eq_if</span><span class="delimiter">)</span><span>
+</span><span>   </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>cases</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r&lt; (2 ^ sm cfg)&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>   </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>dest</span><span class="delimiter">:</span><span> </span><span>all_r_in_l2_sm_gt_0_r_lt_sm</span><span class="delimiter">)</span><span class="delimiter">[</span><span>1</span><span class="delimiter">]</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>all_r_in_l2_sm_gt_0_r_gt_sm</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>get_index</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; nat &#8658; (nat &#215; nat)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;get_index cfg r &#8801; (THE (i, j). r &#8712; l2_set cfg i j &#8743; j &lt; sl cfg)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>mapping_insert_r_index</span><span class="delimiter">:</span><span>
+</span><span>      </span><span class="string"><span class="delete"><span class="delete">&quot;sm cfg &#8805; l cfg &#10233;
+      (i, j) = mapping_insert cfg r &#10233;
+      (i, j) = get_index cfg r&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>frule</span><span> </span><span>mapping_insert_r_in_l2_set</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>assumption</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>thin_tac</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_ = _&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>get_index_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>the_equality</span><span class="delimiter">[</span><span>THEN</span><span> </span><span>sym</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span> </span><span class="keyword2"><span class="keyword">for</span></span><span> </span><span>x</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>l2_set_disj</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>IntI</span><span> </span><span>empty_iff</span><span> </span><span>sl_def</span><span class="delimiter">)</span><span class="delimiter">+</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>map_search</span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; nat &#8658; (nat&#215;nat)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;map_search cfg r &#8801; next_block cfg (mapping_insert cfg r)&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>l2_set_search_gt_r</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>a0</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;l cfg &#8804; sm cfg&quot;</span></span></span><span> 
+</span><span>      </span><span class="keyword2"><span class="keyword">and</span></span><span> </span><span>a1</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(i,j) = (map_search cfg r)&quot;</span></span></span><span>
+</span><span>     </span><span class="keyword2"><span class="keyword">shows</span></span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;r1&#8712; l2_set cfg i j. r1 &gt; r&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span>-</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">{</span></span><span class="keyword3"><span class="command">fix</span></span><span> </span><span>r1</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>a00</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;r1 &#8712;l2_set cfg i j&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r &#8712; l2_set cfg (fst (mapping_insert cfg r))
+                          (snd (mapping_insert cfg r)) &#8743; 
+          (snd (mapping_insert cfg r)) &lt; sl cfg&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>mapping_insert_r_in_l2_set</span><span class="delimiter">[</span><span>OF</span><span> </span><span>a0</span><span class="delimiter">,</span><span> </span><span>of</span><span> </span><span>_</span><span> </span><span>_</span><span> </span><span>r</span><span class="delimiter">]</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>prod.collapse</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r&lt;r1&quot;</span></span></span><span> 
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>next_block_bigger</span><span class="delimiter">[</span><span>OF</span><span> </span><span class="delimiter">]</span><span> </span><span>a0</span><span> </span><span>a00</span><span> 
+</span><span>            </span><span>a1</span><span class="delimiter">[</span><span>simplified</span><span> </span><span>map_search_def</span><span class="delimiter">]</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>force</span><span>
+</span><span>      
+</span><span>  </span><span class="keyword1"><span class="command">}</span></span><span> </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?thesis</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>split_block</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;nat &#8658;  bhdr_t &#8658; (bhdr_t&#215;bhdr_t)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;split_block r b = (Bhdr (s_addr b) ((s_addr b) + r - 1),
+                           Bhdr ((s_addr b) + r + overhead conf) (e_addr b))&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>split_size_sum</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;r &gt; 0 &#10233; b_size b - overhead conf &#8805; r &#10233;
+   (b1, b2) = split_block r b &#10233; b_size b1 + b_size b2 = b_size b - overhead conf&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>split_block_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>cases</span><span> </span><span>b</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>join_block</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_t &#8658; bhdr_t &#8658; bhdr_t&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;join_block b1 b2 &#8801; Bhdr (s_addr b1) (e_addr b2)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>bitmap</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;nat &#8658; bool&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>fl_bitmap_f</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; bhdr_matrix_t &#8658; bitmap&quot;</span></span></span><span>  
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fl_bitmap_f cfg m &#8801;  (&#955;i. (&#8707;j&lt; sl cfg. m i j&#8800;{}))&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>sl_bitmap_f</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_matrix_t &#8658; (nat &#8658; bitmap)&quot;</span></span></span><span>  
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;sl_bitmap_f m &#8801;  &#955;i j. m i j&#8800;{}&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>suitable_blocks</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; (nat&#215;nat) &#8658; state_t &#8658; (nat&#215;nat) set&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;suitable_blocks cfg p &#963; &#8801; 
+  {(i,j).  (bhdr_matrix_f &#963;) i j&#8800;{} &#8743; p &#8804;<span class="hidden">&#8681;</span><sub>b</sub> (i,j) &#8743; j&lt; (sl cfg) }
+  &quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>suitable_blocks_bitmap</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; (nat&#215;nat) &#8658; state_t &#8658; (nat&#215;nat) set&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;suitable_blocks_bitmap cfg p &#963; &#8801;
+     let i = fst p; j = snd p in
+      {(i&#39;,j&#39;). (fl_bitmap_f cfg (bhdr_matrix_f &#963;)) i&#39; = True  &#8743; j&#39;&lt; (sl cfg) &#8743;
+                 (sl_bitmap_f (bhdr_matrix_f &#963;)) i&#39; j&#39; = True &#8743; ((i,j)&#8804;<span class="hidden">&#8681;</span><sub>b</sub>(i&#39;,j&#39;))}&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>suitable_blocks_eq</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;suitable_blocks cfg p &#963; = suitable_blocks_bitmap cfg p &#963;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>suitable_blocks_def</span><span> </span><span>suitable_blocks_bitmap_def</span><span> </span><span>fl_bitmap_f_def</span><span> </span><span>sl_bitmap_f_def</span><span>
+</span><span>  </span><span>Let_def</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>mapping_search</span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; nat &#8658; (nat&#215;(nat&#215;nat))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;mapping_search cfg r &#8801; let r = if r&lt; (min_block cfg) then min_block cfg else r; 
+                                     (i,j) = mapping_insert cfg r;
+                                     (i&#39;,j&#39;) = next_block cfg (i,j);
+                                     initial_size = fst (range_l2 cfg i j);
+                                     r&#39;= fst (range_l2 cfg i&#39; j&#39;) in 
+                                 if initial_size = r then (r,(i,j))
+                                 else (r&#39;, (i&#39;,j&#39;))&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>on_bound</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; nat &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;on_bound cfg r &#8801;
+           let 
+             (i, j) = get_index cfg r
+           in 
+             r = fst (range_l2 cfg i j)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>on_bound_is_the_least</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;l cfg &#8804; sm cfg &#10233; j &lt; sl cfg &#10233;
+   on_bound cfg r &#10233; r &#8712; l2_set cfg i j &#10233; r&#39; &#8712; l2_set cfg i j &#10233; r &#8804; r&#39;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>on_bound_def</span><span> </span><span>get_index_def</span><span> </span><span>Let_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>subst</span><span> </span><span class="delimiter">(</span><span>asm</span><span class="delimiter">)</span><span> </span><span>the_equality</span><span class="delimiter">[</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span>a</span><span class="delimiter">=</span><span class="string"><span class="delete"><span class="delete">&quot;(i, j)&quot;</span></span></span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span> </span><span class="keyword2"><span class="keyword">for</span></span><span> </span><span>x</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>l2_set_disj</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>IntI</span><span> </span><span>empty_iff</span><span> </span><span>sl_def</span><span class="delimiter">)</span><span class="delimiter">+</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>l2_set_def</span><span> </span><span>Let_def</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>on_bound_property</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;l cfg &#8804; sm cfg &#10233; j &lt; sl cfg &#10233; r &#8712; l2_set cfg i j &#10233; on_bound cfg r &#10233; fst (range_l2 cfg i j) = r&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>on_bound_def</span><span> </span><span>Let_def</span><span> </span><span>get_index_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>subst</span><span> </span><span class="delimiter">(</span><span>asm</span><span class="delimiter">)</span><span> </span><span>the_equality</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>blast</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>l2_set_disj</span><span>
+</span><span>   </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>IntI</span><span> </span><span>empty_iff</span><span> </span><span>sl_def</span><span class="delimiter">)</span><span class="delimiter">+</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>on_boundI</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;l cfg &#8804; sm cfg &#10233; j &lt; sl cfg &#10233; fst (range_l2 cfg i j) = r &#10233; on_bound cfg r&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>on_bound_def</span><span> </span><span>get_index_def</span><span> </span><span>Let_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>rule</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>subst</span><span> </span><span class="delimiter">(</span><span>asm</span><span class="delimiter">)</span><span> </span><span>the_equality</span><span class="delimiter">[</span><span>of</span><span> </span><span>_</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(i, j)&quot;</span></span></span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>l2_set_def</span><span> </span><span>Let_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>range_l2_disj</span><span class="delimiter">)</span><span>
+</span><span>     </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>drule</span><span> </span><span>CollectD</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>fst_range_l2_i_j_less_fst_i&#39;_j&#39;</span><span> </span><span>leD</span><span> </span><span>less_linear</span><span> </span><span>sl_def</span><span> </span><span>snd_range_l2_i_j_less_fst_i&#39;_j&#39;</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>leD</span><span> </span><span>less_SucE</span><span> </span><span>not_less_eq</span><span> </span><span>order_trans</span><span> </span><span>range_l2_disj</span><span> </span><span>sl_def</span><span> </span><span>snd_range_l2_i_j_less_fst_i&#39;_j&#39;</span><span> </span><span>snd_range_l2_i_j_less_fst_j&#39;</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>mapping_search_property</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;l cfg &#8804; sm cfg&quot;</span></span></span><span> 
+</span><span>      </span><span class="keyword2"><span class="keyword">and</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(r&#39;, (i,j)) = (mapping_search cfg r)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword2"><span class="keyword">and</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r &#8805; min_block cfg&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(on_bound cfg r &#10230; 
+             r&#39; = r &#8743; (i, j) = get_index cfg r) &#8743; 
+           (&#172;on_bound cfg r &#10230; 
+             r&#39; &gt; r &#8743; (i, j) = next_block cfg (get_index cfg r) &#8743; on_bound cfg r&#39;)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>rule</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span> </span><span class="delimiter">(</span><span>intro</span><span> </span><span>conjI</span><span> </span><span>impI</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;on_bound cfg r&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r&#39; = r&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span> </span><span>Let_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>split</span><span> </span><span>prod.splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>frule</span><span> </span><span>mapping_insert_r_index</span><span class="delimiter">[</span><span>of</span><span> </span><span>_</span><span> </span><span>_</span><span> </span><span>_</span><span> </span><span>r</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span> </span><span class="keyword2"><span class="keyword">for</span></span><span> </span><span>i&#39;</span><span> </span><span>j&#39;</span><span>
+</span><span>        </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>subgoal_tac</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fst (range_l2 cfg i&#39; j&#39;) = r&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>        </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>         </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>on_bound_property</span><span class="delimiter">)</span><span>
+</span><span>            </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>assumption</span><span>
+</span><span>        </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>mapping_insert_r_in_l2_set</span><span class="delimiter">)</span><span>
+</span><span>          </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>mapping_insert_r_in_l2_set</span><span class="delimiter">)</span><span>
+</span><span>        </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;on_bound cfg r&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(i, j) = get_index cfg r&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span> </span><span>Let_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>split</span><span> </span><span>prod.splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>frule</span><span> </span><span>mapping_insert_r_index</span><span class="delimiter">[</span><span>of</span><span> </span><span>_</span><span> </span><span>_</span><span> </span><span>_</span><span> </span><span>r</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span> </span><span class="keyword2"><span class="keyword">for</span></span><span> </span><span>i&#39;</span><span> </span><span>j&#39;</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>subgoal_tac</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fst (range_l2 cfg i&#39; j&#39;) = r&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>         </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>        </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>on_bound_property</span><span class="delimiter">)</span><span>
+</span><span>           </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>assumption</span><span>
+</span><span>          </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>mapping_insert_r_in_l2_set</span><span class="delimiter">)</span><span>
+</span><span>         </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>mapping_insert_r_in_l2_set</span><span class="delimiter">)</span><span>
+</span><span>        </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;on_bound cfg r&#8250;</span></span></span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span> 
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#172; on_bound cfg r&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;i&#39; j&#39;. mapping_insert cfg r = (i&#39;, j&#39;)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span class="delimiter">(</span><span>2</span><span>-</span><span>3</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span class="delimiter">:</span><span> </span><span>Let_def</span><span> </span><span>split</span><span class="delimiter">:</span><span> </span><span>prod.splits</span><span> </span><span>if_splits</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">obtain</span></span><span> </span><span>i&#39;</span><span> </span><span>j&#39;</span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span>m</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;mapping_insert cfg r = (i&#39;, j&#39;)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">hence</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;j&#39; &lt; sl cfg&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>mapping_insert_r_in_l2_set</span><span class="delimiter">)</span><span> 
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r &#8712; l2_set cfg i&#39; j&#39;&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>m</span><span> </span><span>mapping_insert_r_in_l2_set</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;get_index cfg r = (i&#39;, j&#39;)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>m</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span> </span><span>mapping_insert_r_index</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span> 
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fst (range_l2 cfg i&#39; j&#39;) &#8800; r&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>ccontr</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>subgoal_tac</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;on_bound cfg r&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#172; _&#8250;</span></span></span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>on_boundI</span><span class="delimiter">[</span><span>OF</span><span> </span><span>assms</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;_ &lt; _&#8250;</span></span></span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r &lt; r&#39;&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>-</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span class="delimiter">:</span><span>m</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;_ &#8800; _&#8250;</span></span></span><span> </span><span>split</span><span class="delimiter">:</span><span> </span><span>prod.splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;r &#8712; l2_set _ _ _&#8250;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>next_block_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>split</span><span class="delimiter">:</span><span>if_splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;r &#8712; _&#8250;</span></span></span><span class="delimiter">[</span><span>unfolded</span><span> </span><span>l2_set_def</span><span class="delimiter">,</span><span> </span><span>unfolded</span><span> </span><span>Let_def</span><span class="delimiter">,</span><span> </span><span>THEN</span><span> </span><span>CollectD</span><span class="delimiter">]</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>meson</span><span> </span><span>le_less_trans</span><span> </span><span>lessI</span><span> </span><span>snd_range_l2_i_j_less_fst_j&#39;</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;r &#8712; _&#8250;</span></span></span><span class="delimiter">[</span><span>unfolded</span><span> </span><span>l2_set_def</span><span class="delimiter">,</span><span> </span><span>unfolded</span><span> </span><span>Let_def</span><span class="delimiter">,</span><span> </span><span>THEN</span><span> </span><span>CollectD</span><span class="delimiter">]</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>Suc_lessI</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#172; on_bound cfg r&#8250;</span></span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;j&#39; &lt; sl cfg&#8250;</span></span></span><span> </span><span>fst_conv</span><span> </span><span>l2_i_j_next</span><span> </span><span>last_l2_i_eq_first_l2_Suc_i</span><span> 
+</span><span>      </span><span>less_imp_diff_less</span><span> </span><span>linorder_neqE_nat</span><span> </span><span>linorder_not_le</span><span> </span><span>on_boundI</span><span> </span><span>range_l2_def</span><span> </span><span>sl_def</span><span> </span><span>snd_conv</span><span> </span><span>zero_less_Suc</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(i, j) = next_block cfg (get_index cfg r)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>-</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span class="delimiter">:</span><span>m</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;_ &#8800; _&#8250;</span></span></span><span> </span><span>split</span><span class="delimiter">:</span><span> </span><span>prod.splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;get_index cfg r = (i&#39;, j&#39;)&#8250;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>presburger</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;on_bound cfg r&#39;&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>-</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span class="delimiter">:</span><span>m</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;_ &#8800; _&#8250;</span></span></span><span> </span><span>split</span><span class="delimiter">:</span><span> </span><span>prod.splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;r &#8712; l2_set _ _ _&#8250;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>next_block_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>split</span><span class="delimiter">:</span><span>if_splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span>
+</span><span>        </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>on_boundI</span><span class="delimiter">[</span><span>OF</span><span> </span><span>assms</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>        </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span>
+</span><span>        </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>on_boundI</span><span class="delimiter">[</span><span>OF</span><span> </span><span>assms</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>        </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r &lt; r&#39; &#8743; (i, j) = next_block cfg (get_index cfg r) &#8743; on_bound cfg r&#39;&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>intro</span><span> </span><span>conjI</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fact</span><span class="delimiter">+</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>mapping_search_property_min_block</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;l cfg &#8804; sm cfg&quot;</span></span></span><span> 
+</span><span>      </span><span class="keyword2"><span class="keyword">and</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(r&#39;, (i,j)) = (mapping_search cfg r)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword2"><span class="keyword">and</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r &lt; min_block cfg&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(on_bound cfg (min_block cfg) &#10230; 
+             r&#39; = min_block cfg &#8743; (i, j) = get_index cfg (min_block cfg)) &#8743; 
+           (&#172;on_bound cfg (min_block cfg) &#10230; 
+             r&#39; &gt; min_block cfg &#8743; (i, j) = next_block cfg (get_index cfg (min_block cfg)) 
+             &#8743; on_bound cfg r&#39;)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>rule</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span> </span><span class="delimiter">(</span><span>intro</span><span> </span><span>impI</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;on_bound cfg (min_block cfg)&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r&#39; = min_block cfg&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span> </span><span>Let_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>split</span><span class="delimiter">:</span><span> </span><span>prod.splits</span><span> </span><span>if_splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;on_bound _ _&#8250;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>mapping_insert_r_in_l2_set</span><span> </span><span>on_bound_property</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(i, j) = get_index cfg (min_block cfg)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span> </span><span>Let_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>split</span><span class="delimiter">:</span><span> </span><span>prod.splits</span><span> </span><span>if_splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>mapping_insert_r_index</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span class="delimiter">[</span><span>1</span><span class="delimiter">]</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;on_bound _ _&#8250;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>mapping_insert_r_in_l2_set</span><span> </span><span>on_bound_property</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r&#39; = min_block cfg &#8743; (i, j) = get_index cfg (min_block cfg)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>rule</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fact</span><span class="delimiter">+</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">let</span></span><span> </span><span class="var">?m</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;min_block cfg&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#172; on_bound cfg ?m&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;i&#39; j&#39;. mapping_insert cfg ?m = (i&#39;, j&#39;)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span class="delimiter">(</span><span>2</span><span>-</span><span>3</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span class="delimiter">:</span><span> </span><span>Let_def</span><span> </span><span>split</span><span class="delimiter">:</span><span> </span><span>prod.splits</span><span> </span><span>if_splits</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">obtain</span></span><span> </span><span>i&#39;</span><span> </span><span>j&#39;</span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span>m</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;mapping_insert cfg ?m = (i&#39;, j&#39;)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">hence</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;j&#39; &lt; sl cfg&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>mapping_insert_r_in_l2_set</span><span class="delimiter">)</span><span> 
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;?m &#8712; l2_set cfg i&#39; j&#39;&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>m</span><span> </span><span>mapping_insert_r_in_l2_set</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;get_index cfg ?m = (i&#39;, j&#39;)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>m</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span> </span><span>mapping_insert_r_index</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span> 
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fst (range_l2 cfg i&#39; j&#39;) &#8800; ?m&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>ccontr</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>subgoal_tac</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;on_bound cfg ?m&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#172; _&#8250;</span></span></span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>on_boundI</span><span class="delimiter">[</span><span>OF</span><span> </span><span>assms</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;j&#39; &lt; _&#8250;</span></span></span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;min_block cfg &lt; r&#39;&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>-</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span class="delimiter">:</span><span>m</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;_ &#8800; ?m&#8250;</span></span></span><span> </span><span>split</span><span class="delimiter">:</span><span>prod.splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;?m &#8712; l2_set _ _ _&#8250;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>next_block_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>split</span><span class="delimiter">:</span><span>if_splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;?m &#8712; _&#8250;</span></span></span><span class="delimiter">[</span><span>unfolded</span><span> </span><span>l2_set_def</span><span class="delimiter">,</span><span> </span><span>unfolded</span><span> </span><span>Let_def</span><span class="delimiter">,</span><span> </span><span>THEN</span><span> </span><span>CollectD</span><span class="delimiter">]</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>meson</span><span> </span><span>le_less_trans</span><span> </span><span>lessI</span><span> </span><span>snd_range_l2_i_j_less_fst_j&#39;</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;?m &#8712; _&#8250;</span></span></span><span class="delimiter">[</span><span>unfolded</span><span> </span><span>l2_set_def</span><span class="delimiter">,</span><span> </span><span>unfolded</span><span> </span><span>Let_def</span><span class="delimiter">,</span><span> </span><span>THEN</span><span> </span><span>CollectD</span><span class="delimiter">]</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>Suc_lessI</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#172; on_bound cfg ?m&#8250;</span></span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;j&#39; &lt; sl cfg&#8250;</span></span></span><span> </span><span>fst_conv</span><span> </span><span>l2_i_j_next</span><span> </span><span>last_l2_i_eq_first_l2_Suc_i</span><span> 
+</span><span>      </span><span>less_imp_diff_less</span><span> </span><span>linorder_neqE_nat</span><span> </span><span>linorder_not_le</span><span> </span><span>on_boundI</span><span> </span><span>range_l2_def</span><span> </span><span>sl_def</span><span> </span><span>snd_conv</span><span> </span><span>zero_less_Suc</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(i, j) = next_block cfg (get_index cfg ?m)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>-</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span class="delimiter">:</span><span>m</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;_ &#8800; _&#8250;</span></span></span><span> </span><span>split</span><span class="delimiter">:</span><span> </span><span>prod.splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;get_index cfg (min_block cfg) = (i&#39;, j&#39;)&#8250;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;on_bound cfg r&#39;&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>assms</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>-</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span class="delimiter">:</span><span>m</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;_ &#8800; _&#8250;</span></span></span><span> </span><span>split</span><span class="delimiter">:</span><span> </span><span>prod.splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;?m &#8712; l2_set _ _ _&#8250;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>next_block_def</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>split</span><span class="delimiter">:</span><span>if_splits</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span>
+</span><span>        </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>on_boundI</span><span class="delimiter">[</span><span>OF</span><span> </span><span>assms</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>        </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span><span>
+</span><span>        </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>on_boundI</span><span class="delimiter">[</span><span>OF</span><span> </span><span>assms</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>        </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;min_block cfg &lt; r&#39; &#8743; (i, j) = next_block cfg (get_index cfg ?m) &#8743; on_bound cfg r&#39;&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>intro</span><span> </span><span>conjI</span><span class="delimiter">)</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>fact</span><span class="delimiter">+</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>l2_set_mapping_search_geq_r</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>a0</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;l cfg &#8804; sm cfg&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span>
+</span><span>          </span><span>a1</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(r&#39;, (i,j)) = (mapping_search cfg r)&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword2"><span class="keyword">shows</span></span><span>    </span><span class="string"><span class="delete"><span class="delete">&quot;r&#39;&#8805; r &#8743; (&#8704;r1&#8712; l2_set cfg i j. r1 &#8805; r&#39;)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span>-</span><span>  
+</span><span>  </span><span class="keyword1"><span class="command">{</span></span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>a00</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;r&lt;(min_block cfg)&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="var">?thesis</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>a1</span><span> </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span> </span><span>Let_def</span><span> 
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>split</span><span> </span><span>prod.splits</span><span class="delimiter">)</span><span class="delimiter">+</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>case_tac</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fst (range_l2 cfg x1 x2) = min_block cfg&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span> 
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>l2_set_search_gt_r</span><span class="delimiter">[</span><span>OF</span><span> </span><span>a0</span><span class="delimiter">,</span><span> </span><span>of</span><span> </span><span>i</span><span> </span><span>j</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(min_block cfg)&quot;</span></span></span><span class="delimiter">]</span><span> </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>map_search_def</span><span>      
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>a0</span><span> </span><span>l2_set_def</span><span> </span><span>Let_def</span><span> </span><span>range_l2_disj</span><span class="delimiter">)</span><span>     
+</span><span>  </span><span class="keyword1"><span class="command">}</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">moreover</span></span><span> </span><span class="keyword1"><span class="command">{</span></span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r&#8805;(min_block cfg)&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="var">?thesis</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>a1</span><span> </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>mapping_search_def</span><span> </span><span>Let_def</span><span> 
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>split</span><span> </span><span>prod.splits</span><span class="delimiter">)</span><span class="delimiter">+</span><span>
+</span><span>      </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>case_tac</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fst (range_l2 cfg x1 x2) = r&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span> 
+</span><span>      </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>l2_set_search_gt_r</span><span class="delimiter">[</span><span>OF</span><span> </span><span>a0</span><span class="delimiter">,</span><span> </span><span>of</span><span> </span><span>i</span><span> </span><span>j</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;r&quot;</span></span></span><span class="delimiter">]</span><span> </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>map_search_def</span><span>      
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>a0</span><span> </span><span>l2_set_def</span><span> </span><span>Let_def</span><span> </span><span>range_l2_disj</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">}</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">ultimately</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?thesis</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fastforce</span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>find_suitable_blocks_opt</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;(nat&#215;nat) &#8658; state_t &#8658; ((nat&#215;nat) set) option&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;find_suitable_blocks_opt p s &#8801; 
+  let x = suitable_blocks conf p s in 
+       if (x={}) then None else Some x&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>ij_level_empty</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_matrix_t &#8658; nat &#8658; nat &#8658;bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ij_level_empty m i j &#8801; m i j = {}&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>i_level_empty</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; bhdr_matrix_t &#8658; nat  &#8658;bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;i_level_empty cfg m i &#8801; &#8704;j&lt; (sl cfg). ij_level_empty m i j&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>remove_elem_from_matrix</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_t &#8658; nat &#8658; nat &#8658; state_t &#8658;state_t&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;remove_elem_from_matrix b i j &#963; &#8801; 
+    let matrix_not_elem = (Set.remove b ((bhdr_matrix_f &#963;) i j));
+        new_matrix = set_bhdr_matrix (bhdr_matrix_f &#963;) i j matrix_not_elem  in 
+     &#963;&#10631;bhdr_matrix_f:= new_matrix&#10632;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>remove_block</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;(nat&#215;nat) &#8658; (state_t, bhdr_t) nondet_monad&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;remove_block p  &#8801; 
+ let i = fst p; j = snd p in
+     do
+       matrix &#8592; gets (&#955;&#963;. (bhdr_matrix_f &#963;) i j);
+       b &#8592; select matrix; 
+       modify (remove_elem_from_matrix b i j);
+       return b
+     od &quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>add_block</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_t &#8658; state_t &#8658; state_t&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;add_block b &#963; &#8801; 
+ let (i,j) = mapping_insert conf (b_size b)  in
+   &#963;&#10631;bhdr_matrix_f := insert_block_bhdr_matrix  (bhdr_matrix_f &#963;) i j b&#10632;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>malloc</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;nat &#8658; (state_t, nat option) nondet_monad&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;malloc r &#8801;  let (r,(i,j)) = mapping_search conf r in
+                     do set_ps &#8592; gets (find_suitable_blocks_opt (i,j));
+                        condition (&#955;s. set_ps = None) (return None)
+                        (do p &#8592; select (the set_ps);
+                            b &#8592; remove_block p;
+                            (condition (&#955;s. b_size b - r &#8805; (min_block conf + overhead conf))
+                                (do (b1,b2) &#8592; gets (&#955;s. (split_block r b));
+                                 modify (&#955;s. s&#10631;alloced_bhdr_s:= insert b1 (alloced_bhdr_s s)&#10632;);
+                                 modify (add_block b2);
+                                 return (Some (s_addr b1)) od)
+                                (do
+                                  modify (&#955;s. s&#10631;alloced_bhdr_s:= insert b (alloced_bhdr_s s)&#10632;);
+                                  return (Some (s_addr b))
+                                 od))
+                         od)
+                     od&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>join_prev</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_t &#8658; (state_t, bhdr_t) nondet_monad&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;join_prev b &#8801;  do b&#39; &#8592; gets (prev_free_hdr_s conf b);
+                   condition (&#955;s. b&#39; = None)
+                     (return b)
+                     (let (i,j) = mapping_insert conf (b_size(the b&#39;));
+                          b_join = join_block (the b&#39;) b
+                      in
+                      do
+                         modify (remove_elem_from_matrix (the b&#39;) i j);
+                         return b_join
+                      od)
+                od &quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>join_suc</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_t &#8658; (state_t, bhdr_t) nondet_monad&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;join_suc b &#8801; do b&#39; &#8592; gets (suc_hdr_free_s conf b);
+                   condition (&#955;s. b&#39; = None)
+                     (return b)
+                     (let (i,j) = mapping_insert conf (b_size(the b&#39;));
+                          b_join = join_block b (the b&#39;)
+                      in
+                      do
+                        modify (remove_elem_from_matrix (the b&#39;) i j);
+                        return b_join
+                      od)
+                od&quot;</span></span></span><span>
+</span><span>  
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>free</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;nat &#8658; (state_t, nat) nondet_monad&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;free addr &#8801; condition (block_alloced addr)
+                        (do b &#8592; gets (get_alloced_block addr);
+                           modify (&#955;s. s&#10631; alloced_bhdr_s := Set.remove b (alloced_bhdr_s s)&#10632;);
+                           b &#8592; join_suc b;
+                           b &#8592; join_prev b;
+                           modify (add_block b);
+                           return 1
+                        od)
+                        (do
+                          modify (&#955;s. undefined);
+                          return undefined
+                         od)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">inductive</span></span><span> </span><span>run</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;state_t list &#8658; bool&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span>single_s</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;run [x]&quot;</span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>malloc</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;run (x#xs); v = (SOME v. v&#8712;(fst (malloc r x)))&#10215; &#10233; run ((snd v)#x#xs)&quot;</span></span></span><span> 
+</span><span class="delimiter">|</span><span> </span><span>free</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;run (x#xs); v = (SOME v. v&#8712;(fst (free r x)))&#10215; &#10233; run ((snd v)#x#xs)&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>

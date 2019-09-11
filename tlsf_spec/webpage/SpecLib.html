@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory SpecLib (repository version)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory SpecLib</h1>
+
+<span class="command">theory</span> <span class="name">SpecLib</span><br/>
+<span class="keyword">imports</span> <a href="../../HOL/HOL-Word/Word.html"><span class="name">Word</span></a> <a href="Log_Nat.html"><span class="name">Log_Nat</span></a> <a href="Lattice.html"><span class="name">Lattice</span></a> <a href="../../Lib/Lib/NonDetMonadVCG.html"><span class="name">NonDetMonadVCG</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="keyword1"><span class="command">theory</span></span><span> </span><span>SpecLib</span><span>
+</span><span>    </span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>Main</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;HOL-Word.Word&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;HOL-Library.Log_Nat&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;HOL-Lattice.Lattice&quot;</span></span></span><span>
+</span><span>          </span><span class="string"><span class="delete"><span class="delete">&quot;HOL.Lattices&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Lib.NonDetMonadVCG&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">declare</span></span><span> </span><span class="delimiter">[</span><span class="delimiter">[</span><span> </span><span>smt_solver</span><span> </span><span class="delimiter">=</span><span> </span><span>z3</span><span class="delimiter">]</span><span class="delimiter">]</span><span>
+</span><span class="keyword1"><span class="command">declare</span></span><span> </span><span class="delimiter">[</span><span class="delimiter">[</span><span> </span><span>smt_timeout</span><span> </span><span class="delimiter">=</span><span> </span><span>300</span><span> </span><span class="delimiter">]</span><span class="delimiter">]</span><span>
+</span><span class="keyword1"><span class="command">declare</span></span><span> </span><span class="delimiter">[</span><span class="delimiter">[</span><span> </span><span>z3_options</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;-memory:1000&quot;</span></span></span><span> </span><span class="delimiter">]</span><span class="delimiter">]</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span>bhdr_t</span><span> </span><span class="delimiter">=</span><span> </span><span>Bhdr</span><span> </span><span class="delimiter">(</span><span>s_addr</span><span class="delimiter">:</span><span>nat</span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>e_addr</span><span class="delimiter">:</span><span>nat</span><span class="delimiter">)</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* [prev_hdr impl with function type] BLOCK_STATE(free[False]|used[True]) PREV_STATE(prev_free[False]|prev_used[True]) addr_lft addr_rht *)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">primrec</span></span><span> </span><span>b_size</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_t &#8658; nat&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;b_size (Bhdr s e) = (1 + e - s)&quot;</span></span></span><span>        </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* notice plus one should be ahead of minus s *)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>word32</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;32 word&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>bitmap_t</span><span> </span><span class="delimiter">=</span><span> </span><span>word32</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span>  </span><span>Sys_Config</span><span> </span><span class="delimiter">=</span><span>
+</span><span>  </span><span>l</span><span> </span><span class="delimiter">::</span><span> </span><span>nat</span><span>
+</span><span>  </span><span>sm</span><span> </span><span class="delimiter">::</span><span> </span><span>nat</span><span>
+</span><span>  </span><span>min_block</span><span class="delimiter">::</span><span>nat</span><span>
+</span><span>  </span><span>overhead</span><span class="delimiter">::</span><span>nat</span><span>
+</span><span>  </span><span>mem_size</span><span class="delimiter">::</span><span>nat</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">consts</span></span><span> </span><span>conf</span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">specification</span></span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;conf&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>  </span><span>mbiggerl</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;sm conf &#8805; l conf&quot;</span></span></span><span> 
+</span><span>  </span><span>min_gt_0</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;min_block conf &gt; 0&quot;</span></span></span><span>
+</span><span>  </span><span>total_mem_gt_0</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;mem_size conf &gt; 0&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>exI</span><span class="delimiter">[</span><span>of</span><span> </span><span>_</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10631; l = 0,  sm = 0, min_block = 2, overhead = 1,mem_size = 1&#10632;&quot;</span></span></span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>sl</span><span> </span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; nat&quot;</span></span></span><span> 
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;sl cfg &#8801; 2 ^ (l cfg) &quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">declare</span></span><span> </span><span>sl_def</span><span class="delimiter">[</span><span>simp</span><span class="delimiter">]</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>bhdr_matrix_t</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;nat &#8658; nat &#8658; bhdr_t set&quot;</span></span></span><span>
+</span><span>                             
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>state_t</span><span> </span><span class="delimiter">=</span><span> 
+</span><span>  </span><span>bhdr_matrix_f</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_matrix_t&quot;</span></span></span><span>
+</span><span>  </span><span>alloced_bhdr_s</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_t set&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>block_alloced</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;nat &#8658; state_t &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;block_alloced addr &#963; &#8801; &#8707;e_addr. (Bhdr addr e_addr) &#8712; (alloced_bhdr_s &#963;)&quot;</span></span></span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>get_alloced_block</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;nat &#8658; state_t &#8658; bhdr_t&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;get_alloced_block addr &#963; &#8801; THE b. &#8707;e_addr. b = (Bhdr addr e_addr) &#8743; b &#8712; (alloced_bhdr_s &#963;)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>set_bhdr_matrix</span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_matrix_t &#8658; nat &#8658; nat &#8658; bhdr_t set &#8658; bhdr_matrix_t&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;set_bhdr_matrix m i j v &#8801; m(i:= (m i)(j:= v))&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>insert_block_bhdr_matrix</span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_matrix_t &#8658; nat &#8658; nat &#8658; bhdr_t  &#8658; bhdr_matrix_t&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;insert_block_bhdr_matrix m i j b &#8801; set_bhdr_matrix m i j (insert  b (m i j))&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>free_blocks</span><span> </span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; state_t &#8658; bhdr_t set&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;free_blocks cfg &#963; &#8801; &#8899;{x. (&#8707;f s. s &lt; sl cfg &#8743; x = (bhdr_matrix_f &#963;) f s)}&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>free_blocks_mat</span><span> </span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; bhdr_matrix_t &#8658; bhdr_t set&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;free_blocks_mat cfg m &#8801; &#8899;{x. (&#8707;f s. s &lt; sl cfg &#8743; x = m f s)}&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>free_blk_mat_s_eq</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;free_blocks conf s = free_blocks_mat conf (bhdr_matrix_f s)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>free_blocks_def</span><span> </span><span>free_blocks_mat_def</span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>all_blocks</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; state_t &#8658; bhdr_t set&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;all_blocks cfg &#963; &#8801; free_blocks cfg &#963; &#8746; alloced_bhdr_s &#963;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>prev_hdr_s</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; bhdr_t &#8658;  state_t &#8658; bhdr_t option&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;prev_hdr_s cfg b &#963; &#8801; 
+   (let s = {b&#39;. (&#8704;s_addr e_addr. b = Bhdr s_addr e_addr &#10230; 
+                      (&#8707;s_addr&#39; e_addr&#39;. b&#39; = Bhdr s_addr&#39; e_addr&#39; &#8743; 
+                        b&#39; &#8712; all_blocks cfg &#963; &#8743; e_addr&#39; + 1 + overhead conf = s_addr)) } in
+    if s = {} then None else Some (THE x. x &#8712; s))&quot;</span></span></span><span>
+</span><span>     </span><span class="comment">&#8213;&#8249;Cardinality brings in some complexity &#8250;</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>prev_free_hdr_s</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; bhdr_t &#8658; state_t  &#8658; bhdr_t option&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;prev_free_hdr_s cfg b &#963; &#8801; 
+  (let s = {b&#39;. (&#8704;s_addr e_addr. b = Bhdr s_addr e_addr &#10230; 
+                      (&#8707;s_addr&#39; e_addr&#39;. b&#39; = Bhdr s_addr&#39; e_addr&#39; &#8743; 
+                        b&#39; &#8712; free_blocks cfg &#963; &#8743; e_addr&#39; + 1 + overhead conf = s_addr)) } in
+   if s = {} then None else Some (THE x. x &#8712; s))&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>suc_hdr_s</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658;  bhdr_t &#8658; state_t  &#8658; bhdr_t option&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;suc_hdr_s cfg b &#963; &#8801; 
+  (let s = {b&#39;. (&#8704;s_addr e_addr. b = Bhdr s_addr e_addr &#10230; 
+                      (&#8707;s_addr&#39; e_addr&#39;. b&#39; = Bhdr s_addr&#39; e_addr&#39; &#8743; 
+                        b&#39; &#8712; all_blocks cfg &#963; &#8743; e_addr + 1 + overhead conf = s_addr&#39;)) } in
+   if s = {} then None else Some (THE x. x &#8712; s))&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>suc_hdr_free_s</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; bhdr_t &#8658; state_t &#8658;  bhdr_t option&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;suc_hdr_free_s cfg b &#963; &#8801; 
+    (let s = {b&#39;. (&#8704;s_addr e_addr. b = Bhdr s_addr e_addr &#10230; 
+                      (&#8707;s_addr&#39; e_addr&#39;. b&#39; = Bhdr s_addr&#39; e_addr&#39; &#8743; 
+                        b&#39; &#8712; free_blocks cfg &#963; &#8743; e_addr + 1 + overhead conf = s_addr&#39;)) } in
+    if s = {} then None else Some (THE x. x &#8712; s))&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>is_alloc</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_t &#8658; state_t &#8658; bool&quot;</span></span></span><span> 
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;is_alloc b &#963; &#8801; b &#8712; alloced_bhdr_s &#963;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>is_free</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; bhdr_t &#8658; state_t &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;is_free cfg b &#963; &#8801; b &#8712; free_blocks cfg &#963;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>next_block</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;Sys_Config &#8658; (nat&#215;nat) &#8658; (nat&#215;nat)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;next_block cfg x &#8801; if Suc (snd x) &lt; (sl cfg) then (fst x, (snd x + 1))
+                            else ((fst x)+1, 0)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>block_lt</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;a::wellorder&#215;&#39;a) &#8658; (&#39;a&#215;&#39;a) &#8658; bool&quot;</span></span></span><span>  </span><span class="delimiter">(</span><span class="keyword2"><span class="keyword">infix</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&lt;<span class="hidden">&#8681;</span><sub>b</sub>&quot;</span></span></span><span> </span><span>50</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;block_lt  x y &#8801; 
+   (fst x &lt; fst y) &#8744; (fst x = fst y &#8743; snd x &lt; snd y)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>block_let</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;a::wellorder&#215;&#39;a) &#8658; (&#39;a&#215;&#39;a) &#8658; bool&quot;</span></span></span><span>  </span><span class="delimiter">(</span><span class="keyword2"><span class="keyword">infix</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8804;<span class="hidden">&#8681;</span><sub>b</sub>&quot;</span></span></span><span> </span><span>50</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;block_let  x y &#8801; x=y &#8744; block_lt x y &quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>block_gt</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;a::wellorder&#215;&#39;a) &#8658; (&#39;a&#215;&#39;a) &#8658; bool&quot;</span></span></span><span>  </span><span class="delimiter">(</span><span class="keyword2"><span class="keyword">infix</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&gt;<span class="hidden">&#8681;</span><sub>b</sub>&quot;</span></span></span><span> </span><span>50</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;block_gt x y &#8801; &#172; (block_let x y)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>block_get</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;a::wellorder&#215;&#39;a) &#8658; (&#39;a&#215;&#39;a) &#8658; bool&quot;</span></span></span><span>  </span><span class="delimiter">(</span><span class="keyword2"><span class="keyword">infix</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8805;<span class="hidden">&#8681;</span><sub>b</sub>&quot;</span></span></span><span> </span><span>50</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;block_get x y &#8801; &#172; (block_lt x y)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>b_lt_tran</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;a &lt;<span class="hidden">&#8681;</span><sub>b</sub> b &#10233; b &lt;<span class="hidden">&#8681;</span><sub>b</sub> c &#10233; a &lt;<span class="hidden">&#8681;</span><sub>b</sub> c&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>block_lt_def</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>b_let_tran</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;a &#8804;<span class="hidden">&#8681;</span><sub>b</sub> b &#10233; b &#8804;<span class="hidden">&#8681;</span><sub>b</sub> c &#10233; a &#8804;<span class="hidden">&#8681;</span><sub>b</sub> c&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>block_let_def</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>intro</span><span class="delimiter">:</span><span>  </span><span>b_lt_tran</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>b_gt_tran</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;a &gt;<span class="hidden">&#8681;</span><sub>b</sub> b &#10233; b &gt;<span class="hidden">&#8681;</span><sub>b</sub> c &#10233; a &gt;<span class="hidden">&#8681;</span><sub>b</sub> c&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>block_gt_def</span><span> </span><span>block_let_def</span><span> </span><span>block_lt_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>prod.expand</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>b_get_tran</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;a &#8805;<span class="hidden">&#8681;</span><sub>b</sub> b &#10233; b &#8805;<span class="hidden">&#8681;</span><sub>b</sub> c &#10233; a &#8805;<span class="hidden">&#8681;</span><sub>b</sub> c&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>block_get_def</span><span> </span><span>block_gt_def</span><span> </span><span>block_let_def</span><span> </span><span>block_lt_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>b_let_refl</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;a&#8804;<span class="hidden">&#8681;</span><sub>b</sub>a&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">unfolding</span></span><span>  </span><span>block_let_def</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>b_get_refl</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;a&#8805;<span class="hidden">&#8681;</span><sub>b</sub>a&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">unfolding</span></span><span>  </span><span>block_get_def</span><span> </span><span>block_gt_def</span><span> </span><span>block_let_def</span><span> </span><span>block_lt_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>n_b_lt</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;&#172; a&lt;<span class="hidden">&#8681;</span><sub>b</sub>a&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">unfolding</span></span><span>  </span><span>block_lt_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>n_b_gt</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;&#172; a &gt;<span class="hidden">&#8681;</span><sub>b</sub> a&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">unfolding</span></span><span>   </span><span>block_gt_def</span><span> </span><span>block_let_def</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>antysimb</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;x &#8804;<span class="hidden">&#8681;</span><sub>b</sub> y &#10233; y &#8804;<span class="hidden">&#8681;</span><sub>b</sub> x &#10233; x = y&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span>  </span><span>block_let_def</span><span> </span><span>block_lt_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>div_e</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(D::nat)&#8800;0 &#10233; E&#8800;0 &#10233; A&#8804;B &#10233; (B - C) div E &lt; D &#10233; (A - C) div E &lt; D&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>diff_le_mono</span><span> </span><span>div_le_mono</span><span> </span><span>le_less_trans</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>div_e&#39;</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(D::nat)&#8800;0 &#10233; E&#8800;0 &#10233; A&lt;B &#10233; (B - C) div E &lt; D &#10233; (A - C) div E &lt; D&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>div_e</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>meson</span><span> </span><span>less_imp_le_nat</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>power2gt0</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;a&#8804;b &#10233; 0&lt;a &#10233;((2::nat)^b div 2^a) &gt; 0&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>Euclidean_Division.div_eq_0_iff</span><span> </span><span>div_positive</span><span> </span><span>gr0I</span><span> 
+</span><span>            </span><span>nat_power_less_imp_less</span><span> </span><span>pos2</span><span> </span><span>power_not_zero</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>power2gt</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;a&#8804;b &#10233; ((2::nat)^b div 2^a) &gt; 0&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>power2gt0</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fastforce</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>power2gt1</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;a&#8804;b &#10233; c&gt;0 &#10233; ((c*((2::nat)^b)) div 2^a) &gt; 0&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>power2gt</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>div_less</span><span> </span><span>nat_mult_less_cancel1</span><span> </span><span>neq0_conv</span><span> </span><span>pos2</span><span> </span><span>td_gal_lt</span><span> </span><span>zero_less_power</span><span class="delimiter">)</span><span> 
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>

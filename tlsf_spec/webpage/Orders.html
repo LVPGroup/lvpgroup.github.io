@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory Orders (repository version)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory Orders</h1>
+
+<span class="command">theory</span> <span class="name">Orders</span><br/>
+<span class="keyword">imports</span> <a href="../../HOL/HOL/Main.html"><span class="name">Main</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*  Title:      HOL/Lattice/Orders.thy
+    Author:     Markus Wenzel, TU Muenchen
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Orders&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>Orders</span><span> </span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>Main</span><span> </span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Ordered structures&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+  We define several classes of ordered structures over some type @{typ
+  &#39;a} with relation &#8249;&#8849; :: &#39;a &#8658; &#39;a &#8658; bool&#8250;.  For a
+  \emph{quasi-order} that relation is required to be reflexive and
+  transitive, for a \emph{partial order} it also has to be
+  anti-symmetric, while for a \emph{linear order} all elements are
+  required to be related (in either direction).
+&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">class</span></span><span> </span><span>leq</span><span> </span><span class="delimiter">=</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">fixes</span></span><span> </span><span>leq</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;a &#8658; bool&quot;</span></span></span><span>  </span><span class="delimiter">(</span><span class="keyword2"><span class="keyword">infixl</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8849;&quot;</span></span></span><span> </span><span>50</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">class</span></span><span> </span><span>quasi_order</span><span> </span><span class="delimiter">=</span><span> </span><span>leq</span><span> </span><span class="delimiter">+</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>leq_refl</span><span> </span><span class="delimiter">[</span><span>intro</span><span class="delimiter">?</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x &#8849; x&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>leq_trans</span><span> </span><span class="delimiter">[</span><span>trans</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x &#8849; y &#10233; y &#8849; z &#10233; x &#8849; z&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">class</span></span><span> </span><span>partial_order</span><span> </span><span class="delimiter">=</span><span> </span><span>quasi_order</span><span> </span><span class="delimiter">+</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>leq_antisym</span><span> </span><span class="delimiter">[</span><span>trans</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x &#8849; y &#10233; y &#8849; x &#10233; x = y&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">class</span></span><span> </span><span>linear_order</span><span> </span><span class="delimiter">=</span><span> </span><span>partial_order</span><span> </span><span class="delimiter">+</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>leq_linear</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x &#8849; y &#8744; y &#8849; x&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>linear_order_cases</span><span class="delimiter">:</span><span>
+</span><span>    </span><span class="string"><span class="delete"><span class="delete">&quot;((x::&#39;a::linear_order) &#8849; y &#10233; C) &#10233; (y &#8849; x &#10233; C) &#10233; C&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>insert</span><span> </span><span>leq_linear</span><span class="delimiter">)</span><span> </span><span>blast</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Duality&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+  The \emph{dual} of an ordered structure is an isomorphic copy of the
+  underlying type, with the &#8249;&#8849;&#8250; relation defined as the inverse
+  of the original one.
+&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span class="tfree">&#39;a</span><span> </span><span>dual</span><span> </span><span class="delimiter">=</span><span> </span><span>dual</span><span> </span><span class="tfree">&#39;a</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">primrec</span></span><span> </span><span>undual</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a dual &#8658; &#39;a&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span>undual_dual</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;undual (dual x) = x&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">instantiation</span></span><span> </span><span>dual</span><span> </span><span class="delimiter">::</span><span> </span><span class="delimiter">(</span><span>leq</span><span class="delimiter">)</span><span> </span><span>leq</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span>
+</span><span>  </span><span>leq_dual_def</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x&#39; &#8849; y&#39; &#8801; undual y&#39; &#8849; undual x&#39;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">instance</span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>undual_leq</span><span> </span><span class="delimiter">[</span><span>iff</span><span class="delimiter">?</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(undual x&#39; &#8849; undual y&#39;) = (y&#39; &#8849; x&#39;)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>leq_dual_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>dual_leq</span><span> </span><span class="delimiter">[</span><span>iff</span><span class="delimiter">?</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(dual x &#8849; dual y) = (y &#8849; x)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>leq_dual_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+  \medskip Functions @{term dual} and @{term undual} are inverse to
+  each other; this entails the following fundamental properties.
+&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>dual_undual</span><span> </span><span class="delimiter">[</span><span>simp</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;dual (undual x&#39;) = x&#39;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>cases</span><span> </span><span>x&#39;</span><span class="delimiter">)</span><span> </span><span>simp</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>undual_dual_id</span><span> </span><span class="delimiter">[</span><span>simp</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;undual o dual = id&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>ext</span><span class="delimiter">)</span><span> </span><span>simp</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>dual_undual_id</span><span> </span><span class="delimiter">[</span><span>simp</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;dual o undual = id&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>ext</span><span class="delimiter">)</span><span> </span><span>simp</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+  \medskip Since @{term dual} (and @{term undual}) are both injective
+  and surjective, the basic logical connectives (equality,
+  quantification etc.) are transferred as follows.
+&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>undual_equality</span><span> </span><span class="delimiter">[</span><span>iff</span><span class="delimiter">?</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(undual x&#39; = undual y&#39;) = (x&#39; = y&#39;)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>cases</span><span> </span><span>x&#39;</span><span class="delimiter">,</span><span> </span><span>cases</span><span> </span><span>y&#39;</span><span class="delimiter">)</span><span> </span><span>simp</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>dual_equality</span><span> </span><span class="delimiter">[</span><span>iff</span><span class="delimiter">?</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(dual x = dual y) = (x = y)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>dual_ball</span><span> </span><span class="delimiter">[</span><span>iff</span><span class="delimiter">?</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#8704;x &#8712; A. P (dual x)) = (&#8704;x&#39; &#8712; dual ` A. P x&#39;)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>a</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;x &#8712; A. P (dual x)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;x&#39; &#8712; dual ` A. P x&#39;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">fix</span></span><span> </span><span>x&#39;</span><span> </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>x&#39;</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x&#39; &#8712; dual ` A&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;undual x&#39; &#8712; A&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">proof</span></span><span> </span><span>-</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>x&#39;</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;undual x&#39; &#8712; undual ` dual ` A&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span>      </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;undual x&#39; &#8712; A&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>image_comp</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">with</span></span><span> </span><span>a</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;P (dual (undual x&#39;))&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">also</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8230; = x&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">finally</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;P x&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">.</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>a</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;x&#39; &#8712; dual ` A. P x&#39;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;x &#8712; A. P (dual x)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">fix</span></span><span> </span><span>x</span><span> </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x &#8712; A&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">hence</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;dual x &#8712; dual ` A&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">with</span></span><span> </span><span>a</span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;P (dual x)&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>range_dual</span><span> </span><span class="delimiter">[</span><span>simp</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;surj dual&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span> </span><span>-</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;x&#39;. dual (undual x&#39;) = x&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;surj dual&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>surjI</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>dual_all</span><span> </span><span class="delimiter">[</span><span>iff</span><span class="delimiter">?</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#8704;x. P (dual x)) = (&#8704;x&#39;. P x&#39;)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span> </span><span>-</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#8704;x &#8712; UNIV. P (dual x)) = (&#8704;x&#39; &#8712; dual ` UNIV. P x&#39;)&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>dual_ball</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?thesis</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>dual_ex</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#8707;x. P (dual x)) = (&#8707;x&#39;. P x&#39;)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span> </span><span>-</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#8704;x. &#172; P (dual x)) = (&#8704;x&#39;. &#172; P x&#39;)&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>dual_all</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?thesis</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>dual_Collect</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;{dual x| x. P (dual x)} = {x&#39;. P x&#39;}&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span> </span><span>-</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;{dual x| x. P (dual x)} = {x&#39;. &#8707;x&#39;&#39;. x&#39; = x&#39;&#39; &#8743; P x&#39;&#39;}&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>only</span><span class="delimiter">:</span><span> </span><span>dual_ex</span><span> </span><span class="delimiter">[</span><span>symmetric</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?thesis</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Transforming orders&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsubsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Duals&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+  The classes of quasi, partial, and linear orders are all closed
+  under formation of dual structures.
+&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">instance</span></span><span> </span><span>dual</span><span> </span><span class="delimiter">::</span><span> </span><span class="delimiter">(</span><span>quasi_order</span><span class="delimiter">)</span><span> </span><span>quasi_order</span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">fix</span></span><span> </span><span>x&#39;</span><span> </span><span>y&#39;</span><span> </span><span>z&#39;</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a::quasi_order dual&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;undual x&#39; &#8849; undual x&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x&#39; &#8849; x&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;y&#39; &#8849; z&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">hence</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;undual z&#39; &#8849; undual y&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">also</span></span><span> </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x&#39; &#8849; y&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">hence</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;undual y&#39; &#8849; undual x&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">finally</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x&#39; &#8849; z&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">instance</span></span><span> </span><span>dual</span><span> </span><span class="delimiter">::</span><span> </span><span class="delimiter">(</span><span>partial_order</span><span class="delimiter">)</span><span> </span><span>partial_order</span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">fix</span></span><span> </span><span>x&#39;</span><span> </span><span>y&#39;</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a::partial_order dual&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;y&#39; &#8849; x&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">hence</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;undual x&#39; &#8849; undual y&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">also</span></span><span> </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x&#39; &#8849; y&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">hence</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;undual y&#39; &#8849; undual x&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">finally</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x&#39; = y&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">instance</span></span><span> </span><span>dual</span><span> </span><span class="delimiter">::</span><span> </span><span class="delimiter">(</span><span>linear_order</span><span class="delimiter">)</span><span> </span><span>linear_order</span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">fix</span></span><span> </span><span>x&#39;</span><span> </span><span>y&#39;</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a::linear_order dual&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x&#39; &#8849; y&#39; &#8744; y&#39; &#8849; x&#39;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>linear_order_cases</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;undual y&#39; &#8849; undual x&#39;&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">hence</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x&#39; &#8849; y&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?thesis</span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;undual x&#39; &#8849; undual y&#39;&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">hence</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;y&#39; &#8849; x&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?thesis</span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsubsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Binary products \label{sec:prod-order}&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+  The classes of quasi and partial orders are closed under binary
+  products.  Note that the direct product of linear orders need
+  \emph{not} be linear in general.
+&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">instantiation</span></span><span> </span><span>prod</span><span> </span><span class="delimiter">::</span><span> </span><span class="delimiter">(</span><span>leq</span><span class="delimiter">,</span><span> </span><span>leq</span><span class="delimiter">)</span><span> </span><span>leq</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span>
+</span><span>  </span><span>leq_prod_def</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;p &#8849; q &#8801; fst p &#8849; fst q &#8743; snd p &#8849; snd q&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">instance</span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>leq_prodI</span><span> </span><span class="delimiter">[</span><span>intro</span><span class="delimiter">?</span><span class="delimiter">]</span><span class="delimiter">:</span><span>
+</span><span>    </span><span class="string"><span class="delete"><span class="delete">&quot;fst p &#8849; fst q &#10233; snd p &#8849; snd q &#10233; p &#8849; q&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>unfold</span><span> </span><span>leq_prod_def</span><span class="delimiter">)</span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>leq_prodE</span><span> </span><span class="delimiter">[</span><span>elim</span><span class="delimiter">?</span><span class="delimiter">]</span><span class="delimiter">:</span><span>
+</span><span>    </span><span class="string"><span class="delete"><span class="delete">&quot;p &#8849; q &#10233; (fst p &#8849; fst q &#10233; snd p &#8849; snd q &#10233; C) &#10233; C&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>unfold</span><span> </span><span>leq_prod_def</span><span class="delimiter">)</span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">instance</span></span><span> </span><span>prod</span><span> </span><span class="delimiter">::</span><span> </span><span class="delimiter">(</span><span>quasi_order</span><span class="delimiter">,</span><span> </span><span>quasi_order</span><span class="delimiter">)</span><span> </span><span>quasi_order</span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">fix</span></span><span> </span><span>p</span><span> </span><span>q</span><span> </span><span>r</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a::quasi_order &#215; &#39;b::quasi_order&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;p &#8849; p&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fst p &#8849; fst p&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;snd p &#8849; snd p&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>pq</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;p &#8849; q&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span> </span><span>qr</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;q &#8849; r&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;p &#8849; r&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>pq</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fst p &#8849; fst q&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">also</span></span><span> </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>qr</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8230; &#8849; fst r&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">finally</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fst p &#8849; fst r&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">.</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>pq</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;snd p &#8849; snd q&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">also</span></span><span> </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>qr</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8230; &#8849; snd r&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">finally</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;snd p &#8849; snd r&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">.</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">instance</span></span><span> </span><span>prod</span><span> </span><span class="delimiter">::</span><span> </span><span class="delimiter">(</span><span>partial_order</span><span class="delimiter">,</span><span> </span><span>partial_order</span><span class="delimiter">)</span><span> </span><span>partial_order</span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">fix</span></span><span> </span><span>p</span><span> </span><span>q</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a::partial_order &#215; &#39;b::partial_order&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>pq</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;p &#8849; q&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span> </span><span>qp</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;q &#8849; p&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;p = q&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>pq</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fst p &#8849; fst q&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">also</span></span><span> </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>qp</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8230; &#8849; fst p&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">finally</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fst p = fst q&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">.</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>pq</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;snd p &#8849; snd q&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">also</span></span><span> </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>qp</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8230; &#8849; snd p&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">finally</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;snd p = snd q&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">.</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsubsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;General products \label{sec:fun-order}&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+  The classes of quasi and partial orders are closed under general
+  products (function spaces).  Note that the direct product of linear
+  orders need \emph{not} be linear in general.
+&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">instantiation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fun&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="delimiter">(</span><span>type</span><span class="delimiter">,</span><span> </span><span>leq</span><span class="delimiter">)</span><span> </span><span>leq</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span>
+</span><span>  </span><span>leq_fun_def</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;f &#8849; g &#8801; &#8704;x. f x &#8849; g x&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">instance</span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>leq_funI</span><span> </span><span class="delimiter">[</span><span>intro</span><span class="delimiter">?</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#8896;x. f x &#8849; g x) &#10233; f &#8849; g&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>unfold</span><span> </span><span>leq_fun_def</span><span class="delimiter">)</span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>leq_funD</span><span> </span><span class="delimiter">[</span><span>dest</span><span class="delimiter">?</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;f &#8849; g &#10233; f x &#8849; g x&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>unfold</span><span> </span><span>leq_fun_def</span><span class="delimiter">)</span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">instance</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fun&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="delimiter">(</span><span>type</span><span class="delimiter">,</span><span> </span><span>quasi_order</span><span class="delimiter">)</span><span> </span><span>quasi_order</span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">fix</span></span><span> </span><span>f</span><span> </span><span>g</span><span> </span><span>h</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;b::quasi_order&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;f &#8849; f&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">fix</span></span><span> </span><span>x</span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;f x &#8849; f x&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>fg</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;f &#8849; g&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span> </span><span>gh</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;g &#8849; h&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;f &#8849; h&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">fix</span></span><span> </span><span>x</span><span> </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>fg</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;f x &#8849; g x&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">also</span></span><span> </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>gh</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8230; &#8849; h x&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">finally</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;f x &#8849; h x&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">.</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">instance</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fun&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="delimiter">(</span><span>type</span><span class="delimiter">,</span><span> </span><span>partial_order</span><span class="delimiter">)</span><span> </span><span>partial_order</span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">fix</span></span><span> </span><span>f</span><span> </span><span>g</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;b::partial_order&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>fg</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;f &#8849; g&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span> </span><span>gf</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;g &#8849; f&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;f = g&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">fix</span></span><span> </span><span>x</span><span> </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>fg</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;f x &#8849; g x&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">also</span></span><span> </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>gf</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8230; &#8849; f x&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">..</span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">finally</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;f x = g x&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">.</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span></pre>
+
+</div>
+</body>
+</html>

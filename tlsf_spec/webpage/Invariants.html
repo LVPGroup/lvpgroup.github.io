@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory Invariants (repository version)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory Invariants</h1>
+
+<span class="command">theory</span> <span class="name">Invariants</span><br/>
+<span class="keyword">imports</span> <a href="FuncDef.html"><span class="name">FuncDef</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="keyword1"><span class="command">theory</span></span><span> </span><span>Invariants</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>FuncDef</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span>block_t_size</span><span> </span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_t &#8658; nat&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;block_t_size b &#8801; b_size b + overhead conf&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>wf_block</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_t &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;wf_block b &#8801; s_addr b &#8804; e_addr b &#8743;  b_size b &#8805; min_block conf &#8743; 
+                       block_t_size b  &#8804; mem_size conf&quot;</span></span></span><span>
+</span><span class="comment">&#8213;&#8249;1. s_addr b &lt;= e_addr b means the size of a block if greater than 1. If strict less, it would be 2.&#8250;</span><span>
+</span><span class="comment">&#8213;&#8249;2. block_t_size b &gt;= min_block conf is consistent with definition of malloc (b_size b - r &gt;= min_block conf). &#8250;</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>wf</span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;state_t &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;wf &#963; &#8801; &#8704;x &#8712; all_blocks conf &#963;. wf_block x&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>disjoint_free_non_free</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;state_t &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;disjoint_free_non_free &#963; &#8801; alloced_bhdr_s &#963; &#8745; free_blocks conf &#963; = {} &quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>disjoint_memory</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_t &#8658; bhdr_t &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;disjoint_memory b1 b2 &#8801; 
+         (e_addr b1 + (overhead conf) &lt; s_addr b2 &#8744; 
+          e_addr b2 + (overhead conf) &lt; s_addr b1)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>disjoint_memory_set</span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;state_t &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;disjoint_memory_set &#963; &#8801; 
+  &#8704;x1 x2. x1 &#8712; all_blocks conf &#963; &#8743; x2 &#8712; all_blocks conf &#963; &#8743; x1&#8800;x2 &#10230; disjoint_memory x1 x2 &quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>no_split_memory</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;state_t &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span class="string"><span class="delete"><span class="delete">&quot;no_split_memory &#963; &#8801; let f = free_blocks conf &#963; in
+                            &#172; (&#8707;b1 b2. b1 &#8712; f &#8743; b2 &#8712; f &#8743; 
+                              (s_addr b1 = e_addr b2 + 1 + overhead conf))&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>wf_adjacency_list</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;state_t &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;wf_adjacency_list &#963; &#8801; tlsf_matrix conf (bhdr_matrix_f &#963;)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>wf_bitmap1</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;state_t &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;wf_bitmap1 &#963; &#8801; 
+  &#8704;i . fl_bitmap_f conf (bhdr_matrix_f &#963;) i = 
+    (&#8707;j&lt; sl conf. sl_bitmap_f (bhdr_matrix_f &#963;) i j)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>wf_bitmap2</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;state_t &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;wf_bitmap2 &#963; &#8801; 
+  &#8704;i . &#8704;j &lt; sl conf.  
+  (bhdr_matrix_f &#963;) i j&#8800;{} =  
+      sl_bitmap_f (bhdr_matrix_f &#963;) i j&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>wf_bitmap</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;state_t &#8658; bool&quot;</span></span></span><span> 
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;wf_bitmap &#963; &#8801; wf_bitmap1 &#963; &#8743; wf_bitmap2 &#963;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>sum_block</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;bhdr_t set &#8658; nat&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;sum_block &#963; &#8801; Finite_Set.fold (&#955;b s. block_t_size b + s) 0 &#963;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>all_block_mem_size</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;state_t &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;all_block_mem_size &#963; &#8801;  sum_block (all_blocks conf &#963;) = mem_size conf&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>inv</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;state_t &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;inv &#963; &#8801; no_split_memory &#963; &#8743; 
+                 disjoint_free_non_free &#963; &#8743;
+                 disjoint_memory_set &#963; &#8743; 
+                 wf &#963; &#8743;
+                 wf_adjacency_list &#963; &#8743;  
+                 all_block_mem_size &#963;&quot;</span></span></span><span> 
+</span><span>
+</span><span> </span><span class="comment">&#8213;&#8249;wf_bitmap does not make sense here. See explanation below&#8250;</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>unique_get_alloced_block1</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;block_alloced addr &#963; &#10233; &#8707;b. (&#8707;e_addr. b = Bhdr addr e_addr) &#8743; b &#8712; alloced_bhdr_s &#963;&quot;</span></span></span><span> 
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>block_alloced_def</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>diff_block_diff_s_addr</span><span class="delimiter">:</span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>a0</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;inv &#963;&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span>
+</span><span>              </span><span>a1</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;b1&#8712; all_blocks conf &#963;&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span>
+</span><span>              </span><span>a2</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;b2&#8712; all_blocks conf &#963;&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span>
+</span><span>              </span><span>a3</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;b1&#8800;b2&quot;</span></span></span><span> 
+</span><span>            </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;s_addr b1 &#8800; s_addr b2&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span class="delimiter">(</span><span>auto</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>a4</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;s_addr b1 = s_addr b2&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">moreover</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;wf_block b1 &#8743; wf_block b2&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>a0</span><span> </span><span>a1</span><span> </span><span>a2</span><span> </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>inv_def</span><span> </span><span>wf_def</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">moreover</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;disjoint_memory b1 b2&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>a0</span><span> </span><span>a1</span><span> </span><span>a2</span><span> </span><span>a3</span><span> </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>inv_def</span><span> </span><span>disjoint_memory_set_def</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">ultimately</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span>False</span><span> </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>disjoint_memory_def</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>wf_block_def</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>linarith</span><span> 
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>diff_block_diff_e_addr</span><span class="delimiter">:</span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>a0</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;inv &#963;&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span>
+</span><span>              </span><span>a1</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;b1&#8712; all_blocks conf &#963;&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span>
+</span><span>              </span><span>a2</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;b2&#8712; all_blocks conf &#963;&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span>
+</span><span>              </span><span>a3</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;b1&#8800;b2&quot;</span></span></span><span> 
+</span><span>            </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;e_addr b1 &#8800; e_addr b2&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span class="delimiter">(</span><span>auto</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>a4</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;e_addr b1 = e_addr b2&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">moreover</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;wf_block b1 &#8743; wf_block b2&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>a0</span><span> </span><span>a1</span><span> </span><span>a2</span><span> </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>inv_def</span><span> </span><span>wf_def</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">moreover</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;disjoint_memory b1 b2&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>a0</span><span> </span><span>a1</span><span> </span><span>a2</span><span> </span><span>a3</span><span> </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>inv_def</span><span> </span><span>disjoint_memory_set_def</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">ultimately</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span>False</span><span> </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>disjoint_memory_def</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>wf_block_def</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>linarith</span><span> 
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>  
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>same_addr_same_block</span><span class="delimiter">:</span><span>
+</span><span> </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>a0</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;inv &#963;&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span>
+</span><span>         </span><span>a1</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(&#8707;e_addr. b1 = Bhdr addr e_addr) &#8743; b1 &#8712; alloced_bhdr_s &#963;&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span>
+</span><span>         </span><span>a2</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(&#8707;e_addr. b2 = Bhdr addr e_addr) &#8743; b2 &#8712; alloced_bhdr_s &#963;&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;b1 = b2&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>a1</span><span> </span><span>a2</span><span>     
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>diff_block_diff_s_addr</span><span class="delimiter">[</span><span>OF</span><span> </span><span>a0</span><span> </span><span>_</span><span> </span><span>_</span><span> </span><span class="delimiter">]</span><span> </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>all_blocks_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span class="delimiter">(</span><span>no_types</span><span class="delimiter">)</span><span> </span><span>bhdr_t.inject</span><span> </span><span>bhdr_t.sel</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>
