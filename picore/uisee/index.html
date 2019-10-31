@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0034)https://lvpgroup.github.io/picore/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" class="gr__lvpgroup_github_io"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" href="./The PiCore Framework in Isabelle_HOL 2018_files/isabelle.css">
+<title>Rely-Guarantee Reasoning about Messaging System for Autonomous Vehicles in Isabelle/HOL 2018</title>
+<style type="text/css"></style></head>
+
+
+<body data-gr-c-s-loaded="true">
+<h2>Rely-Guarantee Reasoning about Messaging System for Autonomous Vehicles</h2>
+
+<div class="sessions">
+
+<p> Developed in Isabelle/HOL 2019 </p>
+<p> For your convenience, you could browse the sources in web browsers as below. </p>
+<h3>Messaging system </h3>
+<p>
+Messaging system as a communicating infrastructure is a safety-critical component of autonomous vehicles. An autonomous vehicle communication system (AVCS) is a shared-memory bus, which is
+a messaging infrastructure to allow a variety of subsystems to communicate through shared message buffers.
+</p>
+<h3> PiCore Framework </h3>
+<p>
+PiCore is an event-based and parametric rely-guarantee framework for concurrent reactive systems (e.g., concurrent OS kernels, control systems, communication systems).
+ We create parameterized axiomatic model for messaging systems by extending the PiCore framework. 
+ </p>
+
+<p><a href="https://lvpgroup.github.io/picore/docs/PiCore/">Browse the Isabelle/HOL sources of PiCore</a></p>
+
+<p></p>
+<h3> PiCore_SIMP: SIMP instance of PiCore </h3>
+<p>
+SIMP is a simple imperative language with a rely-guarantee proof system in Isabelle/HOL as the HOL-Hoare_Parallel lib (under the directory of Isabelle2018/src/HOL/Hoare_Parallel). 
+</p>
+<p>
+
+</p><p><a href="https://lvpgroup.github.io/picore/docs/PiCore_SIMP/SIMP.html">Browse the Isabelle/HOL sources of SIMP</a></p>
+<p><a href="https://lvpgroup.github.io/picore/docs/PiCore_SIMP/">Browse the Isabelle/HOL sources of PiCore_SIMP</a></p>
+
+<p></p>
+<h3> Axiomatic Model of Messaging System and Formal specification and verification of the DGPS system of UISEE Autonomous driving systems</h3>
+<p>
+We develop an axiomatic model for messaging systems. The model contains a set of axioms to constrain the architecture, its configuration, and rely-guarantee conditions of messaging systems. The model supports dynamic configuration of message
+buffers in the data bus. Then, we instantiate the axiomatic model to create the formal specification of the DGPS system and use the rely-guarantee proof system in PiCore to verify the functional correctness and invariant preservation.
+
+</p>
+<p><a href="messagingsystem.html">Browse the Isabelle/HOL sources of Messaging system</a></p>
+
+
+</div>
+
+<b>
+copyrights by Wenjing Xu (xuwj17@act.buaa.edu.cn) <br>
+School of Computer Science and Enginerring, <br>
+Beihang University, Beijing, China 
+</b>
+
+</body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

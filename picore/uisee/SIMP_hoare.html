@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory SIMP_hoare (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory SIMP_hoare</h1>
+
+<span class="command">theory</span> <span class="name">SIMP_hoare</span><br/>
+<span class="keyword">imports</span> <a href="SIMP_validity.html"><span class="name">SIMP_validity</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+Created by Yongwang Zhao (zhaoyw@buaa.edu.cn)
+and School of Computer Science &amp; Engineering, Beihang University, China
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Rely-guarantee Proof Rules of SIMP language&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>SIMP_hoare</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;SIMP_validity&quot;</span></span></span><span> 
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">declare</span></span><span> </span><span>Un_subset_iff</span><span> </span><span class="delimiter">[</span><span>simp</span><span> </span><span>del</span><span class="delimiter">]</span><span> </span><span>sup.bounded_iff</span><span> </span><span class="delimiter">[</span><span>simp</span><span> </span><span>del</span><span class="delimiter">]</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>stable</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a set &#8658; (&#39;a &#215; &#39;a) set &#8658; bool&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;stable &#8801; &#955;f g. (&#8704;x y. x &#8712; f &#10230; (x, y) &#8712; g &#10230; y &#8712; f)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">inductive</span></span><span> </span><span>rghoare_p</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;s prog option, &#39;s set, (&#39;s &#215; &#39;s) set, (&#39;s &#215; &#39;s) set, &#39;s set] &#8658; bool&quot;</span></span></span><span>
+</span><span>    </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;&#8866;<span class="hidden">&#8681;</span><sub>I</sub> _ sat<span class="hidden">&#8681;</span><sub>p</sub> [_, _, _, _]&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>60</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">]</span><span> </span><span>45</span><span class="delimiter">)</span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span>Basic</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; pre &#8838; {s. f s &#8712; post}; {(s,t). s &#8712; pre &#8743; (t=f s)} &#8838; guar;
+            stable pre rely; stable post rely &#10215;
+           &#10233; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some (Basic f) sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post]&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Seq</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some P sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, mid]; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some Q sat<span class="hidden">&#8681;</span><sub>p</sub> [mid, rely, guar, post] &#10215;
+           &#10233; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some (Seq P Q) sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post]&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Cond</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; stable pre rely; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some P1 sat<span class="hidden">&#8681;</span><sub>p</sub> [pre &#8745; b, rely, guar, post];
+           &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some P2 sat<span class="hidden">&#8681;</span><sub>p</sub> [pre &#8745; -b, rely, guar, post]; &#8704;s. (s,s)&#8712;guar &#10215;
+          &#10233; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some (Cond b P1 P2) sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post]&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>While</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; stable pre rely; (pre &#8745; -b) &#8838; post; stable post rely;
+            &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some P sat<span class="hidden">&#8681;</span><sub>p</sub> [pre &#8745; b, rely, guar, pre]; &#8704;s. (s,s)&#8712;guar &#10215;
+          &#10233; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some (While b P) sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post]&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Await</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; stable pre rely; stable post rely;
+            &#8704;V. &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some P sat<span class="hidden">&#8681;</span><sub>p</sub> [pre &#8745; b &#8745; {V}, {(s, t). s = t},
+                UNIV, {s. (V, s) &#8712; guar} &#8745; post] &#10215;
+           &#10233; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some (Await b P) sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post]&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Nondt</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; pre &#8838; {s. (&#8704;t. (s,t) &#8712; r &#10230; t &#8712; post) &#8743; (&#8707;t. (s,t) &#8712; r)}; {(s,t). s &#8712; pre &#8743; (s,t)&#8712;r} &#8838; guar;
+            stable pre rely; stable post rely &#10215;
+           &#10233; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some (Nondt r) sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post]&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>None_hoare</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; stable pre rely; pre &#8838; post &#10215;
+            &#10233; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> None sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post]&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Conseq</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; pre &#8838; pre&#39;; rely &#8838; rely&#39;; guar&#39; &#8838; guar; post&#39; &#8838; post;
+             &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [pre&#39;, rely&#39;, guar&#39;, post&#39;] &#10215;
+            &#10233; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post]&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Unprecond</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post]; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [pre&#39;, rely, guar, post] &#10215;
+            &#10233; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [pre &#8746; pre&#39;, rely, guar, post]&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Intpostcond</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post]; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post&#39;] &#10215;
+            &#10233; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post &#8745; post&#39;]&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Allprecond</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;v&#8712;U. &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [{v}, rely, guar, post]
+            &#10233; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [U, rely, guar, post]&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Emptyprecond</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [{}, rely, guar, post]&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Id = {(s, t). s = t}&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>Seq2</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some P sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, mida]; mida &#8838; midb; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some Q sat<span class="hidden">&#8681;</span><sub>p</sub> [midb, rely, guar, post] &#10215;
+  &#10233; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> Some (Seq P Q) sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post]&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>Seq</span><span class="delimiter">[</span><span>of</span><span> </span><span>P</span><span> </span><span>pre</span><span> </span><span>rely</span><span> </span><span>guar</span><span> </span><span>mida</span><span> </span><span>Q</span><span> </span><span>post</span><span class="delimiter">]</span><span> 
+</span><span>        </span><span>Conseq</span><span class="delimiter">[</span><span>of</span><span> </span><span>mida</span><span> </span><span>midb</span><span> </span><span>rely</span><span> </span><span>rely</span><span> </span><span>guar</span><span> </span><span>guar</span><span> </span><span>post</span><span> </span><span>post</span><span class="delimiter">]</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>

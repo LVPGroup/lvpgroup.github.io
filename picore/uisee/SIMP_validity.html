@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory SIMP_validity (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory SIMP_validity</h1>
+
+<span class="command">theory</span> <span class="name">SIMP_validity</span><br/>
+<span class="keyword">imports</span> <a href="SIMP_computation.html"><span class="name">SIMP_computation</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+Created by Yongwang Zhao (zhaoyw@buaa.edu.cn)
+and School of Computer Science &amp; Engineering, Beihang University, China
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Rely-guarantee Validity of SIMP language&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>SIMP_validity</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;SIMP_computation&quot;</span></span></span><span> 
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="tfree">&#39;s</span><span> </span><span>pconfs</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;s imp_pconf list&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>gets_p</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;s imp_pconf &#8658; &#39;s&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;gets_p conf &#8801; snd conf&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>getspc_p</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;s imp_pconf &#8658; (&#39;s prog) option&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;getspc_p conf &#8801; fst conf&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>assume_p</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s set &#215; (&#39;s &#215; &#39;s) set) &#8658; (&#39;s pconfs) set&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;assume_p &#8801; &#955;(pre, rely). {c. gets_p (c!0) &#8712; pre &#8743; (&#8704;i. Suc i&lt;length c &#10230; 
+               c!i -imppe&#8594; c!(Suc i) &#10230; (gets_p (c!i), gets_p (c!Suc i)) &#8712; rely)}&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>commit_p</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;((&#39;s &#215; &#39;s) set &#215; &#39;s set) &#8658; (&#39;s pconfs) set&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;commit_p &#8801; &#955;(guar, post). {c. (&#8704;i. Suc i&lt;length c &#10230; 
+               c!i -impc&#8594; c!(Suc i) &#10230; (gets_p (c!i), gets_p (c!Suc i)) &#8712; guar) &#8743; 
+               (getspc_p (last c) = None &#10230; gets_p (last c) &#8712; post)}&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>prog_validity</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;s prog option &#8658; &#39;s set &#8658; (&#39;s &#215; &#39;s) set &#8658; (&#39;s &#215; &#39;s) set &#8658; &#39;s set &#8658; bool&quot;</span></span></span><span> 
+</span><span>                 </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;&#8872;<span class="hidden">&#8681;</span><sub>I</sub> _ sat<span class="hidden">&#8681;</span><sub>p</sub> [_, _, _, _]&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>60</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">]</span><span> </span><span>45</span><span class="delimiter">)</span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#8872;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [pre, rely, guar, post] &#8801; 
+   &#8704;s. cpts_of_p P s &#8745; assume_p(pre, rely) &#8838; commit_p(guar, post)&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>assume_p_imp</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;pre1&#8838;pre; rely1&#8838;rely; c&#8712;assume_p(pre1,rely1)&#10215; &#10233; c&#8712;assume_p(pre,rely)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span> </span><span>-</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>p0</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;pre1&#8838;pre&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword2"><span class="keyword">and</span></span><span>  </span><span>p1</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;rely1&#8838;rely&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword2"><span class="keyword">and</span></span><span>  </span><span>p3</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;c&#8712;assume_p(pre1,rely1)&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span>a0</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;gets_p (c!0) &#8712; pre1 &#8743; (&#8704;i. Suc i&lt;length c &#10230; 
+               c!i -imppe&#8594; c!(Suc i) &#10230; (gets_p (c!i), gets_p (c!Suc i)) &#8712; rely1)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>assume_p_def</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?thesis</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">proof</span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>assume_p_def</span><span class="delimiter">,</span><span>rule</span><span> </span><span>conjI</span><span class="delimiter">)</span><span>
+</span><span>        </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>p0</span><span> </span><span>a0</span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;gets_p (c ! 0) &#8712; pre&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>        </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>p1</span><span> </span><span>a0</span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;i. Suc i &lt; length c &#10230; c ! i -imppe&#8594; c ! Suc i 
+                            &#10230; (gets_p (c ! i), gets_p (c ! Suc i)) &#8712; rely&quot;</span></span></span><span>
+</span><span>          </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>commit_p_imp</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;guar1&#8838;guar; post1&#8838;post; c&#8712;commit_p(guar1,post1)&#10215; &#10233; c&#8712;commit_p(guar,post)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span> </span><span>-</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>p0</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;guar1&#8838;guar&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword2"><span class="keyword">and</span></span><span>  </span><span>p1</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;post1&#8838;post&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword2"><span class="keyword">and</span></span><span>  </span><span>p3</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;c&#8712;commit_p(guar1,post1)&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span>a0</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#8704;i. Suc i&lt;length c &#10230; 
+               c!i -impc&#8594; c!(Suc i) &#10230; (gets_p (c!i), gets_p (c!Suc i)) &#8712; guar1) &#8743; 
+               (getspc_p (last c) = None &#10230; gets_p (last c) &#8712; post1)&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>commit_p_def</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?thesis</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">proof</span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>commit_p_def</span><span class="delimiter">)</span><span>
+</span><span>        </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>p0</span><span> </span><span>p1</span><span> </span><span>a0</span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#8704;i. Suc i&lt;length c &#10230; 
+               c!i -impc&#8594; c!(Suc i) &#10230; (gets_p (c!i), gets_p (c!Suc i)) &#8712; guar) &#8743; 
+               (getspc_p (last c) = None &#10230; gets_p (last c) &#8712; post)&quot;</span></span></span><span>
+</span><span>          </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>
