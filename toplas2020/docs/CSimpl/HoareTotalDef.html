@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory HoareTotalDef (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory HoareTotalDef</h1>
+
+<span class="command">theory</span> <span class="name">HoareTotalDef</span><br/>
+<span class="keyword">imports</span> <a href="HoarePartialDef.html"><span class="name">HoarePartialDef</span></a> <a href="Termination.html"><span class="name">Termination</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+    Author:      Norbert Schirmer
+    Maintainer:  Norbert Schirmer, norbert.schirmer at web de
+    License:     LGPL
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*  Title:      HoareTotalDef.thy
+    Author:     Norbert Schirmer, TU Muenchen
+
+Copyright (C) 2004-2008 Norbert Schirmer 
+Some rights reserved, TU Muenchen
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation; either version 2.1 of the
+License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+USA
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* Hoare Logic for Total Correctness *}</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>HoareTotalDef</span><span> </span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>HoarePartialDef</span><span> </span><span>Termination</span><span> </span><span class="keyword2"><span class="keyword">begin</span></span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* Validity of Hoare Tuples: @{text  &quot;&#915;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;} *}</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span>
+</span><span>  </span><span>validt</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[(&#39;s,&#39;p,&#39;f) body,&#39;f set,&#39;s assn,(&#39;s,&#39;p,&#39;f) com,&#39;s assn,&#39;s assn] &#8658; bool&quot;</span></span></span><span>
+</span><span>                </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>&#39;/_<span class="hidden">&#8665;</span></sub>/ _ _ _,_&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>61</span><span class="delimiter">,</span><span>60</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span> </span><span>20</span><span class="delimiter">,</span><span> </span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>60</span><span class="delimiter">)</span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A &#8801; &#915;&#8872;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A &#8743; (&#8704;s &#8712; Normal ` P. &#915;&#8866;c&#8595;s)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span>
+</span><span>  </span><span>cvalidt</span><span class="delimiter">::</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;[(&#39;s,&#39;p,&#39;f) body,(&#39;s,&#39;p) quadruple set,&#39;f set,
+    &#39;s assn,(&#39;s,&#39;p,&#39;f) com,&#39;s assn,&#39;s assn] &#8658; bool&quot;</span></span></span><span>
+</span><span>                </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_,_&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>&#39;/_<span class="hidden">&#8665;</span></sub>/ _ _ _,_&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>61</span><span class="delimiter">,</span><span>60</span><span class="delimiter">,</span><span> </span><span>60</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span> </span><span>20</span><span class="delimiter">,</span><span> </span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>60</span><span class="delimiter">)</span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A &#8801; (&#8704;(P,p,Q,A)&#8712;&#920;. &#915;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P (Call p) Q,A) &#10230; &#915; &#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">notation</span></span><span> </span><span class="delimiter">(</span><span>ASCII</span><span class="delimiter">)</span><span>
+</span><span>  </span><span>validt</span><span>  </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_|=t&#39;/_/ _ _ _,_&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>61</span><span class="delimiter">,</span><span>60</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span> </span><span>20</span><span class="delimiter">,</span><span> </span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>60</span><span class="delimiter">)</span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span>
+</span><span>  </span><span>cvalidt</span><span>  </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_,_|=t&#39;/_ / _ _ _,_&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>61</span><span class="delimiter">,</span><span>60</span><span class="delimiter">,</span><span>60</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span> </span><span>20</span><span class="delimiter">,</span><span> </span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>60</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* Properties of Validity *}</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>validtI</span><span class="delimiter">:</span><span> 
+</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;&#8896;s t. &#10214;&#915;&#8866;&#10216;c,Normal s&#10217; &#8658; t;s &#8712; P;t &#8713; Fault ` F&#10215; &#10233; t &#8712; Normal ` Q &#8746; Abrupt ` A;
+   &#8896;s. s &#8712; P &#10233; &#915;&#8866; c&#8595;(Normal s) &#10215;
+  &#10233; &#915;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>validt_def</span><span> </span><span>valid_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>cvalidtI</span><span class="delimiter">:</span><span> 
+</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;&#8896;s t. &#10214;&#8704;(P,p,Q,A)&#8712;&#920;. &#915;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P (Call p) Q,A;&#915;&#8866;&#10216;c,Normal s&#10217; &#8658; t;s &#8712; P; 
+          t &#8713; Fault ` F&#10215; 
+          &#10233; t &#8712; Normal ` Q &#8746; Abrupt ` A;
+   &#8896;s. &#10214;&#8704;(P,p,Q,A)&#8712;&#920;. &#915;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P (Call p) Q,A; s&#8712;P&#10215; &#10233;  &#915;&#8866;c&#8595;(Normal s)&#10215;
+  &#10233; &#915;,&#920;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>cvalidt_def</span><span> </span><span>validt_def</span><span> </span><span>valid_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>cvalidt_postD</span><span class="delimiter">:</span><span> 
+</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;&#915;,&#920;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A; &#8704;(P,p,Q,A)&#8712;&#920;. &#915;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P (Call p) Q,A;&#915;&#8866;&#10216;c,Normal s &#10217; &#8658; t;
+   s &#8712; P;t &#8713; Fault ` F&#10215; 
+  &#10233; t &#8712; Normal ` Q &#8746; Abrupt ` A&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>cvalidt_def</span><span> </span><span>validt_def</span><span> </span><span>valid_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>cvalidt_termD</span><span class="delimiter">:</span><span> 
+</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;&#915;,&#920;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A; &#8704;(P,p,Q,A)&#8712;&#920;. &#915;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P (Call p) Q,A;s &#8712; P&#10215; 
+  &#10233; &#915;&#8866;c&#8595;(Normal s)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>cvalidt_def</span><span> </span><span>validt_def</span><span> </span><span>valid_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>validt_augment_Faults</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>valid</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;&#915;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>F&#39;</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;F &#8838; F&#39;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F&#39;<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>valid</span><span> </span><span>F&#39;</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>intro</span><span class="delimiter">:</span><span> </span><span>valid_augment_Faults</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>validt_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* The Hoare Rules: @{text &quot;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot; } *}</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">inductive</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;hoaret&quot;</span></span></span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;[(&#39;s,&#39;p,&#39;f) body,(&#39;s,&#39;p) quadruple set,&#39;f set,
+                        &#39;s assn,(&#39;s,&#39;p,&#39;f) com,&#39;s assn,&#39;s assn] 
+                       =&gt; bool&quot;</span></span></span><span>
+</span><span>    </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(3_,_/&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>&#39;/_<span class="hidden">&#8665;</span></sub> (_/ (_)/ _,_))&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>61</span><span class="delimiter">,</span><span>60</span><span class="delimiter">,</span><span>60</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>20</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span>60</span><span class="delimiter">)</span><span>  
+</span><span>   </span><span class="keyword2"><span class="keyword">for</span></span><span> </span><span>&#915;</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;p,&#39;f) body&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span>Skip</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> Q Skip Q,A&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Basic</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> {s. f s &#8712; Q} (Basic f) Q,A&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Spec</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> {s. (&#8704;t. (s,t) &#8712; r &#10230; t &#8712; Q) &#8743; (&#8707;t. (s,t) &#8712; r)} (Spec r) Q,A&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Seq</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c<span class="hidden">&#8681;</span><sub>1</sub> R,A; &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> R c<span class="hidden">&#8681;</span><sub>2</sub> Q,A&#10215;
+        &#10233;
+        &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P Seq c<span class="hidden">&#8681;</span><sub>1</sub> c<span class="hidden">&#8681;</span><sub>2</sub> Q,A&quot;</span></span></span><span>
+</span><span>  
+</span><span class="delimiter">|</span><span> </span><span>Cond</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> (P &#8745; b) c<span class="hidden">&#8681;</span><sub>1</sub> Q,A; &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> (P &#8745; - b) c<span class="hidden">&#8681;</span><sub>2</sub> Q,A&#10215;
+         &#10233; 
+         &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P (Cond b c<span class="hidden">&#8681;</span><sub>1</sub> c<span class="hidden">&#8681;</span><sub>2</sub>) Q,A&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>While</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;wf r; &#8704;&#963;. &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> ({&#963;} &#8745; P &#8745; b) c ({t. (t,&#963;)&#8712;r} &#8745; P),A&#10215;
+          &#10233;
+          &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P (While b c) (P &#8745; - b),A&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Guard</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> (g &#8745; P) c Q,A
+          &#10233;
+          &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> (g &#8745; P) Guard f g c Q,A&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Guarantee</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;f &#8712; F; &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> (g &#8745; P) c Q,A&#10215;
+              &#10233;
+              &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P (Guard f g c) Q,A&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>CallRec</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;(P,p,Q,A) &#8712; Specs;
+    wf r; 
+    Specs_wf = (&#955;p &#963;. (&#955;(P,q,Q,A). (P &#8745; {s. ((s,q),(&#963;,p)) &#8712; r},q,Q,A)) ` Specs);
+    &#8704;(P,p,Q,A)&#8712; Specs. 
+      p &#8712; dom &#915; &#8743; (&#8704;&#963;. &#915;,&#920; &#8746; Specs_wf p &#963;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> ({&#963;} &#8745; P) (the (&#915; p)) Q,A)
+    &#10215;
+    &#10233;
+    &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P (Call p) Q,A&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>DynCom</span><span class="delimiter">:</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;s &#8712; P. &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P (c s) Q,A 
+            &#10233; 
+            &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P (DynCom c) Q,A&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Throw</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> A Throw Q,A&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Catch</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c<span class="hidden">&#8681;</span><sub>1</sub> Q,R; &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> R c<span class="hidden">&#8681;</span><sub>2</sub> Q,A&#10215; &#10233;  &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P Catch c<span class="hidden">&#8681;</span><sub>1</sub> c<span class="hidden">&#8681;</span><sub>2</sub> Q,A&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Conseq</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;s &#8712; P. &#8707;P&#39; Q&#39; A&#39;. &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P&#39; c Q&#39;,A&#39; &#8743; s &#8712; P&#39; &#8743; Q&#39; &#8838; Q &#8743; A&#39; &#8838; A 
+           &#10233; &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Asm</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(P,p,Q,A) &#8712; &#920; 
+        &#10233; 
+        &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P (Call p) Q,A&quot;</span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>ExFalso</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;&#915;,&#920;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A; &#172; &#915;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&#10215; &#10233; &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span> </span><span class="comment">&#8213;  &#8249; This is a hack rule that enables us to derive completeness for
+        an arbitrary context @{text &quot;&#920;&quot;}, from completeness for an empty context.&#8250;</span><span>
+</span><span>
+</span><span>
+</span><span>  
+</span><span class="keyword1"><span class="command">text</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* Does not work, because of rule ExFalso, the context @{text &#920;} is to blame.
+ A weaker version with empty context can be derived from soundness 
+ later on. *}</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>hoaret_to_hoarep</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>hoaret</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P p Q,A&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8866;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P p Q,A&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">using</span></span><span> </span><span>hoaret</span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span> </span><span class="delimiter">(</span><span>induct</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span>Skip</span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>hoarep.intros</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span>Basic</span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>hoarep.intros</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span>Seq</span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>-</span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>hoarep.intros</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span>Cond</span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>-</span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>hoarep.intros</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span class="delimiter">(</span><span>While</span><span> </span><span>r</span><span> </span><span>&#920;</span><span> </span><span>F</span><span> </span><span>P</span><span> </span><span>b</span><span> </span><span>c</span><span> </span><span>A</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">hence</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;&#963;. &#915;,&#920;&#8866;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> ({&#963;} &#8745; P &#8745; b) c ({t. (t, &#963;) &#8712; r} &#8745; P),A&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>iprover</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">hence</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8866;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> (P &#8745; b) c P,A&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>HoarePartialDef.conseq</span><span class="delimiter">)</span><span> </span><span>blast</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8866;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P While b c (P &#8745; - b),A&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>hoarep.While</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span>Guard</span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>-</span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>hoarep.intros</span><span class="delimiter">)</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*next
+  case (CallRec A F P Procs Q Z &#920;  p r)
+  hence hyp: &quot;&#8704;p&#8712;Procs. &#8704;&#964; Z. 
+           &#915;,&#920; &#8746; (&#8899;q&#8712;Procs. &#8899;Z. {(P q Z &#8745; {s. ((s, q), &#964;, p) &#8712; r},
+                      Call q, Q q Z,A q Z)})&#8866;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub>
+              ({&#964;} &#8745; P p Z) (the (&#915; p)) (Q p Z),(A p Z)&quot;
+    by blast
+  have &quot;&#8704;p&#8712;Procs. &#8704;Z. 
+           &#915;,&#920; &#8746; (&#8899;q&#8712;Procs. &#8899;Z. {(P q Z,
+                      Call q, Q q Z,A q Z)})&#8866;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub>
+              (P p Z) (the (&#915; p)) (Q p Z),(A p Z)&quot; 
+  proof (intro ballI allI)
+    fix p Z
+    assume &quot;p &#8712; Procs&quot;
+    with hyp
+    have hyp&#39;: &quot;&#8896; &#964;. 
+           &#915;,&#920; &#8746; (&#8899;q&#8712;Procs. &#8899;Z. {(P q Z &#8745; {s. ((s, q), &#964;, p) &#8712; r},
+                      Call q, Q q Z, A q Z)})&#8866;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub>
+              ({&#964;} &#8745; P p Z) (the (&#915; p)) (Q p Z),(A p Z)&quot;
+      by blast
+    have &quot;&#8704;&#964;. 
+           &#915;,&#920; &#8746; (&#8899;q&#8712;Procs. &#8899;Z. {(P q Z,
+                      Call q, Q q Z,A q Z)})&#8866;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub>
+              ({&#964;} &#8745; P p Z) (the (&#915; p)) (Q p Z),(A p Z)&quot;
+      (is &quot;&#8704;&#964;. &#915;,?&#920;&#39;&#8866;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> ({&#964;} &#8745; P p Z) (the (&#915; p)) (Q p Z),(A p Z)&quot;)
+    proof (rule allI, rule WeakenContext [OF hyp&#39;],clarify)
+      fix &#964; P&#39; c Q&#39; A&#39;
+      assume &quot;(P&#39;, c, Q&#39;, A&#39;) &#8712; &#920; &#8746;
+         (&#8899;q&#8712;Procs.
+             &#8899;Z. {(P q Z &#8745; {s. ((s, q), &#964;, p) &#8712; r},
+                  Call q, Q q Z,
+                  A q Z)})&quot; (is &quot;(P&#39;, c, Q&#39;, A&#39;) &#8712; &#920; &#8746; ?Spec&quot;)
+      then show &quot;&#915;,?&#920;&#39;&#8866;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P&#39; c Q&#39;,A&#39;&quot;
+      proof (cases rule: UnE [consumes 1])
+        assume &quot;(P&#39;,c,Q&#39;,A&#39;) &#8712; &#920;&quot; 
+        then show ?thesis
+          by (blast intro: HoarePartialDef.Asm)
+      next
+        assume &quot;(P&#39;,c,Q&#39;,A&#39;) &#8712; ?Spec&quot; 
+        then show ?thesis
+        proof (clarify)
+          fix q Z
+          assume q: &quot;q &#8712; Procs&quot;
+          show &quot;&#915;,?&#920;&#39;&#8866;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> (P q Z &#8745; {s. ((s, q), &#964;, p) &#8712; r}) 
+                         Call  q 
+                        (Q q Z),(A q Z)&quot;
+          proof -
+            from q
+            have &quot;&#915;,?&#920;&#39;&#8866;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> (P q Z) Call q (Q q Z),(A q Z)&quot;
+              by - (rule HoarePartialDef.Asm,blast)
+            thus ?thesis
+              by (rule HoarePartialDef.conseqPre) blast
+          qed
+        qed
+      qed
+    qed
+    then show &quot;&#915;,&#920; &#8746; (&#8899;q&#8712;Procs. &#8899;Z. {(P q Z, Call q, Q q Z,A q Z)})
+                &#8866;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> (P p Z) (the (&#915; p)) (Q p Z),(A p Z)&quot;
+      by (rule HoarePartialDef.conseq) blast
+  qed
+  thus ?case
+    by - (rule hoarep.CallRec)*)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span>DynCom</span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>blast</span><span> </span><span>intro</span><span class="delimiter">:</span><span> </span><span>hoarep.DynCom</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span>Throw</span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>-</span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>hoarep.Throw</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span>Catch</span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>-</span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>hoarep.Catch</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span>Conseq</span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>-</span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>hoarep.Conseq</span><span class="delimiter">,</span><span>blast</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span>Asm</span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>HoarePartialDef.Asm</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span class="delimiter">(</span><span>ExFalso</span><span> </span><span>&#920;</span><span> </span><span>F</span><span> </span><span>P</span><span> </span><span>c</span><span> </span><span>Q</span><span> </span><span>A</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">hence</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8872;<span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">oops</span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>hoaret_augment_context</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>deriv</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P p Q,A&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;&#920;&#39;. &#920; &#8838; &#920;&#39; &#10233; &#915;,&#920;&#39;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P p Q,A&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">using</span></span><span> </span><span>deriv</span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span> </span><span class="delimiter">(</span><span>induct</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span class="delimiter">(</span><span>CallRec</span><span> </span><span>P</span><span> </span><span>p</span><span> </span><span>Q</span><span> </span><span>A</span><span> </span><span>Specs</span><span> </span><span>r</span><span> </span><span>Specs_wf</span><span> </span><span>&#920;</span><span> </span><span>F</span><span> </span><span>&#920;&#39;</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">have</span></span><span> </span><span>aug</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#920; &#8838; &#920;&#39;&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fact</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">have</span></span><span> </span><span>h</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;&#964; p. &#920; &#8746; Specs_wf p &#964;
+       &#8838; &#920;&#39; &#8746; Specs_wf p &#964;&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;(P,p,Q,A)&#8712;Specs. p &#8712; dom &#915; &#8743;
+     (&#8704;&#964;. &#915;,&#920; &#8746; Specs_wf p &#964;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> ({&#964;} &#8745; P) (the (&#915; p)) Q,A &#8743;
+           (&#8704;x. &#920; &#8746; Specs_wf p &#964;
+                 &#8838; x &#10230;
+                 &#915;,x&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> ({&#964;} &#8745; P) (the (&#915; p)) Q,A))&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fact</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">hence</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;(P,p,Q,A)&#8712;Specs. p &#8712; dom &#915; &#8743; 
+         (&#8704;&#964;. &#915;,&#920;&#39;&#8746; Specs_wf p &#964; &#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> ({&#964;} &#8745; P) (the (&#915; p)) Q,A)&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>clarify</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rename_tac</span><span> </span><span>P</span><span> </span><span>p</span><span> </span><span>Q</span><span> </span><span>A</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>drule</span><span> </span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span> </span><span>bspec</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>clarsimp</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>erule_tac</span><span> </span><span>x</span><span class="delimiter">=</span><span>&#964;</span><span> </span><span class="keyword2"><span class="keyword">in</span></span><span> </span><span>allE</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>clarify</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>erule_tac</span><span> </span><span>x</span><span class="delimiter">=</span><span class="string"><span class="delete"><span class="delete">&quot;&#920;&#39; &#8746; Specs_wf p &#964;&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">in</span></span><span> </span><span>allE</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>insert</span><span> </span><span>aug</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">with</span></span><span> </span><span>CallRec</span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>-</span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>hoaret.CallRec</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span>DynCom</span><span> </span><span class="keyword3"><span class="command">thus</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>blast</span><span> </span><span>intro</span><span class="delimiter">:</span><span> </span><span>hoaret.DynCom</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span class="delimiter">(</span><span>Conseq</span><span> </span><span>P</span><span> </span><span>&#920;</span><span> </span><span>F</span><span> </span><span>c</span><span> </span><span>Q</span><span> </span><span>A</span><span> </span><span>&#920;&#39;</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>Conseq</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;s &#8712; P. (&#8707;P&#39; Q&#39; A&#39;. (&#915;,&#920;&#39; &#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P&#39; c Q&#39;,A&#39;) &#8743; s &#8712; P&#39;&#8743; Q&#39; &#8838; Q &#8743; A&#39; &#8838; A)&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">with</span></span><span> </span><span>Conseq</span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>-</span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>hoaret.Conseq</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span class="delimiter">(</span><span>ExFalso</span><span> </span><span>&#920;</span><span> </span><span>F</span><span> </span><span>P</span><span>  </span><span>c</span><span> </span><span>Q</span><span> </span><span>A</span><span> </span><span>&#920;&#39;</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#172; &#915;&#8872;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#920; &#8838; &#920;&#39;&quot;</span></span></span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fact</span><span class="delimiter">+</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?case</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>fastforce</span><span> </span><span>intro</span><span class="delimiter">:</span><span> </span><span>hoaret.ExFalso</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>cvalidt_def</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span> </span><span class="delimiter">(</span><span>blast</span><span> </span><span>intro</span><span class="delimiter">:</span><span> </span><span>hoaret.intros</span><span class="delimiter">)</span><span class="delimiter">+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* Some Derived Rules *}</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span>  </span><span>Conseq&#39;</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;s. s &#8712; P &#10230; 
+            (&#8707;P&#39; Q&#39; A&#39;. 
+              (&#8704; Z. &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> (P&#39; Z) c (Q&#39; Z),(A&#39; Z)) &#8743;
+                    (&#8707;Z. s &#8712; P&#39; Z &#8743; (Q&#39; Z &#8838; Q) &#8743; (A&#39; Z &#8838; A)))
+           &#10233;
+           &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>Conseq</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>ballI</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>erule_tac</span><span> </span><span>x</span><span class="delimiter">=</span><span>s</span><span> </span><span class="keyword2"><span class="keyword">in</span></span><span> </span><span>allE</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>clarify</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule_tac</span><span> </span><span>x</span><span class="delimiter">=</span><span class="string"><span class="delete"><span class="delete">&quot;P&#39; Z&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">in</span></span><span> </span><span>exI</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule_tac</span><span> </span><span>x</span><span class="delimiter">=</span><span class="string"><span class="delete"><span class="delete">&quot;Q&#39; Z&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">in</span></span><span> </span><span>exI</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule_tac</span><span> </span><span>x</span><span class="delimiter">=</span><span class="string"><span class="delete"><span class="delete">&quot;A&#39; Z&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">in</span></span><span> </span><span>exI</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>blast</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>conseq</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;&#8704;Z. &#915;,&#920; &#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> (P&#39; Z) c (Q&#39; Z),(A&#39; Z);
+              &#8704;s. s &#8712; P &#10230; (&#8707; Z. s&#8712;P&#39; Z &#8743; (Q&#39; Z &#8838; Q)&#8743; (A&#39; Z &#8838; A))&#10215;
+              &#10233;
+              &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>Conseq</span><span class="delimiter">)</span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theorem</span></span><span> </span><span>conseqPrePost</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P&#39; c Q&#39;,A&#39; &#10233; P &#8838; P&#39; &#10233;  Q&#39; &#8838; Q &#10233; A&#39; &#8838; A &#10233;  &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>conseq</span><span> </span><span class="delimiter">[</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="var">?P&#39;</span><span class="delimiter">=</span><span class="string"><span class="delete"><span class="delete">&quot;&#955;Z. P&#39;&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span> </span><span class="var">?Q&#39;</span><span class="delimiter">=</span><span class="string"><span class="delete"><span class="delete">&quot;&#955;Z. Q&#39;&quot;</span></span></span><span class="delimiter">]</span><span class="delimiter">)</span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>conseqPre</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P&#39; c Q,A &#10233; P &#8838; P&#39; &#10233; &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>conseq</span><span class="delimiter">)</span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>conseqPost</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q&#39;,A&#39;&#10233; Q&#39; &#8838; Q &#10233; A&#39; &#8838; A &#10233;   &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> P c Q,A&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>conseq</span><span class="delimiter">)</span><span> </span><span>auto</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>Spec_wf_conv</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;(&#955;(P, q, Q, A). (P &#8745; {s. ((s, q), &#964;, p) &#8712; r}, q, Q, A)) `
+                (&#8899;p&#8712;Procs. &#8899;Z. {(P p Z, p, Q p Z, A p Z)}) = 
+        (&#8899;q&#8712;Procs. &#8899;Z. {(P q Z &#8745; {s. ((s, q), &#964;, p) &#8712; r}, q, Q q Z, A q Z)})&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>intro</span><span class="delimiter">!</span><span class="delimiter">:</span><span> </span><span>image_eqI</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>CallRec&#39;</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;p&#8712;Procs; Procs &#8838; dom &#915;;
+    wf r; 
+   &#8704;p&#8712;Procs. &#8704;&#964; Z. 
+   &#915;,&#920;&#8746;(&#8899;q&#8712;Procs. &#8899;Z. 
+    {((P q Z) &#8745; {s. ((s,q),(&#964;,p)) &#8712; r},q,Q q Z,(A q Z))})
+     &#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> ({&#964;} &#8745; (P p Z)) (the (&#915; p)) (Q p Z),(A p Z)&#10215;
+   &#10233;
+   &#915;,&#920;&#8866;<span class="hidden">&#8681;</span><sub>t</sub><span class="hidden">&#8664;</span><sub>/F<span class="hidden">&#8665;</span></sub> (P p Z) (Call p) (Q p Z),(A p Z)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>CallRec</span><span> </span><span class="delimiter">[</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span>Specs</span><span class="delimiter">=</span><span class="string"><span class="delete"><span class="delete">&quot;&#8899;p&#8712;Procs. &#8899;Z. {((P p Z),p,Q p Z,A p Z)}&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span>
+</span><span>         </span><span>r</span><span class="delimiter">=</span><span>r</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span>    </span><span>blast</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span>   </span><span>assumption</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span>  </span><span class="delimiter">(</span><span>rule</span><span> </span><span>refl</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>clarsimp</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rename_tac</span><span> </span><span>p&#39;</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>conjI</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span>  </span><span>blast</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>intro</span><span> </span><span>allI</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rename_tac</span><span> </span><span>Z</span><span> </span><span>&#964;</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>drule_tac</span><span> </span><span>x</span><span class="delimiter">=</span><span>p&#39;</span><span> </span><span class="keyword2"><span class="keyword">in</span></span><span> </span><span>bspec</span><span class="delimiter">,</span><span> </span><span>assumption</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>erule_tac</span><span> </span><span>x</span><span class="delimiter">=</span><span>&#964;</span><span> </span><span class="keyword2"><span class="keyword">in</span></span><span> </span><span>allE</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>erule_tac</span><span> </span><span>x</span><span class="delimiter">=</span><span>Z</span><span> </span><span class="keyword2"><span class="keyword">in</span></span><span> </span><span>allE</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>fastforce</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>Spec_wf_conv</span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span><span>
+</span></pre>
+
+</div>
+</body>
+</html>

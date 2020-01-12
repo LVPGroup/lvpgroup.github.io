@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory Generalise (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory Generalise</h1>
+
+<span class="command">theory</span> <span class="name">Generalise</span><br/>
+<span class="keyword">imports</span> <a href="DistinctTreeProver.html"><span class="name">DistinctTreeProver</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+    Author:      Norbert Schirmer
+    Maintainer:  Norbert Schirmer, norbert.schirmer at web de
+    License:     LGPL
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*  Title:      Generalise.thy
+    Author:     Norbert Schirmer, TU Muenchen
+
+Copyright (C) 2005-2008 Norbert Schirmer 
+Some rights reserved, TU Muenchen
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation; either version 2.1 of the
+License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+USA
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>Generalise</span><span> </span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;HOL-Statespace.DistinctTreeProver&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>protectRefl</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP C) &#10233; PROP Pure.prop (PROP C)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>protectImp</span><span class="delimiter">:</span><span> 
+</span><span> </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>i</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP P &#10233; PROP Q)&quot;</span></span></span><span> 
+</span><span> </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP Pure.prop P &#10233; PROP Pure.prop Q)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span> </span><span>-</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">{</span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>P</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop P&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">from</span></span><span> </span><span>i</span><span> </span><span class="delimiter">[</span><span>unfolded</span><span> </span><span>prop_def</span><span class="delimiter">,</span><span> </span><span>OF</span><span> </span><span>P</span><span> </span><span class="delimiter">[</span><span>unfolded</span><span> </span><span>prop_def</span><span class="delimiter">]</span><span class="delimiter">]</span><span> 
+</span><span>    </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop Q&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">}</span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">note</span></span><span> </span><span>i&#39;</span><span> </span><span class="delimiter">=</span><span> </span><span>this</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP ?thesis&quot;</span></span></span><span> 
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>protectI</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>i&#39;</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>assumption</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>generaliseConj</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>i1</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP Pure.prop (Trueprop P) &#10233; PROP Pure.prop (Trueprop Q))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>i2</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP Pure.prop (Trueprop P&#39;) &#10233; PROP Pure.prop (Trueprop Q&#39;))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP Pure.prop (Trueprop (P &#8743; P&#39;)) &#10233; (PROP Pure.prop (Trueprop (Q &#8743; Q&#39;))))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>i1</span><span> </span><span>i2</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>generaliseAll</span><span class="delimiter">:</span><span> 
+</span><span> </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>i</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (&#8896;s. PROP Pure.prop (Trueprop (P s)) &#10233; PROP Pure.prop (Trueprop (Q s)))&quot;</span></span></span><span> 
+</span><span> </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP Pure.prop (Trueprop (&#8704;s. P s)) &#10233; PROP Pure.prop (Trueprop (&#8704;s. Q s)))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>i</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>generalise_all</span><span class="delimiter">:</span><span> 
+</span><span> </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>i</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (&#8896;s. PROP Pure.prop (PROP P s) &#10233; PROP Pure.prop (PROP Q s))&quot;</span></span></span><span> 
+</span><span> </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop ((PROP Pure.prop (&#8896;s. PROP P s)) &#10233; (PROP Pure.prop (&#8896;s. PROP Q s)))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>i</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span> </span><span class="delimiter">(</span><span>unfold</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>i1</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;s. (PROP P s) &#10233; (PROP Q s)&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>i2</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;s. PROP P s&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;s. PROP Q s&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>i1</span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>i2</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>generaliseTrans</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>i1</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP P &#10233; PROP Q)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>i2</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP Q &#10233; PROP R)&quot;</span></span></span><span> 
+</span><span>  </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP P &#10233; PROP R)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>i1</span><span> </span><span>i2</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span> </span><span class="delimiter">(</span><span>unfold</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>P_Q</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP P &#10233; PROP Q&quot;</span></span></span><span> 
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>Q_R</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Q &#10233; PROP R&quot;</span></span></span><span> 
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>P</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP P&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP R&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>Q_R</span><span> </span><span class="delimiter">[</span><span>OF</span><span> </span><span>P_Q</span><span> </span><span class="delimiter">[</span><span>OF</span><span> </span><span>P</span><span class="delimiter">]</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>meta_spec</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;x. PROP P x&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP P x&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fact</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>meta_spec_protect</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>g</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;x. PROP P x&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP P x)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">using</span></span><span> </span><span>g</span><span>
+</span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>generaliseImp</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>i</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP Pure.prop (Trueprop P) &#10233; PROP Pure.prop (Trueprop Q))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP Pure.prop (Trueprop (X &#10230; P)) &#10233; PROP Pure.prop (Trueprop (X &#10230; Q)))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>i</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>generaliseEx</span><span class="delimiter">:</span><span> 
+</span><span> </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>i</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (&#8896;s. PROP Pure.prop (Trueprop (P s)) &#10233; PROP Pure.prop (Trueprop (Q s)))&quot;</span></span></span><span> 
+</span><span> </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP Pure.prop (Trueprop (&#8707;s. P s)) &#10233; PROP Pure.prop (Trueprop (&#8707;s. Q s)))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>i</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>generaliseRefl</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP Pure.prop (Trueprop P) &#10233; PROP Pure.prop (Trueprop P))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>generaliseRefl&#39;</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP P &#10233; PROP P)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>generaliseAllShift</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>i</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (&#8896;s. P &#10233; Q s)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP Pure.prop (Trueprop P) &#10233; PROP Pure.prop (Trueprop (&#8704;s. Q s)))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>i</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>auto</span><span> </span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>generalise_allShift</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>i</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (&#8896;s. PROP P &#10233; PROP Q s)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP Pure.prop (PROP P) &#10233; PROP Pure.prop (&#8896;s. PROP Q s))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>i</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span> </span><span class="delimiter">(</span><span>unfold</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>P_Q</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;s. PROP P &#10233; PROP Q s&quot;</span></span></span><span> 
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>P</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP P&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;s. PROP Q s&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>P_Q</span><span> </span><span class="delimiter">[</span><span>OF</span><span> </span><span>P</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>generaliseImpl</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>i</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop (PROP Pure.prop P &#10233; PROP Pure.prop Q)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Pure.prop ((PROP Pure.prop (PROP X &#10233; PROP P)) &#10233; (PROP Pure.prop (PROP X &#10233; PROP Q)))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>i</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span> </span><span class="delimiter">(</span><span>unfold</span><span> </span><span>prop_def</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>i1</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP P &#10233; PROP Q&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>i2</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP X &#10233; PROP P&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span>X</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP X&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PROP Q&quot;</span></span></span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>i1</span><span> </span><span class="delimiter">[</span><span>OF</span><span> </span><span>i2</span><span> </span><span class="delimiter">[</span><span>OF</span><span> </span><span>X</span><span class="delimiter">]</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">ML_file</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;generalise_state.ML&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span><span>
+</span></pre>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory PiCore_Semantics (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory PiCore_Semantics</h1>
+
+<span class="command">theory</span> <span class="name">PiCore_Semantics</span><br/>
+<span class="keyword">imports</span> <a href="PiCore_Language.html"><span class="name">PiCore_Language</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+Created by Yongwang Zhao (zhaoyw@buaa.edu.cn)
+School of Computer Science &amp; Engineering, Beihang University, China
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Small-step Operational Semantics of PiCore Language&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>PiCore_Semantics</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>PiCore_Language</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Datatypes for Semantics&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;l</span><span class="delimiter">,</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;prog</span><span class="delimiter">)</span><span> </span><span>act</span><span> </span><span class="delimiter">=</span><span>
+</span><span>  </span><span>Cmd</span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span>EvtEnt</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;s,&#39;prog) event&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span>AtomEvt</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;s,&#39;prog) event&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;l</span><span class="delimiter">,</span><span class="tfree">&#39;k</span><span class="delimiter">,</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;prog</span><span class="delimiter">)</span><span> </span><span>actk</span><span> </span><span class="delimiter">=</span><span>
+</span><span>  </span><span>Act</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;s,&#39;prog) act&quot;</span></span></span><span>
+</span><span>  </span><span>K</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;k&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span>mk_actk</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;s,&#39;prog) act &#8658; &#39;k &#8658; (&#39;l,&#39;k,&#39;s,&#39;prog) actk&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_&#9839;_&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>91</span><span class="delimiter">,</span><span>91</span><span class="delimiter">]</span><span> </span><span>90</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;mk_actk a k &#8801; &#10631;Act=a, K=k&#10632;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>actk_destruct</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;a = Act a&#9839;K a&#8250;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;l</span><span class="delimiter">,</span><span class="tfree">&#39;k</span><span class="delimiter">,</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;prog</span><span class="delimiter">)</span><span> </span><span>ectx</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;k &#8640; (&#39;l,&#39;s,&#39;prog) event&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;prog</span><span class="delimiter">)</span><span> </span><span>pconf</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;prog &#215; &#39;s&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;prog</span><span class="delimiter">)</span><span> </span><span>pconfs</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;prog) pconf list&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>getspc_p</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;prog) pconf &#8658; &#39;prog&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;getspc_p conf &#8801; fst conf&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>gets_p</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;prog) pconf &#8658; &#39;s&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;gets_p conf &#8801; snd conf&quot;</span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+type_synonym (&#39;k,&#39;s,&#39;prog) econf = &quot;((&#39;s,&#39;prog) event) &#215; (&#39;s &#215; ((&#39;k,&#39;s,&#39;prog) ectx) )&quot;
+type_synonym (&#39;k,&#39;s,&#39;prog) econfs = &quot;(&#39;k,&#39;s,&#39;prog) econf list&quot;
+
+definition getspc_e :: &quot;(&#39;k,&#39;s,&#39;prog) econf &#8658; (&#39;s,&#39;prog) event&quot; where
+  &quot;getspc_e conf &#8801; fst conf&quot;
+
+definition gets_e :: &quot;(&#39;k,&#39;s,&#39;prog) econf &#8658; &#39;s&quot; where
+  &quot;gets_e conf &#8801; fst (snd conf)&quot;
+
+definition getx_e :: &quot;(&#39;k,&#39;s,&#39;prog) econf &#8658; (&#39;k,&#39;s,&#39;prog) ectx&quot; where
+  &quot;getx_e conf &#8801; snd (snd conf)&quot;
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;l</span><span class="delimiter">,</span><span class="tfree">&#39;k</span><span class="delimiter">,</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;prog</span><span class="delimiter">)</span><span> </span><span>esconf</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;k,&#39;s,&#39;prog) esys &#215; (&#39;s &#215; (&#39;l,&#39;k,&#39;s,&#39;prog) ectx)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;l</span><span class="delimiter">,</span><span class="tfree">&#39;k</span><span class="delimiter">,</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;prog</span><span class="delimiter">)</span><span> </span><span>pesconf</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;((&#39;l,&#39;k,&#39;s,&#39;prog) paresys) &#215; (&#39;s &#215; (&#39;l,&#39;k,&#39;s,&#39;prog) ectx)&quot;</span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* &#39;Env: type of context, such as procedures defined in a system *)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">locale</span></span><span> </span><span>event</span><span> </span><span class="delimiter">=</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">fixes</span></span><span> </span><span>ptran</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;Env &#8658; ((&#39;s,&#39;prog) pconf &#215; (&#39;s,&#39;prog) pconf) set&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">fixes</span></span><span> </span><span>fin_com</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;prog&quot;</span></span></span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* final command of imperative language, such as Skip in CSimpl and None in SIMP *)</span></span></span></span></span><span>
+</span><span>    </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*assumes EnvP: &quot;&#915; &#8866; (P, s) -pe&#8594; (P, t)&quot; *)</span></span></span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>none_no_tran&#39;</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;((fin_com, s),(P,t)) &#8713; ptran &#915;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>ptran_neq</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;((P, s),(P,t)) &#8713; ptran &#915;&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>ptran&#39;</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;Env &#8658; (&#39;s,&#39;prog) pconf &#8658; (&#39;s,&#39;prog) pconf &#8658; bool&quot;</span></span></span><span>   </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ &#8866; _ &#9472;c&#8594; _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>81</span><span class="delimiter">,</span><span>81</span><span class="delimiter">]</span><span> </span><span>80</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915; &#8866; P &#9472;c&#8594; Q &#8801; (P,Q) &#8712; ptran &#915;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">declare</span></span><span> </span><span>ptran&#39;_def</span><span class="delimiter">[</span><span>simp</span><span class="delimiter">]</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>ptrans</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;Env &#8658; (&#39;s,&#39;prog) pconf &#8658; (&#39;s,&#39;prog) pconf &#8658; bool&quot;</span></span></span><span>   </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ &#8866; _ &#9472;c*&#8594; _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>81</span><span class="delimiter">,</span><span>81</span><span class="delimiter">,</span><span>81</span><span class="delimiter">]</span><span> </span><span>80</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915; &#8866; P &#9472;c*&#8594; Q &#8801; (P,Q) &#8712;(ptran &#915;)^*&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>none_no_tran</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#172;(&#915; &#8866; (fin_com,s) &#9472;c&#8594; (P,t))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>none_no_tran&#39;</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>none_no_tran2</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#172;(&#915; &#8866; (fin_com,s) &#9472;c&#8594; Q)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>none_no_tran</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>prod.collapse</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>ptran_not_none</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#915; &#8866; (Q,s) &#9472;c&#8594; (P,t)) &#10233; Q &#8800; fin_com&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>none_no_tran</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>metis</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Semantics of Event Systems&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;fin &#8801; EAnon fin_com&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">inductive</span></span><span> </span><span>estran_p</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;Env &#8658; (&#39;l,&#39;k,&#39;s,&#39;prog) esconf &#8658; (&#39;l,&#39;k,&#39;s,&#39;prog) actk &#8658; (&#39;l,&#39;k,&#39;s,&#39;prog) esconf &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ &#8866; _ &#9472;es[_]&#8594; _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>81</span><span class="delimiter">,</span><span>81</span><span class="delimiter">]</span><span> </span><span>80</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>    </span><span>EAnon</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;&#915; &#8866; (P, s) &#9472;c&#8594; (Q, t); Q &#8800; fin_com &#10215; &#10233;
+            &#915; &#8866; (EAnon P, s,x) &#9472;es[Cmd&#9839;k]&#8594; (EAnon Q, t,x)&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>EAnon_fin</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; &#915; &#8866; (P, s) &#9472;c&#8594; (Q, t); Q = fin_com; y = x(k := None) &#10215; &#10233;
+            &#915; &#8866; (EAnon P, s,x) &#9472;es[Cmd&#9839;k]&#8594; (EAnon Q, t, y)&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>EBasic</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; P = body e; s &#8712; guard e; y = x(k:=Some e) &#10215; &#10233;
+             &#915; &#8866; (EBasic e, s,x) &#9472;es[(EvtEnt e)&#9839;k]&#8594; ((EAnon P), s,y)&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>EAtom</span><span class="delimiter">:</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214; P = body e; s &#8712; guard e; &#915; &#8866; (P,s)&#9472;c*&#8594;(fin_com,t) &#10215; &#10233;
+             &#915; &#8866; (EAtom e, s,x) &#9472;es[(AtomEvt e)&#9839;k]&#8594; (fin, t,x)&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>ESeq</span><span class="delimiter">:</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;&#915; &#8866; (es1, s,x) &#9472;es[a]&#8594;(es1&#39;, t,y); es1&#39; &#8800; fin &#10215; &#10233;
+            &#915; &#8866; (ESeq es1 es2, s,x) &#9472;es[a]&#8594; (ESeq es1&#39; es2, t,y)&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>ESeq_fin</span><span class="delimiter">:</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#10214;&#915; &#8866; (es1, s,x) &#9472;es[a]&#8594;(fin, t,y)&#10215; &#10233;
+            &#915; &#8866; (ESeq es1 es2, s,x) &#9472;es[a]&#8594; (es2, t,y)&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>EChc1</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915; &#8866; (es1,s,x) &#9472;es[a]&#8594; (es1&#39;,t,y) &#10233;
+            &#915; &#8866; (EChc es1 es2, s,x) &#9472;es[a]&#8594; (es1&#39;, t,y)&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>EChc2</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915; &#8866; (es2,s,x) &#9472;es[a]&#8594; (es2&#39;,t,y) &#10233;
+            &#915; &#8866; (EChc es1 es2, s,x) &#9472;es[a]&#8594; (es2&#39;, t,y)&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>EJoin1</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915; &#8866; (es1,s,x) &#9472;es[a]&#8594; (es1&#39;,t,y) &#10233;
+            &#915; &#8866; (EJoin es1 es2, s,x) &#9472;es[a]&#8594; (EJoin es1&#39; es2, t,y)&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>EJoin2</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915; &#8866; (es2,s,x) &#9472;es[a]&#8594; (es2&#39;,t,y) &#10233;
+            &#915; &#8866; (EJoin es1 es2, s,x) &#9472;es[a]&#8594; (EJoin es1 es2&#39;, t,y)&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>EJoin_fin</span><span class="delimiter">:</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#915; &#8866; (EJoin fin fin, s,x) &#9472;es[Cmd&#9839;k]&#8594; (fin,s,x)&#8250;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>EWhileT</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;s&#8712;b &#10233; P &#8800; fin &#10233; &#915; &#8866; (EWhile b P, s,x) &#9472;es[Cmd&#9839;k]&#8594; (ESeq P (EWhile b P), s,x)&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>EWhileF</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;s&#8713;b &#10233; &#915; &#8866; (EWhile b P, s,x) &#9472;es[Cmd&#9839;k]&#8594; (fin, s,x)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">primrec</span></span><span> </span><span>Choice_height</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;k,&#39;s,&#39;p) esys &#8658; nat&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Choice_height (EAnon p) = 0&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Choice_height (EBasic p) = 0&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Choice_height (EAtom p) = 0&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Choice_height (ESeq p q) = max (Choice_height p) (Choice_height q)&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Choice_height (EChc p q) = Suc (max (Choice_height p) (Choice_height q))&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Choice_height (EJoin p q) = max (Choice_height p) (Choice_height q)&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Choice_height (EWhile _ p) = Choice_height p&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">primrec</span></span><span> </span><span>Join_height</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;k,&#39;s,&#39;p) esys &#8658; nat&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Join_height (EAnon p) = 0&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Join_height (EBasic p) = 0&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Join_height (EAtom p) = 0&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Join_height (ESeq p q) = max (Join_height p) (Join_height q)&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Join_height (EChc p q) = max (Join_height p) (Join_height q)&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Join_height (EJoin p q) = Suc (max (Join_height p) (Join_height q))&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;Join_height (EWhile _ p) = Join_height p&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>chcneq_specneq</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Choice_height es1 &#8800; Choice_height es2 &#10233; es1 &#8800; es2&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>allneq_specneq</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;All_height es1 &#8800; All_height es2 &#10233; es1 &#8800; es2&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">inductive_cases</span></span><span> </span><span>estran_from_basic_cases</span><span class="delimiter">:</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#915; &#8866; (EBasic e, s) &#9472;es[a]&#8594; (es, t)&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>chc_hei_convg</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915; &#8866; (es1,s) &#9472;es[a]&#8594; (es2,t) &#10233; Choice_height es1 &#8805; Choice_height es2&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>induct</span><span> </span><span>es1</span><span> </span><span>arbitrary</span><span class="delimiter">:</span><span> </span><span>es2</span><span> </span><span>a</span><span> </span><span>s</span><span> </span><span>t</span><span class="delimiter">;</span><span> </span><span>rule</span><span> </span><span>estran_p.cases</span><span class="delimiter">,</span><span> </span><span>auto</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fastforce</span><span class="delimiter">+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>join_hei_convg</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915; &#8866; (es1,s) &#9472;es[a]&#8594; (es2,t) &#10233; Join_height es1 &#8805; Join_height es2&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>induct</span><span> </span><span>es1</span><span> </span><span>arbitrary</span><span class="delimiter">:</span><span> </span><span>es2</span><span> </span><span>a</span><span> </span><span>s</span><span> </span><span>t</span><span class="delimiter">;</span><span> </span><span>rule</span><span> </span><span>estran_p.cases</span><span class="delimiter">,</span><span> </span><span>auto</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fastforce</span><span class="delimiter">+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#172;(&#8707;es2 t a. &#915; &#8866; (es1,s) &#9472;es[a]&#8594; (EChc es1 es2,t))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>chc_hei_convg</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fastforce</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>seq_neq2</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;P NEXT Q &#8800; Q&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;P  NEXT  Q = Q&#8250;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;es_size (P  NEXT  Q) = es_size Q&#8250;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span>False</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>join_neq1</span><span class="delimiter">:</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;P&#8904;Q &#8800; P&#8250;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>induct</span><span> </span><span>P</span><span class="delimiter">)</span><span> </span><span>auto</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>join_neq2</span><span class="delimiter">:</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;P&#8904;Q &#8800; Q&#8250;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>induct</span><span> </span><span>Q</span><span class="delimiter">)</span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>spec_neq</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915; &#8866; (es1,s,x)&#9472;es[a]&#8594;(es2,t,y) &#10233; es1 &#8800; es2&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span class="delimiter">(</span><span>induct</span><span> </span><span>es1</span><span> </span><span>arbitrary</span><span class="delimiter">:</span><span> </span><span>es2</span><span> </span><span>s</span><span> </span><span>x</span><span> </span><span>t</span><span> </span><span>y</span><span> </span><span>a</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span class="delimiter">(</span><span>EAnon</span><span> </span><span>x</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span>-</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>erule</span><span> </span><span>estran_p.cases</span><span class="delimiter">,</span><span> </span><span>auto</span><span class="delimiter">)</span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>ptran_neq</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span class="delimiter">+</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span class="delimiter">(</span><span>EBasic</span><span> </span><span>x</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>estran_p.cases</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fast</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span class="delimiter">(</span><span>EAtom</span><span> </span><span>x</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>estran_p.cases</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fast</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span class="delimiter">(</span><span>ESeq</span><span> </span><span>es11</span><span> </span><span>es12</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span>-</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>erule</span><span> </span><span>estran_p.cases</span><span class="delimiter">,</span><span> </span><span>auto</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>seq_neq2</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span class="delimiter">+</span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span class="delimiter">(</span><span>EChc</span><span> </span><span>es11</span><span> </span><span>es12</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span>-</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>rule</span><span> </span><span>estran_p.cases</span><span class="delimiter">,</span><span> </span><span>auto</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span>-</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#915; &#8866; (es11, s,x) &#9472;es[a]&#8594; (es11 OR es12, t,y)&#8250;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">with</span></span><span> </span><span>chc_hei_convg</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Choice_height (es11 OR es12) &#8804; Choice_height es11&#8250;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span>False</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>force</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>    </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#915; &#8866; (es12, s,x) &#9472;es[a]&#8594; (es11 OR es12, t,y)&#8250;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">with</span></span><span> </span><span>chc_hei_convg</span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Choice_height (es11 OR es12) &#8804; Choice_height es12&#8250;</span></span></span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span>False</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>force</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span class="delimiter">(</span><span>EJoin</span><span> </span><span>es11</span><span> </span><span>es12</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span>-</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>rule</span><span> </span><span>estran_p.cases</span><span class="delimiter">,</span><span> </span><span>auto</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>join_neq2</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>blast</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>blast</span><span class="keyword1"><span class="command">.</span></span><span>
+</span><span class="keyword1"><span class="command">next</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">case</span></span><span> </span><span>EWhile</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?case</span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>estran_p.cases</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fast</span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Semantics of Parallel Event Systems&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">inductive</span></span><span>
+</span><span>  </span><span>pestran_p</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;Env &#8658; (&#39;l,&#39;k,&#39;s,&#39;prog) pesconf &#8658; (&#39;l,&#39;k,&#39;s,&#39;prog) actk
+                      &#8658; (&#39;l,&#39;k,&#39;s,&#39;prog) pesconf &#8658; bool&quot;</span></span></span><span>  </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ &#8866; _ &#9472;pes[_]&#8594; _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>70</span><span class="delimiter">,</span><span>70</span><span class="delimiter">]</span><span> </span><span>60</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>    </span><span>ParES</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915; &#8866; (pes k, s,x) &#9472;es[a&#9839;k]&#8594; (es&#39;, t,y) &#10233; &#915; &#8866; (pes, s,x) &#9472;pes[a&#9839;k]&#8594; (pes(k:=es&#39;), t,y)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Lemmas&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsubsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Programs&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>prog_not_eq_in_ctran_aux</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">assumes</span></span><span> </span><span>c</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#915; &#8866; (P,s) &#9472;c&#8594; (Q,t)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">shows</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;P&#8800;Q&quot;</span></span></span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>c</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>ptran_neq</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>prog_not_eq_in_ctran</span><span> </span><span class="delimiter">[</span><span>simp</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#172; &#915; &#8866; (P,s) &#9472;c&#8594; (P,t)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>clarify</span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>ptran_neq</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsubsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Event systems&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>no_estran_to_self</span><span class="delimiter">:</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#172; &#915; &#8866; (es, s,x) &#9472;es[a]&#8594; (es, t,y)&#8250;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>spec_neq</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>no_estran_from_fin</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#172; &#915; &#8866; (EAnon fin_com, s) &#9472;es[a]&#8594; c&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#915; &#8866; (EAnon fin_com, s) &#9472;es[a]&#8594; c&#8250;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span>False</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>rule</span><span> </span><span>estran_p.cases</span><span class="delimiter">,</span><span> </span><span>auto</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>none_no_tran</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span class="delimiter">+</span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>no_pestran_to_self</span><span class="delimiter">:</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#172; &#915; &#8866; (Ps, S) &#9472;pes[a]&#8594; (Ps, T)&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span class="delimiter">(</span><span>rule</span><span> </span><span>ccontr</span><span class="delimiter">,</span><span> </span><span>simp</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#915; &#8866; (Ps, S) &#9472;pes[a]&#8594; (Ps, T)&#8250;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span>False</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">proof</span></span><span class="delimiter">(</span><span>cases</span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword3"><span class="command">case</span></span><span> </span><span>ParES</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="var">?thesis</span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>no_estran_to_self</span><span>
+</span><span>      </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>fun_upd_same</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;estran &#915; &#8801; {(c,c&#39;). &#8707;a. estran_p &#915; c a c&#39;}&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;pestran &#915; &#8801; {(c,c&#39;). &#8707;a k. pestran_p &#915; c (a&#9839;k) c&#39;}&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>no_estran_to_self&#39;</span><span class="delimiter">:</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#172;((P,S),(P,T))&#8712;estran &#915;&#8250;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>estran_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>no_estran_to_self</span><span> </span><span>surjective_pairing</span><span class="delimiter">[</span><span>of</span><span> </span><span>S</span><span class="delimiter">]</span><span> </span><span>surjective_pairing</span><span class="delimiter">[</span><span>of</span><span> </span><span>T</span><span class="delimiter">]</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>metis</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>no_estran_to_self&#39;&#39;</span><span class="delimiter">:</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;fst c1 = fst c2 &#10233; (c1,c2)&#8713;estran &#915;&#8250;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>subst</span><span> </span><span>surjective_pairing</span><span class="delimiter">[</span><span>of</span><span> </span><span>c1</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>subst</span><span> </span><span>surjective_pairing</span><span class="delimiter">[</span><span>of</span><span> </span><span>c2</span><span class="delimiter">]</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>no_estran_to_self&#39;</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>metis</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>no_pestran_to_self&#39;</span><span class="delimiter">:</span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;&#172;((P,s),(P,t))&#8712;pestran &#915;&#8250;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>pestran_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>no_pestran_to_self</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* locale event *)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span></pre>
+
+</div>
+</body>
+</html>
