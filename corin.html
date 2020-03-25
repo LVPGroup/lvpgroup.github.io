@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+
+        <link href="css/metro-bootstrap.css" rel="stylesheet">
+    <!--<link href="css/metro-bootstrap-responsive.css" rel="stylesheet">-->
+    <link href="css/iconFont.css" rel="stylesheet">
+
+    <!-- Load JavaScript Libraries -->
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.widget.min.js"></script>
+
+    <!-- Metro UI CSS JavaScript plugins -->
+    <script src="js/load-metro.js"></script>
+
+    <!-- Local JavaScript -->
+    <script src="js/docs.js"></script>
+    <script src="js/github.info.js"></script>
+
+    <title>Yongwang ZHAO's Homepage</title>
+
+    <style>
+        .container {
+            width: 1040px;
+        }
+    </style>
+</head>
+<body class="metro" style="text-align:justify;">
+
+<div class="container">
+  <div class="margin10 nrm nlm" data-load="header.html"></div>
+   <div class="main-content clearfix">
+            
+										
+	<div class="tab-control" data-role="tab-control" style="float:left;width:100%;">
+		<!--<ul class="tabs">
+			<li class="active"><a href="index.html"><b>Home</b> 
+			<i class="icon-arrow-right-5"></i> <b>Research </b> </a></li>
+			
+		</ul>-->
+								 
+		<!--		
+		<div class="panel" id="journal" data-role="panel" style="width:100%;">
+			<div class="panel-header" style="background:#dddddd;font-size:14pt;">
+				<span class="fg-darker"> <b>CORIN - Correctness Infrastructure for Software (软件正确性的基础设施)</b></span>
+			</div>
+			<div class="panel-content margin10 fg-dark nlp nrp" style="font-size:13pt;margin-top:-5pt;margin-bottom:-5pt">
+		-->
+
+<div class="tab-control" data-role="tab-control" style="float:left;">
+<div class="panel" id="flat" data-role="panel" style="width:100%;">
+	<div class="panel-header" style="background:#dddddd;font-size:14pt;">
+		<span class="fg-darker"> <b>CORIN - Correctness Infrastructure for Software (软件正确性的基础设施)</b></span>
+	</div>
+	<div class="panel-content margin10 fg-dark nlp nrp" style="width:96%;font-size:13pt;margin-left:15pt;margin-right: 25pt; margin-top:0pt;margin-bottom:0pt">
+
+	
+		<div style="float:right; overflow:hidden; width:340px; margin-left:20pt;">
+		 <div>
+		  <nav class="sidebar light">
+		   <ul>	
+			<li class="active"><a href="#" class="bg-lightBlue" style="font-size:13pt;"><i class="icon-home"></i>Navigation</a></li>
+			<li class="stick bg-yellow"><a href="#picore" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>PiCore</a></li>
+			<li class="stick bg-green"><a href="#csimpl" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>CSimpl</a></li>
+			<li class="stick bg-blue"><a href="#sucautomata" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>Automatic Compositional Verification</a></li>
+			<li class="stick bg-orange"><a href="#ifs" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>Information-flow Security and Proof</a></li>
+			<li class="stick bg-orange"><a href="#modellearning" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>Model Learning and Checking</a></li>
+		   </ul>
+		  </nav>
+		 </div>
+		</div>
+	
+		<div>
+			<p style="font-size:13pt;">
+			<b>CORIN</b> is a long-term project about the <em>Science of Software Correctness</em>. It applies formal methods for correctness (functional, safety and security) of critical software, e.g. operating systems, compilers, and domain-specific critical systems. We believe that formal methods are revoluting traditional methodologies of software development, we could find more and more successful stories of this direction, such as <a href="https://ts.data61.csiro.au/projects/seL4/" target="_blank"><b>seL4</b></a> (a formally verified OS kernel), <a href="http://compcert.inria.fr" target="_blank"><b>CompCert</b></a> (a C Compiler developed by formal methods in Coq proof assitant), and <a href="https://www.cs.yale.edu/flint/certikos/" target="_blank"><b>CertiKOS</b></a> (an OS kernel developed by formal methods). Other large projects in the world are <a href="https://www.darpa.mil/program/high-assurance-cyber-military-systems" target="_blank"><b>DARPA HACMS</b></a>, <a href="https://deepspec.org/" target="_blank"><b>NSF DeepSpec</b></a> in USA, <a href="https://www.cl.cam.ac.uk/~pes20/rems/" target="_blank"><b>REMS</b></a> in UK etc. 
+			</p>
+			<p style="font-size:13pt;">
+			 
+			</p>
+			
+			<p style="font-size:13pt;">
+			We are developing formal specification languages, verification approaches, frameworks, and tools compliant with safety and security standards (e.g. DO-178 B/C, Common Criteria, IEC 61508) to develop correct software. 
+			</p>
+			<p style="font-size:13pt;">
+			Please see our papers at IEEE Transactions on Dependable and Secure Computing, CAV 2019, FM 2019/2018, TACAS 2017, TASE 2020, Frontiers of Computer Science, Computing, etc., for more details. 
+			</p>
+
+			
+			
+			<div class="listview-outlook" style="width:98%;">
+				<div class="list" id="picore">
+					<div class="list-content" style="font-size:13pt;">
+						<div class="news_data2">
+						<a href="#" class="fg-cobalt fg-hover-crimson"><i class="icon-arrow-right-5"></i>
+						<b>PiCore: A Rely-Guarantee Reasoning Framework for Concurrent Reactive Systems in Isabelle/HOL</b>
+						</a></br>
+			
+						<span class="panel-content margin10 fg-dark nlp nrp">
+						<p>
+						The rely-guarantee approach is a promising way for compositional verification of concurrent reactive systems (CRSs), e.g. concurrent operating systems, interrupt-driven control systems and business process systems. However, various reaction patterns, different abstraction levels of specification, and the complexity of real-world CRSs are still challenging the rely-guarantee approach. PiCore is a rely-guarantee reasoning framework for formal specification and verification of CRSs. We design an event specification language supporting complex reaction structures and its rely-guarantee proof system to detach specification and logic of reactive aspects of CRSs from event behaviours. PiCore parametrizes the language and its rely-guarantee system for event behavior using a rely-guarantee interface and allows to easily integrate 3rd-party languages (CSimpl and Isabelle Hoare_Parallel) via a rely-guarantee adapter. By this design, we have successfully integrated two existing languages and their rely-guarantee proof systems without any change of their specification and proofs. PiCore has been applied to two real-world case studies, i.e. formal verification of concurrent memory management in Zephyr RTOS and a verified translation for a standardized Business Process Execution Language (BPEL) to PiCore. </p>
+						
+						<p>
+						We have applied PiCore to the formal specification and mechanized proof of the concurrent buddy memory allocation of <a href="https://www.zephyrproject.org" target="_blank"><strong>Zephyr RTOS</strong></a> released by the Linux Foundation. The formal specification is fine-grained providing a high level of detail. It closely follows the Zephyr C code, covering all the data structures and imperative statements present in the implementation. We use the rely-guarantee proof system of PiCore for the formal verification of functional correctness and invariant preservation in the model, revealing three bugs in the C code.
+						</p>
+						
+						<p>
+						We have also developed a rely-guarantee reasoning approach for asynchronous messaging systems for autonomous vehicles. The axiom model of messaging systems by extending PiCore, which is reusable for concrete applications. The model supports dynamic configuration of message buffers as well as the automatic generation of the rely and guarantee conditions for compositional reasoning.By this approach, we formally verify the DGPS (Differential Global Positioning System) of UISEE autonomous driving systems. The specification and its proof provide a strong evidence for the ongoing safety certification of DGPS.
+						</p>
+
+							</span>
+						<ul>
+						<li>
+							<strong>Yongwang Zhao</strong>, David Sanan, Fuyuan Zhang, Yang Liu, "A Parametric Rely-guarantee Reasoning Framework for Concurrent Reactive Systems", <em>
+							<u>23rd International Symposium on Formal Methods (FM 2019)</u></em>, Oct 7-11, 2019, Porto, Portugal, pp. 161-178 (<em><strong>CCF B, Top-tier conference in formal methods </strong></em>)<a href="papers/FM2019.pdf" target="_blank"><strong>[PDF download]</strong></a>
+						  </li>
+						<li>
+							<strong>Yongwang Zhao</strong>, David Sanan, "Rely-guarantee Reasoning about Concurrent Memory Management in Zephyr RTOS", <em>
+							<u>31st International Conference on Computer-Aided Verification (CAV 2019)</u></em>, July 15-18, 2019, New York City, NY, USA, pp. 515-533 (<em><strong>CCF A, Top-tier conference in formal methods </strong></em>)<a href="papers/CAV2019.pdf" target="_blank"><strong>[PDF download]</strong></a>
+						  </li>
+						  <li>
+							Wenjing Xu, <strong>Yongwang Zhao#</strong>, Dianfu Ma, Yuxin Zhang, "Rely-Guarantee Reasoning about Messaging System for Autonomous Vehicles", <em>
+							<u>14th International Symposium on Theoretical Aspects of Software Engineering (TASE 2020)</u></em>, July 15-17, 2020, Hangzhou, China, pp. xxx-yyy (<em><strong>CCF C</strong></em>)
+						  </li>
+						</ul>
+						</div>
+					</div>
+					
+				</div>
+				
+				
+				<div class="list" id="csimpl">
+					<div class="list-content" style="font-size:13pt;">
+						<div class="news_data2">
+						<a href="#" class="fg-cobalt fg-hover-crimson"><i class="icon-arrow-right-5"></i>
+						<b>CSimpl: A Concurrent Imperative Programming Language and Rely-guarantee Proof System in Isabelle/HOL</b>
+						</a></br>
+			
+						<span class="panel-content margin10 fg-dark nlp nrp">
+						<p>
+						It is essential to deal with the interference of the environment between programs in concurrent program verification. This has led to the development of concurrent program reasoning techniques such as rely-guarantee. However, the source code of the programs to be verified often involves language features such as exceptions and procedures which are not supported by the existing mechanizations of those concurrent reasoning techniques. Schirmer et al. have solved a similar problem for sequential programs by developing a verification framework in the Isabelle/HOL theorem prover called Simpl, which provides a rich sequential language that can encode most of the features in real world programming languages. However Simpl only aims to verify sequential programs, and it does not support the specification nor the verification of concurrent programs. CSimpl is an extension of Simpl with concurrency oriented language features and verification techniques. We prove the compositionality of the CSimpl semantics and we provide inference rules for the language constructors to reason about CSimpl programs using rely-guarantee, showing that the inference rules are sound w.r.t. the language semantics. Finally, we run a case study where we use CSimpl to specify and prove functional correctness of an abstract communication model of the XtratuM partitioning separation micro-kernel.
+						</p>
+						<p>
+						We are now developing a formal specification of the full ARINC 653 standard for operating systems (ARINC653 P1-5, multicore) in CSimpl. 
+						</p>
+						</span>
+						<ul>
+						<li>David Sanan, <strong>Yongwang Zhao</strong>, Zhe Hou, Fuyuan Zhang, Alwen Tiu, Yang Liu, "CSimpl: A Rely-Guarantee-Based Framework for Verifying Concurrent Programs", <em><u>23rd International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS 2017, ETAPS)</u></em>, 22-29 April 2017, Uppsala, Sweden, pp. 481-498 (<em><strong>CCF B, Top conf. in formal methods</strong></em>) <a href="papers/TACAS2017.pdf" target="_blank"><strong>[PDF download]</strong></a> 
+						</li>
+						</ul>
+			
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="list" id="sucautomata">
+					<div class="list-content" style="font-size:13pt;">
+						<div class="news_data2">
+						<a href="#" class="fg-cobalt fg-hover-crimson"><i class="icon-arrow-right-5"></i>
+						<b>Succinct Automata: Automatic Compositional Reasoning for Shared-variable Concurrent Programs</b>
+						</a></br>
+			
+						<span class="panel-content margin10 fg-dark nlp nrp">
+						<p> 
+						Scalable and automatic formal verification for concurrent systems is always demanding. In this paper, we propose a verification framework to support automated compositional reasoning for concurrent programs with shared variables. Our framework models concurrent programs as succinct automata and supports the verification of multiple important properties. Safety verification and simulations of succinct automata are parallel compositional, and safety properties of succinct automata are preserved under refinements. We generate succinct automata from infinite state concurrent programs in an automated manner. Furthermore, we propose the first automated approach to checking rely-guarantee based simulations between infinite state concurrent programs. We have prototyped our algorithms and applied our tool to the verification of multiple refinements.
+						<p>
+						</span>
+						<ul>
+						<li>Fuyuan Zhang, <strong>Yongwang Zhao</strong>, David Sanan, Yang Liu, Alwen Tiu, Shang-wei Lin, Jun Sun, "Compositional Reasoning for Shared-variable Concurrent Programs", 
+								<em><u>22nd International Symposium on Formal Methods (FM 2018)</u></em>, 15-17 July 2018, Oxford UK, pp. 523-541 (<em><strong>CCF B, Top conf. in formal methods</strong></em>)  
+								<a href="papers/FM2018.pdf" target="_blank"><strong>[PDF download]</strong></a> 
+						</li>
+						</ul>
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="list" id="ifs">
+					<div class="list-content" style="font-size:13pt;">
+						<div class="news_data2">
+						<a href="#" class="fg-cobalt fg-hover-crimson"><i class="icon-arrow-right-5"></i>
+						<b>Information-flow Security and Proof </b>
+						</a></br>
+			
+						<span class="panel-content margin10 fg-dark nlp nrp">
+						<p>
+						Assurance of information-flow security by formal methods is mandated in security certification of critical software, such as OS kernels. We develop in Isabelle/HOL a generic information-flow security model covering Noninterference, Noninfluence, Nonleakage, and their variants. An logical inference framework shows the precise relation of the security properties. We propose a stepwise refinement approach preserving the security properties at abstract level to concrete level. Finally, six flaws about information-flow security, which can cause information leakage, are found in the ARINC 653 standard and operating systems (VxWorks 653, POK, and XtratuM).
+						<p>
+						<p>
+						Then we extend our framework to capability-based systems with dynamic policies. We formally specify and verify a capability-based system model with dynamic information flow policies. The system model for capability-based secure systems. The system model specifies critical events including system initialization, inter-domain communication, and capability management. We prove information flow security of the capability-based model by an unwinding theorem. Formal specification and security proof are carried out in the Isabelle/HOL theorem prover and could be applied to formally develop and verify the security of capability-based secure systems, such as separation kernels and secure hypervisors. To our knowledge, this is the first machine-checked proof of capability-based information security with dynamic policies.
+						</p>
+						</span>
+						<ul>
+						<li>
+							<strong>Yongwang Zhao</strong>, David Sanan, Fuyuan Zhang, Yang Liu, "Refinement-based Specification and Security Analysis of Separation Kernels", <em>
+							<u>IEEE Transactions on Dependable and Secure Computing (TDSC)</u></em>, Volume 16, Issue 1, January 2019, pp. 127 - 141 (<em><strong>CCF A, Top journal in security</strong></em>) 
+							<a href="papers/TDSC2017.pdf" target="_blank"><strong>[PDF download]</strong></a>
+						  </li>
+						<li>
+						  Jianwen Sun, Xiang Long, <strong>Yongwang Zhao#</strong>, "A Verified Capability-based Model for Information Flow Security with Dynamic Policies", 
+						  <em><u>IEEE Access Journal</u></em>, Volume 6, April 2018, pp. 16359 - 16407 (SCI影响因子3.224) <a href="papers/Access2018.pdf" target="_blank"><strong>[PDF download]</strong></a>
+						  </li>
+						</ul>
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="list" id="modellearning">
+					<div class="list-content" style="font-size:13pt;">
+						<div class="news_data2">
+						<a href="#" class="fg-cobalt fg-hover-crimson"><i class="icon-arrow-right-5"></i>
+						<b>Model Learning and Model Checking  </b>
+						</a></br>
+			
+						<span class="panel-content margin10 fg-dark nlp nrp">
+						<p>
+						The quality and correct functioning of software systems are of prime concern. In addition to classical testing techniques, formal techniques like model checking are used to reinforce the reliability of software systems. However, obtaining of behavior model, which is essential for model-based techniques, of unknown software systems is a challenging task. To mitigate this problem, an emerging black-box analysis technique, called Model Learning, can be applied.
+						We routinely manage to learn the behavior of a device or computer program by just pressing buttons and observing the resulting behavior. Especially children are very good at this and know exactly how to use a smartphone or microwave oven without ever consulting a manual. In such situations, we construct a mental model or state diagram of the device: through experiments we determine in which global states the device can be and which state transitions and outputs occur in response to which inputs. 
+						</p>
+						<p>
+						Our paper is the first survey in this research field. We comprehensively review the background and foundations, well-known tools and successful applications of model learning. 
+						We also propose an approach that combines the strengths of two effective techniques, i.e., Model learning and Model checking for the formal analysis of Java libraries. 
+						</p>
+						</span>
+						<ul>
+						<li>
+						  Shahbaz Ali, Hailong Sun, <strong>Yongwang Zhao#</strong>, "Model Learning: A Survey on Foundation, Tools and Applications", 	<em><u>Frontiers of Computer Science</u></em>,
+						  <a href="papers/fcs2019.pdf" target="_blank"><strong>[PDF download]</strong></a>
+						  </li>
+						<li>
+							Shahbaz Ali, Hailong Sun, and <strong>Yongwang Zhao#</strong>, "Combining Model Learning and Model Checking to Analyze Java Libraries", <em>
+							<u>9th International Workshop on Structured Object-Oriented  Formal Language and Method (SOFL+MSVL 2019)</u></em>, Shenzhen, China, November 5, 2019, pp. 259-278.
+						  </li>
+						</ul>
+						</div>
+					</div>
+					
+				</div>
+<!--mLTL, AADL -->
+				
+		</div>
+		
+	</div>
+</div>
+
+		<!--																	 
+			</div>
+		</div>  --> 	
+    </div>
+  </div>
+
+
+<footer data-load="footer.html">
+</footer>
+
+</div>
+
+    <script src="js/hitua.js"></script>
+
+</body>
+</html>

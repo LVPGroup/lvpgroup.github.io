@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+
+        <link href="css/metro-bootstrap.css" rel="stylesheet">
+    <!--<link href="css/metro-bootstrap-responsive.css" rel="stylesheet">-->
+    <link href="css/iconFont.css" rel="stylesheet">
+
+    <!-- Load JavaScript Libraries -->
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.widget.min.js"></script>
+
+    <!-- Metro UI CSS JavaScript plugins -->
+    <script src="js/load-metro.js"></script>
+
+    <!-- Local JavaScript -->
+    <script src="js/docs.js"></script>
+    <script src="js/github.info.js"></script>
+
+    <title>Yongwang ZHAO's Homepage</title>
+
+    <style>
+        .container {
+            width: 1040px;
+        }
+    </style>
+</head>
+<body class="metro" style="text-align:justify;">
+
+<div class="container">
+  <div class="margin10 nrm nlm" data-load="header.html"></div>
+   <div class="main-content clearfix">
+            
+										
+	<div class="tab-control" data-role="tab-control" style="float:left;width:100%;">
+		<!--<ul class="tabs">
+			<li class="active"><a href="index.html"><b>Home</b> 
+			<i class="icon-arrow-right-5"></i> <b>Research </b> </a></li>
+			
+		</ul>-->
+								 
+		<!--		
+		<div class="panel" id="journal" data-role="panel" style="width:100%;">
+			<div class="panel-header" style="background:#dddddd;font-size:14pt;">
+				<span class="fg-darker"> <b>CORIN - Correctness Infrastructure for Software (软件正确性的基础设施)</b></span>
+			</div>
+			<div class="panel-content margin10 fg-dark nlp nrp" style="font-size:13pt;margin-top:-5pt;margin-bottom:-5pt">
+		-->
+		
+<div class="tab-control" data-role="tab-control" style="float:left;">
+<div class="panel" id="flat" data-role="panel" style="width:100%;">
+	<div class="panel-header" style="background:#dddddd;font-size:14pt;">
+		<span class="fg-darker"> <b>Taiji - Formal Specification and Verification of Operating Systems (操作系统形式化规范与验证)</b></span>
+	</div>
+	<div class="panel-content margin10 fg-dark nlp nrp" style="width:96%;font-size:13pt;margin-left:15pt;margin-right: 25pt; margin-top:0pt;margin-bottom:0pt">
+
+	
+		<div style="float:right; overflow:hidden; width:280px; margin-left:20pt;">
+		 <div>
+		  <nav class="sidebar light">
+		   <ul>	
+			<li class="active"><a href="#" class="bg-lightBlue" style="font-size:13pt;"><i class="icon-home"></i>Navigation</a></li>
+			<li class="stick bg-green"><a href="#survey" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>Survey</a></li>
+			<li class="stick bg-yellow"><a href="#zephyr" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>Zephyr RTOS</a></li>
+			<li class="stick bg-blue"><a href="#skifs" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>Separation Kernels</a></li>
+			<li class="stick bg-orange"><a href="#arinc653" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>ARINC653 Standard and OSs</a></li>
+			<li class="stick bg-orange"><a href="#memory" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>Memory Management</a></li>
+		   </ul>
+		  </nav>
+		 </div>
+		</div>
+	
+		<div>
+			<p style="font-size:13pt;">
+			<b>Taiji (Taichi,太极)</b> is a long-term project about formal specification and verification of operating systems (OS). The figure of Taiji (<img src="images/taiji.jpg" width="30" alt="Symbol of Taiji in China" />) in China is the composition of OS ("O" and "S"). 
+			The OS is a fundamental component of critical systems. Correctness and reliability of systems highly depend on the system’s underlying OS. From the recent researches in the world, we could see that formal methods is a promising way to the high assurance of OSs for security/safety critical domains. Two significant projects are <a href="https://ts.data61.csiro.au/projects/seL4/" target="_blank"><b>seL4</b></a> and <a href="https://www.cs.yale.edu/flint/certikos/" target="_blank"><b>CertiKOS</b></a>. 
+			</p>
+			
+			<p style="font-size:13pt;">
+			In the Taiji project, we are developing theories, approaches, tools and applications for formal specification and proofs of OSs considering the high evaluation level of safety/security certification (DO-178 B/C, Common Criteria, etc.). 
+			</p>
+			
+			<p style="font-size:13pt;">
+			We have developed a full formal specification for ARINC 653 which is the de-facto standard for partitioning operating system in aerospace and avionics. We found >= 10 safety/security bugs in the standard, which are adopted by the standard commitee. 
+			We have developed rely-guarantee-based compositional approach and its implementation in Isabelle/HOL, the CSimpl and PiCore tools, in particular for the verification of concurrent OS kernels. Furthermore, we have formally verified core modules of many OSs, including <a href="https://www.zephyrproject.org" target="_blank"><strong>Zephyr RTOS</strong></a> from the Linux Foundation for IoT , VxWorks 653, <a href="https://pok-kernel.github.io" target="_blank"><b>POK</b></a> partitioning OS, <a href="https://fentiss.com/products/hypervisor/" target="_blank"><b>XtratuM</b></a> embedded hypervisor, and many RTOSs in China deployed in domains of aerospace, avionics, IoT, AI, etc. 
+			</p>
+			<p style="font-size:13pt;">
+			Please see our papers at CAV 2019, FM 2019, TACAS 2017/2016, IEEE Transactions on Dependable and Secure Computing, IEEE Transactions on Industrial Informatics, Frontiers of Computer Science, ISSRE 2015, ICECCS 2019/2015, ISORC 2019, SETTA 2019, etc., for more details. 
+			</p>
+
+			
+			
+			<div class="listview-outlook" style="width:98%;">
+				<div class="list" id="survey">
+					<div class="list-content" style="font-size:13pt;">
+						<div class="news_data2">
+						<a href="#" class="fg-cobalt fg-hover-crimson"><i class="icon-arrow-right-5"></i>
+						<b>Surveys on formal methods for OS verification </b>
+						</a></br>
+			
+						<span class="panel-content margin10 fg-dark nlp nrp">
+						<p>
+						Formal methods are mandated by the security/safety certification of OS separation kernels and have been carried out since this concept emerged. However, this field lacks a survey to systematically study, compare, and analyze related work. On the other hand, high-assurance separation kernels by formal methods still face big challenges. 
+						We published the most comprehensive survey on formal methods application for OS separation kernels, which is the state of the art survey in this research field from the last survey by Gerwin Klein in 2009. 
+						</p>
+						</span>
+						<ul>
+						<li>
+						  <strong>Yongwang Zhao</strong>, David Sanan, Fuyuan Zhang, Yang Liu, "High-Assurance Separation Kernels: A Survey on Formal Methods", CoRR abs/1701.01535 (2017) <a href="https://arxiv.org/pdf/1701.01535.pdf" target="_blank"><strong>[PDF download]</strong></a>
+						  </li>
+						<li>
+						<strong>Yongwang Zhao</strong>, Zhibin Yang, Dianfu Ma, "A survey on formal specification and verification of separation kernels", <em><u>Frontiers of Computer Science</u></em> , Volume 11, Issue 4, August 2017, pp. 585 – 607. <a href="papers/FCS2016.pdf" target="_blank"><strong>[PDF download]</strong></a>
+						</li>
+						</ul>
+			
+						</div>
+					</div>
+				</div>
+				
+				<div class="list" id="zephyr">
+					<div class="list-content" style="font-size:13pt;">
+						<div class="news_data2">
+						<a href="#" class="fg-cobalt fg-hover-crimson"><i class="icon-arrow-right-5"></i>
+						<b> Formal Verification of Zephyr RTOS from Linux Foundation </b>
+						</a></br>
+			
+						<span class="panel-content margin10 fg-dark nlp nrp">
+						<p>
+						RTOS are frequently deployed on critical systems, making formal verification of RTOS necessary to ensure their reliability. One of the state of the art RTOS is Zephyr RTOS, a Linux Foundation project. Zephyr is an open source RTOS for connected, resource-constrained devices, and built with security and safety design in mind.The Zephyr community is also considering high assurance level of safety/security certification (Common Criteria, DO-178C). We are developing formal specification and proof of Zephyr compliant with the EAL 7, highest level of Common Criteria security certification. 
+						</p>
+						<p>
+						<b>Correctness, Safety and Security of Zephyr memory management</b>: The first module verified in Zephyr is its memory management. 
+						This work is the first formal specification and mechanized proof of a concurrent memory allocation for a real-world OS concerning a comprehensive set of properties. 
+						An incorrect specification and implementation of the memory management may lead to system crashes or exploitable attacks. For the highest assurance evaluation level, we develop a fine-grained formal specification of the buddy memory management in Zephyr RTOS, which closely follows the C code easing validation of the specification and the source code. The rely-guarantee-based compositional verification has been enforced with respect to a comprehensive set of critical properties, including functional correctness, safety and security. To support formal verification of the security property, we extend our rely-guarantee framework PiCore by a compositional reasoning approach for integrity. During the formal verification, we found three bugs in the C code of Zephyr.
+						
+						</p>
+						</span>
+						<ul>
+						<li><strong>Yongwang Zhao</strong>, David Sanan, "Rely-guarantee Reasoning about Concurrent Memory Management in Zephyr RTOS", <em>
+							<u>31st International Conference on Computer-Aided Verification (CAV 2019)</u></em>, July 15-18, 2019, New York City, NY, USA, pp. 515-533 (<em><strong>CCF A, Top-tier conference in formal methods </strong></em>)<a href="papers/CAV2019.pdf" target="_blank"><strong>[PDF download]</strong></a></li>
+						</ul>
+			
+						</div>
+					</div>
+				</div>
+				
+				<div class="list" id="skifs">
+					<div class="list-content" style="font-size:13pt;">
+						<div class="news_data2">
+						<a href="#" class="fg-cobalt fg-hover-crimson"><i class="icon-arrow-right-5"></i>
+						<b>Information-flow Security and Proof of OS Separation Kernels </b>
+						</a></br>
+			
+						<span class="panel-content margin10 fg-dark nlp nrp">
+						<p>
+						Assurance of information-flow security by formal methods is mandated in security certification of OS separation kernels. 
+						Based on the information-flow security model in our <a href="corin.html">CORIN project</a>, we developed a specification development and security analysis method in Isabelle/HOL for separation kernels based on refinement. Two levels of functional specification are developed by the refinement. A major part of separation kernel requirements in ARINC 653 are modeled, such as kernel initialization, two-level scheduling, partition and process management, and inter-partition communication. The formal specification and its security proofs are carried out in the Isabelle/HOL theorem prover. We have reviewed the source code of one industrial and two open-source ARINC SK implementations, i.e. VxWorks 653, XtratuM, and POK, in accordance with the formal specification. During the verification and code review, 6 security flaws, which can cause information leakage, are found in the ARINC 653 standard and the implementations.
+						
+						</p>
+						</span>
+						<ul>
+						<li><strong>Yongwang Zhao</strong>, David Sanan, Fuyuan Zhang, Yang Liu, "Refinement-based Specification and Security Analysis of Separation Kernels", <em><u>IEEE Transactions on Dependable and Secure Computing (TDSC)</u></em>, Volume 16, Issue 1, January 2019, pp. 127 - 141 (<em><strong>CCF A, Top journal in security</strong></em>) <a href="papers/TDSC2017.pdf" target="_blank"><strong>[PDF download]</strong></a></li>
+						<li><strong>Yongwang Zhao</strong>, David Sann, Fuyuan Zhang, Yang Liu, &quot;Reasoning About Information Flow Security of Separation Kernels with Channel-based Communication&quot;, <em>22nd <u>International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS 2016, ETAPS)</u></em>, 2-8 April 2016, Eindhoven, The Netherlands, pp. 791-810 (<em><strong>CCF B, Top conf. in formal methods</strong></em>) <a href="papers/TACAS2016.pdf" target="_blank"><strong>[PDF download]</strong></a> </li>
+						
+						</ul>
+			
+						</div>
+					</div>
+				</div>
+				
+				<div class="list" id="arinc653">
+					<div class="list-content" style="font-size:13pt;">
+						<div class="news_data2">
+						<a href="#" class="fg-cobalt fg-hover-crimson"><i class="icon-arrow-right-5"></i>
+						<b>Formal Specification and Verification of ARINC 653 Standard and Partitioning OSs </b>
+						</a></br>
+			
+						<span class="panel-content margin10 fg-dark nlp nrp">
+						<p>
+						Partitioning operating systems (POSs) have been widely applied in safety-critical domains from aerospace to automotive. In order to improve the safety and the certification process of POSs, the ARINC 653 standard has been developed and complied with by the mainstream POSs (VxWorks, INTEGRITY-178B, DDC-I Deos, PikeOS, and open source Matrix653, XtratuM, POK). For the purpose of DO-178C Level A certification, we have developed formal specifications of ARINC 653 P1-3 (monocore) and P1-4 (multicore) compliant with Level A requirements. We have formally verified a comprehensive set of critical properties (safety and information-flow security) on the specification and ARINC 653 implementations.  During the formal verification, more than 10 errors were found in the ARINC 653 standard and operating systems. 
+						</p>
+						
+						<p>
+						In papers [1] and [2], we developed a comprehensive formal specification for ARINC 653 P1-3 using Event-B and enforced automatic formal verification of correctness and safety. In [3] and [4], we developed a CC EAL 7 compliant formal framework for specification development and carried out formal verification of information-flow security. We are now developing a formal specification of the full ARINC 653 standard for operating systems (ARINC653 P1-4, multicore) in CSimpl. First release is the partition management and inter-partition communication in [5]. 
+						</p>
+						</span>
+						<ol>
+						
+						<li><strong>Yongwang Zhao</strong>, Zhibin Yang, David Sanan, Yang Liu, "Event-based Formalization of Safety-critical Operating System Standards", <em><u>26th IEEE International Symposium on Software Reliability Engineering (ISSRE 2015)</u></em>, November 2–5, 2015, Washington DC, USA, pp. 281-292 (<em><strong>CCF B, Top conf. in reliability</strong></em>) <a href="papers/ISSRE2015.pdf" target="_blank"><strong>[PDF download]</strong></a>.</li>
+						
+						<li><strong>Yongwang Zhao</strong>, David Sann, Fuyuan Zhang, Yang Liu, "Formal Specification and Analysis of Partitioning Operating Systems by Integrating Ontology and Refinement", <em><u>IEEE Transactions on Industrial Informatics</u></em>, Volume 12, No. 4, August, 2016, pp. 1321 - 1331. (<em>影响因子 8.785</em>) <a href="papers/TII2016.pdf" target="_blank"><strong>[PDF download]</strong></a> </li>
+	  
+						<li><strong>Yongwang Zhao</strong>, David Sanan, Fuyuan Zhang, Yang Liu, "Refinement-based Specification and Security Analysis of Separation Kernels", <em><u>IEEE Transactions on Dependable and Secure Computing (TDSC)</u></em>, Volume 16, Issue 1, January 2019, pp. 127 - 141 (<em><strong>CCF A, Top journal in security</strong></em>) <a href="papers/TDSC2017.pdf" target="_blank"><strong>[PDF download]</strong></a></li>
+						
+						<li><strong>Yongwang Zhao</strong>, David Sann, Fuyuan Zhang, Yang Liu, "Reasoning About Information Flow Security of Separation Kernels with Channel-based Communication", <em>22nd <u>International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS 2016, ETAPS)</u></em>, 2-8 April 2016, Eindhoven, The Netherlands, pp. 791-810 (<em><strong>CCF B, Top conf. in formal methods</strong></em>) <a href="papers/TACAS2016.pdf" target="_blank"><strong>[PDF download]</strong></a> </li>
+						
+						<li>David Sanan, <strong>Yongwang Zhao</strong>, Zhe Hou, Fuyuan Zhang, Alwen Tiu, Yang Liu, "CSimpl: A Rely-Guarantee-Based Framework for Verifying Concurrent Programs", <em><u>23rd International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS 2017, ETAPS)</u></em>, 22-29 April 2017, Uppsala, Sweden, pp. 481-498 (<em><strong>CCF B, Top conf. in formal methods</strong></em>) <a href="papers/TACAS2017.pdf" target="_blank"><strong>[PDF download]</strong></a> 
+						</li>
+						
+						</ol>
+			
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<div class="list" id="memory">
+					<div class="list-content" style="font-size:13pt;">
+						<div class="news_data2">
+						<a href="#" class="fg-cobalt fg-hover-crimson"><i class="icon-arrow-right-5"></i>
+						<b> Formal Specification and Verification of Memory Management in OS Kernels </b>
+						</a></br>
+			
+						<span class="panel-content margin10 fg-dark nlp nrp">
+						<p>
+						Memory management is the most complex module in OSs since its complicated data structures and algorithms. An incorrect specification and implementation of the memory management may lead to system crashes or exploitable attacks. In order to provide reusable formal specification of memory allocation algorithms and implementations, we are developing various memory management implementations in Isabelle/HOL. 
+						</p>
+						<p>
+						In papers [1] and [3], we developed abstract and fine-grained formal specification of buddy memory allocations in Isabelle/HOL. In [3], we developed a verified formal specification of <a href="http://www.gii.upv.es/tlsf/" target="_blank">TLSF memory allocator</a>, which has been widely used in Linux distributions, Xen hypervisor, and many RTOSs. 
+						</p>
+						</span>
+						<ol>
+						<li> Ke Jiang, David Sanan, <strong>Yongwang Zhao</strong>, Shuanglong Kan, Yang Liu, "A Formally Verified Buddy Memory Allocation Model", <em> <u>24th International Conference on Engineering of Complex Computer Systems (ICECCS 2019)</u></em>, 10-13 November 2019, Guangzhou, China, pp. 144-153. </li>
+						<li> Feng Zhang, <strong>Yongwang Zhao#</strong>, Dianfu Ma, Wensheng Niu, "Fine-Grained Formal Specification and Analysis of Buddy Memory Allocation in Zephyr RTOS", <em> <u>IEEE 22nd International Symposium on Real-Time Distributed Computing (ISORC 2019)</u></em>, 7-9 May, 2019, Valencia, Spain, pp. 10-17. </li>
+						<li> Yu Zhang, <strong>Yongwang Zhao#</strong>, David Sanan, Lei Qiao, and Jinkun Zhang, "A Verified Specification of TLSF Memory Management Allocator using State Monads", <em> <u>International Symposium on Software Engineering: Theories, Tools, and Applications (SETTA 2019)</u></em>, Nov. 27-29, 2019, Shanghai, China, pp. 122-138. </li>
+						</ol>
+			
+						</div>
+					</div>
+				</div>
+				
+<!--mLTL, AADL -->
+		</div>
+		
+	</div>
+</div>
+
+		<!--																	 
+			</div>
+		</div>  --> 	
+    </div>
+  </div>
+
+
+<footer data-load="footer.html">
+</footer>
+
+</div>
+
+    <script src="js/hitua.js"></script>
+
+</body>
+</html>

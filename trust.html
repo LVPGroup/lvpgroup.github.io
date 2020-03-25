@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+
+        <link href="css/metro-bootstrap.css" rel="stylesheet">
+    <!--<link href="css/metro-bootstrap-responsive.css" rel="stylesheet">-->
+    <link href="css/iconFont.css" rel="stylesheet">
+
+    <!-- Load JavaScript Libraries -->
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.widget.min.js"></script>
+
+    <!-- Metro UI CSS JavaScript plugins -->
+    <script src="js/load-metro.js"></script>
+
+    <!-- Local JavaScript -->
+    <script src="js/docs.js"></script>
+    <script src="js/github.info.js"></script>
+
+    <title>Yongwang ZHAO's Homepage</title>
+
+    <style>
+        .container {
+            width: 1040px;
+        }
+    </style>
+</head>
+<body class="metro" style="text-align:justify;">
+
+<div class="container">
+  <div class="margin10 nrm nlm" data-load="header.html"></div>
+   <div class="main-content clearfix">
+            
+										
+	<div class="tab-control" data-role="tab-control" style="float:left;width:100%;">
+		<!--<ul class="tabs">
+			<li class="active"><a href="index.html"><b>Home</b> 
+			<i class="icon-arrow-right-5"></i> <b>Research </b> </a></li>
+			
+		</ul>-->
+								 
+		<!--		
+		<div class="panel" id="journal" data-role="panel" style="width:100%;">
+			<div class="panel-header" style="background:#dddddd;font-size:14pt;">
+				<span class="fg-darker"> <b>CORIN - Correctness Infrastructure for Software (软件正确性的基础设施)</b></span>
+			</div>
+			<div class="panel-content margin10 fg-dark nlp nrp" style="font-size:13pt;margin-top:-5pt;margin-bottom:-5pt">
+		-->
+		
+<div class="tab-control" data-role="tab-control" style="float:left;">
+<div class="panel" id="flat" data-role="panel" style="width:100%;">
+	<div class="panel-header" style="background:#dddddd;font-size:14pt;">
+		<span class="fg-darker"> <b>TRust - Programming Languages and Trusted Compiling (编程语言与可信编译)</b></span>
+	</div>
+	<div class="panel-content margin10 fg-dark nlp nrp" style="width:96%;font-size:13pt;margin-left:15pt;margin-right: 25pt; margin-top:0pt;margin-bottom:0pt">
+
+	<!--
+		<div style="float:right; overflow:hidden; width:280px; margin-left:20pt;">
+		 <div>
+		  <nav class="sidebar light">
+		   <ul>	
+			<li class="active"><a href="#" class="bg-lightBlue" style="font-size:13pt;"><i class="icon-home"></i>Navigation</a></li>
+			<li class="stick bg-green"><a href="#survey" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>Survey</a></li>
+			<li class="stick bg-yellow"><a href="#zephyr" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>Zephyr RTOS</a></li>
+			<li class="stick bg-blue"><a href="#skifs" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>Separation Kernels</a></li>
+			<li class="stick bg-orange"><a href="#arinc653" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>ARINC653 Standard and OSs</a></li>
+			<li class="stick bg-orange"><a href="#memory" class="bg-hover-steel"><i class="icon-arrow-right-5"></i>Memory Management</a></li>
+		   </ul>
+		  </nav>
+		 </div>
+		</div> -->
+	
+		<div>
+			<p style="font-size:13pt;">
+			<b>TRust</b> is a long-term project focusing on programming languages and trusted compiling by developing formal semantics of languages and formal verification of compiling. The final goal of this project is to create a formally verified compiler for various languages. 
+			</p>
+			<p style="font-size:13pt;">
+			In this project, we have created the CSimpl language and its parallel Hoare proof system in Isabelle/HOL. CSimpl has been integrated in our PiCore framework. CSimpl is a generic and realistic imperative language by extending Simpl and providing a rely-guarantee proof system. Simpl is composed of the necessary constructs to capture most of the features present in common sequential languages, such as conditional branching, loops, abrupt termination and exceptions, assertions, mutually recursive functions, expressions with side effects, and nondeterminism. Additionally, Simpl can express memory related features like the memory heap, pointers, and pointers to functions. Simpl is able to represent a large subset of C99 code and has been applied to the formal verification of seL4 OS kernel at C code level.
+			</p>
+			<p style="font-size:13pt;">
+			In this project, we have also developed comprehensive formal semantics of LLVM IR language in Isabelle/HOL, and AADL architecture language and its verification approach in Isabelle/HOL. Using our PiCore framework and integrated languages, we have developed the formal semantics of a core subset of BPEL business process language and a verified compiling of BPEL programs to PiCore specification. 
+			</p>
+			
+		</div>
+		
+	</div>
+</div>
+
+		<!--																	 
+			</div>
+		</div>  --> 	
+    </div>
+  </div>
+
+
+<footer data-load="footer.html">
+</footer>
+
+</div>
+
+    <script src="js/hitua.js"></script>
+
+</body>
+</html>
