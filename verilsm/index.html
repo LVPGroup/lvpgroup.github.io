@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0034)https://lvpgroup.github.io/picore/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" class="gr__lvpgroup_github_io"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" href="./The PiCore Framework in Isabelle_HOL 2018_files/isabelle.css">
+<title>VeriLSM: A Formal Framework for High-Assurance Linux Security Modules</title>
+<style type="text/css"></style></head>
+
+
+<body data-gr-c-s-loaded="true">
+<h2>VeriLSM: A Formal Framework for High-Assurance Linux Security Modules</h2>
+
+<div class="sessions">
+
+<p> Developed in Isabelle/HOL 2019 </p>
+<p> For your convenience, you could browse the sources in web browsers as below. </p>
+<h3> Linux Security Modules</h3>
+The Linux kernel has adopted the Linux Security Module (version 2.6). It is a lightweight general access control framework for the Linux kernel. It has supported a general framework that provided a set of security hooks to control operations on kernel objects and a set of opaque security fields in kernel data structures for maintaining security attributes. This framework could then be used by loadable kernel modules to implement any desired model of security. The generality of LSM allows enhanced access controls to be effectively implemented without kernel patches. Several independent modules have been developed for the LSM framework, such as Security-Enhanced Linux, Smack TOMOYO and AppArmor.
+<h3>Common Criteria</h3>
+<p> The Common Criteria(CC) are a standard for security evaluations that are mutually recognized by a large number of countries. There are seven levels of assurance (EAL 1-7) in the standard and a number of so-called protection profiles that detail what exactly is being certified and for which application area. The following chain of requirements is required for EAL 7: (1) a formal security model (SPM), (2) a formal functional specification of security functions (FSP), and (3) a TOE design (TDS). A formal modeling of the system and a formal analysis are required on its highest evaluation assurance level. The highest assurance level of CC certification (EAL7) requires comprehensive security analysis using formal representations of the security model and functional specification as well as formal proofs of correspondence between them.</p>
+
+<h3>The Simplified Mandatory Access Control Kernel (Smack)</h3>
+<p> 
+Smack is an uncomplicated implement MAC for LSM. It also utilizes the EA to label the files in the system. It divides the system based on the Smack-defined labels. Smack is currently maintained in the Linux kernel. It does not explicitly divide the system into logical parts but builds slightly upon the existing modes of access i.e. read, write and execute and adds more modes of access such as append and combinations of the access as read, write, etc. 
+</p>
+<h4>Smack Terminology</h4>
+
+<p>The jargon used to talk about Smack will be familiar to those who have dealt
+with other MAC systems and shouldn't be too difficult for the uninitiated to
+pick up. There are four terms that are used in a specific way and that are
+especially important:<br>
+
+	<li><b>Subject</b>: A subject is an active entity on the computer system. On Smack a subject is a task, which is in turn the basic unit of execution.</li>
+
+	<li><b>Object</b>: An object is a passive entity on the computer system. On Smack files of all types, IPC, and tasks can be objects.</li>
+
+	<li><b>Access</b>: Any attempt by a subject to put information into or get information from an object is an access.</li>
+
+	<li><b>Label</b>: Data that identifies the Mandatory Access Control characteristics of a subject or an object.</li>
+	</p>
+<h4> Smack rule </h4>
+<p>
+Smack rule is represented as a triple:<hr />
+
+<center><b>Subject_label Object_label Access_type</b></center><hr />
+
+There are six Smack access types; read, write, execute, append, transmute, lock. Read, write, execute and append are the same as standard DAC access types.
+
+Transmute is the TRUE/FALSE flag set on directories, which specifies that all newly created objects inside that directory will inherit the label of the parent (all directories inherit also transmute setting). For a process to make use of the transmute flag, not only the transmute attribute on directory has to be set; also , the process needs to have the "t" access mode Smack rule to the directory's label.
+
+Lock is used for locking a file (especially needed in case of databases, which require locking even with read-only operations). Write includes lock automatically.
+</p>
+
+<h3>VeriLSM Framework </h3>
+<p>
+We propose a novel and formal framework (VeriLSM) for certifying and implementing high-assurance LSM modules.  VeriLSM is parameterized, standardized and reusable framework for formal verification and certification of concrete LSM modules. The specification development and security analysis method using stepwise refinement for Linux LSM with regard to the CC EAL 7 certification.  
+The SPM of VeriLSM represents the security policies for LSM and is a formal model. It is a dynamic security policy model interpreting access control by noninterference.  We use information-flow security properties to interpret the access control policies of LSM. FSP is comprised of a parameterized formal specification of LSM which specifies LSM hook interfaces, LSM model and an abstract execution of Linux kernel APIs.   We develop the design level specification of Smack (TDS)  and integrate it with the VeriLSM framework. Moreover, the specifications and proofs of VeriLSM are reusable for LSM implementations, e.g. Smack, AppArmor, and SELinux. 
+
+</p>
+
+<p><a href="Verilsm.html">Browse the Isabelle/HOL sources of VeriLSM</a></p>
+
+
+
+</div>
+
+</body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

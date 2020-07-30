@@ -1,0 +1,1058 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory SmackLemma (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory SmackLemma</h1>
+
+<span class="command">theory</span> <span class="name">SmackLemma</span><br/>
+<span class="keyword">imports</span> <a href="SmackHooks.html"><span class="name">SmackHooks</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="keyword1"><span class="command">section</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; Smack proof &#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>SmackLemma</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">imports</span></span><span> 
+</span><span>  </span><span>SmackHooks</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Correctness for Smack TDS specification &#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smk_access_entry_not_chg_state</span><span class="delimiter">:</span><span> 
+</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;s&#39;.
+  &#10627;&#955;s. s= s&#39;&#10628; 
+  smk_access_entry s&#39; subj obj r 
+  &#10627;&#955;r s. s = s&#39; &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smk_access_entry_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_ptrace_access_check&#8250;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_ptrace_access_check_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_ptrace_access_check s t m &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_ptrace_access_check_def</span><span> </span><span>smk_ptrace_rule_check_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_ptrace_access_check_correctness1</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;t m. &#10627;&#955;s. smk_known (smk_of_task(the((t_security s)(task_cred (current_task s))))) = smk_known (smk_of_task_struct s t) 
+  &#8743;  (((int m) AND PTRACE_MODE_ATTACH) &#8800; 0) &#8743; (
+                     ((smack_ptrace_rule shared) = SMACK_PTRACE_EXACT) &#8744; 
+                      ((smack_ptrace_rule shared) = SMACK_PTRACE_DRACONIAN)) = True
+  &#10628;
+  smack_ptrace_access_check s t m &#10627;&#955;r s. r = 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_ptrace_access_check_def</span><span> </span><span>smk_ptrace_rule_check_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>  
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>int_and_0</span><span> </span><span>semiring_1_class.of_nat_0</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_ptrace_access_check_correctness2</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;t m. &#10627;&#955;s. smk_known (smk_of_task(the((t_security s)(task_cred (current_task s))))) &#8800; smk_known (smk_of_task_struct s t) 
+  &#8743;  (((int m) AND PTRACE_MODE_ATTACH) &#8800; 0) &#8743; (
+                     ((smack_ptrace_rule shared) = SMACK_PTRACE_EXACT) &#8744; 
+                      ((smack_ptrace_rule shared) = SMACK_PTRACE_DRACONIAN)) = True
+ &#8743; (smack_ptrace_rule shared) = SMACK_PTRACE_DRACONIAN
+  &#10628;
+  smack_ptrace_access_check s t m &#10627;&#955;r s. r = -EACCES &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_ptrace_access_check_def</span><span> </span><span>smk_ptrace_rule_check_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>  
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>int_and_0</span><span> </span><span>semiring_1_class.of_nat_0</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_ptrace_access_check_correctness3</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;t m. &#10627;&#955;s. smk_known (smk_of_task(the((t_security s)(task_cred (current_task s))))) &#8800; smk_known (smk_of_task_struct s t) 
+  &#8743;  (((int m) AND PTRACE_MODE_ATTACH) &#8800; 0) &#8743; (
+                     ((smack_ptrace_rule shared) = SMACK_PTRACE_EXACT) &#8744; 
+                      ((smack_ptrace_rule shared) = SMACK_PTRACE_DRACONIAN)) = True
+ &#8743; (smack_ptrace_rule shared) &#8800; SMACK_PTRACE_DRACONIAN
+  &#8743; smack_privileged_cred CAP_SYS_PTRACE tracercred
+  &#10628;
+  smack_ptrace_access_check s t m &#10627;&#955;r s. r = 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_ptrace_access_check_def</span><span> </span><span>smk_ptrace_rule_check_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>  
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>int_and_0</span><span> </span><span>semiring_1_class.of_nat_0</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_ptrace_access_check_correctness4</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;t m. &#10627;&#955;s. smk_known (smk_of_task(the((t_security s)(task_cred (current_task s))))) &#8800; 
+            smk_known (smk_of_task_struct s t) 
+          &#8743;  (((int m) AND PTRACE_MODE_ATTACH) &#8800; 0) 
+          &#8743; (((smack_ptrace_rule shared) = SMACK_PTRACE_EXACT) &#8744; 
+             ((smack_ptrace_rule shared) = SMACK_PTRACE_DRACONIAN)) = True
+          &#8743; (smack_ptrace_rule shared) &#8800; SMACK_PTRACE_DRACONIAN
+          &#8743; smack_privileged_cred CAP_SYS_PTRACE tracercred = Fasle &#10628;
+          smack_ptrace_access_check s t m 
+         &#10627;&#955;r s. r = -EACCES &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_ptrace_access_check_def</span><span> </span><span>smk_ptrace_rule_check_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span>  </span><span>int_and_comm</span><span> </span><span>int_and_extra_simps</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span> </span><span>semiring_1_class.of_nat_0</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>metis</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_ptrace_traceme&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_ptrace_traceme_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_ptrace_traceme s ptp &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_ptrace_traceme_def</span><span> </span><span>smk_ptrace_rule_check_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_syslog&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_syslog_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_syslog s t &#10627;&#955;r s. r = 0 &#8744; r = uminus EACCES &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_syslog_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_syslog_correctness1</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;s. &#10627;&#955;s. smack_privileged s CAP_MAC_OVERRIDE = True&#10628; smack_syslog s t &#10627;&#955;r s. r = 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_syslog_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span class="delimiter">(</span><span>mono_tags</span><span class="delimiter">,</span><span> </span><span>lifting</span><span class="delimiter">)</span><span> </span><span>hoare_return_simp</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_syslog_correctness2</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;s. &#10627;&#955;s. smack_privileged s CAP_MAC_OVERRIDE = False 
+      &#8743; smk_of_current s &#8800; smack_syslog_label shared &#10628; smack_syslog s t &#10627;&#955;r s. r = -EACCES&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_syslog_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span class="delimiter">(</span><span>mono_tags</span><span class="delimiter">,</span><span> </span><span>lifting</span><span class="delimiter">)</span><span> </span><span>hoare_return_simp</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_syslog_correctness3</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;s. &#10627;&#955;s. smack_privileged s CAP_MAC_OVERRIDE = False 
+      &#8743; smk_of_current s = smack_syslog_label shared &#10628; smack_syslog s t &#10627;&#955;r s. r = 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_syslog_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span class="delimiter">(</span><span>mono_tags</span><span class="delimiter">,</span><span> </span><span>lifting</span><span class="delimiter">)</span><span> </span><span>hoare_return_simp</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_sb_alloc_security&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_sb_alloc_security_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_sb_alloc_security s sb 
+ &#10627;&#955;r s. (r = 0 ) &#8744; r = (uminus ENOMEM) &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_sb_alloc_security_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_sb_free_security&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_sb_free_security_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_sb_free_security s sb &#10627;&#955;r s. r = unit&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_sb_free_security_def</span><span> </span><span>get_sbnum_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_sb_free_security_correctness1</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_sb_free_security s sb &#10627;&#955;r s. (r = unit &#8743; sb_security s sb = None)&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_sb_free_security_def</span><span> </span><span>get_sbnum_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_sb_copy_data&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_sb_copy_data_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_sb_copy_data s orig smackopts
+ &#10627;&#955;r s. r = 0  &#8744; r = (uminus ENOMEM) &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_sb_copy_data_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_parse_opts_str&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_set_mnt_opts&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_set_mnt_opts_correctness</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_set_mnt_opts s sb opt kern_flags set_kern_flags
+  &#10627;&#955;r s. r = 0  &#8744; r = (uminus EPERM) &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_set_mnt_opts_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_sb_kern_mount&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_sb_kern_mount_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_sb_kern_mount s sb f data &#10627;&#955;r s. (r = 0 &#8744; r = (uminus EPERM))&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_sb_kern_mount_def</span><span> </span><span>smack_set_mnt_opts_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_sb_kern_mount_correctness1</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;data.&#10627;&#955;s. length(data) = 0&#10628; smack_sb_kern_mount s sb f data &#10627;&#955;r s. r = 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_sb_kern_mount_def</span><span> </span><span>smack_set_mnt_opts_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_sb_statfs&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_sb_statfs_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_sb_statfs s sb &#10627;&#955;r s. (r = 0 &#8744; r &#8800; 0)&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_sb_statfs_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_bprm_set_creds&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_bprm_set_creds_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_bprm_set_creds s bprm &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_bprm_set_creds_def</span><span> </span><span>smk_ptrace_rule_check_def</span><span> </span><span>ptrace_parent_def</span><span> </span><span>smack_privileged_cred_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_alloc_security&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_alloc_security_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_alloc_security s a &#10627;&#955;r s. r = 0 &#8744; r = (uminus ENOMEM)  &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_alloc_security_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_free_security&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_free_security_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_free_security s a &#10627;&#955;r s. r = unit &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_free_security_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_init_security&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_init_security_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_init_security s inode dir qstr name value len&#39; &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0  &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_link&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_link_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_link s old dir new &#10627;&#955;r s. r = 0 &#8744; r&#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_link_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_unlink&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_unlink_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_unlink s dir d &#10627;&#955;r s. r = 0 &#8744; r&#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_unlink_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_rmdir&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_rmdir_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_rmdir s dir d &#10627;&#955;r s. r = 0 &#8744; r&#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_rmdir_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_rename&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_rename_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_rename s oldinode oldd newinode newd &#10627;&#955;r s. r = 0 &#8744; r&#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_rename_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_permission&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_permission_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_permission s i mask&#39; &#10627;&#955;r s. r = 0 &#8744; r&#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_permission_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_setattr&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_setattr_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_setattr s d attrs &#10627;&#955;r s. r = 0 &#8744; r&#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_setattr_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_getattr&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_getattr_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_getattr s path&#39; &#10627;&#955;r s. r = 0 &#8744; r&#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_getattr_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_setxattr&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_setxattr_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_setxattr s dentry name value size&#39; flags&#39; &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_setxattr_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_post_setxattr&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_post_setxattr_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_post_setxattr s dentry name value size&#39; flags&#39; &#10627;&#955;r s. r = unit &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_post_setxattr_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_getxattr&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_getxattr_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_getxattr s d name &#10627;&#955;r s. r = 0 &#8744; r&#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_getxattr_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_removexattr&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_removexattr_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_removexattr s dentry name  &#10627;&#955;r s. r = 0 &#8744; r&#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_removexattr_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_getsecurity&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_getsecurity_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_getsecurity s inode name buffer alloc  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_getsecurity_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_listsecurity&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_listsecurity_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_listsecurity  s inode buffer buffer_size &#10627;&#955;r s. r = 17&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_listsecurity_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_getsecid&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_getsecid_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_getsecid s i secid&#39; &#10627;&#955;r s. r = unit&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_getsecid_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_file_alloc_security&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_alloc_security_correctness</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;s f. &#10627;&#955;s. True&#10628; smack_file_alloc_security s f &#10627;&#955;r s. r = 0 &#8744; r = -EEXIST&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_alloc_security_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_alloc_security_correctness_state</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;s&#39; f.&#10627;&#955;so. so = s&#39; &#8743; f_security so f = None&#10628;
+          smack_file_alloc_security s&#39; f 
+         &#10627;&#955;r sa. sa = s&#39;&#10631;f_security := (f_security s&#39;)(f := Some (smk_of_current s&#39;))&#10632;&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_alloc_security_def</span><span> </span><span>bind_def</span><span> </span><span>return_def</span><span> </span><span>modify_def</span><span> </span><span>put_def</span><span> 
+</span><span>               </span><span>get_def</span><span> </span><span>EEXIST_def</span><span> </span><span>valid_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_file_free_security&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_free_security_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_file_free_security s f &#10627;&#955;r s. r = unit&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_free_security_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_mmap_file&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_mmap_file_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_mmap_file s file&#39; reqprot prot  flags&#39;   &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_mmap_file_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_file_ioctl&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_ioctl_correctness1</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;file&#39; inode .
+  &#10627;&#955;s. inode = file_inode(file&#39;) &#8743; unlikely(IS_PRIVATE(inode)) &#10628; 
+  smack_file_ioctl s file&#39; cmd arg  
+  &#10627;&#955;r s. r = 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_ioctl_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>smt</span><span> </span><span>hoare_assume_pre</span><span> </span><span>hoare_return_simp</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_ioctl_correctness_ioc_write</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;file&#39; inode cmd ret.
+  &#10627;&#955;s. inode = file_inode(file&#39;) &#8743; 
+       unlikely(IS_PRIVATE(inode)) = False &#8743;
+       cmd = IOC_WRITE &#8743;  
+       ret = fst(the_run_state (smk_curacc s (smk_of_inode s inode) MAY_WRITE ad) s)&#10628; 
+  smack_file_ioctl s file&#39; cmd arg  
+  &#10627;&#955;r s. r = ret &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_ioctl_def</span><span> </span><span>smk_bu_file_def</span><span>  </span><span>bind_def</span><span>  </span><span>return_def</span><span> </span><span>valid_def</span><span> </span><span>the_run_state_def</span><span> </span><span>fstI</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_ioctl_correctness_ioc_read</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;file&#39; inode cmd ret.
+  &#10627;&#955;s. inode = file_inode(file&#39;) &#8743; 
+       unlikely(IS_PRIVATE(inode)) = False &#8743;
+       cmd = IOC_READ &#8743;  
+       ret = fst(the_run_state (smk_curacc s (smk_of_inode s inode) MAY_READ ad) s)&#10628; 
+  smack_file_ioctl s file&#39; cmd arg  
+  &#10627;&#955;r s. r = ret &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_ioctl_def</span><span> </span><span>smk_bu_file_def</span><span>  </span><span>bind_def</span><span>  </span><span>return_def</span><span> </span><span>valid_def</span><span> </span><span>the_run_state_def</span><span> </span><span>fstI</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_ioctl_correctness_ioc_other</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;file&#39; inode cmd.
+  &#10627;&#955;s. inode = file_inode(file&#39;) &#8743; 
+       unlikely(IS_PRIVATE(inode)) = False &#8743;
+       cmd &#8800; IOC_READ &#8743;  
+       cmd &#8800; IOC_WRITE&#10628; 
+  smack_file_ioctl s file&#39; cmd arg  
+  &#10627;&#955;r s. r = 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_ioctl_def</span><span> </span><span>smk_bu_file_def</span><span>  </span><span>bind_def</span><span> </span><span>return_def</span><span> </span><span>valid_def</span><span> </span><span>the_run_state_def</span><span> </span><span>fstI</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_file_lock&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_lock_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_file_lock s file&#39; cmd  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_lock_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_lock_correctness1</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;file&#39; inode .
+  &#10627;&#955;s. inode = file_inode(file&#39;) &#8743; unlikely(IS_PRIVATE(inode)) &#10628; 
+  smack_file_lock s file&#39; cmd  
+  &#10627;&#955;r s. r = 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_lock_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>smt</span><span> </span><span>hoare_assume_pre</span><span> </span><span>hoare_return_simp</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_lock_correctness2</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot; &#8707;file&#39; inode rc.
+  &#10627;&#955;s. (SECURITY_SMACK_BRINGUP conf) = True &#8743; inode = file_inode(file&#39;) &#8743; unlikely(IS_PRIVATE(inode)) = False &#10628; 
+  smack_file_lock s file&#39; cmd  
+  &#10627;&#955;r s. r = 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_lock_def</span><span> </span><span>smk_bu_file_def</span><span>  </span><span>bind_def</span><span> </span><span>return_def</span><span> </span><span>valid_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_lock_correctness3</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot; &#8704;sa. &#8707;file&#39; inode ret ad.
+  &#10627;&#955;s.  (SECURITY_SMACK_BRINGUP conf) = False &#8743; s = sa &#8743;
+         inode = file_inode(file&#39;) &#8743; 
+         unlikely(IS_PRIVATE(inode)) = False &#8743; 
+         ret = fst(the_run_state (smk_curacc s (smk_of_inode s inode) MAY_LOCK ad) s)&#10628; 
+  smack_file_lock sa file&#39; cmd  
+  &#10627;&#955;r s. r = ret &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_lock_def</span><span> </span><span>smk_bu_file_def</span><span>  </span><span>bind_def</span><span>  </span><span>return_def</span><span> </span><span>valid_def</span><span> </span><span>the_run_state_def</span><span> </span><span>fstI</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>
+</span><span>  
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_file_fcntl_def&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_fcntl_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_file_fcntl s file&#39; cmd arg  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_fcntl_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_fcntl_correctness1</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8707;file&#39; inode .
+  &#10627;&#955;s. inode = file_inode(file&#39;) &#8743; unlikely(IS_PRIVATE(inode)) &#10628; 
+  smack_file_fcntl s file&#39; cmd arg 
+  &#10627;&#955;r s. r = 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_fcntl_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>smt</span><span> </span><span>hoare_assume_pre</span><span> </span><span>hoare_return_simp</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_fcntl_correctness_fsetlkandfsetlkw</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot; &#8704;sa. &#8707;file&#39; inode ret ad cmd.
+  &#10627;&#955;s.  (SECURITY_SMACK_BRINGUP conf) = False &#8743; s = sa &#8743;
+         inode = file_inode(file&#39;) &#8743; 
+         unlikely(IS_PRIVATE(inode)) = False &#8743; 
+         (cmd = F_SETLK &#8744; cmd = F_SETLKW) &#8743;
+         ret = fst(the_run_state (smk_curacc s (smk_of_inode s inode) MAY_LOCK ad) s)&#10628; 
+  smack_file_fcntl s file&#39; cmd arg
+  &#10627;&#955;r s. r = ret &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_fcntl_def</span><span> </span><span>smk_bu_file_def</span><span>  </span><span>bind_def</span><span>  </span><span>return_def</span><span> </span><span>valid_def</span><span> </span><span>the_run_state_def</span><span> </span><span>fstI</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_fcntl_correctness_fsetownandsig</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot; &#8704;sa .&#8707;file&#39; inode ret ad  cmd.
+  &#10627;&#955;s.  (SECURITY_SMACK_BRINGUP conf) = False &#8743; s = sa &#8743;
+         inode = file_inode(file&#39;) &#8743; 
+         unlikely(IS_PRIVATE(inode)) = False &#8743; 
+         (cmd = F_SETOWN &#8744; cmd = F_SETSIG) &#8743;
+         ret = fst(the_run_state (smk_curacc s (smk_of_inode s inode) MAY_WRITE ad) s)&#10628; 
+  smack_file_fcntl s file&#39; cmd arg
+  &#10627;&#955;r s. r = ret &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_fcntl_def</span><span> </span><span>smk_bu_file_def</span><span>  </span><span>bind_def</span><span>  </span><span>return_def</span><span> </span><span>valid_def</span><span> </span><span>the_run_state_def</span><span> </span><span>fstI</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>blast</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_fcntl_correctness_other</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot; &#8704;sa. &#8707;file&#39; inode ret ad cmd.
+  &#10627;&#955;s.  (SECURITY_SMACK_BRINGUP conf) = False &#8743; s = sa &#8743;
+         inode = file_inode(file&#39;) &#8743; 
+         unlikely(IS_PRIVATE(inode)) = False &#8743; 
+         (cmd &#8800; F_SETOWN &#8743; cmd &#8800; F_SETSIG &#8743;cmd  &#8800; F_SETLK &#8743; cmd &#8800; F_SETLKW) &#8743;
+         ret = fst(the_run_state (smk_curacc s (smk_of_inode s inode) MAY_WRITE ad) s)&#10628; 
+  smack_file_fcntl s file&#39; cmd arg
+  &#10627;&#955;r s. r = 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_fcntl_def</span><span> </span><span>smk_bu_file_def</span><span>  </span><span>bind_def</span><span>  </span><span>return_def</span><span> </span><span>valid_def</span><span> </span><span>the_run_state_def</span><span> </span><span>fstI</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_file_set_fowner&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_set_fowner_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_file_set_fowner s file&#39; &#10627;&#955;r s. r = unit &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_set_fowner_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_set_fowner_correctness1</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;sa. &#10627;&#955;s. s = sa&#10628; smack_file_set_fowner sa file&#39; &#10627;&#955;r s. f_security s file&#39; = Some (smk_of_current sa) &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_set_fowner_def</span><span> </span><span>modify_def</span><span> </span><span>return_def</span><span> </span><span>get_def</span><span> </span><span>put_def</span><span> </span><span>bind_def</span><span> </span><span>valid_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_file_send_sigiotask&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_send_sigiotask_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_file_send_sigiotask s tsk&#39; fown signum  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_send_sigiotask_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_file_receive&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_receive_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_file_receive s file&#39;  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_receive_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_file_open&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_file_open_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_file_open s file&#39;  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_file_open_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_cred_alloc_blank&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_cred_alloc_blank_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_cred_alloc_blank s c g &#10627;&#955;r s. r = 0 &#8744; r = -ENOMEM &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_cred_alloc_blank_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_cred_free&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_cred_free_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_cred_free s c  &#10627;&#955;r s. r = unit &#8743; (t_security s) c = None &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_cred_free_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_cred_prepare&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_cred_prepare_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_cred_prepare s new old g  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_cred_prepare_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_cred_getsecid&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_cred_getsecid_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_cred_getsecid s c i  &#10627;&#955;r s&#39;. r = unit  &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_cred_getsecid_def</span><span> </span><span>smk_of_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_cred_transfer&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_cred_transfer_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_cred_transfer s new old  &#10627;&#955;r s&#39;. r = unit  &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_cred_transfer_def</span><span> </span><span>smk_of_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_kernel_act_as&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_kernel_act_as_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_kernel_act_as s c i  &#10627;&#955;r s. r = 0  &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_kernel_act_as_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_kernel_create_files_as&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_kernel_create_files_as_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_kernel_create_files_as s new i &#10627;&#955;r s. r = 0  &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_kernel_create_files_as_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smk_curacc_on_task&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smk_curacc_on_task_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smk_curacc_on_task s p access&#39; caller&#39; &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smk_curacc_on_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_task_setpgid&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_task_setpgid_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_task_setpgid s p pid &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_task_setpgid_def</span><span> </span><span>smk_curacc_on_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_task_getpgid&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_task_getpgid_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_task_getpgid s p &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_task_getpgid_def</span><span> </span><span>smk_curacc_on_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_task_getsid&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_task_getsid_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_task_getsid s p  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_task_getsid_def</span><span> </span><span>smk_curacc_on_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_task_getsecid&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_task_getsecid_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_task_getsecid s p pid &#10627;&#955;r s. r = unit &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_task_getsecid_def</span><span> </span><span>smk_curacc_on_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_task_setnice&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_task_setnice_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_task_setnice s p pid &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_task_setnice_def</span><span> </span><span>smk_curacc_on_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_task_setioprio&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_task_setioprio_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_task_setioprio s p pid &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_task_setioprio_def</span><span> </span><span>smk_curacc_on_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_task_getioprio&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_task_getioprio_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_task_getioprio s p  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_task_getioprio_def</span><span> </span><span>smk_curacc_on_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_task_setscheduler&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_task_setscheduler_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_task_setscheduler s p  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_task_setscheduler_def</span><span> </span><span>smk_curacc_on_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_task_getscheduler&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_task_getscheduler_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_task_getscheduler s p  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_task_getscheduler_def</span><span> </span><span>smk_curacc_on_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_task_movememory&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_task_movememory_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_task_movememory s p  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_task_movememory_def</span><span> </span><span>smk_curacc_on_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_task_kill&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_task_kill_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_task_kill s p info sig c  &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_task_kill_def</span><span> </span><span>smk_curacc_on_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_task_to_inode&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_task_to_inode_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;p. &#10627;&#955;s. True&#10628; smack_task_to_inode s p i  &#10627;&#955;r s&#39;. r = unit &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_task_to_inode_def</span><span> </span><span>smk_curacc_on_task_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_ipc_permission&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_ipc_permission_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_ipc_permission s ipp flag  &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_ipc_permission_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_ipc_getsecid&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_ipc_getsecid_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_ipc_getsecid s ipp flag  &#10627;&#955;r s&#39;. r = () &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_ipc_getsecid_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_msg_msg_alloc_security&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_msg_msg_alloc_security_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_msg_msg_alloc_security s msg  &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_msg_msg_alloc_security_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_msg_msg_alloc_security_correctness_state</span><span class="delimiter">:</span><span>
+</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8896;sa msg. &#10627;&#955;s .s = sa &#8743; msg_security s msg = None&#10628; 
+            smack_msg_msg_alloc_security sa msg 
+            &#10627;&#955;r s. msg_security s msg = Some (smk_of_current sa)&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_msg_msg_alloc_security_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_msg_msg_free_security&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_msg_msg_free_security_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_msg_msg_free_security s msg  &#10627;&#955;r s&#39;. r = () &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_msg_msg_free_security_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_ipc_alloc_security&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_ipc_alloc_security_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_ipc_alloc_security s isp  &#10627;&#955;r s. r = 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_ipc_alloc_security_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_ipc_free_security&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_ipc_free_security_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_ipc_free_security s isp  &#10627;&#955;r s. r = () &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_ipc_free_security_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_shm_associate&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_shm_associate_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_shm_associate s isp shmflg  &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_shm_associate_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_shm_shmctl&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_shm_shmctl_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_shm_shmctl s isp cmd   &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_shm_shmctl_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_shm_shmat&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_shm_shmat_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_shm_shmat s ipc&#39; shmaddr shmflg   &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_shm_shmat_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smk_curacc_sem&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smk_curacc_sem_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smk_curacc_sem s isp access  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smk_curacc_sem_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_sem_associate&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_sem_associate_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_sem_associate s isp shmflg &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_sem_associate_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_sem_semctl&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_sem_semctl_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_sem_semctl s isp cmd &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_sem_semctl_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_sem_semop&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_sem_semop_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_sem_semop s isp sops nsops alter &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_sem_semop_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smk_curacc_msq&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smk_curacc_msq_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smk_curacc_msq s isp acces &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smk_curacc_msq_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_msg_queue_associate&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_msg_associate_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_msg_queue_associate s isp shmflg &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_msg_queue_associate_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_msg_queue_msgctl&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_msg_queue_msgctl_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_msg_queue_msgctl s isp cmd &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_msg_queue_msgctl_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_msg_queue_msgsnd&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_msg_queue_msgsnd_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_msg_queue_msgsnd s isp msg msqflg &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_msg_queue_msgsnd_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_msg_queue_msgrcv&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_msg_queue_msgrcv_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_msg_queue_msgrcv s isp msg p long msqflg &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_msg_queue_msgrcv_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_key_alloc&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_key_alloc_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_key_alloc s k c flg   &#10627;&#955;r s. r = 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_key_alloc_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_key_free&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_key_free_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_key_free s k   &#10627;&#955;r s. r = unit &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_key_free_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_key_permission&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_key_permission_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_key_permission s key_ref c perm  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_key_permission_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_key_getsecurity&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_key_getsecurity_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_key_getsecurity s k  buffer &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_key_getsecurity_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_unix_stream_connect&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_unix_stream_connect_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_unix_stream_connect s sock other newsk &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_unix_stream_connect_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_unix_may_send&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_unix_may_send_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_unix_may_send s sock other  &#10627;&#955;r s. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_unix_may_send_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_socket_post_create&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_socket_post_create_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_socket_post_create s sock family type&#39; protocols kern  &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_socket_post_create_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_socket_socketpair&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_socket_socketpair_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_socket_socketpair s socka sockb  &#10627;&#955;r s&#39;. r = 0  &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_socket_socketpair_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_socket_bind&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_socket_bind_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_socket_bind s sock address addrlen  &#10627;&#955;r s&#39;. r = 0  &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_socket_bind_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_socket_connect&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_socket_connect_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_socket_connect s sock sap addrlen   &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_socket_connect_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_socket_sendmsg&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_socket_sendmsg_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_socket_sendmsg s sock msg size&#39;  &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_socket_sendmsg_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_socket_sock_rcv_skb&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_socket_sock_rcv_skb_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_socket_sock_rcv_skb s sock skb   &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_socket_sock_rcv_skb_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_socket_getpeersec_stream&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_socket_getpeersec_stream_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_socket_getpeersec_stream s sock optval optlen len&#39;  &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_socket_getpeersec_stream_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_socket_getpeersec_dgram&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_socket_getpeersec_dgram_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_socket_getpeersec_dgram s sock skb secid&#39;  &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_socket_getpeersec_dgram_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_sk_alloc_security&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_sk_alloc_security_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_sk_alloc_security s sock family flgs &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_sk_alloc_security_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_sk_free_security&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_sk_free_security_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_sk_free_security s sock &#10627;&#955;r s&#39;. r = unit &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_sk_free_security_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_sock_graft&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_sock_graft_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_sock_graft s sock parent&#39; &#10627;&#955;r s&#39;. r = unit &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_sock_graft_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inet_conn_request&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inet_conn_request_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inet_conn_request s sock skb req &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inet_conn_request_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inet_csk_clone&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inet_csk_clone_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inet_csk_clone s sock req &#10627;&#955;r s&#39;. r = unit &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inet_csk_clone_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_audit_rule_init&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_audit_rule_init_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_audit_rule_init s field op rulestr vrule  &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_audit_rule_known&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_audit_rule_known_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_audit_rule_known s krule  &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_audit_rule_match&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_audit_rule_match_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_audit_rule_match s  secid&#39; field op vrule actx &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_ismaclabel&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_ismaclabel_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_ismaclabel s name &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_secid_to_secctx&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_secid_to_secctx_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_secid_to_secctx s secid&#39; secdata seclen  &#10627;&#955;r s. r = 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_secid_to_secctx_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_secctx_to_secid&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_secctx_to_secid_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_secctx_to_secid s secdata seclen  secid&#39; &#10627;&#955;r s. r = 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_secctx_to_secid_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_notifysecctx&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_notifysecctx_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_notifysecctx s inode ctx ctxlen  &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_notifysecctx_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_setsecctx&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_setsecctx_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_setsecctx s dentry ctx ctxlen &#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_setsecctx_def</span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_getsecctx&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_getsecctx_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_getsecctx s inode ctx ctxlen &#10627;&#955;r s. r = 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_getsecctx_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_copy_up&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_copy_up_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_copy_up s dentry new&#10627;&#955;r s&#39;. r = 0 &#8744; r &#8800; 0 &#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_inode_copy_up_xattr&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_copy_up_xattr_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_inode_copy_up_xattr s name  &#10627;&#955;r s. r = -EOPNOTSUPP &#8744; r = 1&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_copy_up_xattr_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_copy_up_xattr_correctness1</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. name = XATTR_NAME_SMACK&#10628; smack_inode_copy_up_xattr s name  &#10627;&#955;r s.  r = 1&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_copy_up_xattr_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_inode_copy_up_xattr_correctness2</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. name &#8800;  XATTR_NAME_SMACK&#10628; smack_inode_copy_up_xattr s name  &#10627;&#955;r s.  r = -EOPNOTSUPP&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_inode_copy_up_xattr_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; correctness lemmas of smack_dentry_create_files_as&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>smack_dentry_create_files_as_correctness</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. True&#10628; smack_dentry_create_files_as s dentry mode&#39; name old new &#10627;&#955;r s. r = 0&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>unfold</span><span> </span><span>smack_dentry_create_files_as_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span></pre>
+
+</div>
+</body>
+</html>
