@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory picore_SIMP_lemma (Isabelle2020: April 2020)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory picore_SIMP_lemma</h1>
+
+<span class="command">theory</span> <span class="name">picore_SIMP_lemma</span><br/>
+<span class="keyword">imports</span> <a href="picore_SIMP_Syntax.html"><span class="name">picore_SIMP_Syntax</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+Created by Yongwang Zhao (zhaoyw@buaa.edu.cn, zhaoyongwang@gmail.com)
+School of Computer Science &amp; Engineering, Beihang University, China
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Lemmas of Picore-SIMP&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>picore_SIMP_lemma</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;picore_SIMP_Syntax&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;picore_SIMP&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>id_belong</span><span class="delimiter">[</span><span>simp</span><span class="delimiter">]</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Id &#8838;&#10627;&#170;x= &#186;x&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>Collect_mono</span><span> </span><span>Id_fstsnd_eq</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>allpre_eq_pre</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#8704;v&#8712;U. &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [{v}, rely, guar, post]) &#10231; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [U, rely, guar, post]&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span> </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>Allprecond</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>blast</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>Conseq</span><span class="delimiter">[</span><span>of</span><span> </span><span>_</span><span> </span><span>_</span><span> </span><span>rely</span><span> </span><span>rely</span><span> </span><span>guar</span><span> </span><span>guar</span><span> </span><span>post</span><span> </span><span>post</span><span> </span><span>P</span><span class="delimiter">]</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>sat_pre_imp_allinpre</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [U, rely, guar, post] &#10233; v&#8712;U &#10233; &#8866;<span class="hidden">&#8681;</span><sub>I</sub> P sat<span class="hidden">&#8681;</span><sub>p</sub> [{v}, rely, guar, post]&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>Conseq</span><span class="delimiter">[</span><span>of</span><span> </span><span>_</span><span> </span><span>_</span><span> </span><span>rely</span><span> </span><span>rely</span><span> </span><span>guar</span><span> </span><span>guar</span><span> </span><span>post</span><span> </span><span>post</span><span> </span><span>P</span><span class="delimiter">]</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>stable_int_col2</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;stable &#10627;s&#10628; r &#10233; stable &#10627;t&#10628; r &#10233; stable &#10627;s &#8743; t&#10628; r&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>stable_int_col3</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;stable &#10627;k&#10628; r &#10233; stable &#10627;s&#10628; r &#10233; stable &#10627;t&#10628; r &#10233; stable &#10627;k &#8743; s &#8743; t&#10628; r&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>stable_int_col4</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;stable &#10627;m&#10628; r &#10233; stable &#10627;k&#10628; r &#10233; stable &#10627;s&#10628; r
+  &#10233; stable &#10627;t&#10628; r &#10233; stable &#10627;m &#8743; k &#8743; s &#8743; t&#10628; r&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>stable_int_col5</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;stable &#10627;q&#10628; r &#10233; stable &#10627;m&#10628; r &#10233;  stable &#10627;k&#10628; r
+  &#10233; stable &#10627;s&#10628; r &#10233; stable &#10627;t&#10628; r &#10233; stable &#10627;q &#8743; m &#8743; k &#8743; s &#8743; t&#10628; r&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>stable_un2</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;stable s r &#10233; stable t r &#10233; stable (s &#8746; t) r&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>stable_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>stable_un_R</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;stable s r &#10233; stable s r&#39; &#10233; stable s (r &#8746; r&#39;)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>meson</span><span> </span><span>UnE</span><span> </span><span>stable_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>stable_un_S</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;t. stable s (P t) &#10233; stable s (&#8899;t. P t)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>stable_def</span><span class="delimiter">)</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>stable_un_S2</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#8704;t x. stable s (P t x) &#10233; stable s (&#8899;t x. P t x)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>stable_def</span><span class="delimiter">)</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>pairv_IntI</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;y &#8712; &#10627;&#180;(Pair V) &#8712; A&#10628; &#10233; y &#8712; &#10627;&#180;(Pair V) &#8712; B&#10628; &#10233; y &#8712; &#10627;&#180;(Pair V) &#8712; A &#8745; B&#10628;&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>pairv_rId</span><span class="delimiter">:</span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;y &#8712; &#10627;&#180;(Pair V) &#8712; A&#10628; &#10233; y &#8712; &#10627;&#180;(Pair V) &#8712; A &#8746; Id&#10628;&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span></pre>
+
+</div>
+</body>
+</html>

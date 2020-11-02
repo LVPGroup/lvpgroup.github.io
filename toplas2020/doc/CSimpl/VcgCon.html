@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory VcgCon (Isabelle2020: April 2020)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory VcgCon</h1>
+
+<span class="command">theory</span> <span class="name">VcgCon</span><br/>
+<span class="keyword">imports</span> <a href="../../AFP/EmbSimpl/VcgCommon.html"><span class="name">VcgCommon</span></a> <a href="LocalRG_HoareDef.html"><span class="name">LocalRG_HoareDef</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+    Author:      David Sanan
+    Maintainer:  David Sanan, sanan at ntu edu sg
+    License:     LGPL
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*  Title:      VCGCon.thy
+    Author:     David Sanan, NTU
+
+Copyright (C) 2015-2016 David Sanan 
+Some rights reserved, NTU
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation; either version 2.1 of the
+License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+USA
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* Facilitating the Hoare Logic *}</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>VcgCon</span><span> 
+</span><span class="keyword2"><span class="keyword">imports</span></span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;EmbSimpl.VcgCommon&quot;</span></span></span><span> </span><span>LocalRG_HoareDef</span><span> 
+</span><span class="keyword2"><span class="keyword">keywords</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;procedures&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;hoarestate&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span>thy_decl</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">locale</span></span><span> </span><span>hoare</span><span> </span><span class="delimiter">=</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">fixes</span></span><span> </span><span>&#915;</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;p,&#39;f,&#39;e) body&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">axiomatization</span></span><span> </span><span>NoBody</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* David added begin *)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">ML_file</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;hoare.ML&quot;</span></span></span><span> 
+</span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*method_setup hoare = &quot;Hoare.hoare&quot;
+  &quot;raw verification condition generator for Hoare Logic&quot;
+
+method_setup hoare_raw = &quot;Hoare.hoare_raw&quot;
+  &quot;even more raw verification condition generator for Hoare Logic&quot;
+
+method_setup vcg = &quot;Hoare.vcg&quot; 
+  &quot;verification condition generator for Hoare Logic&quot;
+
+method_setup vcg_step = &quot;Hoare.vcg_step&quot; 
+  &quot;single verification condition generation step with light simplification&quot;
+
+
+method_setup hoare_rule = &quot;Hoare.hoare_rule&quot; 
+  &quot;apply single hoare rule and solve certain sideconditions&quot;
+*)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* Variables of the programming language are represented as components 
+of a record. To avoid cluttering up the namespace of Isabelle with lots of 
+typical variable names, we append a unusual suffix at the end of each name by 
+parsing
+*}</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>to_normal</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;a &#8658;  (&#39;a, &#39;b) xstate &#215; (&#39;a, &#39;b) xstate&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;to_normal a b &#8801; (Normal a,Normal b)&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* Some Fancy Syntax *}</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* priority guidline:
+ * If command should be atomic for the guard it must have at least priority 21.
+ *)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* reverse application *}</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>rapp</span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; (&#39;a &#8658; &#39;b) &#8658; &#39;b&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="keyword2"><span class="keyword">infixr</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;|&gt;&quot;</span></span></span><span> </span><span>60</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;rapp x f = f x&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">notation</span></span><span>
+</span><span>  </span><span>Skip</span><span>  </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;SKIP&quot;</span></span></span><span class="delimiter">)</span><span> </span><span class="keyword2"><span class="keyword">and</span></span><span>
+</span><span>  </span><span>Throw</span><span>  </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;THROW&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">syntax</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_raise&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;c &#8658; &#39;c &#8658; (&#39;a,&#39;b,&#39;f,&#39;e) com&quot;</span></span></span><span>       </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(RAISE _ :==/ _)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span> </span><span>30</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_raise_ev&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;c &#8658; &#39;e &#8658; &#39;c &#8658; (&#39;a,&#39;b,&#39;f,&#39;e) com&quot;</span></span></span><span>       </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(RAISE _ :==(<span class="hidden">&#8681;</span><sub>_</sub>)/ _)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span> </span><span>30</span><span class="delimiter">,</span><span> </span><span>30</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_seq&quot;</span></span></span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_;;/ _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>20</span><span class="delimiter">,</span><span> </span><span>21</span><span class="delimiter">]</span><span> </span><span>20</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_guarantee&quot;</span></span></span><span>     </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;s set &#8658; grd&quot;</span></span></span><span>       </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_&#8730;&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">]</span><span> </span><span>1000</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_guaranteeStrip&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;s set &#8658; grd&quot;</span></span></span><span>       </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_#&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">]</span><span> </span><span>1000</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_grd&quot;</span></span></span><span>           </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;s set &#8658; grd&quot;</span></span></span><span>       </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">]</span><span> </span><span>1000</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_last_grd&quot;</span></span></span><span>      </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;grd &#8658; grds&quot;</span></span></span><span>         </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_&quot;</span></span></span><span> </span><span>1000</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_grds&quot;</span></span></span><span>          </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[grd, grds] &#8658; grds&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_,/ _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>999</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>1000</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_guards&quot;</span></span></span><span>        </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;grds &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>                                            </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_/&#10236; _)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>60</span><span class="delimiter">,</span><span> </span><span>21</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>                                                           
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* &quot;_quote&quot;       :: &quot;&#39;b =&gt; (&#39;a =&gt; &#39;b)&quot; *)</span></span></span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Normal&quot;</span></span></span><span>       </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a =&gt; &#39;b&quot;</span></span></span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* &quot;_antiquoteCur0&quot;  :: &quot;(&#39;a =&gt; &#39;b) =&gt; &#39;b&quot;       (&quot;&#180;_&quot; [1000] 1000)
+  &quot;_antiquoteCur&quot;  :: &quot;(&#39;a =&gt; &#39;b) =&gt; &#39;b&quot;
+  &quot;_antiquoteOld0&quot;  :: &quot;(&#39;a =&gt; &#39;b) =&gt; &#39;a =&gt; &#39;b&quot;       (&quot;<span class="hidden">&#8663;</span><sup>_<span class="hidden">&#8662;</span></sup>_&quot; [1000,1000] 1000)
+  &quot;_antiquoteOld&quot;  :: &quot;(&#39;a =&gt; &#39;b) =&gt; &#39;a =&gt; &#39;b&quot;
+  &quot;_Assert&quot;      :: &quot;&#39;a =&gt; &#39;a set&quot;           (&quot;({|_|})&quot; [0] 1000)  
+  &quot;_AssertState&quot; :: &quot;idt &#8658; &#39;a &#8658; &#39;a set&quot;    (&quot;({|_. _|})&quot; [1000,0] 1000)
+  &quot;_AssertR&quot;      :: &quot;&#39;a =&gt; &#39;a set&quot;           (&quot;({|_|}r)&quot; [0] 1000)    *)</span></span></span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Assign&quot;</span></span></span><span>      </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;b =&gt; &#39;b =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>    </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_ :==/ _)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span> </span><span>30</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Assign_ev&quot;</span></span></span><span>      </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;b =&gt; &#39;e &#8658;&#39;b  &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>    </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_ :==(<span class="hidden">&#8681;</span><sub>_</sub>)/ _)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span> </span><span>30</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Init&quot;</span></span></span><span>        </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ident &#8658; &#39;c &#8658; &#39;b &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>          </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(&#180;_ :==<span class="hidden">&#8664;</span><sub>_<span class="hidden">&#8665;</span></sub>/ _)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span> </span><span>30</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>   </span><span class="string"><span class="delete"><span class="delete">&quot;_Init_ev&quot;</span></span></span><span>        </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ident &#8658; &#39;c &#8658; &#39;e &#8658; &#39;b &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>           </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(&#180;_ :==(<span class="hidden">&#8681;</span><sub>_</sub>)/ <span class="hidden">&#8664;</span><sub>_<span class="hidden">&#8665;</span></sub>/ _)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span> </span><span>1000</span><span class="delimiter">,</span><span>30</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedAssign&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;b =&gt; &#39;b =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>    </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_ :==<span class="hidden">&#8681;</span><sub>g</sub>/ _)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span> </span><span>30</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedAssign_ev&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;b =&gt; &#39;e &#8658; &#39;b =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>    </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_ :==<span class="hidden">&#8681;</span><sub>g</sub><span class="hidden">&#8681;</span><sub>_</sub>/ _)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span> </span><span>30</span><span class="delimiter">,</span><span> </span><span>30</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* &quot;_newinit&quot;      :: &quot;[ident,&#39;a] &#8658; newinit&quot; (&quot;(2&#180;_ :==/ _)&quot;)
+  &quot;&quot;             :: &quot;newinit &#8658; newinits&quot;    (&quot;_&quot;)
+  &quot;_newinits&quot;    :: &quot;[newinit, newinits] &#8658; newinits&quot; (&quot;_,/ _&quot;) *)</span></span></span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_New&quot;</span></span></span><span>         </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;a, &#39;b, newinits] &#8658; (&#39;a,&#39;b,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>                                            </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_ :==/(2 NEW _/ [_]))&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span> </span><span>65</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_New_ev&quot;</span></span></span><span>      </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;a, &#39;e, &#39;b, newinits] &#8658; (&#39;a,&#39;b,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>                                            </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_ :==(<span class="hidden">&#8681;</span><sub>_</sub>)/(2 NEW _/ [_]))&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span> </span><span>30</span><span class="delimiter">,</span><span> </span><span>65</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedNew&quot;</span></span></span><span>  </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;a, &#39;b, newinits] &#8658; (&#39;a,&#39;b,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>                                            </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_ :==<span class="hidden">&#8681;</span><sub>g</sub>/(2 NEW _/ [_]))&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span> </span><span>65</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedNew_ev&quot;</span></span></span><span>  </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;a,&#39;e, &#39;b, newinits] &#8658; (&#39;a,&#39;b,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>                                            </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_ :==<span class="hidden">&#8681;</span><sub>g</sub><span class="hidden">&#8681;</span><sub>_</sub>/(2 NEW _/ [_]))&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span> </span><span>30</span><span class="delimiter">,</span><span> </span><span>65</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_NNew&quot;</span></span></span><span>         </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;a, &#39;b, newinits] &#8658; (&#39;a,&#39;b,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>                                            </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_ :==/(2 NNEW _/ [_]))&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span> </span><span>65</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_NNew_ev&quot;</span></span></span><span>         </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;a, &#39;e, &#39;b, newinits] &#8658; (&#39;a,&#39;b,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>                                            </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_ :==(<span class="hidden">&#8681;</span><sub>_</sub>)/(2 NNEW _/ [_]))&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span> </span><span>30</span><span class="delimiter">,</span><span> </span><span>65</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedNNew&quot;</span></span></span><span>  </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;a, &#39;b, newinits] &#8658; (&#39;a,&#39;b,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>                                            </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_ :==<span class="hidden">&#8681;</span><sub>g</sub>/(2 NNEW _/ [_]))&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span> </span><span>65</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedNNew_ev&quot;</span></span></span><span>  </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;a, &#39;e, &#39;b, newinits] &#8658; (&#39;a,&#39;b,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>                                            </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_ :==<span class="hidden">&#8681;</span><sub>g</sub><span class="hidden">&#8681;</span><sub>_</sub>/(2 NNEW _/ [_]))&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span> </span><span>30</span><span class="delimiter">,</span><span> </span><span>65</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Cond&quot;</span></span></span><span>        </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0IF (_)/ (2THEN/ _)/ (2ELSE _)/ FI)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Cond_no_else&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0IF (_)/ (2THEN/ _)/ FI)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedCond&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0IF<span class="hidden">&#8681;</span><sub>g</sub> (_)/ (2THEN _)/ (2ELSE _)/ FI)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedCond_no_else&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0IF<span class="hidden">&#8681;</span><sub>g</sub> (_)/ (2THEN _)/ FI)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Await&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com &#8658;(&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0AWAIT (_)/ _)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Await_ev&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;e &#8658; &#39;a bexp &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0AWAIT<span class="hidden">&#8681;</span><sub>&#8595;</sub><span class="hidden">&#8681;</span><sub>_</sub> (_)/ _ )&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedAwait&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com &#8658;(&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0AWAIT<span class="hidden">&#8681;</span><sub>g</sub> (_)/ _)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedAwait_ev&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;e &#8658; &#39;a bexp &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com &#8658;(&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0AWAIT<span class="hidden">&#8681;</span><sub>g</sub><span class="hidden">&#8681;</span><sub>&#8595;</sub><span class="hidden">&#8681;</span><sub>_</sub> (_)/ _)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While_inv_var&quot;</span></span></span><span>   </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; &#39;a assn  &#8658; (&#39;a &#215; &#39;a) set &#8658; bdy 
+                          &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE (_)/ INV (_)/ VAR (_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>25</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_inv_var&quot;</span></span></span><span>   </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; pttrn &#8658; (&#39;z &#8658; &#39;a assn)  &#8658; 
+                            (&#39;z &#8658; (&#39;a &#215; &#39;a) set) &#8658; bdy 
+                          &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE (_)/ FIX _./ INV (_)/ VAR (_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>25</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_inv&quot;</span></span></span><span>   </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; pttrn &#8658; (&#39;z &#8658; &#39;a assn)  &#8658; bdy 
+                          &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE (_)/ FIX _./ INV (_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>25</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhileFix_inv_var&quot;</span></span></span><span>   </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; pttrn &#8658; (&#39;z &#8658; &#39;a assn)  &#8658; 
+                            (&#39;z &#8658; (&#39;a &#215; &#39;a) set) &#8658; bdy 
+                          &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE<span class="hidden">&#8681;</span><sub>g</sub> (_)/ FIX _./ INV (_)/ VAR (_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>25</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhileFix_inv_var_hook&quot;</span></span></span><span>   </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp &#8658; (&#39;z &#8658; &#39;a assn)  &#8658; 
+                            (&#39;z &#8658; (&#39;a &#215; &#39;a) set) &#8658; bdy 
+                          &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhileFix_inv&quot;</span></span></span><span>   </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; pttrn &#8658; (&#39;z &#8658; &#39;a assn)  &#8658; bdy 
+                          &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE<span class="hidden">&#8681;</span><sub>g</sub> (_)/ FIX _./ INV (_)/_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>25</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhile_inv_var&quot;</span></span></span><span class="delimiter">::</span><span> 
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; &#39;a assn  &#8658; (&#39;a &#215; &#39;a) set &#8658; bdy &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE<span class="hidden">&#8681;</span><sub>g</sub> (_)/ INV (_)/ VAR (_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>25</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While_inv&quot;</span></span></span><span>   </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; &#39;a assn =&gt; bdy =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE (_)/ INV (_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>25</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhile_inv&quot;</span></span></span><span>   </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; &#39;a assn =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE<span class="hidden">&#8681;</span><sub>g</sub> (_)/ INV (_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>25</span><span class="delimiter">,</span><span> </span><span>0</span><span class="delimiter">,</span><span> </span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While&quot;</span></span></span><span>       </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; bdy =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE (_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>25</span><span class="delimiter">,</span><span> </span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhile&quot;</span></span></span><span>       </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp =&gt; bdy =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE<span class="hidden">&#8681;</span><sub>g</sub> (_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>25</span><span class="delimiter">,</span><span> </span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While_guard&quot;</span></span></span><span>       </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;grds =&gt; &#39;a bexp =&gt; bdy =&gt; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE (_/&#10236; (1_)) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>25</span><span class="delimiter">,</span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While_guard_inv&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;grds &#8658;&#39;a bexp&#8658;&#39;a assn&#8658;bdy &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE (_/&#10236; (1_)) INV (_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>25</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While_guard_inv_var&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;grds &#8658;&#39;a bexp&#8658;&#39;a assn&#8658;(&#39;a&#215;&#39;a) set
+                             &#8658;bdy &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE (_/&#10236; (1_)) INV (_)/ VAR (_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>25</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_guard_inv_var&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;grds &#8658;&#39;a bexp&#8658;pttrn&#8658;(&#39;z&#8658;&#39;a assn)&#8658;(&#39;z&#8658;(&#39;a&#215;&#39;a) set)
+                             &#8658;bdy &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE (_/&#10236; (1_)) FIX _./ INV (_)/ VAR (_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>25</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_guard_inv&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;grds &#8658;&#39;a bexp&#8658;pttrn&#8658;(&#39;z&#8658;&#39;a assn)
+                             &#8658;bdy &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE (_/&#10236; (1_)) FIX _./ INV (_)/_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>25</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>81</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Try_Catch&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;p,&#39;f,&#39;e) com &#8658;(&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0TRY (_)/ (2CATCH _)/ END)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_DoPre&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Do&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; bdy&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(2DO/ (_)) /OD&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">]</span><span> </span><span>1000</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Lab&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; bdy&quot;</span></span></span><span>
+</span><span>            </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_&#8729;/_&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>71</span><span class="delimiter">]</span><span> </span><span>81</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;bdy &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Spec&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;pttrn &#8658; &#39;s set &#8658;  (&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; &#39;s set &#8658; &#39;s set &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>            </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(ANNO _. _/ (_)/ _,/_)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>20</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>60</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_SpecNoAbrupt&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;pttrn &#8658; &#39;s set &#8658;  (&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; &#39;s set &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>            </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(ANNO _. _/ (_)/ _)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>20</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>60</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_LemAnno&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;n &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>              </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0 LEMMA (_)/ _ END)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>0</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* &quot;_locnoinit&quot;    :: &quot;ident &#8658; locinit&quot;               (&quot;&#180;_&quot;)
+  &quot;_locinit&quot;      :: &quot;[ident,&#39;a] &#8658; locinit&quot;          (&quot;(2&#180;_ :==/ _)&quot;)
+  &quot;&quot;             :: &quot;locinit &#8658; locinits&quot;             (&quot;_&quot;)
+  &quot;_locinits&quot;    :: &quot;[locinit, locinits] &#8658; locinits&quot; (&quot;_,/ _&quot;) *)</span></span></span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Loc&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[locinits,(&#39;s,&#39;p,&#39;f,&#39;e) com] &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>                                         </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(2 LOC _;;/ (_) COL)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Switch&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s &#8658; &#39;v) &#8658; switchcases &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>              </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0 SWITCH (_)/ _ END)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>22</span><span class="delimiter">,</span><span>0</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_switchcase&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;v set &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; switchcase&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_&#8658;/ _&quot;</span></span></span><span> </span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* &quot;_switchcasesSingle&quot;  :: &quot;switchcase &#8658; switchcases&quot; (&quot;_&quot;)         
+  &quot;_switchcasesCons&quot;:: &quot;switchcase &#8658; switchcases &#8658; switchcases&quot;
+                       (&quot;_/ | _&quot;) *)</span></span></span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Basic&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;basicblock &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0BASIC/ (_)/ END)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>22</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Basic_ev&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;e &#8658; basicblock &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0BASIC(<span class="hidden">&#8681;</span><sub>_</sub>)/ (_)/ END)&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>22</span><span class="delimiter">,</span><span> </span><span>22</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* &quot;_BasicBlock&quot;:: &quot;basics &#8658; basicblock&quot; (&quot;_&quot;)
+  &quot;_BAssign&quot;   :: &quot;&#39;b =&gt; &#39;b =&gt; basic&quot;    (&quot;(_ :==/ _)&quot; [30, 30] 23)
+  &quot;&quot;           :: &quot;basic &#8658; basics&quot;             (&quot;_&quot;)
+  &quot;_basics&quot;    :: &quot;[basic, basics] &#8658; basics&quot; (&quot;_,/ _&quot;) *)</span></span></span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* Experimental coloring for ProofGeneral; fails to run through latex*)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*&lt;*)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* syntax (ProofGeneral output)
+  &quot;_guarantee&quot;     :: &quot;&#39;s set &#8658; grd&quot;       (&quot;F_A&quot; [1000] 1000)
+  &quot;_guaranteeStrip&quot;:: &quot;&#39;s set &#8658; grd&quot;       (&quot;B_A&quot; [1000] 1000) *)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*&gt;*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">syntax</span></span><span> </span><span class="delimiter">(</span><span>ascii</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While_guard&quot;</span></span></span><span>       </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;grds =&gt; &#39;a bexp =&gt; bdy &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE (_|-&gt; /_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While_guard_inv&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;grds&#8658;&#39;a bexp&#8658;&#39;a assn&#8658;bdy &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span>
+</span><span>        </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(0WHILE (_|-&gt; /_) INV (_) /_)&quot;</span></span></span><span>  </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>71</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_guards&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;grds &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;(_|-&gt;_ )&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>60</span><span class="delimiter">,</span><span> </span><span>21</span><span class="delimiter">]</span><span> </span><span>23</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">syntax</span></span><span> </span><span class="delimiter">(</span><span class="keyword2"><span class="keyword">output</span></span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_hidden_grds&quot;</span></span></span><span>      </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;grds&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;&#8230;&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">translations</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Do c&quot;</span></span></span><span> </span><span class="delimiter">=&gt;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;c&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;b&#8729; c&quot;</span></span></span><span> </span><span class="delimiter">=&gt;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST condCatch c b SKIP&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;b&#8729; (_DoPre c)&quot;</span></span></span><span> </span><span class="delimiter">&lt;=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST condCatch c b SKIP&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;l&#8729; (CONST whileAnnoG gs b I V c)&quot;</span></span></span><span> </span><span class="delimiter">&lt;=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;l&#8729; (_DoPre (CONST whileAnnoG gs b I V c))&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;l&#8729; (CONST whileAnno b I V c)&quot;</span></span></span><span> </span><span class="delimiter">&lt;=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;l&#8729; (_DoPre (CONST whileAnno b I V c))&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;CONST condCatch c b SKIP&quot;</span></span></span><span> </span><span class="delimiter">&lt;=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(_DoPre (CONST condCatch c b SKIP))&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_Do c&quot;</span></span></span><span> </span><span class="delimiter">&lt;=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_DoPre c&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;c;; d&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST Seq c d&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_guarantee g&quot;</span></span></span><span> </span><span class="delimiter">=&gt;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(CONST True, g)&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_guaranteeStrip g&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST guaranteeStripPair (CONST True) g&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_grd g&quot;</span></span></span><span> </span><span class="delimiter">=&gt;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(CONST False, g)&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_grds g gs&quot;</span></span></span><span> </span><span class="delimiter">=&gt;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;g#gs&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_last_grd g&quot;</span></span></span><span> </span><span class="delimiter">=&gt;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[g]&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_guards gs c&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST guards gs c&quot;</span></span></span><span>  
+</span><span>   
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;IF b THEN c1 ELSE c2 FI&quot;</span></span></span><span> </span><span class="delimiter">=&gt;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST Cond {|b|} c1 c2&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;IF b THEN c1 FI&quot;</span></span></span><span>         </span><span class="delimiter">==</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;IF b THEN c1 ELSE SKIP FI&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;IF<span class="hidden">&#8681;</span><sub>g</sub> b THEN c1 FI&quot;</span></span></span><span>        </span><span class="delimiter">==</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;IF<span class="hidden">&#8681;</span><sub>g</sub> b THEN c1 ELSE SKIP FI&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;AWAIT b c&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST Await {|b|} c (CONST None)&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;AWAIT<span class="hidden">&#8681;</span><sub>&#8595;</sub><span class="hidden">&#8681;</span><sub>e</sub> b c &quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST Await {|b|} c (CONST Some e)&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While_inv_var b I V c&quot;</span></span></span><span>          </span><span class="delimiter">=&gt;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST whileAnno {|b|} I V c&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While_inv_var b I V (_DoPre c)&quot;</span></span></span><span> </span><span class="delimiter">&lt;=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST whileAnno {|b|} I V c&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While_inv b I c&quot;</span></span></span><span>                 </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_While_inv_var b I (CONST undefined) c&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While b c&quot;</span></span></span><span>                       </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_While_inv b {|CONST undefined|} c&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While_guard_inv_var gs b I V c&quot;</span></span></span><span>          </span><span class="delimiter">=&gt;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST whileAnnoG gs {|b|} I V c&quot;</span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*  &quot;_While_guard_inv_var gs b I V (_DoPre c)&quot; &lt;= &quot;CONST whileAnnoG gs {|b|} I V c&quot;*)</span></span></span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While_guard_inv gs b I c&quot;</span></span></span><span>       </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_While_guard_inv_var gs b I (CONST undefined) c&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_While_guard gs b c&quot;</span></span></span><span>             </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_While_guard_inv gs b {|CONST undefined|} c&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhile_inv b I c&quot;</span></span></span><span>  </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhile_inv_var b I (CONST undefined) c&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhile b c&quot;</span></span></span><span>        </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhile_inv b {|CONST undefined|} c&quot;</span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*  &quot;<span class="hidden">&#8663;</span><sup>s<span class="hidden">&#8662;</span></sup>A&quot;                      =&gt; &quot;A s&quot;*)</span></span></span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;TRY c1 CATCH c2 END&quot;</span></span></span><span>     </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST Catch c1 c2&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;ANNO s. P c Q,A&quot;</span></span></span><span> </span><span class="delimiter">=&gt;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST specAnno (&#955;s. P) (&#955;s. c) (&#955;s. Q) (&#955;s. A)&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;ANNO s. P c Q&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ANNO s. P c Q,{}&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_inv_var b z I V c&quot;</span></span></span><span> </span><span class="delimiter">=&gt;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST whileAnnoFix {|b|} (&#955;z. I) (&#955;z. V) (&#955;z. c)&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_inv_var b z I V (_DoPre c)&quot;</span></span></span><span> </span><span class="delimiter">&lt;=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_inv_var {|b|} z I V c&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_inv b z I c&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_inv_var b z I (CONST undefined) c&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhileFix_inv b z I c&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhileFix_inv_var b z I (CONST undefined) c&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhileFix_inv_var b z I V c&quot;</span></span></span><span> </span><span class="delimiter">=&gt;</span><span>
+</span><span>                         </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedWhileFix_inv_var_hook {|b|} (&#955;z. I) (&#955;z. V) (&#955;z. c)&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_guard_inv_var gs b z I V c&quot;</span></span></span><span> </span><span class="delimiter">=&gt;</span><span> 
+</span><span>                                      </span><span class="string"><span class="delete"><span class="delete">&quot;CONST whileAnnoGFix gs {|b|} (&#955;z. I) (&#955;z. V) (&#955;z. c)&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_guard_inv_var gs b z I V (_DoPre c)&quot;</span></span></span><span> </span><span class="delimiter">&lt;=</span><span> 
+</span><span>                                      </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_guard_inv_var gs {|b|} z I V c&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_guard_inv gs b z I c&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_WhileFix_guard_inv_var gs b z I (CONST undefined) c&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;LEMMA x c END&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST lem x c&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">translations</span></span><span>
+</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(_switchcase V c)&quot;</span></span></span><span> </span><span class="delimiter">=&gt;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(V,c)&quot;</span></span></span><span>
+</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* &quot;(_switchcasesSingle b)&quot; =&gt; &quot;[b]&quot;
+ &quot;(_switchcasesCons b bs)&quot; =&gt; &quot;CONST Cons b bs&quot; *)</span></span></span></span></span><span>
+</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(_Switch v vs)&quot;</span></span></span><span> </span><span class="delimiter">=&gt;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST switch (_quote v) vs&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">print_ast_translation</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{*
+  let
+    fun dest_abs (Ast.Appl [Ast.Constant @{syntax_const &quot;_abs&quot;}, x, t]) = (x, t)
+      | dest_abs _ = raise Match;
+    fun spec_tr&#39; [P, c, Q, A] =
+      let 
+        val (x&#39;,P&#39;) = dest_abs P;
+        val (_ ,c&#39;) = dest_abs c;
+        val (_ ,Q&#39;) = dest_abs Q;
+        val (_ ,A&#39;) = dest_abs A; 
+      in
+        if (A&#39; = Ast.Constant @{const_syntax bot})
+        then Ast.mk_appl (Ast.Constant @{syntax_const &quot;_SpecNoAbrupt&quot;}) [x&#39;, P&#39;, c&#39;, Q&#39;] 
+        else Ast.mk_appl (Ast.Constant @{syntax_const &quot;_Spec&quot;}) [x&#39;, P&#39;, c&#39;, Q&#39;, A&#39;]
+      end;
+    fun whileAnnoFix_tr&#39; [b, I, V, c] =
+      let
+        val (x&#39;,I&#39;) = dest_abs I;
+        val (_ ,V&#39;) = dest_abs V;
+        val (_ ,c&#39;) = dest_abs c;
+      in
+        Ast.mk_appl (Ast.Constant @{syntax_const &quot;_WhileFix_inv_var&quot;}) [b, x&#39;, I&#39;, V&#39;, c&#39;]
+      end;
+  in
+   [(@{const_syntax specAnno}, K spec_tr&#39;),
+    (@{const_syntax whileAnnoFix}, K whileAnnoFix_tr&#39;)]
+  end
+*}</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* nonterminal par and pars and actuals
+
+syntax 
+  &quot;_par&quot; :: &quot;&#39;a &#8658; par&quot;                                (&quot;_&quot;)
+  &quot;&quot;    :: &quot;par &#8658; pars&quot;                               (&quot;_&quot;)
+  &quot;_pars&quot; :: &quot;[par,pars] &#8658; pars&quot;                      (&quot;_,/_&quot;)
+  &quot;_actuals&quot; :: &quot;pars &#8658; actuals&quot;                      (&quot;&#39;(_&#39;)&quot;)
+  &quot;_actuals_empty&quot; :: &quot;actuals&quot;                        (&quot;&#39;(&#39;)&quot;) *)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">syntax</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_Call&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;p &#8658; actuals &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;CALL __&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedCall&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;p &#8658; actuals &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;CALL<span class="hidden">&#8681;</span><sub>g</sub> __&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_CallAss&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;p &#8658; actuals &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>             </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ :== CALL __&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_Proc&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;p &#8658; actuals &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;PROC __&quot;</span></span></span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_ProcAss&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;p &#8658; actuals &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>             </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ :== PROC __&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedCallAss&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;p &#8658; actuals &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>             </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ :== CALL<span class="hidden">&#8681;</span><sub>g</sub> __&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_DynCall&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;p &#8658; actuals &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;DYNCALL __&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedDynCall&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;p &#8658; actuals &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;DYNCALL<span class="hidden">&#8681;</span><sub>g</sub> __&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_DynCallAss&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;p &#8658; actuals &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>             </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ :== DYNCALL __&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedDynCallAss&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;p &#8658; actuals &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>             </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ :== DYNCALL<span class="hidden">&#8681;</span><sub>g</sub> __&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>             
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_Call_ev&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;p &#8658; actuals &#8658; &#39;e option &#8658; &#39;e option &#8658; &#39;e option &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>          </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;CALL<span class="hidden">&#8681;</span><sub>E</sub> _____&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedCall_ev&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;p &#8658; actuals &#8658;  &#39;e option &#8658; &#39;e option &#8658; &#39;e option &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>          </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;CALL<span class="hidden">&#8681;</span><sub>E</sub><span class="hidden">&#8681;</span><sub>g</sub> _____&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_CallAss_ev&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;p &#8658; actuals &#8658; &#39;e option &#8658; &#39;e option &#8658; &#39;e option &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>             </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ :== CALL<span class="hidden">&#8681;</span><sub>E</sub> _____&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_Proc_ev&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;p &#8658; actuals &#8658; &#39;e option &#8658; &#39;e option &#8658; &#39;e option &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>             </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;PROC<span class="hidden">&#8681;</span><sub>E</sub> _____&quot;</span></span></span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_ProcAss_ev&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;p &#8658; actuals &#8658; &#39;e option &#8658; &#39;e option &#8658; &#39;e option &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>             </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ :== PROC<span class="hidden">&#8681;</span><sub>E</sub> _____&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedCallAss_ev&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;p &#8658; actuals &#8658; &#39;e option &#8658; &#39;e option &#8658; &#39;e option &#8658;((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>             </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ :== CALL<span class="hidden">&#8681;</span><sub>E</sub><span class="hidden">&#8681;</span><sub>g</sub> _____&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_DynCall_ev&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;p &#8658; actuals &#8658; &#39;e option &#8658; &#39;e option &#8658; &#39;e option &#8658;((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>             </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;DYNCALL<span class="hidden">&#8681;</span><sub>E</sub> _____&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedDynCall_ev&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;p &#8658; actuals &#8658; &#39;e option &#8658; &#39;e option &#8658; &#39;e option &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>           </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;DYNCALL<span class="hidden">&#8681;</span><sub>e</sub><span class="hidden">&#8681;</span><sub>g</sub> _____&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_DynCallAss_ev&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;p &#8658; actuals &#8658;&#39;e option &#8658; &#39;e option &#8658; &#39;e option &#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>             </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ :== DYNCALL _____&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_GuardedDynCallAss_ev&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; &#39;p &#8658; actuals &#8658; &#39;e option &#8658; &#39;e option &#8658; &#39;e option &#8658;((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>             </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ :== DYNCALL<span class="hidden">&#8681;</span><sub>g</sub> _____&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>             
+</span><span>       
+</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_Bind&quot;</span></span></span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;s &#8658; &#39;v, idt, &#39;v &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com] &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>                      </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ &#8811; _./ _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>22</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>21</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_bseq&quot;</span></span></span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com &#8658; (&#39;s,&#39;p,&#39;f,&#39;e) com&quot;</span></span></span><span> 
+</span><span>           </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_&#8811;/ _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>22</span><span class="delimiter">,</span><span> </span><span>21</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>           
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_FCall&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;p,actuals,idt,((&#39;a,string,&#39;f,&#39;e) com)]&#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>                      </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;CALL __ &#8811; _./ _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>21</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>       </span><span class="string"><span class="delete"><span class="delete">&quot;_FCall_ev&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;p,actuals,&#39;e option,&#39;e option,&#39;e option,idt,((&#39;a,string,&#39;f,&#39;e) com)]&#8658; ((&#39;a,string,&#39;f,&#39;e) com)&quot;</span></span></span><span> 
+</span><span>                      </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;CALL<span class="hidden">&#8681;</span><sub>e</sub> __ ___&#8811; _./ _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>1000</span><span class="delimiter">,</span><span>21</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">translations</span></span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;_Bind e i c&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST bind (_quote e) (&#955;i. c)&quot;</span></span></span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;_FCall p acts i c&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;_FCall p acts (&#955;i. c)&quot;</span></span></span><span>
+</span><span class="string"><span class="delete"><span class="delete">&quot;_bseq c d&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CONST bseq c d&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>Let&#39;</span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;a, &#39;a =&gt; &#39;b] =&gt; &#39;b&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Let&#39; = Let&quot;</span></span></span><span>
+</span><span>
+</span><span>  
+</span><span class="keyword1"><span class="command">ML_file</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;hoare_syntax.ML&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* decorate state components with suffix *)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+parse_ast_translation {*
+ [(@{syntax_const &quot;_Free&quot;}, K Hoare_Syntax.free_arg_ast_tr),
+  (@{syntax_const &quot;_In&quot;}, K Hoare_Syntax.in_arg_ast_tr),
+  (@{syntax_const &quot;_Where&quot;}, K Hoare_Syntax.where_arg_ast_tr @{syntax_const &quot;_Where&quot;}),
+  (@{syntax_const &quot;_WhereElse&quot;}, K Hoare_Syntax.where_arg_ast_tr @{syntax_const &quot;_WhereElse&quot;})
+] 
+*}
+*)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+parse_ast_translation {*
+ [(@{syntax_const &quot;_antiquoteOld&quot;},
+    Hoare_Syntax.antiquoteOld_varname_tr @{syntax_const &quot;_antiquoteOld&quot;})]
+*}
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">parse_translation</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{*
+  let val ev1 = (Syntax.const @{const_syntax None}); 
+       val ev2 = (Syntax.const @{const_syntax None});
+       val ev3 = (Syntax.const @{const_syntax None}) in
+  [(@{syntax_const &quot;_Call&quot;}, Hoare_Syntax.call_tr false false ev1 ev2 ev3),
+  (@{syntax_const &quot;_FCall&quot;}, Hoare_Syntax.fcall_tr ev1 ev2 ev3),
+  (@{syntax_const &quot;_CallAss&quot;}, Hoare_Syntax.call_ass_tr false false ev1 ev2 ev3),
+  (@{syntax_const &quot;_GuardedCall&quot;}, Hoare_Syntax.call_tr false true ev1 ev2 ev3),
+  (@{syntax_const &quot;_GuardedCallAss&quot;}, Hoare_Syntax.call_ass_tr false true ev1 ev2 ev3),
+  (@{syntax_const &quot;_Proc&quot;}, Hoare_Syntax.proc_tr ev1 ev2 ev3),
+  (@{syntax_const &quot;_ProcAss&quot;}, Hoare_Syntax.proc_ass_tr ev1 ev2 ev3),
+  (@{syntax_const &quot;_DynCall&quot;}, Hoare_Syntax.call_tr true false ev1 ev2 ev3),
+  (@{syntax_const &quot;_DynCallAss&quot;}, Hoare_Syntax.call_ass_tr true false ev1 ev2 ev3),
+  (@{syntax_const &quot;_GuardedDynCall&quot;}, Hoare_Syntax.call_tr true true ev1 ev2 ev3),
+  (@{syntax_const &quot;_GuardedDynCallAss&quot;}, Hoare_Syntax.call_ass_tr true true ev1 ev2 ev3),
+  (@{syntax_const &quot;_Call_ev&quot;}, Hoare_Syntax.call_ev_tr false false),
+  (@{syntax_const &quot;_FCall_ev&quot;}, Hoare_Syntax.fcall_ev_tr),
+  (@{syntax_const &quot;_CallAss_ev&quot;}, Hoare_Syntax.call_ass_ev_tr false false),
+  (@{syntax_const &quot;_GuardedCall_ev&quot;}, Hoare_Syntax.call_ev_tr false true),
+  (@{syntax_const &quot;_GuardedCallAss_ev&quot;}, Hoare_Syntax.call_ass_ev_tr false true),
+  (@{syntax_const &quot;_Proc_ev&quot;}, Hoare_Syntax.proc_ev_tr),
+  (@{syntax_const &quot;_ProcAss_ev&quot;}, Hoare_Syntax.proc_ass_ev_tr),
+  (@{syntax_const &quot;_DynCall_ev&quot;}, Hoare_Syntax.call_ev_tr true false),
+  (@{syntax_const &quot;_DynCallAss_ev&quot;}, Hoare_Syntax.call_ass_ev_tr true false),
+  (@{syntax_const &quot;_GuardedDynCall_ev&quot;}, Hoare_Syntax.call_ev_tr true true),
+  (@{syntax_const &quot;_GuardedDynCallAss_ev&quot;}, Hoare_Syntax.call_ass_ev_tr true true)]
+ end
+*}</span></span></span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+  (@{syntax_const &quot;_Call&quot;}, Hoare_Syntax.call_ast_tr),
+  (@{syntax_const &quot;_CallAss&quot;}, Hoare_Syntax.call_ass_ast_tr),
+  (@{syntax_const &quot;_GuardedCall&quot;}, Hoare_Syntax.guarded_call_ast_tr),
+  (@{syntax_const &quot;_GuardedCallAss&quot;}, Hoare_Syntax.guarded_call_ass_ast_tr)
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">parse_translation</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{*
+ [(@{syntax_const &quot;_Assign&quot;}, Hoare_Syntax.assign_tr),
+  (@{syntax_const &quot;_Assign_ev&quot;}, Hoare_Syntax.assign_ev_tr),
+  (@{syntax_const &quot;_raise&quot;}, Hoare_Syntax.raise_tr),
+  (@{syntax_const &quot;_raise_ev&quot;}, Hoare_Syntax.raise_ev_tr),
+  (@{syntax_const &quot;_New&quot;}, Hoare_Syntax.new_tr),
+  (@{syntax_const &quot;_New_ev&quot;}, Hoare_Syntax.new_ev_tr),
+  (@{syntax_const &quot;_NNew&quot;}, Hoare_Syntax.nnew_tr),
+  (@{syntax_const &quot;_NNew_ev&quot;}, Hoare_Syntax.nnew_ev_tr),
+  (@{syntax_const &quot;_GuardedAssign&quot;}, Hoare_Syntax.guarded_Assign_tr),
+  (@{syntax_const &quot;_GuardedAssign_ev&quot;}, Hoare_Syntax.guarded_Assign_ev_tr),
+  (@{syntax_const &quot;_GuardedNew&quot;}, Hoare_Syntax.guarded_New_tr),
+  (@{syntax_const &quot;_GuardedNNew&quot;}, Hoare_Syntax.guarded_NNew_tr),
+  (@{syntax_const &quot;_GuardedNew_ev&quot;}, Hoare_Syntax.guarded_New_ev_tr),
+  (@{syntax_const &quot;_GuardedNNew_ev&quot;}, Hoare_Syntax.guarded_NNew_ev_tr),
+  (@{syntax_const &quot;_GuardedWhile_inv_var&quot;}, Hoare_Syntax.guarded_While_tr),
+  (@{syntax_const &quot;_GuardedWhileFix_inv_var_hook&quot;}, Hoare_Syntax.guarded_WhileFix_tr),
+  (@{syntax_const &quot;_GuardedCond&quot;}, Hoare_Syntax.guarded_Cond_tr), 
+  (@{syntax_const &quot;_GuardedAwait&quot;}, Hoare_Syntax.guarded_Await_tr),
+  (@{syntax_const &quot;_GuardedAwait_ev&quot;}, Hoare_Syntax.guarded_Await_ev_tr),
+  (@{syntax_const &quot;_Basic&quot;}, Hoare_Syntax.basic_tr),
+  (@{syntax_const &quot;_Basic_ev&quot;}, Hoare_Syntax.basic_ev_tr)]
+*}</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">parse_translation</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{*
+ [(@{syntax_const &quot;_Init&quot;}, Hoare_Syntax.init_tr),
+  (* (@{syntax_const &quot;_Init_ev&quot;}, Hoare_Syntax.init_ev_tr), *)
+  (@{syntax_const &quot;_Loc&quot;}, Hoare_Syntax.loc_tr)] 
+*}</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">print_translation</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{*
+ [(@{const_syntax Basic}, Hoare_Syntax.assign_tr&#39;),
+  (@{const_syntax raise}, Hoare_Syntax.raise_tr&#39;),
+  (@{const_syntax Basic}, Hoare_Syntax.new_tr&#39;),
+  (@{const_syntax Basic}, Hoare_Syntax.init_tr&#39;),
+  (@{const_syntax Spec}, Hoare_Syntax.nnew_tr&#39;),
+  (@{const_syntax block}, Hoare_Syntax.loc_tr&#39;),
+  (@{const_syntax Collect}, Hoare_Syntax.assert_tr&#39;),
+  (@{const_syntax Cond}, Hoare_Syntax.bexp_tr&#39; &quot;_Cond&quot;),
+  (@{const_syntax switch}, Hoare_Syntax.switch_tr&#39;),
+  (@{const_syntax Basic}, Hoare_Syntax.basic_tr&#39;),
+  (@{const_syntax guards}, Hoare_Syntax.guards_tr&#39;),
+  (@{const_syntax whileAnnoG}, Hoare_Syntax.whileAnnoG_tr&#39;),
+  (@{const_syntax whileAnnoGFix}, Hoare_Syntax.whileAnnoGFix_tr&#39;),
+  (@{const_syntax bind}, Hoare_Syntax.bind_tr&#39;)]
+*}</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">print_translation</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{*
+  let
+    fun spec_tr&#39; ctxt ((coll as Const _)$
+                   ((splt as Const _) $ (t as (Abs (s,T,p))))::ts) =
+          let
+            fun selector (Const (c, T)) = Hoare.is_state_var c
+              | selector (Const (@{syntax_const &quot;_free&quot;}, _) $ (Free (c, T))) =
+                  Hoare.is_state_var c
+              | selector _ = false;
+          in
+            if Hoare_Syntax.antiquote_applied_only_to selector p then
+              Syntax.const @{const_syntax Spec} $ coll $
+                (splt $ Hoare_Syntax.quote_mult_tr&#39; ctxt selector
+                    Hoare_Syntax.antiquoteCur Hoare_Syntax.antiquoteOld  (Abs (s,T,t)))
+             else raise Match
+          end
+      | spec_tr&#39; _ ts = raise Match
+  in [(@{const_syntax Spec}, spec_tr&#39;)] end
+*}</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">print_translation</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{*
+ [(@{const_syntax call}, Hoare_Syntax.call_tr&#39;),
+  (@{const_syntax dynCall}, Hoare_Syntax.dyn_call_tr&#39;),
+  (@{const_syntax fcall}, Hoare_Syntax.fcall_tr&#39;),
+  (@{const_syntax Call}, Hoare_Syntax.proc_tr&#39;)]
+*}</span></span></span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*Syntax for the Parallel operator *)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">nonterminal</span></span><span> </span><span>prgs</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">syntax</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_PAR&quot;</span></span></span><span>        </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;prgs &#8658; &#39;a&quot;</span></span></span><span>              </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;COBEGIN//_//COEND&quot;</span></span></span><span> </span><span>60</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_prg&quot;</span></span></span><span>        </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658; prgs&quot;</span></span></span><span>              </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_&quot;</span></span></span><span> </span><span>57</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_prgs&quot;</span></span></span><span>       </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;a, prgs] &#8658; prgs&quot;</span></span></span><span>      </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_//&#8741;//_&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>60</span><span class="delimiter">,</span><span>57</span><span class="delimiter">]</span><span> </span><span>57</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">translations</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_prg a&quot;</span></span></span><span> </span><span class="delimiter">&#8640;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[a]&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_prgs a ps&quot;</span></span></span><span> </span><span class="delimiter">&#8640;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;a # ps&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_PAR ps&quot;</span></span></span><span> </span><span class="delimiter">&#8640;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ps&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">syntax</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_prg_scheme&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;[&#39;a, &#39;a, &#39;a, &#39;a] &#8658; prgs&quot;</span></span></span><span>  </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;SCHEME [_ &#8804; _ &lt; _] _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">,</span><span>60</span><span class="delimiter">]</span><span> </span><span>57</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">translations</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_prg_scheme j i k c&quot;</span></span></span><span> </span><span class="delimiter">&#8652;</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(CONST map (&#955;i. c) [j..&lt;k])&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Translations for variables before and after a transition:&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">syntax</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_before&quot;</span></span></span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;id &#8658; &#39;a&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;&#186;_&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;_after&quot;</span></span></span><span>  </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;id &#8658; &#39;a&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;&#170;_&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">translations</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#186;x&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x &#180; CONST fst&quot;</span></span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#170;x&quot;</span></span></span><span> </span><span class="delimiter">==</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;x &#180; CONST snd&quot;</span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* print_translation &#8249;
+  let
+    fun quote_tr&#39; f (t :: ts) =
+          Term.list_comb (f $ Syntax_Trans.quote_tr&#39; @{syntax_const &quot;_antiquoteOld0&quot;} t, ts)
+      | quote_tr&#39; _ _ = raise Match;
+
+    val assert_tr&#39; = quote_tr&#39; (Syntax.const @{syntax_const &quot;_Assert&quot;});
+
+    fun bexp_tr&#39; name ((Const (@{const_syntax Collect}, _) $ t) :: ts) =
+          quote_tr&#39; (Syntax.const name) (t :: ts)
+      | bexp_tr&#39; _ _ = raise Match;
+
+    fun assign_tr&#39; (Abs (x, _, f $ k $ Bound 0) :: ts) =
+          quote_tr&#39; (Syntax.const @{syntax_const &quot;_Assign&quot;} $ Syntax_Trans.update_name_tr&#39; f)
+            (Abs (x, dummyT, Syntax_Trans.const_abs_tr&#39; k) :: ts)
+      | assign_tr&#39; _ = raise Match;
+  in
+   [(@{const_syntax Collect}, K assert_tr&#39;),
+    (@{const_syntax Basic}, K assign_tr&#39;),
+    (@{const_syntax Cond}, K (bexp_tr&#39; @{syntax_const &quot;_Cond&quot;})),
+    (@{const_syntax While}, K (bexp_tr&#39; @{syntax_const &quot;_While&quot;}))]
+  end 
+&#8250; *)</span></span></span></span></span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>
