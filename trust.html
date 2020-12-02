@@ -92,15 +92,15 @@
 					<div class="list-content" style="font-size:13pt;">
 						<div class="news_data2">
 						<a href="#" class="fg-cobalt fg-hover-crimson"><i class="icon-arrow-right-5"></i>
-						<b>CSimpl: A Concurrent Imperative Programming Language and Rely-guarantee Proof System in Isabelle/HOL</b>
+						<b>CSimpl: An Imperative Programming Language for Concurrent Systems</b>
 						</a></br>
 			
 						<span class="panel-content margin10 fg-dark nlp nrp">
 						<p>
-						It is essential to deal with the interference of the environment between programs in concurrent program verification. This has led to the development of concurrent program reasoning techniques such as rely-guarantee. However, the source code of the programs to be verified often involves language features such as exceptions and procedures which are not supported by the existing mechanizations of those concurrent reasoning techniques. Schirmer et al. have solved a similar problem for sequential programs by developing a verification framework in the Isabelle/HOL theorem prover called Simpl, which provides a rich sequential language that can encode most of the features in real world programming languages. However Simpl only aims to verify sequential programs, and it does not support the specification nor the verification of concurrent programs. CSimpl is an extension of Simpl with concurrency oriented language features and verification techniques. We prove the compositionality of the CSimpl semantics and we provide inference rules for the language constructors to reason about CSimpl programs using rely-guarantee, showing that the inference rules are sound w.r.t. the language semantics. Finally, we run a case study where we use CSimpl to specify and prove functional correctness of an abstract communication model of the XtratuM partitioning separation micro-kernel.
+						Developing correct concurrent systems is a large challenge. To provide a programming language and further a formal reasoning system for concurrent systems, we developed CSimpl, a generic and realistic imperative language in Isabelle/HOL theorem prover. CSimpl provides a rely-guarantee proof system for compositional reasoning of concurrent programs and a refinement approach for top-down development of concurrent systems in the correct-by-construct manner. 
 						</p>
 						<p>
-						We are now developing a formal specification of the full ARINC 653 standard for operating systems (ARINC653 P1-5, multicore) in CSimpl. 
+						It is essential to deal with the interference of the environment between programs in concurrent program verification. This has led to the development of concurrent program reasoning techniques such as rely-guarantee. However, the source code of the programs to be verified often involves language features such as exceptions and procedures which are not supported by the existing mechanizations of those concurrent reasoning techniques. Schirmer et al. have solved a similar problem for sequential programs by developing a verification framework in the Isabelle/HOL theorem prover called Simpl, which provides a rich sequential language that can encode most of the features in real world programming languages. However Simpl only aims to verify sequential programs, and it does not support the specification nor the verification of concurrent programs. CSimpl is an extension of Simpl with concurrency oriented language features and verification techniques. We prove the compositionality of the CSimpl semantics and we provide inference rules for the language constructors to reason about CSimpl programs using rely-guarantee, showing that the inference rules are sound w.r.t. the language semantics. 
 						</p>
 						
 						<p>
