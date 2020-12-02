@@ -78,12 +78,49 @@
 			<b>TRust<!--<sup>2</sup>--></b> is a long-term project focusing on programming languages and trusted compilation by developing formal semantics of languages and formal verification of compiling. The final goal of this project is to create a formally verified compiler for various languages. 
 			</p>
 			<p style="font-size:13pt;">
-			In this project, we have created the CSimpl language and its parallel Hoare proof system in Isabelle/HOL (<b>see <a href="corin.html#csimpl">CSimpl</a> for more details </b>). CSimpl has been integrated in our PiCore framework. CSimpl is a generic and realistic imperative language by extending Simpl and providing a rely-guarantee proof system. Simpl is composed of the necessary constructs to capture most of the features present in common sequential languages, such as conditional branching, loops, abrupt termination and exceptions, assertions, mutually recursive functions, expressions with side effects, and nondeterminism. Additionally, Simpl can express memory related features like the memory heap, pointers, and pointers to functions. Simpl is able to represent a large subset of C99 code and has been applied to the formal verification of seL4 OS kernel at C code level.
+			In this project, we have created a formal programming language (CSimpl) in Isabelle/HOL. CSimpl is a generic and realistic imperative language by extending Simpl and providing a rely-guarantee proof system for compositional reasoning of concurrent programs and a refinement approach for top-down development of concurrent systems. Simpl is composed of the necessary constructs to capture most of the features present in common sequential languages, such as conditional branching, loops, abrupt termination and exceptions, assertions, mutually recursive functions, expressions with side effects, and nondeterminism. Additionally, Simpl can express memory related features like the memory heap, pointers, and pointers to functions. Simpl is able to represent a large subset of C99 code and has been applied to the formal verification of seL4 OS kernel at C code level. 
 			</p>
 			<p style="font-size:13pt;">
 			In this project, we have also developed comprehensive formal semantics of LLVM IR language in Isabelle/HOL, and AADL architecture language and its verification approach in Isabelle/HOL. Using our PiCore framework and integrated languages, we have developed the formal semantics of a core subset of BPEL business process language and a verified compilation of BPEL programs to PiCore specification (<b>see <a href="corin.html#picore">PiCore</a> for more details </b>). 
 			</p>
 			
+			<div class="panel-header" style="background:#eeeeee;font-size:13pt;">
+				<span class="fg-darker"> <b>Research Topics and Outcomes</b></span>
+			</div>
+			<div class="listview-outlook" style="width:98%;">
+				<div class="list" id="csimpl">
+					<div class="list-content" style="font-size:13pt;">
+						<div class="news_data2">
+						<a href="#" class="fg-cobalt fg-hover-crimson"><i class="icon-arrow-right-5"></i>
+						<b>CSimpl: A Concurrent Imperative Programming Language and Rely-guarantee Proof System in Isabelle/HOL</b>
+						</a></br>
+			
+						<span class="panel-content margin10 fg-dark nlp nrp">
+						<p>
+						It is essential to deal with the interference of the environment between programs in concurrent program verification. This has led to the development of concurrent program reasoning techniques such as rely-guarantee. However, the source code of the programs to be verified often involves language features such as exceptions and procedures which are not supported by the existing mechanizations of those concurrent reasoning techniques. Schirmer et al. have solved a similar problem for sequential programs by developing a verification framework in the Isabelle/HOL theorem prover called Simpl, which provides a rich sequential language that can encode most of the features in real world programming languages. However Simpl only aims to verify sequential programs, and it does not support the specification nor the verification of concurrent programs. CSimpl is an extension of Simpl with concurrency oriented language features and verification techniques. We prove the compositionality of the CSimpl semantics and we provide inference rules for the language constructors to reason about CSimpl programs using rely-guarantee, showing that the inference rules are sound w.r.t. the language semantics. Finally, we run a case study where we use CSimpl to specify and prove functional correctness of an abstract communication model of the XtratuM partitioning separation micro-kernel.
+						</p>
+						<p>
+						We are now developing a formal specification of the full ARINC 653 standard for operating systems (ARINC653 P1-5, multicore) in CSimpl. 
+						</p>
+						
+						<p>
+						To support compositional top-down verification of concurrent systems using rely-guarantee, we propose CSim2 a compositional rely-guarantee-based framework for complex concurrent systems in the Isabelle/HOL theorem prover. CSim2 uses CSimpl to model many of the features found in real world programming languages like exceptions, assertions, and procedures. CSim2 provides a simulation based framework for the preservation of CSimpl rely-guarantee properties from specifications to implementations. 
+						</p>
+						</span>
+						<ul>
+						<li>David Sanan, <strong>Yongwang Zhao</strong>, Zhe Hou, Fuyuan Zhang, Alwen Tiu, Yang Liu, "CSimpl: A Rely-Guarantee-Based Framework for Verifying Concurrent Programs", <em><u>23rd International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS 2017, ETAPS)</u></em>, 22-29 April 2017, Uppsala, Sweden, pp. 481-498 (<em><strong>CCF B, Top conf. in formal methods</strong></em>) <a href="papers/TACAS2017.pdf" target="_blank"><strong>[PDF download]</strong></a> 
+						</li>
+						<li>
+							David Sanan, <strong>Yongwang Zhao#</strong>, Yang Liu, Shangwei Lin, "CSim2 : Compositional Top-down Verification of Concurrent Systems Using Rely-Guarantee", <em>
+							<u>ACM Transactions on Programming Languages and Systems (TOPLAS) </u></em>, to appear (<em><strong>CCF A, top journal in programming languages</strong></em>)
+						  </li>
+						</ul>
+			
+						</div>
+					</div>
+				</div>
+			</div>
+				
 		</div>
 		
 	</div>
