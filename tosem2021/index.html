@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><link rel="stylesheet" type="text/css" href="isabelle.css"/>
+<title>The PiCore Framework in Isabelle/HOL 2018</title>
+</head>
+
+
+<body>
+<h2>Rely-guarantee Reasoning about Concurrent Memory Management: Correctness, Safety and Security</h2>
+
+<div class="sessions">
+
+<p> <b>Developed in Isabelle/HOL 2018 </b> </p>
+<p> The Isabelle sources are available here <a href="PiCore_Concur_Memory.zip"><b>[download]</b></a>. Please see the README.md file after unzipping the downloaded file. </p>
+<p> For your convenience, you could <a href="html/"><b>browse the sources in web browsers here</b></a>. </p>
+
+<h3> PiCore Framework </h3>
+<p>
+PiCore is an event-based and parametric rely-guarantee framework for concurrent reactive systems (e.g., concurrent OS kernels, control systems, communication systems).
+We introduce ``events'' and their compositions into the rely-guarantee method for system reactions. Our approach supports compositional verification of functional correctness and safety as well as deals with concurrency in systems (e.g. multicore concurrency and interruptible concurrency). PiCore decouples the rely-guarantee reasoning of programs from that of the events by a clear rely-guarantee interface. It is thus able to integrate existing imperative languages for programs and their rely-guarantee proof systems. 
+ </p>
+
+<h3>PiCore-IFS: Compositional Verification of Integrity in PiCore </h3>
+<p>
+We present a compositional reasoning approach for integrity in PiCore. The integrity property provides a formalism for the specification of security policies. We first translate a PiCore specification into a state machine where the integrity property is defined on. Then, we provide a proof method showing that reasoning about the integrity of the system could be decomposed to each event. 
+</p>
+<p>
+
+</p>
+
+<h3> PiCore-SIMP: SIMP Adapter and SIMP instance of PiCore </h3>
+<p>
+SIMP is a simple imperative language with a rely-guarantee proof system in Isabelle/HOL as the HOL-Hoare_Parallel lib (under the directory of Isabelle2018/src/HOL/Hoare_Parallel). 
+</p>
+<p>
+We have integrated the SIMP language and its rely-guarantee proof system into PiCore without changing any source code of HOL-Hoare_Parallel. 
+We extend SIMP by some new rely-guarantee proof rules. Two examples, an stepper motor and an ARINC 653 OS, are created using PiCore_SIMP. 
+
+<h3> Formal specification and verification of Zephyr RTOS </h3>
+<p>
+We use the PiCore to formally specify and verify the concurrent memory management of Zephyr RTOS. The C code is ~ 400 lines, not counting blank lines and comments. 
+We develop a fine-grained low level formal specification of buddy memory management. The specification has a basically line-to-line correspondence with the Zephyr C code, covering all the data structures and imperative statements present in the implementation. 
+During the formal verification, we found 3 bugs in the C code of Zephyr which are: an incorrect block split, an incorrect return, and non-termination of a loop in the k_mem_pool_alloc service. 
+</p>
+
+</div>
+
+<b>
+copyrights by Yongwang Zhao (zhaoyongwang@gmail.com, zhaoyw@buaa.edu.cn) 
+</b>
+</body>

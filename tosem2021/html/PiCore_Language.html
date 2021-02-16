@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory PiCore_Language (Isabelle2018: August 2018)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory PiCore_Language</h1>
+
+<span class="command">theory</span> <span class="name">PiCore_Language</span><br/>
+<span class="keyword">imports</span> <a href="../../HOL/HOL/Main.html"><span class="name">Main</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+Created by Yongwang Zhao (zhaoyw@buaa.edu.cn)
+School of Computer Science &amp; Engineering, Beihang University, China
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Abstract Syntax of PiCore Language&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>PiCore_Language</span><span> 
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>Main</span><span> </span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="tfree">&#39;s</span><span> </span><span>bexp</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;s set&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="tfree">&#39;s</span><span> </span><span>guard</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;s set&quot;</span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* &#39;prog: the type of program command *)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;l</span><span class="delimiter">,</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;prog</span><span class="delimiter">)</span><span> </span><span>event&#39;</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;l &#215; (&#39;s guard &#215; &#39;prog)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>guard</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;s,&#39;prog) event&#39; &#8658; &#39;s guard&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;guard ev &#8801; fst (snd ev)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>body</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;s,&#39;prog) event&#39; &#8658; &#39;prog&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;body ev &#8801; snd (snd ev)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;l</span><span class="delimiter">,</span><span class="tfree">&#39;k</span><span class="delimiter">,</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;prog</span><span class="delimiter">)</span><span> </span><span>event</span><span> </span><span class="delimiter">=</span><span>
+</span><span>      </span><span>AnonyEvent</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;prog&quot;</span></span></span><span> 
+</span><span>    </span><span class="delimiter">|</span><span> </span><span>BasicEvent</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;s,&#39;prog) event&#39;&quot;</span></span></span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;l</span><span class="delimiter">,</span><span class="tfree">&#39;k</span><span class="delimiter">,</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;prog</span><span class="delimiter">)</span><span> </span><span>esys</span><span> </span><span class="delimiter">=</span><span> 
+</span><span>      </span><span>EvtSeq</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;k,&#39;s,&#39;prog) event&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;k,&#39;s,&#39;prog) esys&quot;</span></span></span><span>
+</span><span>    </span><span class="delimiter">|</span><span> </span><span>EvtSys</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;k,&#39;s,&#39;prog) event set&quot;</span></span></span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;l</span><span class="delimiter">,</span><span class="tfree">&#39;k</span><span class="delimiter">,</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;prog</span><span class="delimiter">)</span><span> </span><span>paresys</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;k &#8658; (&#39;l,&#39;k,&#39;s,&#39;prog) esys&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Some Lemmas of Abstract Syntax&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">primrec</span></span><span> </span><span>is_basicevt</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;k,&#39;s,&#39;prog) event &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;is_basicevt (AnonyEvent _) = False&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>        </span><span class="string"><span class="delete"><span class="delete">&quot;is_basicevt (BasicEvent _) = True&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">primrec</span></span><span> </span><span>is_anonyevt</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l,&#39;k,&#39;s,&#39;prog) event &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;is_anonyevt (AnonyEvent _) = True&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>        </span><span class="string"><span class="delete"><span class="delete">&quot;is_anonyevt (BasicEvent _) = False&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>basicevt_isnot_anony</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;is_basicevt e &#10233; &#172; is_anonyevt e&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span>event.exhaust</span><span> </span><span>is_anonyevt.simps</span><span class="delimiter">(</span><span>2</span><span class="delimiter">)</span><span> </span><span>is_basicevt.simps</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span class="delimiter">)</span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>anonyevt_isnot_basic</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;is_anonyevt e &#10233; &#172; is_basicevt e&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>basicevt_isnot_anony</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>evtseq_ne_es</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;EvtSeq e es &#8800; es&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>induct</span><span> </span><span>es</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span class="delimiter">[</span><span>1</span><span class="delimiter">]</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>

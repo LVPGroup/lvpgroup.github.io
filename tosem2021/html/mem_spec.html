@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory mem_spec (Isabelle2018: August 2018)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory mem_spec</h1>
+
+<span class="command">theory</span> <span class="name">mem_spec</span><br/>
+<span class="keyword">imports</span> <a href="Heap.html"><span class="name">Heap</span></a> <a href="picore_SIMP_lemma.html"><span class="name">picore_SIMP_lemma</span></a> <a href="List_aux.html"><span class="name">List_aux</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+Created by Yongwang Zhao (zhaoyw@buaa.edu.cn)
+School of Computer Science &amp; Engineering, Beihang University, China
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>mem_spec</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>Main</span><span> </span><span>Heap</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;../../adapter_SIMP/picore_SIMP_lemma&quot;</span></span></span><span> </span><span>List_aux</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*aux_lemma*)</span></span></span></span></span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;data types and state&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">typedecl</span></span><span> </span><span>Thread</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">typedef</span></span><span> </span><span>mempool_ref</span><span> </span><span class="delimiter">=</span><span> </span><span>ref</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>ref_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; we define memory address as nat &#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>mem_ref</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;NULL &#8801; 0 :: nat&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249; we have a thread scheduler, thread has 3 types. BLOCKED means a thread is waiting for memory and is in wait queue &#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span>Thread_State_Type</span><span> </span><span class="delimiter">=</span><span> </span><span>READY</span><span> </span><span class="delimiter">|</span><span> </span><span>RUNNING</span><span> </span><span class="delimiter">|</span><span> </span><span>BLOCKED</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+a memory block: a ref to a memor pool, a level index and a block index in this level, a start address ``data&#39;&#39;. 
+max number of levels is n\_level of a memory pool. So @level should be &lt; n\_levels. 
+The number of blocks at level 0 is n\_max. 
+the max number of blocks at level n is $n\_max * 4 ^ n$. the block index should less then this number.
+&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>Mem_block</span><span> </span><span class="delimiter">=</span><span> </span><span>pool</span><span> </span><span class="delimiter">::</span><span> </span><span>mempool_ref</span><span>
+</span><span>                   </span><span>level</span><span> </span><span class="delimiter">::</span><span> </span><span>nat</span><span>
+</span><span>                   </span><span>block</span><span> </span><span class="delimiter">::</span><span> </span><span>nat</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* block id *)</span></span></span></span></span><span>
+</span><span>                   </span><span>data</span><span> </span><span class="delimiter">::</span><span> </span><span>mem_ref</span><span>
+</span><span>        
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+BlockState defines the bit info in bitmap. We uses different types, while not 0 or 1 in this design.
+Then the blockstate could be implemented as 0 or 1, with additional information. 
+
+basic states of memory block are ALLOCATED, FREE, DIVIDED and NOEXIST.
+The levels of bitmap is actually a quad-tree of BlockState. 
+ALLOCATED: the block is allocated to a thread
+FREE: the block is free
+DIVIDED: the block is divided, which means is was splited to 4 subblocks
+NOEXIST: the block is not exist 
+
+ALLOCACTED and FREE blocks are the leaf blocks of the quad-tree. 
+DIVIDED blocks are inner nodes of the quad-tree.
+Otherwise is NOEXIST.
+
+we also introduce FREEING and ALLOCATING state to avoid a case that a FREEING block may be allocated by other threads
+and a ALLOCATING block may be freed by other threads. In OS implementation, the allocating/freeing block is 
+an inner block of alloc/free services, and other threads will not manipulate them.  
+they are used to indicate state of the block which are going to be merged during freeing a block,
+and the block which is going to be split during allocating a block. 
+
+we may remove FREEING/ALLOCATING state later by revising alloc and free syscalls to avoid allocate or free blocks 
+in freeing\_node and allocating\_node. 
+&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span>BlockState</span><span> </span><span class="delimiter">=</span><span> </span><span>ALLOCATED</span><span> </span><span class="delimiter">|</span><span> </span><span>FREE</span><span> </span><span class="delimiter">|</span><span> </span><span>DIVIDED</span><span> </span><span class="delimiter">|</span><span> </span><span>NOEXIST</span><span> </span><span class="delimiter">|</span><span> </span><span>FREEING</span><span> </span><span class="delimiter">|</span><span> </span><span>ALLOCATING</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*the FREEING state means that the block is being freed (i.e. during mem_pool_free)
+such that other mem_pool_free can not free the same block. Otherwise, error happens in the source code *)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249;data stucture at each level, a bitmap and a free block list&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>Mem_pool_lvl</span><span> </span><span class="delimiter">=</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* bits :: &quot;bool list&quot; *)</span></span></span></span></span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* True: free, False: allocated*)</span></span></span></span></span><span>
+</span><span>                      </span><span>bits</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;BlockState list&quot;</span></span></span><span>
+</span><span>                      </span><span>free_list</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;mem_ref list&quot;</span></span></span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+a memory pool is actually a forest of @n\_max numbers of blocks with size of @max\_sz. 
+A block may be split to 4 sub-blocks and so on, at most for @n\_levels times. Thus, each block may be split as a quad-tree.
+a memory pool maintains a big memory block, where @buf is the start address of the memory block.
+The size of a memory pool is @n\_max * @max\_sz. 
+@max\_sz has a constraint. a small block at last level (level index is @n\_levels - 1) should be aligned by 4 bits,
+i.e. the size of block at last level should be 4*n (n &gt; 0). Here, we dont demand $4^n$, which is a special case of 4*n. 
+Thus, @max\_sz should be $4*n*4^n\_levels$. 
+
+@levels maintain the information at each level including a bitmap and a free block list.
+@wait\_q is a list of threads, which is blocked on this memory pool. 
+&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>Mem_pool</span><span> </span><span class="delimiter">=</span><span> </span><span>buf</span><span> </span><span class="delimiter">::</span><span> </span><span>mem_ref</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* head address of the mem pool *)</span></span></span></span></span><span>
+</span><span>                  </span><span>max_sz</span><span> </span><span class="delimiter">::</span><span> </span><span>nat</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* the size of level 0 blocks *)</span></span></span></span></span><span>
+</span><span>                  </span><span>n_max</span><span> </span><span class="delimiter">::</span><span> </span><span>nat</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* the number of level 0 blocks *)</span></span></span></span></span><span>
+</span><span>                  </span><span>n_levels</span><span> </span><span class="delimiter">::</span><span> </span><span>nat</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* the max number of levels of blocks *)</span></span></span></span></span><span>
+</span><span>                  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*max_inline_level :: nat *)</span></span></span></span></span><span>
+</span><span>                  </span><span>levels</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool_lvl list&quot;</span></span></span><span> 
+</span><span>                  </span><span>wait_q</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread list&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+The state of memory management consists of thread state, memory pools, and local variables of each thread.
+In monocore OSs, there is only one currently executing thread @cur, where None means the scheduler has not choose a thread.
+@tick save a time for the system.
+@mem\_pools maintains the refs of all memory pools.
+@mem\_pool\_info shows the detailed information of each memory pool by its ref.
+we assume that all memory pools are shared by all threads. This is the most relaxed case. 
+The case that some memory pool is only shared by a set of thread is just a special case. 
+Other fields are local vars of each thread used in alloc/free syscalls.
+
+for each thread, we use freeing\_node to maintain the freeing node in free syscall. 
+when free a block, we set it to FREEING, and check if its other 3 partner blocks are also free. 
+If so, we set the 4 blocks to NOEXIST and set their parent block to FREEING, and so on. 
+until that other 3 partner blocks are not all free, then set the FREEING block to FREE. 
+This design avoids the FREEING node is allocated by other threads.
+
+we use allocating\_node to maintain the allocating node in alloc syscall. 
+when alloc a block, we find a free block at the nearest upper level, and set it to ALLOCATING.
+if size of the block is too big, we split it into 4 child blocks. 
+We set the first child block to ALLOCATING and other 3 blocks to FREE, and so on. 
+until that the size of block is suitable, then set the ALLOCATING block to ALLOCATED.
+This design avoids the ALLOCATING node is freed by other threads.
+&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>State</span><span> </span><span class="delimiter">=</span><span> 
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* threads and info *)</span></span></span></span></span><span>
+</span><span>  </span><span>cur</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread option&quot;</span></span></span><span>
+</span><span>  </span><span>tick</span><span> </span><span class="delimiter">::</span><span> </span><span>nat</span><span>
+</span><span>  </span><span>thd_state</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; Thread_State_Type&quot;</span></span></span><span>
+</span><span>  
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* all mem pools *)</span></span></span></span></span><span>
+</span><span>  </span><span>mem_pools</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;mempool_ref set&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*  k_mem_pool  *)</span></span></span></span></span><span>
+</span><span>  </span><span>mem_pool_info</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;mempool_ref &#8658; Mem_pool&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* local variables of threads *)</span></span></span></span></span><span>
+</span><span>  </span><span>i</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; nat&quot;</span></span></span><span>
+</span><span>  </span><span>j</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; nat&quot;</span></span></span><span>
+</span><span>  </span><span>ret</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; int&quot;</span></span></span><span>
+</span><span>  </span><span>endt</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; nat&quot;</span></span></span><span>
+</span><span>  </span><span>rf</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span>tmout</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; int&quot;</span></span></span><span>
+</span><span>  </span><span>lsizes</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; nat list&quot;</span></span></span><span>
+</span><span>  </span><span>alloc_l</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; int&quot;</span></span></span><span>
+</span><span>  </span><span>free_l</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; int&quot;</span></span></span><span>
+</span><span>  </span><span>from_l</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; int&quot;</span></span></span><span>
+</span><span>  </span><span>blk</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; mem_ref&quot;</span></span></span><span>
+</span><span>  </span><span>nodev</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; mem_ref&quot;</span></span></span><span>
+</span><span>  </span><span>bn</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; nat&quot;</span></span></span><span>
+</span><span>  </span><span>lbn</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; nat&quot;</span></span></span><span>
+</span><span>  </span><span>lsz</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; nat&quot;</span></span></span><span>
+</span><span>  </span><span>block2</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; mem_ref&quot;</span></span></span><span>
+</span><span>  </span><span>free_block_r</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span>alloc_lsize_r</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span>lvl</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; nat&quot;</span></span></span><span>
+</span><span>  </span><span>bb</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; nat&quot;</span></span></span><span>
+</span><span>  </span><span>block_pt</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; mem_ref&quot;</span></span></span><span>
+</span><span>  </span><span>th</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; Thread&quot;</span></span></span><span>
+</span><span>  </span><span>need_resched</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span>mempoolalloc_ret</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; Mem_block option&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* aux variables for RG *)</span></span></span></span></span><span>
+</span><span>  </span><span>freeing_node</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; Mem_block option&quot;</span></span></span><span>
+</span><span>  </span><span>allocating_node</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; Mem_block option&quot;</span></span></span><span>
+</span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* memory separation of thread *)</span></span></span></span></span><span>
+</span><span>  </span><span>mblocks</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; Mem_block set&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;specification of events&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;data types&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+Since Zephyr uses fine-grained locks for shared memory pools, 
+interleaving among scheduling, syscalls (alloc, free), and clock tick are allowed. 
+Thus, we use 3 event systems to model scheduling, syscalls from threads, and clock tick. 
+Then the whole system is the parallel composition of the three event systems. 
+Actually, we have 1 scheduler, 1 timer, and n threads. 
+&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span>Core</span><span> </span><span class="delimiter">=</span><span> </span><span>&#119982;</span><span> </span><span class="delimiter">|</span><span> </span><span>&#119983;</span><span> </span><span>Thread</span><span> </span><span class="delimiter">|</span><span> </span><span>Timer</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249;labels for different events&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span>EL</span><span> </span><span class="delimiter">=</span><span> </span><span>ScheduleE</span><span> </span><span class="delimiter">|</span><span> </span><span>TickE</span><span> </span><span class="delimiter">|</span><span> </span><span>Mem_pool_allocE</span><span> </span><span class="delimiter">|</span><span> </span><span>Mem_pool_freeE</span><span> </span><span class="delimiter">|</span><span> </span><span>Mem_pool_defineE</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249;data types for event parameters&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span>Parameter</span><span> </span><span class="delimiter">=</span><span> </span><span>Thread</span><span> </span><span>Thread</span><span> </span><span class="delimiter">|</span><span> </span><span>MPRef</span><span> </span><span>mempool_ref</span><span> </span><span class="delimiter">|</span><span> </span><span>MRef</span><span> </span><span>mem_ref</span><span> </span><span class="delimiter">|</span><span> </span><span>Block</span><span> </span><span>Mem_block</span><span> </span><span class="delimiter">|</span><span> </span><span>Natural</span><span> </span><span>nat</span><span> </span><span class="delimiter">|</span><span> </span><span>Integer</span><span> </span><span>int</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>EventLabel</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;EL &#215; (Parameter list &#215; Core)&quot;</span></span></span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>get_evt_label</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;EL &#8658; Parameter list &#8658; Core &#8658; EventLabel&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ _ &#8667; _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>30</span><span class="delimiter">,</span><span>30</span><span class="delimiter">,</span><span>30</span><span class="delimiter">]</span><span> </span><span>20</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;get_evt_label el ps k &#8801; (el,(ps,k))&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+define the waiting mode for alloc. 
+FOREVER means that if allocating fails, the thread will wait forever until allocating succeed. 
+NOWAIT means that if allocating fails, alloc syscall return error immediately. 
+otherwise n &gt; 0, means the thread will wait for a timeout n. 
+&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;FOREVER &#8801; (-1)::int&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;NOWAIT &#8801; 0::int&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+return CODE for alloc and free syscalls.
+free syscall always succeed, so it returns OK. 
+alloc syscall may succeed (OK), timeout (ETIMEOUT), fails(ENOMEM), fails due to request too large size (ESIZEERR).
+
+EAGAIN is an inner flag of alloc syscall. After it finds an available block for request, the block may be allocated immediately
+by other threads. In such a case, alloc will provide EAGAIN and try to allocate again. 
+
+We introduce ESIZEERR for Zephyr to avoid a dead loop. 
+We introduce ETIMEOUT for Zephyr for robustness.
+&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;EAGAIN &#8801; (-2)::int&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ENOMEM &#8801; (-3)::int&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ESIZEERR &#8801; (-4)::int&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;OK &#8801; 0 :: int&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ETIMEOUT &#8801; (-1) :: int&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+due to fine-grained lock used by Zephyr, we use a command for each atomic statement in free/alloc syscalls.
+the statements of syscalls from a thread $t$ can only be executed when $t$ is the currently executing thread by the scheduler.
+We use the AWAIT statement to represent this semantics.
+&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>stm</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; State com &#8658; State com&quot;</span></span></span><span> </span><span class="delimiter">(</span><span class="string"><span class="delete"><span class="delete">&quot;_ &#9656; _&quot;</span></span></span><span> </span><span class="delimiter">[</span><span>0</span><span class="delimiter">,</span><span>0</span><span class="delimiter">]</span><span> </span><span>21</span><span class="delimiter">)</span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;stm t p = AWAIT &#180;cur = Some t THEN p END&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;aux definitions for events&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>ALIGN4</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;nat &#8658; nat&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ALIGN4 n &#8801; ((n + 3) div 4) * 4&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>align40</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;n mod 4 = 0 &#10233; ALIGN4 n = n&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>ALIGN4_def</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>align41</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;n mod 4 = 1 &#10233; ALIGN4 n = n + 3&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>ALIGN4_def</span><span>
+</span><span class="keyword1"><span class="command">proof</span></span><span> </span><span>-</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;n mod 4 = 1&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(n + 3) mod 4 = 0&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>presburger</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(n + 3) div 4 * 4 = n + 3&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fastforce</span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>align42</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;n mod 4 = 2 &#10233; ALIGN4 n = n + 2&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>ALIGN4_def</span><span> 
+</span><span class="keyword1"><span class="command">proof</span></span><span> </span><span>-</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;n mod 4 = 2&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(n + 2) mod 4 = 0&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>mod_add_left_eq</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>presburger</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(n + 3) div 4 * 4 = n + 2&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fastforce</span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>align43</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;n mod 4 = 3 &#10233; ALIGN4 n = n + 1&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>ALIGN4_def</span><span> 
+</span><span class="keyword1"><span class="command">proof</span></span><span> </span><span>-</span><span>
+</span><span>  </span><span class="keyword3"><span class="command">assume</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;n mod 4 = 3&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword1"><span class="command">have</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(n + 1) mod 4 = 0&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>mod_add_left_eq</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>presburger</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">then</span></span><span> </span><span class="keyword3"><span class="command">show</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(n + 3) div 4 * 4 = n + 1&quot;</span></span></span><span>
+</span><span>    </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>fastforce</span><span>
+</span><span class="keyword1"><span class="command">qed</span></span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>align_mod0</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ALIGN4 n mod 4 = 0&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>ALIGN4_def</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>align4_gt</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ALIGN4 n &#8805; n &#8743; ALIGN4 n &#8804; n + 3&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>case_tac</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;n mod 4 = 0&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>align40</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>case_tac</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;n mod 4 = 1&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>align41</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>case_tac</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;n mod 4 = 2&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>align42</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>case_tac</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;n mod 4 = 3&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>    </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>align43</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>align2_eq_align</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;ALIGN4 (ALIGN4 n) = ALIGN4 n&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>ALIGN4_def</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249;
+Zephyr uses two events: reschedule for free and swap for alloc for context switch
+
+&#8250;</span></span></span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>reschedule</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;State com&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;reschedule &#8801; 
+  &#180;thd_state := &#180;thd_state(the &#180;cur := READY);;
+  &#180;cur := Some (SOME t. &#180;thd_state t = READY);;
+  &#180;thd_state := &#180;thd_state(the &#180;cur := RUNNING)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>swap</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;State com&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;swap &#8801; 
+  IF (&#8707;t. &#180;thd_state t = READY) THEN
+    &#180;cur := Some (SOME t. &#180;thd_state t = READY);;
+    &#180;thd_state := &#180;thd_state(the &#180;cur := RUNNING)
+  ELSE
+    &#180;cur := None
+  FI&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>block_num</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool &#8658; mem_ref &#8658; nat &#8658; nat&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;block_num p bl sz &#8801; (bl - (buf p)) div sz&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>clear_free_bit</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(mempool_ref &#8658; Mem_pool) &#8658; mempool_ref &#8658; nat &#8658; nat &#8658; (mempool_ref &#8658; Mem_pool)&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;clear_free_bit mp_info p l b &#8801; 
+        mp_info (p := (mp_info p) &#10631;levels := (levels (mp_info p))
+                [l := ((levels (mp_info p)) ! l) &#10631;bits := (bits ((levels (mp_info p)) ! l)) [b := ALLOCATED]&#10632;] &#10632;)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>set_bit</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(mempool_ref &#8658; Mem_pool) &#8658; mempool_ref &#8658; nat &#8658; nat &#8658; BlockState &#8658; (mempool_ref &#8658; Mem_pool)&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;set_bit mp_info p l b st &#8801; 
+        mp_info (p := (mp_info p) &#10631;levels := (levels (mp_info p))
+                [l := ((levels (mp_info p)) ! l) &#10631;bits := (bits ((levels (mp_info p)) ! l)) [b := st]&#10632;] &#10632;)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;set_bit_free mp_info p l b &#8801; set_bit mp_info p l b FREE&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;set_bit_alloc mp_info p l b &#8801; set_bit mp_info p l b ALLOCATED&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;set_bit_divide mp_info p l b &#8801; set_bit mp_info p l b DIVIDED&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;set_bit_noexist mp_info p l b &#8801; set_bit mp_info p l b NOEXIST&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;set_bit_freeing mp_info p l b &#8801; set_bit mp_info p l b FREEING&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;set_bit_allocating mp_info p l b &#8801; set_bit mp_info p l b ALLOCATING&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>set_bit_s</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;State &#8658; mempool_ref &#8658; nat &#8658; nat &#8658; BlockState &#8658; State&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;set_bit_s s p l b st &#8801; 
+        s&#10631;mem_pool_info := set_bit (mem_pool_info s) p l b st &#10632;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>set_bit_prev_len</span><span class="delimiter">:</span><span> 
+</span><span class="string"><span class="delete"><span class="delete">&quot;length (bits (levels (mp_info p) ! l)) = length (bits (levels ((set_bit mp_info p l b flg) p) ! l))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>set_bit_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>list_updt_samelen</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span class="delimiter">(</span><span>no_types</span><span class="delimiter">,</span><span> </span><span>lifting</span><span class="delimiter">)</span><span> </span><span>Mem_pool_lvl.select_convs</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span> </span><span>Mem_pool_lvl.surjective</span><span> 
+</span><span>        </span><span>Mem_pool_lvl.update_convs</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span> </span><span>list_update_beyond</span><span> </span><span>not_less</span><span> </span><span>nth_list_update_eq</span><span class="delimiter">)</span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>set_bit_prev_len2</span><span class="delimiter">:</span><span> 
+</span><span class="string"><span class="delete"><span class="delete">&quot;l &#8800; t &#10233; length (bits (levels (mp_info p) ! l)) = length (bits (levels ((set_bit mp_info p t b flg) p) ! l))&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>set_bit_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span>get_bit</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(mempool_ref &#8658; Mem_pool) &#8658; mempool_ref &#8658; nat &#8658; nat &#8658; BlockState&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;get_bit mp_info p l b &#8801; (bits ((levels (mp_info p)) ! l)) ! b&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span>get_bit_s</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;State &#8658; mempool_ref &#8658; nat &#8658; nat &#8658; BlockState&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;get_bit_s s p l b &#8801; get_bit (mem_pool_info s) p l b&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>set_bit_get_bit_eq</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;l &lt; length (levels (mp_info p)) &#10233;  
+   b &lt; length (bits (levels (mp_info p) ! l)) &#10233; 
+   mp_info2 = set_bit mp_info p l b st &#10233; 
+   get_bit mp_info2 p l b = st&quot;</span></span></span><span>
+</span><span> </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>set_bit_def</span><span class="delimiter">)</span><span>
+</span><span> 
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>set_bit_get_bit_eq2</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;l &lt; length (levels ((mem_pool_info Va) p)) &#10233;  
+   b &lt; length (bits (levels ((mem_pool_info Va) p) ! l)) &#10233; 
+   get_bit_s (Va&#10631; mem_pool_info := set_bit (mem_pool_info Va) p l b st&#10632;) p l b = st&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>set_bit_get_bit_eq</span><span>
+</span><span>    </span><span class="delimiter">[</span><span>of</span><span> </span><span>l</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(mem_pool_info Va)&quot;</span></span></span><span> </span><span>p</span><span> </span><span>b</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; set_bit (mem_pool_info Va) p l b st&quot;</span></span></span><span> </span><span>st</span><span class="delimiter">]</span><span>
+</span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>set_bit_get_bit_neq</span><span class="delimiter">:</span><span> 
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;p &#8800; p1 &#8744; l &#8800; l1 &#8744; b &#8800; b1 &#10233;
+   mp_info2 = set_bit mp_info p l b st &#10233; 
+   get_bit mp_info2 p1 l1 b1 = get_bit mp_info p1 l1 b1&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>set_bit_def</span><span class="delimiter">)</span><span> </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>metis</span><span> </span><span class="delimiter">(</span><span>no_types</span><span class="delimiter">,</span><span> </span><span>lifting</span><span class="delimiter">)</span><span> </span><span>Mem_pool_lvl.select_convs</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span> </span><span>Mem_pool_lvl.surjective</span><span> 
+</span><span>      </span><span>Mem_pool_lvl.update_convs</span><span class="delimiter">(</span><span>1</span><span class="delimiter">)</span><span> </span><span>list_update_beyond</span><span> </span><span>not_less</span><span> </span><span>nth_list_update_eq</span><span> </span><span>nth_list_update_neq</span><span class="delimiter">)</span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>set_bit_get_bit_neq2</span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;p &#8800; p1 &#8744; l &#8800; l1 &#8744; b &#8800; b1 &#10233;
+   get_bit_s (Va&#10631; mem_pool_info := set_bit (mem_pool_info Va) p l b st&#10632;) p1 l1 b1
+     = get_bit_s Va p1 l1 b1&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>set_bit_get_bit_neq</span><span>
+</span><span>        </span><span class="delimiter">[</span><span>of</span><span> </span><span>p</span><span> </span><span>p1</span><span> </span><span>l</span><span> </span><span>l1</span><span> </span><span>b</span><span> </span><span>b1</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;set_bit (mem_pool_info Va) p l b st&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;mem_pool_info Va&quot;</span></span></span><span class="delimiter">]</span><span>
+</span><span class="keyword1"><span class="command">by</span></span><span> </span><span>simp</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>buf_size</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool &#8658; nat&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;buf_size m &#8801; n_max m * max_sz m&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>block_fits</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool &#8658; mem_ref &#8658; nat &#8658; bool&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;block_fits p b bsz &#8801; b + bsz &lt; buf_size p + buf p + 1&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>block_ptr</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool &#8658; nat &#8658; nat &#8658; mem_ref&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;block_ptr p lsize b &#8801; buf p + lsize * b&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>partner_bits</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool &#8658; nat &#8658; nat &#8658; bool&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;partner_bits p l b &#8801; let bits = bits (levels p ! l);
+                                a = (b div 4) * 4 in
+                             bits!a = FREE &#8743; bits!(a+1) = FREE &#8743; bits!(a+2) = FREE &#8743; bits!(a+3) = FREE&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>partbits_div4</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;a div 4 = b div 4 &#10233; partner_bits p l a = partner_bits p l b&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">by</span></span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>partner_bits_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">abbreviation</span></span><span> </span><span>noexist_bits</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool &#8658; nat &#8658; nat &#8658; bool&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;noexist_bits mp ii jj &#8801; (bits (levels mp ! ii)) ! jj = NOEXIST
+                          &#8743; (bits (levels mp ! ii)) ! (jj + 1) = NOEXIST
+                          &#8743; (bits (levels mp ! ii)) ! (jj + 2) = NOEXIST
+                          &#8743; (bits (levels mp ! ii)) ! (jj + 3) = NOEXIST&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>level_empty</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool &#8658; nat &#8658; bool&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;level_empty p n &#8801; free_list (levels p!n) = []&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>head_free_list</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool &#8658; nat &#8658; mem_ref&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;head_free_list p l &#8801; hd (free_list ((levels p) ! l))&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>rmhead_free_list</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool &#8658; nat &#8658; Mem_pool&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;rmhead_free_list p l &#8801; 
+    p&#10631;levels := (levels p) 
+        [l :=  ((levels p) ! l) &#10631;free_list := tl (free_list ((levels p) ! l))&#10632;] &#10632;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>remove_free_list</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool &#8658; nat &#8658; mem_ref &#8658; Mem_pool&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;remove_free_list p l b &#8801; 
+    p&#10631;levels := (levels p) 
+        [l := ((levels p) ! l) &#10631;free_list := remove1 b (free_list ((levels p) ! l))&#10632;] &#10632;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>append_free_list</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool &#8658; nat &#8658; mem_ref &#8658; Mem_pool&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;append_free_list p l b &#8801; 
+    p&#10631;levels := (levels p) 
+        [l := ((levels p) ! l) &#10631;free_list := (free_list ((levels p) ! l)) @ [b]&#10632;] &#10632;&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>in_free_list</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;mem_ref &#8658; mem_ref list &#8658; bool&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;in_free_list v fl &#8801; (&#8707;i&lt;length fl. fl!i = v)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">subsection</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;specification of events&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>timeout_lm</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(timeout = FOREVER &#8744; timeout = NOWAIT &#8744; timeout &gt; 0) = (timeout &#8805; -1)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>Mem_pool_alloc</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; mempool_ref &#8658; nat &#8658; int &#8658; (EventLabel, Core, State, State com option) event&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool_alloc t p sz timeout = 
+  EVENT Mem_pool_allocE [MPRef p, Natural sz, Integer timeout] &#8667; (&#119983; t)
+  WHEN
+    p &#8712; &#180;mem_pools 
+    (* &#8743; &#180;cur = Some t*) (* t is the current thread *) (** this condition is not stable on rely condition **)
+    &#8743; timeout &#8805; -1 (* equv to (timeout = FOREVER &#8744; timeout = NOWAIT &#8744; timeout &gt; 0) *)
+    (* &#8743; p &#8712; &#180;pools_of_thread t *) (* the mem pool p is shared in the thread t *)
+  THEN
+    (t &#9656; &#180;tmout := &#180;tmout(t := timeout));;
+    
+    (t &#9656; &#180;endt := &#180;endt(t := 0));;
+    (t &#9656; IF timeout &gt; 0 THEN 
+           &#180;endt := &#180;endt(t := &#180;tick + nat timeout)
+         FI);;
+    (t &#9656; &#180;mempoolalloc_ret := &#180;mempoolalloc_ret (t := None));;
+    (t &#9656; &#180;ret := &#180;ret(t := ESIZEERR));;
+    (t &#9656; &#180;rf := &#180;rf(t := False));;
+    WHILE &#172; (&#180;rf t) DO
+
+      (* ==== start: ret = pool_alloc(p, block, size); ======================== *)
+      (*(t &#9656; &#180;lsizes := &#180;lsizes(t := []));;*)
+      (t &#9656; &#180;blk := &#180;blk(t := NULL));;
+      (t &#9656; &#180;alloc_lsize_r := &#180;alloc_lsize_r(t := False));; 
+      (t &#9656; &#180;alloc_l := &#180;alloc_l(t := -1));;
+      (t &#9656; &#180;free_l := &#180;free_l(t := -1));;
+      (t &#9656; &#180;lsizes := &#180;lsizes(t := [ALIGN4 (max_sz (&#180;mem_pool_info p))]));;
+      (t &#9656; &#180;i := &#180;i(t := 0));;
+      WHILE &#180;i t &lt; n_levels (&#180;mem_pool_info p) &#8743; &#172; &#180;alloc_lsize_r t DO
+        IF &#180;i t &gt; 0 THEN
+          (t &#9656; &#180;lsizes := &#180;lsizes(t := &#180;lsizes t @ [ALIGN4 (&#180;lsizes t ! (&#180;i t - 1) div 4)]))
+        FI;;
+        IF &#180;lsizes t ! &#180;i t &lt; sz THEN
+          (t &#9656; &#180;alloc_lsize_r := &#180;alloc_lsize_r(t := True))
+        ELSE
+          (t &#9656; &#180;alloc_l := &#180;alloc_l(t := int (&#180;i t)));;
+          IF &#172; level_empty (&#180;mem_pool_info p) (&#180;i t) THEN
+            (t &#9656; &#180;free_l := &#180;free_l(t := int (&#180;i t)))
+          FI;;
+          (t &#9656; &#180;i := &#180;i(t := &#180;i t + 1))
+        FI
+      OD;;
+      
+      IF &#180;alloc_l t &lt; 0 THEN
+        (t &#9656; &#180;ret := &#180;ret(t := ESIZEERR))
+      ELSE
+        IF &#180;free_l t &lt; 0 THEN
+          (* block-&gt;data = NULL; *)
+          (t &#9656; &#180;ret := &#180;ret(t := ENOMEM))
+        ELSE 
+          (* ==== start: blk = alloc_block(p, free_l, lsizes[free_l]); *)
+          (t &#9656; ATOMIC        
+            (* ==== start: block = sys_dlist_get(&amp;p-&gt;levels[l].free_list); *)
+            IF level_empty (&#180;mem_pool_info p) (nat (&#180;free_l t)) THEN
+              &#180;blk := &#180;blk(t := NULL)
+            ELSE
+              &#180;blk := &#180;blk(t := head_free_list (&#180;mem_pool_info p) (nat (&#180;free_l t)));;
+    
+              (* sys_dlist_remove(node); *)
+              &#180;mem_pool_info := &#180;mem_pool_info (p := rmhead_free_list (&#180;mem_pool_info p) (nat (&#180;free_l t)))
+              
+            FI;;
+            (* ==== end: block = sys_dlist_get(&amp;p-&gt;levels[l].free_list); *)
+    
+            IF &#180;blk t &#8800; NULL THEN
+              (* clear_free_bit(p, l, block_num(p, block, lsz)); *)
+              &#180;mem_pool_info := set_bit_allocating &#180;mem_pool_info p (nat (&#180;free_l t)) 
+                                  (block_num (&#180;mem_pool_info p) (&#180;blk t) ((&#180;lsizes t)!(nat (&#180;free_l t))));;
+              (* set the allocating node info of the thread *)
+              &#180;allocating_node := &#180;allocating_node (t := Some &#10631;pool = p, level = nat (&#180;free_l t), 
+                    block = (block_num (&#180;mem_pool_info p) (&#180;blk t) ((&#180;lsizes t)!(nat (&#180;free_l t)))), data = &#180;blk t &#10632;)
+            FI
+          END);;
+          (* ==== end: blk = alloc_block(p, free_l, lsizes[free_l]); *)
+  
+          IF &#180;blk t = NULL THEN
+            (t &#9656; &#180;ret := &#180;ret (t := EAGAIN))
+          ELSE
+            
+            FOR (t &#9656; &#180;from_l := &#180;from_l(t := &#180;free_l t));
+                (* level_empty (&#180;mem_pool_info p) (nat (&#180;alloc_l t)) &#8743; *) &#180;from_l t &lt; &#180;alloc_l t;
+                (********* we remove the FOR termination condition ``level_empty&#39;&#39; to remove a concurrency BUG here ***********)
+                (t &#9656; &#180;from_l := &#180;from_l(t := &#180;from_l t + 1)) DO
+              
+              (* ==== start: blk = break_block(p, blk, from_l, lsizes); *)
+              (t &#9656; ATOMIC
+                &#180;bn := &#180;bn (t := block_num (&#180;mem_pool_info p) (&#180;blk t) ((&#180;lsizes t)!(nat (&#180;from_l t))));;
+    
+                &#180;mem_pool_info := set_bit_divide &#180;mem_pool_info p (nat (&#180;from_l t)) (&#180;bn t);;
+
+                &#180;mem_pool_info := set_bit_allocating &#180;mem_pool_info p (nat (&#180;from_l t + 1)) (4 * &#180;bn t);;
+                
+                (* set the allocating node info of the thread *)
+                &#180;allocating_node := &#180;allocating_node (t := Some &#10631;pool = p, level = nat (&#180;from_l t + 1), 
+                      block = 4 * &#180;bn t, data = &#180;blk t &#10632;);;
+
+                FOR &#180;i := &#180;i (t := 1); 
+                    &#180;i t &lt; 4; 
+                    &#180;i := &#180;i (t := &#180;i t + 1) DO
+                  &#180;lbn := &#180;lbn (t := 4 * &#180;bn t + &#180;i t);;
+                  &#180;lsz := &#180;lsz (t := (&#180;lsizes t) ! (nat (&#180;from_l t + 1)));;
+                  &#180;block2 := &#180;block2(t := &#180;lsz t * &#180;i t + &#180;blk t);;
+    
+                  (* set_free_bit(p, l + 1, lbn); *)
+                  &#180;mem_pool_info := set_bit_free &#180;mem_pool_info p (nat (&#180;from_l t + 1)) (&#180;lbn t);;
+    
+                  IF block_fits (&#180;mem_pool_info p) (&#180;block2 t) (&#180;lsz t) THEN
+                    
+                    (* sys_dlist_append(&amp;p-&gt;levels[l + 1].free_list, block2); *)  
+                    &#180;mem_pool_info := &#180;mem_pool_info (p := 
+                            append_free_list (&#180;mem_pool_info p) (nat (&#180;from_l t + 1)) (&#180;block2 t) )
+                  FI
+                ROF
+              
+              END)
+              (* ==== end: blk = break_block(p, blk, from_l, lsizes); *)
+  
+            ROF;;
+            
+            (* finally set the node from allocating to allocated and remove the allocating node info of the thread *)
+            (t &#9656; &#180;mem_pool_info := set_bit_alloc &#180;mem_pool_info p (nat (&#180;alloc_l t)) 
+                                  (block_num (&#180;mem_pool_info p) (&#180;blk t) ((&#180;lsizes t)!(nat (&#180;alloc_l t))));;
+                 &#180;allocating_node := &#180;allocating_node (t := None)
+            );;
+
+            (t &#9656; &#180;mempoolalloc_ret := &#180;mempoolalloc_ret (t := 
+              Some &#10631;pool = p, level = nat (&#180;alloc_l t), 
+                    block = block_num (&#180;mem_pool_info p) (&#180;blk t) ((&#180;lsizes t)!(nat (&#180;alloc_l t))), 
+                    data = &#180;blk t &#10632;));;
+
+            (* add a statement here to set the owner of the allocated mem block *)
+            (t &#9656; &#180;mblocks := &#180;mblocks (t := &#180;mblocks t &#8746; {&#10631;pool = p, level = nat (&#180;alloc_l t), 
+                    block = block_num (&#180;mem_pool_info p) (&#180;blk t) ((&#180;lsizes t)!(nat (&#180;alloc_l t))), 
+                    data = &#180;blk t &#10632;}));;
+
+            (t &#9656; &#180;ret := &#180;ret (t := OK))
+          FI
+        FI
+      FI;;
+      (* ==== end: ret = pool_alloc(p, block, size); ==================== *)
+
+      (* IF &#180;ret t = 0 &#8744; timeout = NOWAIT &#8744; &#180;ret t = EAGAIN &#8744; &#180;ret t &#8800; ENOMEM THEN *)
+      (***** we change the IF condition to remove a functional BUG here *****)
+      IF &#180;ret t = OK &#8744; timeout = NOWAIT &#8744; &#180;ret t = ESIZEERR THEN
+        (t &#9656; &#180;rf := &#180;rf(t := True));;
+        IF &#180;ret t = EAGAIN THEN (*EAGAIN should not export to users*)
+          (t &#9656; &#180;ret := &#180;ret(t := ENOMEM))
+        FI
+      ELSE
+        IF &#180;ret t = EAGAIN THEN SKIP
+        ELSE
+          (t &#9656; ATOMIC
+  
+            (* _pend_current_thread(&amp;p-&gt;wait_q, timeout); *)
+            &#180;thd_state := &#180;thd_state(the &#180;cur := BLOCKED);;
+            (*&#180;cur := None;;*)
+            &#180;mem_pool_info := &#180;mem_pool_info(p := &#180;mem_pool_info p&#10631;wait_q := wait_q (&#180;mem_pool_info p) @ [the &#180;cur] &#10632;);;
+    
+            (* _Swap(key); *)
+            swap
+  
+          END);;
+  
+          IF &#180;tmout t &#8800; FOREVER THEN
+            (t &#9656; &#180;tmout := &#180;tmout (t := int (&#180;endt t) - int &#180;tick));;
+            IF &#180;tmout t &lt; 0 THEN
+              (t &#9656; &#180;rf := &#180;rf(t := True));;
+              (t &#9656; &#180;ret := &#180;ret (t := ETIMEOUT))
+            FI
+          FI
+        FI
+      FI
+    OD
+
+  END&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>Mem_pool_free</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; Mem_block &#8658; (EventLabel, Core, State, State com option) event&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Mem_pool_free t b = 
+  EVENT Mem_pool_freeE [Block b] &#8667; (&#119983; t)
+  WHEN
+    pool b &#8712; &#180;mem_pools 
+    &#8743; level b &lt; length (levels (&#180;mem_pool_info (pool b)))
+    &#8743; block b &lt; length (bits (levels (&#180;mem_pool_info (pool b))!(level b)))
+    &#8743; data b = block_ptr (&#180;mem_pool_info (pool b)) ((ALIGN4 (max_sz (&#180;mem_pool_info (pool b)))) div (4 ^ (level b))) (block b)
+    (*&#8743; (bits ((levels (&#180;mem_pool_info (pool b))) ! (level b))) ! (block b) = ALLOCATED
+    &#8743; &#180;cur = Some t*) (* t is the current thread *)
+    (* &#8743; pool b &#8712; &#180;pools_of_thread t *) (* the mem pool is shared in the thread t *)
+  THEN
+    (* here we set the bit to FREEING, so that other thread cannot mem_pool_free the same block 
+       it also requires that it can only free ALLOCATED block *)
+    (t &#9656; AWAIT (bits ((levels (&#180;mem_pool_info (pool b))) ! (level b))) ! (block b) = ALLOCATED THEN
+           &#180;mem_pool_info := set_bit_freeing &#180;mem_pool_info (pool b) (level b) (block b);;
+           &#180;freeing_node := &#180;freeing_node (t := Some b) (* set the freeing node of current thread *)
+         END);;
+
+    (* add a statement here to remove the mem block from the thread&#39;s allocated block set *)
+    (t &#9656; &#180;mblocks := &#180;mblocks (t := &#180;mblocks t - {&#10631;pool = (pool b), level = (&#180;lvl t), block = (&#180;bn t), 
+                    data = block_ptr (&#180;mem_pool_info (pool b)) 
+                            (((ALIGN4 (max_sz (&#180;mem_pool_info (pool b)))) div (4 ^ (&#180;lvl t)))) 
+                            (&#180;bn t) &#10632;}));;
+
+    (t &#9656; &#180;need_resched := &#180;need_resched(t := False));;
+    (* (t &#9656; &#180;lsizes := &#180;lsizes(t := []));; *)
+    (t &#9656; &#180;lsizes := &#180;lsizes(t := [ALIGN4 (max_sz (&#180;mem_pool_info (pool b)))]));;
+    FOR (t &#9656; &#180;i := &#180;i(t := 1)); 
+        &#180;i t &#8804; level b; 
+        (t &#9656; &#180;i := &#180;i(t := &#180;i t + 1)) DO
+      (t &#9656; &#180;lsizes := &#180;lsizes(t := &#180;lsizes t @ [ALIGN4 (&#180;lsizes t ! (&#180;i t - 1) div 4)]))
+    ROF;;
+
+    (* === start: free_block(get_pool(block-&gt;id.pool), block-&gt;id.level, lsizes, block-&gt;id.block); *)
+    (t &#9656; &#180;free_block_r := &#180;free_block_r (t := True));;
+    (t &#9656; &#180;bn := &#180;bn (t := block b));;
+    (t &#9656; &#180;lvl := &#180;lvl (t := level b));;
+
+    WHILE &#180;free_block_r t DO
+      (t &#9656; &#180;lsz := &#180;lsz (t := &#180;lsizes t ! (&#180;lvl t)));;
+      (t &#9656; &#180;blk := &#180;blk (t := block_ptr (&#180;mem_pool_info (pool b)) (&#180;lsz t) (&#180;bn t)));;
+  
+      (t &#9656; ATOMIC
+  
+        &#180;mem_pool_info := set_bit_free &#180;mem_pool_info (pool b) (&#180;lvl t) (&#180;bn t);;
+
+        &#180;freeing_node := &#180;freeing_node (t := None);;  (* remove the freeing node info of the thread *)
+  
+        IF &#180;lvl t &gt; 0 &#8743; partner_bits (&#180;mem_pool_info (pool b)) (&#180;lvl t) (&#180;bn t) THEN
+          FOR &#180;i := &#180;i(t := 0); 
+              &#180;i t &lt; 4; 
+              &#180;i := &#180;i(t := &#180;i t + 1) DO
+            &#180;bb := &#180;bb (t := (&#180;bn t div 4) * 4 + &#180;i t);;
+            (*(t &#9656; &#180;mem_pool_info := clear_free_bit &#180;mem_pool_info (pool b) (&#180;lvl t) (&#180;bb t));;*)
+            &#180;mem_pool_info := set_bit_noexist &#180;mem_pool_info (pool b) (&#180;lvl t) (&#180;bb t);;
+            &#180;block_pt := &#180;block_pt (t := block_ptr (&#180;mem_pool_info (pool b)) (&#180;lsz t) (&#180;bb t));;
+            IF &#180;bn t &#8800; &#180;bb t &#8743; block_fits (&#180;mem_pool_info (pool b)) 
+                                          (&#180;block_pt t)
+                                          (&#180;lsz t) THEN
+              
+              (* sys_dlist_remove(block_ptr(p, lsz, b)); *)
+              &#180;mem_pool_info := &#180;mem_pool_info ((pool b) := 
+                      remove_free_list (&#180;mem_pool_info (pool b)) (&#180;lvl t) (&#180;block_pt t))
+            FI
+          ROF;;
+          
+          (
+          (*&#180;j := &#180;j (t := &#180;lvl t);; (* use lbn and j to store the previous lvl and bn, or can not give the post condition *)
+          &#180;lbn := &#180;lbn (t := &#180;bn t);; (* since the lbn and j are not used in M_pool_free *)
+          &#180;lvl := &#180;lvl (t := &#180;j t - 1);;
+          &#180;bn := &#180;bn (t := &#180;lbn t div 4);;*)
+          &#180;lvl := &#180;lvl (t := &#180;lvl t - 1);;
+          &#180;bn := &#180;bn (t := &#180;bn t div 4);;
+          (* we add this statement. set the parent node from divided to freeing *)
+          &#180;mem_pool_info := set_bit_freeing &#180;mem_pool_info (pool b) (&#180;lvl t) (&#180;bn t);;
+          (*&#180;freeing_node := &#180;freeing_node (t := Some &#10631;pool = (pool b), level = (&#180;lvl t), 
+                    block = (&#180;bn t), data = block_ptr (&#180;mem_pool_info (pool b)) (&#180;lsz t) (&#180;bn t) &#10632;)*)
+          &#180;freeing_node := &#180;freeing_node (t := Some &#10631;pool = (pool b), level = (&#180;lvl t), 
+                    block = (&#180;bn t), 
+                    data = block_ptr (&#180;mem_pool_info (pool b)) 
+                            (((ALIGN4 (max_sz (&#180;mem_pool_info (pool b)))) div (4 ^ (&#180;lvl t)))) 
+                            (&#180;bn t) &#10632;)
+          )
+
+        ELSE 
+          IF block_fits (&#180;mem_pool_info (pool b)) (&#180;blk t) (&#180;lsz t) THEN
+            
+            (* sys_dlist_append(&amp;p-&gt;levels[level].free_list, block); *)
+            &#180;mem_pool_info := &#180;mem_pool_info ((pool b) := 
+                    append_free_list (&#180;mem_pool_info (pool b)) (&#180;lvl t) (&#180;blk t) )
+          FI;;
+  
+          &#180;free_block_r := &#180;free_block_r (t := False)
+        FI
+
+      END)
+
+    OD;;
+    (* === end: free_block(get_pool(block-&gt;id.pool), block-&gt;id.level, lsizes, block-&gt;id.block); *)
+
+    (t &#9656; ATOMIC
+          
+      WHILE wait_q (&#180;mem_pool_info (pool b)) &#8800; [] DO 
+        &#180;th := &#180;th (t := hd (wait_q (&#180;mem_pool_info (pool b))));;
+        (* _unpend_thread(th); *)
+        &#180;mem_pool_info := &#180;mem_pool_info (pool b := &#180;mem_pool_info (pool b)
+                &#10631;wait_q := tl (wait_q (&#180;mem_pool_info (pool b)))&#10632;);;
+        (* _ready_thread(th); *)
+        &#180;thd_state := &#180;thd_state (&#180;th t := READY);;
+        &#180;need_resched := &#180;need_resched(t := True)
+      OD;;
+  
+      IF &#180;need_resched t THEN
+        reschedule
+      FI
+    END)
+  END&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>Schedule</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Thread &#8658; (EventLabel, Core, State, State com option) event&quot;</span></span></span><span> 
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Schedule t &#8801; 
+  EVENT ScheduleE [Thread t] &#8667; &#119982; 
+  THEN 
+    AWAIT &#180;thd_state t = READY THEN  (* only schedule the READY threads *)
+      IF (&#180;cur &#8800; None) THEN 
+        &#180;thd_state := &#180;thd_state(the (&#180;cur) := READY);;
+        &#180;cur := None
+      FI;;
+      &#180;cur := Some t;;
+      &#180;thd_state := &#180;thd_state(t := RUNNING)
+    END
+  END&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>Tick</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(EventLabel, Core, State, State com option) event&quot;</span></span></span><span> 
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;Tick &#8801; 
+  EVENT TickE [] &#8667; Timer
+  THEN 
+    &#180;tick := &#180;tick + 1
+  END&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>
