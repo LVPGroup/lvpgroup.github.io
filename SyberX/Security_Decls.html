@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory Security_Decls (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory Security_Decls</h1>
+
+<span class="command">theory</span> <span class="name">Security_Decls</span><br/>
+<span class="keyword">imports</span> <a href="type_Decls.html"><span class="name">type_Decls</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span> </span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>Security_Decls</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>type_Decls</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+struct vm_port_config {
+    u64 num;
+    u64 *contact_vm; // array of vm id enable to contact
+    u32 type_bitmap; // 1 means send msg port, 0 means get msg port
+};
+
+struct vm_contact_entry {
+    struct vm_port_config port;
+};
+*)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>vm_port_config</span><span> </span><span class="delimiter">=</span><span> </span><span>num</span><span class="delimiter">::</span><span>u64</span><span>
+</span><span>                        </span><span>contact_vm</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;u64 list&quot;</span></span></span><span>
+</span><span>                        </span><span>type_bitmap</span><span class="delimiter">::</span><span>u32</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>vm_contact_entry</span><span> </span><span class="delimiter">=</span><span> </span><span>port</span><span class="delimiter">::</span><span>vm_port_config</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>SEC_State</span><span> </span><span class="delimiter">=</span><span> </span><span>a</span><span class="delimiter">::</span><span>nat</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;write_vm_port_config n c t &#8801; &#10631;num=n, contact_vm=c, type_bitmap=t&#10632;&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;read_vm_port_num vmpt_cfg &#8801; (num vmpt_cfg)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;read_vm_port_ctvm vmpt_cfg &#8801; (contact_vm vmpt_cfg)&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;read_vm_port_tbmp vmpt_cfg &#8801; (type_bitmap vmpt_cfg)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;write_vm_contact_entry p &#8801; &#10631;port=p&#10632;&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;read_vm_contact_entry_port cfg &#8801; (vm_contact_entry.port cfg)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>

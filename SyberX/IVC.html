@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory IVC (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory IVC</h1>
+
+<span class="command">theory</span> <span class="name">IVC</span><br/>
+<span class="keyword">imports</span> <a href="hvc.html"><span class="name">hvc</span></a> <a href="IVC_Mgmt.html"><span class="name">IVC_Mgmt</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="keyword1"><span class="command">theory</span></span><span> </span><span>IVC</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;../Req/hvc&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;../Design/IVC_Mgmt&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>channels_corrs</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; GLB_STATE &#8658; HV &#8658; bool &quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;channels_corrs g h &#8801;
+        let
+          channels1 = channels (ivc_state g);
+          nums1 = channel_num (ivc_state g);
+          channels2 = channels (ivc (commu h));
+          nums2 = channel_num (ivc (commu h))
+        in
+          channels1 = channels2 &#8743; nums1 = nums2
+   &quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>getChannel_corrs</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;GLB_STATE &#8658; HV &#8658; cpu_id &#8658; vm_id &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;getChannel_corrs g h cid id2 &#8801;
+    let
+      id11 = get_vmid_cid_des cid g;
+      channel1 = ivc_find_channel_des id11 id2 g;
+      id12 = get_vmid_cid_req cid h;
+      channel2 = (getChannel (commu h)) id12 id2
+    in
+      channel1 = channel2
+  &quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>channelAvail_corrs</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;GLB_STATE &#8658; HV &#8658; vm_port &#8658; vm_id &#8658; bool&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;channelAvail_corrs g h vmp id0 &#8801;
+    let
+      ret1 = get_channel_des vmp id0 g;
+      ret2 = (availChannel (commu h)) vmp id0
+    in
+      ret1 = ret2
+  &quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+definition getChannel_corrs :: &quot;GLB_STATE &#8658; HV &#8658; vm_id &#8658; vm_id &#8658; bool&quot;
+  where &quot;getChannel_corrs g h id1 id2 &#8801;
+    let
+      channel1 = ivc_find_channel_des id1 id2 g;
+      channel2 = (getChannel (commu h)) id1 id2
+    in
+      channel1 = channel2
+  &quot;
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>cpuInfo_corrs</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; GLB_STATE =&gt; HV =&gt; bool &quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;cpuInfo_corrs g h &#8801; 
+    let
+      cpusD = cpu_info (cpu_state0 g);
+      cpusR = cpu h 
+    in
+      cpusD = cpusR &quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>vcpuInfo_corrs</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;  GLB_STATE &#8658; HV &#8658; bool &quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; vcpuInfo_corrs g h &#8801;
+    let
+      vcpus1 = (vcpu_info (vcpu_state g));
+      vcpus2 = (vcpu h)
+    in
+      vcpus1 = vcpus2
+&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>vmInfo_corrs</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;  GLB_STATE &#8658; HV &#8658; bool &quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; vmInfo_corrs g h &#8801;
+    let
+      vms1 = (vm_info (vm_state0 g));
+      vms2 = (HV.vm h)
+    in
+      vms1 = vms2
+&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>sysInfo_corrs</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;  GLB_STATE &#8658; HV &#8658; bool &quot;</span></span></span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; sysInfo_corrs g h &#8801;
+      cpuInfo_corrs g h &#8743; vmInfo_corrs g h &#8743; vcpuInfo_corrs g h
+  &quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>aux1</span><span> </span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;  cpuInfo_corrs g h &#8743; vmInfo_corrs g h &#8743; vcpuInfo_corrs g h &#10233;get_vmid_cid_des cid g = get_vmid_cid_req cid h&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>cpuInfo_corrs_def</span><span> </span><span>Let_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>vmInfo_corrs_def</span><span> </span><span>Let_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>vcpuInfo_corrs_def</span><span> </span><span>Let_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>get_vmid_cid_des_def</span><span> </span><span>get_vmid_cid_req_def</span><span> </span><span>Let_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>ivc_send_msg</span><span> </span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot; &#10627;&#955;s. sysInfo_corrs s hv &#8743;
+          channels_corrs s hv  &#8743;
+          getChannel_corrs s hv cid vmid2  &#10628;
+      ivc_send_msg_des cid vmid2 m0 
+    &#10627;&#955;r s. channels_corrs s (fst(ivc_send_msg_req hv cid vmid2 m0))
+            &#8743; r = snd(ivc_send_msg_req hv cid vmid2 m0) &#10628;
+  &quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>channels_corrs_def</span><span> </span><span>Let_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>getChannel_corrs_def</span><span> </span><span>Let_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>ivc_send_msg_des_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>ivc_send_msg_req_def</span><span> </span><span>Let_def</span><span>
+</span><span>       </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>insert_channel_msg_req_def</span><span> </span><span>Let_def</span><span>
+</span><span>       </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>smt</span><span> </span><span>snd_conv</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>sysInfo_corrs_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">using</span></span><span> </span><span>aux1</span><span> 
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>simp</span><span>
+</span><span>    </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>aux1</span><span class="delimiter">)</span><span class="delimiter">+</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span>  
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>vm_init_channel</span><span> </span><span class="delimiter">:</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;&#10627;&#955;s. channels_corrs s h &#8743; 
+        channelAvail_corrs s h vmp vmid&#10628;
+     vm_init_channel_des vmp vmid 
+    &#10627;&#955;r s.  channels_corrs s (fst(vm_init_channel_req h vmp vmid)) &#8743;
+            r = snd (vm_init_channel_req h vmp vmid)&#10628;&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>channels_corrs_def</span><span> </span><span>Let_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command">unfolding</span></span><span> </span><span>channelAvail_corrs_def</span><span> </span><span>Let_def</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>vm_init_channel_des_def</span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>wpsimp</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span>auto</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span>vm_init_channel_req_def</span><span> </span><span>Let_def</span><span class="delimiter">)</span><span class="delimiter">+</span><span>
+</span><span>  </span><span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span><span>
+</span><span> 
+</span><span>                
+</span><span>              
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span><span>
+</span><span>
+</span></pre>
+
+</div>
+</body>
+</html>

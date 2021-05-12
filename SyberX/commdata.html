@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory commdata (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory commdata</h1>
+
+<span class="command">theory</span> <span class="name">commdata</span><br/>
+<span class="keyword">imports</span> <a href="../../HOL/HOL/Main.html"><span class="name">Main</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="keyword1"><span class="command">theory</span></span><span> </span><span>commdata</span><span>
+</span><span>  </span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>Main</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;PAGE_SIZE &#8801; nat 4096&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;VM_NUM_MAX &#8801; nat 8&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;MAX_CHANNEL_NUM &#8801; VM_NUM_MAX * 2&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>region_num</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>u64</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>region_size</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>page_free</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>page_last</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>bitmap</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;bool list&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>mem_region</span><span> </span><span class="delimiter">=</span><span>  </span><span>sizeB</span><span> </span><span class="delimiter">::</span><span> </span><span>region_size</span><span> 
+</span><span>                     </span><span>freeB</span><span> </span><span class="delimiter">::</span><span> </span><span>page_free</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>vcpu_idx</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span> 
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*Interrupts*)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>INTERRUPT_NUM_MAX</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>INTERRUPT_NUM_SIZE</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>interrupt_id</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>interrupt_src</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span>handlers</span><span> </span><span class="delimiter">=</span><span> </span><span>irq_handler_t</span><span> </span><span>interrupt_id</span><span> </span><span>interrupt_src</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span>Interrupt_Config</span><span> </span><span class="delimiter">=</span><span> </span><span>BITMAP</span><span> </span><span>bitmap</span><span> </span><span>interrupt_id</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;handlers list&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>Interrupts</span><span> </span><span class="delimiter">=</span><span> </span><span>Interrupt_hyper_bitmap</span><span class="delimiter">::</span><span>bitmap</span><span>
+</span><span>                    </span><span>Interrupt_glb_bitmap</span><span class="delimiter">::</span><span>bitmap</span><span>
+</span><span>                    </span><span>Interrupt_handlers</span><span class="delimiter">::</span><span class="string"><span class="delete"><span class="delete">&quot;handlers list&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>channel_num</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+record mem_region = base :: u64
+                    size :: region_size 
+                    free :: page_free
+                    last :: page_last
+*)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+record mem_regionD =  base :: u64
+                      size :: region_size 
+                      free :: page_free
+                      last :: page_last
+*)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>page_num</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>mem_region_index</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>bitmap_region</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; page_num &#8658; mem_region_index option  &quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+record Mem_VM = vm_region_num :: region_num
+                vm_region :: &quot; mem_region list &quot;
+                map :: bitmap_region
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>page_index</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span> 
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>bitmap_heap</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; page_num &#8658; page_index option &quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>count_heap</span><span> </span><span class="delimiter">=</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot; page_index &#8658; page_num &#8658; page_num &quot;</span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*CPU  VCPU  VM working——state*)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span>CPU_WORK_STATE</span><span> </span><span class="delimiter">=</span><span> </span><span>CPU_S_INV</span><span> </span><span class="delimiter">|</span><span> </span><span>CPU_S_IDLE</span><span> </span><span class="delimiter">|</span><span> </span><span>CPU_S_RUN</span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span>VM_WORK_STATE</span><span> </span><span class="delimiter">=</span><span> </span><span>VM_S_INV</span><span> </span><span class="delimiter">|</span><span> </span><span>VM_S_PENDING</span><span> </span><span class="delimiter">|</span><span> </span><span>VM_S_ACT</span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span>VCPU_WORK_STATE</span><span> </span><span class="delimiter">=</span><span> </span><span>VCPU_S_INV</span><span> </span><span class="delimiter">|</span><span> </span><span>VCPU_S_PEND</span><span> </span><span class="delimiter">|</span><span> </span><span>VCPU_S_ACT</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>cpu_id</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>vcpu_id</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>vcpu_num</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>vcpu_pool</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; vcpu_id list &quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>vm_id</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>vm_name</span><span> </span><span class="delimiter">=</span><span> </span><span>string</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>Alloc_VCPU</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; vcpu_id list &quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>Alloc_CPU</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; cpu_id list &quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>BITMAP</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;bool list&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>region_idx</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>port_id</span><span> </span><span class="delimiter">=</span><span>nat</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>pa_region</span><span> </span><span class="delimiter">=</span><span> </span><span>pa_start</span><span> </span><span class="delimiter">::</span><span> </span><span>u64</span><span>
+</span><span>                   </span><span>pa_length</span><span> </span><span class="delimiter">::</span><span> </span><span>u64</span><span>
+</span><span>                   </span><span>offset</span><span> </span><span class="delimiter">::</span><span> </span><span>u64</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>CPU</span><span> </span><span class="delimiter">=</span><span> </span><span>id</span><span> </span><span class="delimiter">::</span><span> </span><span>cpu_id</span><span>
+</span><span>             </span><span>vcpus</span><span> </span><span class="delimiter">::</span><span> </span><span>vcpu_pool</span><span>
+</span><span>             </span><span>poolSize</span><span> </span><span class="delimiter">::</span><span> </span><span>nat</span><span>
+</span><span>             </span><span>active_vcpu</span><span> </span><span class="delimiter">::</span><span> </span><span>vcpu_id</span><span>
+</span><span>             </span><span>running_num</span><span> </span><span class="delimiter">::</span><span> </span><span>vcpu_num</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>VCPU</span><span> </span><span class="delimiter">=</span><span> </span><span>id</span><span> </span><span class="delimiter">::</span><span> </span><span>vcpu_id</span><span>
+</span><span>              </span><span>physID</span><span> </span><span class="delimiter">::</span><span> </span><span>cpu_id</span><span>
+</span><span>              </span><span>vmID</span><span> </span><span class="delimiter">::</span><span> </span><span>vm_id</span><span>
+</span><span>              </span><span>allocated</span><span> </span><span class="delimiter">::</span><span> </span><span>bool</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span>vm_port_type</span><span> </span><span class="delimiter">=</span><span> </span><span>RECEIVE</span><span> </span><span class="delimiter">|</span><span> </span><span>SEND</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span>vm_type</span><span> </span><span class="delimiter">=</span><span> </span><span>OS</span><span> </span><span class="delimiter">|</span><span> </span><span>BMA</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>vm_port</span><span> </span><span class="delimiter">=</span><span>  </span><span>type</span><span> </span><span class="delimiter">::</span><span> </span><span>vm_port_type</span><span>
+</span><span>                  </span><span>idV</span><span> </span><span class="delimiter">::</span><span> </span><span>vm_id</span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+record Port_Config = port_nums :: nat
+                     contact_nums :: &quot;vm_id list&quot;
+                     cpntact_type :: &quot;vm_port_type list&quot;
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>Port_Config</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(vm_port &#215; vm_id) list&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>VM_INFO</span><span> </span><span class="delimiter">=</span><span> </span><span>vmId</span><span> </span><span class="delimiter">::</span><span> </span><span>vm_id</span><span>
+</span><span>                 </span><span>vmName</span><span> </span><span class="delimiter">::</span><span> </span><span>vm_name</span><span>
+</span><span>                 </span><span>vmType</span><span> </span><span class="delimiter">::</span><span> </span><span>vm_type</span><span>
+</span><span>                 </span><span>vmState</span><span> </span><span class="delimiter">::</span><span> </span><span>VM_WORK_STATE</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>VM</span><span> </span><span class="delimiter">=</span><span> </span><span>id</span><span> </span><span class="delimiter">::</span><span> </span><span>vm_id</span><span> 
+</span><span>            </span><span>name</span><span> </span><span class="delimiter">::</span><span> </span><span>vm_name</span><span>
+</span><span>            </span><span>type</span><span> </span><span class="delimiter">::</span><span> </span><span>vm_type</span><span>
+</span><span>            </span><span>vcpus</span><span> </span><span class="delimiter">::</span><span> </span><span>Alloc_VCPU</span><span>
+</span><span>            </span><span>cpus</span><span> </span><span class="delimiter">::</span><span> </span><span>Alloc_CPU</span><span>
+</span><span>            </span><span>int_bitmap</span><span class="delimiter">::</span><span>BITMAP</span><span>
+</span><span>            </span><span>address</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;pa_region list&quot;</span></span></span><span>
+</span><span>            </span><span>port_config</span><span> </span><span class="delimiter">::</span><span> </span><span>Port_Config</span><span>
+</span><span>            
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">typedecl</span></span><span> </span><span>MSG</span><span>
+</span><span class="keyword1"><span class="command">typedecl</span></span><span> </span><span>IVC</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>channel_id</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>assigned</span><span> </span><span class="delimiter">=</span><span> </span><span>bool</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>ports</span><span> </span><span class="delimiter">=</span><span>  </span><span>nums</span><span> </span><span class="delimiter">::</span><span> </span><span>nat</span><span>
+</span><span>                </span><span>port</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;vm_port list&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>portP</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;vm_id&#215;vm_id&quot;</span></span></span><span> 
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>channel</span><span> </span><span class="delimiter">=</span><span> </span><span>id</span><span> </span><span class="delimiter">::</span><span> </span><span>channel_id</span><span>
+</span><span>                 </span><span>flag</span><span> </span><span class="delimiter">::</span><span> </span><span>assigned</span><span>
+</span><span>                 </span><span>portSrc</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;vm_port option&quot;</span></span></span><span>
+</span><span>                 </span><span>portDes</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;vm_port option&quot;</span></span></span><span>
+</span><span>                 </span><span>msg</span><span> </span><span class="delimiter">::</span><span> </span><span>MSG</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>IVC_State</span><span> </span><span class="delimiter">=</span><span> </span><span>channel_num</span><span> </span><span class="delimiter">::</span><span> </span><span>nat</span><span>
+</span><span>                   </span><span>channels</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;channel list&quot;</span></span></span><span>
+</span><span>                   </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*port_num :: nat
+                   ports :: &quot;vm_port list&quot;
+                   contacts :: &quot;vm_id list*)</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>vm_port_config</span><span> </span><span class="delimiter">=</span><span> </span><span>num</span><span> </span><span class="delimiter">::</span><span> </span><span>nat</span><span>
+</span><span>                        </span><span>contact_vm</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;vm_id list&quot;</span></span></span><span>
+</span><span>                        </span><span>contact_type</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;vm_port_type list&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>

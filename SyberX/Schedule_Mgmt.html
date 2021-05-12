@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory Schedule_Mgmt (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory Schedule_Mgmt</h1>
+
+<span class="command">theory</span> <span class="name">Schedule_Mgmt</span><br/>
+<span class="keyword">imports</span> <a href="VCPU_Mgmt.html"><span class="name">VCPU_Mgmt</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="keyword1"><span class="command">theory</span></span><span> </span><span>Schedule_Mgmt</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>CPU_Decls</span><span> </span><span>VCPU_Decls</span><span> </span><span>VCPU_Mgmt</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>cpu_schedule_des</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; cpu_id &#8658; (GLB_STATE,unit)nondet_monad&quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;cpu_schedule_des cid &#8801;
+    condition (&#955;&#963;. running_num((cpu_info (cpu_state0 &#963;)) ! cid) &gt; 1)
+      (do
+          cpu0 &#8592; gets (&#955;&#963;. (cpu_info (cpu_state0 &#963;))!cid );
+          limit &#8592; gets (&#955;&#963;. length (vcpu_info (vcpu_state &#963;)));
+          temp &#8592;  gets (&#955;&#963;. get_activeNew_des limit cid &#963;);            
+          workState &#8592; gets(&#955;&#963;. (VCPU_State.work_state (vcpu_state &#963;))
+                [active_vcpu cpu0:=VCPU_WORK_STATE.VCPU_S_PEND,the temp:=VCPU_WORK_STATE.VCPU_S_ACT]);
+          vcpuStateN &#8592; gets(&#955;&#963;. (vcpu_state &#963;)&#10631;VCPU_State.work_state :=workState&#10632;);
+          cpu1 &#8592; return (cpu0&#10631;active_vcpu:=the temp&#10632;);
+          cpus &#8592; gets (&#955;&#963;. (cpu_info (cpu_state0 &#963;))[cid:=cpu1]);
+          cpuN &#8592; gets (&#955;&#963;. (cpu_state0 &#963;)&#10631;cpu_info:=cpus&#10632;);
+          modify (&#955;&#963;. &#963;&#10631;cpu_state0:= cpuN, vcpu_state:=vcpuStateN&#10632;);
+          return ()  
+      od)
+      (return ())
+&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory CPU_Mgmt (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory CPU_Mgmt</h1>
+
+<span class="command">theory</span> <span class="name">CPU_Mgmt</span><br/>
+<span class="keyword">imports</span> <a href="GLOBAL_STATE.html"><span class="name">GLOBAL_STATE</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="keyword1"><span class="command">theory</span></span><span> </span><span>CPU_Mgmt</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>GLOBAL_STATE</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span class="cartouche"><span class="delete"><span class="delete">&#8249;This script will describe the CPU event&#8250;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>cpu_idle_des</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;  cpu_id &#8658;(GLB_STATE,unit) nondet_monad &quot;</span></span></span><span> </span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot; cpu_idle_des idx &#8801; 
+    (do
+      cpuS &#8592; gets (&#955;&#963;. work_state (cpu_state0 &#963;) );
+      cpuSN &#8592; return (cpuS[idx:=CPU_S_IDLE]);
+      cpuN &#8592; gets (&#955;&#963;. (cpu_state0 &#963;)&#10631;work_state:=cpuSN&#10632;);
+      modify (&#955;&#963;. &#963;&#10631;cpu_state0:=cpuN&#10632;);
+      return ()
+    od) &quot;</span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*something is wrong in cpu_report_state *)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span><span>
+</span></pre>
+
+</div>
+</body>
+</html>

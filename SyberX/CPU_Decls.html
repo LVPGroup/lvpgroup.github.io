@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory CPU_Decls (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory CPU_Decls</h1>
+
+<span class="command">theory</span> <span class="name">CPU_Decls</span><br/>
+<span class="keyword">imports</span> <a href="VCPU_Decls.html"><span class="name">VCPU_Decls</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="keyword1"><span class="command">theory</span></span><span> </span><span>CPU_Decls</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>type_Decls</span><span> </span><span>VCPU_Decls</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*&quot;../common/commfunc&quot;*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+record CPU_des = id::u64
+             state::cpu_state
+             vcpu_pool::&quot;vcpu list&quot;
+             active_vcpu::vcpu_id
+             running_num :: vcpu_num
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+record cpu = id::cpu_id
+             state::CPU_WORK_STATE
+             vcpu_pool::&quot;vcpu_id list&quot;
+             active_vcpu::vcpu_id
+             running_num :: vcpu_num
+
+type_synonym CPU_State = &quot;cpu list&quot;
+*)</span></span></span></span></span><span>
+</span><span>                                  
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>CPU_State0</span><span> </span><span class="delimiter">=</span><span> </span><span>cpu_info</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CPU list&quot;</span></span></span><span>
+</span><span>                    </span><span>work_state</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;CPU_WORK_STATE list&quot;</span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+record CPU_State = cpu_list::&quot;cpu list&quot;
+                   (*cpu_glb_sync::cpu_synctoken*)
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+definition get_cpu_elmt :: &quot;(cpu &#8658; u64)&quot; where &quot;get_cpu_elmt &#8801; (&#955;c. (cpu.id c))&quot;
+
+definition test :: &quot; cpu &#8658; (cpu,unit) nondet_monad &quot; where
+ &quot; test c  &#8801;
+      modify (&#955;es. es&#10631;state:=CPU_STATE_IDLE&#10632;)
+ &quot;
+*)</span></span></span></span></span><span>
+</span><span>                         
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>

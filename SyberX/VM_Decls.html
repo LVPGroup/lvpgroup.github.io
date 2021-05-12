@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory VM_Decls (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory VM_Decls</h1>
+
+<span class="command">theory</span> <span class="name">VM_Decls</span><br/>
+<span class="keyword">imports</span> <a href="Interrupts_Decls.html"><span class="name">Interrupts_Decls</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="keyword1"><span class="command">theory</span></span><span> </span><span>VM_Decls</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>type_Decls</span><span> </span><span>Interrupts_Decls</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span>VM_State0</span><span> </span><span class="delimiter">=</span><span> </span><span>vm_info</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;VM list&quot;</span></span></span><span>
+</span><span>                   </span><span>work_state</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;VM_WORK_STATE list&quot;</span></span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+struct vm vm_list[VM_NUM_MAX] __attribute__((aligned(PAGE_SIZE)));
+struct vm_if vm_if_list[VM_NUM_MAX] __attribute__((aligned(PAGE_SIZE)));
+struct vm_config_table *vm_config_table = NULL;
+struct vm_config_table {
+    char name[NAME_MAX_LEN];
+    u64 vm_num;
+    struct vm_config_entry entries[];
+};
+struct vm_config_entry {
+    char name[NAME_MAX_LEN];
+    enum vm_type type;
+    struct vm_memory_config memory;
+    struct vm_image_config image;
+    struct vm_cpu_config cpu;
+    u64 emulated_device_num;
+    struct vm_emulated_device_config emulated_device[EMULATED_DEV_MAX_NUM];
+    u64 passthrough_device_num;
+    struct vm_passthrough_device_config
+        passthrough_device[PASSTHROUGH_DEV_MAX_NUM];
+};
+
+enum vm_type {
+    VM_T_OS,
+    VM_T_BMA,
+};
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+record vm_config_entry = name::char
+                         type::vm_type
+
+record VM_config_table = name::char
+                         vm_num::u64
+                         entries::&quot;vm_config_entry&quot;
+*)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+datatype vm_state = VM_S_INV | VM_S_PENDING | VM_S_ACTIVE
+
+record vm_if = id::vm_id
+               name::string
+               type::vm_type
+               state::VM_WORK_STATE
+               ivc_if::&quot;u64 list&quot;
+               ivc_cfg::nat
+               master_vcpu_id::u64
+               ivc_cfg_ptr::nat
+               init_time::u64
+*)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+definition &quot;read_vm_if_ivc_cfg vi &#8801; (ivc_cfg vi)&quot;
+definition &quot;read_vm_if_ivc_master_vcpu_id vi &#8801; (master_vcpu_id vi)&quot;
+definition &quot;read_vm_if_ivc_cfg_ptr vi &#8801; (ivc_cfg_ptr vi)&quot;
+definition &quot;read_vm_if_ivc_ivc_if vi &#8801; (ivc_if vi)&quot;
+definition &quot;read_vm_if_ivc_type vi &#8801; (type vi)&quot;
+definition &quot;update_vm_if_ivc_cfg vi icfg &#8801; vi&#10631;ivc_cfg:=icfg&#10632;&quot;
+definition &quot;update_vm_if_ivc_cfg_ptr vi icfg &#8801; vi&#10631;ivc_cfg_ptr:=icfg&#10632;&quot;
+definition &quot;update_vm_if_ivc_init_time vi t &#8801; vi&#10631;init_time:=t&#10632;&quot;
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+record vm_config_entry = name::char
+                         type::vm_type
+
+record VM_config_table = name::char
+                         vm_num::u64
+                         entries::&quot;vm_config_entry&quot;
+*)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+record VM_State = vm_list::&quot;vm list&quot;
+                  vm_if_list::&quot;vm_if list&quot;
+                  vm_config_table::&quot;VM_config_table option&quot;
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+record vm_info = id_info :: u64
+                 name_info :: string
+                 type_info :: vm_type
+                 (*state_info :: vm_state*)
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+definition &quot;write_VM_State vl vi vc &#8801; &#10631;vm_list=vl, vm_if_list=vi, vm_config_table=vc&#10632;&quot;
+definition &quot;update_VM_State_vm_list State vl &#8801; State&#10631;vm_list:=vl&#10632;&quot;
+definition &quot;update_VM_State_vm_if_list State vi &#8801; State&#10631;vm_list:=vi&#10632;&quot;
+definition &quot;update_VM_State_vm_config_table State vc &#8801; State&#10631;vm_list:=vc&#10632;&quot;
+definition &quot;read_VM_State_vm_list State &#8801; (vm_list State)&quot;
+definition &quot;read_VM_State_vm_if_list State &#8801; (vm_if_list State)&quot;
+definition &quot;read_VM_State_vm_config_table State &#8801; (vm_config_table State)&quot;
+
+
+
+definition &quot;read_vm_config_table_name cfg &#8801; (name cfg)&quot;
+definition &quot;read_vm_config_table_vm_num cfg &#8801; (vm_num cfg)&quot;
+definition &quot;read_vm_config_table_entries cfg &#8801; (entries cfg)&quot;
+
+record vm = id::u64
+            vcpus::&quot;vcpu_id list&quot;
+            address :: &quot;pa_region list&quot;
+            int_bitmap::bitmap
+
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span></pre>
+
+</div>
+</body>
+</html>
