@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory bpel_ast (Isabelle2020: April 2020)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory bpel_ast</h1>
+
+<span class="command">theory</span> <span class="name">bpel_ast</span><br/>
+<span class="keyword">imports</span> <a href="../../HOL/HOL/Main.html"><span class="name">Main</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+Created by Yongwang Zhao (zhaoyw@buaa.edu.cn)
+School of Computer Science &amp; Engineering, Beihang University, China
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Abstract Syntax of BPEL v2.0 language&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>bpel_ast</span><span>
+</span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>Main</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>QName</span><span> </span><span class="delimiter">=</span><span> </span><span>string</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>NCName</span><span> </span><span class="delimiter">=</span><span> </span><span>string</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span>Time</span><span> </span><span class="delimiter">=</span><span> </span><span>nat</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;l</span><span class="delimiter">)</span><span> </span><span>State</span><span> </span><span class="delimiter">=</span><span>
+</span><span>  </span><span>vars</span><span> </span><span class="delimiter">::</span><span> </span><span class="tfree">&#39;s</span><span>             </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* variables declared in BPEL process *)</span></span></span></span></span><span>
+</span><span>  </span><span>links</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;l &#8658; bool&quot;</span></span></span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* links declared in BPEL flow, we assume they are identified *)</span></span></span></span></span><span>
+</span><span>  </span><span>tick</span><span> </span><span class="delimiter">::</span><span> </span><span>nat</span><span>            </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* the global time, we have a Tick event to simulate the clock *)</span></span></span></span></span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* loopc :: &quot;&#39;c &#8658; nat&quot;   (* counter for ForEach activity *) *)</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;l</span><span class="delimiter">)</span><span> </span><span>Flow_Ele</span><span> </span><span class="delimiter">=</span><span>
+</span><span>  </span><span>targets</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(((&#39;s,&#39;l) State &#8658; bool) &#215; &#39;l list) option&quot;</span></span></span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* join condition (&#39;s &#8658; bool) is a bool exp. True: logical AND of targets, False : OR of targets *)</span></span></span></span></span><span>
+</span><span>  </span><span>sources</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l &#215; ((&#39;s,&#39;l) State &#8658; bool)) list option&quot;</span></span></span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* transition condition (&#39;s &#8658; bool) is a bool exp *)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;We only permit Flow Element for basic activities.
+Although it is allowed in BPEL standard for structured activities, we did not find examples in the standard.
+The important thing is that flow element for structured activities
+can be transformed into flow element only in basic activities.&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;l</span><span class="delimiter">)</span><span> </span><span>Activity</span><span> </span><span class="delimiter">=</span><span>
+</span><span>  </span><span>Invoke</span><span> </span><span class="delimiter">(</span><span>se</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Flow_Ele&quot;</span></span></span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>ptlink</span><span class="delimiter">:</span><span>NCName</span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>pttype</span><span class="delimiter">:</span><span>QName</span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>op</span><span class="delimiter">:</span><span>NCName</span><span class="delimiter">)</span><span>
+</span><span>         </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*inputvar:BPELVariableName*)</span></span></span></span></span><span>
+</span><span>         </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) State &#8658; (&#39;s,&#39;l) State&quot;</span></span></span><span>
+</span><span>         </span><span class="delimiter">(</span><span>catches</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(QName &#215; ((&#39;s,&#39;l) Activity)) list&quot;</span></span></span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>catchall</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Activity option&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>        </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*comphandler:&quot;&#39;s Activity option&quot;*)</span></span></span></span></span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* if invocation returns sucessfully, the result is assigned to vars. Otherwise it returns a Fault.
+     the effect is presented as ``spec&#39;&#39;. QName option is None, means success invocation *)</span></span></span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>Receive</span><span> </span><span class="delimiter">(</span><span>se</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Flow_Ele&quot;</span></span></span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>ptlink</span><span class="delimiter">:</span><span>NCName</span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>pttype</span><span class="delimiter">:</span><span>QName</span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>op</span><span class="delimiter">:</span><span>NCName</span><span class="delimiter">)</span><span>
+</span><span>          </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*var:BPELVariableName*)</span></span></span></span></span><span> </span><span class="delimiter">(</span><span>spec</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) State &#8658; (&#39;s,&#39;l) State&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* Receive will assign data to vars. The ``spec&#39;&#39; presents this effect *)</span></span></span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>Reply</span><span> </span><span class="delimiter">(</span><span>se</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Flow_Ele&quot;</span></span></span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>ptlink</span><span class="delimiter">:</span><span>NCName</span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>pttype</span><span class="delimiter">:</span><span>QName</span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>op</span><span class="delimiter">:</span><span>NCName</span><span class="delimiter">)</span><span>
+</span><span>        </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*var:BPELVariableName*)</span></span></span></span></span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*fault:&quot;QName option&quot;*)</span></span></span></span></span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* ``Reply&#39;&#39; does not modified the BPEL states. It only may affect other BPEL processes.
+     So we omit some information here *)</span></span></span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>Assign</span><span> </span><span class="delimiter">(</span><span>se</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Flow_Ele&quot;</span></span></span><span class="delimiter">)</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) State &#8658; (&#39;s,&#39;l) State&quot;</span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*| Throw (se:StdEle)*)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*| Exit (se:StdEle)*)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*| WaitFor (se:StdEle) Time
+| WaitUntil (se:StdEle) Time*)</span></span></span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>Wait</span><span> </span><span class="delimiter">(</span><span>se</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Flow_Ele&quot;</span></span></span><span class="delimiter">)</span><span> </span><span>Time</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* we unify wait for/until *)</span></span></span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>Empty</span><span> </span><span class="delimiter">(</span><span>se</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Flow_Ele&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span class="delimiter">|</span><span> </span><span>Seqb</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*se:&quot;(&#39;s,&#39;l) Flow_Ele&quot;*)</span></span></span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Activity&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Activity&quot;</span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>If</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*se:&quot;(&#39;s,&#39;l) Flow_Ele&quot;*)</span></span></span></span></span><span> </span><span class="delimiter">(</span><span>cond</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) State set&quot;</span></span></span><span class="delimiter">)</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Activity&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Activity&quot;</span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>While</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*se:&quot;(&#39;s,&#39;l) Flow_Ele&quot;*)</span></span></span></span></span><span> </span><span class="delimiter">(</span><span>cond</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) State set&quot;</span></span></span><span class="delimiter">)</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Activity&quot;</span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* | RepeatUntil (*se:&quot;(&#39;s,&#39;l) Flow_Ele&quot;*) &quot;(&#39;s,&#39;l) Activity&quot; (cond:&quot;(&#39;s,&#39;l) State set&quot;)  *)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* we lift RepeatUntil to syntax. its Seqb P (While c P) *)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* | ForEach (*se:&quot;(&#39;s,&#39;l) Flow_Ele&quot;*) (startv:nat) (endv:nat) &#39;c &quot;(&#39;s,&#39;l) Activity&quot; *)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* &#39;c is the temporal counter *)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* | ForEach (*se:&quot;(&#39;s,&#39;l) Flow_Ele&quot;*) bool (count:&quot;(&#39;s,&#39;l) State &#8658; nat&quot;) &quot;(&#39;s,&#39;l) Activity&quot; *)</span></span></span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>Pick</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*se:&quot;(&#39;s,&#39;l) Flow_Ele&quot;*)</span></span></span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;((&#39;s,&#39;l) EventHandler)&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;((&#39;s,&#39;l) EventHandler)&quot;</span></span></span><span>
+</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* at least one OnMesage, zero or more OnAlarm*)</span></span></span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>Flow</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*se:&quot;(&#39;s,&#39;l) Flow_Ele&quot;*)</span></span></span></span></span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*links:&quot;NCName set&quot;*)</span></span></span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Activity&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Activity&quot;</span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*| Compensate (se:StdEle)*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="delimiter">|</span><span> </span><span>ActTerminator</span><span>  </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* the final act of bpel activities. *)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">and</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;l</span><span class="delimiter">)</span><span> </span><span>EventHandler</span><span> </span><span class="delimiter">=</span><span>
+</span><span>  </span><span>OnMessage</span><span> </span><span class="delimiter">(</span><span>ptlink</span><span class="delimiter">:</span><span>NCName</span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>pttype</span><span class="delimiter">:</span><span>QName</span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>op</span><span class="delimiter">:</span><span>NCName</span><span class="delimiter">)</span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*var:BPELVariableName*)</span></span></span></span></span><span>
+</span><span>            </span><span class="delimiter">(</span><span>spec</span><span class="delimiter">:</span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) State &#8658; (&#39;s,&#39;l) State&quot;</span></span></span><span class="delimiter">)</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Activity&quot;</span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*| OnAlarmFor Time (* nat : seconds *)
+| OnAlarmUntil Time (* Time : nat (seconds from 0000) *)*)</span></span></span></span></span><span>
+</span><span class="delimiter">|</span><span> </span><span>OnAlarm</span><span> </span><span>Time</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Activity&quot;</span></span></span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* we unify alarm for/until *)</span></span></span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* | RepeatEvery Time *)</span></span></span></span></span><span> </span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* repeatevery is used at top level of BPEL process, but not by Pick *)</span></span></span></span></span><span>
+</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;repeatUntil c P &#8801; Seqb P (While c P)&quot;</span></span></span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+fun forEachPar&#39; :: &quot;nat &#8658; (&#39;s,&#39;l) Activity &#8658; (&#39;s,&#39;l) Activity&quot;
+  where &quot;forEachPar&#39; n P = Flow P (forEachPar&#39; (n-1) P)&quot; |
+        &quot;forEachPar&#39; 2 P = Flow P P&quot;
+
+definition &quot;forEachPar m n P &#8801; Flow (replicate (n + 1 - m) P)&quot;
+*)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">function</span></span><span> </span><span>forEach</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;nat &#8658; nat &#8658; (&#39;s,&#39;l) Activity &#8658; (&#39;s,&#39;l) Activity&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;forEach m n P = (if m = n then P
+                        else if m &gt; n then ActTerminator
+                        else Seqb P (forEach (m + 1) n P))&quot;</span></span></span><span>
+</span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span class="keyword1"><span class="command">termination</span></span><span> </span><span>forEach</span><span>
+</span><span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="delimiter">(</span><span>relation</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;measure (&#955;(m,n,P). n - m)&quot;</span></span></span><span class="delimiter">)</span><span>
+</span><span class="keyword1"><span class="command">by</span></span><span> </span><span>auto</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">primrec</span></span><span> </span><span>seqs</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;nat &#8658; (&#39;s,&#39;l) Activity &#8658; (&#39;s,&#39;l) Activity&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;seqs 0 P = P&quot;</span></span></span><span> </span><span class="delimiter">|</span><span>
+</span><span>      </span><span class="string"><span class="delete"><span class="delete">&quot;seqs (Suc n) P = Seqb P (seqs n P)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;s</span><span class="delimiter">,</span><span class="tfree">&#39;l</span><span class="delimiter">)</span><span> </span><span>BPELProc</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;s,&#39;l) Activity&quot;</span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* all incoming links of an activity have been fired *)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>targets_sat</span><span> </span><span class="delimiter">::</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;(((&#39;s,&#39;l) State &#8658; bool) &#215; &#39;l list) option &#8658; (&#39;s,&#39;l) State &#8658; bool&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;targets_sat tgs s &#8801;
+  tgs &#8800; None &#10230;
+      (fst (the tgs) s &#10230;
+        (&#8704;i&lt;length (snd (the tgs)). links s ((snd (the tgs))!i)))
+    &#8743; (&#172; fst (the tgs) s &#10230;
+          (&#8707;i&lt;length (snd (the tgs)). links s ((snd (the tgs))!i)))&quot;</span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(* fire outcoming links of an activity *)</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span> </span><span>fire_sources</span><span> </span><span class="delimiter">::</span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;l &#215; ((&#39;s,&#39;l) State &#8658; bool)) list option
+  &#8658; (&#39;s,&#39;l) State &#8658; (&#39;s,&#39;l) State&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;fire_sources srcs s &#8801;
+  (if srcs &#8800; None then
+      s&#10631;links := foldl (&#955;f l. f(fst l := snd l s)) (links s) (the srcs)&#10632;
+   else s)&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span></pre>
+
+</div>
+</body>
+</html>
