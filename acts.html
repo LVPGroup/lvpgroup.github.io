@@ -46,7 +46,7 @@
 									 
                     
 
-	 <div class="panel" id="pos" data-role="panel" style="width:100%;">
+	 <div class="panel" id="prof_act" data-role="panel" style="width:100%;">
 	 
 		<div class="panel-header" style="background:#dddddd;font-size:14pt;"><span class="fg-darker"><b>学术活动 Professional Activities</b></span></div>
 		<div class="panel-content margin10 fg-dark nlp nrp" style="width:98%;font-size:13pt;margin-top:-5pt;margin-bottom:-5pt">
@@ -96,7 +96,25 @@
 		<li>
 		[2021-01-05] 南京航空航天大学 线上学术报告《并发反应式系统组合验证：框架、语言集成及应用》
 		</li>
+				
+		</ul>
+		</div>
 		
+		<script type="text/javascript">
+		function showdiv1(){
+			document.getElementById("morediv").style.display="block";
+			document.getElementById("showbtn1").innerHTML="收起-";
+			document.getElementById("showbtn1").href="javascript:hidediv1()";
+		}
+		function hidediv1(){
+			document.getElementById("morediv").style.display="none";
+			document.getElementById("showbtn1").innerHTML="展开更多+";
+			document.getElementById("showbtn1").href="javascript:showdiv1()";
+		}
+		</script>
+	
+		<div id="morediv" class="panel-content margin10 fg-dark nlp nrp" style="width:98%;font-size:13pt;margin-top:-35pt;margin-bottom:-5pt;display:none">
+		<ul style="font-size:12pt">
 		<li>
 		[2020-12-31] 航天一院，技术讲座《形式化方法：概念、技术与应用》
 		</li>
@@ -236,13 +254,14 @@
 		<li>
 		[2016-11-03] 全国软件与应用学术会议(NASAC 2016)软件验证学组讨论会，特邀报告《操作系统隔离内核的形式规约与安全分析》
 		</li>
-		
-		
 		</ul>
 		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:showdiv1();" id="showbtn1">展开更多+</a><br/>&nbsp;
 		
 		
-		
+	</div>
+
+	<div class="panel" id="prof_exp" data-role="panel" style="width:100%;">		
 		<div class="panel-header" style="background:#dddddd;font-size:14pt;"><span class="fg-darker"><b>学术任职 Professional Experience</b></span></div>
 		<div class="panel-content margin10 fg-dark nlp nrp" style="width:98%;font-size:13pt;margin-top:-5pt;margin-bottom:-5pt">
 		<ul style="font-size:12pt">
@@ -285,7 +304,9 @@
 		<li>2007, Visiting researcher of INRIA Sophia Antipolis [法国自动化所(INRIA) 访问学者]</li>
 		</ul>
 		</div>
-		
+	</div>
+	
+	<div class="panel" id="pcmember" data-role="panel" style="width:100%;">
 		<div class="panel-header" style="background:#dddddd;font-size:14pt;"><span class="fg-darker"><b>会议程序委员会 Program Committee Member</b></span></div>
 		<div class="panel-content margin10 fg-dark nlp nrp" style="width:98%;font-size:13pt;margin-top:-5pt;margin-bottom:-5pt">
 		<ul style="font-size:12pt">
@@ -302,23 +323,24 @@
 		</ul>
 		
 		</div>
-		
+	</div>
+	
+	<div class="panel" id="editor" data-role="panel" style="width:100%;">
 		<div class="panel-header" style="background:#dddddd;font-size:14pt;"><span class="fg-darker"><b>国际期刊编委 Editorship</b></span></div>
 		<div class="panel-content margin10 fg-dark nlp nrp" style="width:98%;font-size:13pt;margin-top:-5pt;margin-bottom:-5pt">
 		<ul style="font-size:12pt">
 		<li>Associate Editor, IEEE Access Journal (<a href="http://ieeeaccess.ieee.org/" class="fg-cobalt fg-hover-crimson" target="_blank">IEEE Access期刊副主编</a>), Impact factor 3.557, 5 year impact factor 4.199</li>
 		</ul>
 		</div>
-		
-		
+	</div>
+	
+	<div class="panel" id="jreviewer" data-role="panel" style="width:100%;">		
 		<div class="panel-header" style="background:#dddddd;font-size:14pt;"><span class="fg-darker"><b>期刊评阅人 Journal Reviewer</b></span></div>
 		<div class="panel-content margin10 fg-dark nlp nrp" style="width:98%;font-size:13pt;margin-top:-5pt;margin-bottom:-5pt">
 		<ul style="font-size:12pt">
 		<li>IEEE Transactions on Reliability, IEEE Transactions on Automation Science and Engieering, The Computer Journal, Computers & Security, Concurrency and Computation: Practice and Experience, Acta Informatica, International Journal of Software Engineering and Knowledge Engineering, IEEE Access, IET Computer \& Digital Techniques, 软件学报, ...</li>
 		</ul>
 		</div>
-		
-		
 	</div>
 						              
 						                    
