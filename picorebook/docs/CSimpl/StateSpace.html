@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory StateSpace (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory StateSpace</h1>
+
+<span class="command">theory</span> <span class="name">StateSpace</span><br/>
+<span class="keyword">imports</span> <a href="Hoare.html"><span class="name">Hoare</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*
+    Author:      Norbert Schirmer
+    Maintainer:  Norbert Schirmer, norbert.schirmer at web de
+    License:     LGPL
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="comment"><span class="delete"><span class="delete"><span class="delete"><span class="delete">(*  Title:      StateSpace.thy
+    Author:     Norbert Schirmer, TU Muenchen
+
+Copyright (C) 2004-2008 Norbert Schirmer 
+Some rights reserved, TU Muenchen
+
+This library is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation; either version 2.1 of the
+License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
+USA
+*)</span></span></span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="verbatim"><span class="delete"><span class="delete"><span class="delete"><span class="delete">{* State Space Template *}</span></span></span></span></span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>StateSpace</span><span> </span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>Hoare</span><span>
+</span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span class="tfree">&#39;g</span><span> </span><span>state</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;globals&quot;</span></span></span><span class="delimiter">::</span><span class="tfree">&#39;g</span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">definition</span></span><span>
+</span><span>  </span><span>upd_globals</span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;(&#39;g &#8658; &#39;g) &#8658; (&#39;g,&#39;z) state_scheme &#8658; (&#39;g,&#39;z) state_scheme&quot;</span></span></span><span>
+</span><span class="keyword2"><span class="keyword">where</span></span><span>
+</span><span>  </span><span class="string"><span class="delete"><span class="delete">&quot;upd_globals upd s = s&#10631;globals := upd (globals s)&#10632;&quot;</span></span></span><span> 
+</span><span>
+</span><span class="keyword1"><span class="command">record</span></span><span> </span><span class="delimiter">(</span><span class="tfree">&#39;g</span><span class="delimiter">,</span><span> </span><span class="tfree">&#39;n</span><span class="delimiter">,</span><span> </span><span class="tfree">&#39;val</span><span class="delimiter">)</span><span> </span><span>stateSP</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;g state&quot;</span></span></span><span> </span><span class="delimiter">+</span><span>
+</span><span>  </span><span>locals</span><span> </span><span class="delimiter">::</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;n &#8658; &#39;val&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">lemma</span></span><span> </span><span>upd_globals_conv</span><span class="delimiter">:</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;upd_globals f = (&#955;s. s&#10631;globals := f (globals s)&#10632;)&quot;</span></span></span><span>
+</span><span>  </span><span class="keyword1"><span class="command">by</span></span><span> </span><span class="delimiter">(</span><span>rule</span><span> </span><span>ext</span><span class="delimiter">)</span><span> </span><span class="delimiter">(</span><span>simp</span><span> </span><span>add</span><span class="delimiter">:</span><span> </span><span>upd_globals_def</span><span class="delimiter">)</span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span></pre>
+
+</div>
+</body>
+</html>

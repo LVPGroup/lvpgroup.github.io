@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Theory RG_Com (Isabelle2019: June 2019)</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+</head>
+
+<body>
+<div class="head"><h1>Theory RG_Com</h1>
+
+<span class="command">theory</span> <span class="name">RG_Com</span><br/>
+<span class="keyword">imports</span> <a href="../../HOL/HOL/Main.html"><span class="name">Main</span></a><br/>
+
+</div>
+<div class="source">
+<pre class="source"><span class="keyword1"><span class="command">chapter</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;The Rely-Guarantee Method&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">section</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Abstract Syntax&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">theory</span></span><span> </span><span>RG_Com</span><span> </span><span class="keyword2"><span class="keyword">imports</span></span><span> </span><span>Main</span><span> </span><span class="keyword2"><span class="keyword">begin</span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">text</span></span><span> </span><span class="cartouche"><span class="delete"><span class="delete">&#8249;Semantics of assertions and boolean expressions (bexp) as sets
+of states.  Syntax of commands &#8249;com&#8250; and parallel commands
+&#8249;par_com&#8250;.&#8250;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="tfree">&#39;a</span><span> </span><span>bexp</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a set&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">datatype</span></span><span> </span><span class="tfree">&#39;a</span><span> </span><span>com</span><span> </span><span class="delimiter">=</span><span>
+</span><span>    </span><span>Basic</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a &#8658;&#39;a&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>Seq</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a com&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a com&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>Cond</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a com&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a com&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>While</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a com&quot;</span></span></span><span>
+</span><span>  </span><span class="delimiter">|</span><span> </span><span>Await</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a bexp&quot;</span></span></span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a com&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword1"><span class="command">type_synonym</span></span><span> </span><span class="tfree">&#39;a</span><span> </span><span>par_com</span><span> </span><span class="delimiter">=</span><span> </span><span class="string"><span class="delete"><span class="delete">&quot;&#39;a com option list&quot;</span></span></span><span>
+</span><span>
+</span><span class="keyword2"><span class="keyword">end</span></span><span>
+</span></pre>
+
+</div>
+</body>
+</html>
