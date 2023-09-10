@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('../../fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.theories { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+</style><title>Theory "plugin_verify_impl"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> plugin_verify_impl
+
+<span class="keyword2"><span class="keyword">imports</span></span> Main
+  <span class="quoted">"../des/des_plugin"</span>
+  <span class="quoted">"../impl/thy/tmp_plugin"</span>
+  lib_verify_impl
+  <span class="quoted">"../util/src/lib/SubMonadLib"</span>
+  <span class="quoted">"../util/Show/Show_Instances"</span> 
+
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> ded_imp_pluginNoValid<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"sint impl_ACTOR_STATE_noValid <span class="main">=</span> <span class="main">(</span><span class="main">-</span><span class="main">1</span><span class="main">::</span>int<span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> impl_ACTOR_STATE_noValid_def <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+<span class="keyword1"><span class="command">lemma</span></span> ded_imp_pluginFINISH<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"sint impl_ACTOR_STATE_FINISH <span class="main">=</span> <span class="main">(</span><span class="numeral">4</span><span class="main">::</span>int<span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> impl_ACTOR_STATE_FINISH_def <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+<span class="keyword1"><span class="command">lemma</span></span> ded_imp_pluginINIT<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"sint impl_ACTOR_STATE_INIT <span class="main">=</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>int<span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> impl_ACTOR_STATE_INIT_def <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+<span class="keyword1"><span class="command">lemma</span></span> ded_imp_pluginPAUSE<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"sint impl_ACTOR_STATE_PAUSE <span class="main">=</span> <span class="main">(</span><span class="numeral">2</span><span class="main">::</span>int<span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> impl_ACTOR_STATE_PAUSE_def <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>              
+<span class="keyword1"><span class="command">lemma</span></span> ded_imp_pluginRUNNING<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"sint impl_ACTOR_STATE_RUNNING <span class="main">=</span> <span class="main">(</span><span class="main">1</span><span class="main">::</span>int<span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> impl_ACTOR_STATE_RUNNING_def <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Plustate_C_update1<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"<span class="free">sta</span> <span class="main">=</span> GeneralPlugin_C.state_C <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">sta</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust GeneralPlugin_C.state_C.simps GeneralPlugin_C.state_C_update.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Plustate_C_update1_2<span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"<span class="free">sta</span> <span class="main">=</span> GeneralPlugin_C.state_C <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">sta</span><span class="main">)</span> <span class="free">s</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust GeneralPlugin_C.state_C.simps GeneralPlugin_C.state_C_update.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Plustate_C_update2<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C.actorID_C <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.actorID_C <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">sta</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.actorID_C.simps GeneralPlugin_C.exhaust GeneralPlugin_C.state_C_update.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Plustate_C_update3<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C.name_C <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.name_C <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">sta</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.name_C.simps GeneralPlugin_C.exhaust GeneralPlugin_C.state_C_update.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Plustate_C_update3_2<span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">" GeneralPlugin_C.name_C <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">sta</span><span class="main">)</span> <span class="free">s</span> <span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.name_C <span class="free">s</span> "</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.name_C.simps GeneralPlugin_C.exhaust GeneralPlugin_C.state_C_update.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Plustate_C_update4<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C.duration_C <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.duration_C <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">sta</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.duration_C.simps GeneralPlugin_C.exhaust GeneralPlugin_C.state_C_update.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> PluactorID_C_update1<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"<span class="free">actID</span> <span class="main">=</span> GeneralPlugin_C.actorID_C <span class="main">(</span>GeneralPlugin_C.actorID_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">actID</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.actorID_C.simps GeneralPlugin_C.actorID_C_update.simps GeneralPlugin_C.exhaust<span class="main">)</span></span>
+  
+<span class="keyword1"><span class="command">lemma</span></span> PluactorID_C_update2<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C.state_C <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.state_C <span class="main">(</span>GeneralPlugin_C.actorID_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">actID</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.actorID_C_update.simps GeneralPlugin_C.exhaust GeneralPlugin_C.state_C.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> PluactorID_C_update3<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C.name_C <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.name_C <span class="main">(</span>GeneralPlugin_C.actorID_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">actID</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.actorID_C_update.simps GeneralPlugin_C.exhaust GeneralPlugin_C.name_C.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> PluactorID_C_update4<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C.duration_C <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.duration_C <span class="main">(</span>GeneralPlugin_C.actorID_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">actID</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.actorID_C_update.simps GeneralPlugin_C.exhaust GeneralPlugin_C.duration_C.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Pluname_C_update1<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"<span class="free">actName</span> <span class="main">=</span> GeneralPlugin_C.name_C <span class="main">(</span>GeneralPlugin_C.name_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">actName</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust GeneralPlugin_C.name_C.simps GeneralPlugin_C.name_C_update.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Pluname_C_update1_2<span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">" GeneralPlugin_C.name_C <span class="main">(</span>GeneralPlugin_C.name_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">actName</span><span class="main">)</span> <span class="free">s</span> <span class="main">)</span> <span class="main">=</span> <span class="free">actName</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust GeneralPlugin_C.name_C.simps GeneralPlugin_C.name_C_update.simps<span class="main">)</span></span>
+  
+<span class="keyword1"><span class="command">lemma</span></span> Pluname_C_update2<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C.state_C <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.state_C <span class="main">(</span>GeneralPlugin_C.name_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">actName</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust GeneralPlugin_C.name_C_update.simps GeneralPlugin_C.state_C.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Pluname_C_update3<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C.actorID_C <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.actorID_C <span class="main">(</span>GeneralPlugin_C.name_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">actName</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust GeneralPlugin_C.name_C_update.simps GeneralPlugin_C.actorID_C.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Pluname_C_update4<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C.duration_C <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.duration_C <span class="main">(</span>GeneralPlugin_C.name_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">actName</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust GeneralPlugin_C.name_C_update.simps GeneralPlugin_C.duration_C.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Pluduration_C_update1<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"<span class="free">dur</span> <span class="main">=</span> GeneralPlugin_C.duration_C <span class="main">(</span>GeneralPlugin_C.duration_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">dur</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust duration_C.simps duration_C_update.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Pluduration_C_update1_2<span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"<span class="free">dur</span> <span class="main">=</span> GeneralPlugin_C.duration_C <span class="main">(</span>GeneralPlugin_C.duration_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">dur</span><span class="main">)</span> <span class="free">s</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust duration_C.simps duration_C_update.simps<span class="main">)</span></span>
+  
+<span class="keyword1"><span class="command">lemma</span></span> Pluduration_C_update2<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C.state_C <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.state_C <span class="main">(</span>GeneralPlugin_C.duration_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">dur</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust GeneralPlugin_C.duration_C_update.simps GeneralPlugin_C.state_C.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Pluduration_C_update2_2<span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">" GeneralPlugin_C.state_C <span class="main">(</span>GeneralPlugin_C.duration_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">dur</span><span class="main">)</span> <span class="free">s</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.state_C <span class="free">s</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust GeneralPlugin_C.duration_C_update.simps GeneralPlugin_C.state_C.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Pluduration_C_update3<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C.actorID_C <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.actorID_C <span class="main">(</span>GeneralPlugin_C.duration_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">dur</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust GeneralPlugin_C.duration_C_update.simps GeneralPlugin_C.actorID_C.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Pluduration_C_update4<span class="main">[</span><span class="language"><span class="operator">simp</span></span><span class="main">]</span><span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C.name_C <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.name_C <span class="main">(</span>GeneralPlugin_C.duration_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">dur</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="free">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="language"><span class="free">pluC</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust GeneralPlugin_C.duration_C_update.simps GeneralPlugin_C.name_C.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Pluduration_C_update4_2<span class="main">:</span> 
+  <span class="quoted"><span class="quoted"><span class="language">" GeneralPlugin_C.name_C <span class="main">(</span>GeneralPlugin_C.duration_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="free">dur</span><span class="main">)</span> <span class="free">s</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.name_C <span class="free">s</span> "</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.exhaust GeneralPlugin_C.duration_C_update.simps GeneralPlugin_C.name_C.simps<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> corres_condition<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"<span class="main">⟦</span> <span class="main">∀</span><span class="main">(</span><span class="bound">s</span><span class="main">,</span><span class="bound">t</span><span class="main">)</span><span class="main">∈</span><span class="free">sr</span><span class="main">.</span> <span class="free">G</span> <span class="bound">s</span> <span class="main">=</span> <span class="free">G'</span> <span class="bound">t</span><span class="main">;</span>
+     corres_underlying <span class="free">sr</span> <span class="free">nf</span> <span class="free">nf'</span> <span class="free">r</span> <span class="free">P</span> <span class="free">P'</span> <span class="free">a</span> <span class="free">c</span><span class="main">;</span> 
+     corres_underlying <span class="free">sr</span> <span class="free">nf</span> <span class="free">nf'</span> <span class="free">r</span> <span class="free">P</span> <span class="free">P'</span> <span class="free">b</span> <span class="free">d</span> <span class="main">⟧</span> <span class="main">⟹</span>
+    corres_underlying <span class="free">sr</span> <span class="free">nf</span> <span class="free">nf'</span> <span class="free">r</span>
+      <span class="free">P</span>  <span class="free">P'</span>
+        <span class="main">(</span>condition <span class="free">G</span> <span class="free">a</span> <span class="free">b</span><span class="main">)</span> <span class="main">(</span>condition <span class="free">G'</span> <span class="free">c</span> <span class="free">d</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> condition_def corres_underlying_def 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span> 
+  <span class="keyword1"><span class="command">unfolding</span></span> case_prod_unfold
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+  
+<span class="keyword1"><span class="command">lemma</span></span> des_imp_initializePlugin<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">" int64Equal <span class="free">actID</span> <span class="free">actIDC</span> <span class="main">∧</span> stringEqual <span class="free">pName</span> <span class="free">pNameC</span> <span class="main">⟹</span> 
+    <span class="main">⦃</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> pluginEqual <span class="free">pluC</span> <span class="bound">s</span> <span class="free">plu</span><span class="main">⦄</span>
+        initializePlugin' <span class="free">pluC</span> <span class="free">actIDC</span> <span class="free">pNameC</span>
+    <span class="main">⦃</span><span class="main">λ</span><span class="bound">r</span> <span class="bound">s</span><span class="main">.</span> pluginEqual <span class="free">pluC</span> <span class="bound">s</span> <span class="main">(</span>pluInitialize <span class="free">plu</span> <span class="free">actID</span> <span class="free">pName</span><span class="main">)</span><span class="main">⦄</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">unfold</span> initializePlugin'_def pluInitialize_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">wpsimp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">unfold</span> pluginEqual_def int64Equal_def statePluginEqual_def int32Equal_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp_all</span></span>
+  <span class="keyword1"><span class="command">proof</span></span> <span class="language"><span class="operator">-</span></span>
+  <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s</span> <span class="main">::</span> <span class="quoted"><span class="language">lifted_globals</span></span>
+  <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"stringEqual <span class="free">pName</span> <span class="free">pNameC</span>"</span></span></span>
+  <span class="keyword3"><span class="command">obtain</span></span> <span class="skolem"><span class="skolem">ww</span></span> <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C <span class="main">⇒</span> <span class="numeral">32</span> signed word"</span></span></span> <span class="keyword2"><span class="keyword">and</span></span> <span class="skolem"><span class="skolem">wwa</span></span> <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C <span class="main">⇒</span> <span class="numeral">32</span> signed word"</span></span></span> <span class="keyword2"><span class="keyword">and</span></span> <span class="skolem"><span class="skolem">wwb</span></span> <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C <span class="main">⇒</span> <span class="numeral">64</span> signed word"</span></span></span> <span class="keyword2"><span class="keyword">and</span></span> <span class="skolem"><span class="skolem">pp</span></span> <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C <span class="main">⇒</span> <span class="numeral">8</span> word ptr"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">g</span><span class="main">.</span> <span class="bound">g</span> <span class="main">=</span> GeneralPlugin_C <span class="main">(</span><span class="skolem">ww</span> <span class="bound">g</span><span class="main">)</span> <span class="main">(</span><span class="skolem">wwa</span> <span class="bound">g</span><span class="main">)</span> <span class="main">(</span><span class="skolem">wwb</span> <span class="bound">g</span><span class="main">)</span> <span class="main">(</span><span class="skolem">pp</span> <span class="bound">g</span><span class="main">)</span>"</span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">meson</span> GeneralPlugin_C.exhaust<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword1"><span class="command">have</span></span> f2<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">g</span><span class="main">.</span> GeneralPlugin_C <span class="main">(</span>duration_C <span class="bound">g</span><span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.state_C <span class="bound">g</span><span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.actorID_C <span class="bound">g</span><span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.name_C <span class="bound">g</span><span class="main">)</span> <span class="main">=</span> <span class="bound">g</span>"</span></span></span>
+      <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.actorID_C.simps GeneralPlugin_C.name_C.simps GeneralPlugin_C.state_C.simps duration_C.simps<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword1"><span class="command">have</span></span> f3<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">g</span> <span class="bound">f</span><span class="main">.</span> GeneralPlugin_C.state_C <span class="main">(</span>duration_C_update <span class="bound">f</span> <span class="bound">g</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.state_C <span class="bound">g</span>"</span></span></span>
+      <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> GeneralPlugin_C.state_C.simps duration_C_update.simps<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">have</span></span> f4<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">g</span> <span class="bound">f</span><span class="main">.</span> GeneralPlugin_C.actorID_C <span class="main">(</span>duration_C_update <span class="bound">f</span> <span class="bound">g</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.actorID_C <span class="bound">g</span>"</span></span></span>
+      <span class="keyword1"><span class="command">using</span></span> f2 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.actorID_C.simps duration_C_update.simps<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">have</span></span> f5<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">g</span> <span class="bound">f</span><span class="main">.</span> GeneralPlugin_C.actorID_C <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="bound">f</span> <span class="bound">g</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.actorID_C <span class="bound">g</span>"</span></span></span>
+      <span class="keyword1"><span class="command">using</span></span> f2 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.actorID_C.simps GeneralPlugin_C.state_C_update.simps<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">have</span></span> f6<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">g</span> <span class="bound">f</span><span class="main">.</span> GeneralPlugin_C.actorID_C <span class="main">(</span>GeneralPlugin_C.name_C_update <span class="bound">f</span> <span class="bound">g</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.actorID_C <span class="bound">g</span>"</span></span></span>
+      <span class="keyword1"><span class="command">using</span></span> f2 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> GeneralPlugin_C.actorID_C.simps GeneralPlugin_C.name_C_update.simps<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">have</span></span> f7<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">g</span> <span class="bound">f</span><span class="main">.</span> GeneralPlugin_C.name_C <span class="main">(</span>duration_C_update <span class="bound">f</span> <span class="bound">g</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.name_C <span class="bound">g</span>"</span></span></span>
+      <span class="keyword1"><span class="command">using</span></span> f2 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> GeneralPlugin_C.name_C.simps duration_C_update.simps<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">have</span></span> f8<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">g</span> <span class="bound">f</span><span class="main">.</span> GeneralPlugin_C.name_C <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="bound">f</span> <span class="bound">g</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.name_C <span class="bound">g</span>"</span></span></span>
+      <span class="keyword1"><span class="command">using</span></span> f2 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> GeneralPlugin_C.name_C.simps GeneralPlugin_C.state_C_update.simps<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">have</span></span> f9<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">g</span> <span class="bound">f</span><span class="main">.</span> <span class="bound">f</span> <span class="main">(</span>GeneralPlugin_C.name_C <span class="bound">g</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.name_C <span class="main">(</span>GeneralPlugin_C.name_C_update <span class="bound">f</span> <span class="bound">g</span><span class="main">)</span>"</span></span></span>
+      <span class="keyword1"><span class="command">using</span></span> f2 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> GeneralPlugin_C.name_C.simps GeneralPlugin_C.name_C_update.simps<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">have</span></span> f10<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">g</span> <span class="bound">f</span><span class="main">.</span> <span class="bound">f</span> <span class="main">(</span>GeneralPlugin_C.actorID_C <span class="bound">g</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.actorID_C <span class="main">(</span>GeneralPlugin_C.actorID_C_update <span class="bound">f</span> <span class="bound">g</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> f2 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> GeneralPlugin_C.actorID_C.simps GeneralPlugin_C.actorID_C_update.simps<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">have</span></span> f11<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">g</span> <span class="bound">f</span><span class="main">.</span> <span class="bound">f</span> <span class="main">(</span>GeneralPlugin_C.state_C <span class="bound">g</span><span class="main">)</span> <span class="main">=</span> GeneralPlugin_C.state_C <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="bound">f</span> <span class="bound">g</span><span class="main">)</span>"</span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> f2 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> GeneralPlugin_C.state_C.simps GeneralPlugin_C.state_C_update.simps<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted"><span class="language">"sint <span class="main">(</span>duration_C <span class="main">(</span>duration_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> <span class="main">1</span><span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> impl_ACTOR_STATE_PAUSE<span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.name_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> <span class="free">pNameC</span><span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.actorID_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> <span class="free">actIDC</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="skolem">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">1</span>"</span></span></span>
+      <span class="keyword1"><span class="command">using</span></span> f2 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> duration_C.simps duration_C_update.simps sint_1_eq_1_x<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span><span class="main">)</span></span>
+      <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">actIDC</span> <span class="main">=</span> GeneralPlugin_C.actorID_C <span class="main">(</span>duration_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> <span class="main">1</span><span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> impl_ACTOR_STATE_PAUSE<span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.name_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> <span class="free">pNameC</span><span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.actorID_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> <span class="free">actIDC</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="skolem">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span> stringEqual <span class="free">pName</span> <span class="main">(</span>GeneralPlugin_C.name_C <span class="main">(</span>duration_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> <span class="main">1</span><span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> impl_ACTOR_STATE_PAUSE<span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.name_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> <span class="free">pNameC</span><span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.actorID_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> <span class="free">actIDC</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="skolem">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span> sint <span class="main">(</span>GeneralPlugin_C.state_C <span class="main">(</span>duration_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> <span class="main">1</span><span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> impl_ACTOR_STATE_PAUSE<span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.name_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> <span class="free">pNameC</span><span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.actorID_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> <span class="free">actIDC</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="skolem">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="numeral">2</span> <span class="main">∧</span> sint <span class="main">(</span>duration_C <span class="main">(</span>duration_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> <span class="main">1</span><span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.state_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> impl_ACTOR_STATE_PAUSE<span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.name_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> <span class="free">pNameC</span><span class="main">)</span> <span class="main">(</span>GeneralPlugin_C.actorID_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">w</span><span class="main">.</span> <span class="free">actIDC</span><span class="main">)</span> <span class="main">(</span>heap_GeneralPlugin_C <span class="skolem">s</span> <span class="free">pluC</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">1</span>"</span></span></span>
+        <span class="keyword1"><span class="command">using</span></span> f11 f10 f9 f8 f7 f6 f5 f4 f3 a1 ded_imp_pluginPAUSE <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">presburger</span></span>
+  <span class="keyword1"><span class="command">qed</span></span> 
+  
+  
+<span class="keyword1"><span class="command">lemma</span></span> des_imp_pause<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"corres_underlying <span class="main">(</span><span class="main">{</span><span class="main">(</span><span class="bound">t</span><span class="main">,</span><span class="bound">s</span><span class="main">)</span><span class="main">.</span> pluginEqual <span class="free">plu</span> <span class="bound">s</span> <span class="main">(</span>fst <span class="bound">t</span><span class="main">)</span><span class="main">}</span><span class="main">)</span> False False <span class="main">(</span><span class="main">λ</span><span class="main"><span class="bound">_</span></span> <span class="main"><span class="bound">_</span></span><span class="main">.</span> True<span class="main">)</span> <span class="main">(</span><span class="main">λ</span><span class="main"><span class="bound">_</span></span><span class="main">.</span> True<span class="main">)</span> <span class="main">(</span><span class="main">λ</span><span class="main"><span class="bound">_</span></span><span class="main">.</span> True<span class="main">)</span>  <span class="main">(</span>Des_pause<span class="main">)</span> <span class="main">(</span>pause' <span class="free">plu</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">unfold</span> pause'_def Des_pause_def<span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">unfold</span> pluginEqual_def statePluginEqual_def setState'_def<span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">unfold</span> corres_underlying_def NonDetMonad.bind_def condition_def modify_def guard_def return_def skip_def gets_def get_def put_def setPlugState_def<span class="main">)</span></span> 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp_all</span></span> <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">rule</span><span class="main"><span class="keyword3">+</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> Plustate_C_update2<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> ded_imp_pluginFINISH word_sint.Rep_inject<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">rule</span><span class="main"><span class="keyword3">+</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> Plustate_C_update2<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> Plustate_C_update1 Plustate_C_update3 Plustate_C_update4 ded_imp_pluginPAUSE<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">rule</span><span class="main"><span class="keyword3">+</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> ded_imp_pluginPAUSE <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">presburger</span></span>
+  <span class="keyword1"><span class="command">using</span></span> ded_imp_pluginPAUSE <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">blast</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">rule</span><span class="main"><span class="keyword3">+</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> ded_imp_pluginFINISH <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>full_types<span class="main"><span class="main">)</span></span> Plustate_C_update1 Plustate_C_update2 Plustate_C_update3 Plustate_C_update4 ded_imp_pluginPAUSE<span class="main">)</span></span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> des_imp_resume<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">" corres_underlying <span class="main">(</span><span class="main">{</span><span class="main">(</span><span class="bound">s</span><span class="main">,</span><span class="bound">t</span><span class="main">)</span><span class="main">.</span> pluginEqual <span class="free">plu</span> <span class="bound">t</span> <span class="main">(</span>fst <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">)</span> False False
+           <span class="main">(</span><span class="main">λ</span><span class="main"><span class="bound">_</span></span> <span class="main"><span class="bound">_</span></span><span class="main">.</span> True<span class="main">)</span>  <span class="main">(</span><span class="main">λ</span><span class="main"><span class="bound">_</span></span><span class="main">.</span> True<span class="main">)</span> <span class="main">(</span><span class="main">λ</span><span class="main"><span class="bound">_</span></span><span class="main">.</span> True<span class="main">)</span> <span class="main">(</span>Des_resume<span class="main">)</span> <span class="main">(</span>resume' <span class="free">plu</span><span class="main">)</span> "</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">unfold</span> resume'_def Des_resume_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">unfold</span> pluginEqual_def statePluginEqual_def setState'_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">unfold</span> corres_underlying_def NonDetMonad.bind_def condition_def modify_def guard_def return_def skip_def gets_def get_def put_def setPlugState_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp_all</span></span> <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">rule</span><span class="main"><span class="keyword3">+</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> Plustate_C_update2<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> ded_imp_pluginFINISH word_sint.Rep_inject<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">rule</span><span class="main"><span class="keyword3">+</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> ded_imp_pluginFINISH<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> Plustate_C_update1 Plustate_C_update2 Plustate_C_update3 Plustate_C_update4 ded_imp_pluginRUNNING<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> nofail_resume <span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"no_fail <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> is_valid_GeneralPlugin_C <span class="bound">s</span> <span class="free">pluPtr</span><span class="main">)</span> <span class="main">(</span>resume' <span class="free">pluPtr</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">unfold</span> no_fail_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">unfold</span> resume'_def<span class="main">)</span></span> <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">unfold</span> resume'_def setState'_def<span class="main">)</span></span> <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">wpsimp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">unfold</span> modify_def get_def put_def valid_def skip_def guard_def condition_def return_def NonDetMonad.bind_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  
+<span class="keyword1"><span class="command">lemma</span></span> des_imp_stop<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"corres_underlying <span class="main">(</span><span class="main">{</span><span class="main">(</span><span class="bound">s</span><span class="main">,</span><span class="bound">t</span><span class="main">)</span><span class="main">.</span> pluginEqual <span class="free">plu</span> <span class="bound">t</span> <span class="main">(</span>fst <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">)</span> False False <span class="main">(</span><span class="main">λ</span><span class="main"><span class="bound">_</span></span> <span class="main"><span class="bound">_</span></span><span class="main">.</span> True<span class="main">)</span> <span class="main">(</span><span class="main">λ</span><span class="main"><span class="bound">_</span></span><span class="main">.</span> True<span class="main">)</span> <span class="main">(</span><span class="main">λ</span><span class="main"><span class="bound">_</span></span><span class="main">.</span> True<span class="main">)</span> <span class="main">(</span>Des_stop<span class="main">)</span>  <span class="main">(</span>stop' <span class="free">plu</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">unfold</span> stop'_def Des_stop_def setState'_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">rule</span> corres_symb_exec_r<span class="main"><span class="main">[</span></span><span class="language"><span class="keyword2"><span class="keyword"><span class="operator">where</span></span></span> Q' <span class="main"><span class="main"><span class="main">=</span></span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">λ</span><span class="bound">r</span> <span class="bound">v</span><span class="main">.</span> True"</span></span></span></span><span class="main"><span class="main">]</span></span><span class="main">)</span></span>
+     <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">unfold</span> K_bind_def<span class="main">)</span></span>
+     <span class="keyword1"><span class="command"><span class="improper"><span class="command">defer</span></span></span></span> 
+     <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">wpsimp</span><span class="main"><span class="keyword3">+</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">rule</span> corres_condition<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">unfold</span> pluginEqual_def statePluginEqual_def<span class="main">)</span></span> <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+    <span class="keyword1"><span class="command">using</span></span> ded_imp_pluginFINISH <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> ded_imp_pluginFINISH <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> ded_imp_pluginFINISH word_sint.Rep_inject <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">fastforce</span></span>
+    <span class="keyword1"><span class="command">using</span></span> ded_imp_pluginFINISH <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">unfold</span> corres_underlying_def gets_def get_def put_def return_def skip_def  NonDetMonad.bind_def modify_def<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">rule</span> corres_symb_exec_r<span class="main"><span class="main">[</span></span><span class="language"><span class="keyword2"><span class="keyword"><span class="operator">where</span></span></span> Q' <span class="main"><span class="main"><span class="main">=</span></span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">λ</span><span class="bound">r</span> <span class="bound">v</span><span class="main">.</span> True"</span></span></span></span><span class="main"><span class="main">]</span></span><span class="main">)</span></span>
+     <span class="keyword1"><span class="command"><span class="improper"><span class="command">defer</span></span></span></span> 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">wpsimp</span><span class="main"><span class="keyword3">+</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">rule</span> corres_symb_exec_l<span class="main"><span class="main">[</span></span><span class="language"><span class="keyword2"><span class="keyword"><span class="operator">where</span></span></span> Q <span class="main"><span class="main"><span class="main">=</span></span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">λ</span><span class="bound">r</span> <span class="bound">v</span><span class="main">.</span> True"</span></span></span></span><span class="main"><span class="main">]</span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span> <span class="keyword2"><span class="keyword">for</span></span> st
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">rule</span> corres_modify'<span class="main">)</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">unfold</span> pluginEqual_def statePluginEqual_def setPlugState_def<span class="main">)</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> Plustate_C_update2<span class="main"><span class="keyword3">,</span></span><span class="operator">metis</span> Plustate_C_update3<span class="main"><span class="keyword3">,</span></span>
+        <span class="operator">metis</span> Plustate_C_update1 ded_imp_pluginFINISH<span class="main"><span class="keyword3">,</span></span><span class="operator">metis</span> Plustate_C_update4<span class="main">)</span><span class="main"><span class="keyword3">+</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">wpsimp</span><span class="main"><span class="keyword3">+</span></span></span>
+  
+
+<span class="keyword2"><span class="keyword">end</span></span></pre></body>

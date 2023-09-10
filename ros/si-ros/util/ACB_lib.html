@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('../../fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.theories { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+</style><title>Theory "ACB_lib"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> ACB_lib
+  <span class="keyword2"><span class="keyword">imports</span></span> <span class="quoted">"ACB_core"</span>  
+          <span class="quoted">"src/lib/Monad_WP/NonDetMonad"</span> 
+          <span class="quoted">"src/lib/Monad_WP/NonDetMonad_call"</span> 
+          <span class="quoted">"List_Index"</span>                              
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="comment1">(* Plugin *)</span>
+<span class="keyword1"><span class="command">record</span></span> plugin <span class="main">=</span> 
+  name <span class="main">::</span> <span class="quoted"><span class="language">string</span></span>
+  actorID <span class="main">::</span> <span class="quoted"><span class="language">int64_t</span></span>
+  state <span class="main">::</span> <span class="quoted"><span class="language">pluginState</span></span>
+  duration <span class="main">::</span> <span class="quoted"><span class="language">int</span></span>
+
+<span class="comment1">(* bus *)</span>
+<span class="keyword1"><span class="command">record</span></span> bus <span class="main">=</span> 
+  name <span class="main">::</span> <span class="quoted"><span class="language">string</span></span>
+  nRegisteredPlugin <span class="main">::</span> <span class="quoted"><span class="language">int32_t</span></span>
+  pluginList <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"plugin list"</span></span></span>
+  pluginOwner <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"int64_t list"</span></span></span>
+  pluginName <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"string list"</span></span></span>
+
+<span class="comment1">(* scheduler *)</span>
+<span class="keyword1"><span class="command">record</span></span> scheduler <span class="main">=</span> 
+  acbList <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB list"</span></span></span>
+  swarmList <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo list"</span></span></span>
+  actorNo <span class="main">::</span> <span class="quoted"><span class="language">int64_t</span></span>
+  nSwarm <span class="main">::</span> <span class="quoted"><span class="language">int64_t</span></span>
+  scheNum <span class="main">::</span> <span class="quoted"><span class="language">int</span></span>
+  registeredBus <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus list"</span></span></span>
+  scheMsgQueue <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsg queue"</span></span></span>
+  toPauseActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfo list"</span></span></span>
+  minPrioActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfo list"</span></span></span>
+  finishingActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfo list"</span></span></span>
+
+<span class="comment1">(* nodeHandle and ServiceServer*)</span>
+<span class="keyword1"><span class="command">record</span></span> NodeHandle <span class="main">=</span>
+  handleName <span class="main">::</span> <span class="quoted"><span class="language">string</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Ros_NodeHandle <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"string <span class="main">⇒</span> NodeHandle"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Ros_NodeHandle</span> <span class="free"><span class="bound">st</span></span> <span class="main">≡</span> <span class="main">⦇</span> handleName <span class="main">=</span> <span class="free"><span class="bound">st</span></span> <span class="main">⦈</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">record</span></span> Ros_ServiceServer <span class="main">=</span>
+  serviceName <span class="main">::</span> <span class="quoted"><span class="language">string</span></span>
+
+<span class="comment1">(* taskbinder *)</span>
+<span class="keyword1"><span class="command">record</span></span> taskbinder <span class="main">=</span>
+  pActorScheduler <span class="main">::</span> <span class="quoted"><span class="language">scheduler</span></span>
+  nh <span class="main">::</span> <span class="quoted"><span class="language">NodeHandle</span></span>        
+  task_bind_server <span class="main">::</span> <span class="quoted"><span class="language">Ros_ServiceServer</span></span>
+
+<span class="comment1">(*Some definitions about Ros*)</span>
+<span class="keyword1"><span class="command">type_synonym</span></span> RosLog <span class="main">=</span> <span class="quoted"><span class="quoted"><span class="language">"string list"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Ros_DEBUG <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"RosLog <span class="main">⇒</span> string <span class="main">⇒</span> RosLog"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Ros_DEBUG</span> <span class="free"><span class="bound">log</span></span> <span class="free"><span class="bound">infor</span></span> <span class="main">≡</span> <span class="free"><span class="bound">log</span></span> <span class="main">@</span> <span class="main">[</span><span class="inner_quoted">''DEBUG::''</span> <span class="main">@</span> <span class="free"><span class="bound">infor</span></span><span class="main">]</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Ros_INFO <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"RosLog <span class="main">⇒</span> string <span class="main">⇒</span> RosLog"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Ros_INFO</span> <span class="free"><span class="bound">log</span></span> <span class="free"><span class="bound">infor</span></span> <span class="main">≡</span> <span class="free"><span class="bound">log</span></span> <span class="main">@</span> <span class="main">[</span><span class="inner_quoted">''INFO::''</span> <span class="main">@</span> <span class="free"><span class="bound">infor</span></span><span class="main">]</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Ros_WARN <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"RosLog <span class="main">⇒</span> string <span class="main">⇒</span> RosLog"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Ros_WARN</span> <span class="free"><span class="bound">log</span></span> <span class="free"><span class="bound">infor</span></span> <span class="main">≡</span> <span class="free"><span class="bound">log</span></span> <span class="main">@</span> <span class="main">[</span><span class="inner_quoted">''WARN::''</span> <span class="main">@</span> <span class="free"><span class="bound">infor</span></span><span class="main">]</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Ros_ERROR <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"RosLog <span class="main">⇒</span> string <span class="main">⇒</span> RosLog"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Ros_ERROR</span> <span class="free"><span class="bound">log</span></span> <span class="free"><span class="bound">infor</span></span> <span class="main">≡</span> <span class="free"><span class="bound">log</span></span> <span class="main">@</span> <span class="main">[</span><span class="inner_quoted">''ERROR::''</span> <span class="main">@</span> <span class="free"><span class="bound">infor</span></span><span class="main">]</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Ros_FATAL <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"RosLog <span class="main">⇒</span> string <span class="main">⇒</span> RosLog"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Ros_FATAL</span> <span class="free"><span class="bound">log</span></span> <span class="free"><span class="bound">infor</span></span> <span class="main">≡</span> <span class="free"><span class="bound">log</span></span> <span class="main">@</span> <span class="main">[</span><span class="inner_quoted">''FETAL::''</span> <span class="main">@</span> <span class="free"><span class="bound">infor</span></span><span class="main">]</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">type_synonym</span></span> request1 <span class="main">=</span>  <span class="quoted"><span class="quoted"><span class="language">" <span class="main">(</span>SwarmInfo <span class="main">×</span> ACB list<span class="main">)</span>"</span></span></span>
+<span class="keyword1"><span class="command">type_synonym</span></span> response1 <span class="main">=</span> <span class="quoted"><span class="quoted"><span class="language">"bool"</span></span></span>
+
+<span class="keyword1"><span class="command">record</span></span> srvMessage <span class="main">=</span> 
+  Request <span class="main">::</span> <span class="quoted"><span class="language">request1</span></span>
+  Response <span class="main">::</span> <span class="quoted"><span class="language">response1</span></span>
+
+
+  <span class="comment1">(*
+  record Ros_ServiceClient = 
+    serviceName :: string
+    service :: "(request ⇒ response) option"
+  *)</span>
+
+<span class="keyword1"><span class="command">type_synonym</span></span> Re_service <span class="main">=</span> <span class="quoted"><span class="quoted"><span class="language">"taskbinder <span class="main">⇒</span> request1 
+              <span class="main">⇒</span> <span class="main">(</span>taskbinder <span class="main">×</span> response1 <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+<span class="keyword1"><span class="command">record</span></span> Re_RosNode <span class="main">=</span>
+  name <span class="main">::</span> <span class="quoted"><span class="language">string</span></span>
+  serviceMap <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"string <span class="main">⇒</span> Re_service option"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Re_getPath <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"NodeHandle <span class="main">⇒</span> Re_RosNode <span class="main">⇒</span> string <span class="main">⇒</span> string"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_getPath</span> <span class="free"><span class="bound">nhl</span></span> <span class="free"><span class="bound">rr</span></span> <span class="free"><span class="bound">st</span></span> <span class="main">≡</span> <span class="inner_quoted">''/''</span> <span class="main">@</span> <span class="main">(</span>Re_RosNode.name <span class="free"><span class="bound">rr</span></span><span class="main">)</span> <span class="main">@</span> <span class="inner_quoted">''/''</span>  <span class="main">@</span> <span class="main">(</span>handleName <span class="free"><span class="bound">nhl</span></span><span class="main">)</span> <span class="main">@</span> <span class="free"><span class="bound">st</span></span>"</span></span></span> 
+
+<span class="keyword1"><span class="command">definition</span></span> Re_RosInit <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"string <span class="main">⇒</span> Re_RosNode"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_RosInit</span> <span class="free"><span class="bound">nodeName</span></span> <span class="main">≡</span> <span class="main">⦇</span> Re_RosNode.name <span class="main">=</span> <span class="free"><span class="bound">nodeName</span></span><span class="main">,</span> Re_RosNode.serviceMap <span class="main">=</span> Map.empty<span class="main">⦈</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Re_advertiseService <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"NodeHandle <span class="main">⇒</span> Re_RosNode <span class="main">⇒</span> string <span class="main">⇒</span> Re_service
+                                    <span class="main">⇒</span> <span class="main">(</span>Re_RosNode <span class="main">×</span> Ros_ServiceServer<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_advertiseService</span> <span class="free"><span class="bound">nhl</span></span> <span class="free"><span class="bound">ros</span></span> <span class="free"><span class="bound">st</span></span> <span class="free"><span class="bound">ser</span></span> <span class="main">≡</span> 
+                              <span class="keyword1">let</span> 
+                                <span class="bound">st'</span> <span class="main">=</span> Re_getPath <span class="free"><span class="bound">nhl</span></span> <span class="free"><span class="bound">ros</span></span> <span class="free"><span class="bound">st</span></span><span class="main">;</span>
+                                <span class="bound">node'</span> <span class="main">=</span> <span class="free"><span class="bound">ros</span></span><span class="main">⦇</span> serviceMap <span class="main">:=</span> <span class="main">(</span>serviceMap <span class="free"><span class="bound">ros</span></span><span class="main">)</span><span class="main">(</span><span class="bound">st'</span> <span class="main">↦</span> <span class="free"><span class="bound">ser</span></span><span class="main">)</span><span class="main">⦈</span><span class="main">;</span>
+                                <span class="bound">ss</span> <span class="main">=</span> <span class="main">⦇</span> serviceName <span class="main">=</span> <span class="bound">st'</span><span class="main">⦈</span>
+                              <span class="keyword1">in</span> <span class="main">(</span><span class="bound">node'</span><span class="main">,</span> <span class="bound">ss</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Re_call <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"taskbinder <span class="main">⇒</span> NodeHandle <span class="main">⇒</span> Re_RosNode <span class="main">⇒</span> string <span class="main">⇒</span> srvMessage <span class="main">⇒</span> <span class="main">(</span>taskbinder <span class="main">×</span> srvMessage <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_call</span> <span class="free"><span class="bound">tb</span></span> <span class="free"><span class="bound">nhl</span></span> <span class="free"><span class="bound">ros</span></span> <span class="free"><span class="bound">st</span></span> <span class="free"><span class="bound">mes</span></span> <span class="main">≡</span> 
+                               <span class="keyword1">let</span> <span class="bound">st'</span> <span class="main">=</span> Re_getPath <span class="free"><span class="bound">nhl</span></span> <span class="free"><span class="bound">ros</span></span> <span class="free"><span class="bound">st</span></span><span class="main">;</span>
+                                   <span class="bound">ser</span> <span class="main">=</span> <span class="main">(</span>serviceMap <span class="free"><span class="bound">ros</span></span><span class="main">)</span> <span class="bound">st'</span><span class="main">;</span>
+                                   <span class="main">(</span><span class="bound">tb'</span><span class="main">,</span> <span class="bound">res</span> <span class="main">,</span> <span class="bound">flag</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>the <span class="bound">ser</span><span class="main">)</span> <span class="free"><span class="bound">tb</span></span> <span class="main">(</span>Request <span class="free"><span class="bound">mes</span></span><span class="main">)</span>
+                               <span class="keyword1">in</span> 
+                                   <span class="keyword1">if</span> <span class="bound">ser</span> <span class="main">=</span> None 
+                                   <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">tb</span></span><span class="main">,</span> <span class="free"><span class="bound">mes</span></span><span class="main">,</span> False<span class="main">)</span> 
+                                   <span class="keyword1">else</span> <span class="main">(</span><span class="bound">tb'</span><span class="main">,</span> <span class="free"><span class="bound">mes</span></span><span class="main">⦇</span> Response <span class="main">:=</span> <span class="bound">res</span><span class="main">⦈</span><span class="main">,</span> <span class="bound">flag</span><span class="main">)</span>"</span></span></span>
+
+
+<span class="keyword1"><span class="command">type_synonym</span></span> Des_service <span class="main">=</span> <span class="quoted"><span class="quoted"><span class="language">"request1 <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>taskbinder <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> <span class="main">(</span> response1 <span class="main">×</span> bool<span class="main">)</span><span class="main">)</span> nondet_monad"</span></span></span>
+<span class="keyword1"><span class="command">record</span></span> Des_RosNode <span class="main">=</span>
+  name <span class="main">::</span> <span class="quoted"><span class="language">string</span></span>
+  serviceMap <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"string <span class="main">⇒</span> Des_service option"</span></span></span>
+  logFile <span class="main">::</span> <span class="quoted"><span class="language">RosLog</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Des_getPath <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"NodeHandle <span class="main">⇒</span> Des_RosNode <span class="main">⇒</span> string <span class="main">⇒</span> string"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_getPath</span> <span class="free"><span class="bound">nhl</span></span> <span class="free"><span class="bound">dr</span></span> <span class="free"><span class="bound">st</span></span> <span class="main">≡</span> <span class="inner_quoted">''/''</span> <span class="main">@</span> <span class="main">(</span>Des_RosNode.name <span class="free"><span class="bound">dr</span></span><span class="main">)</span> <span class="main">@</span> <span class="inner_quoted">''/''</span>  <span class="main">@</span> <span class="main">(</span>handleName <span class="free"><span class="bound">nhl</span></span><span class="main">)</span> <span class="main">@</span> <span class="free"><span class="bound">st</span></span>"</span></span></span> 
+
+<span class="keyword1"><span class="command">definition</span></span> Des_RosInit <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"string <span class="main">⇒</span> Des_RosNode"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_RosInit</span> <span class="free"><span class="bound">nodeName</span></span> <span class="main">≡</span> <span class="main">⦇</span> Des_RosNode.name <span class="main">=</span> <span class="free"><span class="bound">nodeName</span></span><span class="main">,</span> Des_RosNode.serviceMap <span class="main">=</span> Map.empty<span class="main">,</span> Des_RosNode.logFile <span class="main">=</span> <span class="main">[]</span> <span class="main">⦈</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Des_advertiseService <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"NodeHandle <span class="main">⇒</span> string <span class="main">⇒</span> Des_service
+                                    <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>taskbinder <span class="main">×</span> Des_RosNode<span class="main">)</span><span class="main">,</span> Ros_ServiceServer<span class="main">)</span> nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_advertiseService</span> <span class="free"><span class="bound">nhl</span></span> <span class="free"><span class="bound">st</span></span> <span class="free"><span class="bound">ser</span></span> <span class="main">≡</span>
+                                 <span class="keyword1">do</span>
+                                   <span class="bound">st'</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> Des_getPath <span class="free"><span class="bound">nhl</span></span> <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="free"><span class="bound">st</span></span><span class="main">)</span><span class="main">;</span>
+                                   modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">,</span> <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span> serviceMap <span class="main">:=</span> <span class="main">(</span>serviceMap <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">(</span><span class="bound">st'</span> <span class="main">↦</span> <span class="free"><span class="bound">ser</span></span><span class="main">)</span><span class="main">⦈</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+                                   return <span class="main">⦇</span>serviceName <span class="main">=</span> <span class="bound">st'</span><span class="main">⦈</span>
+                                 <span class="keyword1">od</span>"</span></span></span> 
+
+<span class="keyword1"><span class="command">definition</span></span> Des_call <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"NodeHandle <span class="main">⇒</span> string <span class="main">⇒</span> srvMessage <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>taskbinder <span class="main">×</span> Des_RosNode<span class="main">)</span><span class="main">,</span> <span class="main">(</span>srvMessage <span class="main">×</span> bool<span class="main">)</span><span class="main">)</span> nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_call</span> <span class="free"><span class="bound">nhl</span></span> <span class="free"><span class="bound">st</span></span> <span class="free"><span class="bound">mes</span></span> <span class="main">≡</span>  <span class="keyword1">do</span>
+                                     <span class="bound">st'</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> Des_getPath <span class="free"><span class="bound">nhl</span></span> <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="free"><span class="bound">st</span></span><span class="main">)</span><span class="main">;</span>
+                                     <span class="bound">ser</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>serviceMap <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="bound">st'</span><span class="main">)</span><span class="main">;</span>
+                                     <span class="keyword1">if</span> <span class="bound">ser</span> <span class="main">=</span> None
+                                     <span class="keyword1">then</span> return <span class="main">(</span><span class="free"><span class="bound">mes</span></span><span class="main">,</span> False<span class="main">)</span>
+                                     <span class="keyword1">else</span>
+                                       <span class="keyword1">do</span> 
+                                        <span class="bound">ret</span> <span class="main">←</span> NonDetMonad_call.call <span class="main">(</span><span class="main">(</span>the <span class="bound">ser</span><span class="main">)</span> <span class="main">(</span>Request <span class="free"><span class="bound">mes</span></span><span class="main">)</span><span class="main">)</span> <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> logFile <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+                                        <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span> <span class="bound">p</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">p</span><span class="main">,</span> <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>logFile <span class="main">:=</span> <span class="main">(</span>snd <span class="bound">p</span><span class="main">)</span><span class="main">⦈</span> <span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+                                        return <span class="main">(</span><span class="free"><span class="bound">mes</span></span><span class="main">⦇</span>Response <span class="main">:=</span> <span class="main">(</span>fst <span class="bound">ret</span><span class="main">)</span><span class="main">⦈</span><span class="main">,</span> <span class="main">(</span>snd <span class="bound">ret</span><span class="main">)</span><span class="main">)</span>
+                                       <span class="keyword1">od</span>
+                                 <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* Some definitions and lemmas about reqRos and desRos consistency *)</span>
+<span class="keyword1"><span class="command">definition</span></span> serviceEqual <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"Re_service <span class="main">⇒</span> Des_service <span class="main">⇒</span> bool"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">serviceEqual</span> <span class="free"><span class="bound">rs</span></span> <span class="free"><span class="bound">ds</span></span> <span class="main">≡</span> <span class="main">∀</span><span class="bound">req</span> <span class="bound">s'</span><span class="main">.</span> 
+                                  <span class="main">⦃</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> <span class="bound">s</span> <span class="main">=</span> <span class="bound">s'</span> <span class="main">⦄</span> 
+                                  <span class="free"><span class="bound">ds</span></span> <span class="bound">req</span> 
+                                  <span class="main">⦃</span><span class="main">λ</span><span class="bound">a</span> <span class="bound">s</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">s</span><span class="main">)</span> <span class="main">=</span> fst <span class="main">(</span><span class="free"><span class="bound">rs</span></span> <span class="main">(</span>fst <span class="bound">s'</span><span class="main">)</span> <span class="bound">req</span><span class="main">)</span>
+                                   <span class="main">∧</span> <span class="bound">a</span> <span class="main">=</span> snd <span class="main">(</span><span class="free"><span class="bound">rs</span></span> <span class="main">(</span>fst <span class="bound">s'</span><span class="main">)</span> <span class="bound">req</span><span class="main">)</span><span class="main">⦄</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> serviceMapEqual <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">(</span>string <span class="main">⇒</span> Re_service option<span class="main">)</span> <span class="main">⇒</span> <span class="main">(</span>string <span class="main">⇒</span> Des_service option<span class="main">)</span> <span class="main">⇒</span> bool"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">serviceMapEqual</span> <span class="free"><span class="bound">rsm</span></span> <span class="free"><span class="bound">dsm</span></span> <span class="main">≡</span> <span class="main">∀</span><span class="bound">st</span><span class="main">.</span> <span class="main">(</span><span class="free"><span class="bound">rsm</span></span> <span class="bound">st</span> <span class="main">=</span> None <span class="main">∧</span> <span class="free"><span class="bound">dsm</span></span> <span class="bound">st</span> <span class="main">=</span> None<span class="main">)</span> 
+                            <span class="main">∨</span> <span class="main">(</span><span class="free"><span class="bound">rsm</span></span> <span class="bound">st</span> <span class="main">≠</span> None <span class="main">∧</span> <span class="free"><span class="bound">dsm</span></span> <span class="bound">st</span> <span class="main">≠</span> None <span class="main">∧</span> serviceEqual <span class="main">(</span>the <span class="main">(</span><span class="free"><span class="bound">rsm</span></span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>the <span class="main">(</span><span class="free"><span class="bound">dsm</span></span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> rosEqual <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"Re_RosNode <span class="main">⇒</span> Des_RosNode <span class="main">⇒</span> bool"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">rosEqual</span> <span class="free"><span class="bound">rr</span></span> <span class="free"><span class="bound">dr</span></span> <span class="main">≡</span> <span class="main">(</span>Re_RosNode.name <span class="free"><span class="bound">rr</span></span> <span class="main">=</span> Des_RosNode.name <span class="free"><span class="bound">dr</span></span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span>serviceMapEqual <span class="main">(</span>Re_RosNode.serviceMap <span class="free"><span class="bound">rr</span></span><span class="main">)</span>  <span class="main">(</span>Des_RosNode.serviceMap <span class="free"><span class="bound">dr</span></span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">⋀</span><span class="bound">st</span><span class="main">.</span> rosEqual <span class="main">(</span>Re_RosInit <span class="bound">st</span><span class="main">)</span> <span class="main">(</span>Des_RosInit <span class="bound">st</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> rosEqual_def Re_RosInit_def Des_RosInit_def serviceMapEqual_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> req_des_advertiseService <span class="main">:</span>
+                <span class="quoted"><span class="quoted"><span class="language">"<span class="main">⋀</span><span class="bound">tb</span> <span class="bound">rr</span> <span class="bound">rs</span> <span class="bound">ds</span> <span class="bound">nh</span> <span class="bound">st</span><span class="main">.</span> <span class="main">⦃</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">s</span><span class="main">)</span> <span class="main">=</span> <span class="bound">tb</span> <span class="main">∧</span> rosEqual <span class="bound">rr</span> <span class="main">(</span>snd <span class="bound">s</span><span class="main">)</span> <span class="main">∧</span> serviceEqual <span class="bound">rs</span> <span class="bound">ds</span><span class="main">⦄</span> 
+                            Des_advertiseService <span class="bound">nh</span> <span class="bound">st</span> <span class="bound">ds</span>
+                            <span class="main">⦃</span><span class="main">λ</span><span class="bound">a</span> <span class="bound">s</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">s</span><span class="main">)</span> <span class="main">=</span> <span class="bound">tb</span>
+                              <span class="main">∧</span> rosEqual <span class="main">(</span>fst <span class="main">(</span>Re_advertiseService <span class="bound">nh</span> <span class="bound">rr</span> <span class="bound">st</span> <span class="bound">rs</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>snd <span class="bound">s</span><span class="main">)</span> 
+                              <span class="main">∧</span> <span class="bound">a</span> <span class="main">=</span> snd <span class="main">(</span>Re_advertiseService <span class="bound">nh</span> <span class="bound">rr</span> <span class="bound">st</span> <span class="bound">rs</span><span class="main">)</span><span class="main">⦄</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> Des_advertiseService_def Re_advertiseService_def Let_def rosEqual_def serviceMapEqual_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">wpsimp</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Des_getPath_def Re_getPath_def<span class="main">)</span></span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> req_des_call_aux1 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"rosEqual <span class="free">rr</span> <span class="free">dr</span> <span class="main">⟹</span> Re_getPath <span class="free">nhl</span> <span class="free">rr</span> <span class="free">st</span> <span class="main">=</span> Des_getPath <span class="free">nhl</span> <span class="free">dr</span> <span class="free">st</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Des_getPath_def Re_getPath_def rosEqual_def<span class="main">)</span></span>
+  
+<span class="keyword1"><span class="command">lemma</span></span> req_des_call_aux2 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"rosEqual <span class="free">rr</span> <span class="free">dr</span> <span class="main">∧</span>  Des_RosNode.serviceMap <span class="free">dr</span> <span class="free">st</span> <span class="main">=</span> Some <span class="free">ds</span>
+                        <span class="main">⟹</span> Re_RosNode.serviceMap <span class="free">rr</span> <span class="free">st</span> <span class="main">≠</span> None <span class="main">∧</span> serviceEqual <span class="main">(</span>the <span class="main">(</span>Re_RosNode.serviceMap <span class="free">rr</span> <span class="free">st</span><span class="main">)</span><span class="main">)</span> <span class="free">ds</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> option.distinct<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> option.sel rosEqual_def serviceMapEqual_def<span class="main">)</span></span>
+   
+<span class="keyword1"><span class="command">lemma</span></span> req_des_call_aux3 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"serviceEqual <span class="free">rs</span> <span class="free">ds</span> <span class="main">∧</span>  <span class="free">rs</span> <span class="free">tb</span> <span class="free">req</span> <span class="main">=</span> <span class="main">(</span><span class="free">tb'</span><span class="main">,</span> <span class="free">res</span><span class="main">,</span> <span class="free">flag</span><span class="main">)</span> <span class="main">⟹</span>
+           <span class="main">(</span><span class="main">(</span><span class="free">res'</span><span class="main">,</span> <span class="free">flag'</span><span class="main">)</span><span class="main">,</span> <span class="free">tb''</span><span class="main">,</span> <span class="free">ros</span><span class="main">)</span>  <span class="main">∈</span> fst <span class="main">(</span><span class="free">ds</span> <span class="free">req</span> <span class="main">(</span><span class="free">tb</span><span class="main">,</span> <span class="free">logfile</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span> <span class="free">tb''</span> <span class="main">=</span> <span class="free">tb'</span> <span class="main">∧</span> <span class="free">res'</span> <span class="main">=</span> <span class="free">res</span> <span class="main">∧</span> <span class="free">flag'</span> <span class="main">=</span> <span class="free">flag</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> serviceEqual_def valid_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>mono_tags<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> case_prod_unfold fst_conv snd_conv<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> req_des_call<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">⋀</span><span class="bound">tb</span> <span class="bound">rr</span> <span class="bound">nh</span> <span class="bound">st</span> <span class="bound">mes</span><span class="main">.</span> 
+                    <span class="main">⦃</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">s</span><span class="main">)</span> <span class="main">=</span> <span class="bound">tb</span> <span class="main">∧</span> rosEqual <span class="bound">rr</span> <span class="main">(</span>snd <span class="bound">s</span><span class="main">)</span> <span class="main">⦄</span>
+                    Des_call <span class="bound">nh</span> <span class="bound">st</span> <span class="bound">mes</span>
+                    <span class="main">⦃</span><span class="main">λ</span><span class="bound">a</span> <span class="bound">s</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">s</span><span class="main">)</span> <span class="main">=</span> fst <span class="main">(</span>Re_call <span class="bound">tb</span> <span class="bound">nh</span> <span class="bound">rr</span> <span class="bound">st</span> <span class="bound">mes</span><span class="main">)</span>
+                      <span class="main">∧</span> <span class="bound">a</span> <span class="main">=</span> snd <span class="main">(</span>Re_call <span class="bound">tb</span> <span class="bound">nh</span> <span class="bound">rr</span> <span class="bound">st</span> <span class="bound">mes</span><span class="main">)</span> 
+                      <span class="main">∧</span> rosEqual <span class="bound">rr</span> <span class="main">(</span>snd <span class="bound">s</span><span class="main">)</span><span class="main">⦄</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> Des_call_def Let_def Re_call_def 
+  <span class="keyword1"><span class="command">unfolding</span></span> gets_def return_def bind_def get_def valid_def call_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">wpsimp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+      <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Des_getPath_def Re_getPath_def append_Cons case_prod_unfold prod.collapse prod.inject rosEqual_def self_append_conv2 serviceMapEqual_def<span class="main">)</span></span>
+     <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Des_getPath_def Re_getPath_def append_Cons case_prod_unfold prod.collapse prod.inject rosEqual_def self_append_conv2 serviceMapEqual_def<span class="main">)</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> case_prod_beta'<span class="main">)</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> prod.collapse req_des_call_aux2 req_des_call_aux1 req_des_call_aux3<span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">defer</span></span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> rosEqual_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> case_prod_beta'<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+      <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> req_des_call_aux1 req_des_call_aux2<span class="main">)</span></span>
+     <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> req_des_call_aux1 req_des_call_aux2<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">using</span></span> req_des_call_aux1 req_des_call_aux3
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> option.sel prod.collapse req_des_call_aux2<span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> option.sel prod.collapse req_des_call_aux2 req_des_call_aux1 req_des_call_aux3<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> option.sel prod.collapse req_des_call_aux2 req_des_call_aux1 req_des_call_aux3<span class="main">)</span></span>
+
+
+<span class="comment1">(*let st'' = ''/'' @ (Re_RosNode.name ros) @ ''/'' @  (handleName nhl) @ ''/'' @ st;
+                                   ser = (serviceMap ros) st';
+                                   (tb', res , flag) = (the ser) tb (Request mes)
+                               in *)</span>
+
+
+<span class="comment1">(*
+definition nh_serviceClient :: "NodeHandle ⇒ RosNode ⇒ string ⇒ Ros_ServiceClient"
+  where "nh_serviceClient nhl ros st ≡ 
+                               let st' = ''/'' @ (RosNode.name ros) @ ''/'' @  (handleName nhl) @ ''/'' @ st
+                               in ⦇ serviceName = st', service = (serviceMap ros) st' ⦈"
+
+
+definition call :: "Ros_ServiceClient ⇒ srvMessage ⇒ (srvMessage × bool)"
+  where "call client mes ≡ if (service client) = None 
+                           then (mes, False) 
+                           else (mes⦇ Response := (the (service client)) (Request mes)⦈, True)"
+*)</span>
+
+<span class="comment1">(* xml type*)</span>
+<span class="comment1">(*
+record SensorAndActuator = 
+  P_ID :: int64_t
+  P_Type :: string 
+  Property ::  "string ⇒ string option"
+  Param ::  "string ⇒ string option"
+
+record PluginConfig = 
+  P_Name :: string
+
+record BusConfig = 
+  P_Name :: string
+  PluginsConfig :: "PluginConfig list"
+
+record Actor = 
+  P_ID :: int64_t
+  P_Name :: string
+  P_Prio :: int32_t
+  SensorsConfig :: "SensorAndActuator list option"
+  ActuatorsConfig :: "SensorAndActuator list option"
+  OODAConfig :: "BusConfig list option"
+
+record ExcluActors =
+  P_Name :: string
+  Actors :: "Actor list"
+
+record ActorsConfig =  
+  GeneralActors :: "Actor list"
+  ExclusiveActors :: "ExcluActors"
+
+(*maybe appear more than one ExclusiveActors in_ActorsConfig *)
+record TaskXML = 
+  P_ID :: int64_t
+  P_Name :: string
+  P_SwarmName :: "string option"
+  P_SwarmTaskPrio :: "int32_t option"
+  P_ActorsConfig :: ActorsConfig
+*)</span>
+
+
+<span class="comment1">(* Auxiliary function *)</span>
+
+<span class="comment1">(*plugin*)</span>
+<span class="keyword1"><span class="command">definition</span></span> getPlugName <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">" plugin <span class="main">⇒</span> string"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">getPlugName</span> <span class="free"><span class="bound">plug</span></span> <span class="main">=</span> plugin.name <span class="free"><span class="bound">plug</span></span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> getPlugActorID <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">" plugin <span class="main">⇒</span> int64_t"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">getPlugActorID</span> <span class="free"><span class="bound">plug</span></span> <span class="main">≡</span> actorID <span class="free"><span class="bound">plug</span></span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> getPlugState <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"plugin <span class="main">⇒</span> pluginState"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">getPlugState</span> <span class="free"><span class="bound">plug</span></span> <span class="main">≡</span> state <span class="free"><span class="bound">plug</span></span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> setPlugState <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"plugin <span class="main">⇒</span> pluginState <span class="main">⇒</span>plugin"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">setPlugState</span> <span class="free"><span class="bound">plug</span></span> <span class="free"><span class="bound">pstate</span></span> <span class="main">≡</span> <span class="free"><span class="bound">plug</span></span><span class="main">⦇</span>state<span class="main">:=</span><span class="free"><span class="bound">pstate</span></span> <span class="main">⦈</span>"</span></span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> pluInitialize <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"plugin <span class="main">⇒</span> int64_t <span class="main">⇒</span> string <span class="main">⇒</span> plugin"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">" <span class="free">pluInitialize</span> <span class="free"><span class="bound">plu</span></span> <span class="free"><span class="bound">aActorID</span></span> <span class="free"><span class="bound">aPluginName</span></span>
+          <span class="main">≡</span> <span class="free"><span class="bound">plu</span></span><span class="main">⦇</span> plugin.name <span class="main">:=</span> <span class="free"><span class="bound">aPluginName</span></span> <span class="main">,</span>
+              actorID <span class="main">:=</span> <span class="free"><span class="bound">aActorID</span></span> <span class="main">,</span>
+              state <span class="main">:=</span> ACTOR_STATE_PAUSE <span class="main">,</span>
+              duration <span class="main">:=</span> <span class="main">1</span> <span class="main">⦈</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> nullPlugin <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"plugin"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">" <span class="free">nullPlugin</span>
+          <span class="main">≡</span> <span class="main">⦇</span> plugin.name <span class="main">=</span> <span class="inner_quoted">''null''</span> <span class="main">,</span>
+              actorID <span class="main">=</span> <span class="main">-</span><span class="main">1</span> <span class="main">,</span>
+              state <span class="main">=</span> pluginState.NOT_VALID<span class="main">,</span>
+              duration <span class="main">=</span> <span class="main">-</span><span class="main">1</span> <span class="main">⦈</span>"</span></span></span>
+
+<span class="comment1">(*bus*)</span>
+<span class="keyword1"><span class="command">definition</span></span> getBusName <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">" bus <span class="main">⇒</span> string"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">getBusName</span> <span class="free"><span class="bound">b</span></span> <span class="main">≡</span> bus.name <span class="free"><span class="bound">b</span></span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> getPluginNum <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">" bus <span class="main">⇒</span> int32_t"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">getPluginNum</span> <span class="free"><span class="bound">b</span></span> <span class="main">≡</span> nRegisteredPlugin <span class="free"><span class="bound">b</span></span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> busInitialize <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"string <span class="main">⇒</span> bus "</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">busInitialize</span> <span class="free"><span class="bound">str</span></span> <span class="main">≡</span> 
+            <span class="main">⦇</span>bus.name <span class="main">=</span> <span class="free"><span class="bound">str</span></span><span class="main">,</span> 
+             nRegisteredPlugin <span class="main">=</span><span class="main">0</span><span class="main">,</span> 
+             pluginList <span class="main">=</span> <span class="main">[]</span><span class="main">,</span>
+             pluginOwner <span class="main">=</span> <span class="main">[]</span><span class="main">,</span>
+             pluginName <span class="main">=</span> <span class="main">[]</span><span class="main">⦈</span>"</span></span></span>
+
+<span class="comment1">(*scheduler*)</span>
+<span class="keyword1"><span class="command">definition</span></span> nullSwarmInfo <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">nullSwarmInfo</span> <span class="main">≡</span> 
+            <span class="main">⦇</span> swarmName <span class="main">=</span> <span class="inner_quoted">''null''</span><span class="main">,</span>
+              swarmID <span class="main">=</span> <span class="main">-</span><span class="main">1</span><span class="main">,</span>
+              swarmPrio <span class="main">=</span> <span class="main">-</span><span class="main">1</span><span class="main">,</span>
+              state <span class="main">=</span> actorState.ACTOR_STATE_FINISH<span class="main">,</span>
+              generalActors <span class="main">=</span> <span class="main">[]</span><span class="main">,</span>
+              excluActors <span class="main">=</span> Map.empty<span class="main">,</span>
+              platformActors <span class="main">=</span> Map.empty
+            <span class="main">⦈</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> scheInitialize <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus list <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">scheInitialize</span> <span class="free"><span class="bound">bl</span></span> <span class="main">≡</span> 
+            <span class="main">⦇</span>scheduler.acbList <span class="main">=</span> <span class="main">[]</span><span class="main">,</span> 
+             swarmList <span class="main">=</span> <span class="main">[]</span><span class="main">,</span> 
+             actorNo <span class="main">=</span> <span class="main">0</span><span class="main">,</span>
+             nSwarm <span class="main">=</span> <span class="main">0</span><span class="main">,</span>
+             scheNum <span class="main">=</span> <span class="main">0</span><span class="main">,</span>
+             registeredBus <span class="main">=</span> <span class="free"><span class="bound">bl</span></span><span class="main">,</span> 
+             scheMsgQueue <span class="main">=</span> <span class="main">[]</span><span class="main">,</span>
+             toPauseActors <span class="main">=</span> <span class="main">[]</span><span class="main">,</span>
+             minPrioActors <span class="main">=</span> <span class="main">[]</span><span class="main">,</span>
+             finishingActors <span class="main">=</span> <span class="main">[]</span><span class="main">⦈</span>"</span></span></span>
+
+
+<span class="comment1">(*taskbinder*)</span>
+<span class="keyword1"><span class="command">definition</span></span> taskBinderInitialize <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">" taskbinder"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">taskBinderInitialize</span> <span class="main">≡</span> 
+                   <span class="keyword1">let</span> <span class="bound">bus1</span> <span class="main">=</span> busInitialize <span class="inner_quoted">''observe_bus''</span><span class="main">;</span>
+                       <span class="bound">bus2</span> <span class="main">=</span> busInitialize <span class="inner_quoted">''orient_bus''</span><span class="main">;</span>
+                       <span class="bound">bus3</span> <span class="main">=</span> busInitialize <span class="inner_quoted">''decide_bus''</span><span class="main">;</span>
+                       <span class="bound">bus4</span> <span class="main">=</span> busInitialize <span class="inner_quoted">''act_bus''</span><span class="main">;</span>
+                       <span class="bound">bl</span> <span class="main">=</span> <span class="main">[</span><span class="bound">bus1</span><span class="main">,</span><span class="bound">bus2</span><span class="main">,</span><span class="bound">bus3</span><span class="main">,</span><span class="bound">bus4</span><span class="main">]</span>
+                   <span class="keyword1">in</span>
+                      <span class="main">⦇</span>
+                       pActorScheduler <span class="main">=</span> scheInitialize <span class="bound">bl</span><span class="main">,</span>
+                       nh <span class="main">=</span> <span class="main">⦇</span>handleName <span class="main">=</span> <span class="inner_quoted">''~/''</span><span class="main">⦈</span><span class="main">,</span>
+                       task_bind_server <span class="main">=</span> <span class="main">⦇</span>Ros_ServiceServer.serviceName <span class="main">=</span> <span class="inner_quoted">''''</span><span class="main">⦈</span>
+                      <span class="main">⦈</span>"</span></span></span>
+
+<span class="comment1">(* api aux*)</span>
+<span class="keyword1"><span class="command">definition</span></span> api_updateBus <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> int64_t <span class="main">⇒</span> string <span class="main">⇒</span> pluginState <span class="main">⇒</span> <span class="main">(</span>bus <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">api_updateBus</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">actID</span></span> <span class="free"><span class="bound">pName</span></span> <span class="free"><span class="bound">sta</span></span> <span class="main">≡</span> 
+            <span class="keyword1">let</span> <span class="bound">list</span> <span class="main">=</span> pluginList <span class="free"><span class="bound">b</span></span><span class="main">;</span>
+                <span class="bound">num</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> plugin.name <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">pName</span></span> <span class="main">∧</span> plugin.actorID <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">actID</span></span><span class="main">)</span> <span class="bound">list</span><span class="main">;</span>
+                <span class="bound">plu</span> <span class="main">=</span> <span class="bound">list</span><span class="main">!</span> <span class="bound">num</span>
+            <span class="keyword1">in</span> 
+                <span class="keyword1">if</span> <span class="bound">num</span> <span class="main">&lt;</span> length <span class="bound">list</span>
+                <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">⦇</span>pluginList <span class="main">:=</span> <span class="bound">list</span><span class="main">[</span><span class="bound">num</span> <span class="main">:=</span> setPlugState <span class="bound">plu</span> <span class="free"><span class="bound">sta</span></span> <span class="main">]</span><span class="main">⦈</span><span class="main">,</span> True<span class="main">)</span>
+                <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">,</span> False<span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> api_updateSchedule <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> string <span class="main">⇒</span> int64_t <span class="main">⇒</span> string <span class="main">⇒</span> pluginState <span class="main">⇒</span> <span class="main">(</span>scheduler <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">api_updateSchedule</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">bName</span></span> <span class="free"><span class="bound">actID</span></span> <span class="free"><span class="bound">pName</span></span> <span class="free"><span class="bound">sta</span></span> <span class="main">≡</span> 
+            <span class="keyword1">let</span> <span class="bound">rb</span> <span class="main">=</span> registeredBus <span class="free"><span class="bound">sche</span></span> <span class="main">;</span>
+                <span class="bound">num</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">b</span><span class="main">.</span> bus.name <span class="bound">b</span> <span class="main">=</span> <span class="free"><span class="bound">bName</span></span><span class="main">)</span> <span class="bound">rb</span><span class="main">;</span>
+                <span class="bound">b</span> <span class="main">=</span> <span class="bound">rb</span><span class="main">!</span><span class="bound">num</span>
+            <span class="keyword1">in</span> 
+                <span class="keyword1">if</span> <span class="bound">num</span> <span class="main">&lt;</span> length <span class="bound">rb</span>
+                <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">⦇</span> registeredBus <span class="main">:=</span> <span class="bound">rb</span><span class="main">[</span><span class="bound">num</span> <span class="main">:=</span> fst <span class="main">(</span>api_updateBus <span class="bound">b</span> <span class="free"><span class="bound">actID</span></span> <span class="free"><span class="bound">pName</span></span> <span class="free"><span class="bound">sta</span></span><span class="main">)</span><span class="main">]</span><span class="main">⦈</span><span class="main">,</span> snd <span class="main">(</span>api_updateBus <span class="bound">b</span> <span class="free"><span class="bound">actID</span></span> <span class="free"><span class="bound">pName</span></span> <span class="free"><span class="bound">sta</span></span><span class="main">)</span><span class="main">)</span>
+                <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">,</span> False<span class="main">)</span>"</span></span></span>
+
+
+<span class="keyword2"><span class="keyword">end</span></span></pre></body>

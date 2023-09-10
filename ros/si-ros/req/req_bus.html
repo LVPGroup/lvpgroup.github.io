@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('../../fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.theories { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+</style><title>Theory "req_bus"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> req_bus
+
+<span class="keyword2"><span class="keyword">imports</span></span> <span class="quoted">"req_plugin"</span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of Function createInstance
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_createInstance <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> string <span class="main">⇒</span> <span class="main">(</span>bus <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_createInstance</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">pluName</span></span> <span class="main">≡</span> 
+             <span class="keyword1">let</span> <span class="bound">plug</span> <span class="main">=</span> nullPlugin<span class="main">⦇</span>plugin.name <span class="main">:=</span> <span class="free"><span class="bound">pluName</span></span><span class="main">⦈</span>
+             <span class="keyword1">in</span>
+              <span class="main">(</span><span class="keyword1">if</span> <span class="free"><span class="bound">pluName</span></span> <span class="main">=</span> <span class="main">[]</span>
+               <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">,</span> False<span class="main">)</span>
+               <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">⦇</span>pluginList <span class="main">:=</span> <span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span> <span class="main">@</span> <span class="main">[</span><span class="bound">plug</span><span class="main">]</span><span class="main">⦈</span><span class="main">,</span> True<span class="main">)</span>
+              <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of Function loadPlugin 
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_loadPlugin <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> string <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span>bus <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_loadPlugin</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">pName</span></span> <span class="free"><span class="bound">actID</span></span> <span class="main">≡</span>
+             <span class="keyword1">let</span>
+                <span class="main">(</span><span class="bound">b'</span><span class="main">,</span> <span class="bound">flag</span><span class="main">)</span> <span class="main">=</span> Re_createInstance <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">pName</span></span><span class="main">;</span>
+                <span class="bound">b''</span> <span class="main">=</span> <span class="bound">b'</span><span class="main">⦇</span> pluginOwner <span class="main">:=</span> <span class="main">(</span>pluginOwner <span class="free"><span class="bound">b</span></span><span class="main">)</span> <span class="main">@</span> <span class="main">[</span><span class="free"><span class="bound">actID</span></span><span class="main">]</span><span class="main">,</span>
+                         pluginName <span class="main">:=</span> <span class="main">(</span>pluginName <span class="free"><span class="bound">b</span></span><span class="main">)</span> <span class="main">@</span> <span class="main">[</span><span class="free"><span class="bound">pName</span></span><span class="main">]</span><span class="main">⦈</span> <span class="main">;</span>
+                <span class="bound">list</span> <span class="main">=</span> pluginList <span class="bound">b''</span> <span class="main">;</span>
+                <span class="bound">num</span> <span class="main">=</span> length <span class="main">(</span>pluginList <span class="bound">b''</span><span class="main">)</span> <span class="main">-</span> <span class="main">1</span> <span class="main">;</span>
+                <span class="bound">b'''</span> <span class="main">=</span> <span class="bound">b''</span><span class="main">⦇</span>pluginList <span class="main">:=</span> <span class="bound">list</span><span class="main">[</span><span class="bound">num</span> <span class="main">:=</span> pluInitialize <span class="main">(</span><span class="bound">list</span><span class="main">!</span><span class="bound">num</span><span class="main">)</span> <span class="free"><span class="bound">actID</span></span> <span class="free"><span class="bound">pName</span></span><span class="main">]</span><span class="main">⦈</span> <span class="main">;</span>
+                <span class="bound">b''''</span> <span class="main">=</span> <span class="bound">b'''</span><span class="main">⦇</span>nRegisteredPlugin <span class="main">:=</span> nRegisteredPlugin <span class="bound">b'''</span> <span class="main">+</span><span class="main">1</span><span class="main">⦈</span> <span class="main">;</span>
+                <span class="bound">res</span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">if</span> <span class="main">¬</span><span class="bound">flag</span>
+                       <span class="keyword1">then</span> <span class="main">(</span><span class="bound">b'</span><span class="main">,</span> False<span class="main">)</span>
+                       <span class="keyword1">else</span> <span class="main">(</span><span class="bound">b''''</span><span class="main">,</span> True<span class="main">)</span>
+                      <span class="main">)</span>
+             <span class="keyword1">in</span>
+                <span class="main">(</span><span class="keyword1">if</span> nRegisteredPlugin <span class="free"><span class="bound">b</span></span> <span class="main">&lt;</span> PLUGIN_NUM_MAX <span class="main">-</span> <span class="main">1</span>
+                 <span class="keyword1">then</span> <span class="bound">res</span>
+                 <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">,</span> False<span class="main">)</span>
+                <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of Function startPlugin
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_startPlugin <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> string <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span>bus <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_startPlugin</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">pName</span></span> <span class="free"><span class="bound">actID</span></span> <span class="main">≡</span>
+           <span class="keyword1">let</span> 
+              <span class="bound">num</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> plugin.actorID <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">actID</span></span> <span class="main">∧</span> plugin.name <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">pName</span></span><span class="main">)</span> <span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span>
+           <span class="keyword1">in</span> 
+             <span class="main">(</span> <span class="keyword1">if</span> <span class="main">(</span>int<span class="main">)</span><span class="bound">num</span> <span class="main">=</span> nRegisteredPlugin <span class="free"><span class="bound">b</span></span> 
+               <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">,</span> False<span class="main">)</span>
+               <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">⦇</span>pluginList <span class="main">:=</span> <span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span><span class="main">[</span><span class="bound">num</span> <span class="main">:=</span> Re_resume <span class="main">(</span><span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span><span class="main">!</span><span class="bound">num</span><span class="main">)</span><span class="main">]</span> <span class="main">⦈</span><span class="main">,</span> True<span class="main">)</span>
+             <span class="main">)</span>"</span></span></span> 
+
+
+<span class="comment1">(* 
+  Requirement Definition of Function pausePlugin
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_pausePlugin <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> string <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span>bus <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_pausePlugin</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">pName</span></span> <span class="free"><span class="bound">actID</span></span> <span class="main">≡</span>
+           <span class="keyword1">let</span> 
+              <span class="bound">num</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> plugin.actorID <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">actID</span></span> <span class="main">∧</span> plugin.name <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">pName</span></span><span class="main">)</span> <span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span>
+           <span class="keyword1">in</span> 
+              <span class="main">(</span> <span class="keyword1">if</span> <span class="main">(</span>int<span class="main">)</span><span class="bound">num</span> <span class="main">=</span> nRegisteredPlugin <span class="free"><span class="bound">b</span></span> 
+                <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">,</span> False<span class="main">)</span>
+                <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">⦇</span>pluginList <span class="main">:=</span> <span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span><span class="main">[</span><span class="bound">num</span> <span class="main">:=</span> Re_pause <span class="main">(</span><span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span><span class="main">!</span><span class="bound">num</span><span class="main">)</span><span class="main">]</span> <span class="main">⦈</span><span class="main">,</span> True<span class="main">)</span>
+              <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of Function stopPlugin
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_stopPlugin <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> string <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span>bus <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_stopPlugin</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">pName</span></span> <span class="free"><span class="bound">actID</span></span> <span class="main">≡</span>
+           <span class="keyword1">let</span> 
+              <span class="bound">num</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> plugin.actorID <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">actID</span></span> <span class="main">∧</span> plugin.name <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">pName</span></span><span class="main">)</span> <span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span>
+           <span class="keyword1">in</span> 
+              <span class="main">(</span> <span class="keyword1">if</span> <span class="main">(</span>int<span class="main">)</span><span class="bound">num</span> <span class="main">=</span> nRegisteredPlugin <span class="free"><span class="bound">b</span></span> 
+                <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">,</span> False<span class="main">)</span>
+                <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">⦇</span>pluginList <span class="main">:=</span> <span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span><span class="main">[</span><span class="bound">num</span> <span class="main">:=</span> Re_stop <span class="main">(</span><span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span><span class="main">!</span><span class="bound">num</span><span class="main">)</span><span class="main">]</span> <span class="main">⦈</span><span class="main">,</span> True<span class="main">)</span>
+              <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of Function startActorPlugins
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_startActorPlugins <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span>bus <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+    <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_startActorPlugins</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">actID</span></span> <span class="main">≡</span>
+                <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">⦇</span>pluginList <span class="main">:=</span> map <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> <span class="keyword1">if</span> actorID <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">actID</span></span> <span class="keyword1">then</span> Re_resume <span class="bound">p</span> <span class="keyword1">else</span> <span class="bound">p</span><span class="main">)</span> <span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span><span class="main">⦈</span><span class="main">,</span> True<span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of Function pauseActorPlugins
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_pauseActorPlugins <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span>bus <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+    <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_pauseActorPlugins</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">actID</span></span> <span class="main">≡</span>
+                <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">⦇</span>pluginList <span class="main">:=</span> map <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> <span class="keyword1">if</span> actorID <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">actID</span></span> <span class="keyword1">then</span> Re_pause <span class="bound">p</span> <span class="keyword1">else</span> <span class="bound">p</span><span class="main">)</span> <span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span><span class="main">⦈</span><span class="main">,</span> True<span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of Function stopActorPlugins
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_stopActorPlugins <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span>bus <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+    <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_stopActorPlugins</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">actID</span></span> <span class="main">≡</span>
+                <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">⦇</span>pluginList <span class="main">:=</span> map <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> <span class="keyword1">if</span> actorID <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">actID</span></span> <span class="keyword1">then</span> Re_stop <span class="bound">p</span> <span class="keyword1">else</span> <span class="bound">p</span><span class="main">)</span> <span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span><span class="main">⦈</span><span class="main">,</span> True<span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of Function updateActorPluginState
+*)</span>
+<span class="keyword1"><span class="command">fun</span></span> loadPluginInfoList <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"PluginInfo list <span class="main">⇒</span> bus <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span>bus <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">loadPluginInfoList</span> <span class="main">[]</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">actID</span></span> <span class="main">=</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">,</span> True<span class="main">)</span>"</span></span></span><span class="main">|</span>
+        <span class="quoted"><span class="quoted"><span class="language">"<span class="free">loadPluginInfoList</span> <span class="main">(</span><span class="free"><span class="bound">p</span></span><span class="main">#</span><span class="free"><span class="bound">pl</span></span><span class="main">)</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">actID</span></span> <span class="main">=</span> 
+         <span class="main">(</span><span class="keyword1">if</span> busName <span class="free"><span class="bound">p</span></span> <span class="main">=</span> bus.name <span class="free"><span class="bound">b</span></span>
+          <span class="keyword1">then</span> 
+              <span class="main">(</span><span class="keyword1">let</span> <span class="main">(</span><span class="bound">b'</span><span class="main">,</span> <span class="bound">flag</span><span class="main">)</span> <span class="main">=</span> Re_loadPlugin <span class="free"><span class="bound">b</span></span> <span class="main">(</span>PluginInfo.name <span class="free"><span class="bound">p</span></span><span class="main">)</span> <span class="free"><span class="bound">actID</span></span>
+               <span class="keyword1">in</span>
+                  <span class="main">(</span><span class="keyword1">if</span> <span class="main">¬</span><span class="bound">flag</span>
+                   <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">,</span> False<span class="main">)</span>
+                   <span class="keyword1">else</span> <span class="free">loadPluginInfoList</span> <span class="free"><span class="bound">pl</span></span> <span class="bound">b'</span> <span class="free"><span class="bound">actID</span></span>
+                  <span class="main">)</span>
+              <span class="main">)</span>
+          <span class="keyword1">else</span> <span class="free">loadPluginInfoList</span> <span class="free"><span class="bound">pl</span></span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">actID</span></span><span class="main">)</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_updateActorPluginState <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> ActorPluginInfo <span class="main">⇒</span> actorState <span class="main">⇒</span> <span class="main">(</span>bus <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_updateActorPluginState</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">act</span></span> <span class="free"><span class="bound">st</span></span> <span class="main">≡</span>
+             <span class="main">(</span><span class="keyword1">case</span> <span class="free"><span class="bound">st</span></span> <span class="keyword1">of</span> 
+              actorState.ACTOR_STATE_PAUSE <span class="main">⇒</span> <span class="main">(</span>Re_pauseActorPlugins <span class="free"><span class="bound">b</span></span> <span class="main">(</span>ActorPluginInfo.actorID <span class="free"><span class="bound">act</span></span><span class="main">)</span><span class="main">)</span> <span class="main">|</span>
+              actorState.ACTOR_STATE_FINISH <span class="main">⇒</span> Re_stopActorPlugins <span class="free"><span class="bound">b</span></span> <span class="main">(</span>ActorPluginInfo.actorID <span class="free"><span class="bound">act</span></span><span class="main">)</span><span class="main">|</span>
+              actorState.ACTOR_STATE_INIT <span class="main">⇒</span> 
+                   loadPluginInfoList <span class="main">(</span>plugins <span class="main">(</span>ActorPluginInfo.taskInfo <span class="free"><span class="bound">act</span></span><span class="main">)</span><span class="main">)</span> <span class="free"><span class="bound">b</span></span> <span class="main">(</span>ActorPluginInfo.actorID <span class="free"><span class="bound">act</span></span><span class="main">)</span> <span class="main">|</span>
+              actorState.ACTOR_STATE_RUNNING <span class="main">⇒</span>
+                   <span class="main">(</span><span class="keyword1">let</span> 
+                      <span class="main">(</span><span class="bound">b'</span><span class="main">,</span> <span class="bound">flag</span><span class="main">)</span> <span class="main">=</span> 
+                        <span class="main">(</span><span class="keyword1">if</span> ActorPluginInfo.state <span class="free"><span class="bound">act</span></span> <span class="main">=</span> actorState.ACTOR_STATE_INIT 
+                        <span class="keyword1">then</span> loadPluginInfoList <span class="main">(</span>plugins <span class="main">(</span>ActorPluginInfo.taskInfo <span class="free"><span class="bound">act</span></span><span class="main">)</span><span class="main">)</span>
+                                                <span class="free"><span class="bound">b</span></span> <span class="main">(</span>ActorPluginInfo.actorID <span class="free"><span class="bound">act</span></span><span class="main">)</span>
+                        <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">,</span> True<span class="main">)</span><span class="main">)</span>
+                    <span class="keyword1">in</span> 
+                       <span class="keyword1">if</span> <span class="bound">flag</span>
+                       <span class="keyword1">then</span> Re_startActorPlugins <span class="bound">b'</span> <span class="main">(</span>ActorPluginInfo.actorID <span class="free"><span class="bound">act</span></span><span class="main">)</span>
+                       <span class="keyword1">else</span> <span class="main">(</span><span class="bound">b'</span><span class="main">,</span> False<span class="main">)</span>
+                    <span class="main">)</span> <span class="main">|</span>
+              <span class="main"><span class="bound">_</span></span> <span class="main">⇒</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">,</span> False<span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of Function updateActorPluginStates
+*)</span>
+<span class="keyword1"><span class="command">fun</span></span> Re_updateActorPluginStates <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> ActorPluginInfo list <span class="main">⇒</span> actorState <span class="main">⇒</span> <span class="main">(</span>bus <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_updateActorPluginStates</span> <span class="free"><span class="bound">b</span></span> <span class="main">[]</span> <span class="free"><span class="bound">sta</span></span> <span class="main">=</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">,</span> True<span class="main">)</span>"</span></span></span> <span class="main">|</span>
+        <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_updateActorPluginStates</span> <span class="free"><span class="bound">b</span></span> <span class="main">(</span><span class="free"><span class="bound">a</span></span><span class="main">#</span><span class="free"><span class="bound">al</span></span><span class="main">)</span> <span class="free"><span class="bound">sta</span></span> <span class="main">=</span> 
+           <span class="main">(</span><span class="keyword1">if</span> ActorPluginInfo.state <span class="free"><span class="bound">a</span></span> <span class="main">=</span> <span class="free"><span class="bound">sta</span></span>
+            <span class="keyword1">then</span> <span class="free">Re_updateActorPluginStates</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">sta</span></span>
+            <span class="keyword1">else</span> 
+              <span class="main">(</span><span class="keyword1">if</span> <span class="main">¬</span> <span class="main">(</span>snd <span class="main">(</span>Re_updateActorPluginState <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">sta</span></span><span class="main">)</span><span class="main">)</span>
+               <span class="keyword1">then</span> Re_updateActorPluginState <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">sta</span></span>
+               <span class="keyword1">else</span> <span class="free">Re_updateActorPluginStates</span> <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginState <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">sta</span></span><span class="main">)</span><span class="main">)</span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">sta</span></span>
+              <span class="main">)</span>
+           <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of Function getActorPlugin
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_getActorPlugin <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> string <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span>plugin <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_getActorPlugin</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">plugName</span></span> <span class="free"><span class="bound">actID</span></span> <span class="main">≡</span>
+          <span class="keyword1">let</span> 
+             <span class="bound">num</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> plugin.name <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">plugName</span></span> <span class="main">∧</span> plugin.actorID <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">actID</span></span><span class="main">)</span> <span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span>
+          <span class="keyword1">in</span> 
+             <span class="main">(</span> <span class="keyword1">if</span> <span class="main">(</span>int<span class="main">)</span><span class="bound">num</span> <span class="main">=</span> nRegisteredPlugin <span class="free"><span class="bound">b</span></span>
+               <span class="keyword1">then</span> <span class="main">(</span>nullPlugin<span class="main">,</span> False<span class="main">)</span>
+               <span class="keyword1">else</span> <span class="main">(</span><span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span><span class="main">!</span><span class="bound">num</span><span class="main">,</span> True<span class="main">)</span>
+             <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of Function getActorPluginState
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_getActorPluginState <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> string <span class="main">⇒</span> int64_t <span class="main">⇒</span> pluginState"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_getActorPluginState</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">plugName</span></span> <span class="free"><span class="bound">actID</span></span> <span class="main">≡</span>
+          <span class="keyword1">let</span> 
+             <span class="bound">num</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> plugin.name <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">plugName</span></span> <span class="main">∧</span> plugin.actorID <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">actID</span></span><span class="main">)</span> <span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span>
+          <span class="keyword1">in</span> 
+             <span class="main">(</span> <span class="keyword1">if</span> <span class="main">(</span>int<span class="main">)</span><span class="bound">num</span> <span class="main">=</span> nRegisteredPlugin <span class="free"><span class="bound">b</span></span>
+               <span class="keyword1">then</span> pluginState.NOT_VALID
+               <span class="keyword1">else</span> getPlugState <span class="main">(</span><span class="main">(</span>pluginList <span class="free"><span class="bound">b</span></span><span class="main">)</span><span class="main">!</span><span class="bound">num</span><span class="main">)</span>
+             <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* Some Test Examples *)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">bus_instance1</span> <span class="main">≡</span> 
+            <span class="main">⦇</span>bus.name<span class="main">=</span> <span class="inner_quoted">''testBus1''</span><span class="main">,</span> 
+             nRegisteredPlugin <span class="main">=</span><span class="main">0</span><span class="main">,</span> 
+             pluginList <span class="main">=</span><span class="main">[]</span><span class="main">,</span> 
+             pluginOwner<span class="main">=</span><span class="main">[]</span><span class="main">,</span> 
+             pluginName<span class="main">=</span><span class="main">[]</span>
+            <span class="main">⦈</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">bus_instance2</span> <span class="main">≡</span> 
+            <span class="main">⦇</span>bus.name<span class="main">=</span> <span class="inner_quoted">''testBus2''</span><span class="main">,</span> 
+             nRegisteredPlugin <span class="main">=</span> <span class="numeral">2</span><span class="main">,</span> 
+             pluginList <span class="main">=</span><span class="main">[</span><span class="main">(</span>pluInitialize nullPlugin <span class="main">1</span> <span class="inner_quoted">''plug1''</span><span class="main">)</span><span class="main">,</span><span class="main">(</span>pluInitialize nullPlugin <span class="numeral">2</span> <span class="inner_quoted">''plug2''</span><span class="main">)</span><span class="main">]</span><span class="main">,</span> 
+             pluginOwner<span class="main">=</span><span class="main">[</span><span class="main">1</span><span class="main">,</span><span class="numeral">2</span><span class="main">]</span><span class="main">,</span> 
+             pluginName<span class="main">=</span><span class="main">[</span><span class="inner_quoted">''plug1''</span><span class="main">,</span> <span class="inner_quoted">''plug2''</span><span class="main">]</span>
+            <span class="main">⦈</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">bus_instance3</span> <span class="main">≡</span> 
+            <span class="main">⦇</span>bus.name<span class="main">=</span> <span class="inner_quoted">''testBus3''</span><span class="main">,</span> 
+             nRegisteredPlugin <span class="main">=</span> <span class="numeral">2</span><span class="main">,</span> 
+             pluginList <span class="main">=</span><span class="main">[</span><span class="main">(</span>pluInitialize nullPlugin <span class="main">1</span> <span class="inner_quoted">''plug1''</span><span class="main">)</span><span class="main">,</span><span class="main">(</span>pluInitialize nullPlugin <span class="numeral">2</span> <span class="inner_quoted">''plug2''</span><span class="main">)</span><span class="main">,</span><span class="main">(</span>pluInitialize nullPlugin <span class="main">1</span> <span class="inner_quoted">''plug3''</span><span class="main">)</span><span class="main">]</span><span class="main">,</span> 
+             pluginOwner<span class="main">=</span><span class="main">[</span><span class="main">1</span><span class="main">,</span><span class="numeral">2</span><span class="main">,</span><span class="main">1</span><span class="main">]</span><span class="main">,</span> 
+             pluginName<span class="main">=</span><span class="main">[</span><span class="inner_quoted">''plug1''</span><span class="main">,</span> <span class="inner_quoted">''plug2''</span><span class="main">,</span> <span class="inner_quoted">''plug3''</span><span class="main">]</span>
+            <span class="main">⦈</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">value</span></span> <span class="quoted"><span class="quoted"><span class="language">"fst <span class="main">(</span>Re_startPlugin bus_instance2 <span class="inner_quoted">''plug1''</span> <span class="main">1</span><span class="main">)</span>"</span></span></span>
+<span class="keyword1"><span class="command">value</span></span> <span class="quoted"><span class="quoted"><span class="language">"fst <span class="main">(</span>Re_stopActorPlugins bus_instance3 <span class="main">1</span><span class="main">)</span>"</span></span></span>
+<span class="keyword1"><span class="command">value</span></span> <span class="quoted"><span class="quoted"><span class="language">"Re_getActorPlugin bus_instance2 <span class="inner_quoted">''plug2''</span> <span class="numeral">2</span>"</span></span></span>
+<span class="keyword1"><span class="command">value</span></span> <span class="quoted"><span class="quoted"><span class="language">"Re_getActorPluginState bus_instance2 <span class="inner_quoted">''plug2''</span> <span class="numeral">2</span>"</span></span></span>
+
+<span class="keyword2"><span class="keyword">end</span></span>
+</pre></body>

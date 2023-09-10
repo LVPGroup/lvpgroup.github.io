@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('../../fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.theories { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+</style><title>Theory "tmp_ACBCore"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> tmp_ACBCore
+
+<span class="keyword2"><span class="keyword">imports</span></span> 
+  <span class="quoted">"HOL-Library.Multiset"</span>
+  <span class="quoted">"../../util/src/lib/Monad_WP/WhileLoopRulesCompleteness"</span>
+  <span class="quoted">"../../util/src/lib/Corres_Method"</span>
+  <span class="quoted">"struct_C/TaskBinder_C"</span>
+   <span class="quoted">"../../util/src/lib/Monad_WP/NonDetMonad_call"</span> 
+
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="comment1">(*
+record GeneralPlugin_C =
+  actorID_C :: "64 signed word"
+  duration_C :: "32 signed word"
+  state_C :: "32 signed word"
+  name_C :: "8 word ptr"
+*)</span>
+
+<span class="comment1">(*
+record PluginInfo_C = 
+  busName_C :: "8 word ptr"
+  name_C :: "8 word ptr"
+
+record PluginInfoVector_C = 
+  data_C :: "PluginInfo_C ptr"
+  elemSize_C :: "32 signed word"
+  allocatedSize_C :: "32 signed word"
+
+record TaskInfo_C = 
+  taskID_C :: "64 signed word"
+  actorName_C :: "8 word ptr"
+  taskXMLStr_C :: "8 word ptr"
+  plugins_C :: "PluginInfoVector_C ptr" 
+
+
+record ActorPluginInfo_C = 
+  actorID_C :: "64 signed word"
+  actorName_C :: "8 word ptr"
+  state_C :: "16 signed word"
+  taskInfo_C  :: "TaskInfo_C"
+*)</span>
+
+<span class="comment1">(*
+record ActorPluginInfoVector_C = 
+  data_C :: "ActorPluginInfo_C ptr"
+  elemSize_C :: "32 signed word"
+  allocatedSize_C :: "32 signed word"
+*)</span>
+
+<span class="comment1">(*
+record GeneralBus_C = 
+  pluginOwner_C :: "64 signed word[128]"
+  pluginName_C :: "8 word ptr[128]"
+  nRegisteredPlugin_C :: "32 signed word"
+  pluginList_C :: "GeneralPlugin_C[128]"
+  name_C :: "8 word ptr"*)</span>
+
+<span class="comment1">(*
+record GeneralBusVector_C = 
+  data_C :: "GeneralBus_C ptr"
+  elemSize_C :: "32 signed word"
+  allocatedSize_C :: "32 signed word"
+*)</span>
+
+<span class="comment1">(*
+record SwarmInfo_C = 
+  swarmName_C :: "8 word ptr"
+  swarmID_C :: "64 signed word"
+  swarmPrio_C :: "32 signed word"
+  state_C :: "16 signed word"
+ (* generalActors :: ""
+  excluActors :: ""
+  platformActors :: ""*)
+*)</span>
+
+<span class="comment1">(*
+record ACB_C = 
+  actorID_C :: "64 signed word"
+  name_C :: "8 word ptr"
+  taskID_C :: "64 signed word"
+  taskName_C :: "8 word ptr"
+  taskInfo_C  :: "TaskInfo_C"
+  state_C :: "16 signed word"
+ (* sensors_C :: "Vector_C ptr"
+  actuators_C :: "Vector_C ptr"
+  pPlatformInfo_C :: "PlatformInfo_C ptr"*) 
+  pSwarmInfo_C :: "SwarmInfo_C ptr" 
+  prio_C :: "32 signed word"
+  formationPos_C :: "32 signed word"
+  formationType_C :: "8 word ptr"
+*)</span>
+
+<span class="comment1">(*
+record ACBVector_C = 
+  data_C :: "ACB_C ptr"
+  elemSize_C :: "32 signed word"
+  allocatedSize_C :: "32 signed word"
+*)</span>
+
+<span class="comment1">(*
+record ScheduleMsg_C = 
+  type_C :: "32 signed word"
+  param1_C :: "64 signed word"
+  param2_C :: "64 signed word"
+  param3_C :: "8 word ptr"
+*)</span>
+
+<span class="comment1">(*
+record ScheduleMsgQueue_C = 
+  data_C :: "ScheduleMsg_C ptr"
+  length_C :: "32 word"
+*)</span>
+
+<span class="comment1">(*
+record ActorScheduler_C = 
+  acbList_C :: "ACBVector_C ptr"
+  swarmList_C :: "SwarmInfo_C[1024]"
+  actorNo_C :: "64 signed word"
+  nSwarm_C ::"64 signed word"
+  scheNum_C :: "32 signed word"
+  registeredBus_C :: "GeneralBusVector_C ptr"
+  scheMsgQueue_C :: "ScheduleMsgQueue_C ptr" 
+  toPauseActors_C :: "ActorPluginInfoVector_C ptr"
+  minPrioActors_C :: "ActorPluginInfoVector_C ptr" 
+  finishingActors_C :: "ActorPluginInfoVector_C ptr"
+*)</span>
+
+<span class="comment1">(*
+record TaskBinder_C = 
+  pActorScheduler_C :: "ActorScheduler_C ptr" 
+*)</span>
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">‹global state›</span></span></span>
+
+<span class="keyword1"><span class="command">record</span></span> lifted_globals <span class="main">=</span>
+  phantom_machine_state_'' <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"nat"</span></span></span>
+  ghost'state_'' <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"unit"</span></span></span>
+  heap_w64 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="numeral">64</span> word ptr <span class="main">⇒</span> <span class="numeral">64</span> word"</span></span></span>
+  heap_w32 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="numeral">32</span> word ptr <span class="main">⇒</span> <span class="numeral">32</span> word"</span></span></span>
+  heap_w16 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="numeral">16</span> word ptr <span class="main">⇒</span> <span class="numeral">16</span> word"</span></span></span>
+  heap_w8 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="numeral">8</span> word ptr <span class="main">⇒</span> <span class="numeral">8</span> word"</span></span></span>
+  heap_w8'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="numeral">8</span> word ptr ptr <span class="main">⇒</span> <span class="numeral">8</span> word ptr"</span></span></span>
+  heap_ACB_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB_C ptr ptr <span class="main">⇒</span> ACB_C ptr"</span></span></span>
+  heap_ACBVector_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACBVector_C ptr ptr <span class="main">⇒</span> ACBVector_C ptr"</span></span></span>
+  heap_GeneralBus_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralBus_C ptr ptr <span class="main">⇒</span> GeneralBus_C ptr"</span></span></span>
+  heap_PluginInfo_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"PluginInfo_C ptr ptr <span class="main">⇒</span> PluginInfo_C ptr"</span></span></span>
+  heap_ActorPluginInfo_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfo_C ptr ptr <span class="main">⇒</span> ActorPluginInfo_C ptr"</span></span></span>
+  heap_GeneralBusVector_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralBusVector_C ptr ptr <span class="main">⇒</span> GeneralBusVector_C ptr"</span></span></span>
+  heap_ScheduleMsgQueue_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsgQueue_C ptr ptr <span class="main">⇒</span> ScheduleMsgQueue_C ptr"</span></span></span>
+  heap_ActorPluginInfoVector_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfoVector_C ptr ptr <span class="main">⇒</span> ActorPluginInfoVector_C ptr"</span></span></span>
+  heap_ACB_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB_C ptr <span class="main">⇒</span> ACB_C"</span></span></span>
+  heap_ACBVector_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACBVector_C ptr <span class="main">⇒</span> ACBVector_C"</span></span></span>
+  heap_SwarmInfo_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo_C ptr <span class="main">⇒</span> SwarmInfo_C"</span></span></span>
+  heap_GeneralBus_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralBus_C ptr <span class="main">⇒</span> GeneralBus_C"</span></span></span>
+  heap_PluginInfo_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"PluginInfo_C ptr <span class="main">⇒</span> PluginInfo_C"</span></span></span>
+  heap_TaskInfo_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"TaskInfo_C ptr <span class="main">⇒</span> TaskInfo_C"</span></span></span>
+  heap_GeneralPlugin_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C ptr <span class="main">⇒</span> GeneralPlugin_C"</span></span></span>
+  heap_ActorScheduler_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorScheduler_C ptr <span class="main">⇒</span> ActorScheduler_C"</span></span></span>
+  heap_ActorPluginInfo_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfo_C ptr <span class="main">⇒</span> ActorPluginInfo_C"</span></span></span>
+  heap_GeneralBusVector_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralBusVector_C ptr <span class="main">⇒</span> GeneralBusVector_C"</span></span></span>
+  heap_PluginInfoVector_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"PluginInfoVector_C ptr <span class="main">⇒</span> PluginInfoVector_C"</span></span></span>
+  heap_ScheduleMsg_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsg_C ptr <span class="main">⇒</span> ScheduleMsg_C"</span></span></span>
+  heap_ScheduleMsgQueue_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsgQueue_C ptr <span class="main">⇒</span> ScheduleMsgQueue_C"</span></span></span>
+  heap_ActorPluginInfoVector_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfoVector_C ptr <span class="main">⇒</span> ActorPluginInfoVector_C"</span></span></span>
+  heap_TaskBinder_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"TaskBinder_C ptr <span class="main">⇒</span> TaskBinder_C"</span></span></span>
+  is_valid_w64 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="numeral">64</span> word ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_w32 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="numeral">32</span> word ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_w16 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="numeral">16</span> word ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_w8 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="numeral">8</span> word ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_w8'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="numeral">8</span> word ptr ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_ACB_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB_C ptr ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_ACBVector_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACBVector_C ptr ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_GeneralBus_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralBus_C ptr ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_PluginInfo_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"PluginInfo_C ptr ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_ActorPluginInfo_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfo_C ptr ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_GeneralBusVector_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralBusVector_C ptr ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_ScheduleMsgQueue_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsgQueue_C ptr ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_ActorPluginInfoVector_C'ptr <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfoVector_C ptr ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_ACB_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_ACBVector_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACBVector_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_SwarmInfo_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_GeneralBus_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralBus_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_TaskInfo_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"TaskInfo_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_PluginInfo_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"PluginInfo_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_GeneralPlugin_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralPlugin_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_ActorScheduler_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorScheduler_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_ActorPluginInfo_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfo_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_GeneralBusVector_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"GeneralBusVector_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_PluginInfoVector_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"PluginInfoVector_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_ScheduleMsg_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsg_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_ScheduleMsgQueue_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsgQueue_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_ActorPluginInfoVector_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfoVector_C ptr <span class="main">⇒</span> bool"</span></span></span>
+  is_valid_TaskBinder_C <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"TaskBinder_C ptr <span class="main">⇒</span> bool"</span></span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_ACTOR_STATE_FINISH</span> <span class="main">≡</span> <span class="numeral">4</span><span class="main">::</span><span class="numeral">32</span> signed word"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_ACTOR_STATE_INIT</span> <span class="main">≡</span> <span class="main">0</span><span class="main">::</span><span class="numeral">32</span> signed word"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_ACTOR_STATE_PAUSE</span> <span class="main">≡</span> <span class="numeral">2</span><span class="main">::</span><span class="numeral">32</span> signed word"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_ACTOR_STATE_RUNNING</span> <span class="main">≡</span> <span class="main">1</span><span class="main">::</span><span class="numeral">32</span> signed word"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_ACTOR_STATE_noValid</span> <span class="main">≡</span> <span class="main">-</span><span class="main">1</span><span class="main">::</span><span class="numeral">32</span> signed word"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_MAX_PRIORITY</span> <span class="main">≡</span> <span class="numeral">0x8000</span><span class="main">::</span><span class="numeral">32</span> signed word"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_SCHEDULE_CMD_RAW</span> <span class="main">≡</span> <span class="main">1</span><span class="main">::</span><span class="numeral">32</span> signed word"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_SCHEDULE_CMD_SWITCH_PRIO</span> <span class="main">≡</span> <span class="numeral">2</span><span class="main">::</span><span class="numeral">32</span> signed word"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_SCHEDULE_CMD_ACTIVATE_ACTOR</span> <span class="main">≡</span> <span class="numeral">3</span><span class="main">::</span><span class="numeral">32</span> signed word"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_SCHEDULE_CMD_YIELD_ACTOR</span> <span class="main">≡</span> <span class="numeral">4</span><span class="main">::</span><span class="numeral">32</span> signed word"</span></span></span>
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">‹ACB vector›</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Impl_ACBVectorClear <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"lifted_globals <span class="main">⇒</span> ACBVector_C ptr <span class="main">⇒</span> lifted_globals"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Impl_ACBVectorClear</span> <span class="free"><span class="bound">glo</span></span> <span class="free"><span class="bound">acbVecPtr</span></span> <span class="main">≡</span> 
+          <span class="keyword1">let</span> <span class="bound">newQue</span> <span class="main">=</span> ACBVector_C.length_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">len</span><span class="main">.</span> <span class="main">0</span> <span class="main">)</span> <span class="main">(</span>heap_ACBVector_C <span class="free"><span class="bound">glo</span></span> <span class="free"><span class="bound">acbVecPtr</span></span><span class="main">)</span>
+           <span class="keyword1">in</span> <span class="free"><span class="bound">glo</span></span><span class="main">⦇</span>heap_ACBVector_C <span class="main">:=</span> <span class="main">(</span>heap_ACBVector_C <span class="free"><span class="bound">glo</span></span><span class="main">)</span><span class="main">(</span><span class="free"><span class="bound">acbVecPtr</span></span> <span class="main">:=</span>  <span class="bound">newQue</span><span class="main">)</span><span class="main">⦈</span> "</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> ACBVectorClear' <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACBVector_C ptr <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> unit<span class="main">)</span> nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">ACBVectorClear'</span> <span class="free"><span class="bound">acbVecPtr</span></span> <span class="main">≡</span> 
+          <span class="keyword1">do</span> <span class="bound">newQue</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ACBVector_C.length_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">len</span><span class="main">.</span> <span class="main">0</span> <span class="main">)</span> <span class="main">(</span>heap_ACBVector_C <span class="bound">s</span> <span class="free"><span class="bound">acbVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+             modify <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span>  <span class="bound">s</span><span class="main">⦇</span>heap_ACBVector_C <span class="main">:=</span> <span class="main">(</span>heap_ACBVector_C <span class="bound">s</span><span class="main">)</span><span class="main">(</span><span class="free"><span class="bound">acbVecPtr</span></span> <span class="main">:=</span>  <span class="bound">newQue</span><span class="main">)</span><span class="main">⦈</span> <span class="main">)</span>
+          <span class="keyword1">od</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Impl_ACBVectorSize <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ACBVector_C ptr <span class="main">⇒</span> lifted_globals <span class="main">⇒</span> int "</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Impl_ACBVectorSize</span> <span class="free"><span class="bound">acbVecPtr</span></span> <span class="free"><span class="bound">s</span></span> <span class="main">≡</span>
+           sint <span class="main">(</span>ACBVector_C.length_C <span class="main">(</span>heap_ACBVector_C <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">acbVecPtr</span></span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> ACBVectorSize' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ACBVector_C ptr <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> int<span class="main">)</span> nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">ACBVectorSize'</span> <span class="free"><span class="bound">acbVecPtr</span></span> <span class="main">≡</span>
+          gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> sint <span class="main">(</span>ACBVector_C.length_C <span class="main">(</span>heap_ACBVector_C <span class="bound">s</span> <span class="free"><span class="bound">acbVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> ACBVectorPushback' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ACBVector_C ptr <span class="main">⇒</span> ACB_C <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> unit<span class="main">)</span> nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">ACBVectorPushback'</span> <span class="free"><span class="bound">acbVecPtr</span></span> <span class="free"><span class="bound">acb</span></span> <span class="main">≡</span>
+        <span class="keyword1">do</span>  <span class="bound">len</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> sint <span class="main">(</span>ACBVector_C.length_C <span class="main">(</span>heap_ACBVector_C <span class="bound">s</span> <span class="free"><span class="bound">acbVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+            <span class="bound">head</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ACBVector_C.data_C <span class="main">(</span>heap_ACBVector_C <span class="bound">s</span> <span class="free"><span class="bound">acbVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+            modify <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> <span class="bound">s</span><span class="main">⦇</span>heap_ACB_C <span class="main">:=</span> <span class="main">(</span>heap_ACB_C <span class="bound">s</span><span class="main">)</span><span class="main">(</span><span class="main">(</span><span class="bound">head</span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="bound">len</span><span class="main">)</span> <span class="main">:=</span> <span class="free"><span class="bound">acb</span></span><span class="main">)</span><span class="main">⦈</span> <span class="main">)</span><span class="main">;</span>
+            <span class="bound">newQue</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ACBVector_C.length_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">len</span><span class="main">.</span>  of_int <span class="main">(</span>sint <span class="bound">len</span> <span class="main">+</span> <span class="main">1</span><span class="main">)</span> <span class="main">)</span> <span class="main">(</span>heap_ACBVector_C <span class="bound">s</span> <span class="free"><span class="bound">acbVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+            modify <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span>  <span class="bound">s</span><span class="main">⦇</span>heap_ACBVector_C <span class="main">:=</span> <span class="main">(</span>heap_ACBVector_C <span class="bound">s</span><span class="main">)</span><span class="main">(</span><span class="free"><span class="bound">acbVecPtr</span></span> <span class="main">:=</span>  <span class="bound">newQue</span><span class="main">)</span><span class="main">⦈</span> <span class="main">)</span>
+        <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> ACBVectorEmpty' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ACBVector_C ptr <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> int<span class="main">)</span> nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">ACBVectorEmpty'</span> <span class="free"><span class="bound">acbVecPtr</span></span><span class="main">≡</span> 
+          condition <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span>  sint <span class="main">(</span>ACBVector_C.length_C <span class="main">(</span>heap_ACBVector_C <span class="bound">s</span> <span class="free"><span class="bound">acbVecPtr</span></span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">0</span> <span class="main">)</span>
+                    <span class="main">(</span>return <span class="main">1</span><span class="main">)</span> <span class="main">(</span>return <span class="main">0</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">function</span></span> ACBVectorFind <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"lifted_globals <span class="main">⇒</span> ACBVector_C ptr <span class="main">⇒</span> ACB_C <span class="main">⇒</span> int <span class="main">⇒</span> int "</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">ACBVectorFind</span> <span class="free"><span class="bound">glo</span></span> <span class="free"><span class="bound">vecPtr</span></span> <span class="free"><span class="bound">acb</span></span> <span class="free"><span class="bound">i</span></span> <span class="main">=</span> 
+          <span class="main">(</span><span class="keyword1">if</span> <span class="free"><span class="bound">i</span></span> <span class="main">&lt;</span>  sint <span class="main">(</span>ACBVector_C.length_C <span class="main">(</span>heap_ACBVector_C <span class="free"><span class="bound">glo</span></span> <span class="free"><span class="bound">vecPtr</span></span><span class="main">)</span><span class="main">)</span>    
+           <span class="keyword1">then</span>  <span class="main">(</span><span class="keyword1">if</span> heap_ACB_C <span class="free"><span class="bound">glo</span></span> <span class="main">(</span><span class="main">(</span>ACBVector_C.data_C <span class="main">(</span>heap_ACBVector_C <span class="free"><span class="bound">glo</span></span> <span class="free"><span class="bound">vecPtr</span></span><span class="main">)</span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="free"><span class="bound">i</span></span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="free"><span class="bound">acb</span></span>
+                  <span class="keyword1">then</span> <span class="free"><span class="bound">i</span></span>
+                  <span class="keyword1">else</span> <span class="free">ACBVectorFind</span> <span class="free"><span class="bound">glo</span></span> <span class="free"><span class="bound">vecPtr</span></span> <span class="free"><span class="bound">acb</span></span> <span class="main">(</span><span class="free"><span class="bound">i</span></span><span class="main">+</span><span class="main">1</span><span class="main">)</span><span class="main">)</span>
+           <span class="keyword1">else</span> <span class="free"><span class="bound">i</span></span><span class="main">)</span> "</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> prod_cases4 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">function</span></span> ACBVectorRemove <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"lifted_globals <span class="main">⇒</span> ACB_C ptr <span class="main">⇒</span>int <span class="main">⇒</span> int <span class="main">⇒</span> lifted_globals "</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">ACBVectorRemove</span> <span class="free"><span class="bound">glo</span></span> <span class="free"><span class="bound">headPtr</span></span> <span class="free"><span class="bound">i</span></span> <span class="free"><span class="bound">len</span></span> <span class="main">=</span>
+         <span class="main">(</span><span class="keyword1">if</span> <span class="free"><span class="bound">len</span></span> <span class="main">=</span> <span class="free"><span class="bound">i</span></span> <span class="main">-</span> <span class="main">1</span>
+          <span class="keyword1">then</span> <span class="free"><span class="bound">glo</span></span>
+          <span class="keyword1">else</span> <span class="main">(</span><span class="keyword1">let</span> <span class="bound">nextACB</span> <span class="main">=</span> heap_ACB_C <span class="free"><span class="bound">glo</span></span> <span class="main">(</span><span class="free"><span class="bound">headPtr</span></span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="free"><span class="bound">i</span></span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="main">1</span><span class="main">)</span><span class="main">;</span>
+                    <span class="bound">glo</span> <span class="main">=</span>  <span class="free"><span class="bound">glo</span></span><span class="main">⦇</span>heap_ACB_C <span class="main">:=</span> <span class="main">(</span>heap_ACB_C <span class="free"><span class="bound">glo</span></span><span class="main">)</span><span class="main">(</span><span class="main">(</span><span class="free"><span class="bound">headPtr</span></span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="free"><span class="bound">i</span></span><span class="main">)</span><span class="main">:=</span>  <span class="bound">nextACB</span><span class="main">)</span><span class="main">⦈</span>
+                 <span class="keyword1">in</span> <span class="free">ACBVectorRemove</span> <span class="bound">glo</span> <span class="free"><span class="bound">headPtr</span></span> <span class="main">(</span><span class="free"><span class="bound">i</span></span><span class="main">+</span><span class="main">1</span><span class="main">)</span> <span class="free"><span class="bound">len</span></span> <span class="main">)</span> <span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> prod_cases4 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> ACBVectorErase' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ACBVector_C ptr <span class="main">⇒</span> ACB_C <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> unit<span class="main">)</span> nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">ACBVectorErase'</span> <span class="free"><span class="bound">acbVecPtr</span></span> <span class="free"><span class="bound">acb</span></span> <span class="main">≡</span> 
+      <span class="keyword1">do</span> <span class="bound">index</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ACBVectorFind <span class="bound">s</span> <span class="free"><span class="bound">acbVecPtr</span></span> <span class="free"><span class="bound">acb</span></span> <span class="main">0</span><span class="main">)</span><span class="main">;</span>
+         <span class="bound">len</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> sint <span class="main">(</span>ACBVector_C.length_C <span class="main">(</span>heap_ACBVector_C <span class="bound">s</span> <span class="free"><span class="bound">acbVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+         <span class="keyword1">if</span> <span class="bound">index</span> <span class="main">=</span> <span class="bound">len</span>
+         <span class="keyword1">then</span> skip
+         <span class="keyword1">else</span> <span class="main">(</span><span class="keyword1">do</span>
+                 <span class="bound">head</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ACBVector_C.data_C <span class="main">(</span>heap_ACBVector_C <span class="bound">s</span> <span class="free"><span class="bound">acbVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                 modify <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ACBVectorRemove <span class="bound">s</span> <span class="bound">head</span> <span class="bound">index</span> <span class="bound">len</span> <span class="main">)</span><span class="main">;</span>
+                 <span class="bound">newQue</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ACBVector_C.length_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">len</span><span class="main">.</span>  of_int <span class="main">(</span>sint <span class="bound">len</span> <span class="main">-</span> <span class="main">1</span><span class="main">)</span> <span class="main">)</span> <span class="main">(</span>heap_ACBVector_C <span class="bound">s</span> <span class="free"><span class="bound">acbVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                 modify <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span>  <span class="bound">s</span><span class="main">⦇</span>heap_ACBVector_C <span class="main">:=</span> <span class="main">(</span>heap_ACBVector_C <span class="bound">s</span><span class="main">)</span><span class="main">(</span><span class="free"><span class="bound">acbVecPtr</span></span> <span class="main">:=</span>  <span class="bound">newQue</span><span class="main">)</span><span class="main">⦈</span> <span class="main">)</span>
+               <span class="keyword1">od</span><span class="main">)</span>
+      <span class="keyword1">od</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">‹ActorPluginInfo vector›</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> actorPluginInfoVectorClear' <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfoVector_C ptr <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> unit<span class="main">)</span> nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">actorPluginInfoVectorClear'</span> <span class="free"><span class="bound">aPluInfoVecPtr</span></span> <span class="main">≡</span> 
+          <span class="keyword1">do</span> <span class="bound">newQue</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ActorPluginInfoVector_C.length_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">len</span><span class="main">.</span> <span class="main">0</span> <span class="main">)</span> <span class="main">(</span>heap_ActorPluginInfoVector_C <span class="bound">s</span> <span class="free"><span class="bound">aPluInfoVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+             modify <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span>  <span class="bound">s</span><span class="main">⦇</span>heap_ActorPluginInfoVector_C <span class="main">:=</span> <span class="main">(</span>heap_ActorPluginInfoVector_C <span class="bound">s</span><span class="main">)</span><span class="main">(</span><span class="free"><span class="bound">aPluInfoVecPtr</span></span> <span class="main">:=</span>  <span class="bound">newQue</span><span class="main">)</span><span class="main">⦈</span> <span class="main">)</span>
+          <span class="keyword1">od</span> "</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Impl_actorPluginInfoVectorSize <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfoVector_C ptr <span class="main">⇒</span> lifted_globals <span class="main">⇒</span> int "</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Impl_actorPluginInfoVectorSize</span> <span class="free"><span class="bound">aPluInfoVecPtr</span></span> <span class="free"><span class="bound">s</span></span> <span class="main">≡</span> 
+             sint <span class="main">(</span>ActorPluginInfoVector_C.length_C <span class="main">(</span>heap_ActorPluginInfoVector_C <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">aPluInfoVecPtr</span></span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> actorPluginInfoVectorSize' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfoVector_C ptr <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> int<span class="main">)</span> nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">actorPluginInfoVectorSize'</span> <span class="free"><span class="bound">aPluInfoVecPtr</span></span> <span class="main">≡</span> 
+            gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> sint <span class="main">(</span>ActorPluginInfoVector_C.length_C <span class="main">(</span>heap_ActorPluginInfoVector_C <span class="bound">s</span> <span class="free"><span class="bound">aPluInfoVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> actorPluginInfoVectorPushback' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfoVector_C ptr <span class="main">⇒</span> ActorPluginInfo_C  <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> unit<span class="main">)</span> nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">actorPluginInfoVectorPushback'</span> <span class="free"><span class="bound">aPluInfoVecPtr</span></span> <span class="free"><span class="bound">api</span></span> <span class="main">≡</span> 
+        <span class="keyword1">do</span>  <span class="bound">len</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> sint <span class="main">(</span>ActorPluginInfoVector_C.length_C <span class="main">(</span>heap_ActorPluginInfoVector_C <span class="bound">s</span> <span class="free"><span class="bound">aPluInfoVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+            <span class="bound">head</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ActorPluginInfoVector_C.data_C <span class="main">(</span>heap_ActorPluginInfoVector_C <span class="bound">s</span> <span class="free"><span class="bound">aPluInfoVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+            modify <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> <span class="bound">s</span><span class="main">⦇</span>heap_ActorPluginInfo_C <span class="main">:=</span> <span class="main">(</span>heap_ActorPluginInfo_C <span class="bound">s</span><span class="main">)</span><span class="main">(</span><span class="main">(</span><span class="bound">head</span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="bound">len</span><span class="main">)</span> <span class="main">:=</span> <span class="free"><span class="bound">api</span></span><span class="main">)</span><span class="main">⦈</span> <span class="main">)</span><span class="main">;</span>
+            <span class="bound">newQue</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ActorPluginInfoVector_C.length_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">len</span><span class="main">.</span>  of_int <span class="main">(</span>sint <span class="bound">len</span> <span class="main">+</span> <span class="main">1</span><span class="main">)</span> <span class="main">)</span> <span class="main">(</span>heap_ActorPluginInfoVector_C <span class="bound">s</span> <span class="free"><span class="bound">aPluInfoVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+            modify <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span>  <span class="bound">s</span><span class="main">⦇</span>heap_ActorPluginInfoVector_C <span class="main">:=</span> <span class="main">(</span>heap_ActorPluginInfoVector_C <span class="bound">s</span><span class="main">)</span><span class="main">(</span><span class="free"><span class="bound">aPluInfoVecPtr</span></span> <span class="main">:=</span>  <span class="bound">newQue</span><span class="main">)</span><span class="main">⦈</span> <span class="main">)</span>
+        <span class="keyword1">od</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> actorPluginInfoVectorEmpty' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfoVector_C ptr <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> int<span class="main">)</span> nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">actorPluginInfoVectorEmpty'</span> <span class="free"><span class="bound">aPluInfoVecPtr</span></span><span class="main">≡</span> 
+              condition <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span>  sint <span class="main">(</span>ActorPluginInfoVector_C.length_C <span class="main">(</span>heap_ActorPluginInfoVector_C <span class="bound">s</span> <span class="free"><span class="bound">aPluInfoVecPtr</span></span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">0</span> <span class="main">)</span>
+                    <span class="main">(</span>return <span class="main">1</span><span class="main">)</span> <span class="main">(</span>return <span class="main">0</span><span class="main">)</span>"</span></span></span>
+ 
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">‹PluginInfo vector›</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> pluginInfoVectorSize' <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"PluginInfoVector_C ptr <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> int<span class="main">)</span> nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">pluginInfoVectorSize'</span> <span class="free"><span class="bound">pluInfoVecPtr</span></span> <span class="main">≡</span> 
+            gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> sint <span class="main">(</span>PluginInfoVector_C.length_C <span class="main">(</span>heap_PluginInfoVector_C <span class="bound">s</span> <span class="free"><span class="bound">pluInfoVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">‹GeneralBus vector›</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> generalBusVectorSize' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"GeneralBusVector_C ptr <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> int<span class="main">)</span> nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">generalBusVectorSize'</span> <span class="free"><span class="bound">busVecPtr</span></span> <span class="main">≡</span> 
+            gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> sint <span class="main">(</span>GeneralBusVector_C.length_C <span class="main">(</span>heap_GeneralBusVector_C <span class="bound">s</span> <span class="free"><span class="bound">busVecPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">‹string›</span></span></span>
+
+<span class="keyword1"><span class="command">function</span></span> strSize <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"lifted_globals <span class="main">⇒</span> <span class="numeral">8</span> word ptr <span class="main">⇒</span> int <span class="main">⇒</span> int"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">strSize</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">str1</span></span> <span class="free"><span class="bound">i</span></span> <span class="main">=</span>  
+          <span class="main">(</span> <span class="keyword1">if</span> char_of_integer <span class="main">(</span>integer_of_int <span class="main">(</span>sint <span class="main">(</span>heap_w8 <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">str1</span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> char_of_integer <span class="main">0</span>
+            <span class="keyword1">then</span> <span class="free"><span class="bound">i</span></span>
+            <span class="keyword1">else</span> <span class="free">strSize</span> <span class="free"><span class="bound">b</span></span> <span class="main">(</span><span class="free"><span class="bound">str1</span></span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="main">1</span><span class="main">)</span> <span class="main">(</span><span class="free"><span class="bound">i</span></span><span class="main">+</span><span class="main">1</span><span class="main">)</span> <span class="main">)</span> "</span></span></span> 
+  <span class="keyword1"><span class="command">using</span></span> prod_cases3 
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> strSize' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"<span class="numeral">8</span> word ptr  <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> int<span class="main">)</span> nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">strSize'</span> <span class="free"><span class="bound">str1</span></span> <span class="main">≡</span> 
+          gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> strSize <span class="bound">s</span> <span class="free"><span class="bound">str1</span></span> <span class="main">0</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">function</span></span> compare_str <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"lifted_globals <span class="main">⇒</span> <span class="numeral">8</span> word ptr <span class="main">⇒</span> <span class="numeral">8</span> word ptr <span class="main">⇒</span> bool"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">compare_str</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">str1</span></span> <span class="free"><span class="bound">str2</span></span> <span class="main">=</span> 
+            <span class="main">(</span><span class="keyword1">if</span> <span class="main">(</span>heap_w8 <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">str1</span></span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>heap_w8 <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">str1</span></span><span class="main">)</span>
+             <span class="keyword1">then</span> True <span class="main">∧</span> <span class="free">compare_str</span> <span class="free"><span class="bound">s</span></span> <span class="main">(</span><span class="free"><span class="bound">str1</span></span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="main">1</span><span class="main">)</span> <span class="main">(</span><span class="free"><span class="bound">str2</span></span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="main">1</span><span class="main">)</span>
+             <span class="keyword1">else</span> False <span class="main">)</span> "</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> prod_cases3 
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> compare' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"lifted_globals <span class="main">⇒</span> <span class="numeral">8</span> word ptr <span class="main">⇒</span> <span class="numeral">8</span> word ptr <span class="main">⇒</span> int"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">compare'</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">str1</span></span> <span class="free"><span class="bound">str2</span></span> <span class="main">≡</span> 
+          <span class="keyword1">let</span> <span class="bound">str1len</span> <span class="main">=</span> strSize <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">str1</span></span> <span class="main">0</span><span class="main">;</span>
+              <span class="bound">str2len</span> <span class="main">=</span> strSize <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">str2</span></span> <span class="main">0</span>
+           <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">str1len</span> <span class="main">=</span> <span class="bound">str2len</span> <span class="keyword1">then</span> <span class="main">-</span><span class="main">1</span>
+               <span class="keyword1">else</span> <span class="main">(</span><span class="keyword1">if</span> compare_str <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">str1</span></span> <span class="free"><span class="bound">str2</span></span> <span class="main">=</span> True
+                     <span class="keyword1">then</span> <span class="main">0</span> <span class="keyword1">else</span> <span class="main">-</span><span class="main">1</span><span class="main">)</span> <span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">function</span></span> strcpy <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"lifted_globals <span class="main">⇒</span>  <span class="numeral">8</span> word ptr <span class="main">⇒</span> <span class="numeral">8</span> word ptr <span class="main">⇒</span> int <span class="main">⇒</span> int <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">×</span><span class="numeral">8</span> word ptr<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">strcpy</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">des</span></span> <span class="free"><span class="bound">src</span></span> <span class="free"><span class="bound">srclen</span></span> <span class="free"><span class="bound">start</span></span> <span class="main">=</span> 
+         <span class="main">(</span><span class="keyword1">if</span> <span class="free"><span class="bound">srclen</span></span> <span class="main">=</span> <span class="free"><span class="bound">start</span></span> <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">s</span></span><span class="main">,</span><span class="free"><span class="bound">des</span></span><span class="main">)</span>
+          <span class="keyword1">else</span> <span class="main">(</span><span class="keyword1">let</span> <span class="bound">s</span> <span class="main">=</span> <span class="free"><span class="bound">s</span></span><span class="main">⦇</span>heap_w8 <span class="main">:=</span> <span class="main">(</span>heap_w8 <span class="free"><span class="bound">s</span></span><span class="main">)</span><span class="main">(</span><span class="main">(</span><span class="free"><span class="bound">des</span></span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="free"><span class="bound">start</span></span><span class="main">)</span> <span class="main">:=</span> <span class="main">(</span>heap_w8 <span class="free"><span class="bound">s</span></span> <span class="main">(</span><span class="free"><span class="bound">src</span></span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="free"><span class="bound">start</span></span><span class="main">)</span><span class="main">)</span>  <span class="main">)</span><span class="main">⦈</span>
+                 <span class="keyword1">in</span> <span class="free">strcpy</span> <span class="bound">s</span> <span class="free"><span class="bound">des</span></span> <span class="free"><span class="bound">src</span></span> <span class="free"><span class="bound">srclen</span></span> <span class="main">(</span><span class="free"><span class="bound">start</span></span><span class="main">+</span><span class="main">1</span><span class="main">)</span> <span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Impl_strcpy <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"<span class="numeral">8</span> word ptr <span class="main">⇒</span> <span class="numeral">8</span> word ptr <span class="main">⇒</span> lifted_globals <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">×</span><span class="numeral">8</span> word ptr<span class="main">)</span>"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Impl_strcpy</span> <span class="free"><span class="bound">str1</span></span> <span class="free"><span class="bound">str2</span></span> <span class="free"><span class="bound">s</span></span> <span class="main">≡</span> 
+         <span class="keyword1">let</span> <span class="bound">str1len</span> <span class="main">=</span> strSize <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">str1</span></span> <span class="main">0</span><span class="main">;</span>
+             <span class="bound">str2len</span> <span class="main">=</span> strSize <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">str2</span></span> <span class="main">0</span>
+          <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">str1len</span> <span class="main">&lt;</span> <span class="bound">str2len</span>
+                 <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">s</span></span><span class="main">,</span><span class="free"><span class="bound">str1</span></span><span class="main">)</span>
+                 <span class="keyword1">else</span> strcpy <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">str1</span></span> <span class="free"><span class="bound">str2</span></span> <span class="bound">str2len</span> <span class="main">0</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> strcpy' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"<span class="numeral">8</span> word ptr <span class="main">⇒</span> <span class="numeral">8</span> word ptr <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> <span class="numeral">8</span> word ptr<span class="main">)</span> nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">strcpy'</span> <span class="free"><span class="bound">str1</span></span> <span class="free"><span class="bound">str2</span></span> <span class="main">≡</span> 
+        <span class="keyword1">do</span>  <span class="bound">str1len</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> strSize <span class="bound">s</span> <span class="free"><span class="bound">str1</span></span> <span class="main">0</span><span class="main">)</span><span class="main">;</span>
+            <span class="bound">str2len</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> strSize <span class="bound">s</span> <span class="free"><span class="bound">str2</span></span> <span class="main">0</span><span class="main">)</span><span class="main">;</span>
+            condition <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> <span class="bound">str1len</span> <span class="main">&lt;</span> <span class="bound">str2len</span><span class="main">)</span> 
+             <span class="main">(</span>return <span class="free"><span class="bound">str1</span></span><span class="main">)</span>
+             <span class="main">(</span><span class="keyword1">do</span> <span class="bound">res</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> strcpy <span class="bound">s</span> <span class="free"><span class="bound">str1</span></span> <span class="free"><span class="bound">str2</span></span> <span class="bound">str2len</span> <span class="main">0</span><span class="main">)</span><span class="main">;</span>
+                 modify <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> fst <span class="bound">res</span><span class="main">)</span><span class="main">;</span>
+                 return <span class="main">(</span>snd <span class="bound">res</span><span class="main">)</span>
+              <span class="keyword1">od</span> <span class="main">)</span>
+        <span class="keyword1">od</span>  "</span></span></span>
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">‹scheMsgQueue›</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Impl_scheMsgQueue_Empty <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsgQueue_C ptr <span class="main">⇒</span> lifted_globals  <span class="main">⇒</span> int"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Impl_scheMsgQueue_Empty</span> <span class="free"><span class="bound">msgQuePtr</span></span> <span class="free"><span class="bound">s</span></span> <span class="main">≡</span> 
+                <span class="keyword1">if</span>  sint <span class="main">(</span>ScheduleMsgQueue_C.length_C <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">0</span> 
+                <span class="keyword1">then</span> <span class="main">(</span><span class="main">1</span><span class="main">::</span>int<span class="main">)</span> <span class="keyword1">else</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>int<span class="main">)</span> "</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> scheMsgQueue_Empty' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsgQueue_C ptr <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> int<span class="main">)</span> nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">scheMsgQueue_Empty'</span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">≡</span> 
+                condition <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span>  sint <span class="main">(</span>ScheduleMsgQueue_C.length_C <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="bound">s</span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">0</span> <span class="main">)</span>
+                    <span class="main">(</span>return <span class="main">1</span><span class="main">)</span> <span class="main">(</span>return <span class="main">0</span><span class="main">)</span>  "</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Impl_scheMsgQueue_front <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsgQueue_C <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> ScheduleMsg_C<span class="main">)</span> nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Impl_scheMsgQueue_front</span> <span class="free"><span class="bound">msgQue</span></span><span class="main">≡</span> 
+          <span class="keyword1">do</span> <span class="bound">msgPtr</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ScheduleMsgQueue_C.data_C <span class="free"><span class="bound">msgQue</span></span><span class="main">)</span><span class="main">;</span>
+             gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> heap_ScheduleMsg_C <span class="bound">s</span> <span class="bound">msgPtr</span><span class="main">)</span> 
+          <span class="keyword1">od</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> scheMsgQueue_front' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsgQueue_C ptr <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> ScheduleMsg_C<span class="main">)</span> nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">scheMsgQueue_front'</span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">≡</span> 
+          <span class="keyword1">do</span> <span class="bound">msgPtr</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ScheduleMsgQueue_C.data_C <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="bound">s</span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+             gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> heap_ScheduleMsg_C <span class="bound">s</span> <span class="bound">msgPtr</span><span class="main">)</span> 
+          <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> Impl_scheMsgQueue_pop <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsgQueue_C ptr <span class="main">⇒</span> lifted_globals <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">×</span>ScheduleMsg_C<span class="main">)</span>"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Impl_scheMsgQueue_pop</span> <span class="free"><span class="bound">msgQuePtr</span></span> <span class="free"><span class="bound">s</span></span> <span class="main">≡</span> 
+         <span class="keyword1">let</span> <span class="bound">msgPtr</span> <span class="main">=</span> ScheduleMsgQueue_C.data_C <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">)</span><span class="main">;</span>
+             <span class="bound">len</span> <span class="main">=</span> sint <span class="main">(</span>ScheduleMsgQueue_C.length_C <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">)</span><span class="main">)</span>
+          <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">len</span> <span class="main">=</span> <span class="main">0</span>
+              <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">s</span></span><span class="main">,</span><span class="main">(</span>ScheduleMsg_C <span class="main">1</span> <span class="main">(</span><span class="main">-</span><span class="main">1</span><span class="main">)</span> <span class="main">(</span><span class="main">-</span><span class="main">1</span><span class="main">)</span> NULL<span class="main">)</span><span class="main">)</span>
+              <span class="keyword1">else</span> 
+               <span class="main">(</span><span class="keyword1">let</span> <span class="bound">newQue</span> <span class="main">=</span> ScheduleMsgQueue_C.data_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> <span class="bound">p</span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="main">1</span><span class="main">)</span> <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">)</span><span class="main">;</span>
+                    <span class="bound">newQue</span> <span class="main">=</span> ScheduleMsgQueue_C.length_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">len</span><span class="main">.</span>  of_int <span class="main">(</span>sint <span class="bound">len</span> <span class="main">-</span> <span class="main">1</span><span class="main">)</span> <span class="main">)</span> <span class="bound">newQue</span><span class="main">;</span>
+                    <span class="bound">s</span> <span class="main">=</span> <span class="free"><span class="bound">s</span></span><span class="main">⦇</span>heap_ScheduleMsgQueue_C <span class="main">:=</span> <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="free"><span class="bound">s</span></span><span class="main">)</span><span class="main">(</span><span class="free"><span class="bound">msgQuePtr</span></span> <span class="main">:=</span>  <span class="bound">newQue</span><span class="main">)</span><span class="main">⦈</span>
+                 <span class="keyword1">in</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> heap_ScheduleMsg_C <span class="bound">s</span> <span class="bound">msgPtr</span><span class="main">)</span> <span class="main">)</span><span class="main">)</span> "</span></span></span>
+
+<span class="comment1">(*modify (λs. heap_ScheduleMsgQueue_C_update (λa. a(msgQuePtr :=  newQue)) s );*)</span>
+<span class="keyword1"><span class="command">definition</span></span> scheMsgQueue_pop' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsgQueue_C ptr <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> ScheduleMsg_C<span class="main">)</span> nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">scheMsgQueue_pop'</span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">≡</span> 
+          <span class="keyword1">do</span> <span class="bound">msgPtr</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ScheduleMsgQueue_C.data_C <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="bound">s</span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+             <span class="bound">len</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> sint <span class="main">(</span>ScheduleMsgQueue_C.length_C <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="bound">s</span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+             condition <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> <span class="bound">len</span> <span class="main">=</span> <span class="main">0</span><span class="main">)</span> <span class="main">(</span>skip<span class="main">)</span>
+             <span class="main">(</span><span class="keyword1">do</span> <span class="bound">newQue</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ScheduleMsgQueue_C.data_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> <span class="bound">p</span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="main">1</span><span class="main">)</span> <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="bound">s</span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                 <span class="bound">newQue</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ScheduleMsgQueue_C.length_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">len</span><span class="main">.</span>  of_int <span class="main">(</span>sint <span class="bound">len</span> <span class="main">-</span> <span class="main">1</span><span class="main">)</span> <span class="main">)</span> <span class="bound">newQue</span><span class="main">)</span><span class="main">;</span>
+                 modify <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span>  <span class="bound">s</span><span class="main">⦇</span>heap_ScheduleMsgQueue_C <span class="main">:=</span> <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="bound">s</span><span class="main">)</span><span class="main">(</span><span class="free"><span class="bound">msgQuePtr</span></span> <span class="main">:=</span>  <span class="bound">newQue</span><span class="main">)</span><span class="main">⦈</span> <span class="main">)</span>
+              <span class="keyword1">od</span><span class="main">)</span><span class="main">;</span>
+             gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> heap_ScheduleMsg_C <span class="bound">s</span> <span class="bound">msgPtr</span><span class="main">)</span> 
+          <span class="keyword1">od</span>"</span></span></span>
+
+  
+<span class="keyword1"><span class="command">definition</span></span> scheMsgQueue_AddToTail' <span class="main">::</span>  <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsgQueue_C ptr <span class="main">⇒</span> ScheduleMsg_C <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> int<span class="main">)</span> nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">scheMsgQueue_AddToTail'</span> <span class="free"><span class="bound">msgQuePtr</span></span> <span class="free"><span class="bound">msg</span></span> <span class="main">≡</span> 
+        <span class="keyword1">do</span>  <span class="bound">len</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> sint <span class="main">(</span>ScheduleMsgQueue_C.length_C <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="bound">s</span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+            <span class="bound">head</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ScheduleMsgQueue_C.data_C <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="bound">s</span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+            modify <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> <span class="bound">s</span><span class="main">⦇</span>heap_ScheduleMsg_C <span class="main">:=</span> <span class="main">(</span>heap_ScheduleMsg_C <span class="bound">s</span><span class="main">)</span><span class="main">(</span><span class="main">(</span><span class="bound">head</span> <span class="keyword1">+<span class="hidden">⇩</span><sub>p</sub></span> <span class="bound">len</span><span class="main">)</span> <span class="main">:=</span> <span class="free"><span class="bound">msg</span></span><span class="main">)</span><span class="main">⦈</span> <span class="main">)</span><span class="main">;</span>
+            <span class="bound">newQue</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> ScheduleMsgQueue_C.length_C_update <span class="main">(</span><span class="main">λ</span><span class="bound">len</span><span class="main">.</span> of_int <span class="main">(</span>sint <span class="bound">len</span> <span class="main">+</span> <span class="main">1</span><span class="main">)</span> <span class="main">)</span> <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="bound">s</span> <span class="free"><span class="bound">msgQuePtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+            modify <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> <span class="bound">s</span><span class="main">⦇</span>heap_ScheduleMsgQueue_C <span class="main">:=</span> <span class="main">(</span>heap_ScheduleMsgQueue_C <span class="bound">s</span><span class="main">)</span><span class="main">(</span><span class="free"><span class="bound">msgQuePtr</span></span> <span class="main">:=</span>  <span class="bound">newQue</span><span class="main">)</span><span class="main">⦈</span> <span class="main">)</span><span class="main">;</span>
+            return <span class="main">1</span>
+        <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">‹ROS›</span></span></span>
+
+<span class="keyword1"><span class="command">type_synonym</span></span> impl_RosLog <span class="main">=</span> <span class="quoted"><span class="quoted"><span class="language">"string list"</span></span></span>
+<span class="keyword1"><span class="command">type_synonym</span></span> impl_request1 <span class="main">=</span>  <span class="quoted"><span class="quoted"><span class="language">" <span class="main">(</span>SwarmInfo_C ptr <span class="main">×</span> ACBVector_C ptr<span class="main">)</span>"</span></span></span>
+<span class="keyword1"><span class="command">type_synonym</span></span> impl_response1 <span class="main">=</span> <span class="quoted"><span class="quoted"><span class="language">"int"</span></span></span>
+
+<span class="keyword1"><span class="command">record</span></span> impl_srvMessage <span class="main">=</span> 
+  Request <span class="main">::</span> <span class="quoted"><span class="language">impl_request1</span></span>
+  Response <span class="main">::</span> <span class="quoted"><span class="language">impl_response1</span></span>
+
+<span class="keyword1"><span class="command">type_synonym</span></span> impl_service <span class="main">=</span> <span class="quoted"><span class="quoted"><span class="language">"TaskBinder_C ptr <span class="main">⇒</span> impl_request1 <span class="main">⇒</span> <span class="main">(</span>lifted_globals<span class="main">,</span> <span class="main">(</span>impl_response1 <span class="main">×</span> bool<span class="main">)</span><span class="main">)</span> nondet_monad"</span></span></span>
+<span class="keyword1"><span class="command">record</span></span> impl_RosNode <span class="main">=</span>
+  name <span class="main">::</span> <span class="quoted"><span class="language">string</span></span>
+  serviceMap <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"string <span class="main">⇒</span> impl_service option"</span></span></span>
+  logFile <span class="main">::</span> <span class="quoted"><span class="language">impl_RosLog</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> impl_getPath <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"impl_NodeHandle <span class="main">⇒</span> impl_RosNode <span class="main">⇒</span> string <span class="main">⇒</span> string"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_getPath</span> <span class="free"><span class="bound">nhl</span></span> <span class="free"><span class="bound">dr</span></span> <span class="free"><span class="bound">st</span></span> <span class="main">≡</span> <span class="inner_quoted">''/''</span> <span class="main">@</span> <span class="main">(</span>impl_RosNode.name <span class="free"><span class="bound">dr</span></span><span class="main">)</span> <span class="main">@</span> <span class="inner_quoted">''/''</span>  <span class="main">@</span> <span class="main">(</span>handleName <span class="free"><span class="bound">nhl</span></span><span class="main">)</span> <span class="main">@</span> <span class="free"><span class="bound">st</span></span>"</span></span></span> 
+
+<span class="keyword1"><span class="command">definition</span></span> impl_RosInit <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"string <span class="main">⇒</span> impl_RosNode"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_RosInit</span> <span class="free"><span class="bound">nodeName</span></span> <span class="main">≡</span> <span class="main">⦇</span> impl_RosNode.name <span class="main">=</span> <span class="free"><span class="bound">nodeName</span></span><span class="main">,</span> impl_RosNode.serviceMap <span class="main">=</span> Map.empty<span class="main">,</span> impl_RosNode.logFile <span class="main">=</span> <span class="main">[]</span> <span class="main">⦈</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> impl_advertiseService <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"impl_NodeHandle <span class="main">⇒</span> string <span class="main">⇒</span> impl_service
+                                    <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>lifted_globals <span class="main">×</span> impl_RosNode<span class="main">)</span><span class="main">,</span> impl_Ros_ServiceServer<span class="main">)</span> nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_advertiseService</span> <span class="free"><span class="bound">nhl</span></span> <span class="free"><span class="bound">st</span></span> <span class="free"><span class="bound">ser</span></span> <span class="main">≡</span>
+                                 <span class="keyword1">do</span>
+                                   <span class="bound">st'</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> impl_getPath <span class="free"><span class="bound">nhl</span></span> <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="free"><span class="bound">st</span></span><span class="main">)</span><span class="main">;</span>
+                                   modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">,</span> <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span> serviceMap <span class="main">:=</span> <span class="main">(</span>serviceMap <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">(</span><span class="bound">st'</span> <span class="main">↦</span> <span class="free"><span class="bound">ser</span></span><span class="main">)</span><span class="main">⦈</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+                                   return <span class="main">⦇</span>serviceName <span class="main">=</span> <span class="bound">st'</span><span class="main">⦈</span>
+                                 <span class="keyword1">od</span>"</span></span></span> 
+
+<span class="keyword1"><span class="command">definition</span></span> impl_call <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"TaskBinder_C ptr <span class="main">⇒</span> impl_NodeHandle <span class="main">⇒</span> string <span class="main">⇒</span> impl_srvMessage <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>lifted_globals <span class="main">×</span> impl_RosNode<span class="main">)</span><span class="main">,</span> <span class="main">(</span>impl_srvMessage <span class="main">×</span> bool<span class="main">)</span><span class="main">)</span> nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">impl_call</span> <span class="free"><span class="bound">tb</span></span> <span class="free"><span class="bound">nhl</span></span> <span class="free"><span class="bound">st</span></span> <span class="free"><span class="bound">mes</span></span> <span class="main">≡</span>  <span class="keyword1">do</span>
+                                     <span class="bound">st'</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> impl_getPath <span class="free"><span class="bound">nhl</span></span> <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="free"><span class="bound">st</span></span><span class="main">)</span><span class="main">;</span>
+                                     <span class="bound">ser</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>serviceMap <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="bound">st'</span><span class="main">)</span><span class="main">;</span>
+                                     <span class="keyword1">if</span> <span class="bound">ser</span> <span class="main">=</span> None
+                                     <span class="keyword1">then</span> return <span class="main">(</span><span class="free"><span class="bound">mes</span></span><span class="main">,</span> False<span class="main">)</span>
+                                     <span class="keyword1">else</span>
+                                       <span class="keyword1">do</span> 
+                                        <span class="bound">ret</span> <span class="main">←</span> NonDetMonad_call.call <span class="main">(</span><span class="main">(</span>the <span class="bound">ser</span><span class="main">)</span> <span class="free"><span class="bound">tb</span></span> <span class="main">(</span>Request <span class="free"><span class="bound">mes</span></span><span class="main">)</span><span class="main">)</span> <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span>
+                                        <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span> <span class="bound">p</span><span class="main">.</span> <span class="main">(</span><span class="bound">p</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                        return <span class="main">(</span><span class="free"><span class="bound">mes</span></span><span class="main">⦇</span>Response <span class="main">:=</span> <span class="main">(</span>fst <span class="bound">ret</span><span class="main">)</span><span class="main">⦈</span><span class="main">,</span> <span class="main">(</span>snd <span class="bound">ret</span><span class="main">)</span><span class="main">)</span>
+                                       <span class="keyword1">od</span>
+                                 <span class="keyword1">od</span>"</span></span></span>
+
+
+
+
+
+
+<span class="keyword2"><span class="keyword">end</span></span></pre></body>

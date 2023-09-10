@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('../../fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.theories { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+</style><title>Theory "req_scheduler"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> req_scheduler 
+
+<span class="keyword2"><span class="keyword">imports</span></span> <span class="quoted">"req_bus"</span> <span class="quoted">"../util/ACB_lib"</span> <span class="quoted">"../util/List_Index"</span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="comment1">(* Some Auxiliary functions*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_appendScheduleMsg <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> ScheduleMsg <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_appendScheduleMsg</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">aMsg</span></span> <span class="main">≡</span>
+            <span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>scheMsgQueue <span class="main">:=</span> push_que <span class="main">(</span>scheMsgQueue <span class="free"><span class="bound">sche</span></span><span class="main">)</span> <span class="free"><span class="bound">aMsg</span></span><span class="main">⦈</span>"</span></span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> Re_appendACB <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> ACB <span class="main">⇒</span> SwarmInfo <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_appendACB</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">acb</span></span> <span class="free"><span class="bound">si</span></span> <span class="main">≡</span>          
+            <span class="keyword1">let</span> <span class="bound">acb</span> <span class="main">=</span> <span class="free"><span class="bound">acb</span></span><span class="main">⦇</span>ACB.actorID <span class="main">:=</span> actorNo <span class="free"><span class="bound">sche</span></span> <span class="main">+</span> <span class="main">1</span><span class="main">,</span>
+                            ACB.state <span class="main">:=</span> actorState.ACTOR_STATE_INIT<span class="main">,</span>
+                            ACB.pSwarmInfo <span class="main">:=</span> <span class="free"><span class="bound">si</span></span><span class="main">⦈</span>
+            <span class="keyword1">in</span> <span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>acbList <span class="main">:=</span> acbList <span class="free"><span class="bound">sche</span></span> <span class="main">@</span> <span class="main">[</span><span class="bound">acb</span><span class="main">]</span><span class="main">,</span> actorNo <span class="main">:=</span> actorNo <span class="free"><span class="bound">sche</span></span> <span class="main">+</span> <span class="main">1</span><span class="main">⦈</span>"</span></span></span>
+
+
+<span class="keyword1"><span class="command">fun</span></span> Re_iterAppendACB <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> ACB list <span class="main">⇒</span> SwarmInfo <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_iterAppendACB</span> <span class="free"><span class="bound">sche</span></span> <span class="main">[]</span> <span class="free"><span class="bound">swarm</span></span> <span class="main">=</span> <span class="free"><span class="bound">sche</span></span>"</span></span></span><span class="main">|</span>
+        <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_iterAppendACB</span> <span class="free"><span class="bound">sche</span></span> <span class="main">(</span><span class="free"><span class="bound">a</span></span><span class="main">#</span><span class="free"><span class="bound">al</span></span><span class="main">)</span> <span class="free"><span class="bound">swarm</span></span> <span class="main">=</span> <span class="free">Re_iterAppendACB</span> <span class="main">(</span>Re_appendACB <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">swarm</span></span><span class="main">)</span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">swarm</span></span>"</span></span></span>
+
+
+<span class="comment1">(* function requirement *)</span>
+
+<span class="comment1">(* 
+  Requirement Definition of yieldActor
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_yieldAcb <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB <span class="main">⇒</span> int64_t  <span class="main">⇒</span> bool"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_yieldAcb</span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">≡</span> ACB.actorID <span class="free"><span class="bound">a</span></span> <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">∧</span> ACB.state <span class="free"><span class="bound">a</span></span> <span class="main">=</span> actorState.ACTOR_STATE_RUNNING"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_yieldActor <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span>scheduler <span class="main">×</span> bool<span class="main">)</span>"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_yieldActor</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">≡</span> 
+                                <span class="keyword1">let</span> 
+                                    <span class="bound">list</span> <span class="main">=</span> acbList <span class="free"><span class="bound">sche</span></span><span class="main">;</span>
+                                    <span class="bound">num</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> Re_yieldAcb <span class="bound">a</span> <span class="free"><span class="bound">anActorID</span></span><span class="main">)</span> <span class="bound">list</span><span class="main">;</span>
+                                    <span class="bound">prio</span> <span class="main">=</span> ACB.prio <span class="main">(</span><span class="bound">list</span><span class="main">!</span><span class="bound">num</span><span class="main">)</span>
+                                <span class="keyword1">in</span>
+                                  <span class="main">(</span><span class="keyword1">if</span> <span class="bound">num</span> <span class="main">&lt;</span> length <span class="bound">list</span> <span class="main">∧</span> ACB.prio <span class="main">(</span><span class="bound">list</span> <span class="main">!</span> <span class="bound">num</span><span class="main">)</span> <span class="main">&lt;</span> MAX_PRIORITY
+                                  <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>acbList <span class="main">:=</span> <span class="bound">list</span><span class="main">[</span><span class="bound">num</span> <span class="main">:=</span> <span class="main">(</span><span class="main">(</span><span class="bound">list</span><span class="main">!</span><span class="bound">num</span><span class="main">)</span><span class="main">⦇</span>ACB.prio <span class="main">:=</span> <span class="bound">prio</span> <span class="main">+</span> <span class="main">1</span><span class="main">⦈</span><span class="main">)</span><span class="main">]</span><span class="main">⦈</span><span class="main">,</span> True<span class="main">)</span>
+                                  <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">,</span> False<span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of activateActor
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_activateAcb1 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB <span class="main">⇒</span> int64_t  <span class="main">⇒</span> bool"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_activateAcb1</span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">≡</span> ACB.actorID <span class="free"><span class="bound">a</span></span> <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">∧</span> ACB.state <span class="free"><span class="bound">a</span></span> <span class="main">=</span> actorState.ACTOR_STATE_RUNNING"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_activateAcb2 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB <span class="main">⇒</span> int64_t <span class="main">⇒</span> string  <span class="main">⇒</span> bool"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_activateAcb2</span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">sID</span></span> <span class="free"><span class="bound">anActorName</span></span> <span class="main">≡</span> 
+                                        ACB.name <span class="free"><span class="bound">a</span></span>  <span class="main">=</span> <span class="free"><span class="bound">anActorName</span></span> <span class="main">∧</span> 
+                                        swarmID <span class="main">(</span>pSwarmInfo <span class="free"><span class="bound">a</span></span><span class="main">)</span> <span class="main">=</span> <span class="free"><span class="bound">sID</span></span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_activateActor <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> int64_t <span class="main">⇒</span> string <span class="main">⇒</span> <span class="main">(</span>scheduler <span class="main">×</span> bool<span class="main">)</span>"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_activateActor</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anActorID</span></span> <span class="free"><span class="bound">anActorName</span></span> <span class="main">≡</span> 
+                                <span class="keyword1">let</span> <span class="bound">list</span> <span class="main">=</span> acbList <span class="free"><span class="bound">sche</span></span><span class="main">;</span>
+                                    <span class="bound">num1</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> Re_activateAcb1 <span class="bound">a</span> <span class="free"><span class="bound">anActorID</span></span><span class="main">)</span> <span class="bound">list</span><span class="main">;</span>
+                                    <span class="bound">sID</span> <span class="main">=</span> swarmID <span class="main">(</span>pSwarmInfo <span class="main">(</span><span class="bound">list</span><span class="main">!</span><span class="bound">num1</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                    <span class="bound">num2</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">b</span><span class="main">.</span> Re_activateAcb2 <span class="bound">b</span> <span class="bound">sID</span> <span class="free"><span class="bound">anActorName</span></span><span class="main">)</span> <span class="bound">list</span><span class="main">;</span>
+                                    <span class="bound">prio</span> <span class="main">=</span> ACB.prio <span class="main">(</span><span class="bound">list</span><span class="main">!</span><span class="bound">num1</span><span class="main">)</span>
+                                <span class="keyword1">in</span> <span class="main">(</span> <span class="keyword1">if</span>  <span class="bound">num2</span> <span class="main">&lt;</span> length <span class="bound">list</span> <span class="main">∧</span> ACB.state <span class="main">(</span><span class="bound">list</span><span class="main">!</span><span class="bound">num2</span><span class="main">)</span> <span class="main">≠</span> actorState.ACTOR_STATE_RUNNING
+                                     <span class="keyword1">then</span>  
+                                        <span class="main">(</span><span class="keyword1">if</span> <span class="bound">num1</span> <span class="main">&lt;</span> length <span class="bound">list</span> 
+                                         <span class="keyword1">then</span>
+                                            <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>acbList <span class="main">:=</span> <span class="bound">list</span><span class="main">[</span><span class="bound">num2</span> <span class="main">:=</span> <span class="main">(</span><span class="main">(</span><span class="bound">list</span><span class="main">!</span><span class="bound">num2</span><span class="main">)</span><span class="main">⦇</span>ACB.prio <span class="main">:=</span> <span class="bound">prio</span><span class="main">⦈</span><span class="main">)</span><span class="main">]</span><span class="main">⦈</span><span class="main">,</span> True<span class="main">)</span>
+                                         <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">,</span> False<span class="main">)</span><span class="main">)</span>
+                                     <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">,</span> False<span class="main">)</span> <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of switchToActor
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_switchAcb1 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB <span class="main">⇒</span> string  <span class="main">⇒</span> bool"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_switchAcb1</span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">anActorName</span></span> <span class="main">≡</span> ACB.name <span class="free"><span class="bound">a</span></span> <span class="main">=</span> <span class="free"><span class="bound">anActorName</span></span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_switchAcb2 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB <span class="main">⇒</span> int64_t <span class="main">⇒</span> bool"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_switchAcb2</span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">≡</span>  ACB.actorID <span class="free"><span class="bound">a</span></span>  <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">∧</span>  ACB.state <span class="free"><span class="bound">a</span></span> <span class="main">=</span> actorState.ACTOR_STATE_RUNNING"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_switchToActor <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> int64_t <span class="main">⇒</span> string <span class="main">⇒</span> <span class="main">(</span>scheduler <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_switchToActor</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anActorID</span></span> <span class="free"><span class="bound">anActorName</span></span> <span class="main">≡</span> 
+                                <span class="keyword1">let</span> <span class="bound">list</span> <span class="main">=</span> acbList <span class="free"><span class="bound">sche</span></span><span class="main">;</span>
+                                    <span class="bound">num1</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> Re_switchAcb1 <span class="bound">a</span> <span class="free"><span class="bound">anActorName</span></span><span class="main">)</span> <span class="bound">list</span><span class="main">;</span>
+                                    <span class="bound">num2</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">b</span><span class="main">.</span> Re_switchAcb2 <span class="bound">b</span> <span class="free"><span class="bound">anActorID</span></span><span class="main">)</span> <span class="bound">list</span><span class="main">;</span>
+                                    <span class="bound">prioa</span> <span class="main">=</span> ACB.prio <span class="main">(</span><span class="bound">list</span><span class="main">!</span><span class="bound">num1</span><span class="main">)</span><span class="main">;</span>
+                                    <span class="bound">priob</span> <span class="main">=</span> ACB.prio <span class="main">(</span><span class="bound">list</span><span class="main">!</span><span class="bound">num2</span><span class="main">)</span>
+                                <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">num1</span> <span class="main">&lt;</span> length <span class="bound">list</span> <span class="main">∧</span> ACB.state <span class="main">(</span><span class="bound">list</span><span class="main">!</span><span class="bound">num1</span><span class="main">)</span> <span class="main">≠</span> actorState.ACTOR_STATE_RUNNING
+                                    <span class="keyword1">then</span> 
+                                      <span class="main">(</span><span class="keyword1">if</span> <span class="bound">num2</span> <span class="main">&lt;</span> length <span class="bound">list</span>
+                                       <span class="keyword1">then</span>
+                                         <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>acbList <span class="main">:=</span> <span class="main">(</span><span class="bound">list</span><span class="main">[</span><span class="bound">num1</span> <span class="main">:=</span> <span class="main">(</span><span class="main">(</span><span class="bound">list</span><span class="main">!</span><span class="bound">num1</span><span class="main">)</span><span class="main">⦇</span>ACB.prio <span class="main">:=</span> <span class="bound">priob</span><span class="main">⦈</span><span class="main">)</span> <span class="main">]</span><span class="main">)</span> 
+                                              <span class="main">[</span><span class="bound">num2</span> <span class="main">:=</span> <span class="main">(</span><span class="main">(</span><span class="bound">list</span><span class="main">!</span><span class="bound">num2</span><span class="main">)</span><span class="main">⦇</span>ACB.prio <span class="main">:=</span> <span class="bound">prioa</span><span class="main">⦈</span><span class="main">)</span> <span class="main">]</span><span class="main">⦈</span> <span class="main">,</span> True<span class="main">)</span> 
+                                       <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">,</span> False<span class="main">)</span><span class="main">)</span>
+                                    <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">,</span> False<span class="main">)</span> <span class="main">)</span> "</span></span></span>
+
+<span class="comment1">(*
+definition Re_switchAcb1 :: "ACB ⇒ string  ⇒ bool" 
+  where "Re_switchAcb1 a anActorName ≡ ACB.name a = anActorName ∧ ACB.state a = actorState.ACTOR_STATE_RUNNING"
+definition Re_switchToActor :: "scheduler ⇒ int64_t ⇒ string ⇒ (scheduler × bool)"
+  where "Re_switchToActor sche anActorID anActorName ≡ 
+                                let list = acbList sche;
+                                    num1 = find_index (λa. Re_switchAcb1 a anActorName) list;
+                                    num2 = find_index (λb. Re_switchAcb2 b anActorID) list;
+                                    prioa = ACB.prio (list!num1);
+                                    priob = ACB.prio (list!num2)
+                                in (if num1 &lt; length list
+                                    then 
+                                      (if num2 &lt; length list
+                                       then
+                                         (sche⦇acbList := (list[num1 := ((list!num1)⦇ACB.prio := priob⦈) ]) 
+                                              [num2 := ((list!num2)⦇ACB.prio := prioa⦈) ]⦈ , True) 
+                                       else (sche, False))
+                                    else (sche, False) ) "
+*)</span>
+
+<span class="comment1">(* 
+  Requirement Definition of getActorPlugin
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_getAP_acb <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB <span class="main">⇒</span> int64_t  <span class="main">⇒</span> bool"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_getAP_acb</span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">≡</span> ACB.actorID <span class="free"><span class="bound">a</span></span> <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span> "</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_getAP_pluginInfo  <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"PluginInfo <span class="main">⇒</span> string  <span class="main">⇒</span> bool"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_getAP_pluginInfo</span> <span class="free"><span class="bound">pi</span></span> <span class="free"><span class="bound">Name</span></span> <span class="main">≡</span> PluginInfo.name <span class="free"><span class="bound">pi</span></span> <span class="main">=</span> <span class="free"><span class="bound">Name</span></span> "</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_getAP_bus  <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus <span class="main">⇒</span> string  <span class="main">⇒</span> bool"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_getAP_bus</span> <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">Name</span></span> <span class="main">≡</span> bus.name <span class="free"><span class="bound">b</span></span> <span class="main">=</span> <span class="free"><span class="bound">Name</span></span> "</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_sche_getActorPlugin <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> int64_t <span class="main">⇒</span> string <span class="main">⇒</span> <span class="main">(</span>plugin <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_sche_getActorPlugin</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anActorID</span></span> <span class="free"><span class="bound">aPluginName</span></span> <span class="main">≡</span> 
+                     <span class="keyword1">let</span> <span class="bound">num1</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> Re_getAP_acb <span class="bound">a</span> <span class="free"><span class="bound">anActorID</span></span><span class="main">)</span> <span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">;</span>
+                         <span class="bound">piList</span> <span class="main">=</span> <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="main">(</span><span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">!</span><span class="bound">num1</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">;</span>
+                         <span class="bound">num2</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">pi</span><span class="main">.</span> Re_getAP_pluginInfo <span class="bound">pi</span> <span class="free"><span class="bound">aPluginName</span></span><span class="main">)</span> <span class="bound">piList</span><span class="main">;</span>
+                         <span class="bound">num3</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">b</span><span class="main">.</span> Re_getAP_bus <span class="bound">b</span> <span class="main">(</span>busName <span class="main">(</span><span class="bound">piList</span><span class="main">!</span><span class="bound">num2</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>registeredBus <span class="free"><span class="bound">sche</span></span><span class="main">)</span>
+                     <span class="keyword1">in</span> 
+                       <span class="main">(</span><span class="keyword1">if</span> <span class="bound">num1</span> <span class="main">&lt;</span> length  <span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span> <span class="main">∧</span> <span class="bound">num2</span> <span class="main">&lt;</span> length <span class="bound">piList</span> <span class="main">∧</span> <span class="bound">num3</span> <span class="main">&lt;</span> length <span class="main">(</span>registeredBus <span class="free"><span class="bound">sche</span></span><span class="main">)</span>
+                        <span class="keyword1">then</span> 
+                           Re_getActorPlugin <span class="main">(</span><span class="main">(</span>registeredBus <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">!</span><span class="bound">num3</span><span class="main">)</span> <span class="free"><span class="bound">aPluginName</span></span> <span class="free"><span class="bound">anActorID</span></span>
+                        <span class="keyword1">else</span> <span class="main">(</span>nullPlugin<span class="main">,</span> False<span class="main">)</span>
+                       <span class="main">)</span> "</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of getActorNameByID 
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_getActorNameByID <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span>string <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_getActorNameByID</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">≡</span>  
+                               <span class="keyword1">let</span> <span class="bound">target</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> ACB.actorID <span class="bound">a</span> <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span><span class="main">)</span> <span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span>
+                               <span class="keyword1">in</span> 
+                                  <span class="main">(</span><span class="keyword1">if</span> <span class="bound">target</span> <span class="main">&lt;</span> length <span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span>
+                                   <span class="keyword1">then</span> <span class="main">(</span>ACB.name <span class="main">(</span><span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">!</span><span class="bound">target</span><span class="main">)</span><span class="main">,</span> True<span class="main">)</span>
+                                   <span class="keyword1">else</span> <span class="main">(</span><span class="inner_quoted">''''</span><span class="main">,</span> False<span class="main">)</span>
+                                  <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of sche_updateActorPluginState
+*)</span>                                             
+<span class="keyword1"><span class="command">fun</span></span> Re_sche_updateActorPluginState0 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus list <span class="main">⇒</span> ActorPluginInfo list <span class="main">⇒</span> actorState <span class="main">⇒</span> <span class="main">(</span>bus list <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_sche_updateActorPluginState0</span> <span class="main">[]</span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">st</span></span> <span class="main">=</span> <span class="main">(</span><span class="main">[]</span><span class="main">,</span> True<span class="main">)</span>"</span></span></span> <span class="main">|</span>
+        <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_sche_updateActorPluginState0</span> <span class="main">(</span><span class="free"><span class="bound">b</span></span><span class="main">#</span><span class="free"><span class="bound">bl</span></span><span class="main">)</span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">st</span></span> <span class="main">=</span> 
+         <span class="main">(</span> <span class="keyword1">let</span> <span class="main">(</span><span class="bound">b'</span><span class="main">,</span><span class="bound">flag</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>Re_updateActorPluginStates <span class="free"><span class="bound">b</span></span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">st</span></span><span class="main">)</span>
+           <span class="keyword1">in</span> 
+           <span class="main">(</span> <span class="bound">b'</span> <span class="main">#</span> <span class="main">(</span>fst <span class="main">(</span><span class="free">Re_sche_updateActorPluginState0</span> <span class="free"><span class="bound">bl</span></span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">st</span></span><span class="main">)</span><span class="main">)</span> <span class="main">,</span>
+             <span class="bound">flag</span> <span class="main">∧</span> <span class="main">(</span>snd <span class="main">(</span><span class="free">Re_sche_updateActorPluginState0</span> <span class="free"><span class="bound">bl</span></span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">st</span></span><span class="main">)</span><span class="main">)</span>
+           <span class="main">)</span>
+        <span class="main">)</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_sche_updateActorPluginState <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> ActorPluginInfo list <span class="main">⇒</span> actorState <span class="main">⇒</span> <span class="main">(</span>scheduler <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_sche_updateActorPluginState</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">st</span></span> <span class="main">≡</span> 
+            <span class="keyword1">let</span>
+              <span class="main">(</span><span class="bound">bl'</span><span class="main">,</span> <span class="bound">flag</span><span class="main">)</span> <span class="main">=</span> Re_sche_updateActorPluginState0 <span class="main">(</span>registeredBus <span class="free"><span class="bound">sche</span></span><span class="main">)</span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">st</span></span>
+            <span class="keyword1">in</span>  
+              <span class="keyword1">if</span> <span class="bound">flag</span> 
+              <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">⦇</span> registeredBus <span class="main">:=</span> <span class="bound">bl'</span><span class="main">⦈</span><span class="main">,</span> <span class="bound">flag</span><span class="main">)</span>
+              <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">,</span> <span class="bound">flag</span><span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of appendACBs
+*)</span>    
+<span class="keyword1"><span class="command">definition</span></span> Re_appendACBsCheck0 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"PluginInfo <span class="main">⇒</span> bus list <span class="main">⇒</span> bool"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_appendACBsCheck0</span> <span class="free"><span class="bound">pi</span></span> <span class="free"><span class="bound">bl</span></span> <span class="main">≡</span>
+           find <span class="main">(</span><span class="main">λ</span><span class="bound">b</span><span class="main">.</span> getBusName <span class="bound">b</span> <span class="main">=</span> PluginInfo.busName <span class="free"><span class="bound">pi</span></span><span class="main">)</span> <span class="free"><span class="bound">bl</span></span> <span class="main">≠</span> None   "</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_appendACBsCheck1 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"PluginInfo list <span class="main">⇒</span> bus list <span class="main">⇒</span> bool"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_appendACBsCheck1</span> <span class="free"><span class="bound">pil</span></span> <span class="free"><span class="bound">bl</span></span> <span class="main">≡</span> 
+            find <span class="main">(</span><span class="main">λ</span><span class="bound">p</span><span class="main">.</span> <span class="main">¬</span> <span class="main">(</span>Re_appendACBsCheck0 <span class="bound">p</span> <span class="free"><span class="bound">bl</span></span><span class="main">)</span><span class="main">)</span> <span class="free"><span class="bound">pil</span></span> <span class="main">=</span> None       "</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_appendACBsCheck <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB list <span class="main">⇒</span> scheduler <span class="main">⇒</span> bool"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_appendACBsCheck</span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">sche</span></span> <span class="main">≡</span>
+            find <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="main">¬</span> <span class="main">(</span>Re_appendACBsCheck1 <span class="main">(</span>TaskInfo.plugins <span class="main">(</span>ACB.taskInfo <span class="bound">a</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>registeredBus <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="free"><span class="bound">al</span></span> <span class="main">=</span> None"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_appendACBs <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> ACB list <span class="main">⇒</span> SwarmInfo <span class="main">⇒</span> <span class="main">(</span>scheduler <span class="main">×</span> int<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_appendACBs</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anACBs</span></span> <span class="free"><span class="bound">anPSwarm</span></span> <span class="main">≡</span> 
+           <span class="keyword1">if</span> Re_appendACBsCheck <span class="free"><span class="bound">anACBs</span></span> <span class="free"><span class="bound">sche</span></span>
+           <span class="keyword1">then</span>                             
+               <span class="main">(</span>Re_iterAppendACB <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anACBs</span></span> <span class="free"><span class="bound">anPSwarm</span></span><span class="main">,</span> <span class="main">0</span><span class="main">)</span>
+           <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">,</span> <span class="main">1</span><span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of appendSwarmACBs
+*)</span>    
+<span class="keyword1"><span class="command">definition</span></span> Re_appendSwarmACBs <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> SwarmInfo <span class="main">⇒</span> ACB list <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_appendSwarmACBs</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anPSwarm</span></span> <span class="free"><span class="bound">anACBs</span></span> <span class="main">≡</span>
+                <span class="keyword1">let</span> <span class="bound">anPSwarm'</span> <span class="main">=</span> <span class="free"><span class="bound">anPSwarm</span></span><span class="main">⦇</span>swarmID <span class="main">:=</span> nSwarm <span class="free"><span class="bound">sche</span></span> <span class="main">+</span> <span class="main">1</span><span class="main">,</span> SwarmInfo.state <span class="main">:=</span> actorState.ACTOR_STATE_INIT<span class="main">⦈</span><span class="main">;</span>
+                    <span class="bound">sche'</span> <span class="main">=</span> <span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>swarmList <span class="main">:=</span> <span class="main">(</span>swarmList <span class="free"><span class="bound">sche</span></span><span class="main">)</span> <span class="main">@</span> <span class="main">[</span><span class="bound">anPSwarm'</span><span class="main">]</span><span class="main">,</span>nSwarm <span class="main">:=</span> nSwarm <span class="free"><span class="bound">sche</span></span> <span class="main">+</span> <span class="main">1</span> <span class="main">⦈</span><span class="main">;</span>
+                    <span class="bound">sche''</span> <span class="main">=</span> fst <span class="main">(</span>Re_appendACBs <span class="bound">sche'</span> <span class="free"><span class="bound">anACBs</span></span> <span class="bound">anPSwarm'</span><span class="main">)</span><span class="main">;</span>
+                    <span class="bound">sche'''</span> <span class="main">=</span> Re_appendScheduleMsg <span class="bound">sche''</span> <span class="main">⦇</span>type <span class="main">=</span> SCHEDULE_CMD_RAW<span class="main">,</span> param1 <span class="main">=</span> <span class="main">0</span><span class="main">,</span> param2 <span class="main">=</span> <span class="main">0</span><span class="main">,</span> param3 <span class="main">=</span> <span class="main">[]</span><span class="main">⦈</span>
+                <span class="keyword1">in</span>  
+                    <span class="keyword1">if</span> nSwarm <span class="free"><span class="bound">sche</span></span> <span class="main">+</span> <span class="main">1</span> <span class="main">≤</span> SWARM_MAX_SIZE
+                    <span class="keyword1">then</span> 
+                      <span class="keyword1">if</span> snd <span class="main">(</span>Re_appendACBs <span class="bound">sche'</span> <span class="free"><span class="bound">anACBs</span></span> <span class="bound">anPSwarm'</span><span class="main">)</span> <span class="main">=</span> <span class="main">0</span>
+                      <span class="keyword1">then</span> <span class="bound">sche'''</span>
+                      <span class="keyword1">else</span> <span class="bound">sche'</span> 
+                    <span class="keyword1">else</span> <span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>nSwarm <span class="main">:=</span> nSwarm <span class="free"><span class="bound">sche</span></span><span class="main">⦈</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of getSwarm
+*)</span>    
+<span class="keyword1"><span class="command">definition</span></span> Re_getS_swarm <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo <span class="main">⇒</span> string  <span class="main">⇒</span> bool"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_getS_swarm</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">anSwarmName</span></span> <span class="main">≡</span> SwarmInfo.swarmName <span class="free"><span class="bound">s</span></span> <span class="main">=</span> <span class="free"><span class="bound">anSwarmName</span></span> "</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_getSwarm <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> string <span class="main">⇒</span> <span class="main">(</span>SwarmInfo <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_getSwarm</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anSwarmName</span></span> <span class="main">≡</span>  
+            <span class="keyword1">let</span> <span class="bound">num</span> <span class="main">=</span> find_index <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> Re_getS_swarm <span class="bound">s</span> <span class="free"><span class="bound">anSwarmName</span></span><span class="main">)</span> <span class="main">(</span>swarmList <span class="free"><span class="bound">sche</span></span><span class="main">)</span>
+            <span class="keyword1">in</span>
+              <span class="main">(</span><span class="keyword1">if</span> <span class="bound">num</span> <span class="main">&lt;</span> length <span class="main">(</span>swarmList <span class="free"><span class="bound">sche</span></span><span class="main">)</span>
+               <span class="keyword1">then</span> <span class="main">(</span><span class="main">(</span>swarmList <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">!</span><span class="bound">num</span><span class="main">,</span> True<span class="main">)</span>
+               <span class="keyword1">else</span> <span class="main">(</span>nullSwarmInfo<span class="main">,</span> False<span class="main">)</span>
+              <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of checkActorPluginFinished
+*)</span>    
+<span class="keyword1"><span class="command">definition</span></span> Re_checkActorPluginFinished0 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bus list <span class="main">⇒</span> PluginInfo <span class="main">⇒</span> ACB <span class="main">⇒</span> bool"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_checkActorPluginFinished0</span> <span class="free"><span class="bound">bl</span></span> <span class="free"><span class="bound">pi</span></span> <span class="free"><span class="bound">acb</span></span> <span class="main">≡</span> 
+             find_index <span class="main">(</span><span class="main">λ</span><span class="bound">b</span><span class="main">.</span> bus.name <span class="bound">b</span> <span class="main">=</span> PluginInfo.busName <span class="free"><span class="bound">pi</span></span> <span class="main">∧</span> 
+                  Re_getActorPluginState <span class="bound">b</span> <span class="main">(</span>PluginInfo.name <span class="free"><span class="bound">pi</span></span><span class="main">)</span> <span class="main">(</span>ACB.actorID <span class="free"><span class="bound">acb</span></span><span class="main">)</span> <span class="main">=</span> ACTOR_STATE_FINISH<span class="main">)</span> <span class="free"><span class="bound">bl</span></span>
+                         <span class="main">≠</span> length <span class="free"><span class="bound">bl</span></span>
+                           "</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_checkActorPluginFinished <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> ACB <span class="main">⇒</span> bool"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_checkActorPluginFinished</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anACB</span></span> <span class="main">≡</span> 
+           find_index <span class="main">(</span><span class="main">λ</span><span class="bound">pi</span><span class="main">.</span> Re_checkActorPluginFinished0 <span class="main">(</span>registeredBus <span class="free"><span class="bound">sche</span></span><span class="main">)</span> <span class="bound">pi</span> <span class="free"><span class="bound">anACB</span></span><span class="main">)</span> <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="free"><span class="bound">anACB</span></span><span class="main">)</span><span class="main">)</span>
+               <span class="main">≠</span> length <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="free"><span class="bound">anACB</span></span><span class="main">)</span><span class="main">)</span>
+"</span></span></span>
+
+<span class="comment1">(* Main_scheduler Auxiliary functions*)</span>
+
+<span class="comment1">(* 
+  Requirement Definition of findFinishActors
+*)</span>    
+<span class="keyword1"><span class="command">definition</span></span> Re_findFinishActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_findFinishActors</span> <span class="free"><span class="bound">sche</span></span> <span class="main">≡</span>
+              <span class="keyword1">let</span> 
+                  <span class="bound">al'</span> <span class="main">=</span> filter <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> ACB.state <span class="bound">a</span> <span class="main">≠</span> actorState.ACTOR_STATE_INIT <span class="main">∧</span> Re_checkActorPluginFinished <span class="free"><span class="bound">sche</span></span> <span class="bound">a</span><span class="main">)</span> <span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">;</span>
+                  <span class="bound">al''</span> <span class="main">=</span> map <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="main">⦇</span>ActorPluginInfo.actorID   <span class="main">=</span> ACB.actorID <span class="bound">a</span><span class="main">,</span>
+                                  ActorPluginInfo.actorName <span class="main">=</span> ACB.name <span class="bound">a</span><span class="main">,</span>
+                                  ActorPluginInfo.state     <span class="main">=</span> ACB.state <span class="bound">a</span><span class="main">,</span>
+                                  ActorPluginInfo.taskInfo  <span class="main">=</span> ACB.taskInfo <span class="bound">a</span><span class="main">⦈</span><span class="main">)</span> 
+                              <span class="bound">al'</span>                  
+              <span class="keyword1">in</span> <span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>finishingActors <span class="main">:=</span> <span class="bound">al''</span><span class="main">⦈</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> findFinishActors_invariant <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> bool"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">findFinishActors_invariant</span> <span class="free"><span class="bound">sche</span></span> <span class="main">≡</span> 
+               <span class="main">(</span><span class="main">∀</span><span class="bound">a'</span><span class="main">∈</span>set <span class="main">(</span>finishingActors <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">.</span> 
+                   <span class="main">∃</span><span class="bound">a</span> <span class="main">∈</span> set <span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">.</span> 
+                   ActorPluginInfo.actorName <span class="bound">a'</span> <span class="main">=</span> ACB.name <span class="bound">a</span>
+                   <span class="main">∧</span> ActorPluginInfo.actorID <span class="bound">a'</span> <span class="main">=</span> ACB.actorID <span class="bound">a</span>
+               <span class="main">)</span>"</span></span></span>
+<span class="keyword1"><span class="command">lemma</span></span> <span class="quoted"><span class="quoted"><span class="language">"Re_findFinishActors <span class="free">sche</span> <span class="main">=</span> <span class="free">sche'</span> <span class="main">⟹</span>  acbList <span class="free">sche</span> <span class="main">=</span> acbList <span class="free">sche'</span> <span class="main">∧</span> findFinishActors_invariant <span class="free">sche'</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_findFinishActors_def findFinishActors_invariant_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">fastforce</span></span>
+  
+
+<span class="comment1">(* 
+  Requirement Definition of delFinishActors
+*)</span>    
+<span class="keyword1"><span class="command">definition</span></span> Re_delFinishActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> scheduler"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_delFinishActors</span> <span class="free"><span class="bound">sche</span></span> <span class="main">≡</span> 
+                 <span class="keyword1">let</span> <span class="main">(</span><span class="bound">sche'</span><span class="main">,</span> <span class="bound">flag</span><span class="main">)</span> <span class="main">=</span> Re_sche_updateActorPluginState <span class="free"><span class="bound">sche</span></span> <span class="main">(</span>finishingActors <span class="free"><span class="bound">sche</span></span><span class="main">)</span> actorState.ACTOR_STATE_FINISH
+                 <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">flag</span>
+                     <span class="keyword1">then</span> <span class="bound">sche'</span><span class="main">⦇</span>acbList <span class="main">:=</span> filter <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> ACB.actorID <span class="bound">a</span> <span class="main">∉</span> set <span class="main">(</span>map <span class="main">(</span><span class="main">λ</span><span class="bound">api</span><span class="main">.</span> ActorPluginInfo.actorID <span class="bound">api</span><span class="main">)</span> <span class="main">(</span>finishingActors <span class="bound">sche'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>acbList <span class="bound">sche'</span><span class="main">)</span><span class="main">⦈</span>
+                     <span class="keyword1">else</span> <span class="bound">sche'</span>
+                 <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of findMinPrioSwarm
+*)</span>    
+<span class="keyword1"><span class="command">definition</span></span> Re_findMinPrioSwarm <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo list  <span class="main">⇒</span> int <span class="main">⇒</span> <span class="main">(</span>SwarmInfo option <span class="main">×</span> int<span class="main">)</span>"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_findMinPrioSwarm</span> <span class="free"><span class="bound">sil</span></span> <span class="free"><span class="bound">minPrio</span></span> <span class="main">≡</span> 
+                <span class="keyword1">let</span> <span class="bound">minPrioSwarm</span> <span class="main">=</span> find <span class="main">(</span><span class="main">λ</span><span class="bound">si</span><span class="main">.</span> <span class="main">(</span>swarmPrio <span class="bound">si</span><span class="main">)</span> <span class="main">&lt;</span> <span class="free"><span class="bound">minPrio</span></span> <span class="main">∧</span> <span class="main">(</span><span class="main">∀</span><span class="bound">si'</span><span class="main">∈</span> set <span class="free"><span class="bound">sil</span></span><span class="main">.</span> <span class="main">(</span>swarmPrio <span class="bound">si</span><span class="main">)</span> <span class="main">≤</span> <span class="main">(</span>swarmPrio <span class="bound">si'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="free"><span class="bound">sil</span></span>
+                <span class="keyword1">in</span>
+                   <span class="main">(</span><span class="bound">minPrioSwarm</span><span class="main">,</span> <span class="keyword1">if</span> <span class="bound">minPrioSwarm</span> <span class="main">=</span> None <span class="keyword1">then</span> <span class="free"><span class="bound">minPrio</span></span> <span class="keyword1">else</span> swarmPrio <span class="main">(</span>the <span class="bound">minPrioSwarm</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of ifMinPrioSwarmHaveActor
+*)</span>    
+<span class="keyword1"><span class="command">definition</span></span> ifMinPrioSwarmHaveActor <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB list <span class="main">⇒</span> SwarmInfo <span class="main">⇒</span> int <span class="main">⇒</span> int <span class="main">⇒</span> <span class="main">(</span>int <span class="main">×</span> int<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">ifMinPrioSwarmHaveActor</span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="free"><span class="bound">minPrio</span></span> <span class="free"><span class="bound">minIndex</span></span> <span class="main">≡</span> 
+                <span class="keyword1">let</span> <span class="bound">minPrioACB</span> <span class="main">=</span> find <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> swarmID <span class="main">(</span>pSwarmInfo <span class="bound">a</span><span class="main">)</span> <span class="main">=</span> swarmID <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="main">∧</span> 
+                                        <span class="main">(</span>ACB.prio <span class="bound">a</span><span class="main">)</span> <span class="main">&lt;</span> <span class="free"><span class="bound">minPrio</span></span> <span class="main">∧</span> 
+                                            <span class="main">(</span><span class="main">∀</span><span class="bound"><span class="bound">j</span></span><span class="main">&lt;</span>length <span class="free"><span class="bound">al</span></span><span class="main">.</span> swarmID <span class="main">(</span>pSwarmInfo <span class="main">(</span><span class="free"><span class="bound">al</span></span><span class="main">!</span><span class="bound">j</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> swarmID <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="main">⟶</span>
+                                                   <span class="main">(</span>ACB.prio <span class="bound">a</span><span class="main">)</span> <span class="main">≤</span> <span class="main">(</span>ACB.prio <span class="main">(</span><span class="free"><span class="bound">al</span></span><span class="main">!</span><span class="bound">j</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="free"><span class="bound">al</span></span>
+                <span class="keyword1">in</span>
+                   <span class="main">(</span><span class="keyword1">if</span> <span class="bound">minPrioACB</span> <span class="main">≠</span> None
+                    <span class="keyword1">then</span> <span class="main">(</span>int <span class="main">(</span>index <span class="free"><span class="bound">al</span></span> <span class="main">(</span>the <span class="bound">minPrioACB</span><span class="main">)</span><span class="main">)</span><span class="main">,</span>ACB.prio <span class="main">(</span>the <span class="bound">minPrioACB</span><span class="main">)</span><span class="main">)</span>
+                    <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">minIndex</span></span><span class="main">,</span><span class="free"><span class="bound">minPrio</span></span><span class="main">)</span>
+                    <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of findAcotorUnderMinSwarm
+*)</span>                                                 
+<span class="keyword1"><span class="command">definition</span></span> Re_findAcotorUnderMinSwarm <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> SwarmInfo <span class="main">⇒</span> int32_t <span class="main">⇒</span>  scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_findAcotorUnderMinSwarm</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="free"><span class="bound">minPrio</span></span>  <span class="main">≡</span>
+              <span class="keyword1">let</span> <span class="bound">al'</span> <span class="main">=</span> filter <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> ACB.state <span class="bound">a</span> <span class="main">≠</span> actorState.ACTOR_STATE_RUNNING 
+                                    <span class="main">∧</span> swarmID <span class="main">(</span>pSwarmInfo <span class="bound">a</span><span class="main">)</span> <span class="main">=</span> swarmID <span class="free"><span class="bound">minSwarmPtr</span></span> 
+                                    <span class="main">∧</span> ACB.prio <span class="bound">a</span> <span class="main">=</span> <span class="free"><span class="bound">minPrio</span></span><span class="main">)</span> 
+                        <span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">;</span>
+                  <span class="bound">al''</span> <span class="main">=</span> map <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="main">⦇</span>ActorPluginInfo.actorID   <span class="main">=</span> ACB.actorID <span class="bound">a</span><span class="main">,</span>
+                                   ActorPluginInfo.actorName <span class="main">=</span> ACB.name <span class="bound">a</span><span class="main">,</span>
+                                   ActorPluginInfo.state     <span class="main">=</span> ACB.state <span class="bound">a</span><span class="main">,</span>
+                                   ActorPluginInfo.taskInfo  <span class="main">=</span> ACB.taskInfo <span class="bound">a</span><span class="main">⦈</span><span class="main">)</span> 
+                        <span class="bound">al'</span>
+              <span class="keyword1">in</span> <span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>minPrioActors <span class="main">:=</span> <span class="bound">al''</span><span class="main">⦈</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of findRunningSwarm
+*)</span>                     
+<span class="keyword1"><span class="command">definition</span></span> Re_findRunningSwarm <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo list  <span class="main">⇒</span> int <span class="main">⇒</span> <span class="main">(</span>SwarmInfo option <span class="main">×</span> int<span class="main">)</span>"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_findRunningSwarm</span> <span class="free"><span class="bound">sil</span></span> <span class="free"><span class="bound">count</span></span> <span class="main">≡</span> 
+                <span class="keyword1">let</span> <span class="bound">P</span> <span class="main">=</span> <span class="main">(</span><span class="main">λ</span><span class="bound">s</span><span class="main">.</span> SwarmInfo.state <span class="bound">s</span> <span class="main">=</span> actorState.ACTOR_STATE_RUNNING<span class="main">)</span><span class="main">;</span>
+                    <span class="bound">sil'</span> <span class="main">=</span> filter <span class="bound">P</span> <span class="free"><span class="bound">sil</span></span>
+                <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">sil'</span> <span class="main">=</span> <span class="main">[]</span> <span class="keyword1">then</span> None <span class="keyword1">else</span> Some <span class="main">(</span>last <span class="bound">sil'</span><span class="main">)</span><span class="main">,</span> <span class="free"><span class="bound">count</span></span> <span class="main">+</span> int <span class="main">(</span>length <span class="bound">sil'</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of findToPauseActors
+*)</span>            
+<span class="keyword1"><span class="command">definition</span></span> Re_findToPauseActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> SwarmInfo <span class="main">⇒</span> int32_t <span class="main">⇒</span>  scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_findToPauseActors</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="free"><span class="bound">minPrio</span></span>  <span class="main">≡</span> 
+            <span class="keyword1">let</span> <span class="bound">al'</span> <span class="main">=</span> filter <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> ACB.state <span class="bound">a</span> <span class="main">=</span> actorState.ACTOR_STATE_RUNNING <span class="main">∧</span> 
+                                  <span class="main">(</span> <span class="main">(</span>swarmID <span class="main">(</span>pSwarmInfo <span class="bound">a</span><span class="main">)</span> <span class="main">≠</span> swarmID <span class="free"><span class="bound">minSwarmPtr</span></span><span class="main">)</span> <span class="main">∨</span> 
+                                    <span class="main">(</span>swarmID <span class="main">(</span>pSwarmInfo <span class="bound">a</span><span class="main">)</span> <span class="main">=</span> swarmID <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="main">∧</span> ACB.prio <span class="bound">a</span> <span class="main">&gt;</span> <span class="free"><span class="bound">minPrio</span></span><span class="main">)</span> <span class="main">)</span>
+                             <span class="main">)</span> 
+                      <span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">;</span>
+                <span class="bound">al''</span> <span class="main">=</span> map <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span> <span class="main">⦇</span>ActorPluginInfo.actorID   <span class="main">=</span> ACB.actorID <span class="bound">a</span><span class="main">,</span>
+                                 ActorPluginInfo.actorName <span class="main">=</span> ACB.name <span class="bound">a</span><span class="main">,</span>
+                                 ActorPluginInfo.state     <span class="main">=</span> ACB.state <span class="bound">a</span><span class="main">,</span>
+                                 ActorPluginInfo.taskInfo  <span class="main">=</span> ACB.taskInfo <span class="bound">a</span><span class="main">⦈</span><span class="main">)</span>
+                       <span class="bound">al'</span>
+            <span class="keyword1">in</span> <span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>toPauseActors <span class="main">:=</span> <span class="bound">al''</span><span class="main">⦈</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of pauseSwarmAndActors 
+*)</span>         
+<span class="keyword1"><span class="command">definition</span></span> Re_pauseActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB list <span class="main">⇒</span> ActorPluginInfo list <span class="main">⇒</span> ACB list"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_pauseActors</span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">apil</span></span> <span class="main">≡</span> map <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span>  <span class="keyword1">if</span> ACB.actorID <span class="bound">a</span> <span class="main">∈</span> set <span class="main">(</span>map <span class="main">(</span><span class="main">λ</span><span class="bound">api</span><span class="main">.</span> ActorPluginInfo.actorID <span class="bound">api</span><span class="main">)</span> <span class="free"><span class="bound">apil</span></span><span class="main">)</span>
+                                            <span class="keyword1">then</span> <span class="bound">a</span><span class="main">⦇</span>ACB.state <span class="main">:=</span> actorState.ACTOR_STATE_PAUSE<span class="main">⦈</span>
+                                            <span class="keyword1">else</span> <span class="bound">a</span><span class="main">)</span> 
+                                   <span class="free"><span class="bound">al</span></span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_pauseSwarm <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> SwarmInfo option <span class="main">⇒</span> SwarmInfo <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_pauseSwarm</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">runningSwarmPtr</span></span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="main">≡</span><span class="main">(</span>
+              <span class="keyword1">if</span> <span class="free"><span class="bound">runningSwarmPtr</span></span> <span class="main">≠</span> None <span class="main">∧</span> swarmID <span class="main">(</span>the <span class="free"><span class="bound">runningSwarmPtr</span></span><span class="main">)</span> <span class="main">≠</span> swarmID <span class="free"><span class="bound">minSwarmPtr</span></span>
+              <span class="keyword1">then</span> 
+                <span class="main">(</span><span class="keyword1">let</span> <span class="bound">swal</span> <span class="main">=</span> swarmList <span class="free"><span class="bound">sche</span></span><span class="main">;</span>
+                     <span class="bound">num</span> <span class="main">=</span> index <span class="bound">swal</span> <span class="main">(</span>the <span class="free"><span class="bound">runningSwarmPtr</span></span><span class="main">)</span>
+                 <span class="keyword1">in</span>
+                    <span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>swarmList<span class="main">:=</span> <span class="main">(</span><span class="bound">swal</span><span class="main">[</span> <span class="bound">num</span><span class="main">:=</span> <span class="main">(</span><span class="bound">swal</span><span class="main">!</span><span class="bound">num</span><span class="main">)</span><span class="main">⦇</span>SwarmInfo.state <span class="main">:=</span> actorState.ACTOR_STATE_PAUSE<span class="main">⦈</span> <span class="main">]</span><span class="main">)</span><span class="main">⦈</span>
+                <span class="main">)</span>
+              <span class="keyword1">else</span> <span class="free"><span class="bound">sche</span></span>
+              <span class="main">)</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_pauseSwarmAndActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> SwarmInfo option <span class="main">⇒</span> SwarmInfo <span class="main">⇒</span> scheduler"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_pauseSwarmAndActors</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">runningSwarmPtr</span></span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="main">≡</span> 
+                 <span class="keyword1">let</span> <span class="bound">sche'</span> <span class="main">=</span> <span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>acbList <span class="main">:=</span> Re_pauseActors <span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span> <span class="main">(</span>toPauseActors <span class="free"><span class="bound">sche</span></span><span class="main">)</span> <span class="main">⦈</span><span class="main">;</span>
+                     <span class="bound">sche''</span> <span class="main">=</span> Re_pauseSwarm <span class="bound">sche'</span> <span class="free"><span class="bound">runningSwarmPtr</span></span> <span class="free"><span class="bound">minSwarmPtr</span></span>
+                 <span class="keyword1">in</span> <span class="bound">sche''</span>"</span></span></span>
+
+
+
+<span class="comment1">(* 
+  Requirement Definition of runSwarmAndActors 
+*)</span>         
+<span class="keyword1"><span class="command">definition</span></span> Re_runActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB list <span class="main">⇒</span> ActorPluginInfo list <span class="main">⇒</span> ACB list"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_runActors</span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">apil</span></span> <span class="main">≡</span> map <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span>  <span class="keyword1">if</span> ACB.actorID <span class="bound">a</span> <span class="main">∈</span> set <span class="main">(</span>map <span class="main">(</span><span class="main">λ</span><span class="bound">api</span><span class="main">.</span> ActorPluginInfo.actorID <span class="bound">api</span><span class="main">)</span> <span class="free"><span class="bound">apil</span></span><span class="main">)</span>
+                                           <span class="keyword1">then</span> <span class="bound">a</span><span class="main">⦇</span>ACB.state <span class="main">:=</span> actorState.ACTOR_STATE_RUNNING<span class="main">⦈</span>
+                                           <span class="keyword1">else</span> <span class="bound">a</span><span class="main">)</span> 
+                                 <span class="free"><span class="bound">al</span></span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_runActors1 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB list <span class="main">⇒</span> ActorPluginInfo list <span class="main">⇒</span> ACB list"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_runActors1</span> <span class="free"><span class="bound">al</span></span> <span class="free"><span class="bound">apil</span></span> <span class="main">≡</span> map <span class="main">(</span><span class="main">λ</span><span class="bound">a</span><span class="main">.</span>  <span class="keyword1">if</span> <span class="main">(</span><span class="main">∃</span><span class="bound"><span class="bound">j</span></span><span class="main">&lt;</span>length <span class="free"><span class="bound">apil</span></span><span class="main">.</span> ActorPluginInfo.actorID <span class="main">(</span><span class="free"><span class="bound">apil</span></span><span class="main">!</span><span class="bound">j</span><span class="main">)</span> <span class="main">=</span>  ACB.actorID <span class="bound">a</span> <span class="main">)</span>
+                                           <span class="keyword1">then</span> <span class="bound">a</span><span class="main">⦇</span>ACB.state <span class="main">:=</span> actorState.ACTOR_STATE_RUNNING<span class="main">⦈</span>
+                                           <span class="keyword1">else</span> <span class="bound">a</span><span class="main">)</span> 
+                                 <span class="free"><span class="bound">al</span></span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_runSwarm <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> SwarmInfo <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_runSwarm</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">swa</span></span> <span class="main">≡</span> 
+              <span class="keyword1">let</span> <span class="bound">swal</span> <span class="main">=</span> swarmList <span class="free"><span class="bound">sche</span></span><span class="main">;</span>
+                  <span class="bound">num</span> <span class="main">=</span> index <span class="bound">swal</span> <span class="free"><span class="bound">swa</span></span>
+              <span class="keyword1">in</span>
+                <span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>swarmList<span class="main">:=</span><span class="main">(</span> <span class="bound">swal</span><span class="main">[</span> <span class="bound">num</span><span class="main">:=</span> <span class="main">(</span><span class="main">(</span><span class="bound">swal</span><span class="main">!</span><span class="bound">num</span><span class="main">)</span><span class="main">⦇</span>SwarmInfo.state <span class="main">:=</span> actorState.ACTOR_STATE_RUNNING<span class="main">⦈</span><span class="main">)</span> <span class="main">]</span><span class="main">)</span><span class="main">⦈</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_runSwarmAndActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> SwarmInfo <span class="main">⇒</span> scheduler"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_runSwarmAndActors</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">swa</span></span> <span class="main">≡</span> 
+                 <span class="keyword1">let</span> <span class="bound">sche'</span> <span class="main">=</span> <span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>acbList <span class="main">:=</span> Re_runActors <span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span> <span class="main">(</span>minPrioActors <span class="free"><span class="bound">sche</span></span><span class="main">)</span> <span class="main">⦈</span><span class="main">;</span>
+                     <span class="bound">sche''</span> <span class="main">=</span> Re_runSwarm <span class="bound">sche'</span> <span class="free"><span class="bound">swa</span></span> 
+                 <span class="keyword1">in</span> <span class="bound">sche''</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of schedule
+*)</span>         
+<span class="keyword1"><span class="command">definition</span></span> Re_schedule_1 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> <span class="main">(</span>scheduler<span class="main">×</span>bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_schedule_1</span> <span class="free"><span class="bound">sche</span></span> <span class="main">≡</span> 
+             <span class="keyword1">let</span> <span class="bound">sche1</span> <span class="main">=</span> <span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>scheNum <span class="main">:=</span> scheNum <span class="free"><span class="bound">sche</span></span> <span class="main">+</span> <span class="main">1</span><span class="main">⦈</span><span class="main">;</span>
+                 <span class="bound">condition1</span> <span class="main">=</span> <span class="main">(</span>length <span class="main">(</span>acbList <span class="bound">sche1</span><span class="main">)</span> <span class="main">=</span> <span class="main">0</span><span class="main">)</span>
+             <span class="keyword1">in</span> <span class="main">(</span><span class="bound">sche1</span><span class="main">,</span><span class="bound">condition1</span><span class="main">)</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_schedule_2 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_schedule_2</span> <span class="free"><span class="bound">sche</span></span> <span class="main">≡</span> 
+             <span class="keyword1">let</span>
+                <span class="bound">sche'</span> <span class="main">=</span> <span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>finishingActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+                <span class="bound">sche''</span> <span class="main">=</span> Re_findFinishActors <span class="bound">sche'</span><span class="main">;</span>
+                <span class="bound">condition2</span> <span class="main">=</span> <span class="main">(</span>length <span class="main">(</span>finishingActors <span class="bound">sche''</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span><span class="main">)</span><span class="main">;</span>
+                <span class="bound">sche'''</span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">condition2</span> <span class="keyword1">then</span> Re_delFinishActors <span class="bound">sche''</span> <span class="keyword1">else</span> <span class="bound">sche''</span><span class="main">)</span> 
+             <span class="keyword1">in</span> <span class="bound">sche'''</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_schedule_3 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> <span class="main">(</span>SwarmInfo option <span class="main">×</span> int <span class="main">×</span> int <span class="main">×</span> bool <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_schedule_3</span> <span class="free"><span class="bound">sche3</span></span> <span class="main">≡</span> 
+             <span class="keyword1">let</span>
+                 <span class="main">(</span><span class="bound">minSwarmPtr</span><span class="main">,</span> <span class="bound">minSwarmPrio</span><span class="main">)</span> <span class="main">=</span> Re_findMinPrioSwarm <span class="main">(</span>swarmList <span class="free"><span class="bound">sche3</span></span><span class="main">)</span> <span class="main">(</span>MAX_PRIORITY<span class="main">+</span><span class="main">1</span><span class="main">)</span><span class="main">;</span>
+                 <span class="bound">condition3</span> <span class="main">=</span> <span class="main">(</span><span class="bound">minSwarmPtr</span> <span class="main">=</span> None<span class="main">)</span><span class="main">;</span>
+                 <span class="main">(</span><span class="bound">minIdx</span><span class="main">,</span> <span class="bound">minPrio</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>ifMinPrioSwarmHaveActor <span class="main">(</span>acbList <span class="free"><span class="bound">sche3</span></span><span class="main">)</span> <span class="main">(</span>the <span class="bound">minSwarmPtr</span><span class="main">)</span> <span class="main">(</span>MAX_PRIORITY<span class="main">+</span><span class="main">1</span><span class="main">)</span> <span class="main">(</span><span class="main">-</span><span class="main">1</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                 <span class="bound">condition4</span> <span class="main">=</span> <span class="main">(</span><span class="bound">minIdx</span> <span class="main">=</span> <span class="main">-</span><span class="main">(</span><span class="main">1</span><span class="main">)</span><span class="main">)</span>
+             <span class="keyword1">in</span> <span class="main">(</span><span class="bound">minSwarmPtr</span><span class="main">,</span> <span class="bound">minSwarmPrio</span><span class="main">,</span>  <span class="bound">minPrio</span><span class="main">,</span> <span class="bound">condition3</span><span class="main">,</span> <span class="bound">condition4</span><span class="main">)</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_schedule_4 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> bool <span class="main">⇒</span> SwarmInfo option <span class="main">⇒</span> SwarmInfo option <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_schedule_4</span> <span class="free"><span class="bound">sche5</span></span> <span class="free"><span class="bound">condition6</span></span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="free"><span class="bound">runningSwarmPtr</span></span> <span class="main">≡</span> 
+             <span class="keyword1">let</span> <span class="main">(</span><span class="bound">sche5'</span><span class="main">,</span> <span class="bound">flag</span><span class="main">)</span> <span class="main">=</span> Re_sche_updateActorPluginState <span class="free"><span class="bound">sche5</span></span> <span class="main">(</span>toPauseActors <span class="free"><span class="bound">sche5</span></span><span class="main">)</span> <span class="main">(</span>actorState.ACTOR_STATE_PAUSE<span class="main">)</span><span class="main">;</span>
+                 <span class="bound">sche6</span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">if</span> <span class="free"><span class="bound">condition6</span></span>
+                          <span class="keyword1">then</span> 
+                             <span class="keyword1">if</span> <span class="bound">flag</span>
+                             <span class="keyword1">then</span> Re_pauseSwarmAndActors <span class="bound">sche5'</span> <span class="free"><span class="bound">runningSwarmPtr</span></span> <span class="main">(</span>the <span class="free"><span class="bound">minSwarmPtr</span></span><span class="main">)</span>
+                             <span class="keyword1">else</span> <span class="bound">sche5'</span>
+                          <span class="keyword1">else</span> <span class="free"><span class="bound">sche5</span></span> <span class="main">)</span>
+             <span class="keyword1">in</span> <span class="bound">sche6</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_schedule_5 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> bool <span class="main">⇒</span> SwarmInfo option <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_schedule_5</span> <span class="free"><span class="bound">sche6</span></span> <span class="free"><span class="bound">condition7</span></span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="main">≡</span> 
+             <span class="keyword1">let</span> <span class="main">(</span><span class="bound">sche6'</span><span class="main">,</span> <span class="bound">flag</span><span class="main">)</span> <span class="main">=</span> Re_sche_updateActorPluginState <span class="free"><span class="bound">sche6</span></span> <span class="main">(</span>minPrioActors <span class="free"><span class="bound">sche6</span></span><span class="main">)</span> <span class="main">(</span>actorState.ACTOR_STATE_RUNNING<span class="main">)</span><span class="main">;</span>
+                 <span class="bound">sche7</span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">if</span> <span class="free"><span class="bound">condition7</span></span>
+                          <span class="keyword1">then</span> 
+                             <span class="keyword1">if</span> <span class="bound">flag</span>
+                             <span class="keyword1">then</span> Re_runSwarmAndActors <span class="bound">sche6'</span> <span class="main">(</span>the <span class="free"><span class="bound">minSwarmPtr</span></span><span class="main">)</span>
+                             <span class="keyword1">else</span> <span class="bound">sche6'</span>
+                          <span class="keyword1">else</span> <span class="free"><span class="bound">sche6</span></span> <span class="main">)</span>
+             <span class="keyword1">in</span> <span class="bound">sche7</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Re_schedule <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_schedule</span> <span class="free"><span class="bound">sche</span></span> <span class="main">≡</span> 
+            <span class="keyword1">let</span> <span class="main">(</span><span class="bound">sche1</span><span class="main">,</span><span class="bound">condition1</span><span class="main">)</span> <span class="main">=</span> Re_schedule_1 <span class="free"><span class="bound">sche</span></span><span class="main">;</span>
+                <span class="bound">sche3</span> <span class="main">=</span> Re_schedule_2 <span class="bound">sche1</span><span class="main">;</span>
+                <span class="main">(</span><span class="bound">minSwarmPtr</span><span class="main">,</span> <span class="bound">minSwarmPrio</span><span class="main">,</span> <span class="bound">minPrio</span><span class="main">,</span> <span class="bound">condition3</span><span class="main">,</span> <span class="bound">condition4</span><span class="main">)</span> <span class="main">=</span> Re_schedule_3 <span class="bound">sche3</span><span class="main">;</span>
+                <span class="bound">sche3'</span> <span class="main">=</span> <span class="bound">sche3</span><span class="main">⦇</span>minPrioActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+                <span class="bound">sche4</span> <span class="main">=</span> Re_findAcotorUnderMinSwarm <span class="bound">sche3'</span> <span class="main">(</span>the <span class="bound">minSwarmPtr</span><span class="main">)</span> <span class="bound">minPrio</span><span class="main">;</span>
+                <span class="main">(</span><span class="bound">runningSwarmPtr</span><span class="main">,</span> <span class="bound">nRunningSwarm</span><span class="main">)</span> <span class="main">=</span> Re_findRunningSwarm <span class="main">(</span>swarmList <span class="bound">sche4</span><span class="main">)</span> <span class="main">0</span><span class="main">;</span>
+                <span class="bound">condition5</span> <span class="main">=</span> <span class="main">(</span><span class="bound">nRunningSwarm</span> <span class="main">&gt;</span> <span class="main">1</span><span class="main">)</span><span class="main">;</span>
+                <span class="bound">sche4'</span> <span class="main">=</span> <span class="bound">sche4</span><span class="main">⦇</span>toPauseActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+                <span class="bound">sche5</span> <span class="main">=</span> Re_findToPauseActors <span class="bound">sche4'</span> <span class="main">(</span>the <span class="bound">minSwarmPtr</span><span class="main">)</span> <span class="bound">minPrio</span><span class="main">;</span>
+                <span class="bound">condition6</span> <span class="main">=</span> <span class="main">(</span>length <span class="main">(</span>toPauseActors <span class="bound">sche5</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span><span class="main">)</span><span class="main">;</span>
+                <span class="bound">sche6</span> <span class="main">=</span> Re_schedule_4 <span class="bound">sche5</span> <span class="bound">condition6</span> <span class="bound">minSwarmPtr</span> <span class="bound">runningSwarmPtr</span><span class="main">;</span>
+                <span class="bound">condition7</span> <span class="main">=</span> <span class="main">(</span>length <span class="main">(</span>minPrioActors <span class="bound">sche6</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span><span class="main">)</span><span class="main">;</span>
+                <span class="bound">sche7</span> <span class="main">=</span> Re_schedule_5 <span class="bound">sche6</span> <span class="bound">condition7</span> <span class="bound">minSwarmPtr</span>
+            <span class="keyword1">in</span> 
+              <span class="main">(</span><span class="keyword1">if</span> <span class="bound">condition1</span>
+              <span class="keyword1">then</span> <span class="bound">sche1</span>
+              <span class="keyword1">else</span> <span class="main">(</span>
+                <span class="keyword1">if</span> <span class="bound">condition3</span> <span class="main">∨</span> <span class="bound">condition4</span>
+                <span class="keyword1">then</span> <span class="bound">sche3</span>
+                <span class="keyword1">else</span> <span class="main">(</span>
+                  <span class="keyword1">if</span> <span class="bound">condition5</span>
+                  <span class="keyword1">then</span> <span class="bound">sche4</span>
+                  <span class="keyword1">else</span> <span class="bound">sche7</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* complete version *)</span>
+<span class="comment1">(*
+definition Re_schedule_raw :: "scheduler ⇒ scheduler"
+  where "Re_schedule_raw sche ≡ 
+             let sche1 = sche⦇scheNum := scheNum sche + 1⦈;
+                 condition1 = (length (acbList sche1) = 0);
+                 sche2 = Re_findFinishActors sche1;
+                 condition2 = (length (finishingActors sche2) ≠ 0);
+                 sche3 = (if condition2 then Re_delFinishActors sche2 else sche2) ;
+                 minSwarmPtr = Re_findMinPrioSwarm (swarmList sche3) (MAX_PRIORITY+1) None;
+                 condition3 = (minSwarmPtr = None);
+                 minSwarmPrio = swarmPrio (the minSwarmPtr);
+                 (minIdx, minPrio) = (ifMinPrioSwarmHaveActor (acbList sche3) (the minSwarmPtr) (MAX_PRIORITY+1) (-1));
+                 condition4 = (minIdx = -(1));
+                 sche4 = Re_findAcotorUnderMinSwarm sche3 (the minSwarmPtr) minPrio;
+                 (runningSwarmPtr, nRunningSwarm) = Re_findRunningSwarm (swarmList sche4) None 0;
+                 condition5 = (nRunningSwarm &gt; 1);
+                 sche5 = Re_findToPauseActors sche4 (the minSwarmPtr) minPrio;
+                 condition6 = (length (toPauseActors sche5) ≠ 0);
+                 (sche5', flag) = Re_sche_updateActorPluginState sche5 (toPauseActors sche5) (actorState.ACTOR_STATE_PAUSE);
+                 sche6 = (if condition6 ∧ flag then Re_pauseSwarmAndActors sche5' runningSwarmPtr (the minSwarmPtr) else sche5');
+                 condition7 = (length (minPrioActors sche5) ≠ 0);
+                 (sche6', flag) = Re_sche_updateActorPluginState sche6 (minPrioActors sche6) (actorState.ACTOR_STATE_RUNNING);
+                 sche7 = (if condition7 ∧ flag then Re_runSwarmAndActors sche6' (the minSwarmPtr) else sche6)
+            in (
+            if condition1
+            then sche1
+            else (
+              if condition3 ∨ condition4
+              then sche3
+              else (
+                if condition5
+                then sche4
+                else sche7
+            )))"
+*)</span>
+
+<span class="comment1">(* scheduler loop*)</span>
+
+<span class="comment1">(* 
+  Requirement Definition of scheLoopOnce
+*)</span>      
+<span class="keyword1"><span class="command">definition</span></span> Re_scheLoopOnce1 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> <span class="main">(</span>scheduler <span class="main">×</span> ScheduleMsg <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_scheLoopOnce1</span> <span class="free"><span class="bound">sche</span></span> <span class="main">≡</span> 
+                       <span class="main">(</span> <span class="keyword1">if</span> <span class="main">¬</span><span class="main">(</span>queue_empty <span class="main">(</span>scheMsgQueue <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">)</span>
+                         <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">⦇</span>scheMsgQueue <span class="main">:=</span> pop <span class="main">(</span>scheMsgQueue <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">⦈</span><span class="main">,</span> front <span class="main">(</span>scheMsgQueue <span class="free"><span class="bound">sche</span></span><span class="main">)</span> <span class="main">,</span> True<span class="main">)</span>
+                         <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">,</span> nullScheduleMsg<span class="main">,</span> False<span class="main">)</span><span class="main">)</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> Re_scheLoopOnce2 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> ScheduleMsg <span class="main">⇒</span> <span class="main">(</span>scheduler <span class="main">×</span> bool<span class="main">)</span>"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_scheLoopOnce2</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">msg</span></span> <span class="main">≡</span>
+                       <span class="keyword1">case</span> <span class="main">(</span>type <span class="free"><span class="bound">msg</span></span><span class="main">)</span> <span class="keyword1">of</span>
+                          SCHEDULE_CMD_RAW <span class="main">⇒</span> <span class="main">(</span><span class="free"><span class="bound">sche</span></span><span class="main">,</span> True<span class="main">)</span> <span class="main">|</span>
+                          SCHEDULE_CMD_SWITCH_PRIO <span class="main">⇒</span> <span class="main">(</span>Re_switchToActor <span class="free"><span class="bound">sche</span></span> <span class="main">(</span>param1 <span class="free"><span class="bound">msg</span></span><span class="main">)</span> <span class="main">(</span>param3 <span class="free"><span class="bound">msg</span></span><span class="main">)</span><span class="main">)</span> <span class="main">|</span>
+                          SCHEDULE_CMD_ACTIVATE_ACTOR <span class="main">⇒</span> <span class="main">(</span>Re_activateActor <span class="free"><span class="bound">sche</span></span> <span class="main">(</span>param1 <span class="free"><span class="bound">msg</span></span><span class="main">)</span> <span class="main">(</span>param3 <span class="free"><span class="bound">msg</span></span><span class="main">)</span><span class="main">)</span> <span class="main">|</span>
+                          SCHEDULE_CMD_YIELD_ACTOR <span class="main">⇒</span> <span class="main">(</span>Re_yieldActor <span class="free"><span class="bound">sche</span></span> <span class="main">(</span>param1 <span class="free"><span class="bound">msg</span></span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> scheLoopOnce <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> scheduler"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted"><span class="language">"<span class="free">scheLoopOnce</span> <span class="free"><span class="bound">sche</span></span> <span class="main">≡</span>
+                <span class="keyword1">let</span> 
+                    <span class="main">(</span><span class="bound">sche'</span><span class="main">,</span> <span class="bound">scheMsg</span><span class="main">,</span> <span class="bound">queueFlag</span><span class="main">)</span> <span class="main">=</span> Re_scheLoopOnce1 <span class="free"><span class="bound">sche</span></span><span class="main">;</span>
+                    <span class="main">(</span><span class="bound">sche''</span><span class="main">,</span> <span class="bound">msgFlag</span><span class="main">)</span> <span class="main">=</span> Re_scheLoopOnce2  <span class="bound">sche'</span> <span class="bound">scheMsg</span>
+                <span class="keyword1">in</span> 
+                    <span class="main">(</span> <span class="keyword1">if</span> <span class="bound">queueFlag</span>
+                      <span class="keyword1">then</span> 
+                         <span class="main">(</span><span class="keyword1">if</span> <span class="bound">msgFlag</span>
+                          <span class="keyword1">then</span> Re_schedule <span class="bound">sche''</span>
+                          <span class="keyword1">else</span> <span class="bound">sche''</span>
+                         <span class="main">)</span>
+                      <span class="keyword1">else</span> <span class="bound">sche'</span>
+                    <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Requirement Definition of Some API Functions
+  Not Implement getActorName getActorPlugin getSharedData setSharedData 
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Re_api_switchToActor <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> int64_t <span class="main">⇒</span> string <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_api_switchToActor</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anActorID</span></span> <span class="free"><span class="bound">anActorName</span></span> <span class="main">≡</span>
+          <span class="keyword1">let</span> <span class="bound">scheMsg</span> <span class="main">=</span> <span class="main">⦇</span>ScheduleMsg.type <span class="main">=</span> SCHEDULE_CMD_SWITCH_PRIO<span class="main">,</span>
+                         param1 <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span><span class="main">,</span>
+                         param2 <span class="main">=</span> <span class="main">0</span><span class="main">,</span>
+                         param3 <span class="main">=</span> <span class="free"><span class="bound">anActorName</span></span><span class="main">⦈</span>
+          <span class="keyword1">in</span> Re_appendScheduleMsg <span class="free"><span class="bound">sche</span></span> <span class="bound">scheMsg</span>"</span></span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> Re_api_activateActor <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> int64_t <span class="main">⇒</span> string <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_api_activateActor</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anActorID</span></span> <span class="free"><span class="bound">anActorName</span></span> <span class="main">≡</span>
+          <span class="keyword1">let</span> <span class="bound">scheMsg</span> <span class="main">=</span> <span class="main">⦇</span>ScheduleMsg.type <span class="main">=</span> SCHEDULE_CMD_ACTIVATE_ACTOR<span class="main">,</span>
+                         param1 <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span><span class="main">,</span>
+                         param2 <span class="main">=</span> <span class="main">0</span><span class="main">,</span>
+                         param3 <span class="main">=</span> <span class="free"><span class="bound">anActorName</span></span><span class="main">⦈</span>
+          <span class="keyword1">in</span> Re_appendScheduleMsg <span class="free"><span class="bound">sche</span></span> <span class="bound">scheMsg</span>"</span></span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> Re_api_yieldActor <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> int64_t <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_api_yieldActor</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">≡</span>
+          <span class="keyword1">let</span> <span class="bound">scheMsg</span> <span class="main">=</span> <span class="main">⦇</span>ScheduleMsg.type <span class="main">=</span> SCHEDULE_CMD_YIELD_ACTOR<span class="main">,</span>
+                         param1 <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span><span class="main">,</span>
+                         param2 <span class="main">=</span> <span class="main">0</span><span class="main">,</span>
+                         param3 <span class="main">=</span> <span class="main">[]</span><span class="main">⦈</span>
+          <span class="keyword1">in</span> Re_appendScheduleMsg <span class="free"><span class="bound">sche</span></span> <span class="bound">scheMsg</span>"</span></span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> Re_api_appendScheduleRequest <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> int64_t <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_api_appendScheduleRequest</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">≡</span>
+          <span class="keyword1">let</span> <span class="bound">scheMsg</span> <span class="main">=</span> <span class="main">⦇</span>ScheduleMsg.type <span class="main">=</span> SCHEDULE_CMD_RAW<span class="main">,</span>
+                         param1 <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span><span class="main">,</span>
+                         param2 <span class="main">=</span> <span class="main">0</span><span class="main">,</span>
+                         param3 <span class="main">=</span> <span class="main">[]</span><span class="main">⦈</span>
+          <span class="keyword1">in</span> Re_appendScheduleMsg <span class="free"><span class="bound">sche</span></span> <span class="bound">scheMsg</span>"</span></span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> Re_api_terminate <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> string <span class="main">⇒</span> int64_t <span class="main">⇒</span> string <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_api_terminate</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">bName</span></span> <span class="free"><span class="bound">actID</span></span> <span class="free"><span class="bound">pName</span></span> <span class="main">≡</span> 
+            <span class="keyword1">if</span> <span class="free"><span class="bound">actID</span></span> <span class="main">∈</span> set <span class="main">(</span>map ACB.actorID <span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">)</span> 
+            <span class="keyword1">then</span>
+              <span class="keyword1">let</span> <span class="main">(</span><span class="bound">sche'</span><span class="main">,</span> <span class="bound">flag</span><span class="main">)</span> <span class="main">=</span> api_updateSchedule <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">bName</span></span> <span class="free"><span class="bound">actID</span></span> <span class="free"><span class="bound">pName</span></span> ACTOR_STATE_FINISH
+              <span class="keyword1">in</span> <span class="main">(</span>
+                  <span class="keyword1">if</span> <span class="bound">flag</span> <span class="main">=</span> False
+                  <span class="keyword1">then</span> <span class="bound">sche'</span>
+                  <span class="keyword1">else</span> Re_api_appendScheduleRequest <span class="bound">sche'</span> <span class="free"><span class="bound">actID</span></span>
+                 <span class="main">)</span>
+            <span class="keyword1">else</span> <span class="free"><span class="bound">sche</span></span>
+            "</span></span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> Re_api_pluginYieldActor <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> string <span class="main">⇒</span> int64_t <span class="main">⇒</span> string <span class="main">⇒</span> scheduler"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Re_api_pluginYieldActor</span> <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">bName</span></span> <span class="free"><span class="bound">actID</span></span> <span class="free"><span class="bound">pName</span></span> <span class="main">≡</span> 
+            <span class="keyword1">if</span> <span class="free"><span class="bound">actID</span></span> <span class="main">∈</span> set <span class="main">(</span>map ACB.actorID <span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">)</span> 
+            <span class="keyword1">then</span>
+              <span class="keyword1">let</span> <span class="main">(</span><span class="bound">sche'</span><span class="main">,</span> <span class="bound">flag</span><span class="main">)</span> <span class="main">=</span> api_updateSchedule <span class="free"><span class="bound">sche</span></span> <span class="free"><span class="bound">bName</span></span> <span class="free"><span class="bound">actID</span></span> <span class="free"><span class="bound">pName</span></span> ACTOR_STATE_PAUSE
+              <span class="keyword1">in</span> <span class="main">(</span>
+                  <span class="keyword1">if</span> <span class="bound">flag</span> <span class="main">=</span> False
+                  <span class="keyword1">then</span> <span class="bound">sche'</span>
+                  <span class="keyword1">else</span> Re_api_yieldActor <span class="bound">sche'</span> <span class="free"><span class="bound">actID</span></span>
+                 <span class="main">)</span>
+            <span class="keyword1">else</span> <span class="free"><span class="bound">sche</span></span>
+          "</span></span></span>
+
+<span class="keyword2"><span class="keyword">end</span></span></pre></body>

@@ -1,0 +1,1212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('../../fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.theories { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+</style><title>Theory "des_scheduler"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> des_scheduler
+
+<span class="keyword2"><span class="keyword">imports</span></span> <span class="quoted">"des_bus"</span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="comment1">(* 
+  Design Definition of Function appendScheduleMsg
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_appendScheduleMsg <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ScheduleMsg <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> unit<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_appendScheduleMsg</span> <span class="free"><span class="bound">aMsg</span></span> <span class="main">≡</span>
+          modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>scheMsgQueue <span class="main">:=</span> push_que <span class="main">(</span>scheMsgQueue <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="free"><span class="bound">aMsg</span></span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function yieldActor
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_yieldActor <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"int64_t <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> bool<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_yieldActor</span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">≡</span> 
+   <span class="keyword1">do</span>
+     <span class="bound">len</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> length <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+     <span class="bound">res</span> <span class="main">←</span> <span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="bound">i</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">i</span> <span class="main">≥</span> <span class="main">0</span> <span class="main">∧</span> <span class="bound">i</span> <span class="main">&lt;</span> <span class="bound">len</span><span class="main">)</span> 
+              <span class="main">(</span><span class="main">λ</span><span class="bound">i</span><span class="main">.</span> <span class="keyword1">do</span>
+                 <span class="bound">p</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span><span class="bound">i</span><span class="main">)</span><span class="main">;</span>
+                 <span class="keyword1">if</span> ACB.actorID <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">∧</span> ACB.state <span class="bound">p</span> <span class="main">=</span> actorState.ACTOR_STATE_RUNNING
+                 <span class="keyword1">then</span><span class="main">(</span>     
+                      <span class="keyword1">if</span>  ACB.prio <span class="bound">p</span> <span class="main">≥</span> MAX_PRIORITY
+                      <span class="keyword1">then</span> 
+                        <span class="keyword1">do</span>
+                          <span class="bound">st</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="inner_quoted">''[Actor Scheduler] The actor ''</span> <span class="main">@</span> show <span class="main">(</span>ACB.prio <span class="main">(</span><span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">i</span><span class="main">)</span><span class="main">)</span>  <span class="main">@</span> <span class="inner_quoted">'' prio &gt;= MAX_PRIORITY''</span><span class="main">)</span><span class="main">;</span>
+                          modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_ERROR <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                          throwError <span class="main">(</span><span class="main">0</span><span class="main">)</span>
+                        <span class="keyword1">od</span>
+                      <span class="keyword1">else</span> 
+                        <span class="main">(</span><span class="keyword1">do</span>
+                            modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>acbList <span class="main">:=</span> list_update <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="bound">i</span> 
+                                      <span class="main">(</span><span class="bound">p</span><span class="main">⦇</span>prio <span class="main">:=</span> prio <span class="bound">p</span> <span class="main">+</span> <span class="main">1</span><span class="main">⦈</span><span class="main">)</span> <span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span> 
+                            throwError <span class="main">(</span><span class="bound">len</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>                     
+                         <span class="keyword1">od</span><span class="main">)</span>
+                    <span class="main">)</span>
+                <span class="keyword1">else</span> returnOk <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>           
+              <span class="keyword1">od</span><span class="main">)</span> 
+              <span class="main">(</span><span class="main">0</span><span class="main">)</span> 
+            <span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+     condition <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span>  <span class="bound">res</span> <span class="main">=</span> <span class="bound">len</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+       <span class="main">(</span>return True<span class="main">)</span>
+       <span class="main">(</span><span class="keyword1">do</span>
+            <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] Cannot find the running actor by ID ''</span> <span class="main">@</span> show <span class="free"><span class="bound">anActorID</span></span><span class="main">)</span><span class="main">;</span>
+            modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_ERROR <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+            return False
+       <span class="keyword1">od</span><span class="main">)</span>
+   <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function activateActor
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_activateActor <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"int64_t <span class="main">⇒</span> string <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> bool<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_activateActor</span> <span class="free"><span class="bound">anActorID</span></span> <span class="free"><span class="bound">anActorName</span></span> <span class="main">≡</span>
+    <span class="keyword1">do</span>
+     <span class="bound">len</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> length <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+     <span class="bound">resi</span> <span class="main">←</span><span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="bound">i</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">i</span><span class="main">≥</span><span class="main">0</span> <span class="main">∧</span> <span class="bound">i</span><span class="main">&lt;</span>int <span class="bound">len</span><span class="main">)</span>
+             <span class="main">(</span><span class="main">λ</span><span class="bound">i</span><span class="main">.</span> <span class="keyword1">do</span>
+               <span class="bound">pi</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">!</span> <span class="main">(</span>nat <span class="bound">i</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+               <span class="keyword1">if</span> ACB.actorID <span class="bound">pi</span> <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">∧</span>  ACB.state <span class="bound">pi</span> <span class="main">=</span> actorState.ACTOR_STATE_RUNNING
+               <span class="keyword1">then</span>  <span class="main">(</span><span class="keyword1">do</span>
+                      <span class="bound">resj</span> <span class="main">←</span> <span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="bound">j</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">j</span><span class="main">≥</span><span class="main">0</span> <span class="main">∧</span> <span class="bound">j</span><span class="main">&lt;</span> int <span class="bound">len</span><span class="main">)</span>
+                               <span class="main">(</span><span class="main">λ</span><span class="bound">j</span><span class="main">.</span> <span class="keyword1">do</span>
+                                 <span class="bound">pj</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span><span class="main">(</span>nat <span class="bound">j</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                 <span class="keyword1">if</span> ACB.name <span class="bound">pj</span> <span class="main">=</span> <span class="free"><span class="bound">anActorName</span></span> <span class="main">∧</span> swarmID <span class="main">(</span>ACB.pSwarmInfo <span class="bound">pj</span><span class="main">)</span> <span class="main">=</span> swarmID <span class="main">(</span>ACB.pSwarmInfo <span class="bound">pi</span><span class="main">)</span>
+                                 <span class="keyword1">then</span> 
+                                    <span class="keyword1">if</span> ACB.state <span class="bound">pj</span> <span class="main">=</span> actorState.ACTOR_STATE_RUNNING
+                                    <span class="keyword1">then</span> 
+                                      <span class="keyword1">do</span> 
+                                        <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] Try to activate actor which is already running''</span><span class="main">)</span><span class="main">;</span>
+                                        modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_WARN <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                        throwError <span class="main">(</span><span class="main">-</span><span class="numeral">2</span><span class="main">)</span>
+                                      <span class="keyword1">od</span>
+                                    <span class="keyword1">else</span> 
+                                     <span class="main">(</span><span class="keyword1">do</span>
+                                       modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>acbList <span class="main">:=</span> list_update <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>nat <span class="bound">j</span><span class="main">)</span> <span class="main">(</span><span class="bound">pj</span><span class="main">⦇</span>prio <span class="main">:=</span> prio <span class="bound">pi</span><span class="main">⦈</span><span class="main">)</span> <span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span> 
+                                       throwError <span class="main">(</span><span class="main">-</span><span class="main">1</span><span class="main">)</span>
+                                     <span class="keyword1">od</span><span class="main">)</span>
+                                 <span class="keyword1">else</span> returnOk <span class="main">(</span><span class="bound">j</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                               <span class="keyword1">od</span><span class="main">)</span> 
+                               <span class="main">(</span><span class="main">0</span><span class="main">::</span>int<span class="main">)</span> 
+                                <span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+                        condition<span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="bound">resj</span> <span class="main">=</span> <span class="main">-</span><span class="main">1</span><span class="main">)</span>
+                          <span class="main">(</span>throwError <span class="main">(</span><span class="main">-</span><span class="main">1</span><span class="main">)</span><span class="main">)</span>
+                          <span class="main">(</span><span class="keyword1">do</span>
+                            <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] Cannot find the actor by name ''</span> <span class="main">@</span> <span class="free"><span class="bound">anActorName</span></span><span class="main">)</span><span class="main">;</span>
+                            modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_ERROR <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                            throwError <span class="main">(</span><span class="main">-</span><span class="numeral">2</span><span class="main">)</span>                      
+                          <span class="keyword1">od</span><span class="main">)</span>
+                  <span class="keyword1">od</span><span class="main">)</span>
+             <span class="keyword1">else</span> returnOk <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+             <span class="keyword1">od</span><span class="main">)</span> 
+             <span class="main">(</span><span class="main">0</span><span class="main">::</span>int<span class="main">)</span><span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+      condition <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="bound">resi</span> <span class="main">=</span> <span class="main">-</span><span class="main">1</span><span class="main">)</span>
+        <span class="main">(</span>return True<span class="main">)</span>
+        <span class="main">(</span><span class="keyword1">do</span>
+            <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] Cannot find the running actor by ID ''</span> <span class="main">@</span> show <span class="free"><span class="bound">anActorID</span></span><span class="main">)</span><span class="main">;</span>
+            modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_ERROR <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+            return False
+        <span class="keyword1">od</span><span class="main">)</span>
+    <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function switchToActor
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_switchToActor <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"int64_t <span class="main">⇒</span> string <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> bool<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_switchToActor</span> <span class="free"><span class="bound">anActorID</span></span> <span class="free"><span class="bound">anActorName</span></span> <span class="main">≡</span>
+    <span class="keyword1">do</span>
+     <span class="bound">len</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> length <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+     <span class="bound">resi</span> <span class="main">←</span><span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="bound">i</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">i</span><span class="main">≥</span><span class="main">0</span> <span class="main">∧</span> <span class="bound">i</span> <span class="main">&lt;</span> int <span class="bound">len</span><span class="main">)</span>
+             <span class="main">(</span><span class="main">λ</span><span class="bound">i</span><span class="main">.</span> <span class="keyword1">do</span>
+               <span class="bound">pi</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="main">(</span>nat <span class="bound">i</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+               <span class="keyword1">if</span> ACB.name <span class="bound">pi</span> <span class="main">=</span> <span class="free"><span class="bound">anActorName</span></span>
+               <span class="keyword1">then</span> 
+                <span class="main">(</span><span class="keyword1">if</span> ACB.state <span class="bound">pi</span> <span class="main">=</span> actorState.ACTOR_STATE_RUNNING
+                 <span class="keyword1">then</span> 
+                   <span class="keyword1">do</span>
+                     <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] Try to switch to actor which is already running''</span><span class="main">)</span><span class="main">;</span>
+                     modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_FATAL <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span> 
+                     throwError <span class="main">(</span><span class="main">-</span><span class="numeral">3</span><span class="main">)</span>
+                   <span class="keyword1">od</span>
+                 <span class="keyword1">else</span> 
+                  <span class="main">(</span><span class="keyword1">do</span>
+                     <span class="bound">resj</span> <span class="main">←</span><span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="bound">j</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">j</span><span class="main">≥</span><span class="main">0</span> <span class="main">∧</span> <span class="bound">j</span> <span class="main">&lt;</span> int <span class="bound">len</span><span class="main">)</span>
+                              <span class="main">(</span><span class="main">λ</span><span class="bound">j</span><span class="main">.</span> <span class="keyword1">do</span>
+                                <span class="bound">pi</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="main">(</span>nat <span class="bound">i</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                <span class="bound">pj</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span><span class="main">(</span>nat <span class="bound">j</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                <span class="keyword1">if</span> ACB.actorID <span class="bound">pj</span> <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">∧</span> 
+                                   ACB.state <span class="bound">pj</span> <span class="main">=</span> actorState.ACTOR_STATE_RUNNING
+                                <span class="keyword1">then</span> 
+                                  <span class="main">(</span><span class="keyword1">do</span> 
+                                    <span class="bound">temp</span> <span class="main">←</span> return <span class="main">(</span>ACB.prio <span class="bound">pi</span><span class="main">)</span><span class="main">;</span>
+                                    modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>acbList <span class="main">:=</span> list_update <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>nat <span class="bound">i</span><span class="main">)</span> <span class="main">(</span><span class="bound">pi</span><span class="main">⦇</span>prio <span class="main">:=</span> prio <span class="bound">pj</span><span class="main">⦈</span><span class="main">)</span> <span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span> 
+                                    modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>acbList <span class="main">:=</span> list_update <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>nat <span class="bound">j</span><span class="main">)</span> <span class="main">(</span><span class="bound">pj</span><span class="main">⦇</span>prio <span class="main">:=</span> <span class="bound">temp</span><span class="main">⦈</span><span class="main">)</span> <span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+                                    throwError <span class="main">(</span><span class="main">-</span><span class="main">1</span><span class="main">)</span>
+                                   <span class="keyword1">od</span><span class="main">)</span>
+                                <span class="keyword1">else</span> returnOk <span class="main">(</span><span class="bound">j</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                               <span class="keyword1">od</span><span class="main">)</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>int<span class="main">)</span> <span class="main">)</span>
+                             <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+                     condition<span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="bound">resj</span> <span class="main">=</span> <span class="main">-</span><span class="main">1</span><span class="main">)</span>
+                       <span class="main">(</span>throwError <span class="main">(</span><span class="main">-</span><span class="main">1</span><span class="main">)</span><span class="main">)</span>
+                       <span class="main">(</span><span class="keyword1">do</span>
+                         <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] Cannot find the running actor by ID ''</span> <span class="main">@</span> <span class="main">(</span>show <span class="free"><span class="bound">anActorID</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                         modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_ERROR <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                         throwError <span class="main">(</span><span class="main">-</span><span class="numeral">2</span><span class="main">)</span>                            
+                        <span class="keyword1">od</span><span class="main">)</span>
+                    
+                 <span class="keyword1">od</span><span class="main">)</span>
+                <span class="main">)</span>
+               <span class="keyword1">else</span> returnOk <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+              <span class="keyword1">od</span><span class="main">)</span> 
+              <span class="main">(</span><span class="main">0</span><span class="main">::</span>int<span class="main">)</span><span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+     condition<span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="bound">resi</span> <span class="main">=</span> <span class="main">-</span><span class="main">1</span><span class="main">)</span>
+        <span class="main">(</span>return True<span class="main">)</span>
+        <span class="main">(</span><span class="keyword1">do</span>
+            <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] Cannot find the actor by name ''</span> <span class="main">@</span> <span class="free"><span class="bound">anActorName</span></span><span class="main">)</span><span class="main">;</span>
+            modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_ERROR <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+            return False
+         <span class="keyword1">od</span><span class="main">)</span>
+    <span class="keyword1">od</span>"</span></span></span>
+
+<span class="comment1">(* 
+  Design Definition of Function getActorPlugin_sche
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_getActorPlugin_sche <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"int64_t <span class="main">⇒</span> string <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> <span class="main">(</span>plugin <span class="main">×</span> bool<span class="main">)</span><span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_getActorPlugin_sche</span> <span class="free"><span class="bound">anActorID</span></span> <span class="free"><span class="bound">aPluginName</span></span> <span class="main">≡</span> 
+  <span class="keyword1">do</span>
+    <span class="bound">leni</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> length <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+    <span class="bound">resi</span> <span class="main">←</span> <span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">i</span><span class="main">,</span><span class="bound">plu</span><span class="main">,</span><span class="bound">flag</span><span class="main">)</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">i</span> <span class="main">&lt;</span> <span class="bound">leni</span><span class="main">)</span>
+      <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">i</span><span class="main">,</span><span class="bound">plu</span><span class="main">,</span><span class="bound">flag</span><span class="main">)</span><span class="main">.</span> <span class="keyword1">do</span>
+         <span class="bound">ai</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span> <span class="bound">i</span><span class="main">)</span><span class="main">;</span>
+         <span class="keyword1">if</span> ACB.actorID <span class="bound">ai</span> <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span>
+         <span class="keyword1">then</span> 
+           <span class="main">(</span><span class="keyword1">do</span>
+              <span class="bound">ptrTaskInfo</span> <span class="main">←</span> return <span class="main">(</span>ACB.taskInfo <span class="bound">ai</span><span class="main">)</span><span class="main">;</span>
+              <span class="bound">lenj</span> <span class="main">←</span> return <span class="main">(</span>length <span class="main">(</span>plugins <span class="bound">ptrTaskInfo</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+              <span class="bound">resj</span> <span class="main">←</span><span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">j</span><span class="main">,</span><span class="bound">plu</span><span class="main">,</span><span class="bound">flag</span><span class="main">)</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">j</span> <span class="main">&lt;</span> <span class="bound">lenj</span><span class="main">)</span>
+                <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">j</span><span class="main">,</span><span class="bound">plu</span><span class="main">,</span><span class="bound">flag</span><span class="main">)</span><span class="main">.</span> <span class="keyword1">do</span>
+                   <span class="bound">pj</span> <span class="main">←</span> return <span class="main">(</span><span class="main">(</span>plugins <span class="bound">ptrTaskInfo</span><span class="main">)</span><span class="main">!</span> <span class="bound">j</span><span class="main">)</span><span class="main">;</span>
+                   <span class="bound">busName</span> <span class="main">←</span> return <span class="main">(</span>PluginInfo.busName <span class="bound">pj</span><span class="main">)</span><span class="main">;</span>
+                   <span class="bound">pluginName</span> <span class="main">←</span> return <span class="main">(</span>PluginInfo.name <span class="bound">pj</span><span class="main">)</span><span class="main">;</span>
+                   <span class="keyword1">if</span> <span class="bound">pluginName</span> <span class="main">=</span> <span class="free"><span class="bound">aPluginName</span></span> 
+                   <span class="keyword1">then</span> 
+                     <span class="main">(</span><span class="keyword1">do</span> 
+                        <span class="bound">lenk</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> length <span class="main">(</span>registeredBus <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                        <span class="bound">resk</span> <span class="main">←</span><span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">k</span><span class="main">,</span><span class="bound">plu</span><span class="main">,</span><span class="bound">flag</span><span class="main">)</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">k</span> <span class="main">&lt;</span> <span class="bound">lenk</span><span class="main">)</span>
+                           <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">k</span><span class="main">,</span><span class="bound">plu</span><span class="main">,</span><span class="bound">flag</span><span class="main">)</span><span class="main">.</span> <span class="keyword1">do</span>
+                              <span class="bound">bk</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>registeredBus <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span> <span class="bound">k</span><span class="main">)</span><span class="main">;</span>
+                              <span class="bound">tempStr</span> <span class="main">←</span> return <span class="main">(</span>getBusName <span class="bound">bk</span><span class="main">)</span><span class="main">;</span>
+                              <span class="keyword1">if</span> <span class="bound">busName</span> <span class="main">=</span> <span class="bound">tempStr</span>
+                              <span class="keyword1">then</span> 
+                                <span class="main">(</span><span class="keyword1">do</span>
+                                   <span class="bound">ret</span> <span class="main">←</span> NonDetMonad_call.call <span class="main">(</span>Des_getActorPlugin <span class="free"><span class="bound">anActorID</span></span> <span class="free"><span class="bound">aPluginName</span></span><span class="main">)</span> 
+                                          <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="bound">bk</span><span class="main">,</span>snd <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span> <span class="bound">b</span><span class="main">.</span> <span class="bound">σ</span><span class="main">)</span><span class="main">;</span>
+                                    throwError <span class="main">(</span><span class="bound">lenk</span> <span class="main">,</span><span class="bound">ret</span><span class="main">)</span>
+                                 <span class="keyword1">od</span><span class="main">)</span>
+                              <span class="keyword1">else</span> returnOk<span class="main">(</span><span class="bound">k</span><span class="main">+</span><span class="main">1</span><span class="main">,</span> <span class="bound">plu</span><span class="main">,</span> <span class="bound">flag</span><span class="main">)</span>
+                           <span class="keyword1">od</span><span class="main">)</span> 
+                           <span class="main">(</span><span class="main">0</span><span class="main">,</span>nullPlugin<span class="main">,</span>False<span class="main">)</span> 
+                           <span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+                        throwError <span class="main">(</span><span class="bound">lenj</span><span class="main">,</span> snd <span class="bound">resk</span><span class="main">)</span>
+                      <span class="keyword1">od</span><span class="main">)</span>
+                   <span class="keyword1">else</span> returnOk <span class="main">(</span><span class="bound">j</span><span class="main">+</span><span class="main">1</span><span class="main">,</span><span class="bound">plu</span><span class="main">,</span><span class="bound">flag</span><span class="main">)</span>
+                 <span class="keyword1">od</span><span class="main">)</span> 
+                 <span class="main">(</span><span class="main">0</span><span class="main">,</span>nullPlugin<span class="main">,</span>False<span class="main">)</span>
+                 <span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+                throwError <span class="main">(</span><span class="bound">leni</span><span class="main">,</span> snd <span class="bound">resj</span><span class="main">)</span>
+            <span class="keyword1">od</span><span class="main">)</span>
+         <span class="keyword1">else</span> returnOk <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">,</span><span class="bound">plu</span><span class="main">,</span><span class="bound">flag</span><span class="main">)</span>
+       <span class="keyword1">od</span><span class="main">)</span> 
+       <span class="main">(</span><span class="main">0</span><span class="main">,</span>nullPlugin<span class="main">,</span>False<span class="main">)</span><span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+    return <span class="main">(</span>snd <span class="bound">resi</span><span class="main">)</span>
+  <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function getActorNameByID
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_getActorNameByID <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"int64_t <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> string<span class="main">×</span>bool<span class="main">)</span>nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_getActorNameByID</span> <span class="free"><span class="bound">anActorID</span></span> <span class="main">≡</span>
+    <span class="keyword1">do</span>
+     <span class="bound">res</span> <span class="main">←</span> <span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="bound">i</span> <span class="bound">σ</span><span class="main">.</span> fst <span class="bound">i</span> <span class="main">&lt;</span>  int <span class="main">(</span>length <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+             <span class="main">(</span><span class="main">λ</span><span class="bound">i</span><span class="main">.</span> <span class="keyword1">do</span>
+               <span class="bound">p</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span><span class="main">(</span>nat <span class="main">(</span>fst <span class="bound">i</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+               <span class="keyword1">if</span> ACB.actorID <span class="bound">p</span> <span class="main">=</span> <span class="free"><span class="bound">anActorID</span></span>
+               <span class="keyword1">then</span> throwError <span class="main">(</span>ACB.name <span class="bound">p</span><span class="main">)</span>
+               <span class="keyword1">else</span> returnOk <span class="main">(</span>fst <span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">,</span><span class="inner_quoted">''''</span><span class="main">)</span>
+              <span class="keyword1">od</span><span class="main">)</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>int<span class="main">,</span><span class="inner_quoted">''''</span><span class="main">)</span><span class="main">)</span> 
+            <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="main">(</span><span class="main">-</span><span class="main">1</span><span class="main">,</span><span class="bound">e</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+     <span class="keyword1">if</span> fst <span class="bound">res</span> <span class="main">=</span> <span class="main">-</span><span class="main">1</span>
+     <span class="keyword1">then</span> return <span class="main">(</span>snd <span class="bound">res</span><span class="main">,</span>True<span class="main">)</span>
+     <span class="keyword1">else</span> return <span class="main">(</span><span class="inner_quoted">''''</span><span class="main">,</span>False<span class="main">)</span>
+    <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function updateActorPluginState_sche
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_updateActorPluginState_sche <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfo list <span class="main">⇒</span> actorState <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> bool<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_updateActorPluginState_sche</span> <span class="free"><span class="bound">anActors</span></span> <span class="free"><span class="bound">anState</span></span> <span class="main">≡</span>
+   <span class="keyword1">do</span>
+    <span class="bound">setResult</span> <span class="main">←</span> return True<span class="main">;</span>
+    <span class="bound">bl</span> <span class="main">←</span> gets<span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> registeredBus <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+    <span class="bound">setResult</span> <span class="main">←</span> whileLoop <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">i</span><span class="main">,</span><span class="bound">res</span><span class="main">,</span><span class="bound">rb</span><span class="main">)</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">i</span> <span class="main">&lt;</span>  length <span class="main">(</span>registeredBus <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+         <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">i</span><span class="main">,</span><span class="bound">res</span><span class="main">,</span><span class="bound">rb</span><span class="main">)</span><span class="main">.</span> <span class="keyword1">do</span>
+           
+            <span class="bound">ret</span> <span class="main">←</span> NonDetMonad_call.call <span class="main">(</span>Des_updateActorPluginStates <span class="free"><span class="bound">anActors</span></span> <span class="free"><span class="bound">anState</span></span><span class="main">)</span> 
+                   <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span><span class="main">(</span>registeredBus <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span><span class="bound">i</span><span class="main">)</span><span class="main">,</span>snd <span class="bound">σ</span><span class="main">)</span><span class="main">)</span>
+                   <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span> <span class="bound">b</span><span class="main">.</span><span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>registeredBus <span class="main">:=</span> <span class="main">(</span>registeredBus <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">[</span><span class="bound">i</span><span class="main">:=</span> fst <span class="bound">b</span><span class="main">]</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">b</span><span class="main">)</span> <span class="main">)</span> <span class="main">;</span>
+            
+            return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">,</span> <span class="bound">res</span> <span class="main">∧</span> <span class="bound">ret</span><span class="main">,</span> <span class="bound">rb</span><span class="main">)</span>
+         <span class="keyword1">od</span><span class="main">)</span> 
+         <span class="main">(</span><span class="main">0</span><span class="main">,</span><span class="bound">setResult</span><span class="main">,</span> <span class="bound">bl</span><span class="main">)</span><span class="main">;</span>
+    <span class="keyword1">if</span> fst <span class="main">(</span>snd <span class="bound">setResult</span><span class="main">)</span>
+    <span class="keyword1">then</span> return True
+    <span class="keyword1">else</span>
+     <span class="keyword1">do</span>
+       modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>registeredBus <span class="main">:=</span> snd <span class="main">(</span>snd <span class="bound">setResult</span><span class="main">)</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+       return False
+     <span class="keyword1">od</span>
+  <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function appendACBs
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_appendACBs <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB list <span class="main">⇒</span> SwarmInfo <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span>int<span class="main">)</span>nondet_monad"</span></span></span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_appendACBs</span> <span class="free"><span class="bound">anACBs</span></span> <span class="free"><span class="bound">anPSwarm</span></span> <span class="main">≡</span>
+    <span class="keyword1">do</span>
+     <span class="bound">rest</span> <span class="main">←</span><span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">t</span><span class="main">,</span><span class="bound">tb</span><span class="main">)</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">t</span> <span class="main">&lt;</span> length <span class="free"><span class="bound">anACBs</span></span><span class="main">)</span>
+             <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">t</span><span class="main">,</span><span class="bound">tb</span><span class="main">)</span><span class="main">.</span> 
+               <span class="keyword1">do</span>
+                <span class="bound">unknownBus</span> <span class="main">←</span> return <span class="inner_quoted">''''</span><span class="main">;</span>
+                <span class="bound">acb</span> <span class="main">←</span> return <span class="main">(</span><span class="free"><span class="bound">anACBs</span></span><span class="main">!</span><span class="bound">t</span><span class="main">)</span><span class="main">;</span>
+                <span class="bound">resi</span> <span class="main">←</span><span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">i</span><span class="main">,</span><span class="bound">ib</span><span class="main">)</span> <span class="bound">σ</span><span class="main">.</span>  <span class="bound">i</span> <span class="main">&lt;</span> length <span class="main">(</span>TaskInfo.plugins <span class="main">(</span>ACB.taskInfo <span class="bound">acb</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+                        <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">i</span><span class="main">,</span><span class="bound">ib</span><span class="main">)</span><span class="main">.</span> <span class="keyword1">do</span>
+                          <span class="bound">resj</span> <span class="main">←</span> <span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="bound">j</span> <span class="bound">σ</span><span class="main">.</span>  <span class="bound">j</span> <span class="main">&lt;</span>  length <span class="main">(</span>registeredBus <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+                                   <span class="main">(</span><span class="main">λ</span><span class="bound">j</span><span class="main">.</span> <span class="keyword1">do</span>
+                                      <span class="bound">tempStr</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> getBusName <span class="main">(</span><span class="main">(</span>registeredBus <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span><span class="bound">j</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                      <span class="bound">p</span> <span class="main">←</span> return <span class="main">(</span><span class="main">(</span>TaskInfo.plugins <span class="main">(</span>ACB.taskInfo <span class="bound">acb</span><span class="main">)</span><span class="main">)</span><span class="main">!</span><span class="bound">i</span><span class="main">)</span><span class="main">;</span>                                      
+                                      <span class="bound">unknownBus</span> <span class="main">←</span> return <span class="main">(</span>PluginInfo.busName <span class="bound">p</span><span class="main">)</span><span class="main">;</span>
+                                      <span class="keyword1">if</span> <span class="bound">tempStr</span> <span class="main">=</span> <span class="bound">unknownBus</span> 
+                                      <span class="keyword1">then</span> throwError <span class="bound">j</span>
+                                      <span class="keyword1">else</span> returnOk <span class="main">(</span><span class="bound">j</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                                    <span class="keyword1">od</span><span class="main">)</span> <span class="main">(</span><span class="main">0</span><span class="main">)</span><span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+                          condition <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> length <span class="main">(</span>registeredBus <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="bound">resj</span><span class="main">)</span>
+                           <span class="main">(</span><span class="keyword1">do</span>
+                              <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span> <span class="inner_quoted">''[Actor Scheduler] appendACBs: unknown bus ''</span> <span class="main">@</span> <span class="bound">unknownBus</span> <span class="main">@</span> <span class="inner_quoted">'', deleting actor ''</span> <span class="main">@</span> ACB.name <span class="main">(</span><span class="free"><span class="bound">anACBs</span></span> <span class="main">!</span> <span class="bound">t</span><span class="main">)</span> <span class="main">@</span> <span class="inner_quoted">''...''</span><span class="main">)</span><span class="main">;</span>
+                              modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_ERROR <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span> 
+                              throwError <span class="main">(</span><span class="bound">i</span><span class="main">,</span>False<span class="main">)</span>
+                            <span class="keyword1">od</span><span class="main">)</span>
+                           <span class="main">(</span>returnOk <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">,</span>True<span class="main">)</span><span class="main">)</span>
+                         <span class="keyword1">od</span><span class="main">)</span> <span class="main">(</span><span class="main">0</span><span class="main">,</span>True<span class="main">)</span> <span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+                <span class="keyword1">if</span> snd <span class="bound">resi</span>
+                <span class="keyword1">then</span> returnOk <span class="main">(</span><span class="bound">t</span><span class="main">+</span><span class="main">1</span><span class="main">,</span>True<span class="main">)</span>
+                <span class="keyword1">else</span> throwError <span class="main">(</span><span class="bound">t</span><span class="main">,</span>False<span class="main">)</span>
+              <span class="keyword1">od</span><span class="main">)</span> 
+             <span class="main">(</span><span class="main">0</span><span class="main">,</span>True<span class="main">)</span> 
+             <span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+    <span class="keyword1">if</span> snd <span class="bound">rest</span> <span class="main">=</span> False
+    <span class="keyword1">then</span> return <span class="main">1</span>
+    <span class="keyword1">else</span>  
+       <span class="main">(</span><span class="keyword1">do</span>
+       whileLoop <span class="main">(</span><span class="main">λ</span><span class="bound">t</span> <span class="bound">σ</span><span class="main">.</span>  <span class="bound">t</span> <span class="main">&lt;</span> length <span class="free"><span class="bound">anACBs</span></span><span class="main">)</span>
+        <span class="main">(</span><span class="main">λ</span><span class="bound">t</span><span class="main">.</span> <span class="keyword1">do</span>
+          modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>actorNo <span class="main">:=</span> actorNo <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span> <span class="main">+</span><span class="main">1</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+          <span class="bound">acb</span> <span class="main">←</span> return <span class="main">(</span><span class="free"><span class="bound">anACBs</span></span><span class="main">!</span><span class="bound">t</span><span class="main">)</span><span class="main">;</span>
+          <span class="bound">acb</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="bound">acb</span><span class="main">⦇</span>ACB.actorID <span class="main">:=</span> actorNo <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦈</span><span class="main">)</span><span class="main">;</span>
+          <span class="bound">acb</span> <span class="main">←</span> return <span class="main">(</span><span class="bound">acb</span><span class="main">⦇</span>ACB.state <span class="main">:=</span> actorState.ACTOR_STATE_INIT<span class="main">⦈</span> <span class="main">)</span><span class="main">;</span>
+          <span class="bound">acb</span> <span class="main">←</span> return <span class="main">(</span><span class="bound">acb</span><span class="main">⦇</span>pSwarmInfo <span class="main">:=</span> <span class="free"><span class="bound">anPSwarm</span></span><span class="main">⦈</span> <span class="main">)</span><span class="main">;</span>
+          modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>acbList <span class="main">:=</span> acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span> <span class="main">@</span> <span class="main">[</span><span class="bound">acb</span><span class="main">]</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+          return <span class="main">(</span><span class="bound">t</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+        <span class="keyword1">od</span><span class="main">)</span> 
+        <span class="main">(</span><span class="main">0</span><span class="main">)</span><span class="main">;</span>
+       return <span class="main">0</span>
+      <span class="keyword1">od</span><span class="main">)</span>
+    <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function appendSwarmACBs
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_appendSwarmACBs <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">" SwarmInfo <span class="main">⇒</span> ACB list <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span>unit<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_appendSwarmACBs</span> <span class="free"><span class="bound">anSwarm</span></span> <span class="free"><span class="bound">anACBs</span></span> <span class="main">≡</span>
+   <span class="keyword1">do</span>
+     <span class="bound">swarmNum</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> nSwarm <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+     <span class="keyword1">if</span> <span class="bound">swarmNum</span>  <span class="main">+</span> <span class="main">1</span> <span class="main">≤</span> SWARM_MAX_SIZE
+     <span class="keyword1">then</span>
+       <span class="keyword1">do</span>
+         modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>nSwarm <span class="main">:=</span> nSwarm <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span> <span class="main">+</span><span class="main">1</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+         <span class="bound">anSwarm</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="free"><span class="bound">anSwarm</span></span><span class="main">⦇</span>swarmID <span class="main">:=</span> nSwarm <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦈</span><span class="main">)</span><span class="main">;</span>
+         <span class="bound">anSwarm</span> <span class="main">←</span> return <span class="main">(</span><span class="bound">anSwarm</span><span class="main">⦇</span>SwarmInfo.state <span class="main">:=</span> actorState.ACTOR_STATE_INIT<span class="main">⦈</span><span class="main">)</span><span class="main">;</span>
+         modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>swarmList <span class="main">:=</span> swarmList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span> <span class="main">@</span> <span class="main">[</span><span class="bound">anSwarm</span><span class="main">]</span> <span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+         <span class="bound">tmp</span> <span class="main">←</span> Des_appendACBs <span class="free"><span class="bound">anACBs</span></span> <span class="bound">anSwarm</span><span class="main">;</span>
+         <span class="keyword1">if</span> <span class="bound">tmp</span> <span class="main">=</span> <span class="main">0</span>
+         <span class="keyword1">then</span>
+           <span class="main">(</span><span class="keyword1">do</span>
+              <span class="bound">appendMsg</span> <span class="main">←</span> return nullScheduleMsg<span class="main">;</span>
+              <span class="bound">appendMsg</span> <span class="main">←</span> return <span class="main">(</span><span class="bound">appendMsg</span><span class="main">⦇</span>type <span class="main">:=</span> SCHEDULE_CMD_RAW<span class="main">⦈</span><span class="main">)</span><span class="main">;</span>
+              <span class="bound">appendMsg</span> <span class="main">←</span> return <span class="main">(</span><span class="bound">appendMsg</span><span class="main">⦇</span>param1 <span class="main">:=</span> <span class="main">0</span><span class="main">⦈</span><span class="main">)</span><span class="main">;</span>
+              <span class="bound">appendMsg</span> <span class="main">←</span> return <span class="main">(</span><span class="bound">appendMsg</span><span class="main">⦇</span>param2 <span class="main">:=</span> <span class="main">0</span><span class="main">⦈</span><span class="main">)</span><span class="main">;</span>
+              Des_appendScheduleMsg <span class="bound">appendMsg</span>
+            <span class="keyword1">od</span><span class="main">)</span> 
+         <span class="keyword1">else</span> return <span class="main">()</span>
+       <span class="keyword1">od</span>
+     <span class="keyword1">else</span> return <span class="main">()</span>
+   <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function anSwarmName
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_getSwarm <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"string <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> SwarmInfo<span class="main">×</span>bool<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_getSwarm</span> <span class="free"><span class="bound">anSwarmName</span></span> <span class="main">≡</span>
+    <span class="keyword1">do</span>
+      <span class="bound">anSwarm</span> <span class="main">←</span> return nullSwarmInfo<span class="main">;</span>
+      <span class="bound">res</span> <span class="main">←</span> <span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="bound">i</span> <span class="bound">σ</span><span class="main">.</span> int <span class="main">(</span>fst <span class="bound">i</span><span class="main">)</span> <span class="main">&lt;</span> nSwarm <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span>
+              <span class="main">(</span><span class="main">λ</span><span class="bound">i</span><span class="main">.</span> 
+                condition <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="free"><span class="bound">anSwarmName</span></span><span class="main">=</span>swarmName <span class="main">(</span>swarmList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">!</span><span class="main">(</span>fst <span class="bound">i</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+                <span class="main">(</span><span class="keyword1">do</span>
+                  <span class="bound">anSwarm</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> swarmList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">!</span><span class="main">(</span>fst <span class="bound">i</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                  throwError <span class="main">(</span>fst <span class="bound">i</span><span class="main">,</span><span class="bound">anSwarm</span><span class="main">)</span>
+                 <span class="keyword1">od</span><span class="main">)</span>
+                <span class="main">(</span>returnOk <span class="main">(</span><span class="main">(</span>fst <span class="bound">i</span><span class="main">)</span><span class="main">+</span><span class="main">1</span><span class="main">,</span><span class="bound">anSwarm</span><span class="main">)</span><span class="main">)</span>
+               <span class="main">)</span> <span class="main">(</span><span class="main">0</span><span class="main">,</span><span class="bound">anSwarm</span><span class="main">)</span><span class="main">)</span>
+             <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="main">(</span><span class="bound">e</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+      condition<span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> fst <span class="bound">res</span> <span class="main">≠</span> nat <span class="main">(</span>nSwarm <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+       <span class="main">(</span>return <span class="main">(</span>snd <span class="bound">res</span><span class="main">,</span>True<span class="main">)</span><span class="main">)</span>
+       <span class="main">(</span>return <span class="main">(</span><span class="bound">anSwarm</span><span class="main">,</span>False<span class="main">)</span><span class="main">)</span>
+    <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function checkActorPluginFinished
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_checkActorPluginFinished <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ACB <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> bool<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_checkActorPluginFinished</span> <span class="free"><span class="bound">anItr</span></span> <span class="main">≡</span>
+   <span class="keyword1">do</span>
+    <span class="bound">resi</span> <span class="main">←</span> <span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="bound">i</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">i</span> <span class="main">&lt;</span>  length <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="free"><span class="bound">anItr</span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+             <span class="main">(</span><span class="main">λ</span><span class="bound">i</span><span class="main">.</span> <span class="keyword1">do</span>
+               <span class="bound">pi</span> <span class="main">←</span> return <span class="main">(</span><span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="free"><span class="bound">anItr</span></span><span class="main">)</span><span class="main">)</span><span class="main">!</span><span class="bound">i</span><span class="main">)</span><span class="main">;</span>
+               <span class="bound">busName</span> <span class="main">←</span> return <span class="main">(</span>PluginInfo.busName <span class="bound">pi</span><span class="main">)</span><span class="main">;</span>
+               <span class="bound">pluginName</span> <span class="main">←</span> return <span class="main">(</span>PluginInfo.name <span class="bound">pi</span><span class="main">)</span><span class="main">;</span>
+               <span class="bound">resj</span> <span class="main">←</span> <span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="bound">j</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">j</span> <span class="main">&lt;</span> length <span class="main">(</span>registeredBus <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+                        <span class="main">(</span><span class="main">λ</span><span class="bound">j</span><span class="main">.</span> <span class="keyword1">do</span>
+                           <span class="bound">bj</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>registeredBus <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span><span class="bound">j</span><span class="main">)</span><span class="main">;</span>
+                           <span class="bound">tempStr</span> <span class="main">←</span> return <span class="main">(</span>getBusName <span class="bound">bj</span><span class="main">)</span><span class="main">;</span>
+                           <span class="keyword1">if</span> <span class="bound">tempStr</span> <span class="main">=</span> <span class="bound">busName</span> 
+                           <span class="keyword1">then</span> 
+                            <span class="main">(</span><span class="keyword1">do</span>
+                              <span class="bound">ret</span> <span class="main">←</span> NonDetMonad_call.call <span class="main">(</span>Des_getActorPluginState <span class="bound">pluginName</span> <span class="main">(</span>ACB.actorID <span class="free"><span class="bound">anItr</span></span><span class="main">)</span><span class="main">)</span>
+                                     <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>registeredBus <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span><span class="bound">j</span><span class="main">,</span>snd <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span> <span class="bound">b</span><span class="main">.</span> <span class="bound">σ</span><span class="main">)</span><span class="main">;</span>                     
+                              <span class="keyword1">if</span> <span class="bound">ret</span> <span class="main">=</span> pluginState.ACTOR_STATE_FINISH
+                              <span class="keyword1">then</span> throwError <span class="bound">j</span>
+                              <span class="keyword1">else</span> returnOk <span class="main">(</span><span class="bound">j</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                             <span class="keyword1">od</span><span class="main">)</span>
+                           <span class="keyword1">else</span> returnOk <span class="main">(</span><span class="bound">j</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                         <span class="keyword1">od</span><span class="main">)</span>  <span class="main">(</span><span class="main">0</span><span class="main">)</span> <span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+                condition <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> length <span class="main">(</span>registeredBus <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="bound">resj</span> <span class="main">)</span>
+                  <span class="main">(</span>returnOk <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span><span class="main">)</span> 
+                  <span class="main">(</span>throwError <span class="bound">i</span><span class="main">)</span>                  
+              <span class="keyword1">od</span><span class="main">)</span> <span class="main">(</span><span class="main">0</span><span class="main">)</span> <span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+    condition <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> length <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="free"><span class="bound">anItr</span></span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="bound">resi</span> <span class="main">)</span>
+      <span class="main">(</span>return False<span class="main">)</span>
+      <span class="main">(</span>return True<span class="main">)</span>
+   <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* Main_scheduler Auxiliary functions in Design layer*)</span>
+
+<span class="comment1">(* 
+  Design Definition of Function findFinishActors
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_findFinishActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> unit<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_findFinishActors</span> <span class="main">≡</span>
+             <span class="keyword1">do</span>
+              <span class="bound">res</span> <span class="main">←</span> whileLoop <span class="main">(</span><span class="main">λ</span><span class="bound">i</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">i</span> <span class="main">&lt;</span> length <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+                <span class="main">(</span><span class="main">λ</span><span class="bound">i</span><span class="main">.</span> <span class="keyword1">do</span>
+                   <span class="bound">it</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">i</span><span class="main">)</span><span class="main">;</span>
+                   <span class="bound">flag</span> <span class="main">←</span> Des_checkActorPluginFinished <span class="bound">it</span><span class="main">;</span>
+                   <span class="keyword1">if</span> ACB.state <span class="bound">it</span> <span class="main">≠</span> actorState.ACTOR_STATE_INIT <span class="main">∧</span> <span class="bound">flag</span>
+                   <span class="keyword1">then</span> 
+                    <span class="keyword1">do</span>
+                      <span class="bound">temp</span> <span class="main">←</span> return <span class="main">⦇</span>ActorPluginInfo.actorID   <span class="main">=</span> ACB.actorID <span class="bound">it</span><span class="main">,</span>
+                                      ActorPluginInfo.actorName <span class="main">=</span> ACB.name <span class="bound">it</span><span class="main">,</span>
+                                      ActorPluginInfo.state     <span class="main">=</span> ACB.state <span class="bound">it</span><span class="main">,</span>
+                                      ActorPluginInfo.taskInfo  <span class="main">=</span> ACB.taskInfo <span class="bound">it</span><span class="main">⦈</span><span class="main">;</span>
+                      modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>finishingActors <span class="main">:=</span> <span class="main">(</span>finishingActors <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">@</span> <span class="main">[</span><span class="bound">temp</span><span class="main">]</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+                      return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                    <span class="keyword1">od</span>
+                  <span class="keyword1">else</span> return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                <span class="keyword1">od</span><span class="main">)</span> 
+                <span class="main">(</span><span class="main">0</span><span class="main">)</span><span class="main">;</span>
+             return <span class="main">()</span>
+            <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function delFinishActors
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_delFinishActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> unit<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_delFinishActors</span> <span class="main">≡</span>
+            <span class="keyword1">do</span>
+              <span class="bound">fal</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> finishingActors <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+              <span class="bound">flag</span> <span class="main">←</span> Des_updateActorPluginState_sche <span class="bound">fal</span> actorState.ACTOR_STATE_FINISH<span class="main">;</span>
+              <span class="keyword1">if</span> <span class="bound">flag</span>
+              <span class="keyword1">then</span> <span class="main">(</span>
+                <span class="keyword1">do</span>
+                  <span class="bound">res1</span> <span class="main">←</span> whileLoop <span class="main">(</span><span class="main">λ</span><span class="bound">i</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">i</span> <span class="main">&lt;</span> length <span class="bound">fal</span><span class="main">)</span>
+                  <span class="main">(</span><span class="main">λ</span><span class="bound">i</span><span class="main">.</span> <span class="keyword1">do</span>
+                    <span class="bound">res2</span> <span class="main">←</span> <span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="bound">j</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">j</span> <span class="main">&lt;</span> length <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">)</span>
+                    <span class="main">(</span><span class="main">λ</span><span class="bound">j</span><span class="main">.</span> <span class="keyword1">do</span>
+                       <span class="bound">it</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">j</span><span class="main">)</span><span class="main">;</span>
+                       <span class="keyword1">if</span> ACB.actorID <span class="bound">it</span> <span class="main">=</span> ActorPluginInfo.actorID <span class="main">(</span><span class="bound">fal</span> <span class="main">!</span> <span class="bound">i</span><span class="main">)</span>
+                       <span class="keyword1">then</span> 
+                         <span class="main">(</span><span class="keyword1">do</span>
+                            modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>acbList <span class="main">:=</span> remove1 <span class="bound">it</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+                            throwError <span class="bound">j</span>
+                          <span class="keyword1">od</span><span class="main">)</span>
+                       <span class="keyword1">else</span> <span class="main">(</span>returnOk <span class="main">(</span><span class="bound">j</span><span class="main">+</span><span class="main">1</span><span class="main">)</span><span class="main">)</span>
+                    <span class="keyword1">od</span><span class="main">)</span>
+                    <span class="main">(</span><span class="main">0</span><span class="main">)</span>
+                    <span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+                    return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                  <span class="keyword1">od</span><span class="main">)</span>
+                  <span class="main">(</span><span class="main">0</span><span class="main">)</span><span class="main">;</span>
+                  return <span class="main">()</span>
+                <span class="keyword1">od</span><span class="main">)</span>
+              <span class="keyword1">else</span> return <span class="main">()</span>
+            <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function findMinPrioSwarm
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span>  Des_findMinPrioSwarm <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo option <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> <span class="main">(</span>SwarmInfo option <span class="main">×</span> int<span class="main">)</span><span class="main">)</span> nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_findMinPrioSwarm</span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="free"><span class="bound">minSwarmPrio</span></span> <span class="main">≡</span> 
+            <span class="keyword1">do</span>
+               <span class="bound">res</span> <span class="main">←</span> whileLoop <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">i</span><span class="main">,</span><span class="bound">msPtr</span><span class="main">,</span><span class="bound">msPrio</span><span class="main">)</span> <span class="bound">σ</span><span class="main">.</span> int <span class="bound">i</span> <span class="main">&lt;</span> nSwarm <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span>
+                <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">i</span><span class="main">,</span> <span class="bound">msPtr</span><span class="main">,</span> <span class="bound">msPrio</span><span class="main">)</span><span class="main">.</span> <span class="keyword1">do</span>
+                   <span class="bound">swarm</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>swarmList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">i</span><span class="main">)</span><span class="main">;</span>
+                   <span class="keyword1">if</span> swarmPrio <span class="bound">swarm</span> <span class="main">&lt;</span> <span class="bound">msPrio</span>
+                   <span class="keyword1">then</span> return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">,</span> Some<span class="main">(</span><span class="bound">swarm</span><span class="main">)</span><span class="main">,</span> swarmPrio <span class="bound">swarm</span><span class="main">)</span>
+                   <span class="keyword1">else</span> return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">,</span> <span class="bound">msPtr</span><span class="main">,</span> <span class="bound">msPrio</span><span class="main">)</span>
+                 <span class="keyword1">od</span><span class="main">)</span> 
+                <span class="main">(</span><span class="main">0</span><span class="main">,</span> <span class="free"><span class="bound">minSwarmPtr</span></span><span class="main">,</span> <span class="free"><span class="bound">minSwarmPrio</span></span><span class="main">)</span><span class="main">;</span>
+               return <span class="main">(</span>snd <span class="bound">res</span><span class="main">)</span>
+            <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function ifMinPrioSwarmHaveActor
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span>  Des_ifMinPrioSwarmHaveActor <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo <span class="main">⇒</span> int <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> <span class="main">(</span>int <span class="main">×</span> int<span class="main">)</span><span class="main">)</span> nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_ifMinPrioSwarmHaveActor</span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="free"><span class="bound">minIdx</span></span> <span class="free"><span class="bound">minPrio</span></span> <span class="main">≡</span> 
+            <span class="keyword1">do</span>
+               <span class="bound">res</span> <span class="main">←</span> whileLoop <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">i</span><span class="main">,</span> <span class="bound">minIdx</span><span class="main">,</span> <span class="bound">minPrio</span><span class="main">)</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">i</span> <span class="main">&lt;</span> length <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+                <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">i</span><span class="main">,</span> <span class="bound">minIdx</span><span class="main">,</span> <span class="bound">minPrio</span><span class="main">)</span><span class="main">.</span> <span class="keyword1">do</span>
+                   <span class="bound">acb</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">i</span><span class="main">)</span><span class="main">;</span>
+                   <span class="keyword1">if</span> swarmID <span class="main">(</span>pSwarmInfo <span class="bound">acb</span><span class="main">)</span> <span class="main">=</span> swarmID <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="main">∧</span> ACB.prio <span class="bound">acb</span> <span class="main">&lt;</span> <span class="bound">minPrio</span>
+                   <span class="keyword1">then</span> return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">,</span> <span class="main">(</span>int <span class="bound">i</span><span class="main">)</span><span class="main">,</span> ACB.prio <span class="bound">acb</span><span class="main">)</span>
+                   <span class="keyword1">else</span> return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">,</span> <span class="bound">minIdx</span><span class="main">,</span> <span class="bound">minPrio</span><span class="main">)</span>
+                 <span class="keyword1">od</span><span class="main">)</span> 
+                <span class="main">(</span><span class="main">0</span><span class="main">,</span> <span class="free"><span class="bound">minIdx</span></span><span class="main">,</span> <span class="free"><span class="bound">minPrio</span></span><span class="main">)</span><span class="main">;</span>
+                return <span class="main">(</span>snd <span class="bound">res</span><span class="main">)</span>
+            <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function findActorUnderMinSwarm
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_findActorUnderMinSwarm <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo <span class="main">⇒</span> int64_t <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> unit<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_findActorUnderMinSwarm</span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="free"><span class="bound">minPrio</span></span> <span class="main">≡</span>
+            <span class="keyword1">do</span>
+                <span class="bound">res</span> <span class="main">←</span> whileLoop <span class="main">(</span><span class="main">λ</span><span class="bound">i</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">i</span> <span class="main">&lt;</span> length <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+                <span class="main">(</span><span class="main">λ</span><span class="bound">i</span><span class="main">.</span> <span class="keyword1">do</span>
+                   <span class="bound">acb</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">i</span><span class="main">)</span><span class="main">;</span>
+                   <span class="keyword1">if</span> ACB.state <span class="bound">acb</span> <span class="main">≠</span> actorState.ACTOR_STATE_RUNNING 
+                      <span class="main">∧</span> swarmID <span class="main">(</span>pSwarmInfo <span class="bound">acb</span><span class="main">)</span> <span class="main">=</span> swarmID <span class="free"><span class="bound">minSwarmPtr</span></span> 
+                      <span class="main">∧</span> ACB.prio <span class="bound">acb</span> <span class="main">=</span> <span class="free"><span class="bound">minPrio</span></span>
+                   <span class="keyword1">then</span> 
+                    <span class="keyword1">do</span>
+                      <span class="bound">temp</span> <span class="main">←</span> return <span class="main">⦇</span>ActorPluginInfo.actorID   <span class="main">=</span> ACB.actorID <span class="bound">acb</span><span class="main">,</span>
+                              ActorPluginInfo.actorName <span class="main">=</span> ACB.name <span class="bound">acb</span><span class="main">,</span>
+                              ActorPluginInfo.state     <span class="main">=</span> ACB.state <span class="bound">acb</span><span class="main">,</span>
+                              ActorPluginInfo.taskInfo  <span class="main">=</span> ACB.taskInfo <span class="bound">acb</span><span class="main">⦈</span><span class="main">;</span>
+                      modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span> minPrioActors <span class="main">:=</span> <span class="main">(</span>minPrioActors <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">@</span> <span class="main">[</span><span class="bound">temp</span><span class="main">]</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+                      return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                    <span class="keyword1">od</span>
+                   <span class="keyword1">else</span> return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                 <span class="keyword1">od</span><span class="main">)</span> 
+                <span class="main">(</span><span class="main">0</span><span class="main">)</span><span class="main">;</span>
+                return <span class="main">()</span>
+            <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function findRunningSwarm
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_findRunningSwarm <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo option <span class="main">⇒</span> int <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> <span class="main">(</span>SwarmInfo option <span class="main">×</span> int<span class="main">)</span><span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_findRunningSwarm</span> <span class="free"><span class="bound">runningSwarmPtr</span></span> <span class="free"><span class="bound">nRunningSwarm</span></span>  <span class="main">≡</span> 
+            <span class="keyword1">do</span>
+                <span class="bound">res</span> <span class="main">←</span> whileLoop <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">i</span><span class="main">,</span> <span class="bound">rSPtr</span><span class="main">,</span> <span class="bound">nRS</span><span class="main">)</span> <span class="bound">σ</span><span class="main">.</span> int <span class="bound">i</span> <span class="main">&lt;</span> nSwarm <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span>
+                <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">i</span><span class="main">,</span> <span class="bound">rSPtr</span><span class="main">,</span> <span class="bound">nRS</span><span class="main">)</span><span class="main">.</span> <span class="keyword1">do</span>
+                   <span class="bound">swarm</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>swarmList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">i</span><span class="main">)</span><span class="main">;</span>
+                   <span class="keyword1">if</span> SwarmInfo.state <span class="bound">swarm</span> <span class="main">=</span> actorState.ACTOR_STATE_RUNNING
+                   <span class="keyword1">then</span> return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">,</span> Some<span class="main">(</span><span class="bound">swarm</span><span class="main">)</span><span class="main">,</span> <span class="bound">nRS</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                   <span class="keyword1">else</span> return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">,</span> <span class="bound">rSPtr</span><span class="main">,</span> <span class="bound">nRS</span><span class="main">)</span>
+                 <span class="keyword1">od</span><span class="main">)</span> 
+                <span class="main">(</span><span class="main">0</span><span class="main">,</span> <span class="free"><span class="bound">runningSwarmPtr</span></span><span class="main">,</span> <span class="free"><span class="bound">nRunningSwarm</span></span><span class="main">)</span><span class="main">;</span>
+                return <span class="main">(</span>snd <span class="bound">res</span><span class="main">)</span>
+            <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function findToPauseActors
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_findToPauseActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo <span class="main">⇒</span> int32_t <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> unit<span class="main">)</span> nondet_monad"</span></span></span>
+    <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_findToPauseActors</span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="free"><span class="bound">minPrio</span></span> <span class="main">≡</span>
+            <span class="keyword1">do</span>
+                <span class="bound">res</span> <span class="main">←</span> whileLoop <span class="main">(</span><span class="main">λ</span><span class="bound">i</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">i</span> <span class="main">&lt;</span> length <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+                <span class="main">(</span><span class="main">λ</span><span class="bound">i</span><span class="main">.</span> <span class="keyword1">do</span>
+                   <span class="bound">acb</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">i</span><span class="main">)</span><span class="main">;</span>
+                   <span class="keyword1">if</span> ACB.state <span class="bound">acb</span> <span class="main">=</span> actorState.ACTOR_STATE_RUNNING 
+                   <span class="keyword1">then</span> 
+                     <span class="main">(</span> <span class="keyword1">if</span> <span class="main">(</span>swarmID <span class="main">(</span>pSwarmInfo <span class="bound">acb</span><span class="main">)</span> <span class="main">≠</span> swarmID <span class="free"><span class="bound">minSwarmPtr</span></span><span class="main">)</span> <span class="main">∨</span> 
+                          <span class="main">(</span>swarmID <span class="main">(</span>pSwarmInfo <span class="bound">acb</span><span class="main">)</span> <span class="main">=</span> swarmID <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="main">∧</span> ACB.prio <span class="bound">acb</span> <span class="main">&gt;</span> <span class="free"><span class="bound">minPrio</span></span><span class="main">)</span>
+                       <span class="keyword1">then</span>
+                          <span class="keyword1">do</span>
+                            <span class="bound">temp</span> <span class="main">←</span> return <span class="main">⦇</span>ActorPluginInfo.actorID   <span class="main">=</span> ACB.actorID <span class="bound">acb</span><span class="main">,</span>
+                                  ActorPluginInfo.actorName <span class="main">=</span> ACB.name <span class="bound">acb</span><span class="main">,</span>
+                                  ActorPluginInfo.state     <span class="main">=</span> ACB.state <span class="bound">acb</span><span class="main">,</span>
+                                  ActorPluginInfo.taskInfo  <span class="main">=</span> ACB.taskInfo <span class="bound">acb</span><span class="main">⦈</span><span class="main">;</span>
+                            modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span> toPauseActors <span class="main">:=</span> <span class="main">(</span>toPauseActors <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">@</span> <span class="main">[</span><span class="bound">temp</span><span class="main">]</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+                            return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                          <span class="keyword1">od</span>
+                       <span class="keyword1">else</span> return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                     <span class="main">)</span>
+                   <span class="keyword1">else</span> return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                 <span class="keyword1">od</span><span class="main">)</span> 
+                <span class="main">(</span><span class="main">0</span><span class="main">)</span><span class="main">;</span>
+                return <span class="main">()</span>
+            <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function pauseSwarmAndActors
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_pauseSwarmAndActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo option <span class="main">⇒</span> SwarmInfo <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> unit<span class="main">)</span> nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_pauseSwarmAndActors</span> <span class="free"><span class="bound">runningSwarmPtr</span></span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="main">≡</span>
+            <span class="keyword1">do</span>
+               <span class="bound">res1</span> <span class="main">←</span> whileLoop <span class="main">(</span><span class="main">λ</span><span class="bound">i</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">i</span> <span class="main">&lt;</span> length <span class="main">(</span>toPauseActors <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+               <span class="main">(</span><span class="main">λ</span><span class="bound">i</span><span class="main">.</span> <span class="keyword1">do</span>
+                  <span class="bound">res2</span> <span class="main">←</span> <span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="bound">j</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">j</span> <span class="main">&lt;</span> length <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">)</span>
+                  <span class="main">(</span><span class="main">λ</span><span class="bound">j</span><span class="main">.</span>
+                     condition <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> ActorPluginInfo.actorID <span class="main">(</span><span class="main">(</span>toPauseActors <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">i</span><span class="main">)</span> <span class="main">=</span>
+                                ACB.actorID <span class="main">(</span><span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">j</span><span class="main">)</span> <span class="main">)</span>
+                     <span class="main">(</span><span class="keyword1">do</span>
+                        modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>acbList <span class="main">:=</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">[</span><span class="bound">j</span> <span class="main">:=</span> <span class="main">(</span><span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span> <span class="bound">j</span><span class="main">)</span><span class="main">⦇</span>ACB.state <span class="main">:=</span> actorState.ACTOR_STATE_PAUSE<span class="main">⦈</span><span class="main">]</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+                        <span class="bound">st</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="inner_quoted">''[Actor Scheduler] Actor ''</span> <span class="main">@</span> ACB.name <span class="main">(</span><span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">j</span><span class="main">)</span>  <span class="main">@</span> <span class="inner_quoted">'' with ID ''</span> <span class="main">@</span> show <span class="main">(</span>ACB.actorID <span class="main">(</span><span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">j</span><span class="main">)</span><span class="main">)</span> <span class="main">@</span> <span class="inner_quoted">'' is scheduled to pause''</span><span class="main">)</span><span class="main">;</span>
+                        modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_INFO <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                        throwError <span class="main">(</span><span class="bound">j</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                     <span class="keyword1">od</span><span class="main">)</span>
+                     <span class="main">(</span>returnOk <span class="main">(</span><span class="bound">j</span><span class="main">+</span><span class="main">1</span><span class="main">)</span><span class="main">)</span>
+                  <span class="main">)</span>
+                  <span class="main">(</span><span class="main">0</span><span class="main">)</span>
+                  <span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+                  return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+              <span class="keyword1">od</span><span class="main">)</span>
+              <span class="main">(</span><span class="main">0</span><span class="main">)</span><span class="main">;</span>
+              <span class="main">(</span><span class="keyword1">if</span> <span class="free"><span class="bound">runningSwarmPtr</span></span> <span class="main">≠</span> None <span class="main">∧</span> swarmID <span class="main">(</span>the <span class="free"><span class="bound">runningSwarmPtr</span></span><span class="main">)</span> <span class="main">≠</span> swarmID <span class="free"><span class="bound">minSwarmPtr</span></span>
+              <span class="keyword1">then</span> 
+                <span class="keyword1">do</span>
+                  <span class="bound">num</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> index <span class="main">(</span>swarmList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>the <span class="free"><span class="bound">runningSwarmPtr</span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                  modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>swarmList <span class="main">:=</span> <span class="main">(</span>swarmList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">[</span><span class="bound">num</span> <span class="main">:=</span> <span class="main">(</span><span class="main">(</span>swarmList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span> <span class="bound">num</span><span class="main">)</span><span class="main">⦇</span>SwarmInfo.state <span class="main">:=</span> actorState.ACTOR_STATE_PAUSE<span class="main">⦈</span><span class="main">]</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span>
+                <span class="keyword1">od</span>
+              <span class="keyword1">else</span> return <span class="main">()</span>
+              <span class="main">)</span><span class="main">;</span>
+              <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] Pause the running actors successfully''</span><span class="main">)</span><span class="main">;</span>
+              modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_INFO <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+              return <span class="main">()</span>
+            <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function runSwarmAndActors
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_runSwarmAndActors <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"SwarmInfo <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> unit<span class="main">)</span> nondet_monad"</span></span></span>
+    <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_runSwarmAndActors</span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="main">≡</span>
+            <span class="keyword1">do</span>
+               <span class="bound">res1</span> <span class="main">←</span> whileLoop <span class="main">(</span><span class="main">λ</span><span class="bound">i</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">i</span> <span class="main">&lt;</span> length <span class="main">(</span>minPrioActors <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+               <span class="main">(</span><span class="main">λ</span><span class="bound">i</span><span class="main">.</span> <span class="keyword1">do</span>
+                  <span class="bound">res2</span> <span class="main">←</span> <span class="main">(</span>whileLoopE <span class="main">(</span><span class="main">λ</span><span class="bound">j</span> <span class="bound">σ</span><span class="main">.</span> <span class="bound">j</span> <span class="main">&lt;</span> length <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">)</span>
+                  <span class="main">(</span><span class="main">λ</span><span class="bound">j</span><span class="main">.</span>
+                     condition <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> ActorPluginInfo.actorID <span class="main">(</span><span class="main">(</span>minPrioActors <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">i</span><span class="main">)</span> <span class="main">=</span>
+                                ACB.actorID <span class="main">(</span><span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">j</span><span class="main">)</span> <span class="main">)</span>
+                     <span class="main">(</span><span class="keyword1">do</span>
+                        modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>acbList <span class="main">:=</span> <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">[</span><span class="bound">j</span> <span class="main">:=</span> <span class="main">(</span><span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span> <span class="bound">j</span><span class="main">)</span><span class="main">⦇</span>ACB.state <span class="main">:=</span> actorState.ACTOR_STATE_RUNNING<span class="main">⦈</span><span class="main">]</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+                        <span class="bound">st</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="inner_quoted">''[Actor Scheduler] Actor ''</span> <span class="main">@</span> ACB.name <span class="main">(</span><span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">j</span><span class="main">)</span>  <span class="main">@</span> <span class="inner_quoted">'' with ID ''</span> <span class="main">@</span> show <span class="main">(</span>ACB.actorID <span class="main">(</span><span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">!</span> <span class="bound">j</span><span class="main">)</span><span class="main">)</span> <span class="main">@</span> <span class="inner_quoted">'' is scheduled to RUNNING''</span><span class="main">)</span><span class="main">;</span>
+                        modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_INFO <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                        throwError <span class="main">(</span><span class="bound">j</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+                     <span class="keyword1">od</span><span class="main">)</span>
+                     <span class="main">(</span>returnOk <span class="main">(</span><span class="bound">j</span><span class="main">+</span><span class="main">1</span><span class="main">)</span><span class="main">)</span>
+                  <span class="main">)</span>
+                  <span class="main">(</span><span class="main">0</span><span class="main">)</span>
+                  <span class="main">)</span> <span class="keyword1">&lt;catch&gt;</span> <span class="main">(</span><span class="main">λ</span><span class="bound">e</span><span class="main">.</span> return <span class="bound">e</span><span class="main">)</span><span class="main">;</span>
+                  return <span class="main">(</span><span class="bound">i</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>
+              <span class="keyword1">od</span><span class="main">)</span>
+              <span class="main">(</span><span class="main">0</span><span class="main">)</span><span class="main">;</span>
+              <span class="bound">num</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> index <span class="main">(</span>swarmList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="free"><span class="bound">minSwarmPtr</span></span><span class="main">)</span><span class="main">;</span>
+              modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>swarmList <span class="main">:=</span> <span class="main">(</span>swarmList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">[</span><span class="bound">num</span> <span class="main">:=</span> <span class="main">(</span><span class="main">(</span>swarmList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">!</span> <span class="bound">num</span><span class="main">)</span><span class="main">⦇</span>SwarmInfo.state <span class="main">:=</span> actorState.ACTOR_STATE_RUNNING<span class="main">⦈</span><span class="main">]</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+              return <span class="main">()</span>
+            <span class="keyword1">od</span>"</span></span></span>
+
+
+<span class="comment1">(* 
+  Design Definition of Function schedule
+*)</span>
+<span class="keyword1"><span class="command">definition</span></span> Des_schedule_1 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> bool<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_schedule_1</span> <span class="main">≡</span> 
+            <span class="keyword1">do</span>
+              modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>scheNum <span class="main">:=</span> scheNum <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span> <span class="main">+</span><span class="main">1</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+              <span class="bound">condition1</span> <span class="main">←</span> gets<span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> length <span class="main">(</span>acbList <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">0</span><span class="main">)</span><span class="main">;</span>
+              return <span class="bound">condition1</span>
+            <span class="keyword1">od</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Des_schedule_2 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> unit<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_schedule_2</span> <span class="main">≡</span> 
+            <span class="keyword1">do</span>
+              modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>finishingActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+              Des_findFinishActors<span class="main">;</span>
+              <span class="bound">condition2</span> <span class="main">←</span> gets<span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> length <span class="main">(</span>finishingActors <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span><span class="main">)</span><span class="main">;</span>
+              <span class="keyword1">if</span> <span class="bound">condition2</span>
+              <span class="keyword1">then</span> Des_delFinishActors
+              <span class="keyword1">else</span> return <span class="main">()</span>
+            <span class="keyword1">od</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Des_schedule_3 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> <span class="main">(</span>SwarmInfo option <span class="main">×</span> int <span class="main">×</span> int <span class="main">×</span> bool <span class="main">×</span> bool <span class="main">)</span><span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_schedule_3</span> <span class="main">≡</span> 
+            <span class="keyword1">do</span>
+              <span class="bound">minSwarmPrio</span> <span class="main">←</span> return <span class="main">(</span>MAX_PRIORITY<span class="main">+</span><span class="main">1</span><span class="main">)</span><span class="main">;</span>
+              <span class="bound">minSwarmPtr</span> <span class="main">←</span> return None<span class="main">;</span>
+              <span class="main">(</span><span class="bound">minSwarmPtr</span><span class="main">,</span><span class="bound">minSwarmPrio</span><span class="main">)</span> <span class="main">←</span> Des_findMinPrioSwarm <span class="bound">minSwarmPtr</span> <span class="bound">minSwarmPrio</span><span class="main">;</span>
+              <span class="bound">condition3</span> <span class="main">←</span> return <span class="main">(</span><span class="bound">minSwarmPtr</span> <span class="main">=</span> None<span class="main">)</span><span class="main">;</span>
+              <span class="bound">minPrio</span> <span class="main">←</span> return <span class="main">(</span>MAX_PRIORITY<span class="main">+</span><span class="main">1</span><span class="main">)</span><span class="main">;</span>
+              <span class="bound">minIdx</span> <span class="main">←</span> return <span class="main">(</span><span class="main">-</span><span class="main">1</span><span class="main">)</span><span class="main">;</span>
+              <span class="main">(</span><span class="bound">minIdx</span><span class="main">,</span> <span class="bound">minPrio</span><span class="main">)</span> <span class="main">←</span> Des_ifMinPrioSwarmHaveActor <span class="main">(</span>the <span class="bound">minSwarmPtr</span><span class="main">)</span> <span class="bound">minIdx</span> <span class="bound">minPrio</span><span class="main">;</span>
+              <span class="bound">condition4</span> <span class="main">←</span> return <span class="main">(</span><span class="bound">minIdx</span> <span class="main">=</span> <span class="main">(</span><span class="main">-</span><span class="main">1</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+              return <span class="main">(</span><span class="bound">minSwarmPtr</span><span class="main">,</span> <span class="bound">minSwarmPrio</span><span class="main">,</span> <span class="bound">minPrio</span><span class="main">,</span> <span class="bound">condition3</span><span class="main">,</span> <span class="bound">condition4</span><span class="main">)</span>
+            <span class="keyword1">od</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Des_schedule_4 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bool <span class="main">⇒</span> SwarmInfo option <span class="main">⇒</span> SwarmInfo option <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> unit<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_schedule_4</span> <span class="free"><span class="bound">condition6</span></span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="free"><span class="bound">runningSwarmPtr</span></span> <span class="main">≡</span> 
+               <span class="keyword1">if</span> <span class="free"><span class="bound">condition6</span></span>
+               <span class="keyword1">then</span> 
+                 <span class="keyword1">do</span>
+                   <span class="bound">pActs</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> toPauseActors <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                   <span class="bound">flag1</span> <span class="main">←</span> Des_updateActorPluginState_sche <span class="bound">pActs</span> actorState.ACTOR_STATE_PAUSE<span class="main">;</span>
+                   <span class="keyword1">if</span> <span class="bound">flag1</span> 
+                   <span class="keyword1">then</span> Des_pauseSwarmAndActors <span class="free"><span class="bound">runningSwarmPtr</span></span> <span class="main">(</span>the <span class="free"><span class="bound">minSwarmPtr</span></span><span class="main">)</span>
+                   <span class="keyword1">else</span> 
+                     <span class="keyword1">do</span>
+                        <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] Pause the running actors fails''</span><span class="main">)</span><span class="main">;</span>
+                        modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_ERROR <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span>
+                     <span class="keyword1">od</span>
+                 <span class="keyword1">od</span>
+               <span class="keyword1">else</span> return <span class="main">()</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Des_schedule_5 <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"bool <span class="main">⇒</span> SwarmInfo option <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> unit<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_schedule_5</span> <span class="free"><span class="bound">condition7</span></span> <span class="free"><span class="bound">minSwarmPtr</span></span> <span class="main">≡</span> 
+                <span class="keyword1">if</span> <span class="free"><span class="bound">condition7</span></span>
+                <span class="keyword1">then</span>
+                  <span class="keyword1">do</span> 
+                      <span class="bound">mpActs</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> minPrioActors <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                      <span class="bound">flag2</span> <span class="main">←</span> Des_updateActorPluginState_sche <span class="bound">mpActs</span> actorState.ACTOR_STATE_RUNNING<span class="main">;</span>
+                      <span class="keyword1">if</span> <span class="bound">flag2</span>
+                      <span class="keyword1">then</span> 
+                        <span class="keyword1">do</span>
+                          <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] Start the min prio actors successfully''</span><span class="main">)</span><span class="main">;</span>
+                          modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_INFO <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                          Des_runSwarmAndActors <span class="main">(</span>the <span class="free"><span class="bound">minSwarmPtr</span></span><span class="main">)</span>
+                        <span class="keyword1">od</span>
+                      <span class="keyword1">else</span>
+                       <span class="keyword1">do</span>
+                          <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] Start the min prio actors fails''</span><span class="main">)</span><span class="main">;</span>
+                          modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_ERROR <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span>
+                       <span class="keyword1">od</span>
+                  <span class="keyword1">od</span> 
+                <span class="keyword1">else</span> return <span class="main">()</span>  
+            "</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> Des_schedule <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">(</span><span class="main">(</span>scheduler <span class="main">×</span> RosLog<span class="main">)</span><span class="main">,</span> unit<span class="main">)</span>nondet_monad"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">Des_schedule</span> <span class="main">≡</span>
+            <span class="keyword1">do</span>
+              <span class="bound">condition1</span> <span class="main">←</span> Des_schedule_1<span class="main">;</span>
+              <span class="keyword1">if</span> <span class="bound">condition1</span>
+              <span class="keyword1">then</span> 
+                <span class="keyword1">do</span>
+                  <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] The _acbList is empty, scheduleloop return...''</span><span class="main">)</span><span class="main">;</span>
+                  modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_INFO <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                  return <span class="main">()</span>
+                <span class="keyword1">od</span>
+              <span class="keyword1">else</span>
+                <span class="keyword1">do</span>
+                  Des_schedule_2<span class="main">;</span>
+                  <span class="main">(</span><span class="bound">minSwarmPtr</span><span class="main">,</span> <span class="bound">minSwarmPrio</span><span class="main">,</span> <span class="bound">minPrio</span><span class="main">,</span> <span class="bound">condition3</span><span class="main">,</span> <span class="bound">condition4</span><span class="main">)</span> <span class="main">←</span> Des_schedule_3<span class="main">;</span>
+                  <span class="keyword1">if</span> <span class="bound">condition3</span>
+                  <span class="keyword1">then</span>
+                    <span class="keyword1">do</span>
+                      <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] The minSwarm pointer is NULL, scheduleloop return''</span><span class="main">)</span><span class="main">;</span>
+                      modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_ERROR <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                      return <span class="main">()</span>
+                    <span class="keyword1">od</span>
+                  <span class="keyword1">else</span>
+                    <span class="keyword1">if</span> <span class="bound">condition4</span>
+                    <span class="keyword1">then</span>
+                      <span class="keyword1">do</span>
+                        <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] The minIdx in the _acbList may be empty, scheduleloop return''</span><span class="main">)</span><span class="main">;</span>
+                        modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_WARN <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                        return <span class="main">()</span>
+                      <span class="keyword1">od</span>
+                    <span class="keyword1">else</span> 
+                      <span class="keyword1">do</span>
+                        modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>minPrioActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+                        Des_findActorUnderMinSwarm <span class="main">(</span>the <span class="bound">minSwarmPtr</span><span class="main">)</span> <span class="bound">minPrio</span><span class="main">;</span>
+                        <span class="bound">nRunningSwarm</span> <span class="main">←</span> return <span class="main">0</span><span class="main">;</span>
+                        <span class="bound">runningSwarmPtr</span> <span class="main">←</span> return None<span class="main">;</span>
+                        <span class="main">(</span><span class="bound">runningSwarmPtr</span><span class="main">,</span> <span class="bound">nRunningSwarm</span><span class="main">)</span> <span class="main">←</span> Des_findRunningSwarm <span class="bound">runningSwarmPtr</span> <span class="bound">nRunningSwarm</span><span class="main">;</span>
+                        <span class="bound">condition5</span> <span class="main">←</span> return <span class="main">(</span><span class="bound">nRunningSwarm</span> <span class="main">&gt;</span> <span class="main">1</span><span class="main">)</span><span class="main">;</span>
+                        <span class="keyword1">if</span> <span class="bound">condition5</span>
+                        <span class="keyword1">then</span>
+                          <span class="keyword1">do</span>
+                            <span class="bound">st</span> <span class="main">←</span> return <span class="main">(</span><span class="inner_quoted">''[Actor Scheduler] More than one swarm actors is running, scheduleloop return''</span><span class="main">)</span><span class="main">;</span>
+                            modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span>fst <span class="bound">σ</span><span class="main">,</span> Ros_WARN <span class="main">(</span>snd <span class="bound">σ</span><span class="main">)</span> <span class="bound">st</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                            return <span class="main">()</span>
+                          <span class="keyword1">od</span>
+                        <span class="keyword1">else</span>
+                          <span class="keyword1">do</span>
+                             modify <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">⦇</span>toPauseActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">,</span> snd <span class="bound">σ</span><span class="main">)</span> <span class="main">)</span><span class="main">;</span>
+                             Des_findToPauseActors <span class="main">(</span>the <span class="bound">minSwarmPtr</span><span class="main">)</span> <span class="bound">minPrio</span><span class="main">;</span>
+                             <span class="bound">condition6</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> length <span class="main">(</span>toPauseActors <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span> <span class="main">)</span><span class="main">;</span>
+                             Des_schedule_4 <span class="bound">condition6</span> <span class="bound">minSwarmPtr</span> <span class="bound">runningSwarmPtr</span> <span class="main">;</span>
+                             <span class="bound">condition7</span> <span class="main">←</span> gets <span class="main">(</span><span class="main">λ</span><span class="bound">σ</span><span class="main">.</span> length <span class="main">(</span>minPrioActors <span class="main">(</span>fst <span class="bound">σ</span><span class="main">)</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span> <span class="main">)</span><span class="main">;</span>
+                             Des_schedule_5 <span class="bound">condition7</span> <span class="bound">minSwarmPtr</span>
+                          <span class="keyword1">od</span>
+                      <span class="keyword1">od</span>
+                <span class="keyword1">od</span>
+            <span class="keyword1">od</span>"</span></span></span>
+
+
+(* Complete version *)
+(*
+definition Des_schedule_raw :: "((scheduler × RosNode), unit)nondet_monad"
+  where "Des_schedule_raw ≡ 
+            do
+              modify (λσ. σ⦇scheNum := scheNum σ +1⦈);
+              condition (λσ. length (acbList σ) = 0 )
+              (return ())
+              (do
+                modify (λσ. σ⦇finishingActors := []⦈);
+                Des_findFinishActors;
+                condition (λσ. length (finishingActors σ) = 0 )
+                (Des_delFinishActors)
+                (return ());
+                minSwarmPrio ← return (MAX_PRIORITY+1);
+                minSwarmPtr ← return None;
+                (minSwarmPtr,minSwarmPrio) ← Des_findMinPrioSwarm minSwarmPtr minSwarmPrio;
+                if minSwarmPtr = None
+                then return ()
+                else
+                  do
+                    minPrio ← return (MAX_PRIORITY+1);
+                    minIdx ← return (-1);
+                    (minIdx, minPrio) ← Des_ifMinPrioSwarmHaveActor (the minSwarmPtr) minIdx minPrio;
+                    if minIdx = (-1)
+                    then return ()
+                    else 
+                      do
+                        modify (λσ. σ⦇minPrioActors := []⦈);
+                        Des_findAcotorUnderMinSwarm (the minSwarmPtr) minPrio;
+                        nRunningSwarm ← return 0;
+                        runningSwarmPtr ← return None;
+                        (runningSwarmPtr, nRunningSwarm) ← Des_findRunningSwarm runningSwarmPtr nRunningSwarm;
+                        if nRunningSwarm &gt; 1
+                        then return ()
+                        else 
+                          do
+                            modify (λσ. σ⦇toPauseActors := []⦈);
+                            Des_findToPauseActors (the minSwarmPtr) minPrio;
+                            condition (λσ. length (toPauseActors σ) ≠ 0 )
+                            (do
+                                pActs ← gets (λσ. toPauseActors σ);
+                                flag1 ← Des_updateActorPluginState_sche pActs actorState.ACTOR_STATE_PAUSE;
+                                if flag1
+                                then Des_pauseSwarmAndActors runningSwarmPtr (the minSwarmPtr)
+                                else return ()
+                             od)
+                            (return ());
+                            condition (λσ. length (minPrioActors σ) ≠ 0 )
+                            (do
+                                mpActs ← gets (λσ. minPrioActors σ);
+                                flag2 ← Des_updateActorPluginState_sche mpActs actorState.ACTOR_STATE_RUNNING;
+                                if flag2
+                                then Des_runSwarmAndActors (the minSwarmPtr)
+                                else return ()                              
+                             od)
+                            (return ())
+                          od
+                      od
+                  od
+              od)
+            od"
+*)
+
+
+(* scheduler loop*)
+
+(* 
+  Design Definition of Function scheLoopOnce
+*)
+
+definition Des_scheLoopOnce1 :: "((scheduler × RosLog), (ScheduleMsg × bool))nondet_monad"
+  where " Des_scheLoopOnce1 ≡
+             do
+                msgQue ← gets (λσ. scheMsgQueue (fst σ));
+                if ¬(queue_empty msgQue)
+                then 
+                  do 
+                    modify (λσ. ((fst σ)⦇scheMsgQueue := pop msgQue⦈, snd σ) );
+                    return (front msgQue, True)
+                  od
+                else return (nullScheduleMsg, False)
+             od"
+
+definition Des_scheLoopOnce2 :: "ScheduleMsg ⇒ ((scheduler × RosLog), bool)nondet_monad"
+  where "Des_scheLoopOnce2 msg ≡
+              case (type msg) of
+                SCHEDULE_CMD_RAW ⇒ return True |
+                SCHEDULE_CMD_SWITCH_PRIO ⇒ 
+                    do 
+                       result ← Des_switchToActor (param1 msg) (param3 msg) ;
+                       (if ¬result
+                        then
+                          do
+                             st ← return (''[Actor Scheduler] Process switch to actor request fails, do not schedule'');
+                             modify (λσ. (fst σ, Ros_ERROR (snd σ) st));
+                             return result
+                          od
+                        else return result
+                       )
+                    od |
+                SCHEDULE_CMD_ACTIVATE_ACTOR ⇒
+                    do result ← Des_activateActor (param1 msg) (param3 msg) ;
+                       (if ¬result
+                        then
+                          do
+                             st ← return (''[Actor Scheduler] Process activate actor request fails, do not schedule'');
+                             modify (λσ. (fst σ, Ros_ERROR (snd σ) st));
+                             return result
+                          od
+                        else return result
+                       )
+                    od |
+                SCHEDULE_CMD_YIELD_ACTOR ⇒
+                    do result ← Des_yieldActor (param1 msg) ;
+                       (if ¬result
+                        then
+                          do
+                             st ← return (''[Actor Scheduler] Process yield actor request fails, do not schedule'');
+                             modify (λσ. (fst σ, Ros_ERROR (snd σ) st));
+                             return result
+                          od
+                        else return result
+                       )
+                    od
+            "
+
+definition Des_scheLoopOnce :: "((scheduler × RosLog), unit)nondet_monad"
+  where " Des_scheLoopOnce ≡
+             do
+                (scheMsg, queueFlag) ← Des_scheLoopOnce1;
+                if queueFlag
+                then
+                  do
+                    msgFlag ← Des_scheLoopOnce2 scheMsg;
+                    if msgFlag
+                    then Des_schedule
+                    else return ()
+                  od
+                else return ()
+             od"
+
+
+(* 
+  Design Definition of Some API Functions
+  Not Implement getActorName getActorPlugin getSharedData setSharedData  terminate  pluginYieldActor 
+*)
+definition Des_api_switchToActor :: "int64_t ⇒ string ⇒ ((scheduler × RosLog), unit)nondet_monad"
+  where "Des_api_switchToActor anActorID anActorName ≡ 
+             do
+                scheMsg ← return ⦇ScheduleMsg.type = SCHEDULE_CMD_SWITCH_PRIO,
+                         param1 = anActorID,
+                         param2 = 0,
+                         param3 = anActorName⦈;
+                Des_appendScheduleMsg scheMsg
+             od"
+
+definition Des_api_activateActor :: "int64_t ⇒ string ⇒ ((scheduler × RosLog), unit)nondet_monad"
+  where "Des_api_activateActor anActorID anActorName ≡ 
+             do
+                scheMsg ← return ⦇ScheduleMsg.type = SCHEDULE_CMD_ACTIVATE_ACTOR,
+                         param1 = anActorID,
+                         param2 = 0,
+                         param3 = anActorName⦈;
+                Des_appendScheduleMsg scheMsg
+             od"
+
+definition Des_api_yieldActor :: "int64_t ⇒ ((scheduler × RosLog), unit)nondet_monad"
+  where "Des_api_yieldActor anActorID ≡ 
+             do
+                scheMsg ← return ⦇ScheduleMsg.type = SCHEDULE_CMD_YIELD_ACTOR,
+                         param1 = anActorID,
+                         param2 = 0,
+                         param3 = []⦈;
+                Des_appendScheduleMsg scheMsg
+             od"
+
+definition Des_api_appendScheduleRequest :: "int64_t ⇒ ((scheduler × RosLog), unit)nondet_monad"
+  where "Des_api_appendScheduleRequest anActorID  ≡ 
+             do
+                scheMsg ← return ⦇ScheduleMsg.type = SCHEDULE_CMD_RAW,
+                         param1 = anActorID,
+                         param2 = 0,
+                         param3 = []⦈;
+                Des_appendScheduleMsg scheMsg
+             od"
+
+(*
+definition Des_api_terminate  :: "string ⇒ int64_t ⇒ string ⇒ ((scheduler × RosLog), unit)nondet_monad"
+  where "Des_api_terminate bName actID pName  ≡ 
+             do
+                
+                modify (λσ. (api_updateSchedule (fst σ) bName actID pName ACTOR_STATE_FINISH , snd σ));
+                st ← return (''[General Plugin] Actor actor ID '' @ show actID @ '' ,plugin '' @ pName @ '' call terminate, before scheduler lock '');
+                modify (λσ. (fst σ, Ros_INFO (snd σ) st));
+                Des_api_appendScheduleRequest actID;
+                st ← return (''[General Plugin] Actor '' @ show actID @ '' , plugin '' @ pName @ '' Terminated'');
+                modify (λσ. (fst σ, Ros_INFO (snd σ) st))
+             od"
+
+definition Des_api_pluginYieldActor  :: "string ⇒ int64_t ⇒ string ⇒ ((scheduler × RosLog), unit)nondet_monad"
+  where "Des_api_pluginYieldActor bName actID pName  ≡ 
+             do
+                modify (λσ. (api_updateSchedule (fst σ) bName actID pName ACTOR_STATE_PAUSE , snd σ));
+                Des_api_yieldActor actID
+             od"
+*)
+end</pre></body>

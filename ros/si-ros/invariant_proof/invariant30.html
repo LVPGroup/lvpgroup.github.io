@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('../../fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('../../fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('../../fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('../../fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.theories { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+</style><title>Theory "invariant_bus6"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> invariant_bus6
+<span class="keyword2"><span class="keyword">imports</span></span> <span class="quoted">"invariant_Def"</span> <span class="quoted">"invariant_24"</span> <span class="quoted">"invariant_8"</span> <span class="quoted">"invariant_16"</span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">‹Bus_invariant_6›</span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_appendACB_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_appendACB <span class="free">sche</span> <span class="free">anACB</span> <span class="free">anPSwarm</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Bus_invariant_6_def Re_appendACB_def<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_iterAppendACB_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_iterAppendACB <span class="free">sche</span> <span class="free">acbl</span> <span class="free">anPSwarm</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induction</span> <span class="quoted"><span class="language"><span class="free">sche</span></span></span> <span class="quoted"><span class="language"><span class="free">acbl</span></span></span> <span class="quoted"><span class="language"><span class="free">anPSwarm</span></span></span> <span class="quasi_keyword">rule</span><span class="main"><span class="main">:</span></span> Re_iterAppendACB.induct<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span> 
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_appendACB_businv6<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_appendACBs_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>fst <span class="main">(</span>Re_appendACBs <span class="free">sche</span> <span class="free">acbl</span> <span class="free">anPSwarm</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_iterAppendACB_businv6 Re_appendACBs_def<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_appendScheduleMsg_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_appendScheduleMsg <span class="free">sche</span> <span class="free">msg</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Bus_invariant_6_def Re_appendScheduleMsg_def<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_appendSwarmACBs_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_appendSwarmACBs <span class="free">sche</span> <span class="free">si</span> <span class="free">al</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Bus_invariant_6_def Re_appendACBs_businv6 Re_appendScheduleMsg_businv6 Re_appendSwarmACBs_def scheduler.iffs scheduler.simps<span class="main"><span class="main">(</span></span>13<span class="main"><span class="main">)</span></span> scheduler.simps<span class="main"><span class="main">(</span></span>15<span class="main"><span class="main">)</span></span> scheduler.surjective<span class="main">)</span></span>
+  
+<span class="keyword1"><span class="command">lemma</span></span> Re_pushSwarmAcbs_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="main">(</span>pActorScheduler <span class="free">s</span><span class="main">)</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>pActorScheduler <span class="main">(</span>fst <span class="main">(</span>Re_pushSwarmAcbs <span class="free">s</span> <span class="free">si</span> <span class="free">al</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_pushSwarmAcbs_def Re_appendSwarmACBs_businv6<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_scheLoopOnce1_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>fst <span class="main">(</span>Re_scheLoopOnce1 <span class="free">sche</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_scheLoopOnce1_def Bus_invariant_6_def<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_switchToActor_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>fst <span class="main">(</span>Re_switchToActor <span class="free">sche</span> <span class="free">aid</span> <span class="free">anme</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Bus_invariant_6_def Re_switchToActor_def fst_conv scheduler.simps<span class="main"><span class="main">(</span></span>12<span class="main"><span class="main">)</span></span> scheduler.simps<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> scheduler.surjective<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_activateActor_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>fst <span class="main">(</span>Re_activateActor <span class="free">sche</span> <span class="free">aid</span> <span class="free">anme</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Bus_invariant_6_def Re_activateActor_def fst_conv scheduler.simps<span class="main"><span class="main">(</span></span>12<span class="main"><span class="main">)</span></span> scheduler.simps<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> scheduler.surjective<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_yieldActor_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>fst <span class="main">(</span>Re_yieldActor <span class="free">sche</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Bus_invariant_6_def Re_yieldActor_def fst_conv scheduler.simps<span class="main"><span class="main">(</span></span>12<span class="main"><span class="main">)</span></span> scheduler.simps<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> scheduler.surjective<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_scheLoopOnce2_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>fst <span class="main">(</span>Re_scheLoopOnce2 <span class="free">sche</span> <span class="free">msg</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_scheLoopOnce2_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="language"><span class="free">msg</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> Re_activateActor_businv6 Re_switchToActor_businv6 Re_yieldActor_businv6 ScheduleMsgType.exhaust ScheduleMsgType.simps<span class="main"><span class="main">(</span></span>13<span class="main"><span class="main">)</span></span> ScheduleMsgType.simps<span class="main"><span class="main">(</span></span>14<span class="main"><span class="main">)</span></span> ScheduleMsgType.simps<span class="main"><span class="main">(</span></span>15<span class="main"><span class="main">)</span></span> ScheduleMsgType.simps<span class="main"><span class="main">(</span></span>16<span class="main"><span class="main">)</span></span> fst_conv<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_findFinishActors_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_findFinishActors <span class="free">sche</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_findFinishActors_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">induction</span> <span class="quoted"><span class="language"><span class="free">sche</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Bus_invariant_6_def<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_pauseActorPlugins_businv6<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">" Bus_invariant_6_2 <span class="free">b</span> <span class="main">⟹</span> Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_pauseActorPlugins <span class="free">b</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_pauseActorPlugins_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Bus_invariant_6_2_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Re_pause_immut comp_apply map_eq_conv<span class="main">)</span></span> 
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_stopActorPlugins_businv6<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6_2 <span class="free">b</span> <span class="main">⟹</span> Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_stopActorPlugins <span class="free">b</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_stopActorPlugins_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Bus_invariant_6_2_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Re_stop_immut comp_apply map_eq_conv<span class="main">)</span></span> 
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_startActorPlugins_businv6<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6_2 <span class="free">b</span> <span class="main">⟹</span> Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_startActorPlugins <span class="free">b</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_startActorPlugins_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Bus_invariant_6_2_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Re_resume_immut comp_apply map_eq_conv<span class="main">)</span></span> 
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_loadPlugin_businv6<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"
+   Bus_invariant_6_2 <span class="free">b</span>  <span class="main">⟹</span>
+   <span class="free">aid</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="free">b</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+   Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_loadPlugin <span class="free">b</span> <span class="free">s</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_loadPlugin_def Bus_invariant_6_2_def pluInitialize_def Re_createInstance_def nullPlugin_def Let_def case_prod_unfold<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span> 
+
+<span class="keyword1"><span class="command">lemma</span></span> loadPluginInfoList_businv6_aux<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"
+     Bus_invariant_6_2 <span class="free">b</span> <span class="main">⟹</span> 
+     <span class="main">∀</span> <span class="bound">p</span> <span class="main">∈</span> set <span class="free">pl</span><span class="main">.</span> <span class="main">¬</span><span class="main">(</span><span class="main">∃</span> <span class="bound">plu</span> <span class="main">∈</span> set <span class="main">(</span>pluginList <span class="free">b</span><span class="main">)</span><span class="main">.</span> plugin.name <span class="bound">plu</span> <span class="main">=</span> PluginInfo.name <span class="bound">p</span> <span class="main">∧</span> plugin.actorID <span class="bound">plu</span> <span class="main">=</span> <span class="free">aid</span><span class="main">)</span> <span class="main">⟹</span>
+     distinct <span class="main">(</span>map PluginInfo.name <span class="free">pl</span><span class="main">)</span> <span class="main">⟹</span>
+     <span class="free">aid</span> <span class="main">∈</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="free">b</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+     Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>loadPluginInfoList <span class="free">pl</span> <span class="free">b</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">induction</span> <span class="quoted"><span class="language"><span class="free">pl</span></span></span> <span class="quasi_keyword">arbitrary</span><span class="main"><span class="main">:</span></span> <span class="quoted"><span class="language"><span class="free">b</span></span></span> <span class="quoted"><span class="language"><span class="free">aid</span></span></span><span class="main"><span class="keyword3">,</span></span> <span class="operator">simp_all</span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> case_prod_unfold Let_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">rule</span></span> <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">rule</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">subgoal_tac</span> <span class="quoted"><span class="quoted"><span class="language">"
+                      Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_loadPlugin <span class="improper">b</span> <span class="main">(</span>PluginInfo.name <span class="improper">a</span><span class="main">)</span>  <span class="improper">aid</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span>
+                      <span class="main">(</span><span class="main">∀</span> <span class="bound">p</span> <span class="main">∈</span> set <span class="improper">pl</span><span class="main">.</span> <span class="main">¬</span><span class="main">(</span><span class="main">∃</span> <span class="bound">plu</span> <span class="main">∈</span> set <span class="main">(</span>pluginList <span class="main">(</span>fst <span class="main">(</span>Re_loadPlugin <span class="improper">b</span> <span class="main">(</span>PluginInfo.name <span class="improper">a</span><span class="main">)</span>  <span class="improper">aid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">.</span> plugin.name <span class="bound">plu</span> <span class="main">=</span> PluginInfo.name <span class="bound">p</span> <span class="main">∧</span> plugin.actorID <span class="bound">plu</span> <span class="main">=</span> <span class="improper">aid</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span>
+                      <span class="improper">aid</span>  <span class="main">∈</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="main">(</span>fst <span class="main">(</span>Re_loadPlugin <span class="improper">b</span> <span class="main">(</span>PluginInfo.name <span class="improper">a</span><span class="main">)</span>  <span class="improper">aid</span><span class="main">)</span><span class="main">)</span> <span class="main">)</span><span class="main">)</span> "</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_loadPlugin_def Bus_invariant_6_2_def pluInitialize_def Re_createInstance_def nullPlugin_def Let_def case_prod_unfold<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  
+<span class="keyword1"><span class="command">lemma</span></span> loadPluginInfoList_businv6<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"
+     Bus_invariant_6_2 <span class="free">b</span> <span class="main">⟹</span> 
+     distinct <span class="main">(</span>map PluginInfo.name <span class="free">pl</span><span class="main">)</span> <span class="main">⟹</span>
+     <span class="free">aid</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="free">b</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+     Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>loadPluginInfoList <span class="free">pl</span> <span class="free">b</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">induction</span> <span class="quoted"><span class="language"><span class="free">pl</span></span></span><span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">¬</span> <span class="main">(</span>snd <span class="main">(</span>Re_loadPlugin <span class="free">b</span> <span class="main">(</span>PluginInfo.name <span class="improper">a</span><span class="main">)</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> case_prod_unfold<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">subgoal_tac</span> <span class="quoted"><span class="quoted"><span class="language">"
+                      Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_loadPlugin <span class="free">b</span> <span class="main">(</span>PluginInfo.name <span class="improper">a</span><span class="main">)</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span>
+                      <span class="main">(</span><span class="main">∀</span> <span class="bound">p</span> <span class="main">∈</span> set <span class="improper">pl</span><span class="main">.</span> <span class="main">¬</span><span class="main">(</span><span class="main">∃</span> <span class="bound">plu</span> <span class="main">∈</span> set <span class="main">(</span>pluginList <span class="main">(</span>fst <span class="main">(</span>Re_loadPlugin <span class="free">b</span> <span class="main">(</span>PluginInfo.name <span class="improper">a</span><span class="main">)</span>  <span class="free">aid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">.</span> plugin.name <span class="bound">plu</span> <span class="main">=</span> PluginInfo.name <span class="bound">p</span> <span class="main">∧</span> plugin.actorID <span class="bound">plu</span> <span class="main">=</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span>   <span class="main">∧</span>
+                      distinct <span class="main">(</span>map PluginInfo.name <span class="improper">pl</span><span class="main">)</span>  <span class="main">∧</span>
+                      <span class="free">aid</span> <span class="main">∈</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="main">(</span>fst <span class="main">(</span>Re_loadPlugin <span class="free">b</span> <span class="main">(</span>PluginInfo.name <span class="improper">a</span><span class="main">)</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">using</span></span> loadPluginInfoList_businv6_aux
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> case_prod_unfold fst_conv loadPluginInfoList.simps<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> Re_loadPlugin_def Bus_invariant_6_2_def pluInitialize_def Re_createInstance_def nullPlugin_def Let_def case_prod_unfold
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> snd_conv<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_loadPluginInfoList_businv6_2 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"
+             <span class="free">aid</span> <span class="main">∉</span> ActorPluginInfo.actorID <span class="main">`</span> set <span class="free">al</span> <span class="main">⟹</span>
+             <span class="main">∀</span> <span class="bound">acb</span> <span class="main">∈</span> set <span class="free">al</span><span class="main">.</span> ActorPluginInfo.state <span class="bound">acb</span> <span class="main">=</span>  actorState.ACTOR_STATE_INIT <span class="main">⟶</span>
+                  ActorPluginInfo.actorID <span class="bound">acb</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="free">b</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+              <span class="main">∀</span> <span class="bound">acb</span> <span class="main">∈</span> set <span class="free">al</span><span class="main">.</span> ActorPluginInfo.state <span class="bound">acb</span> <span class="main">=</span>  actorState.ACTOR_STATE_INIT <span class="main">⟶</span>
+                ActorPluginInfo.actorID <span class="bound">acb</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="main">(</span>fst <span class="main">(</span>loadPluginInfoList <span class="free">pl</span> <span class="free">b</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">induction</span> <span class="quoted"><span class="language"><span class="free">pl</span></span></span> <span class="quasi_keyword">arbitrary</span><span class="main"><span class="main">:</span></span> <span class="quoted"><span class="language"><span class="free">b</span></span></span><span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">¬</span><span class="main">(</span>snd <span class="main">(</span>Re_loadPlugin <span class="improper">b</span> <span class="main">(</span>PluginInfo.name <span class="improper">a</span><span class="main">)</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span>"</span></span></span><span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> case_prod_unfold<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> case_prod_unfold<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">rule</span></span> 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">subgoal_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span> <span class="bound">acb</span> <span class="main">∈</span> set <span class="free">al</span><span class="main">.</span> ActorPluginInfo.state <span class="bound">acb</span> <span class="main">=</span>  actorState.ACTOR_STATE_INIT <span class="main">⟶</span>
+                  ActorPluginInfo.actorID <span class="bound">acb</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="main">(</span>fst <span class="main">(</span>Re_loadPlugin <span class="improper">b</span> <span class="main">(</span>PluginInfo.name <span class="improper">a</span><span class="main">)</span> <span class="free">aid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_loadPlugin_def Bus_invariant_6_2_def pluInitialize_def Re_createInstance_def nullPlugin_def Let_def case_prod_unfold<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_updateActorPluginState_businv6_1<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"
+     Bus_invariant_6_2 <span class="free">b</span> <span class="main">⟹</span>  
+     <span class="free">st</span> <span class="main">=</span> actorState.ACTOR_STATE_PAUSE <span class="main">∨</span> <span class="free">st</span> <span class="main">=</span> actorState.ACTOR_STATE_FINISH  <span class="main">⟹</span>
+     Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginState <span class="free">b</span> <span class="free">a</span> <span class="free">st</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_updateActorPluginState_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span> 
+  <span class="keyword1"><span class="command">using</span></span> Re_pauseActorPlugins_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_pauseActorPlugins_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_stopActorPlugins_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_stopActorPlugins_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_updateActorPluginState_businv6_2<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"
+     Bus_invariant_6_2 <span class="free">b</span> <span class="main">⟹</span> <span class="free">st</span> <span class="main">=</span>  actorState.ACTOR_STATE_RUNNING <span class="main">⟹</span>
+     distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ActorPluginInfo.taskInfo <span class="free">a</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+     ActorPluginInfo.state <span class="free">a</span> <span class="main">=</span>  actorState.ACTOR_STATE_INIT <span class="main">⟶</span>
+     ActorPluginInfo.actorID <span class="free">a</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="free">b</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+     Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginState <span class="free">b</span> <span class="free">a</span> <span class="free">st</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_updateActorPluginState_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_startActorPlugins_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">defer</span></span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_startActorPlugins_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>case_prod_unfold<span class="main">)</span></span> 
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_startActorPlugins_businv6 loadPluginInfoList_businv6<span class="main">)</span></span>
+                                                                                                     
+<span class="keyword1"><span class="command">lemma</span></span> Re_updateActorPluginState_businv6_2_2 <span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"
+     Bus_invariant_6_2 <span class="free">b</span> <span class="main">⟹</span> 
+     distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ActorPluginInfo.taskInfo <span class="free">a</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+     ActorPluginInfo.actorID <span class="free">a</span> <span class="main">∉</span> ActorPluginInfo.actorID <span class="main">`</span> set <span class="free">al</span> <span class="main">⟹</span>
+     ActorPluginInfo.state <span class="free">a</span> <span class="main">=</span>  actorState.ACTOR_STATE_INIT <span class="main">⟶</span>
+     ActorPluginInfo.actorID <span class="free">a</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="free">b</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+     <span class="main">∀</span> <span class="bound">acb</span> <span class="main">∈</span> set <span class="free">al</span><span class="main">.</span> ActorPluginInfo.state <span class="bound">acb</span> <span class="main">=</span>  actorState.ACTOR_STATE_INIT <span class="main">⟶</span>
+          ActorPluginInfo.actorID <span class="bound">acb</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="free">b</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+     <span class="free">b'</span> <span class="main">=</span>  <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginState <span class="free">b</span> <span class="free">a</span> actorState.ACTOR_STATE_RUNNING<span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+     <span class="main">(</span><span class="main">∀</span> <span class="bound">acb</span> <span class="main">∈</span> set <span class="free">al</span><span class="main">.</span> ActorPluginInfo.state <span class="bound">acb</span> <span class="main">=</span>  actorState.ACTOR_STATE_INIT <span class="main">⟶</span>
+        ActorPluginInfo.actorID <span class="bound">acb</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="free">b'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>       <span class="main">∧</span>
+     Bus_invariant_6_2 <span class="free">b'</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">rule</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">defer</span></span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_updateActorPluginState_def<span class="main">)</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_startActorPlugins_businv6<span class="main">)</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_startActorPlugins_businv6 case_prod_unfold loadPluginInfoList_businv6<span class="main">)</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_startActorPlugins_businv6<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_updateActorPluginState_def case_prod_unfold Let_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_loadPluginInfoList_businv6_2
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Re_startActorPlugins_inv24 list.set_map<span class="main">)</span></span>
+  
+<span class="keyword1"><span class="command">lemma</span></span> Re_updateActorPluginStates_businv6_1<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"
+     Bus_invariant_6_2 <span class="free">b</span> <span class="main">⟹</span> 
+     <span class="free">st</span> <span class="main">=</span> actorState.ACTOR_STATE_PAUSE <span class="main">∨</span> <span class="free">st</span> <span class="main">=</span> actorState.ACTOR_STATE_FINISH  <span class="main">⟹</span>
+     Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginStates <span class="free">b</span> <span class="free">al</span> <span class="free">st</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">induction</span> <span class="quoted"><span class="language"><span class="free">b</span></span></span> <span class="quoted"><span class="language"><span class="free">al</span></span></span> <span class="quoted"><span class="language"><span class="free">st</span></span></span> <span class="quasi_keyword">rule</span><span class="main"><span class="main">:</span></span>Re_updateActorPluginStates.induct<span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span> 
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_updateActorPluginState_businv6_1<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_updateActorPluginStates_businv6_2<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"
+     Bus_invariant_6_2 <span class="free">b</span> <span class="main">⟹</span> 
+      <span class="free">st</span> <span class="main">=</span>  actorState.ACTOR_STATE_RUNNING <span class="main">⟹</span> 
+     <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="free">al</span><span class="main">.</span> distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ActorPluginInfo.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+     distinct <span class="main">(</span>map ActorPluginInfo.actorID <span class="free">al</span><span class="main">)</span> <span class="main">⟹</span>
+      <span class="main">∀</span><span class="bound">a</span><span class="main">∈</span> set <span class="free">al</span><span class="main">.</span>
+        ActorPluginInfo.state <span class="bound">a</span> <span class="main">=</span>  actorState.ACTOR_STATE_INIT <span class="main">⟶</span>
+        ActorPluginInfo.actorID <span class="bound">a</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="free">b</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>  
+     Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginStates <span class="free">b</span> <span class="free">al</span> <span class="free">st</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">induction</span> <span class="quoted"><span class="language"><span class="free">b</span></span></span> <span class="quoted"><span class="language"><span class="free">al</span></span></span> <span class="quoted"><span class="language"><span class="free">st</span></span></span> <span class="quasi_keyword">rule</span><span class="main"><span class="main">:</span></span> Re_updateActorPluginStates.induct <span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> case_prod_unfold<span class="main">)</span></span> <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_updateActorPluginState_businv6_2 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">blast</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">defer</span></span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_updateActorPluginState_businv6_2<span class="main">)</span></span> 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">subgoal_tac</span> <span class="quoted"><span class="quoted"><span class="language">"
+                     <span class="main">(</span><span class="main">∀</span> <span class="bound">acb</span> <span class="main">∈</span> set <span class="improper">al</span><span class="main">.</span> ActorPluginInfo.state <span class="bound">acb</span> <span class="main">=</span>  actorState.ACTOR_STATE_INIT <span class="main">⟶</span>
+                        ActorPluginInfo.actorID <span class="bound">acb</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginState <span class="improper">b</span> <span class="improper">a</span> actorState.ACTOR_STATE_RUNNING<span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>  <span class="main">∧</span>
+                      Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginState <span class="improper">b</span> <span class="improper">a</span> actorState.ACTOR_STATE_RUNNING<span class="main">)</span><span class="main">)</span>"</span></span></span><span class="main">)</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_updateActorPluginState_businv6_2_2
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> list.set_map<span class="main">)</span></span> 
+  <span class="keyword1"><span class="command">proof</span></span> <span class="language"><span class="operator">-</span></span>
+  <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">ba</span> <span class="main">::</span> <span class="quoted"><span class="language">bus</span></span> <span class="keyword2"><span class="keyword">and</span></span> <span class="skolem">a</span> <span class="main">::</span> <span class="quoted"><span class="language">ActorPluginInfo</span></span> <span class="keyword2"><span class="keyword">and</span></span> <span class="skolem">ala</span> <span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfo list"</span></span></span>
+  <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">⟦</span>Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginState <span class="skolem">ba</span> <span class="skolem">a</span> actorState.ACTOR_STATE_RUNNING<span class="main">)</span><span class="main">)</span><span class="main">;</span> <span class="main">∀</span><span class="bound">aa</span><span class="main">∈</span>set <span class="skolem">ala</span><span class="main">.</span> ActorPluginInfo.state <span class="bound">aa</span> <span class="main">=</span> actorState.ACTOR_STATE_INIT <span class="main">⟶</span> ActorPluginInfo.actorID <span class="bound">aa</span> <span class="main">∉</span> plugin.actorID <span class="main">`</span> set <span class="main">(</span>pluginList <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginState <span class="skolem">ba</span> <span class="skolem">a</span> actorState.ACTOR_STATE_RUNNING<span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">⟧</span> <span class="main">⟹</span> Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginStates <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginState <span class="skolem">ba</span> <span class="skolem">a</span> actorState.ACTOR_STATE_RUNNING<span class="main">)</span><span class="main">)</span> <span class="skolem">ala</span> actorState.ACTOR_STATE_RUNNING<span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6_2 <span class="skolem">ba</span>"</span></span></span>
+  <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ActorPluginInfo.taskInfo <span class="skolem">a</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword3"><span class="command">assume</span></span> a4<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"ActorPluginInfo.state <span class="skolem">a</span> <span class="main">≠</span> actorState.ACTOR_STATE_INIT"</span></span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a5<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">a</span><span class="main">∈</span>set <span class="skolem">ala</span><span class="main">.</span> ActorPluginInfo.state <span class="bound">a</span> <span class="main">=</span> actorState.ACTOR_STATE_INIT <span class="main">⟶</span> ActorPluginInfo.actorID <span class="bound">a</span> <span class="main">∉</span> plugin.actorID <span class="main">`</span> set <span class="main">(</span>pluginList <span class="skolem">ba</span><span class="main">)</span>"</span></span></span>
+    <span class="keyword1"><span class="command">have</span></span> f6<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginState <span class="skolem">ba</span> <span class="skolem">a</span> actorState.ACTOR_STATE_RUNNING<span class="main">)</span><span class="main">)</span>"</span></span></span>
+      <span class="keyword1"><span class="command">using</span></span> a4 a3 a2 Re_updateActorPluginState_businv6_2 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">blast</span></span>
+    <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted"><span class="language">"Re_startActorPlugins <span class="skolem">ba</span> <span class="main">(</span>ActorPluginInfo.actorID <span class="skolem">a</span><span class="main">)</span> <span class="main">=</span> Re_updateActorPluginState <span class="skolem">ba</span> <span class="skolem">a</span> actorState.ACTOR_STATE_RUNNING"</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> a4 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_updateActorPluginState_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">then</span></span> <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted"><span class="language">"map plugin.actorID <span class="main">(</span>pluginList <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginState <span class="skolem">ba</span> <span class="skolem">a</span> actorState.ACTOR_STATE_RUNNING<span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> map plugin.actorID <span class="main">(</span>pluginList <span class="skolem">ba</span><span class="main">)</span>"</span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> Re_startActorPlugins_inv24<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginStates <span class="main">(</span>fst <span class="main">(</span>Re_updateActorPluginState <span class="skolem">ba</span> <span class="skolem">a</span> actorState.ACTOR_STATE_RUNNING<span class="main">)</span><span class="main">)</span> <span class="skolem">ala</span> actorState.ACTOR_STATE_RUNNING<span class="main">)</span><span class="main">)</span>"</span></span></span>
+      <span class="keyword1"><span class="command">using</span></span> f6 a5 a1 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">)</span></span> set_map<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">qed</span></span>
+  
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_sche_updateActorPluginState0_businv6_1<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"
+       Bus_invariant_6_1 <span class="free">bl</span> <span class="main">⟹</span> 
+       <span class="free">st</span> <span class="main">=</span> actorState.ACTOR_STATE_PAUSE <span class="main">∨</span> <span class="free">st</span> <span class="main">=</span> actorState.ACTOR_STATE_FINISH  <span class="main">⟹</span>
+       Bus_invariant_6_1 <span class="main">(</span>fst <span class="main">(</span>Re_sche_updateActorPluginState0 <span class="free">bl</span> <span class="free">al</span> <span class="free">st</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">induction</span> <span class="quoted"><span class="language"><span class="free">bl</span></span></span> <span class="quoted"><span class="language"><span class="free">al</span></span></span> <span class="quoted"><span class="language"><span class="free">st</span></span></span> <span class="quasi_keyword">rule</span><span class="main"><span class="main">:</span></span> Re_sche_updateActorPluginState0.induct<span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span> 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp_all</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>case_prod_unfold<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> Bus_invariant_6_1_def Re_updateActorPluginStates_businv6_1 list.set_intros<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> list.set_intros<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> set_ConsD surjective_pairing<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span>  Bus_invariant_6_1_def Re_updateActorPluginStates_businv6_1 case_prod_Pair_iden case_prod_unfold fst_conv list.set_intros<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> list.set_intros<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> set_ConsD<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_sche_updateActorPluginState0_businv6_2<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"
+       Bus_invariant_6_1 <span class="free">bl</span> <span class="main">⟹</span> 
+       <span class="free">st</span> <span class="main">=</span>  actorState.ACTOR_STATE_RUNNING <span class="main">⟹</span> 
+     <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="free">al</span><span class="main">.</span> distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ActorPluginInfo.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+     distinct <span class="main">(</span>map ActorPluginInfo.actorID <span class="free">al</span><span class="main">)</span> <span class="main">⟹</span>
+      <span class="main">∀</span><span class="bound">a</span><span class="main">∈</span> set <span class="free">al</span><span class="main">.</span> <span class="main">∀</span><span class="bound">b</span> <span class="main">∈</span> set <span class="free">bl</span><span class="main">.</span>
+        ActorPluginInfo.state <span class="bound">a</span> <span class="main">=</span>  actorState.ACTOR_STATE_INIT <span class="main">⟶</span>
+        ActorPluginInfo.actorID <span class="bound">a</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="bound">b</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span> 
+       Bus_invariant_6_1 <span class="main">(</span>fst <span class="main">(</span>Re_sche_updateActorPluginState0 <span class="free">bl</span> <span class="free">al</span> <span class="free">st</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">induction</span> <span class="quoted"><span class="language"><span class="free">bl</span></span></span> <span class="quoted"><span class="language"><span class="free">al</span></span></span> <span class="quoted"><span class="language"><span class="free">st</span></span></span> <span class="quasi_keyword">rule</span><span class="main"><span class="main">:</span></span> Re_sche_updateActorPluginState0.induct<span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span> 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp_all</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>case_prod_unfold<span class="main">)</span></span> 
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> Bus_invariant_6_1_def Re_updateActorPluginStates_businv6_2 cons_set_intro eq_fst_iff list.set_intros<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> list.set_map set_ConsD<span class="main">)</span></span>
+ 
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_sche_updateActorPluginState_businv6_1<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">" 
+      Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span>
+      <span class="free">st</span> <span class="main">=</span> actorState.ACTOR_STATE_PAUSE <span class="main">∨</span> <span class="free">st</span> <span class="main">=</span> actorState.ACTOR_STATE_FINISH  <span class="main">⟹</span>
+      Bus_invariant_6 <span class="main">(</span>fst <span class="main">(</span>Re_sche_updateActorPluginState <span class="free">sche</span> <span class="free">al</span> <span class="free">st</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_sche_updateActorPluginState_def<span class="main">)</span></span> <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>case_prod_unfold<span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Bus_invariant_6_def Re_sche_updateActorPluginState0_businv6_1<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>case_prod_unfold<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Bus_invariant_6_def Re_sche_updateActorPluginState0_businv6_1<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_sche_updateActorPluginState_businv6_2<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">" 
+      Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span>
+       <span class="free">st</span> <span class="main">=</span>  actorState.ACTOR_STATE_RUNNING <span class="main">⟹</span> 
+      distinct <span class="main">(</span>map ActorPluginInfo.actorID <span class="free">al</span><span class="main">)</span> <span class="main">⟹</span>
+     <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="free">al</span><span class="main">.</span> distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ActorPluginInfo.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+      <span class="main">∀</span><span class="bound">a</span><span class="main">∈</span> set <span class="free">al</span><span class="main">.</span> <span class="main">∀</span><span class="bound">b</span> <span class="main">∈</span> set <span class="main">(</span>registeredBus <span class="free">sche</span><span class="main">)</span><span class="main">.</span>
+        ActorPluginInfo.state <span class="bound">a</span> <span class="main">=</span>  actorState.ACTOR_STATE_INIT <span class="main">⟶</span>
+        ActorPluginInfo.actorID <span class="bound">a</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="bound">b</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span> 
+      Bus_invariant_6 <span class="main">(</span>fst <span class="main">(</span>Re_sche_updateActorPluginState <span class="free">sche</span> <span class="free">al</span> <span class="free">st</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_sche_updateActorPluginState_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>case_prod_unfold<span class="main">)</span></span> 
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Bus_invariant_6_def Re_sche_updateActorPluginState0_businv6_2<span class="main">)</span></span>
+   
+<span class="keyword1"><span class="command">lemma</span></span> Re_delFinishActors_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">" 
+    Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span>
+    Bus_invariant_6 <span class="main">(</span>Re_delFinishActors <span class="free">sche</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_delFinishActors_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Bus_invariant_6_def Re_sche_updateActorPluginState_businv6_1 case_prod_unfold scheduler.simps<span class="main"><span class="main">(</span></span>12<span class="main"><span class="main">)</span></span> scheduler.simps<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> scheduler.surjective<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_findAcotorUnderMinSwarm_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_findAcotorUnderMinSwarm <span class="free">sche</span> <span class="free">minSwarmPtr</span> <span class="free">minPrio</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_findAcotorUnderMinSwarm_def Bus_invariant_6_def<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_findToPauseActors_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_findToPauseActors <span class="free">sche</span> <span class="free">minSwarmPtr</span> <span class="free">minPrio</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_findToPauseActors_def Bus_invariant_6_def<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_pauseSwarmAndActors_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_pauseSwarmAndActors <span class="free">sche</span> <span class="free">sio</span> <span class="free">si</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_pauseSwarmAndActors_def<span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_pauseSwarm_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> Bus_invariant_6_def scheduler.simps<span class="main"><span class="main">(</span></span>12<span class="main"><span class="main">)</span></span> scheduler.simps<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> scheduler.surjective scheduler.update_convs<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span><span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_runSwarmAndActors_businv6<span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_runSwarmAndActors <span class="free">sche</span> <span class="free">si</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_runSwarmAndActors_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> Re_runSwarm_def Bus_invariant_6_def  scheduler.ext_inject scheduler.surjective scheduler.update_convs<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> scheduler.update_convs<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span><span class="main">)</span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> MinPrio_acbList_inv<span class="main">::</span> <span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> bool"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">MinPrio_acbList_inv</span> <span class="free"><span class="bound">sche</span></span> <span class="main">≡</span>
+      <span class="main">∀</span><span class="bound">a</span><span class="main">∈</span>set <span class="main">(</span>minPrioActors <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">.</span> <span class="main">∃</span><span class="bound">acb</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">.</span>
+      ActorPluginInfo.actorID <span class="bound">a</span> <span class="main">=</span> ACB.actorID <span class="bound">acb</span> <span class="main">∧</span>
+     ActorPluginInfo.state <span class="bound">a</span> <span class="main">=</span> ACB.state <span class="bound">acb</span> <span class="main">∧</span>
+      ActorPluginInfo.taskInfo <span class="bound">a</span> <span class="main">=</span> ACB.taskInfo <span class="bound">acb</span>"</span></span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> MinPrio_toPause_inv <span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"scheduler <span class="main">⇒</span> bool"</span></span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">MinPrio_toPause_inv</span> <span class="free"><span class="bound">sche</span></span> <span class="main">≡</span> 
+         <span class="main">∀</span><span class="bound">am</span><span class="main">∈</span>set <span class="main">(</span>minPrioActors <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">.</span>  <span class="main">∀</span><span class="bound">at</span><span class="main">∈</span>set <span class="main">(</span>toPauseActors <span class="free"><span class="bound">sche</span></span><span class="main">)</span><span class="main">.</span>
+          ActorPluginInfo.actorID <span class="bound">am</span> <span class="main">≠</span> ActorPluginInfo.actorID <span class="bound">at</span>"</span></span></span>
+
+
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_1_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"
+  Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>fst <span class="main">(</span>Re_schedule_1 <span class="free">sche</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_schedule_1_def Let_def Bus_invariant_6_def<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_2_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"
+   Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_schedule_2 <span class="free">sche</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Bus_invariant_6_def Re_delFinishActors_businv6 Re_findFinishActors_businv6   Re_schedule_2_def scheduler.simps<span class="main"><span class="main">(</span></span>21<span class="main"><span class="main">)</span></span> scheduler.simps<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> scheduler.surjective<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_4_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"
+   Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_schedule_4 <span class="free">sche</span> <span class="free">b</span> <span class="free">sio1</span> <span class="free">sio2</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_schedule_4_def case_prod_unfold<span class="main">)</span></span> 
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Re_pauseSwarmAndActors_businv6 Re_sche_updateActorPluginState_businv6_1<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_5_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"
+    Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> 
+    invariant_24 <span class="free">sche</span> <span class="main">⟹</span>
+    distinct <span class="main">(</span>map ActorPluginInfo.actorID <span class="main">(</span>minPrioActors <span class="free">sche</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+     <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="free">sche</span><span class="main">)</span><span class="main">.</span> distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+    MinPrio_acbList_inv <span class="free">sche</span>  <span class="main">⟹</span>
+    Bus_invariant_6 <span class="main">(</span>Re_schedule_5 <span class="free">sche</span> <span class="free">b</span> <span class="free">sio</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_schedule_5_def case_prod_unfold Let_def MinPrio_acbList_inv_def<span class="main">)</span></span> 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">subgoal_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>minPrioActors <span class="free">sche</span><span class="main">)</span><span class="main">.</span>  
+              distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ActorPluginInfo.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">subgoal_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∀</span><span class="bound">a</span><span class="main">∈</span>set <span class="main">(</span>minPrioActors <span class="free">sche</span><span class="main">)</span><span class="main">.</span>
+        <span class="main">∀</span><span class="bound">b</span><span class="main">∈</span>set <span class="main">(</span>registeredBus <span class="free">sche</span><span class="main">)</span><span class="main">.</span>
+        ActorPluginInfo.state <span class="bound">a</span> <span class="main">=</span> actorState.ACTOR_STATE_INIT <span class="main">⟶</span>
+        ActorPluginInfo.actorID <span class="bound">a</span> <span class="main">∉</span> set <span class="main">(</span>map plugin.actorID <span class="main">(</span>pluginList <span class="bound">b</span><span class="main">)</span><span class="main">)</span> "</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_sche_updateActorPluginState_businv6_2<span class="main">[</span><span class="language"><span class="keyword2"><span class="keyword"><span class="operator">where</span></span></span> al <span class="main"><span class="main">=</span></span> <span class="quoted"><span class="quoted"><span class="language">"minPrioActors <span class="free">sche</span>"</span></span></span></span><span class="main">]</span>
+  <span class="keyword1"><span class="command">using</span></span> Re_runSwarmAndActors_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">blast</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> invariant_24_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">metis</span></span> 
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6_0 <span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">" <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="free">sche</span><span class="main">)</span><span class="main">.</span> 
+          distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+   <span class="keyword1">let</span>  <span class="bound">sche3'</span> <span class="main">=</span> <span class="free">sche</span><span class="main">⦇</span>minPrioActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">sche'</span> <span class="main">=</span> Re_findAcotorUnderMinSwarm <span class="bound">sche3'</span> <span class="free">minSwarmPtr</span> <span class="free">minPrio</span>
+    <span class="keyword1">in</span>  <span class="main">(</span> <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="bound">sche'</span><span class="main">)</span><span class="main">.</span> 
+          distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_findAcotorUnderMinSwarm_def Let_def<span class="main">)</span></span> 
+
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6_0_1 <span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"invariant_8 <span class="free">sche</span> <span class="main">⟹</span>
+   <span class="keyword1">let</span> <span class="bound">sche3'</span> <span class="main">=</span> <span class="free">sche</span><span class="main">⦇</span>minPrioActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+       <span class="bound">sche'</span> <span class="main">=</span> Re_findAcotorUnderMinSwarm <span class="bound">sche3'</span> <span class="free">minSwarmPtr</span> <span class="free">minPrio</span>
+    <span class="keyword1">in</span> MinPrio_acbList_inv <span class="bound">sche'</span> <span class="main">∧</span>
+       distinct <span class="main">(</span>map ActorPluginInfo.actorID <span class="main">(</span>minPrioActors <span class="bound">sche'</span><span class="main">)</span><span class="main">)</span> "</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_findAcotorUnderMinSwarm_def Let_def MinPrio_acbList_inv_def<span class="main">)</span></span> 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">rule</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>mono_tags<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> ActorPluginInfo.select_convs<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> comp_apply distinct_map_filter invariant_8_def map_eq_conv<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6_0_2 <span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"invariant_8 <span class="free">sche</span> <span class="main">⟹</span>
+   <span class="keyword1">let</span>  <span class="bound">sche3'</span> <span class="main">=</span> <span class="free">sche</span><span class="main">⦇</span>minPrioActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">sche4</span> <span class="main">=</span> Re_findAcotorUnderMinSwarm <span class="bound">sche3'</span> <span class="main">(</span>the <span class="free">minSwarmPtr</span><span class="main">)</span> <span class="free">minPrio</span><span class="main">;</span>
+       <span class="main">(</span><span class="bound">runningSwarmPtr</span><span class="main">,</span> <span class="bound">nRunningSwarm</span><span class="main">)</span> <span class="main">=</span> Re_findRunningSwarm <span class="main">(</span>swarmList <span class="bound">sche4</span><span class="main">)</span> <span class="main">0</span><span class="main">;</span>
+        <span class="bound">condition5</span> <span class="main">=</span> <span class="main">(</span><span class="bound">nRunningSwarm</span> <span class="main">&gt;</span> <span class="main">1</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">sche4'</span> <span class="main">=</span> <span class="bound">sche4</span><span class="main">⦇</span>toPauseActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">sche5</span> <span class="main">=</span> Re_findToPauseActors <span class="bound">sche4'</span> <span class="main">(</span>the <span class="free">minSwarmPtr</span><span class="main">)</span> <span class="free">minPrio</span>
+    <span class="keyword1">in</span> MinPrio_toPause_inv <span class="bound">sche5</span> <span class="main">∧</span> 
+       <span class="main">(</span>distinct <span class="main">(</span>map ActorPluginInfo.actorID <span class="main">(</span>minPrioActors <span class="bound">sche5</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span>  Re_findAcotorUnderMinSwarm_def Re_findRunningSwarm_def 
+             Re_findToPauseActors_def MinPrio_toPause_inv_def 
+             Let_def case_prod_unfold 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span> 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> in_set_conv_nth index_nth_id invariant_8_def length_map nth_map<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">smt</span> in_set_conv_nth index_nth_id invariant_8_def length_map nth_map<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_businv6_0_1 
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>mono_tags<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> ActorPluginInfo.select_convs<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> comp_apply distinct_map_filter invariant_8_def map_eq_conv<span class="main">)</span></span>
+  
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6_1<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">" <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="free">sche</span><span class="main">)</span><span class="main">.</span> 
+          distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+    <span class="keyword1">let</span> <span class="bound">sche6</span> <span class="main">=</span> Re_schedule_4 <span class="free">sche</span> <span class="free">condition6</span> <span class="free">minSwarmPtr</span> <span class="free">runningSwarmPtr</span>
+     <span class="keyword1">in</span>  <span class="main">(</span> <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="bound">sche6</span><span class="main">)</span><span class="main">.</span> 
+          distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_4_inv16 <span class="keyword1"><span class="command">unfolding</span></span> invariant_16_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6_1_2<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">" <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="free">sche</span><span class="main">)</span><span class="main">.</span> 
+          distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+    <span class="keyword1">let</span> <span class="bound">sche4'</span> <span class="main">=</span> <span class="free">sche</span><span class="main">⦇</span>toPauseActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">sche5</span> <span class="main">=</span> Re_findToPauseActors <span class="bound">sche4'</span> <span class="main">(</span>the <span class="free">minSwarmPtr</span><span class="main">)</span> <span class="free">minPrio</span>
+     <span class="keyword1">in</span>  <span class="main">(</span> <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="bound">sche5</span><span class="main">)</span><span class="main">.</span> 
+          distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_findToPauseActors_def<span class="main">)</span></span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_sche_updateActorPluginState_businv6_3<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"MinPrio_toPause_inv <span class="free">sche</span> <span class="main">⟹</span>
+    MinPrio_acbList_inv <span class="free">sche</span> <span class="main">⟹</span>
+    <span class="keyword1">let</span> <span class="main">(</span><span class="bound">sche5</span><span class="main">,</span><span class="bound">flag</span><span class="main">)</span> <span class="main">=</span> Re_sche_updateActorPluginState <span class="free">sche</span> <span class="main">(</span>toPauseActors <span class="free">sche</span><span class="main">)</span>
+                   <span class="main">(</span>actorState.ACTOR_STATE_PAUSE<span class="main">)</span>
+     <span class="keyword1">in</span> MinPrio_acbList_inv <span class="bound">sche5</span> <span class="main">∧</span> MinPrio_toPause_inv <span class="bound">sche5</span> "</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> Re_sche_updateActorPluginState_def Let_def case_prod_unfold
+            MinPrio_toPause_inv_def  MinPrio_acbList_inv_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_pauseSwarm_businv6<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">" MinPrio_acbList_inv <span class="free">sche</span> <span class="main">⟹</span>
+    <span class="keyword1">let</span> <span class="bound">sche5</span> <span class="main">=</span> Re_pauseSwarm <span class="free">sche</span> <span class="free">runningSwarmPtr</span> <span class="free">minSwarmPtr</span>
+     <span class="keyword1">in</span> MinPrio_acbList_inv <span class="bound">sche5</span> "</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_pauseSwarm_def Let_def MinPrio_acbList_inv_def<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_pauseActors_businv6_1<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">" MinPrio_toPause_inv <span class="free">sche</span> <span class="main">⟹</span>
+    MinPrio_acbList_inv <span class="free">sche</span> <span class="main">⟹</span>
+    <span class="keyword1">let</span> <span class="bound">sche5</span> <span class="main">=</span> <span class="free">sche</span><span class="main">⦇</span>acbList <span class="main">:=</span> Re_pauseActors <span class="main">(</span>acbList <span class="free">sche</span><span class="main">)</span> <span class="main">(</span>toPauseActors <span class="free">sche</span><span class="main">)</span> <span class="main">⦈</span>
+     <span class="keyword1">in</span> MinPrio_acbList_inv <span class="bound">sche5</span> "</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> MinPrio_acbList_inv_def Re_pauseActors_def Let_def MinPrio_toPause_inv_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> IntI UnCI image_iff mem_Collect_eq<span class="main">)</span></span> 
+ 
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_pauseSwarmAndActors_businv6_1<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"MinPrio_toPause_inv <span class="free">sche</span> <span class="main">⟹</span>
+   MinPrio_acbList_inv <span class="free">sche</span> <span class="main">⟹</span>
+    <span class="keyword1">let</span> <span class="bound">sche5</span> <span class="main">=</span> Re_pauseSwarmAndActors <span class="free">sche</span> <span class="free">runningSwarmPtr</span> <span class="main">(</span>the <span class="free">minSwarmPtr</span><span class="main">)</span>
+     <span class="keyword1">in</span> MinPrio_acbList_inv <span class="bound">sche5</span> "</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> Re_pauseSwarmAndActors_def Let_def
+  <span class="keyword1"><span class="command">using</span></span> Re_pauseActors_businv6_1 Re_pauseSwarm_businv6
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+ 
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6_1_1<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"MinPrio_toPause_inv <span class="free">sche</span> <span class="main">⟹</span>
+    MinPrio_acbList_inv <span class="free">sche</span> <span class="main">⟹</span>
+    <span class="keyword1">let</span> <span class="bound">sche6</span> <span class="main">=</span> Re_schedule_4 <span class="free">sche</span> <span class="free">condition6</span> <span class="free">minSwarmPtr</span> <span class="free">runningSwarmPtr</span>
+     <span class="keyword1">in</span> MinPrio_acbList_inv <span class="bound">sche6</span> "</span></span></span>   
+  <span class="keyword1"><span class="command">unfolding</span></span> Re_schedule_4_def Let_def case_prod_unfold
+  <span class="keyword1"><span class="command">using</span></span> Re_pauseSwarmAndActors_businv6_1 Re_sche_updateActorPluginState_businv6_3
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">fastforce</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6_1_3<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"<span class="main">(</span>distinct <span class="main">(</span>map ActorPluginInfo.actorID <span class="main">(</span>minPrioActors <span class="free">sche</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+    <span class="keyword1">let</span> <span class="bound">sche6</span> <span class="main">=</span> Re_schedule_4 <span class="free">sche</span> <span class="free">condition6</span> <span class="free">minSwarmPtr</span> <span class="free">runningSwarmPtr</span>
+     <span class="keyword1">in</span> <span class="main">(</span>distinct <span class="main">(</span>map ActorPluginInfo.actorID <span class="main">(</span>minPrioActors <span class="bound">sche6</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span></span>
+    <span class="keyword1"><span class="command">unfolding</span></span> Re_schedule_4_def Let_def case_prod_unfold
+    <span class="keyword1"><span class="command">using</span></span> Re_schedule_4_inv23_aux1 Re_schedule_4_inv23_aux2 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">presburger</span></span>
+  
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6_2 <span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"   <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="free">sche</span><span class="main">)</span><span class="main">.</span> 
+          distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+    <span class="keyword1">let</span> <span class="bound">sche3'</span> <span class="main">=</span> <span class="free">sche</span><span class="main">⦇</span>minPrioActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">sche4</span> <span class="main">=</span> Re_findAcotorUnderMinSwarm <span class="bound">sche3'</span> <span class="main">(</span>the <span class="free">minSwarmPtr</span><span class="main">)</span> <span class="free">minPrio</span><span class="main">;</span>
+       <span class="main">(</span><span class="bound">runningSwarmPtr</span><span class="main">,</span> <span class="bound">nRunningSwarm</span><span class="main">)</span> <span class="main">=</span> Re_findRunningSwarm <span class="main">(</span>swarmList <span class="bound">sche4</span><span class="main">)</span> <span class="main">0</span><span class="main">;</span>
+        <span class="bound">condition5</span> <span class="main">=</span> <span class="main">(</span><span class="bound">nRunningSwarm</span> <span class="main">&gt;</span> <span class="main">1</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">sche4'</span> <span class="main">=</span> <span class="bound">sche4</span><span class="main">⦇</span>toPauseActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">sche5</span> <span class="main">=</span> Re_findToPauseActors <span class="bound">sche4'</span> <span class="main">(</span>the <span class="free">minSwarmPtr</span><span class="main">)</span> <span class="free">minPrio</span><span class="main">;</span>
+        <span class="bound">condition6</span> <span class="main">=</span> <span class="main">(</span>length <span class="main">(</span>toPauseActors <span class="bound">sche5</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">sche6</span> <span class="main">=</span> Re_schedule_4 <span class="bound">sche5</span> <span class="bound">condition6</span> <span class="free">minSwarmPtr</span> <span class="bound">runningSwarmPtr</span><span class="main">;</span>
+        <span class="bound">condition7</span> <span class="main">=</span> <span class="main">(</span>length <span class="main">(</span>minPrioActors <span class="bound">sche6</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span><span class="main">)</span>
+    <span class="keyword1">in</span> <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="bound">sche6</span><span class="main">)</span><span class="main">.</span> 
+          distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_findRunningSwarm_def <span class="main">)</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_businv6_0 Re_schedule_businv6_1 Re_schedule_businv6_1_2
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> case_prodI<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6_2_1 <span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"invariant_8 <span class="free">sche</span> <span class="main">⟹</span>
+   <span class="keyword1">let</span> <span class="bound">sche3'</span> <span class="main">=</span> <span class="free">sche</span><span class="main">⦇</span>minPrioActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">sche4</span> <span class="main">=</span> Re_findAcotorUnderMinSwarm <span class="bound">sche3'</span> <span class="main">(</span>the <span class="free">minSwarmPtr</span><span class="main">)</span> <span class="free">minPrio</span><span class="main">;</span>
+       <span class="main">(</span><span class="bound">runningSwarmPtr</span><span class="main">,</span> <span class="bound">nRunningSwarm</span><span class="main">)</span> <span class="main">=</span> Re_findRunningSwarm <span class="main">(</span>swarmList <span class="bound">sche4</span><span class="main">)</span> <span class="main">0</span><span class="main">;</span>
+        <span class="bound">condition5</span> <span class="main">=</span> <span class="main">(</span><span class="bound">nRunningSwarm</span> <span class="main">&gt;</span> <span class="main">1</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">sche4'</span> <span class="main">=</span> <span class="bound">sche4</span><span class="main">⦇</span>toPauseActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">sche5</span> <span class="main">=</span> Re_findToPauseActors <span class="bound">sche4'</span> <span class="main">(</span>the <span class="free">minSwarmPtr</span><span class="main">)</span> <span class="free">minPrio</span><span class="main">;</span>
+        <span class="bound">condition6</span> <span class="main">=</span> <span class="main">(</span>length <span class="main">(</span>toPauseActors <span class="bound">sche5</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">sche6</span> <span class="main">=</span> Re_schedule_4 <span class="bound">sche5</span> <span class="bound">condition6</span> <span class="free">minSwarmPtr</span> <span class="bound">runningSwarmPtr</span><span class="main">;</span>
+        <span class="bound">condition7</span> <span class="main">=</span> <span class="main">(</span>length <span class="main">(</span>minPrioActors <span class="bound">sche6</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span><span class="main">)</span>
+    <span class="keyword1">in</span> MinPrio_acbList_inv <span class="bound">sche6</span> <span class="main">∧</span> 
+       <span class="main">(</span>distinct <span class="main">(</span>map ActorPluginInfo.actorID <span class="main">(</span>minPrioActors <span class="bound">sche6</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_businv6_0_1 Re_schedule_businv6_1_1 Re_schedule_businv6_0_2 Re_schedule_businv6_1_3
+  <span class="keyword1"><span class="command">unfolding</span></span>   Let_def MinPrio_acbList_inv_def case_prod_unfold 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_findToPauseActors_def<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6_3<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">" <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="free">sche</span><span class="main">)</span><span class="main">.</span> 
+          distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+    <span class="keyword1">let</span> <span class="main">(</span><span class="bound">sche1</span><span class="main">,</span><span class="bound">condition1</span><span class="main">)</span> <span class="main">=</span> Re_schedule_1 <span class="free">sche</span><span class="main">;</span>
+        <span class="bound">sche3</span> <span class="main">=</span> Re_schedule_2 <span class="bound">sche1</span><span class="main">;</span>
+        <span class="main">(</span><span class="bound">minSwarmPtr</span><span class="main">,</span> <span class="bound">minSwarmPrio</span><span class="main">,</span> <span class="bound">minPrio</span><span class="main">,</span> <span class="bound">condition3</span><span class="main">,</span> <span class="bound">condition4</span><span class="main">)</span> <span class="main">=</span> Re_schedule_3 <span class="bound">sche3</span>
+     <span class="keyword1">in</span>  <span class="main">(</span> <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="bound">sche3</span><span class="main">)</span><span class="main">.</span> 
+          distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_schedule_3_def Let_def case_prod_unfold<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_1_inv16 Re_schedule_2_inv16 <span class="keyword1"><span class="command">unfolding</span></span> invariant_16_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">blast</span></span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6_4 <span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"   <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="free">sche</span><span class="main">)</span><span class="main">.</span> 
+          distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+    <span class="keyword1">let</span><span class="main">(</span><span class="bound">sche1</span><span class="main">,</span><span class="bound">condition1</span><span class="main">)</span> <span class="main">=</span> Re_schedule_1 <span class="free">sche</span><span class="main">;</span>
+        <span class="bound">sche3</span> <span class="main">=</span> Re_schedule_2 <span class="bound">sche1</span><span class="main">;</span>
+        <span class="main">(</span><span class="bound">minSwarmPtr</span><span class="main">,</span> <span class="bound">minSwarmPrio</span><span class="main">,</span> <span class="bound">minPrio</span><span class="main">,</span> <span class="bound">condition3</span><span class="main">,</span> <span class="bound">condition4</span><span class="main">)</span> <span class="main">=</span> Re_schedule_3 <span class="bound">sche3</span><span class="main">;</span>
+        <span class="bound">sche3'</span> <span class="main">=</span> <span class="bound">sche3</span><span class="main">⦇</span>minPrioActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">sche4</span> <span class="main">=</span> Re_findAcotorUnderMinSwarm <span class="bound">sche3'</span> <span class="main">(</span>the <span class="bound">minSwarmPtr</span><span class="main">)</span> <span class="bound">minPrio</span><span class="main">;</span>
+       <span class="main">(</span><span class="bound">runningSwarmPtr</span><span class="main">,</span> <span class="bound">nRunningSwarm</span><span class="main">)</span> <span class="main">=</span> Re_findRunningSwarm <span class="main">(</span>swarmList <span class="bound">sche4</span><span class="main">)</span> <span class="main">0</span><span class="main">;</span>
+        <span class="bound">condition5</span> <span class="main">=</span> <span class="main">(</span><span class="bound">nRunningSwarm</span> <span class="main">&gt;</span> <span class="main">1</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">sche4'</span> <span class="main">=</span> <span class="bound">sche4</span><span class="main">⦇</span>toPauseActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">sche5</span> <span class="main">=</span> Re_findToPauseActors <span class="bound">sche4'</span> <span class="main">(</span>the <span class="bound">minSwarmPtr</span><span class="main">)</span> <span class="bound">minPrio</span><span class="main">;</span>
+        <span class="bound">condition6</span> <span class="main">=</span> <span class="main">(</span>length <span class="main">(</span>toPauseActors <span class="bound">sche5</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">sche6</span> <span class="main">=</span> Re_schedule_4 <span class="bound">sche5</span> <span class="bound">condition6</span> <span class="bound">minSwarmPtr</span> <span class="bound">runningSwarmPtr</span><span class="main">;</span>
+        <span class="bound">condition7</span> <span class="main">=</span> <span class="main">(</span>length <span class="main">(</span>minPrioActors <span class="bound">sche6</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span><span class="main">)</span>
+    <span class="keyword1">in</span> <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="bound">sche6</span><span class="main">)</span><span class="main">.</span> 
+          distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_businv6_3 Re_schedule_businv6_2
+  <span class="keyword1"><span class="command">unfolding</span></span> Let_def case_prod_unfold
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">blast</span></span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6_6<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> invariant_24 <span class="free">sche</span> <span class="main">⟹</span> 
+   Bus_invariant_6 <span class="main">(</span><span class="free">sche</span><span class="main">⦇</span>minPrioActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">)</span> <span class="main">∧</span>
+   Bus_invariant_6 <span class="main">(</span><span class="free">sche</span><span class="main">⦇</span>toPauseActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">)</span> <span class="main">∧</span>
+   invariant_24 <span class="main">(</span><span class="free">sche</span><span class="main">⦇</span>minPrioActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">)</span> <span class="main">∧</span>
+   invariant_24 <span class="main">(</span><span class="free">sche</span><span class="main">⦇</span>toPauseActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">)</span> "</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> invariant_24_def Bus_invariant_6_def Bus_invariant_6_1_def Bus_invariant_6_2_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6_5 <span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">" Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> invariant_24 <span class="free">sche</span> <span class="main">⟹</span>
+    <span class="keyword1">let</span> <span class="main">(</span><span class="bound">sche1</span><span class="main">,</span><span class="bound">condition1</span><span class="main">)</span> <span class="main">=</span> Re_schedule_1 <span class="free">sche</span><span class="main">;</span>
+        <span class="bound">sche3</span> <span class="main">=</span> Re_schedule_2 <span class="bound">sche1</span><span class="main">;</span>
+        <span class="main">(</span><span class="bound">minSwarmPtr</span><span class="main">,</span> <span class="bound">minSwarmPrio</span><span class="main">,</span> <span class="bound">minPrio</span><span class="main">,</span> <span class="bound">condition3</span><span class="main">,</span> <span class="bound">condition4</span><span class="main">)</span> <span class="main">=</span> Re_schedule_3 <span class="bound">sche3</span><span class="main">;</span>
+        <span class="bound">sche3'</span> <span class="main">=</span> <span class="bound">sche3</span><span class="main">⦇</span>minPrioActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">sche4</span> <span class="main">=</span> Re_findAcotorUnderMinSwarm <span class="bound">sche3'</span> <span class="main">(</span>the <span class="bound">minSwarmPtr</span><span class="main">)</span> <span class="bound">minPrio</span><span class="main">;</span>
+       <span class="main">(</span><span class="bound">runningSwarmPtr</span><span class="main">,</span> <span class="bound">nRunningSwarm</span><span class="main">)</span> <span class="main">=</span> Re_findRunningSwarm <span class="main">(</span>swarmList <span class="bound">sche4</span><span class="main">)</span> <span class="main">0</span><span class="main">;</span>
+        <span class="bound">condition5</span> <span class="main">=</span> <span class="main">(</span><span class="bound">nRunningSwarm</span> <span class="main">&gt;</span> <span class="main">1</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">sche4'</span> <span class="main">=</span> <span class="bound">sche4</span><span class="main">⦇</span>toPauseActors <span class="main">:=</span> <span class="main">[]</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">sche5</span> <span class="main">=</span> Re_findToPauseActors <span class="bound">sche4'</span> <span class="main">(</span>the <span class="bound">minSwarmPtr</span><span class="main">)</span> <span class="bound">minPrio</span><span class="main">;</span>
+        <span class="bound">condition6</span> <span class="main">=</span> <span class="main">(</span>length <span class="main">(</span>toPauseActors <span class="bound">sche5</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">sche6</span> <span class="main">=</span> Re_schedule_4 <span class="bound">sche5</span> <span class="bound">condition6</span> <span class="bound">minSwarmPtr</span> <span class="bound">runningSwarmPtr</span><span class="main">;</span>
+        <span class="bound">condition7</span> <span class="main">=</span> <span class="main">(</span>length <span class="main">(</span>minPrioActors <span class="bound">sche6</span><span class="main">)</span> <span class="main">≠</span> <span class="main">0</span><span class="main">)</span>
+     <span class="keyword1">in</span> Bus_invariant_6 <span class="bound">sche6</span> <span class="main">∧</span> invariant_24 <span class="bound">sche6</span> 
+ "</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_1_inv24 Re_schedule_2_inv24 Re_schedule_1_businv6 Re_schedule_2_businv6
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_4_inv24 Re_findToPauseActors_inv24 Re_findAcotorUnderMinSwarm_inv24
+        Re_schedule_4_businv6 Re_findToPauseActors_businv6 Re_findAcotorUnderMinSwarm_businv6
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_businv6_6
+  <span class="keyword1"><span class="command">by</span></span><span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Let_def case_prod_unfold<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_schedule_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"
+    Bus_invariant_6 <span class="free">sche</span>  <span class="main">⟹</span> 
+    invariant_24 <span class="free">sche</span> <span class="main">⟹</span>
+    invariant_8 <span class="free">sche</span> <span class="main">⟹</span>
+    <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="free">sche</span><span class="main">)</span><span class="main">.</span> distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+    Bus_invariant_6 <span class="main">(</span>Re_schedule <span class="free">sche</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>Re_schedule_def Let_def case_prod_unfold<span class="main">)</span></span>  
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_1_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">blast</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_1_businv6 Re_schedule_2_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">presburger</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_1_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">blast</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_schedule_1_businv6 Re_schedule_2_businv6<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_1_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_findAcotorUnderMinSwarm_businv6 Re_schedule_1_businv6 Re_schedule_1_inv24 Re_schedule_2_businv6 Re_schedule_2_inv24 Re_schedule_businv6_6<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_1_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">blast</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_schedule_1_businv6 Re_schedule_2_businv6<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_schedule_1_businv6<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_1_businv6 Re_schedule_2_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">blast</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_1_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">blast</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_schedule_businv6_2_1 Re_findAcotorUnderMinSwarm_businv6  Re_findToPauseActors_businv6 Re_schedule_1_businv6 Re_schedule_2_businv6   Re_schedule_4_businv6 Re_schedule_5_businv6
+        Re_schedule_businv6_5 Re_schedule_businv6_6   Re_schedule_businv6_4
+  <span class="keyword1"><span class="command">using</span></span>  Re_schedule_1_inv8 Re_schedule_2_inv8 length_0_conv
+  <span class="keyword1"><span class="command">unfolding</span></span> case_prod_unfold Let_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">smt</span></span>
+  
+  
+<span class="keyword1"><span class="command">lemma</span></span> Re_scheLoopOnce_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"
+     invariant_8 <span class="main">(</span>pActorScheduler <span class="free">s</span><span class="main">)</span> <span class="main">⟹</span>
+     Bus_invariant_6 <span class="main">(</span>pActorScheduler <span class="free">s</span><span class="main">)</span> <span class="main">⟹</span>
+     invariant_24 <span class="main">(</span>pActorScheduler <span class="free">s</span><span class="main">)</span> <span class="main">⟹</span>
+    <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="main">(</span>pActorScheduler <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">.</span> 
+        distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span>
+     Bus_invariant_6 <span class="main">(</span>scheLoopOnce <span class="main">(</span>pActorScheduler <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>scheLoopOnce_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">subgoal_tac</span> <span class="quoted"><span class="quoted"><span class="language">"
+                <span class="keyword1">let</span> <span class="main">(</span><span class="bound">sche'</span><span class="main">,</span> <span class="bound">scheMsg</span><span class="main">,</span> <span class="bound">queueFlag</span><span class="main">)</span> <span class="main">=</span> Re_scheLoopOnce1 <span class="main">(</span>pActorScheduler <span class="free">s</span><span class="main">)</span><span class="main">;</span>
+                    <span class="main">(</span><span class="bound">sche''</span><span class="main">,</span> <span class="bound">msgFlag</span><span class="main">)</span> <span class="main">=</span> Re_scheLoopOnce2  <span class="bound">sche'</span> <span class="bound">scheMsg</span>
+                <span class="keyword1">in</span>  <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="bound">sche''</span><span class="main">)</span><span class="main">.</span> 
+                     distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_scheLoopOnce1_businv6 Re_scheLoopOnce1_inv24 Re_scheLoopOnce1_inv8 
+        Re_scheLoopOnce2_businv6 Re_scheLoopOnce2_inv24 Re_schedule_businv6
+        Re_scheLoopOnce2_inv8
+  <span class="keyword1"><span class="command">unfolding</span></span> case_prod_unfold Let_def
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>case_prod_unfold<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">subgoal_tac</span> <span class="quoted"><span class="quoted"><span class="language">"
+                <span class="keyword1">let</span> <span class="main">(</span><span class="bound">sche'</span><span class="main">,</span> <span class="bound">scheMsg</span><span class="main">,</span> <span class="bound">queueFlag</span><span class="main">)</span> <span class="main">=</span> Re_scheLoopOnce1 <span class="main">(</span>pActorScheduler <span class="free">s</span><span class="main">)</span>
+                <span class="keyword1">in</span>  <span class="main">∀</span><span class="bound">act</span><span class="main">∈</span>set <span class="main">(</span>acbList <span class="bound">sche'</span><span class="main">)</span><span class="main">.</span> 
+                     distinct <span class="main">(</span>map PluginInfo.name <span class="main">(</span>plugins <span class="main">(</span>ACB.taskInfo <span class="bound">act</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span></span><span class="main">)</span></span>
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">defer</span></span></span></span> <span class="keyword1"><span class="command">using</span></span> Re_scheLoopOnce1_inv16 <span class="keyword1"><span class="command">unfolding</span></span> invariant_16_def Let_def case_prod_unfold
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_scheLoopOnce2_inv16<span class="main">[</span><span class="language"><span class="keyword2"><span class="keyword"><span class="operator">where</span></span></span> sche <span class="main"><span class="main">=</span></span><span class="quoted"><span class="quoted"><span class="language">"<span class="main">(</span>fst <span class="main">(</span>Re_scheLoopOnce1 <span class="main">(</span>pActorScheduler <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span> 
+                                <span class="keyword2"><span class="keyword"><span class="quasi_keyword">and</span></span></span> msg <span class="main"><span class="main">=</span></span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">(</span>fst <span class="main">(</span>snd <span class="main">(</span>Re_scheLoopOnce1 <span class="main">(</span>pActorScheduler <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span></span><span class="main">]</span>
+   <span class="keyword1"><span class="command">unfolding</span></span> invariant_16_def Let_def case_prod_unfold 
+   <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_bindCallback_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="main">(</span>pActorScheduler <span class="free">tb</span><span class="main">)</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>pActorScheduler <span class="main">(</span>fst <span class="main">(</span>Re_bindCallback <span class="free">tb</span> <span class="free">req</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_pushSwarmAcbs_businv6 invariant_verify_aux4
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> prod.collapse<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_call_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"isServiceStarted <span class="free">sta</span> <span class="main">⟹</span> 
+                      Bus_invariant_6 <span class="main">(</span>pActorScheduler <span class="main">(</span>fst <span class="free">sta</span><span class="main">)</span><span class="main">)</span> <span class="main">⟹</span> 
+                      <span class="main">(</span><span class="free">tb</span><span class="main">,</span> <span class="free">mes'</span><span class="main">,</span> <span class="free">flag</span><span class="main">)</span> <span class="main">=</span> Re_call <span class="main">(</span>fst <span class="free">sta</span><span class="main">)</span> <span class="main">(</span>nh <span class="main">(</span>fst <span class="free">sta</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>snd <span class="free">sta</span><span class="main">)</span> <span class="inner_quoted">''task_bind_service''</span>  <span class="free">mes</span> <span class="main">⟹</span>
+                      Bus_invariant_6 <span class="main">(</span>pActorScheduler <span class="free">tb</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_bindCallback_businv6 invariant_verify_aux3
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">blast</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_api_appendScheduleRequest_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_api_appendScheduleRequest <span class="free">sche</span> <span class="free">actID</span><span class="main">)</span>"</span></span></span> 
+  <span class="keyword1"><span class="command">using</span></span> Re_api_appendScheduleRequest_def Re_appendScheduleMsg_businv6 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> api_updateBus_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"
+        Bus_invariant_6_2 <span class="free">b</span> <span class="main">⟹</span> Bus_invariant_6_2 <span class="main">(</span>fst <span class="main">(</span>api_updateBus <span class="free">b</span> <span class="free">actID</span> <span class="free">pName</span> <span class="free">sta</span> <span class="main">)</span><span class="main">)</span>"</span></span></span> 
+  <span class="keyword1"><span class="command">unfolding</span></span> Bus_invariant_6_2_def api_updateBus_def Let_def setPlugState_def fst_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> case_prod_unfold<span class="main">)</span></span> 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">subgoal_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">plu'</span> <span class="main">=</span> <span class="free">plu</span><span class="main">⦇</span>plugin.state <span class="main">:=</span> <span class="free">sta</span><span class="main">⦈</span> <span class="main">⟹</span> 
+          <span class="main">(</span>plugin.actorID <span class="free">plu'</span><span class="main">,</span> plugin.name <span class="free">plu'</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>plugin.actorID <span class="free">plu</span><span class="main">,</span> plugin.name <span class="free">plu</span><span class="main">)</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> list_update_id map_update plugin.select_convs<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> plugin.select_convs<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> plugin.surjective plugin.update_convs<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> api_updateSchedule_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> 
+              Bus_invariant_6 <span class="main">(</span>fst <span class="main">(</span>api_updateSchedule <span class="free">sche</span> <span class="free">bName</span> <span class="free">actID</span> <span class="free">pName</span> <span class="free">st</span><span class="main">)</span><span class="main">)</span>"</span></span></span> 
+  <span class="keyword1"><span class="command">unfolding</span></span> Bus_invariant_6_def api_updateSchedule_def  Bus_invariant_6_1_def Bus_invariant_6_2_def  Let_def 
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> split_def<span class="main">)</span></span> <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> Bus_invariant_6_2_def api_updateBus_businv6 index_less_size_conv length_list_update nth_index nth_list_update_eq nth_list_update_neq nth_mem<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_api_terminate_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_api_terminate <span class="free">sche</span> <span class="free">bName</span> <span class="free">actID</span> <span class="free">pName</span><span class="main">)</span>"</span></span></span> 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">insert</span> Re_api_appendScheduleRequest_businv6 api_updateSchedule_businv6<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span>  Re_api_terminate_def  Let_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> case_prod_unfold<span class="main">)</span></span>  
+
+<span class="keyword1"><span class="command">lemma</span></span> Re_api_yieldActor_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_api_yieldActor <span class="free">sche</span>  <span class="free">actID</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Re_api_yieldActor_def Re_appendScheduleMsg_businv6<span class="main">)</span></span> 
+  
+<span class="keyword1"><span class="command">lemma</span></span> Re_api_pluginYieldActor_businv6 <span class="main">:</span> <span class="quoted"><span class="quoted"><span class="language">"Bus_invariant_6 <span class="free">sche</span> <span class="main">⟹</span> Bus_invariant_6 <span class="main">(</span>Re_api_pluginYieldActor <span class="free">sche</span> <span class="free">bName</span> <span class="free">actID</span> <span class="free">pName</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">insert</span>  Re_api_yieldActor_businv6 api_updateSchedule_businv6<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span>  Re_api_pluginYieldActor_def Let_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> case_prod_unfold<span class="main">)</span></span> 
+ 
+
+<span class="keyword1"><span class="command">lemma</span></span> Bus_invariant6_verify <span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"Re_Reachable_State <span class="free">s</span> <span class="main">⟹</span>  Bus_invariant_6 <span class="main">(</span>pActorScheduler <span class="main">(</span>fst <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">rule</span> Re_Reachable_State.induct<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span> 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> Bus_invariant_6_def scheInitialize_def taskBinderInitialize_def busInitialize_def Bus_invariant_6_1_def Bus_invariant_6_2_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> invariant_verify_aux1 <span class="main">)</span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_call_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">defer</span></span></span></span>  
+  <span class="keyword1"><span class="command">using</span></span> Re_api_switchToActor_def Re_appendScheduleMsg_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_api_activateActor_def Re_appendScheduleMsg_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_api_yieldActor_def Re_appendScheduleMsg_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_api_appendScheduleRequest_def Re_appendScheduleMsg_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_api_terminate_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_api_pluginYieldActor_businv6 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Re_scheLoopOnce_businv6 invariant24_verify  
+        invariant16_verify invariant_16_def invariant8_verify
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">fastforce</span></span>
+
+
+<span class="keyword2"><span class="keyword">end</span></span></pre></body>
