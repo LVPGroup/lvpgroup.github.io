@@ -1,0 +1,928 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0153)http://localhost:60012/e878375a-7f83-431b-a556-7f03b63e3c91/preview?%2FUsers%2Fxywang%2FDesktop%2Fmi-tee%2FMITEE_Design_Layer%2FSecurity%2FDesign_Sec.thy -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.contents { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+
+
+/* formal entities */
+
+.entity_def {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.entity_def:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+}
+
+.entity_ref {
+  color: inherit;
+  text-decoration: inherit;
+  border: 0.5px solid rgba(0,0,0,0);
+}
+
+.entity_ref:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+  border: 0.5px solid black;
+}
+</style><title>Theory "Design_Sec"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> Design_Sec
+    <span class="keyword2"><span class="keyword">imports</span></span> <span class="quoted">"../../MiTEE_Requirement_Layer/Security/REQ_SEC"</span>
+            <span class="quoted">"./Design_Sec_OpenSession"</span>
+            <span class="quoted">"./Design_Sec_InvokeCommand"</span>
+            <span class="quoted">"./Design_Sec_CloseSession"</span>
+            <span class="quoted">"./Design_Sec_Memory"</span>
+            
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Design level proof"</span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_ref_lemma <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span>s0r<span class="main">)</span> <span class="main">=</span> s0t"</span></span> 
+     <span class="keyword1"><span class="command">using</span></span>  s0t_init s0r_init system_initR_def 
+     <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>full_types<span class="main"><span class="main">)</span></span> State.select_convs<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> State.select_convs<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> 
+      State.select_convs<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span> State.select_convs<span class="main"><span class="main">(</span></span>4<span class="main"><span class="main">)</span></span> State.select_convs<span class="main"><span class="main">(</span></span>5<span class="main"><span class="main">)</span></span> 
+      State.select_convs<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> State.surjective abstract_state_def old.unit.exhaust<span class="main">)</span> 
+
+<span class="keyword1"><span class="command">lemma</span></span> sysR_refine <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span> <span class="main">∈</span>exec_eventR <span class="main">(</span>sys' Reserved<span class="main">)</span> <span class="main">⟶</span> <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="main">(</span>sys' Reserved<span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> exec_eventR_def exec_event_def eR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+
+<span class="comment1">(*lemma 1 : refinement. API in design level refines API in requirement level*)</span>
+<span class="keyword1"><span class="command">lemma</span></span> refine_exec_event <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="free">e</span> <span class="main">⟹</span> 
+    <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="free">e</span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+   <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+    <span class="keyword3"><span class="command">assume</span></span> p0<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="free">e</span>"</span></span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="free">e</span><span class="main">)</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">proof</span></span><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="free">e</span></span><span class="main">)</span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>hyperc' <span class="skolem">x</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+    <span class="keyword1"><span class="command">proof</span></span><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="skolem">x</span></span><span class="main">)</span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEEC_INITIALIZECONTEXT <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span>
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEEC_INITIALIZECONTEXT <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_InitializeContextR sysconf <span class="free">s</span> <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+              <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_InitializeContext sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+              <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+              <span class="keyword1"><span class="command">using</span></span> TEEC_INITIALIZECONTEXT TEEC_InitializeContextR_refine a1
+                <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEEC_FINALIZECONTEXT <span class="skolem">x1</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_FINALIZECONTEXT TEEC_FinalizeContextR_refine 
+              exec_eventR_def exec_event_def eR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEEC_OPENSESSION1 <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span> <span class="skolem">x4</span> <span class="skolem">x5a</span> <span class="skolem">x6</span> <span class="skolem">x7</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEEC_OPENSESSION1 <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span> <span class="skolem">x4</span> <span class="skolem">x5a</span> <span class="skolem">x6</span> <span class="skolem">x7</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span><span class="main">(</span>TEEC_OpenSession1R sysconf <span class="free">s</span> <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span> <span class="skolem">x4</span> <span class="skolem">x5a</span> <span class="skolem">x6</span> <span class="skolem">x7</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_OpenSession1 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span> <span class="skolem">x4</span> <span class="skolem">x5a</span> <span class="skolem">x6</span> <span class="skolem">x7</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_OPENSESSION1 TEEC_OpenSession1R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEEC_OPENSESSION2
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' TEEC_OPENSESSION2"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_OpenSession2R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_OpenSession2 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_OPENSESSION2 TEEC_OpenSession2R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEEC_OPENSESSION3 <span class="skolem">x</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span>
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEEC_OPENSESSION3 <span class="skolem">x</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_OpenSession3R sysconf <span class="free">s</span> <span class="skolem">x</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_OpenSession3 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="skolem">x</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_OPENSESSION3 TEEC_OpenSession3R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEEC_OPENSESSION4
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span>
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' TEEC_OPENSESSION4"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_OpenSession4R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_OpenSession4 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_OPENSESSION4 TEEC_OpenSession4R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEEC_CLOSESESSION1 <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span> <span class="skolem">x4</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span>
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEEC_CLOSESESSION1 <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span> <span class="skolem">x4</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_CloseSession1R sysconf <span class="free">s</span> <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span> <span class="skolem">x4</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_CloseSession1 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span> <span class="skolem">x4</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_CLOSESESSION1 TEEC_CloseSession1R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEEC_CLOSESESSION2
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span>
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' TEEC_CLOSESESSION2"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_CloseSession2R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_CloseSession2 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_CLOSESESSION2 TEEC_CloseSession2R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEEC_CLOSESESSION3
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span>
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' TEEC_CLOSESESSION3"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_CloseSession3R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_CloseSession3 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_CLOSESESSION3 TEEC_CloseSession3R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEEC_CLOSESESSION4
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span>
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' TEEC_CLOSESESSION4"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_CloseSession4R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_CloseSession4 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_CLOSESESSION4 TEEC_CloseSession4R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEEC_INVOKECOMMAND1 <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span> <span class="skolem">x4</span> <span class="skolem">x5a</span> <span class="skolem">x6</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEEC_INVOKECOMMAND1 <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span> <span class="skolem">x4</span> <span class="skolem">x5a</span> <span class="skolem">x6</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_InvokeCommand1R sysconf <span class="free">s</span> <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span> <span class="skolem">x4</span> <span class="skolem">x5a</span> <span class="skolem">x6</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_InvokeCommand1 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span> <span class="skolem">x4</span> <span class="skolem">x5a</span> <span class="skolem">x6</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_INVOKECOMMAND1 TEEC_InvokeCommand1R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEEC_INVOKECOMMAND2
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEEC_INVOKECOMMAND2<span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_InvokeCommand2R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_InvokeCommand2 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_INVOKECOMMAND2 TEEC_InvokeCommand2R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEEC_INVOKECOMMAND3
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span>
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEEC_INVOKECOMMAND3<span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_InvokeCommand3R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_InvokeCommand3 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_INVOKECOMMAND3 TEEC_InvokeCommand3R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEEC_INVOKECOMMAND4
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEEC_INVOKECOMMAND4<span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_InvokeCommand4R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_InvokeCommand4 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_INVOKECOMMAND4 TEEC_InvokeCommand4R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEEC_REGISTERSHAREDMEMORY <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEEC_REGISTERSHAREDMEMORY <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_RegisterSharedMemoryR sysconf <span class="free">s</span> <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_RegisterSharedMemory sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_REGISTERSHAREDMEMORY TEEC_RegisterSharedMemoryR_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEEC_ALLOCATESHAREDMEMORY <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEEC_ALLOCATESHAREDMEMORY <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEEC_AllocateSharedMemoryR sysconf <span class="free">s</span> <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEEC_AllocateSharedMemory sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_ALLOCATESHAREDMEMORY TEEC_AllocateSharedMemoryR_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span>
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEEC_RELEASESHAREDMEMORY <span class="skolem">x</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEEC_RELEASESHAREDMEMORY <span class="skolem">x</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span><span class="main">(</span>TEEC_ReleaseSharedMemoryR sysconf <span class="free">s</span> <span class="skolem">x</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span><span class="main">(</span>TEEC_ReleaseSharedMemory sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="skolem">x</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEEC_RELEASESHAREDMEMORY TEEC_ReleaseSharedMemoryR_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span>
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEE_OPENTASESSION1
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEE_OPENTASESSION1<span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span><span class="main">(</span>TEE_OpenTASession1R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEE_OpenTASession1 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_OPENTASESSION1 TEE_OpenTASession1R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEE_OPENTASESSION2
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEE_OPENTASESSION2<span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span><span class="main">(</span>TEE_OpenTASession2R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEE_OpenTASession2 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_OPENTASESSION2 TEE_OpenTASession2R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEE_OPENTASESSION3 <span class="skolem">x</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEE_OPENTASESSION3 <span class="skolem">x</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span><span class="main">(</span>TEE_OpenTASession3R sysconf <span class="free">s</span> <span class="skolem">x</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEE_OpenTASession3 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="skolem">x</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_OPENTASESSION3 TEE_OpenTASession3R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEE_OPENTASESSION4
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEE_OPENTASESSION4<span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span><span class="main">(</span>TEE_OpenTASession4R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEE_OpenTASession4 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_OPENTASESSION4 TEE_OpenTASession4R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEE_INVOKETACOMMAND1 <span class="skolem">x</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEE_INVOKETACOMMAND1 <span class="skolem">x</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEE_InvokeTACommand1R sysconf <span class="free">s</span> <span class="skolem">x</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEE_InvokeTACommand1 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="skolem">x</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_INVOKETACOMMAND1 TEE_InvokeTACommand1R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEE_INVOKETACOMMAND2
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEE_INVOKETACOMMAND2<span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEE_InvokeTACommand2R sysconf <span class="free">s</span> <span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEE_InvokeTACommand2 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_INVOKETACOMMAND2 TEE_InvokeTACommand2R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEE_INVOKETACOMMAND3
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEE_INVOKETACOMMAND3<span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEE_InvokeTACommand3R sysconf <span class="free">s</span> <span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEE_InvokeTACommand3 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_INVOKETACOMMAND3 TEE_InvokeTACommand3R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEE_INVOKETACOMMAND4
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEE_INVOKETACOMMAND4<span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEE_InvokeTACommand4R sysconf <span class="free">s</span> <span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEE_InvokeTACommand4 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_INVOKETACOMMAND4 TEE_InvokeTACommand4R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEE_CLOSETASESSION1
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' TEE_CLOSETASESSION1"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEE_CloseTASession1R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEE_CloseTASession1 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_CLOSETASESSION1 TEE_CloseTASession1R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEE_CLOSETASESSION2
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' TEE_CLOSETASESSION2"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEE_CloseTASession2R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEE_CloseTASession2 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_CLOSETASESSION2 TEE_CloseTASession2R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEE_CLOSETASESSION3
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span>
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' TEE_CLOSETASESSION3"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEE_CloseTASession3R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEE_CloseTASession3 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_CLOSETASESSION3 TEE_CloseTASession3R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> TEE_CLOSETASESSION4
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' TEE_CLOSETASESSION4"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span>fst<span class="main">(</span>TEE_CloseTASession4R sysconf <span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span>fst<span class="main">(</span>TEE_CloseTASession4 sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_CLOSETASESSION4 TEE_CloseTASession4R_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEE_CHECKMEMORYACCESSRIGHTS <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEE_CHECKMEMORYACCESSRIGHTS <span class="skolem">x1</span> <span class="skolem">x2a</span> <span class="skolem">x3</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span><span class="free">s</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span><span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_CHECKMEMORYACCESSRIGHTS a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEE_MALLOC <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEE_MALLOC <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span><span class="main">(</span>TEE_MallocR sysconf <span class="free">s</span> <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span><span class="main">(</span>TEE_Malloc sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_MALLOC TEE_MallocR_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEE_REALLOC <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEE_REALLOC <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span><span class="main">(</span>TEE_ReallocR sysconf <span class="free">s</span> <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span><span class="main">(</span>TEE_Realloc sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="skolem">x1</span> <span class="skolem">x2a</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_REALLOC TEE_ReallocR_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>TEE_FREE <span class="skolem">x</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?e</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"hyperc' <span class="main">(</span>TEE_FREE <span class="skolem">x</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span><span class="main">,</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="var">?e</span> <span class="main">=</span> <span class="main">(</span><span class="free">t</span><span class="main">=</span><span class="main">(</span>TEE_FreeR sysconf <span class="free">s</span> <span class="skolem">x</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">,</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">∈</span>exec_event <span class="main">(</span><span class="main">(</span>eR <span class="var">?e</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span><span class="main">=</span><span class="main">(</span>TEE_Free sysconf <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="skolem">x</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+            <span class="keyword1"><span class="command">using</span></span> exec_event_def eR_def abstract_state_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+        <span class="keyword1"><span class="command">using</span></span> TEE_FREE TEE_FreeR_refine a1
+            <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+      <span class="keyword1"><span class="command">qed</span></span> 
+    <span class="keyword1"><span class="command">qed</span></span>
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>sys' <span class="skolem">x</span><span class="main">)</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> <span class="keyword1"><span class="command">using</span></span>  sysR_refine 
+          <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>mono_tags<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> SyscallR.exhaust<span class="main">)</span> 
+   <span class="keyword1"><span class="command">qed</span></span>
+  <span class="keyword1"><span class="command">qed</span></span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> reachR_reach1<span class="main">:</span> 
+     <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">as</span> <span class="bound">s'</span><span class="main">.</span> MiTEE_Instantiation.reachable0 <span class="main">(</span><span class="main">⇑</span><span class="bound">s</span><span class="main">)</span> <span class="main">∧</span> 
+                 reachable0 <span class="bound">s</span> <span class="main">∧</span> <span class="bound">s'</span><span class="main">∈</span>execute <span class="bound">as</span> <span class="bound">s</span>  <span class="main">⟶</span> 
+                MiTEE_Instantiation.reachable0 <span class="main">(</span><span class="main">⇑</span><span class="bound">s'</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+  <span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">as</span>
+    <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> MiTEE_Instantiation.reachable0 <span class="main">(</span><span class="main">⇑</span><span class="bound">s</span><span class="main">)</span> <span class="main">∧</span> 
+                 reachable0 <span class="bound">s</span> <span class="main">∧</span> <span class="bound">s'</span><span class="main">∈</span>execute <span class="skolem">as</span> <span class="bound">s</span>  <span class="main">⟶</span> MiTEE_Instantiation.reachable0 <span class="main">(</span><span class="main">⇑</span><span class="bound">s'</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">proof</span></span><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="skolem">as</span></span><span class="main">)</span>
+    <span class="keyword3"><span class="command">case</span></span> Nil
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> <span class="keyword1"><span class="command">using</span></span> reachable0_def execute_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>Cons <span class="skolem">a</span> <span class="skolem">as</span><span class="main">)</span>
+    <span class="keyword3"><span class="command">assume</span></span> a0<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> MiTEE_Instantiation.reachable0 <span class="main">(</span><span class="main">⇑</span><span class="bound">s</span><span class="main">)</span> <span class="main">∧</span> 
+                 reachable0 <span class="bound">s</span> <span class="main">∧</span> <span class="bound">s'</span><span class="main">∈</span>execute <span class="skolem">as</span> <span class="bound">s</span>  <span class="main">⟶</span> MiTEE_Instantiation.reachable0 <span class="main">(</span><span class="main">⇑</span><span class="bound">s'</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span>
+    <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+    <span class="keyword1"><span class="command">{</span></span>
+      <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s</span> <span class="skolem">s'</span>
+      <span class="keyword3"><span class="command">assume</span></span> b0<span class="main">:</span><span class="quoted"><span class="quoted">"MiTEE_Instantiation.reachable0 <span class="main">(</span><span class="main">⇑</span><span class="skolem">s</span><span class="main">)</span> <span class="main">∧</span> 
+                 reachable0 <span class="skolem">s</span> <span class="main">∧</span> <span class="skolem">s'</span><span class="main">∈</span>execute <span class="main">(</span><span class="skolem">a</span><span class="main">#</span><span class="skolem">as</span><span class="main">)</span> <span class="skolem">s</span>"</span></span>
+      <span class="keyword1"><span class="command">have</span></span> b3<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s1</span><span class="main">.</span> <span class="main">(</span><span class="skolem">s</span><span class="main">,</span><span class="bound">s1</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="skolem">a</span> <span class="main">⟶</span> MiTEE_Instantiation.reachable0 <span class="main">(</span><span class="main">⇑</span><span class="bound">s1</span><span class="main">)</span>"</span></span>
+        <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+        <span class="keyword1"><span class="command">{</span></span>
+          <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s1</span>
+          <span class="keyword3"><span class="command">assume</span></span> c0<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span><span class="skolem">s1</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="skolem">a</span>"</span></span>
+          <span class="keyword1"><span class="command">then</span></span> <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"MiTEE_Instantiation.reachable0 <span class="main">(</span><span class="main">⇑</span><span class="skolem">s1</span><span class="main">)</span>"</span></span>
+            <span class="keyword1"><span class="command">using</span></span> MiTEE_Instantiation.reachableStep b0 refine_exec_event <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span> 
+        <span class="keyword1"><span class="command">}</span></span>
+        <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+        <span class="keyword1"><span class="command">qed</span></span>
+      <span class="keyword1"><span class="command">from</span></span> b0 <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"<span class="main">∃</span><span class="bound">s1</span><span class="main">.</span> <span class="main">(</span><span class="skolem">s</span><span class="main">,</span><span class="bound">s1</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="skolem">a</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">s1</span><span class="main">,</span><span class="skolem">s'</span><span class="main">)</span><span class="main">∈</span>run <span class="skolem">as</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> reachable0_def execute_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+      <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">obtain</span></span> <span class="skolem"><span class="skolem">s1</span></span> <span class="keyword2"><span class="keyword">where</span></span> b4<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span><span class="skolem">s1</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="skolem">a</span> <span class="main">∧</span> <span class="main">(</span><span class="skolem">s1</span><span class="main">,</span><span class="skolem">s'</span><span class="main">)</span><span class="main">∈</span>run <span class="skolem">as</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+      <span class="keyword1"><span class="command">have</span></span> b5<span class="main">:</span><span class="quoted"><span class="quoted">"MiTEE_Instantiation.reachable0 <span class="main">(</span><span class="main">⇑</span><span class="skolem">s1</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b3 b4 <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+      <span class="keyword1"><span class="command">have</span></span> b6<span class="main">:</span><span class="quoted"><span class="quoted">"Design_Instantiation.reachable0 <span class="skolem">s1</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> reachableStep b0 b4 <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+      <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"MiTEE_Instantiation.reachable0 <span class="main">(</span><span class="main">⇑</span><span class="skolem">s'</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b4 b5 a0 b6 execute_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span> 
+    <span class="keyword1"><span class="command">}</span></span> 
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+    <span class="keyword1"><span class="command">qed</span></span>
+  <span class="keyword1"><span class="command">qed</span></span>
+  <span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+<span class="keyword1"><span class="command">qed</span></span>
+
+
+<span class="comment1">(*lemma 2 : reachable lemma inherited.*)</span>
+<span class="keyword1"><span class="command">lemma</span></span> reachR_reach<span class="main">:</span> <span class="quoted"><span class="quoted">"reachable0 <span class="free">s</span> <span class="main">⟹</span> MiTEE_Instantiation.reachable0 <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span> reachR_reach1 Design_Instantiation.reachable0_def reachable_s0 
+          MiTEE_Instantiation.reachable_s0 s0_ref_lemma execute_def reachable_def
+      <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> Image_singleton_iff<span class="main">)</span>
+
+<span class="comment1">(*lemma 3 : req_weak_confidentiality + new variable weak_confidentiality 
+                          = des_weak_confidentiality, for every event*)</span>
+<span class="keyword1"><span class="command">lemma</span></span> weak_confidentiality_evt_ref<span class="main">:</span> 
+    <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">e</span><span class="main">.</span>  MiTEE_Instantiation.weak_confidentiality_e <span class="main">(</span><span class="main">(</span>eR <span class="bound">e</span><span class="main">)</span><span class="main">)</span> 
+          <span class="main">∧</span> weak_confidentiality_new_e <span class="bound">e</span> <span class="main">⟶</span> Design_Instantiation.weak_confidentiality_e <span class="bound">e</span>"</span></span>    
+    <span class="keyword1"><span class="command">using</span></span> MiTEE_Instantiation.weak_confidentiality_e_def Design_Instantiation.weak_confidentiality_e_def
+          domain_domainR  reachR_reach refine_exec_event 
+          vpeqR_def vpeqR_vpeq1  weak_confidentiality_new_e_def  abstract_state_def
+          <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> ccfv_threshold<span class="main"><span class="main">)</span></span> State.select_convs<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> State.select_convs<span class="main"><span class="main">(</span></span>4<span class="main"><span class="main">)</span></span> 
+              State.select_convs<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> get_exec_primeR_def get_exec_prime_def<span class="main">)</span> 
+
+<span class="comment1">(*lemma 4 : req_integrity +new variable integrity = des_integrity, for every event*)</span>
+<span class="keyword1"><span class="command">lemma</span></span> integrity_evt_ref<span class="main">:</span> 
+    <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">e</span><span class="main">.</span>  MiTEE_Instantiation.integrity_e <span class="main">(</span><span class="main">(</span>eR <span class="bound">e</span><span class="main">)</span><span class="main">)</span> 
+          <span class="main">∧</span> integrity_new_e <span class="bound">e</span> <span class="main">⟶</span> Design_Instantiation.integrity_e <span class="bound">e</span>"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> Design_Instantiation.integrity_e_def  MiTEE_Instantiation.integrity_e_def 
+           MiTEE_Instantiation.non_interference_def domain_domainR integrity_new_e_def 
+          non_interference1_def reachR_reach refine_exec_event vpeqR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+
+<span class="comment1">(*lemma 5 : req_weak_confidentiality +new variable weak_confidentiality = des_weak_confidentiality, for total system*)</span>
+<span class="keyword1"><span class="command">lemma</span></span> abs_sc_new_imp<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">⟦</span>MiTEE_Instantiation.weak_confidentiality<span class="main">;</span> weak_confidentiality_new<span class="main">⟧</span> 
+        <span class="main">⟹</span> Design_Instantiation.weak_confidentiality"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> Design_Instantiation.weak_confidentiality_all_evt MiTEE_Instantiation.weak_confidentiality_all_evt 
+            weak_confidentiality_evt_ref weak_confidentiality_new_all_evt 
+              <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span> 
+
+<span class="comment1">(*lemma 6 : req_integrity +new variable integrity = des_integrity, for total system*)</span>
+<span class="keyword1"><span class="command">lemma</span></span> abs_lr_new_imp<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">⟦</span>MiTEE_Instantiation.integrity<span class="main">;</span> integrity_new<span class="main">⟧</span> <span class="main">⟹</span> Design_Instantiation.integrity"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> Design_Instantiation.integrity_all_evt MiTEE_Instantiation.integrity_all_evt 
+      integrity_evt_ref integrity_new_all_evt <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Design layer Security"</span></span></span>
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"syscall aux lemma"</span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> syscallR_integrity<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> sys' Reserved"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>  <span class="main">⟶</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">s'</span><span class="main">)</span>"</span></span>
+  
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+ <span class="keyword1"><span class="command">{</span></span>
+  <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s</span> <span class="skolem">s'</span> <span class="skolem">d</span> 
+  <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span> <span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+  <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="skolem">d</span><span class="main">)</span>"</span></span>
+  <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span><span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+  <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="skolem">s</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a3 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+  <span class="keyword1"><span class="command">then</span></span> <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"<span class="skolem">s</span><span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">s'</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+<span class="keyword1"><span class="command">}</span></span>
+ <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+ <span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> syscallR_integrity_e<span class="main">:</span>
+   <span class="quoted"><span class="quoted">"integrity_new_e <span class="main">(</span>sys' Reserved<span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> syscallR_integrity integrity_new_e_def
+    <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> syscallR_weak_confidentiality<span class="main">:</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> sys' Reserved"</span></span>
+  <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">t</span><span class="main">.</span>
+           reachable0 <span class="bound">s</span> <span class="main">∧</span>
+           reachable0 <span class="bound">t</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="bound">t</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span>get_exec_primeR <span class="bound">s</span><span class="main">=</span>get_exec_primeR <span class="bound">t</span><span class="main">)</span><span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span>
+           <span class="main">(</span><span class="main">∀</span> <span class="bound">s'</span> <span class="bound">t'</span><span class="main">.</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">t</span><span class="main">,</span> <span class="bound">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s'</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">t'</span><span class="main">)</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+  <span class="keyword1"><span class="command">{</span></span>
+    
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s</span> <span class="skolem">t</span> <span class="skolem">d</span> <span class="skolem">s'</span> <span class="skolem">t'</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span><span class="main">∼.</span><span class="skolem">d</span><span class="main">.∼</span><span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a31<span class="main">:</span><span class="quoted"><span class="quoted">"exec_prime <span class="skolem">s</span><span class="main">=</span>exec_prime <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a4<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="skolem">t</span> <span class="free">a</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a5<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="skolem">d</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a6<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a7<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span> <span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a8<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">t</span><span class="main">,</span> <span class="skolem">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="skolem">s</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> a7 p1 exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">t'</span><span class="main">=</span><span class="skolem">t</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> a8 p1 exec_eventR_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+    <span class="keyword1"><span class="command">then</span></span> <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s'</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">t'</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b1 b2 a3  <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+  <span class="keyword1"><span class="command">}</span></span>
+  <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">using</span></span> get_exec_primeR_def 
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> ccfv_SIG<span class="main"><span class="main">)</span></span> Pair_inject<span class="main">)</span>
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> syscallR_weak_confidentiality_e<span class="main">:</span>
+   <span class="quoted"><span class="quoted">"weak_confidentiality_new_e <span class="main">(</span>sys' Reserved<span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> syscallR_weak_confidentiality weak_confidentiality_new_e_def get_exec_primeR_def 
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> del_insts<span class="main"><span class="main">)</span></span> Pair_inject<span class="main">)</span>
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"design layer new variable security"</span></span></span>
+
+<span class="comment1">(*theorem 1: all events satisfy weak_confidentiality in new variable*)</span>
+<span class="keyword1"><span class="command">theorem</span></span> weak_confidentiality_new<span class="main">:</span><span class="quoted">weak_confidentiality_new</span>
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+  <span class="keyword1"><span class="command">{</span></span> 
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">e</span>
+    <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"weak_confidentiality_new_e <span class="skolem">e</span>"</span></span>
+    <span class="keyword1"><span class="command">proof</span></span><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="skolem">e</span></span><span class="main">)</span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>hyperc' <span class="skolem">x</span><span class="main">)</span>
+    <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> TEEC_InitializeContextR_weak_confidentiality_e TEEC_FinalizeContextR_weak_confidentiality_e
+            TEEC_OpenSession1R_weak_confidentiality_e TEEC_OpenSession2R_weak_confidentiality_e
+            TEEC_OpenSession3R_weak_confidentiality_e TEEC_OpenSession4R_weak_confidentiality_e TEEC_CloseSession1R_weak_confidentiality_e
+            TEEC_CloseSession2R_weak_confidentiality_e TEEC_CloseSession3R_weak_confidentiality_e TEEC_CloseSession4R_weak_confidentiality_e
+            TEEC_InvokeCommand1R_weak_confidentiality_e TEEC_InvokeCommand2R_weak_confidentiality_e
+            TEEC_InvokeCommand3R_weak_confidentiality_e TEEC_InvokeCommand4R_weak_confidentiality_e TEEC_RegisterSharedMemoryR_weak_confidentiality_e
+            TEEC_AllocateSharedMemoryR_weak_confidentiality_e
+            TEEC_ReleaseSharedMemoryR_weak_confidentiality_e TEE_OpenTASession1R_weak_confidentiality_e
+            TEE_OpenTASession2R_weak_confidentiality_e TEE_OpenTASession3R_weak_confidentiality_e TEE_OpenTASession4R_weak_confidentiality_e
+            TEE_InvokeTACommand1R_weak_confidentiality_e TEE_InvokeTACommand2R_weak_confidentiality_e
+            TEE_InvokeTACommand3R_weak_confidentiality_e TEE_InvokeTACommand4R_weak_confidentiality_e TEE_CloseTASession1R_weak_confidentiality_e
+            TEE_CloseTASession2R_weak_confidentiality_e TEE_CloseTASession3R_weak_confidentiality_e TEE_CloseTASession4R_weak_confidentiality_e
+            TEE_CheckMemoryAccessRightsR_weak_confidentiality_e
+            TEE_MallocR_weak_confidentiality_e TEE_ReallocR_weak_confidentiality_e
+             TEE_FreeR_weak_confidentiality_e <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="main">(</span><span class="operator">rule</span> HypercallR.induct<span class="main">)</span> <span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>sys' <span class="skolem">x</span><span class="main">)</span>
+    <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> <span class="keyword1"><span class="command">using</span></span>  syscallR_weak_confidentiality_e SyscallR.induct
+        <span class="keyword1"><span class="command">by</span></span> <span class="operator">fastforce</span>
+    <span class="keyword1"><span class="command">qed</span></span>
+  <span class="keyword1"><span class="command">}</span></span>
+  <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> weak_confidentiality_new_all_evt<span class="main">)</span>
+  <span class="keyword1"><span class="command">qed</span></span>
+
+
+
+<span class="comment1">(*theorem 2: all events satisfy integrity in new variable*)</span>
+<span class="keyword1"><span class="command">theorem</span></span> integrity_new<span class="main">:</span><span class="quoted">integrity_new</span>
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+  <span class="keyword1"><span class="command">{</span></span> 
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">e</span>
+    <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"integrity_new_e <span class="skolem">e</span>"</span></span>
+    <span class="keyword1"><span class="command">proof</span></span><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="skolem">e</span></span><span class="main">)</span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>hyperc' <span class="skolem">x</span><span class="main">)</span>
+    <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> TEEC_InitializeContextR_integrity_e TEEC_FinalizeContextR_integrity_e
+            TEEC_OpenSession1R_integrity_e TEEC_OpenSession2R_integrity_e
+            TEEC_OpenSession3R_integrity_e TEEC_OpenSession4R_integrity_e TEEC_CloseSession1R_integrity_e
+            TEEC_CloseSession2R_integrity_e TEEC_CloseSession3R_integrity_e TEEC_CloseSession4R_integrity_e
+            TEEC_InvokeCommand1R_integrity_e TEEC_InvokeCommand2R_integrity_e
+            TEEC_InvokeCommand3R_integrity_e TEEC_InvokeCommand4R_integrity_e TEEC_RegisterSharedMemoryR_integrity_e
+            TEEC_AllocateSharedMemoryR_integrity_e
+            TEEC_ReleaseSharedMemoryR_integrity_e TEE_OpenTASession1R_integrity_e
+            TEE_OpenTASession2R_integrity_e TEE_OpenTASession3R_integrity_e TEE_OpenTASession4R_integrity_e
+            TEE_InvokeTACommand1R_integrity_e TEE_InvokeTACommand2R_integrity_e
+            TEE_InvokeTACommand3R_integrity_e TEE_InvokeTACommand4R_integrity_e TEE_CloseTASession1R_integrity_e
+            TEE_CloseTASession2R_integrity_e TEE_CloseTASession3R_integrity_e TEE_CloseTASession4R_integrity_e
+            TEE_CheckMemoryAccessRightsR_integrity_e
+            TEE_MallocR_integrity_e TEE_ReallocR_integrity_e
+             TEE_FreeR_integrity_e <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="main">(</span><span class="operator">rule</span> HypercallR.induct<span class="main">)</span> <span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+    <span class="keyword1"><span class="command">next</span></span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>sys' <span class="skolem">x</span><span class="main">)</span>
+    <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> <span class="keyword1"><span class="command">using</span></span>  syscallR_integrity_e SyscallR.induct
+        <span class="keyword1"><span class="command">by</span></span> <span class="operator">fastforce</span>
+    <span class="keyword1"><span class="command">qed</span></span>
+  <span class="keyword1"><span class="command">}</span></span>
+  <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> 
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> integrity_new_all_evt<span class="main">)</span>
+  <span class="keyword1"><span class="command">qed</span></span>
+
+
+<span class="comment1">(*theorem 3: all events satisfy weak_confidentiality in all State, in design level*)</span>
+<span class="keyword1"><span class="command">theorem</span></span> des_weak_confidentiality<span class="main">:</span> <span class="quoted">weak_confidentiality</span>
+  <span class="keyword1"><span class="command">using</span></span> req_weak_confidentiality weak_confidentiality_new abs_sc_new_imp <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+
+<span class="comment1">(*theorem 4: all events satisfy integrity in all State, in design level*)</span>
+<span class="keyword1"><span class="command">theorem</span></span> des_integrity<span class="main">:</span> <span class="quoted">integrity</span>
+    <span class="keyword1"><span class="command">using</span></span> req_integrity integrity_new abs_lr_new_imp <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+
+<span class="comment1">(*theorem 5: final result, design level is secure*)</span>
+<span class="keyword1"><span class="command">theorem</span></span> des_confidentiality<span class="main">:</span> <span class="quoted">confidentiality</span>
+  <span class="keyword1"><span class="command">using</span></span> des_weak_confidentiality des_integrity  weak_with_step_cons
+  <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+
+<span class="keyword2"><span class="keyword">end</span></span></pre>
+</body></html>

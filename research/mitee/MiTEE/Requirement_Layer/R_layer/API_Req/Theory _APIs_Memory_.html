@@ -1,0 +1,373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0159)http://localhost:60012/e878375a-7f83-431b-a556-7f03b63e3c91/preview?%2FUsers%2Fxywang%2FDesktop%2Fmi-tee%2FMiTEE_Requirement_Layer%2FAPIs_Req%2FAPIs_Memory.thy -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.contents { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+
+
+/* formal entities */
+
+.entity_def {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.entity_def:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+}
+
+.entity_ref {
+  color: inherit;
+  text-decoration: inherit;
+  border: 0.5px solid rgba(0,0,0,0);
+}
+
+.entity_ref:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+  border: 0.5px solid black;
+}
+</style><title>Theory "APIs_Memory"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> APIs_Memory
+<span class="keyword2"><span class="keyword">imports</span></span> <span class="quoted">"../MiTEE_DataStructure"</span> <span class="quoted">"APIs_TEEC_Common"</span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Common functions"</span></span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">getBlockIdFromState</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"MemBlock <span class="main">⇒</span> MEM_BLOCK_ID"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">getBlockIdFromState</span> <span class="free"><span class="bound"><span class="entity">x</span></span></span> <span class="main">≡</span> block_id <span class="free"><span class="bound"><span class="entity">x</span></span></span>"</span></span>
+
+<span class="comment1">(*definition is_alloc :: "State ⇒ BUFFER_SIZE_TYPE ⇒ bool" where
+  "is_alloc s buffer_size ≡ 
+     if ree_total_size(REE_state s) &gt; buffer_size then True
+     else False"
+*)</span>
+
+<span class="comment1">(*REE alloc*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">shm_alloc</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State <span class="main">⇒</span> BUFFER_SIZE_TYPE <span class="main">⇒</span> MemBlock"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">shm_alloc</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">buffer_size</span></span></span> <span class="main">≡</span>
+    <span class="keyword1">let</span>  <span class="bound">newblk</span> <span class="main">=</span> <span class="main">⦇</span>block_id <span class="main">=</span> newREEMemBlockID <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>
+                   size <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">buffer_size</span></span></span><span class="main">,</span>
+                   ownership <span class="main">=</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>
+                   access_right <span class="main">=</span> Map.empty<span class="main">,</span>
+                   is_SecureMem <span class="main">=</span> False<span class="main">,</span>
+                   related <span class="main">=</span> Some <span class="main">0</span><span class="main">⦈</span>
+     <span class="keyword1">in</span>  <span class="bound">newblk</span>
+"</span></span>
+
+<span class="comment1">(*TEE alloc*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">mem_alloc</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State <span class="main">⇒</span> BUFFER_SIZE_TYPE <span class="main">⇒</span> MemBlock"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">mem_alloc</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">malloc_size</span></span></span> <span class="main">≡</span> 
+    <span class="keyword1">let</span> <span class="bound">blockId</span> <span class="main">=</span> newMemBlockID3 <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">;</span>
+        <span class="bound">newblk</span> <span class="main">=</span> <span class="main">⦇</span>block_id <span class="main">=</span> <span class="bound">blockId</span><span class="main">,</span>
+                  size <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">malloc_size</span></span></span><span class="main">,</span>
+                  ownership <span class="main">=</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>
+                  access_right <span class="main">=</span> Map.empty<span class="main">,</span>
+                  is_SecureMem <span class="main">=</span> True<span class="main">,</span>
+                  related <span class="main">=</span> None<span class="main">⦈</span>  
+    <span class="keyword1">in</span>  <span class="bound">newblk</span>"</span></span>
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TEEC Client APIs"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_RegisterSharedMemory</span><span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> TEEC_CONTEXT_TYPE <span class="main">⇒</span> TEEC_SharedMemory <span class="main">⇒</span> <span class="main">(</span>State <span class="main">×</span> TEEC_RETURN_CODE_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEEC_RegisterSharedMemory</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx</span></span></span> <span class="free"><span class="bound"><span class="entity">shm</span></span></span> <span class="main">≡</span> 
+  <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEEC_ERROR_BUSY<span class="main">)</span>
+  <span class="keyword1">else</span> 
+    <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">≠</span> <span class="main">[]</span> <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEEC_ERROR_BUSY<span class="main">)</span>
+    <span class="keyword1">else</span> 
+      <span class="keyword1">if</span> <span class="main">(</span>flags <span class="free"><span class="bound"><span class="entity">shm</span></span></span><span class="main">)</span> <span class="main">≠</span> TEEC_MEM_INPUT <span class="main">∨</span> <span class="main">(</span>flags <span class="free"><span class="bound"><span class="entity">shm</span></span></span><span class="main">)</span> <span class="main">≠</span> TEEC_MEM_OUTPUT <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> 
+        <span class="keyword1">let</span> <span class="bound">newblk</span> <span class="main">=</span> shm_alloc <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">(</span>shared_size <span class="free"><span class="bound"><span class="entity">shm</span></span></span><span class="main">)</span><span class="main">;</span>
+            <span class="bound">newblk1</span> <span class="main">=</span> <span class="bound">newblk</span><span class="main">⦇</span>related <span class="main">:=</span> Some <span class="main">(</span>buffer <span class="free"><span class="bound"><span class="entity">shm</span></span></span><span class="main">)</span><span class="main">⦈</span><span class="main">;</span>
+            <span class="bound">lst</span> <span class="main">=</span> <span class="bound">newblk1</span> <span class="main">#</span> driver_mem<span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">;</span>
+            <span class="bound">newREESize</span> <span class="main">=</span> ree_total_size<span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">-</span> <span class="main">(</span>shared_size <span class="free"><span class="bound"><span class="entity">shm</span></span></span><span class="main">)</span>  
+        <span class="keyword1">in</span>  <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>REE_state <span class="main">:=</span> <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>driver_mem <span class="main">:=</span> <span class="bound">lst</span><span class="main">,</span> ree_total_size <span class="main">:=</span> <span class="bound">newREESize</span><span class="main">⦈</span><span class="main">⦈</span><span class="main">,</span>  TEEC_SUCCESS<span class="main">)</span>
+"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_AllocateSharedMemory</span><span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> TEEC_CONTEXT_TYPE <span class="main">⇒</span> TEEC_SharedMemory <span class="main">⇒</span> <span class="main">(</span>State <span class="main">×</span> TEEC_RETURN_CODE_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEEC_AllocateSharedMemory</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx</span></span></span> <span class="free"><span class="bound"><span class="entity">shm</span></span></span> <span class="main">≡</span> 
+  <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEEC_ERROR_BUSY<span class="main">)</span>
+    <span class="keyword1">else</span> 
+    <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">≠</span> <span class="main">[]</span> <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEEC_ERROR_BUSY<span class="main">)</span>
+    <span class="keyword1">else</span>
+      <span class="keyword1">if</span> <span class="main">(</span>flags <span class="free"><span class="bound"><span class="entity">shm</span></span></span><span class="main">)</span> <span class="main">≠</span> TEEC_MEM_INPUT <span class="main">∨</span> <span class="main">(</span>flags <span class="free"><span class="bound"><span class="entity">shm</span></span></span><span class="main">)</span> <span class="main">≠</span> TEEC_MEM_OUTPUT <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> 
+        <span class="keyword1">let</span> <span class="bound">newblk</span> <span class="main">=</span> shm_alloc <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">(</span>shared_size <span class="free"><span class="bound"><span class="entity">shm</span></span></span><span class="main">)</span><span class="main">;</span>
+            <span class="bound">newblk1</span> <span class="main">=</span> <span class="bound">newblk</span><span class="main">⦇</span>related <span class="main">:=</span> Some <span class="main">0</span><span class="main">⦈</span><span class="main">;</span>
+            <span class="bound">lst</span> <span class="main">=</span> <span class="bound">newblk1</span> <span class="main">#</span> driver_mem<span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">;</span>
+            <span class="bound">newREESize</span> <span class="main">=</span> ree_total_size<span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">-</span> <span class="main">(</span>shared_size <span class="free"><span class="bound"><span class="entity">shm</span></span></span><span class="main">)</span>  
+        <span class="keyword1">in</span>  <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>REE_state <span class="main">:=</span> <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>driver_mem <span class="main">:=</span> <span class="bound">lst</span><span class="main">,</span> ree_total_size <span class="main">:=</span> <span class="bound">newREESize</span><span class="main">⦈</span><span class="main">⦈</span><span class="main">,</span>  TEEC_SUCCESS<span class="main">)</span>
+"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_ReleaseSharedMemory</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span>TEEC_SharedMemory <span class="main">⇒</span> State "</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEEC_ReleaseSharedMemory</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">shm</span></span></span> <span class="main">≡</span> 
+  <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>
+  <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">≠</span> <span class="main">[]</span> <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>
+  <span class="keyword1">else</span> <span class="keyword1">if</span> shared_id <span class="free"><span class="bound"><span class="entity">shm</span></span></span> <span class="main">=</span> <span class="main">0</span> <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>
+  <span class="keyword1">else</span>  <span class="keyword1">let</span> <span class="bound">newREESize</span> <span class="main">=</span> ree_total_size<span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">+</span> <span class="main">(</span>alloced_size <span class="free"><span class="bound"><span class="entity">shm</span></span></span><span class="main">)</span><span class="main">;</span>
+            <span class="bound">newlst</span> <span class="main">=</span> filter <span class="main">(</span><span class="main">λ</span><span class="main">(</span><span class="bound">x</span><span class="main">::</span>MemBlock<span class="main">)</span><span class="main">.</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">≠</span> <span class="main">(</span>buffer <span class="free"><span class="bound"><span class="entity">shm</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>driver_mem<span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> 
+        <span class="keyword1">in</span>  <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>REE_state <span class="main">:=</span> <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>ree_total_size <span class="main">:=</span> <span class="bound">newREESize</span><span class="main">,</span> driver_mem <span class="main">:=</span> <span class="bound">newlst</span><span class="main">⦈</span><span class="main">⦈</span>"</span></span>
+
+  
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TEE APIs"</span></span></span>
+
+<span class="comment1">(*
+           ∨(aF = TEE_MEMORY_ACCESS_READ ∧ find (λ(x::DOMAIN_ID). x = (current s)) (access_right memblock) ≠ None)
+           ∨(aF = TEE_MEMORY_ACCESS_ANY_OWNER  ∧ (is_Shared memblock) = True)
+*)</span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEE_CheckMemoryAccessRights</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> accessFlags <span class="main">⇒</span> MemBlock <span class="main">⇒</span> BUFFER_SIZE_TYPE <span class="main">⇒</span> TEE_RETURN_CODE_TYPE"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEE_CheckMemoryAccessRights</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">aF</span></span></span> <span class="free"><span class="bound"><span class="entity">memblock</span></span></span>  <span class="free"><span class="bound"><span class="entity">buffer_size</span></span></span> <span class="main">≡</span> 
+    <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">=</span> TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">∨</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">=</span> REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="keyword1">then</span> TEE_ERROR_BUSY
+    <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">≠</span> <span class="main">[]</span> <span class="keyword1">then</span> TEE_ERROR_BUSY
+    <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">buffer_size</span></span></span> <span class="main">=</span> <span class="main">0</span> <span class="keyword1">then</span> TEE_SUCCESS
+    <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">aF</span></span></span> <span class="main">=</span> TEE_MEMORY_ACCESS_SECURE <span class="main">∧</span> <span class="main">(</span>is_SecureMem <span class="free"><span class="bound"><span class="entity">memblock</span></span></span><span class="main">)</span> <span class="main">=</span> True<span class="main">)</span>
+           <span class="main">∨</span><span class="main">(</span><span class="free"><span class="bound"><span class="entity">aF</span></span></span> <span class="main">=</span> TEE_MEMORY_ACCESS_NONSECURE <span class="main">∧</span> <span class="main">(</span>is_SecureMem <span class="free"><span class="bound"><span class="entity">memblock</span></span></span><span class="main">)</span> <span class="main">=</span> False<span class="main">)</span>
+           <span class="main">∨</span><span class="main">(</span><span class="free"><span class="bound"><span class="entity">aF</span></span></span> <span class="main">=</span> TEE_MEMORY_ACCESS_WRITE <span class="main">∧</span> <span class="main">(</span>access_right <span class="free"><span class="bound"><span class="entity">memblock</span></span></span> <span class="main">(</span>current <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> Some WRITE<span class="main">)</span>
+           <span class="main">∨</span><span class="main">(</span><span class="free"><span class="bound"><span class="entity">aF</span></span></span> <span class="main">=</span> TEE_MEMORY_ACCESS_READ <span class="main">∧</span> <span class="main">(</span>access_right <span class="free"><span class="bound"><span class="entity">memblock</span></span></span> <span class="main">(</span>current <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> Some READ<span class="main">)</span>
+           <span class="main">∨</span><span class="main">(</span><span class="free"><span class="bound"><span class="entity">aF</span></span></span> <span class="main">=</span> TEE_MEMORY_ACCESS_ANY_OWNER  <span class="main">∧</span> access_right <span class="free"><span class="bound"><span class="entity">memblock</span></span></span> <span class="main">=</span> Map.empty<span class="main">)</span>
+         <span class="keyword1">then</span> TEE_SUCCESS
+         <span class="keyword1">else</span> TEE_ERROR_GENERIC"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEE_Malloc</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> BUFFER_SIZE_TYPE <span class="main">⇒</span> hint <span class="main">⇒</span> State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEE_Malloc</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">buffer_size</span></span></span> <span class="free"><span class="bound"><span class="entity">h</span></span></span> <span class="main">≡</span> 
+    <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">=</span> TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">∨</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">=</span> REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>
+    <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">≠</span> <span class="main">[]</span> <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>
+    <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span><span class="main">(</span><span class="free"><span class="bound"><span class="entity">h</span></span></span> <span class="main">≠</span> TEE_MALLOC_FILL_ZERO<span class="main">)</span> <span class="main">∧</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">h</span></span></span> <span class="main">≠</span> TEE_USER_MEM_HINT_NO_FILL_ZERO<span class="main">)</span><span class="main">)</span> <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>
+    <span class="keyword1">else</span> 
+         <span class="keyword1">let</span> <span class="bound">newTEESize</span> <span class="main">=</span> tee_total_size<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">-</span> <span class="free"><span class="bound"><span class="entity">buffer_size</span></span></span><span class="main">;</span>
+             <span class="bound">newblk</span> <span class="main">=</span> mem_alloc <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">buffer_size</span></span></span><span class="main">;</span>
+             <span class="bound">lst</span> <span class="main">=</span> <span class="bound">newblk</span> <span class="main">#</span> tee_memories<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">;</span>
+             <span class="bound">newBIDpointer</span> <span class="main">=</span> BIDpointer<span class="main">(</span>ta_mgr<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">+</span> <span class="main">1</span>
+         <span class="keyword1">in</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TEE_state <span class="main">:=</span> <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>tee_total_size <span class="main">:=</span> <span class="bound">newTEESize</span><span class="main">,</span> tee_memories <span class="main">:=</span> <span class="bound">lst</span><span class="main">,</span> ta_mgr<span class="main">:=</span>ta_mgr<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>BIDpointer<span class="main">:=</span><span class="bound">newBIDpointer</span><span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEE_Realloc</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> MemBlock <span class="main">⇒</span> BUFFER_SIZE_TYPE <span class="main">⇒</span> State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEE_Realloc</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">memblock</span></span></span> <span class="free"><span class="bound"><span class="entity">new_size</span></span></span> <span class="main">≡</span>
+    <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">=</span> TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">∨</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">=</span> REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>
+    <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">≠</span> <span class="main">[]</span> <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>
+    <span class="keyword1">else</span> <span class="keyword1">let</span> <span class="bound">newTEESize</span> <span class="main">=</span> tee_total_size<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">-</span> <span class="free"><span class="bound"><span class="entity">new_size</span></span></span> <span class="main">+</span> <span class="main">(</span>size <span class="free"><span class="bound"><span class="entity">memblock</span></span></span><span class="main">)</span>
+         <span class="keyword1">in</span>  <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TEE_state <span class="main">:=</span> <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>tee_total_size <span class="main">:=</span> <span class="bound">newTEESize</span><span class="main">⦈</span><span class="main">⦈</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEE_Free</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> MemBlock <span class="main">⇒</span> State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEE_Free</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">memblock</span></span></span> <span class="main">≡</span>
+    <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">=</span> TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">∨</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">=</span> REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>
+    <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">≠</span> <span class="main">[]</span>
+         <span class="main">∨</span> ownership <span class="free"><span class="bound"><span class="entity">memblock</span></span></span> <span class="main">≠</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span>
+         <span class="main">∨</span> block_id <span class="free"><span class="bound"><span class="entity">memblock</span></span></span> <span class="main">&lt;</span> <span class="numeral">2</span>
+         <span class="main">∨</span> <span class="free"><span class="bound"><span class="entity">memblock</span></span></span> <span class="main">∉</span> set<span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span><span class="main">(</span>ownership <span class="bound">x</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>ownership <span class="free"><span class="bound"><span class="entity">memblock</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+         <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>
+    <span class="keyword1">else</span>
+          <span class="keyword1">let</span> <span class="bound">newTEESize</span> <span class="main">=</span> tee_total_size<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">+</span> <span class="main">(</span>size <span class="free"><span class="bound"><span class="entity">memblock</span></span></span><span class="main">)</span><span class="main">;</span>
+              <span class="bound">newlst</span> <span class="main">=</span> filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span><span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">≠</span> <span class="main">(</span>block_id <span class="free"><span class="bound"><span class="entity">memblock</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span>
+          <span class="keyword1">in</span>  <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TEE_state <span class="main">:=</span> <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>tee_total_size <span class="main">:=</span> <span class="bound">newTEESize</span><span class="main">,</span> tee_memories <span class="main">:=</span> <span class="bound">newlst</span><span class="main">⦈</span><span class="main">⦈</span>"</span></span>
+
+
+<span class="keyword2"><span class="keyword">end</span></span></pre>
+</body></html>

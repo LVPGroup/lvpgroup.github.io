@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0161)http://localhost:55320/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/preview?%2FUsers%2Fxywang%2FDesktop%2Fmi-tee%2FMITEE_Design_Layer%2Fzircon%2Fzircon_DataStructure.thy -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('/08bb8c71-e114-4783-a8d9-5f7c1bfaf9ab/fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.contents { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+
+
+/* formal entities */
+
+.entity_def {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.entity_def:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+}
+
+.entity_ref {
+  color: inherit;
+  text-decoration: inherit;
+  border: 0.5px solid rgba(0,0,0,0);
+}
+
+.entity_ref:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+  border: 0.5px solid black;
+}
+</style><title>Theory "zircon_DataStructure"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> zircon_DataStructure
+
+<span class="keyword2"><span class="keyword">imports</span></span> Main 
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"DEFINITION"</span></span></span>
+
+<span class="keyword1"><span class="command">type_synonym</span></span> SIZE_T <span class="main">=</span> <span class="quoted">nat</span>
+<span class="keyword1"><span class="command">type_synonym</span></span> Memory_Addr <span class="main">=</span> <span class="quoted">nat</span>
+<span class="keyword1"><span class="command">type_synonym</span></span> KOID <span class="main">=</span> <span class="quoted">nat</span>
+<span class="keyword1"><span class="command">type_synonym</span></span> options <span class="main">=</span> <span class="quoted">nat</span>
+<span class="keyword1"><span class="command">type_synonym</span></span> PRIO <span class="main">=</span> <span class="quoted">int</span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">LOWEST_PRIORITY</span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">LOWEST_PRIORITY</span> <span class="main">≡</span><span class="main">(</span><span class="main">0</span><span class="main">::</span>int<span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">DEFAULT_PRIORITY</span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">DEFAULT_PRIORITY</span> <span class="main">≡</span><span class="main">(</span><span class="numeral">16</span><span class="main">::</span>int<span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">HIGHEST_PRIORITY</span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">HIGHEST_PRIORITY</span> <span class="main">≡</span><span class="main">(</span><span class="numeral">31</span><span class="main">::</span>int<span class="main">)</span>"</span></span>
+
+<span class="comment1">(**)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">UINT64_MAX</span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">UINT64_MAX</span> <span class="main">≡</span><span class="main">(</span><span class="numeral">999999</span><span class="main">::</span>nat<span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">DEFAULT_SIZE</span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">DEFAULT_SIZE</span> <span class="main">≡</span><span class="main">(</span><span class="numeral">8</span><span class="main">::</span>nat<span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">datatype</span></span> RET <span class="main">=</span> TEE_SUCCESS 
+  <span class="main">|</span> TEE_ERROR_ACCESS_DENIED <span class="main">|</span> TEE_ERROR_GENERIC
+
+<span class="keyword1"><span class="command">datatype</span></span> FLAGS <span class="main">=</span> TEE_MEMORY_ACCESS_ANY_OWNER 
+  <span class="main">|</span> TEE_MEMORY_ACCESS_NONSECURE <span class="main">|</span> TEE_MEMORY_ACCESS_SECURE <span class="main">|</span> TEE_MEMORY_ACCESS_WRITE
+  <span class="main">|</span> TEE_MEMORY_ACCESS_READ
+
+<span class="keyword1"><span class="command">datatype</span></span> ZX_STATUS_T <span class="main">=</span> ZX_OK <span class="main">|</span> ZX_ERR_INVALID_ARGS <span class="main">|</span> ZX_ERR_WRONG_TYPE <span class="main">|</span> ZX_ERR_ACCESS_DENIED <span class="main">|</span> ZX_ERR_BAD_HANDLE <span class="main">|</span> ZX_ERR_NOT_SUPPORTED <span class="main">|</span> ZX_ERR_BAD_STATE
+
+<span class="keyword1"><span class="command">datatype</span></span> ZX_RIGHTS_T <span class="main">=</span> ZX_RIGHT_NONE <span class="main">|</span> ZX_RIGHT_WRITE <span class="main">|</span> ZX_DEFAULT_JOB_RIGHTS <span class="main">|</span> ZX_DEFAULT_CHANNEL_RIGHTS 
+                                     <span class="main">|</span> ZX_DEFAULT_VMO_RIGHTS <span class="main">|</span> ZX_RIGHT_SAME_RIGHTS <span class="main">|</span> ZX_RIGHT_MAP <span class="main">|</span> ZX_RIGHT_READ
+
+<span class="keyword1"><span class="command">datatype</span></span> ZX_CACHE_POLICY <span class="main">=</span> ZX_CACHE_POLICY_CACHED <span class="main">|</span> ZX_CACHE_POLICY_UNCACHED <span class="main">|</span> ZX_CACHE_POLICY_UNCACHED_DEVICE
+                                                  <span class="main">|</span> ZX_CACHE_POLICY_WRITE_COMBINING
+
+<span class="keyword1"><span class="command">datatype</span></span> map_flags <span class="main">=</span> ZX_VM_FLAG_SPECIFIC <span class="main">|</span> ZX_VM_FLAG_SPECIFIC_OVERWRITE <span class="main">|</span> ZX_VM_FLAG_PERM_READ <span class="main">|</span> ZX_VM_FLAG_PERM_WRITE <span class="main">|</span> 
+                     ZX_VM_FLAG_PERM_EXECUTE <span class="main">|</span> ZX_VM_FLAG_MAP_RANGE
+
+<span class="comment1">(*Conditions handled by job policy.*)</span>
+<span class="keyword1"><span class="command">datatype</span></span> Conditions <span class="main">=</span> ZX_POL_NEW_CHANNEL <span class="main">|</span> ZX_POL_NEW_VMO 
+
+<span class="keyword1"><span class="command">datatype</span></span> ZX_RSRC_KIND <span class="main">=</span> ZX_RSRC_KIND_ROOT <span class="main">|</span> ZX_RSRC_KIND_MMIO <span class="main">|</span> ZX_RSRC_KIND_IOPORT <span class="main">|</span> ZX_RSRC_KIND_IRQ 
+
+<span class="keyword1"><span class="command">datatype</span></span> ZX_SIGNALS_T <span class="main">=</span> ZX_SIGNAL_NONE <span class="main">|</span> ZX_USER_SIGNAL_ALL
+
+<span class="keyword1"><span class="command">datatype</span></span> futex_type <span class="main">=</span> wait <span class="main">|</span> wake
+
+<span class="keyword1"><span class="command">record</span></span> Handle <span class="main">=</span> 
+        Kobject <span class="main">::</span> <span class="quoted">KOID</span>
+        rights <span class="main">::</span> <span class="quoted">ZX_RIGHTS_T</span>
+        process_bound <span class="main">::</span> <span class="quoted">KOID</span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Memory"</span></span></span>
+
+<span class="keyword1"><span class="command">record</span></span> Addr <span class="main">=</span>
+        first_addr <span class="main">::</span><span class="quoted">Memory_Addr</span>
+        size <span class="main">::</span> <span class="quoted">SIZE_T</span>
+
+<span class="keyword1"><span class="command">record</span></span> Memory <span class="main">=</span> <span class="quoted">Addr</span> <span class="main">+</span>
+        ownership <span class="main">::</span> <span class="quoted">KOID</span>
+        access <span class="main">::</span> <span class="quoted"><span class="quoted">"KOID set"</span></span>
+        allocated <span class="main">::</span> <span class="quoted">bool</span>
+
+<span class="keyword1"><span class="command">record</span></span> resource <span class="main">=</span> 
+        memory <span class="main">::</span> <span class="quoted">Memory</span>
+        rsrc_kind <span class="main">::</span> <span class="quoted">ZX_RSRC_KIND</span>
+
+<span class="keyword1"><span class="command">record</span></span> vmo <span class="main">=</span> 
+        handle <span class="main">::</span> <span class="quoted">Handle</span>
+        memory <span class="main">::</span> <span class="quoted"><span class="quoted">"Memory option"</span></span>
+        rights <span class="main">::</span> <span class="quoted">ZX_RIGHTS_T</span>
+        cache_policy <span class="main">::</span> <span class="quoted"><span class="quoted">"ZX_CACHE_POLICY option"</span></span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"PROCESS_AND_DISPATCHER"</span></span></span>
+
+<span class="keyword1"><span class="command">record</span></span> channel <span class="main">=</span> 
+        cid <span class="main">::</span> <span class="quoted">KOID</span>
+        handle0 <span class="main">::</span> <span class="quoted">Handle</span>
+        handle1 <span class="main">::</span> <span class="quoted">Handle</span>
+
+<span class="comment1">(*handle list*)</span>
+<span class="keyword1"><span class="command">record</span></span> thread <span class="main">=</span>
+        tid <span class="main">::</span> <span class="quoted">KOID</span>
+        handle <span class="main">::</span> <span class="quoted">Handle</span>
+        name <span class="main">::</span> <span class="quoted">string</span>
+        base_priority <span class="main">::</span> <span class="quoted">PRIO</span>
+
+<span class="keyword1"><span class="command">record</span></span> process <span class="main">=</span>
+        pid <span class="main">::</span> <span class="quoted">KOID</span>
+        handle <span class="main">::</span> <span class="quoted">Handle</span>
+        thread_set <span class="main">::</span> <span class="quoted"><span class="quoted">"thread set"</span></span>
+        addr <span class="main">::</span> <span class="quoted"><span class="quoted">"Addr list"</span></span>
+
+<span class="comment1">(*
+A job is an object consisting of the following:
++ a reference to a parent job
++ a set of child jobs (each of whom has this job as parent)
++ a set of member [processes](process.md)
++ a set of policies [⚠ not implemented]
+*)</span>
+<span class="keyword1"><span class="command">record</span></span> job <span class="main">=</span> 
+        jid <span class="main">::</span> <span class="quoted">KOID</span>
+        parent_handle <span class="main">::</span> <span class="quoted">Handle</span>
+        child_job <span class="main">::</span> <span class="quoted"><span class="quoted">"Handle list"</span></span>
+        pro_set <span class="main">::</span> <span class="quoted"><span class="quoted">"process set"</span></span>
+        rights <span class="main">::</span> <span class="quoted">ZX_RIGHTS_T</span>
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"State"</span></span></span>
+
+<span class="keyword1"><span class="command">record</span></span> Dispatcher <span class="main">=</span> 
+        JobDispatcher <span class="main">::</span> <span class="quoted"><span class="quoted">"job list"</span></span> 
+        ThreadDispatcher <span class="main">::</span> <span class="quoted"><span class="quoted">"thread list"</span></span>
+        ProcessDispatcher <span class="main">::</span> <span class="quoted"><span class="quoted">"process list"</span></span>
+        VMODispatcher <span class="main">::</span> <span class="quoted"><span class="quoted">"vmo list"</span></span>
+
+<span class="keyword1"><span class="command">record</span></span> State <span class="main">=</span> 
+        current <span class="main">::</span> <span class="quoted">process</span>
+        object <span class="main">::</span> <span class="quoted"><span class="quoted">"KOID list"</span></span>
+        dispatcher <span class="main">::</span> <span class="quoted">Dispatcher</span>
+        handlelst <span class="main">::</span> <span class="quoted"><span class="quoted">"Handle list"</span></span>
+        channelst <span class="main">::</span> <span class="quoted"><span class="quoted">"channel list"</span></span>
+        nowAddr <span class="main">::</span> <span class="quoted">Memory_Addr</span>
+        memorylst <span class="main">::</span> <span class="quoted"><span class="quoted">"Memory list"</span></span>
+        futex <span class="main">::</span> <span class="quoted">futex_type</span>
+<span class="comment1">(*object*)</span>
+<span class="keyword2"><span class="keyword">end</span></span></pre>
+</body></html>

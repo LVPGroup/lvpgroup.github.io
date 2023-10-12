@@ -1,0 +1,515 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0152)http://localhost:60012/e878375a-7f83-431b-a556-7f03b63e3c91/preview?%2FUsers%2Fxywang%2FDesktop%2Fmi-tee%2FMITEE_Design_Layer%2FDesign_Instantiation.thy -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.contents { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+
+
+/* formal entities */
+
+.entity_def {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.entity_def:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+}
+
+.entity_ref {
+  color: inherit;
+  text-decoration: inherit;
+  border: 0.5px solid rgba(0,0,0,0);
+}
+
+.entity_ref:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+  border: 0.5px solid black;
+}
+</style><title>Theory "Design_Instantiation"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> Design_Instantiation
+<span class="keyword2"><span class="keyword">imports</span></span> <span class="quoted">"./Specification/Design_OpenSession"</span>  
+        <span class="quoted">"./Specification/Design_CloseSession"</span>
+        <span class="quoted">"./Specification/Design_InvokeCommand"</span>
+        <span class="quoted">"./Specification/Design_Memory"</span>
+
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">section</span></span><span class="quoted"><span class="document"><span class="plain_text">" Instantiation and Its Proofs of Security Model"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">system_initR</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> StateR"</span></span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted">"<span class="free">system_initR</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">≡</span> <span class="keyword1">let</span> <span class="bound">s0</span> <span class="main">=</span> system_init <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="keyword1">in</span> 
+                              <span class="main">⦇</span>current <span class="main">=</span> current <span class="bound">s0</span><span class="main">,</span>
+                            TAs_state <span class="main">=</span> TAs_state <span class="bound">s0</span><span class="main">,</span>
+                            REE_state <span class="main">=</span> REE_state <span class="bound">s0</span><span class="main">,</span>
+                            TEE_state <span class="main">=</span> TEE_state <span class="bound">s0</span><span class="main">,</span>
+                            system_time <span class="main">=</span> system_time <span class="bound">s0</span><span class="main">,</span>  
+                            exec_prime <span class="main">=</span> exec_prime <span class="bound">s0</span><span class="main">,</span>
+                            IPC_driver <span class="main">=</span> <span class="main">⦇</span>tamgr_fifo<span class="main">=</span><span class="main">(</span><span class="numeral">10</span><span class="main">::</span>int<span class="main">)</span><span class="main">,</span>svchost_fifo<span class="main">=</span><span class="main">(</span><span class="numeral">11</span><span class="main">::</span>int<span class="main">)</span><span class="main">,</span>
+                                            tamgr_data<span class="main">=</span>smc_ex_init<span class="main">,</span>svchost_data<span class="main">=</span>smc_ex_init<span class="main">⦈</span>
+                           <span class="main">⦈</span>"</span></span>
+<span class="comment1">(*we set the intital two fifo to value 10 and 11 randomly*)</span>
+
+
+
+
+
+<span class="keyword1"><span class="command">consts</span></span> s0r <span class="main">::</span> <span class="quoted">StateR</span>
+
+<span class="keyword1"><span class="command">specification</span></span> <span class="main">(</span><span class="quoted">s0r</span><span class="main">)</span> 
+  s0r_init<span class="main">:</span> <span class="quoted"><span class="quoted">"s0r <span class="main">=</span> system_initR sysconf"</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">exec_eventR</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"EventR <span class="main">⇒</span> <span class="main">(</span>StateR <span class="main">×</span> StateR<span class="main">)</span> set"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">exec_eventR</span> <span class="free"><span class="bound"><span class="entity">e</span></span></span> <span class="main">≡</span> <span class="main">{</span><span class="main">(</span><span class="bound">s</span><span class="main">,</span><span class="bound">s'</span><span class="main">)</span><span class="main">.</span> <span class="bound">s'</span><span class="main">∈</span>  <span class="main">(</span><span class="keyword1">case</span> <span class="free"><span class="bound"><span class="entity">e</span></span></span> <span class="keyword1">of</span> 
+           hyperc' <span class="main">(</span>TEEC_INITIALIZECONTEXT <span class="bound">tn</span> <span class="bound">tctext</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_InitializeContextR sysconf <span class="bound">s</span> <span class="bound">tn</span> <span class="bound">tctext</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_FINALIZECONTEXT <span class="bound">tctext</span><span class="main">)</span> <span class="main">⇒</span> <span class="main">{</span><span class="main">(</span>TEEC_FinalizeContextR sysconf <span class="bound">s</span> <span class="bound">tctext</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_OPENSESSION1 <span class="bound">tct</span> <span class="bound">tst</span> <span class="bound">uuid</span> <span class="bound">cm</span> <span class="bound">cd</span> <span class="bound">opt</span> <span class="bound">mem_t</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEEC_OpenSession1R sysconf <span class="bound">s</span> <span class="bound">tct</span> <span class="bound">tst</span> <span class="bound">uuid</span> <span class="bound">cm</span> <span class="bound">cd</span> <span class="bound">opt</span> <span class="bound">mem_t</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' TEEC_OPENSESSION2 <span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_OpenSession2R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_OPENSESSION3 <span class="bound">ses_id</span><span class="main">)</span><span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_OpenSession3R sysconf <span class="bound">s</span> <span class="bound">ses_id</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_OPENSESSION4<span class="main">)</span><span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_OpenSession4R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_OPENTASESSION1<span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEE_OpenTASession1R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' TEE_OPENTASESSION2 <span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_OpenTASession2R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_OPENTASESSION3 <span class="bound">ses_id</span><span class="main">)</span><span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_OpenTASession3R sysconf <span class="bound">s</span> <span class="bound">ses_id</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_OPENTASESSION4<span class="main">)</span><span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_OpenTASession4R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_CLOSESESSION1 <span class="bound">fd</span> <span class="bound">ses_id</span> <span class="bound">in_params</span> <span class="bound">out_params</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEEC_CloseSession1R sysconf <span class="bound">s</span> <span class="bound">fd</span> <span class="bound">ses_id</span> <span class="bound">in_params</span> <span class="bound">out_params</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_CLOSESESSION2<span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEEC_CloseSession2R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_CLOSESESSION3<span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEEC_CloseSession3R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_CLOSESESSION4<span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEEC_CloseSession4R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_CLOSETASESSION1<span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEE_CloseTASession1R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_CLOSETASESSION2<span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEE_CloseTASession2R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_CLOSETASESSION3<span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEE_CloseTASession3R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_CLOSETASESSION4<span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEE_CloseTASession4R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_INVOKECOMMAND1 <span class="bound">ses_id</span> <span class="bound">time_out</span> <span class="bound">cmd_id</span> <span class="bound">in_params</span> <span class="bound">out_params</span> <span class="bound">memBlock_memRef</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEEC_InvokeCommand1R sysconf <span class="bound">s</span> <span class="bound">ses_id</span> <span class="bound">time_out</span> <span class="bound">cmd_id</span> <span class="bound">in_params</span> <span class="bound">out_params</span> <span class="bound">memBlock_memRef</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_INVOKECOMMAND2<span class="main">)</span><span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEEC_InvokeCommand2R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_INVOKECOMMAND3<span class="main">)</span><span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEEC_InvokeCommand3R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_INVOKECOMMAND4<span class="main">)</span><span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEEC_InvokeCommand4R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_INVOKETACOMMAND1 <span class="bound">memBlock_memRef</span><span class="main">)</span> <span class="main">⇒</span> <span class="main">{</span>fst<span class="main">(</span>TEE_InvokeTACommand1R sysconf <span class="bound">s</span> <span class="bound">memBlock_memRef</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_INVOKETACOMMAND2<span class="main">)</span> <span class="main">⇒</span> <span class="main">{</span>fst<span class="main">(</span>TEE_InvokeTACommand2R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_INVOKETACOMMAND3<span class="main">)</span> <span class="main">⇒</span> <span class="main">{</span>fst<span class="main">(</span>TEE_InvokeTACommand3R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_INVOKETACOMMAND4<span class="main">)</span> <span class="main">⇒</span> <span class="main">{</span>fst<span class="main">(</span>TEE_InvokeTACommand4R sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_CHECKMEMORYACCESSRIGHTS <span class="bound">accessflags</span> <span class="bound">bid</span> <span class="bound">bsize</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span><span class="bound">s</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_MALLOC <span class="bound">bsize</span> <span class="bound">hi</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span><span class="main">(</span>TEE_MallocR sysconf <span class="bound">s</span> <span class="bound">bsize</span> <span class="bound">hi</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_REALLOC <span class="bound">bsize</span> <span class="bound">hi</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span><span class="main">(</span>TEE_ReallocR sysconf <span class="bound">s</span> <span class="bound">bsize</span> <span class="bound">hi</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_FREE <span class="bound">bid</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span><span class="main">(</span>TEE_FreeR sysconf <span class="bound">s</span> <span class="bound">bid</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_REGISTERSHAREDMEMORY <span class="bound">tctext</span> <span class="bound">shared</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEEC_RegisterSharedMemoryR sysconf <span class="bound">s</span> <span class="bound">tctext</span> <span class="bound">shared</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_ALLOCATESHAREDMEMORY <span class="bound">tctext</span> <span class="bound">shared</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEEC_AllocateSharedMemoryR sysconf <span class="bound">s</span> <span class="bound">tctext</span> <span class="bound">shared</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_RELEASESHAREDMEMORY <span class="bound">shared</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span><span class="main">(</span>TEEC_ReleaseSharedMemoryR sysconf <span class="bound">s</span> <span class="bound">shared</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           <span class="main"><span class="bound">_</span></span> <span class="main">⇒</span><span class="main">{</span><span class="bound">s</span><span class="main">}</span>
+          
+<span class="main">)</span><span class="main">}</span>"</span></span>
+
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">eR</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"EventR <span class="main">⇒</span> Event"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">eR</span> <span class="free"><span class="bound"><span class="entity">e</span></span></span> <span class="main">≡</span> 
+      <span class="keyword1">case</span> <span class="free"><span class="bound"><span class="entity">e</span></span></span> <span class="keyword1">of</span> hyperc' <span class="main">(</span>TEEC_INITIALIZECONTEXT <span class="bound">tn</span> <span class="bound">tctext</span><span class="main">)</span> <span class="main">⇒</span><span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_INITIALIZECONTEXT <span class="bound">tn</span> <span class="bound">tctext</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_FINALIZECONTEXT <span class="bound">tctext</span><span class="main">)</span> <span class="main">⇒</span><span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_FINALIZECONTEXT <span class="bound">tctext</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_OPENSESSION1 <span class="bound">tct</span> <span class="bound">tst</span> <span class="bound">uuid</span> <span class="bound">cm</span> <span class="bound">cd</span> <span class="bound">opt</span> <span class="bound">mem_t</span><span class="main">)</span> <span class="main">⇒</span><span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_OPENSESSION1 <span class="bound">tct</span> <span class="bound">tst</span> <span class="bound">uuid</span> <span class="bound">cm</span> <span class="bound">cd</span> <span class="bound">opt</span> <span class="bound">mem_t</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEEC_OPENSESSION2 <span class="main">⇒</span> <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_OPENSESSION2<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_OPENSESSION3 <span class="bound">ses_id</span><span class="main">)</span><span class="main">⇒</span> <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_OPENSESSION3 <span class="bound">ses_id</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_OPENSESSION4<span class="main">)</span><span class="main">⇒</span> <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_OPENSESSION4<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEE_OPENTASESSION1 <span class="main">⇒</span> <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_OPENTASESSION1<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEE_OPENTASESSION2<span class="main">⇒</span> <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_OPENTASESSION2<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_OPENTASESSION3 <span class="bound">sid</span><span class="main">)</span><span class="main">⇒</span> <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_OPENTASESSION3 <span class="bound">sid</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_OPENTASESSION4<span class="main">)</span><span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_OPENTASESSION4<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_CLOSESESSION1 <span class="bound">fd</span> <span class="bound">ses_id</span> <span class="bound">in_params</span> <span class="bound">out_params</span><span class="main">)</span> <span class="main">⇒</span><span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_CLOSESESSION1 <span class="bound">fd</span> <span class="bound">ses_id</span> <span class="bound">in_params</span> <span class="bound">out_params</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEEC_CLOSESESSION2 <span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_CLOSESESSION2<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEEC_CLOSESESSION3 <span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_CLOSESESSION3<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEEC_CLOSESESSION4 <span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_CLOSESESSION4<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEE_CLOSETASESSION1<span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_CLOSETASESSION1<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEE_CLOSETASESSION2<span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_CLOSETASESSION2<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEE_CLOSETASESSION3<span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_CLOSETASESSION3<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEE_CLOSETASESSION4<span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_CLOSETASESSION4<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_INVOKECOMMAND1 <span class="bound">ses_id</span> <span class="bound">timeout</span> <span class="bound">cmd</span> <span class="bound">pt1</span> <span class="bound">pt2</span> <span class="bound">mem_t</span><span class="main">)</span> <span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_INVOKECOMMAND1 <span class="bound">ses_id</span> <span class="bound">timeout</span> <span class="bound">cmd</span> <span class="bound">pt1</span> <span class="bound">pt2</span> <span class="bound">mem_t</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEEC_INVOKECOMMAND2<span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_INVOKECOMMAND2<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEEC_INVOKECOMMAND3<span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_INVOKECOMMAND3<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEEC_INVOKECOMMAND4<span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_INVOKECOMMAND4<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_INVOKETACOMMAND1 <span class="bound">mem_t</span><span class="main">)</span><span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_INVOKETACOMMAND1 <span class="bound">mem_t</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEE_INVOKETACOMMAND2<span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_INVOKETACOMMAND2<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEE_INVOKETACOMMAND3<span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_INVOKETACOMMAND3<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' TEE_INVOKETACOMMAND4<span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_INVOKETACOMMAND4<span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_CHECKMEMORYACCESSRIGHTS <span class="bound">accessflags</span> <span class="bound">bid</span> <span class="bound">bsize</span><span class="main">)</span> <span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_CHECKMEMORYACCESSRIGHTS <span class="bound">accessflags</span>  <span class="bound">bid</span> <span class="bound">bsize</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_MALLOC <span class="bound">bsize</span> <span class="bound">hi</span><span class="main">)</span> <span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_MALLOC <span class="bound">bsize</span> <span class="bound">hi</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_REALLOC <span class="bound">mb</span> <span class="bound">bsize</span><span class="main">)</span> <span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_REALLOC <span class="bound">mb</span> <span class="bound">bsize</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEE_FREE <span class="bound">bid</span><span class="main">)</span> <span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEE_FREE <span class="bound">bid</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_REGISTERSHAREDMEMORY <span class="bound">tctext</span> <span class="bound">shared</span><span class="main">)</span> <span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_REGISTERSHAREDMEMORY <span class="bound">tctext</span> <span class="bound">shared</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_ALLOCATESHAREDMEMORY <span class="bound">tctext</span> <span class="bound">shared</span><span class="main">)</span> <span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_ALLOCATESHAREDMEMORY <span class="bound">tctext</span> <span class="bound">shared</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           hyperc' <span class="main">(</span>TEEC_RELEASESHAREDMEMORY <span class="bound">shared</span><span class="main">)</span> <span class="main">⇒</span>  <span class="main">(</span>hyperc <span class="main">(</span>Hypercall.TEEC_RELEASESHAREDMEMORY <span class="bound">shared</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+           sys' Reserved <span class="main">⇒</span> <span class="main">(</span>sys <span class="main">(</span>Syscall.Reserved<span class="main">)</span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">domain_of_eventR</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"StateR <span class="main">⇒</span> EventR <span class="main">⇒</span> DOMAIN_ID option"</span></span> <span class="keyword2"><span class="keyword">where</span></span> 
+    <span class="quoted"><span class="quoted">"<span class="free">domain_of_eventR</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">e</span></span></span> <span class="main">≡</span> Some <span class="main">(</span>current <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span>"</span></span>
+
+<span class="comment1">(*used in property refinement definition*)</span>
+<span class="keyword1"><span class="command">lemma</span></span> domain_domainR <span class="main">:</span> <span class="quoted"><span class="quoted">" domain_of_eventR <span class="free">s</span> <span class="free">e</span> <span class="main">=</span> domain_of_event <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="main">(</span> <span class="main">(</span>eR <span class="free">e</span><span class="main">)</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">proof</span></span><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="free">e</span></span><span class="main">)</span>
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>hyperc' <span class="skolem">x</span><span class="main">)</span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">proof</span></span><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="skolem">x</span></span><span class="main">)</span>
+        <span class="keyword1"><span class="command">qed</span></span><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>domain_of_eventR_def eR_def abstract_state_def<span class="main">)</span><span class="main"><span class="keyword3">+</span></span> 
+  <span class="keyword1"><span class="command">next</span></span> 
+    <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>sys' <span class="skolem">x</span><span class="main">)</span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+      <span class="keyword1"><span class="command">using</span></span> abstract_state_def domain_of_eventR_def 
+        <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+  <span class="keyword1"><span class="command">qed</span></span>
+
+
+
+
+<span class="comment1">(*
+lemma domain_domainR : "eR e ≠ None ⟹ domain_of_eventR s e = domain_of_event (⇑s) (the (eR e))"
+  proof(induct e)
+    case (hyperc' x) then show ?case 
+      proof(induct x)
+      case (TEEC_INITIALIZECONTEXT x1a x2a)
+      then show ?case 
+        using domain_of_eventR_def by auto
+    qed
+   
+  next 
+    case (sys' x) then show ?case 
+      proof(induct x)
+        case Reserved
+        then show ?case 
+          using domain_of_eventR_def by auto      
+        qed
+   qed
+*)</span>
+
+<span class="comment1">(*observation function for new state variable, only TEE can see this*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">vpeq_ipc</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"StateR <span class="main">⇒</span> DOMAIN_ID <span class="main">⇒</span> StateR <span class="main">⇒</span> bool"</span></span> <span class="main">(</span><span class="quoted">"<span class="keyword3">(</span>_ <span class="keyword1">∼.</span> _ <span class="keyword1">.∼Δ</span> _<span class="keyword3">)</span>"</span><span class="main">)</span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted">"<span class="free">vpeq_ipc</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">d</span></span></span> <span class="free"><span class="bound"><span class="entity">t</span></span></span> <span class="main">≡</span> <span class="keyword1">if</span> is_TEE sysconf <span class="free"><span class="bound"><span class="entity">d</span></span></span> <span class="keyword1">then</span> 
+                              <span class="main">(</span>IPC_driver <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">=</span>IPC_driver <span class="free"><span class="bound"><span class="entity">t</span></span></span><span class="main">)</span>
+                           <span class="keyword1">else</span> True"</span></span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq_ipc_transitive_lemma <span class="main">:</span> 
+  <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">t</span> <span class="bound">r</span> <span class="bound">d</span><span class="main">.</span> <span class="main">(</span>vpeq_ipc <span class="bound">s</span> <span class="bound">d</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span>vpeq_ipc <span class="bound">t</span> <span class="bound">d</span> <span class="bound">r</span><span class="main">)</span> <span class="main">⟶</span> <span class="main">(</span>vpeq_ipc <span class="bound">s</span> <span class="bound">d</span> <span class="bound">r</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">using</span></span> vpeq_ipc_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+  
+<span class="keyword1"><span class="command">lemma</span></span> vpeq_ipc_symmetric_lemma <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">t</span> <span class="bound">d</span><span class="main">.</span> <span class="main">(</span>vpeq_ipc <span class="bound">s</span> <span class="bound">d</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span> <span class="main">(</span>vpeq_ipc <span class="bound">t</span> <span class="bound">d</span> <span class="bound">s</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">using</span></span> vpeq_ipc_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq_ipc_reflexive_lemma <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">d</span><span class="main">.</span> <span class="main">(</span>vpeq_ipc <span class="bound">s</span> <span class="bound">d</span> <span class="bound">s</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">using</span></span> vpeq_ipc_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">vpeqR</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"StateR <span class="main">⇒</span> DOMAIN_ID <span class="main">⇒</span> StateR <span class="main">⇒</span> bool"</span></span> <span class="main">(</span><span class="quoted">"<span class="keyword3">(</span>_ <span class="keyword1">∼.</span> _ <span class="keyword1">.∼</span> _<span class="keyword3">)</span>"</span><span class="main">)</span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted">"<span class="free">vpeqR</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">d</span></span></span> <span class="free"><span class="bound"><span class="entity">t</span></span></span> <span class="main">≡</span>  <span class="main">(</span><span class="main">(</span><span class="main">⇑</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">∼</span><span class="free"><span class="bound"><span class="entity">d</span></span></span><span class="main">∼</span> <span class="main">(</span><span class="main">⇑</span><span class="free"><span class="bound"><span class="entity">t</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">∼.</span><span class="free"><span class="bound"><span class="entity">d</span></span></span><span class="keyword1">.∼Δ</span><span class="free"><span class="bound"><span class="entity">t</span></span></span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">declare</span></span> vpeqR_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> vpeq_ipc_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> vpeq_ipc_transitive_lemma
+              <span class="keyword2"><span class="keyword">and</span></span> vpeq_ipc_symmetric_lemma <span class="keyword2"><span class="keyword">and</span></span> vpeq_ipc_reflexive_lemma
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeqR_transitive_lemma <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">t</span> <span class="bound">r</span> <span class="bound">d</span><span class="main">.</span> <span class="main">(</span>vpeqR <span class="bound">s</span> <span class="bound">d</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span>vpeqR <span class="bound">t</span> <span class="bound">d</span> <span class="bound">r</span><span class="main">)</span> <span class="main">⟶</span> <span class="main">(</span>vpeqR <span class="bound">s</span> <span class="bound">d</span> <span class="bound">r</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="main">(</span><span class="operator">clarsimp</span> <span class="quasi_keyword">cong</span> <span class="quasi_keyword">del</span><span class="main"><span class="main">:</span></span> vpeq1_def<span class="main">)</span>
+    <span class="keyword1"><span class="command">using</span></span> vpeq1_transitive vpeq_ipc_transitive_lemma <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeqR_symmetric_lemma <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">t</span> <span class="bound">d</span><span class="main">.</span> <span class="main">(</span>vpeqR <span class="bound">s</span> <span class="bound">d</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span> <span class="main">(</span>vpeqR <span class="bound">t</span> <span class="bound">d</span> <span class="bound">s</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="main">(</span><span class="operator">clarsimp</span> <span class="quasi_keyword">cong</span> <span class="quasi_keyword">del</span><span class="main"><span class="main">:</span></span> vpeq1_def<span class="main">)</span>
+  <span class="keyword1"><span class="command">using</span></span> vpeq1_symmetric vpeq_ipc_symmetric_lemma <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeqR_reflexive_lemma <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">d</span><span class="main">.</span> <span class="main">(</span>vpeqR <span class="bound">s</span> <span class="bound">d</span> <span class="bound">s</span><span class="main">)</span>"</span></span>  
+  <span class="keyword1"><span class="command">using</span></span> vpeq1_reflexive vpeq_ipc_reflexive_lemma <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeqR_vpeq1 <span class="main">:</span> <span class="quoted"><span class="quoted">"vpeqR <span class="free">s</span> <span class="free">d</span> <span class="free">t</span> <span class="main">⟹</span> vpeq1 <span class="main">(</span><span class="main">⇑</span><span class="free">s</span><span class="main">)</span> <span class="free">d</span> <span class="main">(</span><span class="main">⇑</span><span class="free">t</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="operator">fastforce</span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">get_exec_primeR</span><span class="main">::</span><span class="quoted"><span class="quoted">"StateR<span class="main">⇒</span><span class="main">(</span><span class="main">(</span>EVENT_PARAM<span class="main">×</span>EVENT_NAME<span class="main">)</span> list <span class="main">×</span>TEE_TA_MANAGER <span class="main">×</span> TAs_State<span class="main">)</span>"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+          <span class="quoted"><span class="quoted">"<span class="free">get_exec_primeR</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>ta_mgr<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">,</span>TAs_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span>"</span></span>
+          
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">get_elistR</span><span class="main">::</span><span class="quoted"><span class="quoted">"StateR<span class="main">⇒</span><span class="main">(</span>EVENT_PARAM<span class="main">×</span>EVENT_NAME<span class="main">)</span> list"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+          <span class="quoted"><span class="quoted">"<span class="free">get_elistR</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">get_TA_domainR</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"StateR<span class="main">⇒</span>TA_State_Type<span class="main">⇒</span>DOMAIN_ID"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">get_TA_domainR</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ta</span></span></span> <span class="main">≡</span> <span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">tid</span><span class="main">.</span>  <span class="main">(</span>the <span class="main">(</span><span class="main">(</span>TAs_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="bound">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">ta</span></span></span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TA_domainR</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"StateR<span class="main">⇒</span>TA_State_Type<span class="main">⇒</span>DOMAIN_ID"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">TA_domainR</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ta</span></span></span> <span class="main">≡</span> get_TA_domainR <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ta</span></span></span>"</span></span>
+
+
+<span class="keyword1"><span class="command">interpretation</span></span> O_ISOLATION
+        <span class="quoted">s0r</span> <span class="quoted">exec_eventR</span> <span class="quoted">domain_of_eventR</span> <span class="quoted">get_exec_primeR</span> <span class="quoted">vpeqR</span> <span class="quoted">interference1</span> <span class="quoted"><span class="quoted">"TEE sysconf"</span></span> <span class="quoted"><span class="quoted">"REE sysconf"</span></span> <span class="quoted">TA_domainR</span>
+        <span class="keyword1"><span class="command">using</span></span>   vpeqR_transitive_lemma vpeqR_symmetric_lemma vpeqR_reflexive_lemma ins_tee_intf_all ins_no_intf_tee
+             nintf_reflx  ins_reachable
+             <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> best<span class="main"><span class="main">)</span></span> O_ISOLATION.intro<span class="main">)</span> 
+
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Event Specification"</span></span></span>
+<span class="comment1">(*TODO*)</span>
+
+
+<span class="comment1">(*including all the event defined here*)</span>
+<span class="comment1">(*
+declare abstract_state_def[cong del] and abstract_state_rev_def[cong del]
+*)</span>
+
+<span class="comment1">(*TBD: add event here, so that isabelle use definition automatically.*)</span>
+<span class="keyword1"><span class="command">declare</span></span> abstract_state_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> abstract_state_rev_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span>
+        TEEC_InitializeContextR_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> TEEC_FinalizeContextR_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span>
+<span class="comment1">(*
+TEEC_OpenSession1R_def[cong] TEEC_OpenSession2R_def[cong] TEEC_OpenSession3R_def[cong] TEEC_OpenSession4R_def[cong]
+*)</span>
+
+<span class="keyword1"><span class="command">section</span></span><span class="quoted"><span class="document"><span class="plain_text">" Unwinding conditions on new state variables "</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">weak_confidentiality_new</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">weak_confidentiality_new</span> <span class="main">≡</span> <span class="main">∀</span><span class="bound">a</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">t</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> reachable0 <span class="bound">t</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="bound">a</span> <span class="main">=</span> domain_of_eventR <span class="bound">t</span> <span class="bound">a</span><span class="main">)</span>
+                                <span class="main">∧</span><span class="main">(</span>get_exec_primeR <span class="bound">s</span><span class="main">=</span>get_exec_primeR <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+                            <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="bound">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="bound">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span>
+                            <span class="main">(</span><span class="main">∀</span> <span class="bound">s'</span> <span class="bound">t'</span><span class="main">.</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span><span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="bound">a</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">t</span><span class="main">,</span><span class="bound">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="bound">a</span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s'</span> <span class="main">∼.</span><span class="bound">d</span><span class="keyword1">.∼Δ</span> <span class="bound">t'</span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+  <span class="keyword1"><span class="command">definition</span></span> <span class="entity">confidentiality_new</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">confidentiality_new</span> <span class="main">≡</span> <span class="main">∀</span><span class="bound">a</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">t</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> reachable0 <span class="bound">t</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="bound">a</span> <span class="main">=</span> domain_of_eventR <span class="bound">t</span> <span class="bound">a</span><span class="main">)</span>
+                                <span class="main">∧</span><span class="main">(</span>get_exec_primeR <span class="bound">s</span><span class="main">=</span>get_exec_primeR <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+                            <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="bound">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="bound">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span>
+                            <span class="main">(</span><span class="main">∀</span> <span class="bound">s'</span> <span class="bound">t'</span><span class="main">.</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span><span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="bound">a</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">t</span><span class="main">,</span><span class="bound">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="bound">a</span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s'</span> <span class="main">∼.</span><span class="bound">d</span><span class="keyword1">.∼Δ</span> <span class="bound">t'</span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+  <span class="keyword1"><span class="command">definition</span></span> <span class="entity">integrity_new</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">integrity_new</span> <span class="main">≡</span> <span class="main">∀</span> <span class="bound">a</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="bound">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span><span class="bound">s'</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="bound">a</span> 
+                                    <span class="main">⟶</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">s'</span><span class="main">)</span>"</span></span>
+
+  <span class="keyword1"><span class="command">definition</span></span> <span class="entity">weak_confidentiality_new_e</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"EventR <span class="main">⇒</span> bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">weak_confidentiality_new_e</span> <span class="free"><span class="bound"><span class="entity">a</span></span></span> <span class="main">≡</span>  <span class="main">∀</span><span class="bound">d</span> <span class="bound">s</span> <span class="bound">t</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> reachable0 <span class="bound">t</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free"><span class="bound"><span class="entity">a</span></span></span> <span class="main">=</span> domain_of_eventR <span class="bound">t</span> <span class="free"><span class="bound"><span class="entity">a</span></span></span><span class="main">)</span>
+                                <span class="main">∧</span><span class="main">(</span>get_exec_primeR <span class="bound">s</span><span class="main">=</span>get_exec_primeR <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+                            <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free"><span class="bound"><span class="entity">a</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free"><span class="bound"><span class="entity">a</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span>
+                            <span class="main">(</span><span class="main">∀</span> <span class="bound">s'</span> <span class="bound">t'</span><span class="main">.</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span><span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free"><span class="bound"><span class="entity">a</span></span></span> <span class="main">∧</span> <span class="main">(</span><span class="bound">t</span><span class="main">,</span><span class="bound">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free"><span class="bound"><span class="entity">a</span></span></span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s'</span> <span class="main">∼.</span><span class="bound">d</span><span class="keyword1">.∼Δ</span> <span class="bound">t'</span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+  <span class="keyword1"><span class="command">definition</span></span> <span class="entity">confidentiality_new_e</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"EventR <span class="main">⇒</span> bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">confidentiality_new_e</span> <span class="free"><span class="bound"><span class="entity">a</span></span></span> <span class="main">≡</span> <span class="main">∀</span><span class="bound">d</span> <span class="bound">s</span> <span class="bound">t</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> reachable0 <span class="bound">t</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free"><span class="bound"><span class="entity">a</span></span></span> <span class="main">=</span> domain_of_eventR <span class="bound">t</span> <span class="free"><span class="bound"><span class="entity">a</span></span></span><span class="main">)</span>
+                                <span class="main">∧</span><span class="main">(</span>get_exec_primeR <span class="bound">s</span><span class="main">=</span>get_exec_primeR <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+                            <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free"><span class="bound"><span class="entity">a</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free"><span class="bound"><span class="entity">a</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span>
+                            <span class="main">(</span><span class="main">∀</span> <span class="bound">s'</span> <span class="bound">t'</span><span class="main">.</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span><span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free"><span class="bound"><span class="entity">a</span></span></span> <span class="main">∧</span> <span class="main">(</span><span class="bound">t</span><span class="main">,</span><span class="bound">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free"><span class="bound"><span class="entity">a</span></span></span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s'</span> <span class="main">∼.</span><span class="bound">d</span><span class="keyword1">.∼Δ</span> <span class="bound">t'</span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+  <span class="keyword1"><span class="command">definition</span></span> <span class="entity">integrity_new_e</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"EventR <span class="main">⇒</span> bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">integrity_new_e</span> <span class="free"><span class="bound"><span class="entity">a</span></span></span> <span class="main">≡</span> <span class="main">∀</span><span class="bound">d</span> <span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free"><span class="bound"><span class="entity">a</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span><span class="bound">s'</span><span class="main">)</span><span class="main">∈</span>exec_eventR <span class="free"><span class="bound"><span class="entity">a</span></span></span> 
+                                    <span class="main">⟶</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">s'</span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">declare</span></span> weak_confidentiality_new_def<span class="main">[</span><span class="operator">cong</span> <span class="quasi_keyword">del</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> confidentiality_new_def<span class="main">[</span><span class="operator">cong</span> <span class="quasi_keyword">del</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> integrity_new_def<span class="main">[</span><span class="operator">cong</span> <span class="quasi_keyword">del</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span>
+        weak_confidentiality_new_e_def<span class="main">[</span><span class="operator">cong</span> <span class="quasi_keyword">del</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> confidentiality_new_e_def<span class="main">[</span><span class="operator">cong</span> <span class="quasi_keyword">del</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> integrity_new_e_def<span class="main">[</span><span class="operator">cong</span> <span class="quasi_keyword">del</span><span class="main">]</span> 
+
+<span class="keyword1"><span class="command">declare</span></span> weak_confidentiality_new_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> confidentiality_new_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> integrity_new_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span>
+        weak_confidentiality_new_e_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> confidentiality_new_e_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> integrity_new_e_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> 
+
+<span class="keyword1"><span class="command">declare</span></span> weak_confidentiality_new_def<span class="main">[</span><span class="operator">cong</span> <span class="quasi_keyword">del</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> confidentiality_new_def<span class="main">[</span><span class="operator">cong</span> <span class="quasi_keyword">del</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> integrity_new_def<span class="main">[</span><span class="operator">cong</span> <span class="quasi_keyword">del</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span>
+        weak_confidentiality_new_e_def<span class="main">[</span><span class="operator">cong</span> <span class="quasi_keyword">del</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> confidentiality_new_e_def<span class="main">[</span><span class="operator">cong</span> <span class="quasi_keyword">del</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> integrity_new_e_def<span class="main">[</span><span class="operator">cong</span> <span class="quasi_keyword">del</span><span class="main">]</span>
+
+  <span class="keyword1"><span class="command">lemma</span></span> weak_confidentiality_new_all_evt <span class="main">:</span> <span class="quoted"><span class="quoted">"weak_confidentiality_new <span class="main">=</span> <span class="main">(</span><span class="main">∀</span><span class="bound">a</span><span class="main">.</span> weak_confidentiality_new_e <span class="bound">a</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>weak_confidentiality_new_def weak_confidentiality_new_e_def<span class="main">)</span>
+
+  <span class="keyword1"><span class="command">lemma</span></span> confidentiality_new_all_evt <span class="main">:</span> <span class="quoted"><span class="quoted">"confidentiality_new <span class="main">=</span> <span class="main">(</span><span class="main">∀</span><span class="bound">a</span><span class="main">.</span> confidentiality_new_e <span class="bound">a</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>confidentiality_new_def confidentiality_new_e_def<span class="main">)</span>
+
+  <span class="keyword1"><span class="command">lemma</span></span> integrity_new_all_evt <span class="main">:</span> <span class="quoted"><span class="quoted">"integrity_new <span class="main">=</span> <span class="main">(</span><span class="main">∀</span><span class="bound">a</span><span class="main">.</span> integrity_new_e <span class="bound">a</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>integrity_new_def integrity_new_e_def<span class="main">)</span>
+
+<span class="keyword2"><span class="keyword">end</span></span>
+</pre>
+</body></html>

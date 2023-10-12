@@ -1,0 +1,701 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0163)http://localhost:60012/e878375a-7f83-431b-a556-7f03b63e3c91/preview?%2FUsers%2Fxywang%2FDesktop%2Fmi-tee%2FMiTEE_Requirement_Layer%2FSecurity%2FTEEC_SEC_Common.thy -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.contents { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+
+
+/* formal entities */
+
+.entity_def {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.entity_def:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+}
+
+.entity_ref {
+  color: inherit;
+  text-decoration: inherit;
+  border: 0.5px solid rgba(0,0,0,0);
+}
+
+.entity_ref:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+  border: 0.5px solid black;
+}
+</style><title>Theory "TEEC_SEC_Common"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> TEEC_SEC_Common
+<span class="keyword2"><span class="keyword">imports</span></span> Main <span class="quoted">"../MiTEE_Instantiation"</span>
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Auxiliary lemmas"</span></span></span>
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"foldl related"</span></span></span>
+<span class="keyword1"><span class="command">consts</span></span> session_id1<span class="main">::</span><span class="quoted">SESSION_ID_TYPE</span>
+<span class="keyword1"><span class="command">lemma</span></span> foldl_once<span class="main">:</span><span class="quoted"><span class="quoted">"TEE_state <span class="free">s</span> <span class="main">=</span> TEE_state <span class="main">(</span>updateListForTEECCS <span class="free">s</span> session_id1<span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> updateListForTEECCS_def 
+<span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> foldl_induct_rule<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">⋀</span> <span class="bound">s</span> <span class="bound">lst</span><span class="main">.</span>  <span class="main">(</span>TEE_state <span class="bound">s</span> <span class="main">=</span> TEE_state <span class="main">(</span>foldl updateListForTEECCS <span class="bound">s</span> <span class="bound">lst</span><span class="main">)</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="main">(</span><span class="operator">rule</span> rev_induct<span class="main">)</span>
+<span class="keyword1"><span class="command">using</span></span> updateListForTEECCS_def <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="operator">simp</span><span class="main"><span class="keyword3">+</span></span>
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> foldl_induct_rule2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">⋀</span> <span class="bound">s</span> <span class="bound">lst</span><span class="main">.</span>  <span class="main">(</span>ree_total_size<span class="main">(</span>REE_state <span class="bound">s</span><span class="main">)</span> <span class="main">=</span> ree_total_size<span class="main">(</span>REE_state <span class="main">(</span>foldl updateListForTEECCS <span class="bound">s</span> <span class="bound">lst</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="main">(</span><span class="operator">rule</span> rev_induct<span class="main">)</span>
+<span class="keyword1"><span class="command">using</span></span> updateListForTEECCS_def <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="operator">simp</span><span class="main"><span class="keyword3">+</span></span>
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> foldl_induct_rule3<span class="main">:</span><span class="quoted"><span class="quoted">" <span class="main">(</span>driver_mem<span class="main">(</span>REE_state <span class="free">s</span><span class="main">)</span> <span class="main">=</span> driver_mem<span class="main">(</span>REE_state <span class="main">(</span>foldl updateListForTEECCS <span class="free">s</span> <span class="free">lst</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">proof</span></span><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="free">lst</span></span> <span class="quasi_keyword">rule</span><span class="main"><span class="main">:</span></span>rev_induct<span class="main">)</span>
+<span class="keyword3"><span class="command">case</span></span> Nil
+<span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+    <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+<span class="keyword1"><span class="command">next</span></span>
+<span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>snoc <span class="skolem">x</span> <span class="skolem">xs</span><span class="main">)</span>
+<span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+    <span class="keyword1"><span class="command">using</span></span> updateListForTEECCS_def
+    <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+<span class="keyword1"><span class="command">qed</span></span>
+ 
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"newID related"</span></span></span>
+
+<span class="comment1">(*
+definition TA_OpenSessionEntryPoint2::"Sys_Config⇒State⇒TEEC_Operation⇒THREAD_ID_TYPE⇒State" where
+          "TA_OpenSessionEntryPoint2 sc s opt tid≡ 
+                                         SOME s1.
+                                               REE_state s1 = REE_state s∧
+                                              ( filter (λx. ownership x≠tid) (tee_memories(TEE_state s1) )  
+                                                  =( filter (λx. ownership x≠tid) (tee_memories(TEE_state s))))  "
+                                             
+                                               
+  
+*)</span>
+
+
+
+<span class="comment1">(*
+lemma newId_in:" (SOME newId. newId ∈ (UNIV  -{(0::nat)} -{(1::nat)})) ∈(UNIV -{(0::nat)} - {(1::nat)})" 
+apply(simp add:someI)
+apply auto
+prefer 2
+apply (metis (mono_tags, lifting) Suc_less_eq2 le_imp_less_Suc less_numeral_extra(4) some_eq_imp zero_le_one zero_less_one)
+using some_eq_imp nat.distinct(1)
+by (metis (mono_tags, lifting) n_not_Suc_n neq0_conv) 
+
+definition newIdFromList1 :: "nat list ⇒ nat" where
+  "newIdFromList1 idList ≡ SOME newId. newId∈({2..})"
+
+definition newIdFromList2 :: "nat list ⇒ nat" where
+  "newIdFromList2 idList ≡ SOME newId. newId∈({(2::nat)..}-(set idList))"
+
+
+lemma newIdFromList1_not_zero:"∀lst.(0::nat)≠(newIdFromList1 lst)"
+apply(simp add:newIdFromList1_def someI)
+using  some_eq_imp 
+by (metis le_refl neq0_conv not_numeral_le_zero)
+
+lemma new_pre:"∀idList. ({2..}-(set idList))⊆({2..})" by simp
+
+lemma all_pre1:"∀A B. A⊆B∧(∀x∈B. x≥(2::nat))⟶(∀y∈A. y≥(2::nat))" by blast 
+
+lemma filter_related_aux:
+    "∀lst lst'. ((filter (λx. (block_id x) = (0::nat)) lst) = (filter (λy. (block_id y) = (0::nat)) lst')
+              ⟶ {x. x∈set(lst)∧ (block_id x=(0::nat))} =
+                           {x. x∈set(lst')∧ (block_id x=(0::nat))})"
+  apply auto
+  using  member_filter
+  apply (metis (mono_tags) filter_set) 
+  by (metis (mono_tags) filter_set member_filter)
+
+
+lemma filter_pre_aux:
+    "∀lst lst' new.  (lst'=⦇block_id = new,size=x::nat,ownership = y::nat,
+                                              access_right = z::nat list,is_Shared=h::bool⦈#lst ∧new≠0
+              ⟶(filter (λx. (block_id x) = (0::nat)) lst) = (filter (λx. (block_id x) = (0::nat)) lst'))"
+by auto
+
+
+
+lemma q1:" newIdFromList lst∉set lst"
+proof -
+{
+  have a1:"(SOME a. (a≥(2::nat))∧a∉set lst)∉set lst" using some_eq_imp newIDexist newIdFromList_def
+    by (metis (mono_tags, lifting))
+  show ?thesis using a1 newIdFromList_def by simp
+}qed
+
+
+lemma q2:"y∈(set lst)∧x=newIdFromList lst⟶x≠y"
+proof -
+{
+
+assume a1:"x=newIdFromList lst"
+assume a2:"y∈(set lst)"
+
+have a3:"x∉set lst"  using q1 a1 by blast
+have a4:"x≠y" using a3 a2 by blast
+
+}
+then show ?thesis by blast
+qed
+
+lemma q3:"∀x y lst. y∈(set lst)∧x=newIdFromList lst⟶x≠y"
+ using q2 by simp
+
+(*
+lemma q4:"∀x y. x≠y∧x∈set(tee_memories(TEE_state s)) ∧ y∈set(tee_memories(TEE_state s)) ∧ block_id x ≠ block_id y" 
+sorry
+*)
+
+
+*)</span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> max_aux<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">x</span><span class="main">::</span>nat <span class="main">∈</span> set <span class="free">lst</span><span class="main">.</span> foldr max <span class="free">lst</span> <span class="free">a</span><span class="main">≥</span><span class="bound">x</span>"</span></span>
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="free">lst</span></span><span class="main">)</span>
+<span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> newIDexist<span class="main">:</span><span class="quoted"><span class="quoted">" <span class="main">∃</span><span class="bound">a</span><span class="main">.</span> <span class="main">(</span><span class="bound">a</span><span class="main">≥</span><span class="main">(</span><span class="numeral">2</span><span class="main">::</span>nat<span class="main">)</span><span class="main">∧</span><span class="bound">a</span><span class="main">∉</span>set <span class="free">lst</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+<span class="keyword1"><span class="command">{</span></span>
+<span class="keyword3"><span class="command">define</span></span> <span class="skolem"><span class="skolem">a</span></span> <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted">"<span class="skolem">a</span><span class="main">=</span>Suc <span class="main">(</span>foldr max <span class="free">lst</span> <span class="main">1</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">x</span><span class="main">∈</span>set <span class="free">lst</span><span class="main">.</span> <span class="skolem">a</span><span class="main">&gt;</span><span class="bound">x</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> max_aux 
+<span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> <span class="quoted"><span class="quoted">‹<span class="skolem">a</span> <span class="main">=</span> Suc <span class="main">(</span>foldr max <span class="free">lst</span> <span class="main">1</span><span class="main">)</span>›</span></span> less_Suc_eq_le<span class="main">)</span>
+<span class="keyword1"><span class="command">moreover</span></span> <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"<span class="skolem">a</span><span class="main">≥</span><span class="numeral">2</span>"</span></span>
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>a_def<span class="main">)</span>
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="free">lst</span></span><span class="main">)</span>
+<span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+<span class="keyword1"><span class="command">ultimately</span></span> <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"<span class="skolem">a</span><span class="main">≥</span><span class="numeral">2</span><span class="main">∧</span><span class="skolem">a</span><span class="main">∉</span>set <span class="free">lst</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+
+<span class="keyword1"><span class="command">}</span></span><span class="keyword1"><span class="command">qed</span></span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> newIdFromList_not_zero<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">lst</span><span class="main">.</span><span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">≠</span><span class="main">(</span>newIdFromList <span class="bound">lst</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>newIdFromList_def someI<span class="main">)</span>
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="operator">auto</span>
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+<span class="keyword1"><span class="command">{</span></span>
+<span class="keyword3"><span class="command">fix</span></span> <span class="skolem">lst</span><span class="main">::</span><span class="quoted"><span class="quoted">"nat list"</span></span>
+ <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">a</span><span class="main">.</span> <span class="main">(</span><span class="bound">a</span><span class="main">≥</span><span class="main">(</span><span class="numeral">2</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span><span class="main">∧</span><span class="bound">a</span><span class="main">∉</span>set <span class="skolem">lst</span><span class="main">)</span><span class="main">≠</span><span class="main">0</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> some_eq_imp newIDexist
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>mono_tags<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> le0 le_antisym neq0_conv numeral_2_eq_2 zero_less_Suc<span class="main">)</span>
+<span class="keyword1"><span class="command">}</span></span>
+<span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="quoted"><span class="quoted">"<span class="main">⋀</span><span class="bound">lst</span><span class="main">.</span> <span class="main">0</span> <span class="main">&lt;</span> <span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">newId</span><span class="main">.</span> <span class="main">(</span><span class="numeral">2</span><span class="main">::</span>nat<span class="main">)</span> <span class="main">≤</span> <span class="bound">newId</span> <span class="main">∧</span> <span class="bound">newId</span> <span class="main">∉</span> set <span class="bound">lst</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">qed</span></span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> newBlockID_not_zero<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> newMemBlockID <span class="bound">s</span> <span class="main">≠</span><span class="main">0</span>"</span></span>
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="operator">simp</span>
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>newMemBlockID_def<span class="main">)</span>
+ <span class="keyword1"><span class="command">using</span></span>  newIdFromList_not_zero <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> newBlockID2_not_zero<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> snd<span class="main">(</span>newMemBlockID2 <span class="bound">s</span><span class="main">)</span> <span class="main">≠</span><span class="main">0</span>"</span></span>
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="operator">simp</span>
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>newMemBlockID2_def<span class="main">)</span>
+ <span class="keyword1"><span class="command">using</span></span>  newIdFromList_not_zero
+ <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> snd_conv zero_less_Suc<span class="main">)</span> 
+
+<span class="keyword1"><span class="command">lemma</span></span> newBlockID3_not_zero<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> newMemBlockID3 <span class="bound">s</span> <span class="main">≠</span><span class="main">0</span>"</span></span>
+  <span class="keyword1"><span class="command">using</span></span> system_init_def newMemBlockID3_def
+    <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> filter_pre<span class="main">:</span>
+    <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">s'</span> <span class="bound">new</span><span class="main">.</span>  <span class="main">(</span><span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">=</span><span class="main">⦇</span>block_id <span class="main">=</span> <span class="bound">new</span><span class="main">,</span>size<span class="main">=</span><span class="free">x</span><span class="main">::</span>nat<span class="main">,</span>ownership <span class="main">=</span> <span class="free">y</span><span class="main">::</span>nat<span class="main">,</span>
+                                              access_right <span class="main">=</span> <span class="free">z</span><span class="main">::</span>DOMAIN_ID <span class="main">⇒</span> MEM_RIGHT option<span class="main">,</span>is_SecureMem<span class="main">=</span><span class="free">h</span><span class="main">::</span>bool<span class="main">,</span>related <span class="main">=</span> None<span class="main">⦈</span><span class="main">#</span><span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span><span class="bound">new</span><span class="main">≠</span><span class="main">0</span>
+              <span class="main">⟶</span><span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> filter_pre2<span class="main">:</span>
+    <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">s'</span> <span class="bound">new</span><span class="main">.</span>  <span class="main">(</span><span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">=</span><span class="main">⦇</span>block_id <span class="main">=</span> <span class="bound">new</span><span class="main">,</span>size<span class="main">=</span><span class="free">x</span><span class="main">::</span>nat<span class="main">,</span>ownership <span class="main">=</span> <span class="free">y</span><span class="main">::</span>nat<span class="main">,</span>
+                                              access_right <span class="main">=</span> <span class="free">z</span><span class="main">::</span>DOMAIN_ID <span class="main">⇒</span> MEM_RIGHT option<span class="main">,</span>is_SecureMem<span class="main">=</span><span class="free">h</span><span class="main">::</span>bool<span class="main">,</span>related <span class="main">=</span> None<span class="main">⦈</span><span class="main">#</span><span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span><span class="bound">new</span><span class="main">≠</span><span class="main">0</span>
+                  <span class="main">∧</span> <span class="main">(</span>BIDpointer<span class="main">(</span>ta_mgr<span class="main">(</span>TEE_state <span class="bound">s'</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> BIDpointer<span class="main">(</span>ta_mgr<span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span> <span class="main">+</span><span class="main">1</span><span class="main">)</span>
+              <span class="main">⟶</span><span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> filter_related<span class="main">:</span>
+    <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+              <span class="main">⟶</span> <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span><span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">=</span><span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span><span class="main">}</span> <span class="main">=</span>
+                           <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span><span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">=</span><span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span><span class="main">}</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="operator">auto</span>
+  <span class="keyword1"><span class="command">using</span></span>  member_filter 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>mono_tags<span class="main"><span class="main">)</span></span> filter_set<span class="main">)</span> 
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>mono_tags<span class="main"><span class="main">)</span></span> filter_set member_filter<span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> filter_related_TA<span class="main">:</span>
+    <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">s'</span> <span class="bound">tid</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="bound">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="bound">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+              <span class="main">⟶</span> <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span><span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="bound">tid</span><span class="main">)</span><span class="main">}</span> <span class="main">=</span>
+                           <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span><span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="bound">tid</span><span class="main">)</span><span class="main">}</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="operator">auto</span>
+  <span class="keyword1"><span class="command">using</span></span>  member_filter 
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>mono_tags<span class="main"><span class="main">)</span></span> filter_set<span class="main">)</span> 
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>mono_tags<span class="main"><span class="main">)</span></span> filter_set member_filter<span class="main">)</span>
+
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"API related"</span></span></span>        
+
+<span class="keyword1"><span class="command">lemma</span></span> OpenSessionEntryPoint_not_change_REE<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">sc</span> <span class="bound">opt</span> <span class="bound">tid</span><span class="main">.</span> REE_state <span class="main">(</span>TA_OpenSessionEntryPoint <span class="bound">sc</span> <span class="bound">s</span> <span class="bound">opt</span> <span class="bound">tid</span><span class="main">)</span> <span class="main">=</span> REE_state <span class="bound">s</span>"</span></span> 
+<span class="keyword1"><span class="command">using</span></span> TA_OpenSessionEntryPoint_def <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="operator">simp</span> 
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="main">(</span><span class="operator">rule</span> someI<span class="main">)</span>
+<span class="keyword1"><span class="command">using</span></span> some_eq_imp 
+<span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>mono_tags<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span><span class="main">)</span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> OpenSessionEntryPoint_about_other_TA<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">sc</span> <span class="bound">opt</span> <span class="bound">tid</span><span class="main">.</span> <span class="main">(</span> filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> ownership <span class="bound">x</span><span class="main">≠</span><span class="bound">tid</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="main">(</span>TA_OpenSessionEntryPoint <span class="bound">sc</span> <span class="bound">s</span> <span class="bound">opt</span> <span class="bound">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">)</span>  
+                                                  <span class="main">=</span><span class="main">(</span> filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> ownership <span class="bound">x</span><span class="main">≠</span><span class="bound">tid</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+<span class="keyword1"><span class="command">using</span></span> TA_OpenSessionEntryPoint_def <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="operator">simp</span> 
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="main">(</span><span class="operator">rule</span> someI<span class="main">)</span> 
+<span class="keyword1"><span class="command">using</span></span> some_eq_imp 
+<span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>mono_tags<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span><span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> OpenSessionEntryPoint_about_TEE<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">sc</span> <span class="bound">opt</span> <span class="bound">tid</span><span class="main">.</span> <span class="main">(</span> filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> block_id <span class="bound">x</span><span class="main">=</span><span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="main">(</span>TA_OpenSessionEntryPoint <span class="bound">sc</span> <span class="bound">s</span> <span class="bound">opt</span> <span class="bound">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">)</span>  
+                                                  <span class="main">=</span><span class="main">(</span> filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> block_id <span class="bound">x</span><span class="main">=</span><span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+<span class="keyword1"><span class="command">using</span></span> TA_OpenSessionEntryPoint_def <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="operator">simp</span> 
+<span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="main">(</span><span class="operator">rule</span> someI<span class="main">)</span> 
+<span class="keyword1"><span class="command">using</span></span> some_eq_imp 
+<span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>mono_tags<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span><span class="main">)</span>
+
+<span class="comment1">(* by (metis (mono_tags, lifting) verit_sko_ex') *)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> OpenSessionEntryPoint_not_change_TEE_aux<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">=</span><span class="main">0</span><span class="main">)</span><span class="main">}</span> <span class="main">=</span>
+                           <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span>TA_OpenSessionEntryPoint <span class="free">sc</span> <span class="free">s</span> <span class="free">opt</span> <span class="free">tid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">=</span><span class="main">0</span><span class="main">)</span><span class="main">}</span><span class="main">)</span>"</span></span> 
+  <span class="keyword1"><span class="command">using</span></span> OpenSessionEntryPoint_about_TEE filter_related <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> OpenSessionEntryPoint_not_change_TEE<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">sc</span> <span class="bound">opt</span> <span class="bound">tid</span><span class="main">.</span> <span class="main">(</span><span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span><span class="bound">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">=</span><span class="main">0</span><span class="main">)</span><span class="main">}</span> <span class="main">=</span>
+                           <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span>TA_OpenSessionEntryPoint <span class="bound">sc</span> <span class="bound">s</span> <span class="bound">opt</span> <span class="bound">tid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">=</span><span class="main">0</span><span class="main">)</span><span class="main">}</span><span class="main">)</span>"</span></span> 
+    <span class="keyword1"><span class="command">using</span></span> OpenSessionEntryPoint_not_change_TEE_aux <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> OpenSessionEntryPoint_not_change_other_TA_aux<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span><span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="free">tid</span><span class="main">)</span><span class="main">}</span> <span class="main">=</span>
+                           <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span><span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span>TA_OpenSessionEntryPoint <span class="free">sc</span> <span class="free">s</span> <span class="free">opt</span> <span class="free">tid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="free">tid</span><span class="main">)</span><span class="main">}</span>"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> OpenSessionEntryPoint_about_other_TA filter_related_TA <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> OpenSessionEntryPoint_not_change_other_TA<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">sc</span> <span class="bound">opt</span> <span class="bound">tid</span><span class="main">.</span> <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span><span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="bound">tid</span><span class="main">)</span><span class="main">}</span> <span class="main">=</span>
+                           <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span><span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span>TA_OpenSessionEntryPoint <span class="bound">sc</span> <span class="bound">s</span> <span class="bound">opt</span> <span class="bound">tid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="bound">tid</span><span class="main">)</span><span class="main">}</span>"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> OpenSessionEntryPoint_not_change_other_TA_aux  <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> OpenSessionEntryPoint_not_change_mem<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">sc</span> <span class="bound">opt</span> <span class="bound">tid</span><span class="main">.</span> <span class="main">(</span><span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span><span class="bound">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span>
+                            tee_memories<span class="main">(</span>TEE_state <span class="main">(</span>TA_OpenSessionEntryPoint <span class="bound">sc</span> <span class="bound">s</span> <span class="bound">opt</span> <span class="bound">tid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+                            <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>mono_tags<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> TA_OpenSessionEntryPoint_def someI2<span class="main">)</span>
+    
+
+
+
+<span class="keyword1"><span class="command">lemma</span></span> TA_Memory_Init_not_change_TEE_aux<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">=</span><span class="main">0</span><span class="main">)</span><span class="main">}</span> <span class="main">=</span>
+                           <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span>fst<span class="main">(</span>TA_Memory_Init <span class="free">s</span> <span class="free">sc</span> <span class="free">size1</span> <span class="free">tid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">=</span><span class="main">0</span><span class="main">)</span><span class="main">}</span><span class="main">)</span>"</span></span> 
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+<span class="keyword1"><span class="command">{</span></span>
+  <span class="keyword3"><span class="command">define</span></span> <span class="skolem"><span class="skolem">s'</span></span> <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted">"<span class="skolem">s'</span> <span class="main">=</span> <span class="main">(</span>fst<span class="main">(</span>TA_Memory_Init <span class="free">s</span> <span class="free">sc</span> <span class="free">size1</span> <span class="free">tid</span><span class="main">)</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?s1</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="keyword1">let</span>
+                                          
+                                            <span class="bound">new_total</span> <span class="main">=</span> <span class="main">(</span>tee_total_size <span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span> <span class="main">-</span><span class="free">size1</span><span class="main">;</span>
+                                            <span class="bound">new_memList</span> <span class="main">=</span> <span class="main">⦇</span>block_id <span class="main">=</span> newMemBlockID3 <span class="free">s</span><span class="main">,</span>size<span class="main">=</span><span class="free">size1</span><span class="main">,</span>ownership <span class="main">=</span> <span class="free">tid</span><span class="main">,</span>
+                                              access_right <span class="main">=</span><span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">(</span><span class="free">tid</span><span class="main">:=</span>Some READWRITE<span class="main">)</span> <span class="main">,</span>is_SecureMem<span class="main">=</span>True<span class="main">,</span>related<span class="main">=</span> None<span class="main">⦈</span><span class="main">#</span><span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                         
+                                              <span class="bound">s1</span> <span class="main">=</span> <span class="free">s</span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span>
+                                                  <span class="main">⦇</span>tee_total_size <span class="main">:=</span> <span class="bound">new_total</span><span class="main">,</span> tee_memories <span class="main">:=</span> <span class="bound">new_memList</span><span class="main">,</span>
+                                                  ta_mgr<span class="main">:=</span>ta_mgr<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">⦇</span>BIDpointer<span class="main">:=</span>BIDpointer<span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">+</span><span class="main">1</span> <span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span> <span class="keyword1">in</span> <span class="bound">s1</span><span class="main">)</span>"</span></span>
+  
+    <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="main">(</span><span class="keyword1">let</span> 
+                                              
+                                                  <span class="bound">new_total1</span> <span class="main">=</span> <span class="main">(</span>tee_total_size <span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span><span class="main">)</span> <span class="main">-</span><span class="free">size1</span><span class="main">;</span>
+                                                <span class="bound">new_memList1</span> <span class="main">=</span> <span class="main">⦇</span>block_id <span class="main">=</span> newMemBlockID3 <span class="var">?s1</span><span class="main">,</span>size<span class="main">=</span><span class="free">size1</span><span class="main">,</span>ownership <span class="main">=</span> <span class="free">tid</span><span class="main">,</span>
+                                              access_right <span class="main">=</span> <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">(</span><span class="main">(</span>TEE <span class="free">sc</span><span class="main">)</span><span class="main">:=</span>Some READ<span class="main">)</span> <span class="main">,</span>is_SecureMem<span class="main">=</span>True<span class="main">,</span>related <span class="main">=</span>None<span class="main">⦈</span><span class="main">#</span><span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                              
+                                              <span class="bound">s2</span> <span class="main">=</span><span class="var">?s1</span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span>
+                                                  <span class="main">⦇</span>tee_total_size <span class="main">:=</span> <span class="bound">new_total1</span><span class="main">,</span> tee_memories <span class="main">:=</span> <span class="bound">new_memList1</span><span class="main">,</span>
+                                                   ta_mgr<span class="main">:=</span>ta_mgr<span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span><span class="main">⦇</span>BIDpointer<span class="main">:=</span>BIDpointer<span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span><span class="main">)</span><span class="main">+</span><span class="main">1</span> <span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span> <span class="keyword1">in</span> 
+                                                <span class="bound">s2</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> TA_Memory_Init_def  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> fst_conv s'_def<span class="main">)</span>
+  <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span>  newMemBlockID3_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+  <span class="keyword1"><span class="command">have</span></span> a3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="skolem">s'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+            <span class="keyword1"><span class="command">using</span></span> newMemBlockID3_def a1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+  <span class="keyword1"><span class="command">have</span></span> a4<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span><span class="main">0</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="skolem">s'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+            <span class="keyword1"><span class="command">using</span></span> a2 a3 <span class="keyword1"><span class="command">by</span></span> <span class="operator">argo</span>
+  <span class="keyword1"><span class="command">have</span></span> a5<span class="main">:</span><span class="quoted"><span class="quoted">" filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> block_id <span class="bound">x</span> <span class="main">=</span> <span class="main">0</span><span class="main">)</span> <span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span> 
+              <span class="main">=</span> filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> block_id <span class="bound">x</span> <span class="main">=</span> <span class="main">0</span><span class="main">)</span> <span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span>fst <span class="main">(</span>TA_Memory_Init <span class="free">s</span> <span class="free">sc</span> <span class="free">size1</span> <span class="free">tid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+                <span class="keyword1"><span class="command">using</span></span> a4 s'_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span> 
+  <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">using</span></span> filter_related a5 <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">}</span></span><span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TA_Memory_Init_not_change_TEE<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">sc</span> <span class="bound">tid</span> <span class="bound">size1</span><span class="main">.</span> <span class="main">(</span><span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span><span class="bound">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">=</span><span class="main">0</span><span class="main">)</span><span class="main">}</span> <span class="main">=</span>
+                           <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span>fst<span class="main">(</span>TA_Memory_Init <span class="bound">s</span> <span class="bound">sc</span> <span class="bound">size1</span> <span class="bound">tid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">=</span><span class="main">0</span><span class="main">)</span><span class="main">}</span><span class="main">)</span>"</span></span>
+                       <span class="keyword1"><span class="command">using</span></span> TA_Memory_Init_not_change_TEE_aux <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TA_Memory_Init_not_change_otherTA_aux<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span><span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="free">tid</span><span class="main">)</span><span class="main">}</span> <span class="main">=</span>
+                           <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span>fst<span class="main">(</span>TA_Memory_Init <span class="free">s</span> <span class="free">sc</span> <span class="free">size1</span> <span class="free">tid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="free">tid</span><span class="main">)</span><span class="main">}</span><span class="main">)</span>"</span></span> 
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+<span class="keyword1"><span class="command">{</span></span>
+  <span class="keyword3"><span class="command">define</span></span> <span class="skolem"><span class="skolem">s'</span></span> <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted">"<span class="skolem">s'</span> <span class="main">=</span> <span class="main">(</span>fst<span class="main">(</span>TA_Memory_Init <span class="free">s</span> <span class="free">sc</span> <span class="free">size1</span> <span class="free">tid</span><span class="main">)</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">let</span></span> <span class="var"><span class="quoted"><span class="var">?s1</span></span></span> <span class="main">=</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="keyword1">let</span>
+                                          
+                                            <span class="bound">new_total</span> <span class="main">=</span> <span class="main">(</span>tee_total_size <span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span> <span class="main">-</span><span class="free">size1</span><span class="main">;</span>
+                                            <span class="bound">new_memList</span> <span class="main">=</span> <span class="main">⦇</span>block_id <span class="main">=</span> newMemBlockID3 <span class="free">s</span><span class="main">,</span>size<span class="main">=</span><span class="free">size1</span><span class="main">,</span>ownership <span class="main">=</span> <span class="free">tid</span><span class="main">,</span>
+                                              access_right <span class="main">=</span><span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">(</span><span class="free">tid</span><span class="main">:=</span>Some READWRITE<span class="main">)</span> <span class="main">,</span>is_SecureMem<span class="main">=</span>True<span class="main">,</span>related<span class="main">=</span> None<span class="main">⦈</span><span class="main">#</span><span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                         
+                                              <span class="bound">s1</span> <span class="main">=</span> <span class="free">s</span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span>
+                                                  <span class="main">⦇</span>tee_total_size <span class="main">:=</span> <span class="bound">new_total</span><span class="main">,</span> tee_memories <span class="main">:=</span> <span class="bound">new_memList</span><span class="main">,</span>
+                                                  ta_mgr<span class="main">:=</span>ta_mgr<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">⦇</span>BIDpointer<span class="main">:=</span>BIDpointer<span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">+</span><span class="main">1</span> <span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span> <span class="keyword1">in</span> <span class="bound">s1</span><span class="main">)</span>"</span></span>
+  
+    <span class="keyword1"><span class="command">have</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="main">(</span><span class="keyword1">let</span> 
+                                              
+                                                  <span class="bound">new_total1</span> <span class="main">=</span> <span class="main">(</span>tee_total_size <span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span><span class="main">)</span> <span class="main">-</span><span class="free">size1</span><span class="main">;</span>
+                                                <span class="bound">new_memList1</span> <span class="main">=</span> <span class="main">⦇</span>block_id <span class="main">=</span> newMemBlockID3 <span class="var">?s1</span><span class="main">,</span>size<span class="main">=</span><span class="free">size1</span><span class="main">,</span>ownership <span class="main">=</span> <span class="free">tid</span><span class="main">,</span>
+                                              access_right <span class="main">=</span> <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">(</span><span class="main">(</span>TEE <span class="free">sc</span><span class="main">)</span><span class="main">:=</span>Some READ<span class="main">)</span> <span class="main">,</span>is_SecureMem<span class="main">=</span>True<span class="main">,</span>related <span class="main">=</span>None<span class="main">⦈</span><span class="main">#</span><span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                              
+                                              <span class="bound">s2</span> <span class="main">=</span><span class="var">?s1</span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span>
+                                                  <span class="main">⦇</span>tee_total_size <span class="main">:=</span> <span class="bound">new_total1</span><span class="main">,</span> tee_memories <span class="main">:=</span> <span class="bound">new_memList1</span><span class="main">,</span>
+                                                   ta_mgr<span class="main">:=</span>ta_mgr<span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span><span class="main">⦇</span>BIDpointer<span class="main">:=</span>BIDpointer<span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span><span class="main">)</span><span class="main">+</span><span class="main">1</span> <span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span> <span class="keyword1">in</span> 
+                                                <span class="bound">s2</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> TA_Memory_Init_def  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> fst_conv s'_def<span class="main">)</span>
+  <span class="keyword1"><span class="command">have</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="free">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="free">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+            <span class="keyword1"><span class="command">using</span></span> newBlockID_not_zero filter_pre <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+  <span class="keyword1"><span class="command">have</span></span> a3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="free">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="var">?s1</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="free">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="skolem">s'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+            <span class="keyword1"><span class="command">using</span></span> newBlockID_not_zero filter_pre a1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+  <span class="keyword1"><span class="command">have</span></span> a4<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="free">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="free">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="skolem">s'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+            <span class="keyword1"><span class="command">using</span></span> a2 a3 <span class="keyword1"><span class="command">by</span></span> <span class="operator">argo</span>
+  <span class="keyword1"><span class="command">have</span></span> a5<span class="main">:</span><span class="quoted"><span class="quoted">" filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="free">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span> 
+              <span class="main">=</span> filter <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="free">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span>fst <span class="main">(</span>TA_Memory_Init <span class="free">s</span> <span class="free">sc</span> <span class="free">size1</span> <span class="free">tid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+                <span class="keyword1"><span class="command">using</span></span> a4 s'_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span> 
+  <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">using</span></span> filter_related_TA a5 <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">}</span></span><span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TA_Memory_Init_not_change_otherTA<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">sc</span> <span class="bound">tid</span> <span class="bound">size1</span><span class="main">.</span> <span class="main">(</span><span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span><span class="bound">s</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="bound">tid</span><span class="main">)</span><span class="main">}</span> <span class="main">=</span>
+                           <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="main">(</span>fst<span class="main">(</span>TA_Memory_Init <span class="bound">s</span> <span class="bound">sc</span> <span class="bound">size1</span> <span class="bound">tid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">≠</span><span class="bound">tid</span><span class="main">)</span><span class="main">}</span><span class="main">)</span>"</span></span>
+                       <span class="keyword1"><span class="command">using</span></span> TA_Memory_Init_not_change_otherTA_aux <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+
+
+
+<span class="keyword1"><span class="command">lemma</span></span> a222<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">tid1</span><span class="main">.</span> system_time <span class="bound">s</span> <span class="main">=</span>system_time <span class="main">(</span><span class="bound">s</span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span><span class="free">aa</span><span class="main">::</span>TEE_TYPE<span class="main">)</span><span class="main">⦈</span><span class="main">)</span>"</span></span> 
+<span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> a223<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">tid1</span><span class="main">.</span> REE_state <span class="bound">s</span> <span class="main">=</span>REE_state <span class="main">(</span><span class="bound">s</span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span><span class="free">aa</span><span class="main">::</span>TEE_TYPE<span class="main">)</span><span class="main">⦈</span><span class="main">)</span>"</span></span> 
+<span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> a224<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> ree_total_size<span class="main">(</span>REE_state <span class="bound">s</span><span class="main">)</span> <span class="main">=</span>ree_total_size<span class="main">(</span>REE_state <span class="main">(</span><span class="bound">s</span><span class="main">⦇</span>REE_state<span class="main">:=</span><span class="main">(</span>REE_state <span class="bound">s</span><span class="main">)</span><span class="main">⦇</span>tee_ctx_list <span class="main">:=</span> <span class="free">x</span><span class="main">::</span>TEE_CONTEXT_TYPE list<span class="main">⦈</span><span class="main">⦈</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span>
+   driver_mem<span class="main">(</span>REE_state <span class="bound">s</span><span class="main">)</span> <span class="main">=</span>driver_mem<span class="main">(</span>REE_state <span class="main">(</span><span class="bound">s</span><span class="main">⦇</span>REE_state<span class="main">:=</span><span class="main">(</span>REE_state <span class="bound">s</span><span class="main">)</span><span class="main">⦇</span>tee_ctx_list <span class="main">:=</span> <span class="free">x</span><span class="main">::</span>TEE_CONTEXT_TYPE list<span class="main">⦈</span><span class="main">⦈</span><span class="main">)</span><span class="main">)</span>"</span></span>  <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> a225<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> tee_memories<span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span> <span class="main">=</span>tee_memories<span class="main">(</span>TEE_state <span class="main">(</span><span class="bound">s</span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">⦇</span>ta_mgr <span class="main">:=</span> <span class="free">x</span><span class="main">::</span>TEE_TA_MANAGER<span class="main">⦈</span><span class="main">⦈</span><span class="main">)</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> a226<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> <span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span> <span class="main">=</span><span class="main">(</span>TEE_state <span class="main">(</span><span class="bound">s</span><span class="main">⦇</span>REE_state<span class="main">:=</span><span class="free">x</span><span class="main">::</span>REE_TYPE<span class="main">⦈</span><span class="main">)</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> MgrPostOperation_not_change_REE<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span>  <span class="bound">tid</span><span class="main">.</span> REE_state <span class="main">(</span>MgrPostOperation <span class="bound">s</span> <span class="bound">tid</span><span class="main">)</span> <span class="main">=</span> REE_state <span class="bound">s</span>"</span></span> 
+              <span class="keyword1"><span class="command">using</span></span> MgrPostOperation_def a223 unsetBusyInstance_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> MgrPostOperation_not_change_TEE_mem<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">tid</span><span class="main">.</span> tee_memories<span class="main">(</span>TEE_state <span class="main">(</span>MgrPostOperation <span class="bound">s</span> <span class="bound">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> tee_memories<span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span>"</span></span> 
+              <span class="keyword1"><span class="command">using</span></span> MgrPostOperation_def a225 unsetBusyInstance_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> addREESession_not_change_REE_mem<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ses_id</span> <span class="bound">ctx1</span><span class="main">.</span> ree_total_size<span class="main">(</span>REE_state<span class="main">(</span>addREESession <span class="bound">s</span> <span class="bound">ses_id</span> <span class="bound">ctx1</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span>ree_total_size <span class="main">(</span>REE_state <span class="bound">s</span><span class="main">)</span><span class="main">∧</span>
+                                          driver_mem<span class="main">(</span>REE_state<span class="main">(</span>addREESession <span class="bound">s</span> <span class="bound">ses_id</span> <span class="bound">ctx1</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span>driver_mem <span class="main">(</span>REE_state <span class="bound">s</span><span class="main">)</span>"</span></span> 
+<span class="keyword1"><span class="command">using</span></span> a224 addREESession_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> addREESession_not_change_TEE<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ses_id</span> <span class="bound">ctx1</span><span class="main">.</span> TEE_state<span class="main">(</span>addREESession <span class="bound">s</span> <span class="bound">ses_id</span> <span class="bound">ctx1</span><span class="main">)</span> <span class="main">=</span><span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span>"</span></span> 
+              <span class="keyword1"><span class="command">using</span></span> a226 addREESession_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+
+
+
+<span class="keyword1"><span class="command">lemma</span></span> a111<span class="main">:</span><span class="quoted"><span class="quoted">"tee_memories<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span> <span class="main">=</span> tee_memories<span class="main">(</span>TEE_state <span class="main">(</span><span class="free">s</span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">⦇</span>ta_mgr<span class="main">:=</span><span class="main">(</span><span class="free">x</span><span class="main">::</span>TEE_TA_MANAGER<span class="main">)</span><span class="main">⦈</span><span class="main">⦈</span><span class="main">)</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> a112<span class="main">:</span><span class="quoted"><span class="quoted">"ta_mgr<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span> <span class="main">=</span> ta_mgr<span class="main">(</span>TEE_state <span class="main">(</span><span class="free">s</span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">⦇</span>tee_memories<span class="main">:=</span><span class="main">(</span><span class="free">x</span><span class="main">::</span>MemBlock list<span class="main">)</span><span class="main">,</span>tee_total_size<span class="main">:=</span><span class="free">y</span><span class="main">::</span>nat<span class="main">⦈</span><span class="main">⦈</span><span class="main">)</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> a113<span class="main">:</span><span class="quoted"><span class="quoted">"tee_memories<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span> <span class="main">=</span> tee_memories<span class="main">(</span>TEE_state <span class="main">(</span><span class="free">s</span><span class="main">⦇</span>current<span class="main">:=</span><span class="free">x</span><span class="main">::</span>nat<span class="main">,</span> exec_prime<span class="main">:=</span><span class="free">y</span><span class="main">::</span><span class="main">(</span>EVENT_PARAM <span class="main">×</span> EVENT_NAME<span class="main">)</span> list<span class="main">⦈</span><span class="main">)</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> a114<span class="main">:</span><span class="quoted"><span class="quoted">"REE_state <span class="free">s</span> <span class="main">=</span> REE_state <span class="main">(</span><span class="free">s</span><span class="main">⦇</span>current<span class="main">:=</span><span class="free">z</span><span class="main">::</span>nat<span class="main">,</span>exec_prime<span class="main">:=</span><span class="free">x</span><span class="main">::</span><span class="main">(</span>EVENT_PARAM <span class="main">×</span> EVENT_NAME<span class="main">)</span> list<span class="main">,</span>TEE_state<span class="main">:=</span><span class="free">y</span><span class="main">::</span>TEE_TYPE<span class="main">⦈</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> a1131<span class="main">:</span><span class="quoted"><span class="quoted">"tee_memories<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span> <span class="main">=</span> tee_memories<span class="main">(</span>TEE_state <span class="main">(</span><span class="free">s</span><span class="main">⦇</span>exec_prime<span class="main">:=</span><span class="free">y</span><span class="main">::</span><span class="main">(</span>EVENT_PARAM <span class="main">×</span> EVENT_NAME<span class="main">)</span> list<span class="main">⦈</span><span class="main">)</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> a1141<span class="main">:</span><span class="quoted"><span class="quoted">"REE_state <span class="free">s</span> <span class="main">=</span> REE_state <span class="main">(</span><span class="free">s</span><span class="main">⦇</span>exec_prime<span class="main">:=</span><span class="free">x</span><span class="main">::</span><span class="main">(</span>EVENT_PARAM <span class="main">×</span> EVENT_NAME<span class="main">)</span> list<span class="main">,</span>TEE_state<span class="main">:=</span><span class="free">y</span><span class="main">::</span>TEE_TYPE<span class="main">⦈</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> a115<span class="main">:</span><span class="quoted"><span class="quoted">"tee_memories<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span> <span class="main">=</span> tee_memories<span class="main">(</span>TEE_state <span class="main">(</span><span class="free">s</span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">⦇</span>ta_mgr<span class="main">:=</span><span class="main">(</span><span class="free">x</span><span class="main">::</span>TEE_TA_MANAGER<span class="main">)</span><span class="main">⦈</span><span class="main">,</span>TAs_state<span class="main">:=</span><span class="free">z</span><span class="main">::</span>TAs_State<span class="main">⦈</span><span class="main">)</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> a116<span class="main">:</span><span class="quoted"><span class="quoted">"BIDpointer<span class="main">(</span>ta_mgr<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> BIDpointer<span class="main">(</span>ta_mgr<span class="main">(</span>TEE_state <span class="main">(</span><span class="free">s</span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">⦇</span>ta_mgr<span class="main">:=</span><span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">⦇</span>mgr_ta_instances<span class="main">:=</span><span class="main">(</span><span class="free">x</span><span class="main">::</span>TA_INSTANCE_CTX_TYPE list<span class="main">)</span><span class="main">⦈</span><span class="main">⦈</span><span class="main">,</span>TAs_state<span class="main">:=</span><span class="free">z</span><span class="main">::</span>TAs_State<span class="main">⦈</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> a1161<span class="main">:</span><span class="quoted"><span class="quoted">"BIDpointer<span class="main">(</span>ta_mgr<span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> BIDpointer<span class="main">(</span>ta_mgr<span class="main">(</span>TEE_state <span class="main">(</span><span class="free">s</span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">⦇</span>ta_mgr<span class="main">:=</span><span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free">s</span><span class="main">)</span><span class="main">)</span><span class="main">⦇</span>mgr_ta_sessions<span class="main">:=</span><span class="free">q</span><span class="main">::</span>TA_MGR_SESSION_TYPE list<span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> addMgrSession_not_change_REE<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span>  <span class="bound">ses_id</span><span class="main">.</span> REE_state <span class="bound">s</span> <span class="main">=</span>REE_state <span class="main">(</span> <span class="main">(</span>addMgrSession <span class="bound">s</span>  <span class="bound">ses_id</span><span class="main">)</span><span class="main">)</span> "</span></span>
+        <span class="keyword1"><span class="command">using</span></span> addMgrSession_def a114
+        <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> addMgrSession_not_change_BID<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ses_id</span><span class="main">.</span> BIDpointer<span class="main">(</span>ta_mgr<span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> BIDpointer<span class="main">(</span>ta_mgr<span class="main">(</span>TEE_state  <span class="main">(</span>addMgrSession <span class="bound">s</span>  <span class="bound">ses_id</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span>
+    <span class="keyword1"><span class="command">using</span></span> addMgrSession_def a114
+        <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> addMgrInstance_not_change_TEE_mem<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">sc</span> <span class="bound">s</span> <span class="bound">id1</span> <span class="bound">ses_id</span><span class="main">.</span> tee_memories<span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span> <span class="main">=</span>tee_memories<span class="main">(</span>TEE_state <span class="main">(</span>fst <span class="main">(</span>addMgrInstance <span class="bound">s</span> <span class="bound">sc</span> <span class="bound">id1</span> <span class="bound">ses_id</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span>
+        <span class="keyword1"><span class="command">using</span></span> addMgrInstance_def a115
+        <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> eq_fst_iff<span class="main">)</span> 
+
+<span class="keyword1"><span class="command">lemma</span></span> addMgrInstance_not_change_BID<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">sc</span> <span class="bound">s</span> <span class="bound">id1</span> <span class="bound">ses_id</span><span class="main">.</span> BIDpointer<span class="main">(</span>ta_mgr<span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> BIDpointer<span class="main">(</span>ta_mgr<span class="main">(</span>TEE_state <span class="main">(</span>fst <span class="main">(</span>addMgrInstance <span class="bound">s</span> <span class="bound">sc</span> <span class="bound">id1</span> <span class="bound">ses_id</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span>
+        <span class="keyword1"><span class="command">using</span></span> addMgrInstance_def a116
+        <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> eq_fst_iff<span class="main">)</span> 
+
+<span class="keyword1"><span class="command">lemma</span></span> addMgrInstance_not_change_REE<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">sc</span> <span class="bound">s</span> <span class="bound">id1</span> <span class="bound">ses_id</span><span class="main">.</span> tee_memories<span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span> <span class="main">=</span>tee_memories<span class="main">(</span>TEE_state <span class="main">(</span>fst <span class="main">(</span>addMgrInstance <span class="bound">s</span> <span class="bound">sc</span> <span class="bound">id1</span> <span class="bound">ses_id</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span>
+        <span class="keyword1"><span class="command">using</span></span> addMgrInstance_def a115 
+        <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> fst_conv<span class="main">)</span>
+
+
+<span class="keyword1"><span class="command">lemma</span></span> addSesToInstance_not_change_TEE_mem<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">id1</span> <span class="bound">ses_id</span><span class="main">.</span> tee_memories<span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span> <span class="main">=</span>tee_memories<span class="main">(</span>TEE_state <span class="main">(</span>addSesToInstance <span class="bound">s</span> <span class="bound">id1</span> <span class="bound">ses_id</span><span class="main">)</span><span class="main">)</span> "</span></span>
+        <span class="keyword1"><span class="command">using</span></span> addSesToInstance_def a111
+        <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span> 
+       
+
+<span class="keyword1"><span class="command">lemma</span></span> addSesToInstance_not_change_REE<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">id1</span> <span class="bound">ses_id</span><span class="main">.</span> REE_state <span class="bound">s</span> <span class="main">=</span>REE_state <span class="main">(</span>addSesToInstance <span class="bound">s</span> <span class="bound">id1</span> <span class="bound">ses_id</span><span class="main">)</span> "</span></span>
+        <span class="keyword1"><span class="command">using</span></span> addSesToInstance_def 
+        <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> ccfv_SIG<span class="main"><span class="main">)</span></span> State.cases State.select_convs<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>4<span class="main"><span class="main">)</span></span><span class="main">)</span> 
+        
+       
+
+
+        
+
+<span class="keyword1"><span class="command">lemma</span></span> InitMgrSession_not_change_TEE_mem<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">sc</span> <span class="bound">s</span> <span class="bound">tid1</span> <span class="bound">ses_id</span> <span class="bound">cli</span><span class="main">.</span> tee_memories<span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span> <span class="main">=</span>tee_memories<span class="main">(</span>TEE_state <span class="main">(</span> <span class="main">(</span>InitMgrSession <span class="bound">s</span> <span class="bound">cli</span> <span class="bound">ses_id</span>  <span class="bound">tid1</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span>
+        <span class="keyword1"><span class="command">using</span></span> InitMgrSession_def a111 
+        <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> InitMgrSession_not_change_REE<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">sc</span> <span class="bound">s</span> <span class="bound">tid1</span> <span class="bound">ses_id</span> <span class="bound">cli</span><span class="main">.</span> REE_state <span class="bound">s</span> <span class="main">=</span>REE_state <span class="main">(</span> <span class="main">(</span>InitMgrSession <span class="bound">s</span> <span class="bound">cli</span> <span class="bound">ses_id</span> <span class="bound">tid1</span><span class="main">)</span><span class="main">)</span> "</span></span>
+        <span class="keyword1"><span class="command">using</span></span> InitMgrSession_def 
+        <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> State.select_convs<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span> State.surjective State.update_convs<span class="main"><span class="main">(</span></span>4<span class="main"><span class="main">)</span></span><span class="main">)</span> 
+      
+       
+<span class="keyword1"><span class="command">lemma</span></span> plusRefInstance_not_change_TEE_mem<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">uuid</span><span class="main">.</span> tee_memories<span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span> <span class="main">=</span>tee_memories<span class="main">(</span>TEE_state <span class="main">(</span> <span class="main">(</span>plusRefInstance <span class="bound">s</span> <span class="bound">uuid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span>
+        <span class="keyword1"><span class="command">using</span></span> plusRefInstance_def a111 
+        <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span><span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> plusRefInstance_not_change_REE<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">uuid</span><span class="main">.</span> REE_state <span class="bound">s</span> <span class="main">=</span>REE_state <span class="main">(</span> <span class="main">(</span>plusRefInstance <span class="bound">s</span> <span class="bound">uuid</span><span class="main">)</span><span class="main">)</span> "</span></span>
+        <span class="keyword1"><span class="command">using</span></span> plusRefInstance_def 
+        <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> State.select_convs<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span> State.surjective State.update_convs<span class="main"><span class="main">(</span></span>4<span class="main"><span class="main">)</span></span><span class="main">)</span> 
+      
+
+<span class="keyword1"><span class="command">lemma</span></span> setBusyInstance_not_change_TEE_mem<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">uuid</span><span class="main">.</span> tee_memories<span class="main">(</span>TEE_state <span class="bound">s</span><span class="main">)</span> <span class="main">=</span>tee_memories<span class="main">(</span>TEE_state <span class="main">(</span> <span class="main">(</span>setBusyInstance <span class="bound">s</span> <span class="bound">uuid</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> "</span></span>
+        <span class="keyword1"><span class="command">using</span></span> setBusyInstance_def a111 
+        <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span><span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> setBusyInstance_not_change_REE<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">uuid</span><span class="main">.</span> REE_state <span class="bound">s</span> <span class="main">=</span>REE_state <span class="main">(</span> <span class="main">(</span>setBusyInstance <span class="bound">s</span> <span class="bound">uuid</span><span class="main">)</span><span class="main">)</span> "</span></span>
+        <span class="keyword1"><span class="command">using</span></span> setBusyInstance_def 
+       <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> <span class="main"><span class="main">(</span></span>no_types<span class="main"><span class="main">,</span></span> lifting<span class="main"><span class="main">)</span></span> State.select_convs<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span> State.surjective State.update_convs<span class="main"><span class="main">(</span></span>4<span class="main"><span class="main">)</span></span><span class="main">)</span>
+
+<span class="comment1">(*
+lemma TA_Memory_Init_not_change_mgr:"∀sc s tid size1. ta_mgr(TEE_state s) = ta_mgr(TEE_state (fst(TA_Memory_Init s sc size1 tid)))" 
+              using a112 TA_Memory_Init_def newMemBlockID3_def by auto
+*)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TA_Memory_Init_not_change_REE<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">sc</span> <span class="bound">s</span> <span class="bound">tid</span> <span class="bound">size1</span><span class="main">.</span> <span class="main">(</span>REE_state <span class="bound">s</span><span class="main">)</span> <span class="main">=</span> REE_state <span class="main">(</span>fst<span class="main">(</span>TA_Memory_Init <span class="bound">s</span> <span class="bound">sc</span> <span class="bound">size1</span> <span class="bound">tid</span><span class="main">)</span><span class="main">)</span>"</span></span> 
+              <span class="keyword1"><span class="command">using</span></span> a112 TA_Memory_Init_def newMemBlockID3_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+
+
+<span class="keyword2"><span class="keyword">end</span></span></pre>
+</body></html>
