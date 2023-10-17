@@ -254,11 +254,6 @@ body {
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">REE_getDriverSessionByFd</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>FD_TYPE<span class="main">⇒</span>SESSION_ID_TYPE list "</span></span> <span class="keyword2"><span class="keyword">where</span></span>
        <span class="quoted"><span class="quoted">"<span class="free">REE_getDriverSessionByFd</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span> <span class="main">≡</span>  driver_session_list <span class="main">(</span>getTEEcontextByFd <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span><span class="main">)</span>"</span></span>
 
-<span class="comment1">(*
-definition REE_getTEECSessionByID :: "SESSION_ID_TYPE⇒TEEC_SESSION_TYPE" where
-        "REE_getTEECSessionByID sid1 ≡ SOME teec_ses1. teec_session_id teec_ses1 = sid1"
-*)</span>
-
 
 <span class="comment1">(*ADD context to tee_ctx_list in REE*)</span>
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">REE_AddContext</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>FD_TYPE<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
@@ -315,32 +310,6 @@ definition REE_getTEECSessionByID :: "SESSION_ID_TYPE⇒TEEC_SESSION_TYPE" where
 
 <span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TEEC_OpenSession"</span></span></span>
 
-<span class="comment1">(*
-definition TEEC_OpenSession :: "Sys_Config⇒State⇒TEEC_CONTEXT_TYPE option⇒TEEC_SESSION_TYPE option
-                                ⇒TA_UUID_TYPE⇒Connection_Method⇒Connection_Data⇒TEEC_Operation option
-                                  ⇒(State × SESSION_ID_TYPE × TEEC_RET_ORIGIN × TEEC_RESULT)" where
-          "TEEC_OpenSession sc s ctx1 ses1 id1 md str opt ≡ 
-                             if (ctx1 = None | ses1 = None) then        
-                                (s,INVALID_SESSION_ID,TEEC_ORIGIN_API,TEEC_ERROR_BAD_PARAMETERS)
-                             else
-                                let pre_res = TEEC_pre_process_operation opt in
-                                if pre_res ≠ TEEC_SUCCESS then 
-                                          (s,INVALID_SESSION_ID,TEEC_ORIGIN_API,pre_res)
-                                else  
-                                    let cli = DefaultClientID;
-                                        r = ioctrl sc s id1 (the opt) cli;
-                                        main_origin = fst (snd r);
-                                        main_res = fst (snd (snd r));
-                                        ses = snd (snd (snd r));
-                                        new_s = fst r in
-                                        if main_res ≠ TEEC_SUCCESS then 
-                                            (s,INVALID_SESSION_ID,main_origin,main_res)
-                                        else
-                                            let post_res = TEEC_post_process_operation;
-                                                mem_res = OpenSessionRelease;
-                                                final_s = addREESession new_s ses (the ctx1) in
-                                                  (final_s,ses,TEEC_ORIGIN_TRUSTED_APP,TEEC_SUCCESS)"
-*)</span>
 
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_OpenSession1</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span>TEEC_CONTEXT_TYPE option<span class="main">⇒</span>TEEC_SESSION_TYPE option
                                 <span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>Connection_Method<span class="main">⇒</span>Connection_Data
@@ -367,11 +336,7 @@ definition TEEC_OpenSession :: "Sys_Config⇒State⇒TEEC_CONTEXT_TYPE option⇒
                                                   <span class="bound">s1</span><span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>current<span class="main">:=</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">,</span>exec_prime<span class="main">:=</span><span class="main">(</span><span class="bound">param</span><span class="main">,</span>TEEC_OP2<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦈</span>
                                                   <span class="keyword1">in</span>
                                                       <span class="main">(</span><span class="bound">s1</span><span class="main">,</span>TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span>TEEC_SUCCESS<span class="main">)</span>"</span></span>
-<span class="comment1">(*
-definition TEEC_OpenSession2 :: "Sys_Config⇒State⇒TA_UUID_TYPE⇒TEEC_Operation option⇒CLIENT_TYPE
-                                ⇒(State × TEEC_RET_ORIGIN × TEEC_RESULT ×SESSION_ID_TYPE)" where
-          "TEEC_OpenSession2 sc s uuid opt cli ≡ ioctrl sc s uuid (the opt) cli"
-*)</span>
+
     
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_OpenSession2</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span><span class="main">(</span>State <span class="main">×</span> TEEC_RET_ORIGIN <span class="main">×</span> TEEC_RESULT <span class="main">×</span>SESSION_ID_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
           <span class="quoted"><span class="quoted">"<span class="free">TEEC_OpenSession2</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> 
@@ -427,35 +392,6 @@ note:here we omit OpenSessionRelease*)</span>
 
 
 
-
-<span class="comment1">(*let post_res = TEEC_post_process_operation opt;*)</span>
-
-
-<span class="comment1">(*
-OP3:
- r = ioctrl sc s id1 (the opt) cli;
-                                        main_origin = fst (snd r);
-                                        main_res = fst (snd (snd r));
-                                        ses = snd (snd (snd r));
-                                        new_s = fst r in
-                                        if main_res ≠ TEEC_SUCCESS then 
-                                            (s,INVALID_SESSION_ID,main_origin,main_res)
-                                        else
-                                            let post_res = TEEC_post_process_operation;
-                                                mem_res = OpenSessionRelease;
-                                                final_s = addREESession new_s ses (the ctx1)
-
-
-
-s4 = MgrPostOperation s3 tid1;
-                                            s5 = addREESession s4 ses_id ctx1;
-
-
-
-*)</span>
-
-
-<span class="comment1">(*added 2023.1.9*)</span>
 <span class="comment1">(*back to TEE, close the session if openSession3 failed*)</span>
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_OpenSession4</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span><span class="main">(</span>State <span class="main">×</span> TEEC_RET_ORIGIN <span class="main">×</span> TEEC_RESULT <span class="main">×</span>SESSION_ID_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
           <span class="quoted"><span class="quoted">"<span class="free">TEEC_OpenSession4</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> 
@@ -714,34 +650,6 @@ s4 = MgrPostOperation s3 tid1;
       <span class="keyword1">else</span>
         <span class="main">(</span>fst <span class="bound">s_ret</span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> snd <span class="bound">s_ret</span><span class="main">)</span> "</span></span>
 
-<span class="comment1">(*
-definition TEEC_CloseSession3 ::
-  "Sys_Config ⇒ State ⇒ State × TEE_RETURN_ORIGIN_TYPE × TEE_RETURN_CODE_TYPE " where
-   "TEEC_CloseSession3 sc s ≡
-    let
-        exec = (exec_prime s);
-        p = fst (hd exec);
-        ses_id = param1 p;
-        in_params = param7 p;
-        out_params = param8 p;
-        servTaIns = param9 p;
-        servTid = cur_ta_thread_id (the servTaIns);
-        s_rev_event = s⦇exec_prime := tl exec⦈;
-        s_destroyContext_ret = tee_ta_destroy_context sc s_rev_event (the servTaIns) (the in_params) (the out_params);
-        s_destroyContext = fst s_destroyContext_ret;
-        s_backToTee = s_destroyContext⦇current := TEE sc⦈;
-        s_return_code = snd s_destroyContext_ret
-     in
-      if current s ≠ servTid then 
-        (s, TEE_ORIGIN_TEE, TEE_ERROR_BAD_PARAMETERS)
-      else if (exec_prime s) = [] then
-        (s, TEE_ORIGIN_TEE, TEE_ERROR_BAD_PARAMETERS)
-      else if snd (hd (exec_prime s)) ≠ TEEC_CS3 then
-        (s, TEE_ORIGIN_TEE, TEE_ERROR_BAD_PARAMETERS)
-      else
-        (s_backToTee, TEE_ORIGIN_TRUSTED_APP, s_return_code)"
- 
-*)</span>
 
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_CloseSession3</span> <span class="main">::</span> 
   <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> State <span class="main">×</span> TEE_RETURN_ORIGIN_TYPE <span class="main">×</span> TEE_RETURN_CODE_TYPE "</span></span> <span class="keyword2"><span class="keyword">where</span></span>

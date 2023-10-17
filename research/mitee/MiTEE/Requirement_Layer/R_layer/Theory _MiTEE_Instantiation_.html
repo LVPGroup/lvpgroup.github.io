@@ -255,35 +255,6 @@ body {
 <span class="keyword1"><span class="command">primrec</span></span> <span class="entity">getTAUUID</span><span class="main">::</span><span class="quoted"><span class="quoted">"TA_CONF<span class="main">⇒</span>TA_UUID_TYPE"</span></span><span class="keyword2"><span class="keyword">where</span></span>
         <span class="quoted"><span class="quoted">"<span class="free">getTAUUID</span> <span class="main">(</span>TAConf <span class="free"><span class="bound"><span class="entity">uuid</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span><span class="main">)</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">uuid</span></span></span>"</span></span>
 
-<span class="comment1">(*
-definition getTAbyId::"State⇒tid⇒TA_State_Type"where
-        "getTAbyId s tid ≡the (TAs s tid)"
-
-definition getIdbyTA::"State⇒TA_State_Type⇒tid"where
-        "getIdbyTA s ta ≡ SOME tid1. getTAbyId s tid1 = ta"
-
-definition getTAStateByid::"State⇒tid⇒TA_mode_type"where
-  "getTAStateByid s tid ≡ TA_mode (the (TAs s tid))"
-       
-definition Abort::"State⇒tid⇒State"where
-        "Abort s tid ≡ let ta = TAs s; tastate = the (ta tid) in s⦇TAs := ta(tid := Some (tastate⦇TA_mode := Dead⦈))⦈"
-
-definition Close_Instance::"State⇒tid⇒State"where
-        "Close_Instance s tid ≡ let ta = TAs s; tastate = the (ta tid) in s⦇TAs := ta(tid := Some (tastate⦇TA_mode := Dead⦈))⦈"
-
-definition Close_Session::"State⇒tid⇒session_id⇒State"where
-        "Close_Session s tid sid ≡ let ta = TAs s; tastate = the (ta tid); tasession = TA_sessions tastate; sesstate = the (tasession sid) 
-           in s⦇TAs := ta(tid := Some (tastate⦇TA_sessions := tasession(sid := Some  (sesstate⦇session_mode := Closed⦈))⦈))⦈"
-
-
-
-definition getTABinaryCode::"State⇒tid⇒binary"where
-"getTABinaryCode s tid ≡ TA_code (the (TAs s tid))"
-
-definition getCheckCode::"State⇒key"where
-  "getCheckCode s ≡ checkcode s"
- 
-*)</span>
 
 <span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Event specification"</span></span></span>
 
@@ -334,10 +305,6 @@ definition getCheckCode::"State⇒key"where
   <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> sys_config_witness_def<span class="main">)</span>
   <span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
 
- <span class="comment1">(* "∀s ta. get_TA_domain s ta ≠ (TEE sysconf) ∧ get_TA_domain s ta ≠ (REE sysconf)"
-  "∀s. inj (get_TA_domain s)"
-  "∀d s. d = TEE sysconf ∨ d = REE sysconf ∨ (∃ta. get_TA_domain s ta = d)" *)</span>
-
 
 <span class="keyword1"><span class="command">consts</span></span> s0t <span class="main">::</span> <span class="quoted">State</span>
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">s0t_witness</span> <span class="main">::</span> <span class="quoted">State</span>
@@ -387,71 +354,7 @@ definition getCheckCode::"State⇒key"where
 <span class="keyword1"><span class="command">datatype</span></span> Syscall <span class="main">=</span> Reserved
 
 <span class="keyword1"><span class="command">datatype</span></span> Event <span class="main">=</span> hyperc <span class="quoted">Hypercall</span><span class="main">|</span>sys <span class="quoted">Syscall</span>
-<span class="comment1">(*
-definition exec_event :: "Event ⇒ (State × State) set" where
-      "exec_event e ≡ {(s,s'). s'∈ (let s1= 
-                                      (
-                                      let ep = exec_prime s in 
-                                      if ep = [] 
-                                          then s 
-                                      else if (snd (snd (hd ep))) = TA_MEM_INIT 
-                                          then (fst (TA_Memory_Init s sysconf (fst (hd ep)) (fst (snd (hd ep)))))  
-                                      else (fst (TA_Memory_Init s sysconf (fst (hd ep)) (fst (snd (hd ep)))))  
-                                      )
-            in (case e of 
-           hyperc (TEEC_INITIALIZECONTEXT tn tctext) ⇒{fst (TEEC_InitializeContext sysconf s1 tn tctext)}|
-           hyperc (TEEC_FINALIZECONTEXT tctext) ⇒ {(TEEC_FinalizeContext sysconf s1 tctext)}|
-           hyperc (TEEC_OPENSESSION tctext tcsession uuid cm cd tcop) ⇒{fst (TEEC_OpenSession sysconf s1 tctext tcsession uuid cm cd tcop)}|
-           
-           hyperc (TEEC_INVOKECOMMAND sid tt cid pt1 pt2) ⇒{fst (TEEC_InvokeCommand sysconf s1 sid tt cid pt1 pt2)}|
-           
-           hyperc (TEE_INVOKETACOMMAND sid tt cid pt1 pt2) ⇒{fst (TEE_InvokeTACommand sysconf s1 sid tt cid pt1 pt2)}|
-           
-           
-           
-            
-       _ ⇒{s} ))} 
-      "
-*)</span>
 
-
-
-<span class="comment1">(*
-definition exec_event :: "Event ⇒ (State × State) set" where
-      "exec_event e ≡ {(s,s'). s'∈  (case e of 
-           hyperc (TEEC_INITIALIZECONTEXT tn tctext) ⇒{fst (TEEC_InitializeContext sysconf s tn tctext)}|
-           hyperc (TEEC_FINALIZECONTEXT tctext) ⇒ {(TEEC_FinalizeContext sysconf s tctext)}|
-           hyperc (TEEC_OPENSESSION1 tct tst uuid cm cd opt mem_t) ⇒{fst(TEEC_OpenSession1 sysconf s tct tst uuid cm cd opt mem_t)}|
-           hyperc TEEC_OPENSESSION2 ⇒{fst (TEEC_OpenSession2 sysconf s)}|
-           hyperc (TEEC_OPENSESSION3 ses_id)⇒{fst (TEEC_OpenSession3 sysconf s ses_id)}|
-           hyperc (TEEC_OPENSESSION4 res)⇒{fst (TEEC_OpenSession4 sysconf s res)}|
-           hyperc (TEEC_CLOSESESSION1 fd ses_id pt1 pt2) ⇒{fst (TEEC_CloseSession1 sysconf s fd ses_id pt1 pt2)}|
-           hyperc TEEC_CLOSESESSION2 ⇒{fst (TEEC_CloseSession2 sysconf s)}|
-           hyperc TEEC_CLOSESESSION3 ⇒{fst (TEEC_CloseSession3 sysconf s)}|
-           hyperc (TEEC_INVOKECOMMAND1 ses_id timeout cmd pt1 pt2 mem_t) ⇒{fst (TEEC_InvokeCommand1 sysconf s ses_id timeout cmd pt1 pt2 mem_t)}|
-           hyperc TEEC_INVOKECOMMAND2⇒{fst (TEEC_InvokeCommand2 sysconf s)}|
-           hyperc TEEC_INVOKECOMMAND3⇒{fst (TEEC_InvokeCommand3 sysconf s)}|
-           hyperc (TEE_INVOKETACOMMAND1 mem_t)⇒{fst (TEE_InvokeTACommand1 sysconf s mem_t)}|
-           hyperc TEE_INVOKETACOMMAND2⇒{fst (TEE_InvokeTACommand2 sysconf s)}|
-           hyperc TEE_INVOKETACOMMAND3⇒{fst (TEE_InvokeTACommand3 sysconf s)}|
-           hyperc TEE_CLOSETASESSION1⇒{fst (TEE_CloseTASession1 sysconf s)}|
-           hyperc TEE_CLOSETASESSION2⇒{fst (TEE_CloseTASession2 sysconf s)}|
-           hyperc TEE_CLOSETASESSION3⇒{fst (TEE_CloseTASession3 sysconf s)}|
-           hyperc TEE_OPENTASESSION1 ⇒{fst (TEE_OpenTASession1 sysconf s)}|
-           hyperc TEE_OPENTASESSION2⇒{fst (TEE_OpenTASession2 sysconf s)}|
-           hyperc (TEE_OPENTASESSION3 sid)⇒{fst (TEE_OpenTASession3 sysconf s sid)}|
-           hyperc (TEE_OPENTASESSION4 res)⇒{fst (TEE_OpenTASession4 sysconf s res)}|
-           hyperc (TEE_CHECKMEMORYACCESSRIGHTS accessflags  bid bsize) ⇒{s}|
-           hyperc (TEE_MALLOC bsize hi) ⇒{(TEE_Malloc sysconf s bsize hi)}|
-           hyperc (TEE_REALLOC mb bsize) ⇒{(TEE_Realloc sysconf s mb bsize)}|
-           hyperc (TEE_FREE bid) ⇒{(TEE_Free sysconf s bid)}|
-           hyperc (TEEC_REGISTERSHAREDMEMORY tctext shared) ⇒{fst (TEEC_RegisterSharedMemory sysconf s tctext shared)}|
-           hyperc (TEEC_ALLOCATESHAREDMEMORY tctext shared) ⇒{fst (TEEC_AllocateSharedMemory sysconf s tctext shared)}|
-           hyperc (TEEC_RELEASESHAREDMEMORY shared) ⇒{(TEEC_ReleaseSharedMemory sysconf s shared)}|
-   
- _ ⇒{s} )} 
-      "
-*)</span>
 
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">exec_event</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Event <span class="main">⇒</span> <span class="main">(</span>State <span class="main">×</span> State<span class="main">)</span> set"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
       <span class="quoted"><span class="quoted">"<span class="free">exec_event</span> <span class="free"><span class="bound"><span class="entity">e</span></span></span> <span class="main">≡</span> <span class="main">{</span><span class="main">(</span><span class="bound">s</span><span class="main">,</span><span class="bound">s'</span><span class="main">)</span><span class="main">.</span> <span class="bound">s'</span><span class="main">∈</span>  <span class="main">(</span><span class="keyword1">case</span> <span class="free"><span class="bound"><span class="entity">e</span></span></span> <span class="keyword1">of</span> 
@@ -498,15 +401,7 @@ definition exec_event :: "Event ⇒ (State × State) set" where
 
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">domain_of_event</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State <span class="main">⇒</span> Event <span class="main">⇒</span> DOMAIN_ID option"</span></span> <span class="keyword2"><span class="keyword">where</span></span> 
     <span class="quoted"><span class="quoted">"<span class="free">domain_of_event</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">e</span></span></span> <span class="main">≡</span> Some <span class="main">(</span>current <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span>"</span></span>
-<span class="comment1">(*
- hyperc (TEEC_INITIALIZECONTEXT _ _) ⇒Some (REE sysconf) |
-      hyperc (TEEC_OPENSESSION _ _ _ _ _ _) ⇒Some (REE sysconf)|
-*)</span>
 
-<span class="comment1">(*
-definition get_exec_prime::"State⇒(EVENT_PARAM×EVENT_NAME) list"where
-          "get_exec_prime s ≡ exec_prime s"
-*)</span>
 
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">get_exec_prime</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span><span class="main">(</span><span class="main">(</span>EVENT_PARAM<span class="main">×</span>EVENT_NAME<span class="main">)</span> list <span class="main">×</span>TEE_TA_MANAGER <span class="main">×</span> TAs_State<span class="main">)</span>"</span></span><span class="keyword2"><span class="keyword">where</span></span>
           <span class="quoted"><span class="quoted">"<span class="free">get_exec_prime</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>ta_mgr<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">,</span>TAs_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span>"</span></span>
@@ -548,11 +443,6 @@ definition get_exec_prime::"State⇒(EVENT_PARAM×EVENT_NAME) list"where
                            <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">t</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">=</span><span class="free"><span class="bound"><span class="entity">d</span></span></span><span class="main">)</span><span class="main">}</span>
                        "</span></span>
 
-<span class="comment1">(*   ∨{x. x∈set(tee_memories (TEE_state s))∧ (ownership x=d)} ⊆ 
-                            {x. x∈set(tee_memories (TEE_state t))∧ (ownership x=d)}
-                          ∨{x. x∈set(tee_memories (TEE_state t))∧ (ownership x=d)} ⊆
-                            {x. x∈set(tee_memories (TEE_state s))∧ (ownership x=d)}*)</span>
-
 
 <span class="comment1">(*for TEE, only memory is sensitive data,including TEE's own execution space*)</span>
 <span class="comment1">(*In TEE side, mem whose blockid equals 0 belongs to TEE*)</span>
@@ -576,15 +466,6 @@ definition get_exec_prime::"State⇒(EVENT_PARAM×EVENT_NAME) list"where
       is_TEE_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> is_REE_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> is_TA_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> vpeq_REE_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> vpeq_TA_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span>
       <span class="keyword2"><span class="keyword">and</span></span> vpeq_TEE_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> vpeq1_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span>
 
-<span class="comment1">(*
-declare TEEC_InitializeContext_def[cong] TEEC_FinalizeContext_def[cong] 
-TEEC_OpenSession1_def[cong] TEEC_OpenSession2_def[cong] TEEC_OpenSession3_def[cong] TEEC_OpenSession4_def[cong]
-TEEC_CloseSession1_def[cong] TEEC_CloseSession2_def[cong] TEEC_CloseSession3_def[cong] TEEC_CloseSession4_def[cong]
-TEEC_InvokeCommand1_def[cong] TEEC_InvokeCommand2_def[cong] TEEC_InvokeCommand3_def[cong] TEEC_InvokeCommand4_def[cong]
-TEE_OpenTASession1_def[cong] TEE_OpenTASession2_def[cong] TEE_OpenTASession3_def[cong] TEE_OpenTASession4_def[cong]
-TEEC_OpenSession1_def[cong] TEEC_OpenSession2_def[cong] TEEC_OpenSession3_def[cong] TEEC_OpenSession4_def[cong]
-TEEC_OpenSession1_def[cong] TEEC_OpenSession2_def[cong] TEEC_OpenSession3_def[cong] TEEC_OpenSession4_def[cong]
-*)</span>
 
 <span class="keyword1"><span class="command">lemma</span></span> vpeq_REE_transitive <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">r</span> <span class="bound">t</span> <span class="bound">d</span><span class="main">.</span> vpeq_REE <span class="bound">s</span> <span class="bound">d</span> <span class="bound">t</span> <span class="main">∧</span> vpeq_REE <span class="bound">t</span> <span class="bound">d</span> <span class="bound">r</span><span class="main">⟶</span>vpeq_REE <span class="bound">s</span> <span class="bound">d</span> <span class="bound">r</span>"</span></span> 
       <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>

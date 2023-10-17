@@ -363,25 +363,6 @@ body {
 
 
 
-<span class="comment1">(*
-lemma domain_domainR : "eR e ≠ None ⟹ domain_of_eventR s e = domain_of_event (⇑s) (the (eR e))"
-  proof(induct e)
-    case (hyperc' x) then show ?case 
-      proof(induct x)
-      case (TEEC_INITIALIZECONTEXT x1a x2a)
-      then show ?case 
-        using domain_of_eventR_def by auto
-    qed
-   
-  next 
-    case (sys' x) then show ?case 
-      proof(induct x)
-        case Reserved
-        then show ?case 
-          using domain_of_eventR_def by auto      
-        qed
-   qed
-*)</span>
 
 <span class="comment1">(*observation function for new state variable, only TEE can see this*)</span>
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">vpeq_ipc</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"StateR <span class="main">⇒</span> DOMAIN_ID <span class="main">⇒</span> StateR <span class="main">⇒</span> bool"</span></span> <span class="main">(</span><span class="quoted">"<span class="keyword3">(</span>_ <span class="keyword1">∼.</span> _ <span class="keyword1">.∼Δ</span> _<span class="keyword3">)</span>"</span><span class="main">)</span>
@@ -443,20 +424,10 @@ lemma domain_domainR : "eR e ≠ None ⟹ domain_of_eventR s e = domain_of_event
 
 
 <span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Event Specification"</span></span></span>
-<span class="comment1">(*TODO*)</span>
 
-
-<span class="comment1">(*including all the event defined here*)</span>
-<span class="comment1">(*
-declare abstract_state_def[cong del] and abstract_state_rev_def[cong del]
-*)</span>
-
-<span class="comment1">(*TBD: add event here, so that isabelle use definition automatically.*)</span>
 <span class="keyword1"><span class="command">declare</span></span> abstract_state_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> abstract_state_rev_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span>
         TEEC_InitializeContextR_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> TEEC_FinalizeContextR_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span>
-<span class="comment1">(*
-TEEC_OpenSession1R_def[cong] TEEC_OpenSession2R_def[cong] TEEC_OpenSession3R_def[cong] TEEC_OpenSession4R_def[cong]
-*)</span>
+
 
 <span class="keyword1"><span class="command">section</span></span><span class="quoted"><span class="document"><span class="plain_text">" Unwinding conditions on new state variables "</span></span></span>
 

@@ -618,35 +618,6 @@ s_closeTEEObjOfcurTA = closeTEEObjOfcurTA s s_detroy
 
 
 
-<span class="comment1">(*
-
-if isKeepAlive = True ∧ isSingleInstance = True then
-            (fst s_subRef, TEE_SUCCESS)
-          else 
-*)</span>
-
-<span class="comment1">(*
-primrec deleteSesIdinMgrSesList :: "TA_MGR_SESSION_TYPE list ⇒ TA_MGR_SESSION_TYPE list ⇒ SESSION_ID_TYPE ⇒ TA_MGR_SESSION_TYPE list" where
-  "deleteSesIdinMgrSesList [] ans sesId = ans" |
-  "deleteSesIdinMgrSesList (mgrSes#mgrSesLeft) ans sesId = 
-    ( if sesId = session_id mgrSes then
-        deleteSesIdinMgrSesList mgrSesLeft ans sesId
-      else 
-        deleteSesIdinMgrSesList mgrSesLeft (append ans mgrSes) sesId
-    )"
-*)</span>
-<span class="comment1">(*
-definition close_session_teeDomain' :: 
-  "Sys_Config ⇒ State ⇒ SESSION_ID_TYPE ⇒ PARAMS_TYPE ⇒ PARAMS_TYPE
-  ⇒ State × TEE_RETURN_CODE_TYPE" where
-  "close_session_teeDomain' sc s ses_id params_in params_out≡ 
-    let
-        
-    in
-        
-  "
-*)</span>
-
 <span class="keyword1"><span class="command">primrec</span></span> <span class="entity">isSesIdinTaStateSessList</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"SESSION_ID_TYPE list <span class="main">⇒</span> SESSION_ID_TYPE <span class="main">⇒</span> bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
   <span class="quoted"><span class="quoted">"<span class="free">isSesIdinTaStateSessList</span> <span class="main">[]</span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">=</span> False"</span></span> <span class="main">|</span>                        
   <span class="quoted"><span class="quoted">"<span class="free">isSesIdinTaStateSessList</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">sesId</span></span></span><span class="main">#</span><span class="free"><span class="bound"><span class="entity">sesIdLeft</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">=</span> 
@@ -842,50 +813,6 @@ definition close_session_teeDomain' ::
       <span class="keyword1">else</span>
         <span class="main">(</span><span class="bound">s_subRef_state</span><span class="main">,</span> TEE_SUCCESS<span class="main">)</span>"</span></span>
 
-<span class="comment1">(*
-definition close_session_teeDomain2 :: 
-  "Sys_Config ⇒ State ⇒ SESSION_ID_TYPE ⇒ PARAMS_TYPE ⇒ PARAMS_TYPE
-  ⇒ State × TEE_RETURN_CODE_TYPE" where
-  "close_session_teeDomain2 sc s ses_id params_in params_out≡
-    let
-        servTid = the(findSesServTid s ses_id);
-        servTaIns = getTAInsCtx s servTid;
-
-        client_tid = the(findSesCliTid s ses_id);
-        mgrTaInsCtxs = mgr_ta_instances (ta_mgr (TEE_state s));
-
-        clientTaIns = getTAInsCtx s client_tid;
-        isSessIdinSessIdList = isSessIdInTaInsSessList (cur_ta_session_list clientTaIns) ses_id
-    in
-      if isSessIdinSessIdList = False then
-        (s, TEE_ERROR_BAD_STATE)
-      else
-        let                        
-          s_dropSess_inMgrTaIns = removeAllSessIdInTaInsSessList s client_tid ses_id params_in params_out;
-          s_dropSess_inMgrTaSes = dropSessionInMgrSesList s_dropSess_inMgrTaIns ses_id;
-          
-          s_setBusy = setTaInsBusyByThreadId s_dropSess_inMgrTaSes servTid False;
-          s_subRef = subtractMgrInsRef s_setBusy servTid;
-          s_subRef_state = fst s_subRef;
-          mgrTaInsCtxs_update = mgr_ta_instances (ta_mgr (TEE_state s_subRef_state));
-        
-          index = (SOME x. servTid = cur_ta_thread_id (mgrTaInsCtxs_update!x));
-          servTaIns_update = mgrTaInsCtxs_update!index;
-          servTa_refCnt = reference_cnt servTaIns_update; 
-          cur_ta_attr = attribute servTaIns_update;
-          isSingleInstance = singleInstance cur_ta_attr;
-          isKeepAlive = keepAlive cur_ta_attr
-        in                                      
-          if servTa_refCnt = 0 ∧ (isKeepAlive = False | client_tid = DTC_IDENTITY) then
-            let
-              
-              s_dropTaInTaIns = removeTaInsInMgrInsList (fst s_subRef) client_tid
-            in
-              (fst s_dropTaInTaIns, TEE_ERROR_BAD_STATE)
-          else
-            (s, TEE_ERROR_BAD_STATE)
-  "
-*)</span>
 
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">tee_ta_close_session2</span> <span class="main">::</span> 
   <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> SESSION_ID_TYPE option <span class="main">⇒</span> TA_MGR_SESSION_TYPE list <span class="main">⇒</span> CLIENT_TYPE 
@@ -1063,50 +990,6 @@ definition close_session_teeDomain2 ::
     <span class="keyword1">in</span>
       <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TAs_state <span class="main">:=</span> <span class="bound">taState_update</span><span class="main">⦈</span>
   "</span></span>
-<span class="comment1">(*
-primrec dropSesInSesListByTid :: "TA_MGR_SESSION_TYPE list ⇒ THREAD_ID_TYPE ⇒ State3"
-
-definition dropSesInMgrSesListByThreadId :: "State ⇒ THREAD_ID_TYPE ⇒ State" where
-  "dropSesInMgrSesListByThreadId s tid ≡
-    let
-        mgrSesList = mgr_ta_sessions (ta_mgr (TEE_state s));
-        mgrSesList_update = 
-    in
-  "
-
-*)</span>
-
-<span class="comment1">(* needed to be completed close the substream and then destroy cur resourse*)</span>
-<span class="comment1">(*
-definition tee_ta_destroy_context :: "Sys_Config ⇒ State ⇒ TA_INSTANCE_CTX_TYPE ⇒ PARAMS_TYPE ⇒ PARAMS_TYPE ⇒ State × TEE_RETURN_CODE_TYPE" where
-  "tee_ta_destroy_context sc s taIns params_in params_out ≡ 
-    let
-      curTaInsThreadId = cur_ta_thread_id taIns;
-      curTaInsSessList = cur_ta_session_list taIns;
-      ret_closeCurTaInsSessList = destroySessInTAInsList sc s curTaInsThreadId curTaInsSessList params_in params_out;
-      s_ret = fst ret_closeCurTaInsSessList;
-      s_code = snd ret_closeCurTaInsSessList
-    in
-      let
-        s_teeState_deleteCurTa = deleteTaStateByThreadId s curTaInsThreadId;
-        s_dropTaInTaIns = removeTaInsInMgrInsList s_teeState_deleteCurTa curTaInsThreadId
-      in
-        (s_ret, s_code)
-  "
-*)</span>
-<span class="comment1">(*
-primrec destroySessInTAInsList :: "Sys_Config ⇒ State ⇒ THREAD_ID_TYPE ⇒ SESSION_ID_TYPE list 
-  ⇒ PARAMS_TYPE ⇒ PARAMS_TYPE ⇒ State × TEE_RETURN_CODE_TYPE" where
-  "destroySessInTAInsList sc s tid [] params_in params_out = (s, TEE_SUCCESS)" |
-  "destroySessInTAInsList sc s tid (SessId#SessIdLeft) params_in params_out =
-   (let
-       taMgrSes = the(getTASessionBySesIdFromMgr s SessId);
-       clientType = client_id taMgrSes;
-       s_closeCurSess = closeCurTaSession sc s tid clientType SessId params_in params_out
-    in
-       destroySessInTAInsList sc s_closeCurSess tid SessIdLeft params_in params_out
-   )"
-*)</span>
 
 <span class="keyword1"><span class="command">primrec</span></span> <span class="entity">addCloseSessionEvent</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> PARAMS_TYPE <span class="main">⇒</span> PARAMS_TYPE <span class="main">⇒</span> SESSION_ID_TYPE list <span class="main">⇒</span> State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
   <span class="quoted"><span class="quoted">"<span class="free">addCloseSessionEvent</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">params_in</span></span></span> <span class="free"><span class="bound"><span class="entity">params_out</span></span></span> <span class="main">[]</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>"</span></span> <span class="main">|</span>
@@ -1148,17 +1031,6 @@ primrec destroySessInTAInsList :: "Sys_Config ⇒ State ⇒ THREAD_ID_TYPE ⇒ S
 
 <span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Invoke Command"</span></span></span>
 
-<span class="comment1">(*
-definition TA_InvokeCommandEntryPoint :: "Sys_Config ⇒ State 
-    ⇒ COMMAND_ID_TYPE option ⇒ THREAD_ID_TYPE ⇒ State" where
-  "TA_InvokeCommandEntryPoint sc s cmd_id tid ≡
-    SOME s1.
-           REE_state s1 = REE_state s∧
-           ( filter (λx. block_id x=(0::nat)) (tee_memories(TEE_state s1) )  
-             =( filter (λx. block_id x=(0::nat)) (tee_memories(TEE_state s))))∧
-           ( filter (λx. ownership x≠tid) (tee_memories(TEE_state s1) )  
-             =( filter (λx. ownership x≠tid) (tee_memories(TEE_state s))))"
-*)</span>
 
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">TA_InvokeCommandEntryPoint</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State 
     <span class="main">⇒</span> COMMAND_ID_TYPE option <span class="main">⇒</span> THREAD_ID_TYPE <span class="main">⇒</span> State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
@@ -1412,17 +1284,6 @@ definition TA_InvokeCommandEntryPoint :: "Sys_Config ⇒ State
       <span class="keyword1">else</span>
         <span class="main">(</span><span class="bound">s_addEvent</span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEEC_SUCCESS<span class="main">,</span> <span class="free"><span class="bound"><span class="entity">out_params</span></span></span><span class="main">)</span>"</span></span>
 
-<span class="comment1">(*
-(*2023.1.6 move to here*)
-definition  TA_CloseSessionEntryPoint::"State ⇒ THREAD_ID_TYPE ⇒ State" where
-          "TA_CloseSessionEntryPoint s tid ≡ 
-                SOME s1.
-                     REE_state s1 = REE_state s∧
-                       ( filter (λx. block_id x=(0::nat)) (tee_memories(TEE_state s1) )  
-                        =( filter (λx. block_id x=(0::nat)) (tee_memories(TEE_state s))))∧
-                       ( filter (λx. ownership x≠tid) (tee_memories(TEE_state s1) )  
-                        =( filter (λx. ownership x≠tid) (tee_memories(TEE_state s))))"
-*)</span>
 
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">TA_CloseSessionEntryPoint</span><span class="main">::</span><span class="quoted"><span class="quoted">"State <span class="main">⇒</span> THREAD_ID_TYPE <span class="main">⇒</span> State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
           <span class="quoted"><span class="quoted">"<span class="free">TA_CloseSessionEntryPoint</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">tid</span></span></span><span class="main">≡</span> 

@@ -237,16 +237,7 @@ body {
 <span class="keyword2"><span class="keyword">begin</span></span>
 
 <span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"auxiliary function"</span></span></span>
-<span class="comment1">(*
-definition TA_OpenSessionEntryPointR::"Sys_Config⇒StateR⇒TEEC_Operation⇒THREAD_ID_TYPE⇒StateR" where
-          "TA_OpenSessionEntryPointR sc s opt tid≡ 
-                                         SOME s1.
-                                            
-                                               REE_state s1 = REE_state s∧
-                                              (tee_memories(TEE_state s1)) = (tee_memories(TEE_state s))∧
-                                               (IPC_driver s1) =(IPC_driver s)
-                                                     "
-*)</span>
+
 
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">TA_OpenSessionEntryPointR</span><span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>StateR<span class="main">⇒</span>TEEC_Operation<span class="main">⇒</span>THREAD_ID_TYPE<span class="main">⇒</span>StateR"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
           <span class="quoted"><span class="quoted">"<span class="free">TA_OpenSessionEntryPointR</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="free"><span class="bound"><span class="entity">tid</span></span></span><span class="main">≡</span> 
@@ -260,90 +251,7 @@ definition TA_OpenSessionEntryPointR::"Sys_Config⇒StateR⇒TEEC_Operation⇒TH
                 <span class="quoted"><span class="quoted">"<span class="free">ioctrlR</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">uuid</span></span></span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span><span class="main">≡</span> 
                         <span class="keyword1">let</span> <span class="bound">s'</span><span class="main">=</span> <span class="main">(</span>ioctrl <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">(</span><span class="main">⇑</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">uuid</span></span></span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span><span class="main">)</span> <span class="keyword1">in</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⇓</span><span class="main">(</span>fst <span class="bound">s'</span><span class="main">)</span><span class="main">,</span>fst<span class="main">(</span>snd <span class="bound">s'</span><span class="main">)</span><span class="main">,</span>fst<span class="main">(</span>snd<span class="main">(</span>snd <span class="bound">s'</span><span class="main">)</span><span class="main">)</span><span class="main">,</span>snd<span class="main">(</span>snd<span class="main">(</span>snd <span class="bound">s'</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
 
-<span class="comment1">(*
-definition TA_Memory_InitR :: "StateR⇒Sys_Config⇒BIN_MEM_SIZE⇒THREAD_ID_TYPE⇒(StateR × TEEC_RESULT)" where
-        "TA_Memory_InitR s sc size1 tid ≡  let
-      
-                                            new_total = (tee_total_size (TEE_state s)) -size1;
-                                            new_memList = ⦇block_id = newMemBlockID3 (⇑s),size=size1,ownership = tid,
-                                              access_right =(λx. None)(tid:=Some READWRITE) 
-                                                ,is_SecureMem=True,related= None⦈#(tee_memories(TEE_state s));
-                                            s1 = s⦇TEE_state:=(TEE_state s)
-                                                  ⦇tee_total_size := new_total, tee_memories := new_memList,
-                                                   ta_mgr:=ta_mgr(TEE_state s)⦇BIDpointer:=BIDpointer(ta_mgr (TEE_state s))+1 ⦈⦈⦈ in
-                                            let 
-                 
-                                                new_total1 = (tee_total_size (TEE_state s1)) -size1;
-                                                new_memList1 = ⦇block_id = newMemBlockID3 (⇑s1),size=size1,ownership = tid,
-                                              access_right = (λx. None)((TEE sc):=Some READ) ,is_SecureMem=True,related =None⦈#(tee_memories(TEE_state s1));
-                                          
-                                                s2 = s1⦇TEE_state:=(TEE_state s1)
-                                                  ⦇tee_total_size := new_total1, tee_memories := new_memList1,
-                                                  ta_mgr:=ta_mgr(TEE_state s1)⦇BIDpointer:=BIDpointer(ta_mgr (TEE_state s1))+1 ⦈⦈⦈ in 
-                                                (s2,TEEC_SUCCESS)
-                                          "
 
-definition LoadNewTAR::"Sys_Config⇒StateR⇒TA_UUID_TYPE⇒TEEC_Operation⇒SESSION_ID_TYPE⇒CLIENT_TYPE⇒TEEC_CONTEXT_TYPE
-                                   ⇒(MemBlock × TEEC_MEMREF_TYPE)  ⇒ (StateR×TEEC_RET_ORIGIN×TEEC_RESULT×SESSION_ID_TYPE)"where
-                "LoadNewTAR sc s1 id1 opt ses_id cli ctx1 mem_t0≡ 
-                                      let load = Load_TA_Service2 sc s1 (Some id1) in
-                                          if fst ( load) ≠ TEEC_SUCCESS then 
-                                               (s1,TEEC_ORIGIN_TEE,fst (load),INVALID_SESSION_ID)
-                                          else
-                                               let 
-                                                   a_res = (addMgrInstance (⇑s1) sc id1 ses_id);
-                                                   s3 = s1⇓(fst a_res);
-                                                   tid1 = snd a_res;
-                                                   s3_1 = fst(TA_Memory_InitR s3 sc bin_mem_size tid1);
-                                                     s4 = InitMgrSession (⇑s3_1) cli ses_id tid1;
-                                                     mem_t = TEE_pre_process mem_t0 tid1;
-                                                     param = ⦇param1=Some tid1,param2=Some ses_id,param3=Some opt,param4=None,param5=Some ctx1
-                                                              ,param6=None,param7=None,param8=None,param9=None
-                                                              ,param10=Some (fst mem_t),param11=Some (snd mem_t)
-                                                              ,param12=None,param13=None⦈;
-                                                     s5 = s4⦇current:=tid1,exec_prime:=(param,TEEC_OP3)#(exec_prime s4)⦈  in
-                                                        ((s1⇓s5),TEEC_ORIGIN_TRUSTED_APP,TEEC_SUCCESS,ses_id)"
-
-
-definition ioctrlR :: "Sys_Config⇒StateR⇒TA_UUID_TYPE⇒TEEC_Operation⇒CLIENT_TYPE⇒TEEC_CONTEXT_TYPE
-                                ⇒(MemBlock × TEEC_MEMREF_TYPE )⇒(StateR×TEEC_RET_ORIGIN×TEEC_RESULT×SESSION_ID_TYPE)" where
-                "ioctrlR sc s uuid opt cli ctx1 mem_t0≡ 
-                       let r1 = newSessionId (⇑s);ses_id = fst r1 in
-                       let s1 = addMgrSession (⇑s) ses_id;
-                           
-                            attr = findInstanceATTRInMgr s1 uuid in
-                        if attr = None then       
-                           let load_result = LoadNewTAR sc (s⇓s1) uuid opt ses_id cli ctx1 mem_t0 in
-                             (fst load_result,fst(snd load_result),fst(snd(snd load_result)),snd(snd(snd load_result)))                      
-                        else
-                              let ins_lst = (mgr_ta_instances (ta_mgr (TEE_state (⇑s))));
-                                  cur_instance = (SOME a. a∈set ins_lst ∧ ta_id a = uuid);
-                                  cnt = (reference_cnt cur_instance);
-                                  b = busy cur_instance;
-                                  tid1 = cur_ta_thread_id cur_instance in
-                              if singleInstance (the attr) = True then
-                                  if multiSession (the attr) = False ∧ cnt ≠ 0 then 
-                                      (s,TEEC_ORIGIN_TEE,TEEC_ERROR_BUSY,INVALID_SESSION_ID)
-                                  else
-                                      if b = True then 
-                                          (s,TEEC_ORIGIN_TEE,TEEC_ERROR_BUSY,INVALID_SESSION_ID)
-                                      else 
-                                          let s2 = plusRefInstance s1 uuid;
-                                              s2_1= InitMgrSession s2 cli ses_id tid1;
-                                              s3 = setBusyInstance s2_1 uuid;
-                                            mem_t=TEE_pre_process mem_t0 tid1;
-                                              param = ⦇param1=Some tid1,param2=Some ses_id,param3=Some opt,param4=None,param5=Some ctx1
-                                                      ,param6=None,param7=None,param8=None,param9=None
-                                                        ,param10=Some (fst mem_t),param11=Some (snd mem_t)
-                                                        ,param12=None,param13=None⦈;
-                                             s4 = s3⦇current:=tid1,exec_prime:=(param,TEEC_OP3)#(exec_prime s3)⦈  in
-                                             
-                                                  ((s⇓s4),TEEC_ORIGIN_TRUSTED_APP,TEEC_SUCCESS,ses_id)
-                              else 
-                                      let load_result=LoadNewTAR sc (s⇓s1) uuid opt ses_id cli ctx1 mem_t0 in
-                                       ((fst load_result),fst(snd load_result),fst(snd(snd load_result)),snd(snd(snd load_result)))
-                                                   "
-*)</span>
 
 <span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Context"</span></span></span>
 <span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_InitializeContextR</span> <span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>StateR<span class="main">⇒</span>TEE_NAME<span class="main">⇒</span>TEEC_CONTEXT_TYPE option<span class="main">⇒</span><span class="main">(</span>StateR <span class="main">×</span> TEEC_CONTEXT_TYPE <span class="main">×</span> TEEC_RESULT<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
