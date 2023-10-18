@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/a6825305-9cdd-4ac5-b661-569d2fcf8cab/fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/a6825305-9cdd-4ac5-b661-569d2fcf8cab/fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/a6825305-9cdd-4ac5-b661-569d2fcf8cab/fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/a6825305-9cdd-4ac5-b661-569d2fcf8cab/fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/a6825305-9cdd-4ac5-b661-569d2fcf8cab/fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/a6825305-9cdd-4ac5-b661-569d2fcf8cab/fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/a6825305-9cdd-4ac5-b661-569d2fcf8cab/fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/a6825305-9cdd-4ac5-b661-569d2fcf8cab/fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/a6825305-9cdd-4ac5-b661-569d2fcf8cab/fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/a6825305-9cdd-4ac5-b661-569d2fcf8cab/fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/a6825305-9cdd-4ac5-b661-569d2fcf8cab/fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/a6825305-9cdd-4ac5-b661-569d2fcf8cab/fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('/a6825305-9cdd-4ac5-b661-569d2fcf8cab/fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.theories { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+</style><title>Theory "L4_MMU"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> L4_MMU
+  <span class="keyword2"><span class="keyword">imports</span></span> L4_Thread
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">section</span></span><span class="quoted"><span class="document"><span class="plain_text">‹ MMU and Lookup ›</span></span></span>
+<span class="keyword1"><span class="command">subsection</span></span><span class="quoted"><span class="document"><span class="plain_text">‹ Page Table ›</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> next_page<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"State <span class="main">⇒</span> spaceName_t <span class="main">⇒</span> v_page_t <span class="main">⇒</span> page_t option"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">next_page</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">sp</span></span> <span class="free"><span class="bound">v_page</span></span> <span class="main">=</span>
+<span class="main">(</span><span class="keyword1">if</span> space_mapping <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">sp</span></span> <span class="main">=</span> None
+ <span class="keyword1">then</span> None
+ <span class="keyword1">else</span> <span class="main">(</span><span class="keyword1">let</span> <span class="bound">mapping</span> <span class="main">=</span> the <span class="main">(</span>space_mapping <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">sp</span></span><span class="main">)</span>
+        <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">mapping</span> <span class="free"><span class="bound">v_page</span></span> <span class="main">=</span> None
+            <span class="keyword1">then</span> None
+            <span class="keyword1">else</span> Some <span class="main">(</span>fst <span class="main">(</span>the <span class="main">(</span><span class="bound">mapping</span> <span class="free"><span class="bound">v_page</span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> next_space<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"State <span class="main">⇒</span> spaceName_t <span class="main">⇒</span> v_page_t <span class="main">⇒</span> spaceName_t option"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">next_space</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">sp</span></span> <span class="free"><span class="bound">v_page</span></span> <span class="main">=</span>
+<span class="main">(</span><span class="keyword1">if</span> space_mapping <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">sp</span></span> <span class="main">=</span> None
+ <span class="keyword1">then</span> None
+ <span class="keyword1">else</span> <span class="main">(</span><span class="keyword1">let</span> <span class="bound">mapping</span> <span class="main">=</span> the <span class="main">(</span>space_mapping <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">sp</span></span><span class="main">)</span>
+        <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">mapping</span> <span class="free"><span class="bound">v_page</span></span> <span class="main">=</span> None
+            <span class="keyword1">then</span> None
+            <span class="keyword1">else</span> <span class="main">(</span><span class="keyword1">let</span> <span class="bound">page</span> <span class="main">=</span> fst <span class="main">(</span>the <span class="main">(</span><span class="bound">mapping</span> <span class="free"><span class="bound">v_page</span></span><span class="main">)</span><span class="main">)</span>
+                   <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">case</span> <span class="bound">page</span> <span class="keyword1">of</span> Virtual <span class="bound">sp'</span> <span class="bound">v_page'</span> <span class="main">⇒</span> Some <span class="bound">sp'</span> <span class="main">|</span>
+                                    Real <span class="main"><span class="bound">_</span></span> <span class="main">⇒</span> None<span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> next_vpage<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"State <span class="main">⇒</span> spaceName_t <span class="main">⇒</span> v_page_t <span class="main">⇒</span> v_page_t option"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">next_vpage</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">sp</span></span> <span class="free"><span class="bound">v_page</span></span> <span class="main">=</span>
+<span class="main">(</span><span class="keyword1">if</span> space_mapping <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">sp</span></span> <span class="main">=</span> None
+ <span class="keyword1">then</span> None
+ <span class="keyword1">else</span> <span class="main">(</span><span class="keyword1">let</span> <span class="bound">mapping</span> <span class="main">=</span> the <span class="main">(</span>space_mapping <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">sp</span></span><span class="main">)</span>
+        <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">mapping</span> <span class="free"><span class="bound">v_page</span></span> <span class="main">=</span> None
+            <span class="keyword1">then</span> None
+            <span class="keyword1">else</span> <span class="main">(</span><span class="keyword1">let</span> <span class="bound">page</span> <span class="main">=</span> fst <span class="main">(</span>the <span class="main">(</span><span class="bound">mapping</span> <span class="free"><span class="bound">v_page</span></span><span class="main">)</span><span class="main">)</span>
+                   <span class="keyword1">in</span> <span class="keyword1">case</span> <span class="bound">page</span> <span class="keyword1">of</span> Virtual <span class="bound">sp'</span> <span class="bound">v_page'</span> <span class="main">⇒</span> Some <span class="bound">v_page'</span> <span class="main">|</span>
+                                   Real <span class="main"><span class="bound">_</span></span> <span class="main">⇒</span> None<span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> pt_walk<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"State <span class="main">⇒</span> spaceName_t <span class="main">⇒</span> v_page_t <span class="main">⇀</span> r_page_t <span class="main">×</span> perms_t set"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">pt_walk</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">sp</span></span> <span class="free"><span class="bound">v_page</span></span> <span class="main">≡</span> <span class="main">(</span><span class="keyword1">if</span> <span class="main">(</span><span class="free"><span class="bound">s</span></span> <span class="main">⊢</span> <span class="main">(</span>Virtual <span class="free"><span class="bound">sp</span></span> <span class="free"><span class="bound">v_page</span></span><span class="main">)</span><span class="main">)</span>
+                         <span class="keyword1">then</span> Some <span class="main">(</span><span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">r_page</span><span class="main">.</span> <span class="main">(</span><span class="free"><span class="bound">s</span></span> <span class="main">⊢</span> <span class="main">(</span>Virtual <span class="free"><span class="bound">sp</span></span> <span class="free"><span class="bound">v_page</span></span><span class="main">)</span> <span class="main">↝<span class="hidden">⇧</span><sup>+</sup></span> <span class="main">(</span>Real <span class="bound">r_page</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">,</span> get_perms <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">sp</span></span> <span class="free"><span class="bound">v_page</span></span><span class="main">)</span>
+                         <span class="keyword1">else</span> None<span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">subsection</span></span><span class="quoted"><span class="document"><span class="plain_text">‹ TLB ›</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> entry_range<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"tlb_entry <span class="main">⇒</span> vaddr_t set"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">entry_range</span> <span class="free"><span class="bound">e</span></span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">case</span> <span class="free"><span class="bound">e</span></span> <span class="keyword1">of</span> PTE <span class="main"><span class="bound">_</span></span> <span class="bound">v</span> <span class="main"><span class="bound">_</span></span> <span class="main"><span class="bound">_</span></span> <span class="main">⇒</span>
+<span class="main">{</span><span class="bound">addr</span><span class="main">.</span> <span class="bound">addr</span> <span class="main">≥</span> vpage_to_vaddr <span class="bound">v</span> <span class="main">∧</span> <span class="bound">addr</span> <span class="main">≤</span> vpage_to_vaddr <span class="bound">v</span> <span class="main">+</span> page_size <span class="main">-</span> <span class="main">1</span><span class="main">}</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> asid_of<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"tlb_entry <span class="main">⇒</span> asid"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">asid_of</span> <span class="free"><span class="bound">e</span></span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">case</span> <span class="free"><span class="bound">e</span></span> <span class="keyword1">of</span> PTE <span class="bound">a</span> <span class="main"><span class="bound">_</span></span> <span class="main"><span class="bound">_</span></span> <span class="main"><span class="bound">_</span></span> <span class="main">⇒</span> <span class="bound">a</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> entry_set<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"tlb_entry set <span class="main">⇒</span> asid <span class="main">⇒</span> vaddr_t <span class="main">⇒</span> tlb_entry set"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">entry_set</span> <span class="free"><span class="bound">t</span></span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">vaddr</span></span> <span class="main">=</span> <span class="main">{</span><span class="bound">e</span><span class="main">.</span> <span class="bound">e</span> <span class="main">∈</span> <span class="free"><span class="bound">t</span></span> <span class="main">∧</span> <span class="main">(</span><span class="free"><span class="bound">vaddr</span></span> <span class="main">∈</span> entry_range <span class="bound">e</span><span class="main">)</span> <span class="main">∧</span> <span class="free"><span class="bound">a</span></span> <span class="main">=</span> asid_of <span class="bound">e</span><span class="main">}</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> selective_invalidation<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"tlb_entry set <span class="main">⇒</span> asid <span class="main">⇒</span> vaddr_t <span class="main">⇒</span> tlb_entry set"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">selective_invalidation</span> <span class="free"><span class="bound">t</span></span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">vaddr</span></span> <span class="main">=</span> <span class="free"><span class="bound">t</span></span> <span class="main">-</span> entry_set <span class="free"><span class="bound">t</span></span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">vaddr</span></span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> asid_invalidation<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"tlb_entry set <span class="main">⇒</span> asid <span class="main">⇒</span> tlb_entry set"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">asid_invalidation</span> <span class="free"><span class="bound">t</span></span> <span class="free"><span class="bound">a</span></span> <span class="main">=</span> <span class="free"><span class="bound">t</span></span> <span class="main">-</span> <span class="main">{</span><span class="bound">e</span><span class="main">.</span> <span class="bound">e</span> <span class="main">∈</span> <span class="free"><span class="bound">t</span></span> <span class="main">∧</span> asid_of <span class="bound">e</span> <span class="main">=</span> <span class="free"><span class="bound">a</span></span><span class="main">}</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> vaddr_invalidation<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"tlb_entry set <span class="main">⇒</span> vaddr_t <span class="main">⇒</span> tlb_entry set"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">vaddr_invalidation</span> <span class="free"><span class="bound">t</span></span> <span class="free"><span class="bound">vaddr</span></span> <span class="main">=</span> <span class="free"><span class="bound">t</span></span> <span class="main">-</span> <span class="main">{</span><span class="bound">e</span><span class="main">.</span> <span class="bound">e</span> <span class="main">∈</span> <span class="free"><span class="bound">t</span></span> <span class="main">∧</span> <span class="free"><span class="bound">vaddr</span></span> <span class="main">∈</span> entry_range <span class="bound">e</span><span class="main">}</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> update_tlb_select<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"State <span class="main">⇒</span> asid <span class="main">⇒</span> vaddr_t <span class="main">⇒</span> State"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">update_tlb_select</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">vaddr</span></span> <span class="main">=</span> <span class="free"><span class="bound">s</span></span><span class="main">⦇</span>tlb<span class="main">:=</span> <span class="main">(</span>selective_invalidation <span class="main">(</span>tlb <span class="free"><span class="bound">s</span></span><span class="main">)</span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">vaddr</span></span><span class="main">)</span><span class="main">⦈</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> update_tlb_asid<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"State <span class="main">⇒</span> asid <span class="main">⇒</span> State"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">update_tlb_asid</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">a</span></span> <span class="main">=</span> <span class="free"><span class="bound">s</span></span><span class="main">⦇</span>tlb<span class="main">:=</span> <span class="main">(</span>asid_invalidation <span class="main">(</span>tlb <span class="free"><span class="bound">s</span></span><span class="main">)</span> <span class="free"><span class="bound">a</span></span><span class="main">)</span><span class="main">⦈</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> update_tlb_vaddr<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"State <span class="main">⇒</span> vaddr_t <span class="main">⇒</span> State"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">update_tlb_vaddr</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">vaddr</span></span> <span class="main">=</span> <span class="free"><span class="bound">s</span></span><span class="main">⦇</span>tlb<span class="main">:=</span> <span class="main">(</span>vaddr_invalidation <span class="main">(</span>tlb <span class="free"><span class="bound">s</span></span><span class="main">)</span> <span class="free"><span class="bound">vaddr</span></span><span class="main">)</span><span class="main">⦈</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> lookup_tlb<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"State <span class="main">⇒</span> asid <span class="main">⇒</span> vaddr_t <span class="main">⇒</span> lookup_type"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">lookup_tlb</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">vaddr</span></span> <span class="main">=</span>
+<span class="main">(</span><span class="keyword1">let</span> <span class="bound">S</span> <span class="main">=</span> entry_set <span class="main">(</span>tlb <span class="free"><span class="bound">s</span></span><span class="main">)</span> <span class="free"><span class="bound">a</span></span> <span class="free"><span class="bound">vaddr</span></span>
+  <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">S</span> <span class="main">=</span> <span class="main">{}</span> <span class="keyword1">then</span> Miss <span class="keyword1">else</span>
+      <span class="keyword1">if</span> <span class="main">(</span><span class="main">∃</span><span class="bound">e</span><span class="main">.</span> <span class="bound">S</span> <span class="main">=</span> <span class="main">{</span><span class="bound">e</span><span class="main">}</span><span class="main">)</span> <span class="keyword1">then</span> Hit <span class="main">(</span>the_elem <span class="bound">S</span><span class="main">)</span> <span class="keyword1">else</span> Incon<span class="main">)</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> lookup_tlb_asid<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"lookup_tlb <span class="free">s</span> <span class="free">a</span> <span class="free">vaddr</span> <span class="main">=</span> Hit <span class="free">entry</span> <span class="main">⟶</span> <span class="free">a</span> <span class="main">=</span> asid_of <span class="free">entry</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> lookup_tlb_def entry_set_def Let_def the_elem_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> vaddr_to_paddr<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"vaddr_t <span class="main">⇒</span> tlb_entry <span class="main">⇒</span> paddr_t"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">vaddr_to_paddr</span> <span class="free"><span class="bound">vaddr</span></span> <span class="free"><span class="bound">entry</span></span> <span class="main">=</span>
+<span class="main">(</span><span class="keyword1">case</span> <span class="free"><span class="bound">entry</span></span> <span class="keyword1">of</span> PTE <span class="bound">a</span> <span class="bound">v_page</span> <span class="bound">r_page</span> <span class="main"><span class="bound">_</span></span> <span class="main">⇒</span>
+ rpage_to_paddr <span class="bound">r_page</span> <span class="main">+</span> <span class="free"><span class="bound">vaddr</span></span> <span class="main">-</span> vpage_to_vaddr <span class="bound">v_page</span><span class="main">)</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> mmu_translate<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"State <span class="main">⇒</span> vaddr_t <span class="main">⇒</span> State <span class="main">×</span> <span class="main">(</span>paddr_t option<span class="main">)</span>"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">mmu_translate</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">vaddr</span></span> <span class="main">=</span> 
+<span class="main">(</span><span class="keyword1">let</span>
+ <span class="bound">a</span> <span class="main">=</span> GetCurrentSpace <span class="free"><span class="bound">s</span></span><span class="main">;</span>
+ <span class="bound">result</span> <span class="main">=</span> lookup_tlb <span class="free"><span class="bound">s</span></span> <span class="bound">a</span> <span class="free"><span class="bound">vaddr</span></span>    <span class="comment1">―<span class="quoted"><span class="document"><span class="plain_text">‹ Walk TLB ›</span></span></span></span>
+ <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">case</span> <span class="bound">result</span> <span class="keyword1">of</span>
+ Miss <span class="main">⇒</span> <span class="main">(</span><span class="keyword1">let</span> <span class="bound">v_page</span> <span class="main">=</span> vaddr_to_vpage <span class="free"><span class="bound">vaddr</span></span><span class="main">;</span>
+              <span class="bound">pt_r</span> <span class="main">=</span> pt_walk <span class="free"><span class="bound">s</span></span> <span class="bound">a</span> <span class="bound">v_page</span> <span class="comment1">―<span class="quoted"><span class="document"><span class="plain_text">‹ Walk Page Table ›</span></span></span></span>
+           <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">pt_r</span> <span class="main">=</span> None 
+               <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">s</span></span><span class="main">,</span> None<span class="main">)</span> <span class="comment1">―<span class="quoted"><span class="document"><span class="plain_text">‹ Page Fault ›</span></span></span></span>
+               <span class="keyword1">else</span>
+                 <span class="keyword1">let</span> <span class="bound">perms</span> <span class="main">=</span> snd <span class="main">(</span>the <span class="bound">pt_r</span><span class="main">)</span><span class="main">;</span>
+                     <span class="bound">r_page</span> <span class="main">=</span> fst <span class="main">(</span>the <span class="bound">pt_r</span><span class="main">)</span><span class="main">;</span>
+                     <span class="bound">entry</span> <span class="main">=</span> PTE <span class="bound">a</span> <span class="bound">v_page</span> <span class="bound">r_page</span> <span class="bound">perms</span>
+                  <span class="keyword1">in</span> <span class="main">(</span><span class="free"><span class="bound">s</span></span><span class="main">⦇</span>tlb<span class="main">:=</span> tlb <span class="free"><span class="bound">s</span></span> <span class="main">∪</span> <span class="main">{</span><span class="bound">entry</span><span class="main">}</span><span class="main">⦈</span><span class="main">,</span>Some <span class="main">(</span>vaddr_to_paddr <span class="free"><span class="bound">vaddr</span></span> <span class="bound">entry</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+ Hit <span class="bound">entry</span> <span class="main">⇒</span> <span class="main">(</span><span class="free"><span class="bound">s</span></span><span class="main">,</span>Some <span class="main">(</span>vaddr_to_paddr <span class="free"><span class="bound">vaddr</span></span> <span class="bound">entry</span><span class="main">)</span><span class="main">)</span><span class="main">|</span>
+ Incon <span class="main">⇒</span> <span class="main">(</span><span class="free"><span class="bound">s</span></span><span class="main">,</span>None<span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span> <span class="comment1">―<span class="quoted"><span class="document"><span class="plain_text">‹ Inconsistency ›</span></span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> mem_read<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"State <span class="main">⇒</span> paddr_t <span class="main">⇒</span> byte"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">mem_read</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">paddr</span></span> <span class="main">=</span> heap <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">paddr</span></span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> mem_write<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"State <span class="main">⇒</span> paddr_t <span class="main">⇒</span> byte <span class="main">⇒</span> State"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">mem_write</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">paddr</span></span> <span class="free"><span class="bound">val</span></span> <span class="main">=</span> <span class="free"><span class="bound">s</span></span><span class="main">⦇</span>heap<span class="main">:=</span> <span class="main">(</span>heap <span class="free"><span class="bound">s</span></span><span class="main">)</span><span class="main">(</span><span class="free"><span class="bound">paddr</span></span> <span class="main">:=</span> <span class="free"><span class="bound">val</span></span><span class="main">)</span><span class="main">⦈</span>"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> mmu_read<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"State <span class="main">⇒</span> vaddr_t <span class="main">⇀</span> byte"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">mmu_read</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">vaddr</span></span> <span class="main">=</span>
+<span class="main">(</span><span class="keyword1">let</span> <span class="bound">space</span> <span class="main">=</span> GetCurrentSpace <span class="free"><span class="bound">s</span></span><span class="main">;</span>
+     <span class="bound">vpage</span> <span class="main">=</span> vaddr_to_vpage <span class="free"><span class="bound">vaddr</span></span>
+ <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> pfRead <span class="main">∉</span> get_perms <span class="free"><span class="bound">s</span></span> <span class="bound">space</span> <span class="bound">vpage</span>
+     <span class="keyword1">then</span> <span class="main">(</span><span class="keyword1">let</span> <span class="bound">paddr</span> <span class="main">=</span> snd <span class="main">(</span>mmu_translate <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">vaddr</span></span><span class="main">)</span>
+           <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">paddr</span> <span class="main">=</span> None <span class="comment1">―<span class="quoted"><span class="document"><span class="plain_text">‹ Exception ›</span></span></span></span>
+               <span class="keyword1">then</span> None <span class="comment1">―<span class="quoted"><span class="document"><span class="plain_text">‹ Reading Failure ›</span></span></span></span>
+               <span class="keyword1">else</span> Some <span class="main">(</span>mem_read <span class="free"><span class="bound">s</span></span> <span class="main">(</span>the <span class="bound">paddr</span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+     <span class="keyword1">else</span> None<span class="main">)</span><span class="main">)</span>"</span></span></span> <span class="comment1">―<span class="quoted"><span class="document"><span class="plain_text">‹ No Permission ›</span></span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> mmu_write<span class="main">::</span><span class="quoted"><span class="quoted"><span class="language">"State <span class="main">⇒</span> vaddr_t <span class="main">⇒</span> byte <span class="main">⇒</span> State <span class="main">×</span> bool"</span></span></span> <span class="keyword2"><span class="keyword">where</span></span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">mmu_write</span> <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">vaddr</span></span> <span class="free"><span class="bound">val</span></span> <span class="main">=</span>
+<span class="main">(</span><span class="keyword1">let</span> <span class="bound">space</span> <span class="main">=</span> GetCurrentSpace <span class="free"><span class="bound">s</span></span><span class="main">;</span>
+     <span class="bound">vpage</span> <span class="main">=</span> vaddr_to_vpage <span class="free"><span class="bound">vaddr</span></span>
+ <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> pfWrite <span class="main">∉</span> get_perms <span class="free"><span class="bound">s</span></span> <span class="bound">space</span> <span class="bound">vpage</span>
+     <span class="keyword1">then</span> <span class="main">(</span><span class="keyword1">let</span> <span class="bound">paddr</span> <span class="main">=</span> snd <span class="main">(</span>mmu_translate <span class="free"><span class="bound">s</span></span> <span class="free"><span class="bound">vaddr</span></span><span class="main">)</span>
+           <span class="keyword1">in</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">paddr</span> <span class="main">=</span> None <span class="comment1">―<span class="quoted"><span class="document"><span class="plain_text">‹ Exception ›</span></span></span></span>
+               <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound">s</span></span><span class="main">,</span>False<span class="main">)</span> <span class="comment1">―<span class="quoted"><span class="document"><span class="plain_text">‹ Writing Failure ›</span></span></span></span>
+               <span class="keyword1">else</span> <span class="main">(</span>mem_write <span class="free"><span class="bound">s</span></span> <span class="main">(</span>the <span class="bound">paddr</span><span class="main">)</span> <span class="free"><span class="bound">val</span></span><span class="main">,</span> True<span class="main">)</span><span class="main">)</span><span class="main">)</span>
+     <span class="keyword1">else</span> <span class="main">(</span><span class="free"><span class="bound">s</span></span><span class="main">,</span>False<span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span> <span class="comment1">―<span class="quoted"><span class="document"><span class="plain_text">‹ No Permission ›</span></span></span></span>
+<span class="keyword2"><span class="keyword">end</span></span>
+</pre></body>
