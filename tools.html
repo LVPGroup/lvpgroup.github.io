@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+
+        <link href="css/metro-bootstrap.css" rel="stylesheet">
+    <!--<link href="css/metro-bootstrap-responsive.css" rel="stylesheet">-->
+    <link href="css/iconFont.css" rel="stylesheet">
+
+    <!-- Load JavaScript Libraries -->
+    <script src="js/jquery/jquery.min.js"></script>
+    <script src="js/jquery/jquery.widget.min.js"></script>
+
+    <!-- Metro UI CSS JavaScript plugins -->
+    <script src="js/load-metro.js"></script>
+
+    <!-- Local JavaScript -->
+    <script src="js/docs.js"></script>
+    <script src="js/github.info.js"></script>
+
+    <title>Yongwang ZHAO's Homepage</title>
+
+    <style>
+        .container {
+            width: 1040px;
+        }
+    </style>
+</head>
+<body class="metro" style="text-align:justify;">
+
+    <div class="container">
+    	
+        <div class="margin10 nrm nlm" data-load="header.html"></div>
+        
+
+        <div class="main-content clearfix">
+            
+										
+										<div class="tab-control" data-role="tab-control" style="float:left;width:100%;">
+									    <ul class="tabs">
+									        <li class="active"><a href="#_page_1">Home <i class="icon-arrow-right-5"></i> Tools </a></li>
+									        
+									    </ul>
+									 
+<div class="panel" id="isabelle" data-role="panel" style="width:100%;">
+	<div class="panel-header" style="background:#dddddd;font-size:14pt;"><span class="fg-darker"><b>Isabelle/Cloud: Cloud IDE for Isabelle/HOL Theorem Prover</b></span></div>
+	<div class="panel-content margin10 fg-dark nlp nrp" style="width:98%;font-size:13pt;margin-top:-5pt;margin-bottom:-5pt">
+	
+	<h4 class="metro"><strong class="metro">Please visit our official website <a href="https://isabelle.info/" target="_blank">https://isabelle.info/</a></strong> for more information.</h4>
+	<h3 class="metro"><strong class="metro">Introduction</strong></h3>  <hr />
+		<p>Isabelle/Cloud is the cloud-based version of the Isabelle theorem prover, which offers users a web-based interactive interface based on VS Code. It containerizes Isabelle, allowing for better utilization of its powerful capabilities. 
+		<ul>
+		<li><strong>Theorem Proving as a Service (TPaaS)</strong>: The web frontend utilizes VS Code, eliminating the need for installing and maintaining a desktop IDE. The backend, Isabelle Server, is containerized using Docker, providing on-demand allocation of computational and storage resources.
+		</li>
+	  
+		<li><strong>Deep Integration of Isabelle</strong>: The VS Code frontend is deeply integrated with Isabelle, providing syntax highlighting, real-time error detection for functional languages and proof scripts, and instant visualization of the theorem proving process.
+		</li>
+		
+		<li><strong>Multiple Versions on a Single Platform</strong>: It supports the latest versions of Isabelle, such as Isabelle 2019/2020/2021, allowing users to choose the desired version when creating a project.
+		</li>
+		
+		<li><strong>Powerful Project Management</strong>: Users can create multiple Isabelle projects, utilizing a Docker file system for isolation and management. Project resources and states are maintained and managed in the cloud, supporting hot reloading of projects.
+		</li>
+		
+		<li><strong>Pre-integration and On-Demand Loading of Third-Party Libraries</strong>: The platform comes pre-integrated with numerous third-party libraries, allowing users to selectively import and use them as needed during development.
+		</li>
+		
+		<li><strong>Rich Teaching Resources with IDE Integration</strong>: The platform gathers and organizes a wide range of instructional materials and case studies from both domestic and international sources. Users can directly create Isabelle projects from tutorial code, enabling hands-on practice and exercises. The integration with the IDE enhances the learning experience.
+		</li>
+		</ul>
+		<table width="100%" border=0>
+			<tr>
+			<td><img src="images/isabelle3.png" alt="picore" width="500px"></td>
+			<td><img src="images/isabelle1.png" alt="picore" width="500px"></td>
+			</tr>
+			<tr>
+			<td><img src="images/isabelle4.png" alt="picore" width="500px"></td>
+			<td><img src="images/isabelle2.png" alt="picore" width="500px"></td>
+			</tr>
+		</table>
+	<h3 class="metro"><strong class="metro">Publications</strong></h3>  <hr />
+		<ol>
+		
+		<li>Hao Xu, <strong>Yongwang Zhao#</strong>, "Isabelle/Cloud: Delivering Isabelle/HOL as a Cloud IDE for Theorem Proving", <em>
+		<u>14th Asia-Pacific Symposium on Internetware (Internetware 2023) </u></em>, Fri 4 - Sun 6 August 2023 Hangzhou, China. 
+	  </li>
+		</ol>
+		
+		
+	</div>
+</div>
+
+<div class="panel" id="picore" data-role="panel" style="width:100%;">
+	<div class="panel-header" style="background:#dddddd;font-size:14pt;"><span class="fg-darker"><b>PiCore: A Rely-Guarantee Reasoning Framework in Isabelle/HOL</b></span></div>
+	<div class="panel-content margin10 fg-dark nlp nrp" style="width:98%;font-size:13pt;margin-top:-5pt;margin-bottom:-5pt">
+	
+	
+	<h3 class="metro"><strong class="metro">Introduction</strong></h3>  <hr />
+
+		<p>
+		The rely-guarantee approach is a promising way for compositional verification of concurrent reactive systems (CRSs), e.g. concurrent operating systems, interrupt-driven control systems and business process systems. However, specifications using heterogeneous reaction patterns, different abstraction levels, and the complexity of real-world CRSs are still challenging the rely-guarantee approach. PiCore is a rely-guarantee reasoning framework for formal specification and verification of CRSs, developed in Isabelle/HOL 2019. We design an event specification language supporting complex reaction structures and its rely-guarantee proof system to detach the specification and logic of reactive aspects of CRSs from event behaviours. PiCore parametrizes the language and its rely-guarantee system for event behaviour using a rely-guarantee interface and allows to easily integrate 3rd-party languages via rely-guarantee adapters. By this design, we have successfully integrated two existing languages, Hoare-Parallel and CSimpl, and their rely-guarantee proof systems without any change of their specification and proofs. PiCore has been applied to three real-world case studies, i.e. formal verification of concurrent memory management in Zephyr RTOS, Messaging System for Autonomous Vehicles, and a verified translation for a standardized Business Process Execution Language (BPEL) to PiCore.
+  
+		<p><center><img src="images/picore_framework.png" alt="picore" width="500px"></center>
+		
+		<p> The overview of PiCore can refer to the publications [1][2][3] below. We have publish a Chinese book on PiCore, which are available <a href="https://www.yuque.com/zhaoyongwang/picore" target="_blank"><strong>here</strong></a>.
+		
+		<p>PiCore has integrated two third-party languages:
+			<ul>
+			<li> <strong>Hoare-Parallel</strong>: IMP is a simple imperative language with a rely-guarantee proof system provided by the Hoare_Parallel library of Isabelle/HOL releases. For more information of Hoare-Parallel, please refer to: 
+				<ul>
+				<li>Leonor Prensa Nieto. 2003. The Rely-Guarantee Method in Isabelle/HOL. In 12th European Symposium on Programming (ESOP). Springer Berlin Heidelberg, 348–362.</li>
+				<li>Leonor Prensa Nieto. Verification of Parallel Programs with the Owicki-Gries and Rely-Guarantee Methods in Isabelle/HOL. Ph.D Thesis. 2002, Technische Universitat Munchen, Germany.</li>
+				</ul>
+			</li>
+			
+			<li>
+			<strong>CSimpl</strong>: CSimpl is a generic and expressive imperative language designed for modelling real world concurrent languages. CSimpl extends Simpl with concurrency, and provides a rely-guarantee proof system in Isabelle/HOL. Simpl is able to represent a large subset of C99 code and has been applied to the formal verification of seL4 OS kernel at C code level. For more information about CSimpl, please see the <a href="#csimpl"><strong>CSimpl block</strong></a> of this page. <!--For more information about CSimpl, please refer to:
+				<ul>
+				<li>
+					David Sanan, <strong>Yongwang Zhao#</strong>, Yang Liu, Shangwei Lin, "CSim2 : Compositional Top-down Verification of Concurrent Systems Using Rely-Guarantee", <em>
+					<u>ACM Transactions on Programming Languages and Systems (TOPLAS) </u></em>, Vol. 43, No. 1,  February 2021, pp. 2:1 - 2:46 
+				  <a href="https://dl.acm.org/doi/pdf/10.1145/3436808" target="_blank"><strong>[PDF download]</strong></a>
+				<li>David Sanan, <strong>Yongwang Zhao</strong>, Zhe Hou, Fuyuan Zhang, Alwen Tiu, Yang Liu, "CSimpl: A Rely-Guarantee-Based Framework for Verifying Concurrent Programs", 
+					<em><u>23rd International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS 2017, ETAPS)</u></em>, 22-29 April 2017, Uppsala, Sweden, pp. 481-498  <a href="https://link.springer.com/content/pdf/10.1007/978-3-662-54577-5_28.pdf" target="_blank"><strong>[PDF download]</strong></a> 
+			  </li>
+				</ul>-->
+			</li>
+			</ul>
+
+		<p> Moreover, PiCore has been applied to three real-world cases:
+			<ul>
+			<li> <strong>Concurrent Memory Management of Zephyr RTOS</strong>: We have applied PiCore to the formal specification and mechanized proof of the concurrent buddy memory allocation of Zephyr RTOS. The formal specification is fine-grained, providing a high level of detail. It closely follows the Zephyr C code, covering all the data structures and imperative statements present in the implementation. We use the rely-guarantee proof system of PiCore for the formal verification of functional correctness and invariant preservation in the model, revealing three bugs in the C code. For more information, please refer to the publications [3][4] below. 
+			</li>
+			
+			<li>
+			<strong>Messaging System for Autonomous Vehicles</strong>: Messaging system as a communicating infrastructure is a safety-critical component of autonomous vehicles. We apply PiCore to formally verify the DGPS (Differential Global Positioning System) of UISEE autonomous driving systems. For more information, please refer to the publications [5] below. 
+			</li>
+			
+			<li>
+			<strong>BPEL2PiCore Translator</strong>: BPEL aims to model the behaviour of processes via a language for the specification of both executable and abstract business processes. It extends the Web Services interaction model and enables it to support business transactions. We have applied PiCore to interpret the semantics of the BPEL language by translating BPEL into PiCore. To show the correctness of this translation, we prove a strong bisimulation between the source BPEL program and the translated PiCore specification. In this way, formal verification of BPEL programs can be conducted in the PiCore framework. The strong bisimulation implies the soundness and completeness of the formal verification of BPEL programs in PiCore. For more information, please refer to the publications [1] below. 
+			</li>
+			</ul>
+			
+	<h3 class="metro"><strong class="metro">Souce Code</strong></h3>  <hr />
+	<p> The Isabelle 2019 sources of PiCore can be browsed on web <a href="picorebook/" target="_blank"><strong>here</strong></a>. Please contact me if you are interested the original Isabelle sources.
+
+	<h3 class="metro"><strong class="metro">Publications</strong></h3>  <hr />
+		<ol>
+		
+		<li>
+		<strong>Yongwang Zhao</strong>, David Sanan "Rely-guarantee Reasoning about Concurrent Reactive Systems: The PiCore Framework, Languages Integration and Applications", <em>
+		<u>CoRR abs/2309.09148 (2023)</u></em>, <a href="https://doi.org/10.48550/arXiv.2309.09148" target="_blank"><strong>[PDF download]</strong></a>
+		</li>
+
+		<li>
+		<strong>Yongwang Zhao</strong>, David Sanan, Fuyuan Zhang, Yang Liu, "A Parametric Rely-guarantee Reasoning Framework for Concurrent Reactive Systems", <em>
+		<u>23rd International Symposium on Formal Methods (FM 2019)</u></em>, Oct 7-11, 2019, Porto, Portugal, pp. 161-178 (<em><strong>CCF A, Top-tier conference in formal methods </strong></em>)<a href="https://link.springer.com/content/pdf/10.1007/978-3-030-30942-8_11.pdf" target="_blank"><strong>[PDF download]</strong></a>
+		</li>
+		
+		<li>
+		<strong>Yongwang Zhao</strong>, "Rely-Guarantee Reasoning About Concurrent Reactive Systems: Framework, Languages Integration and Applications (Invited Talk)", <em>
+		<u>6th International Symposium on Dependable Software Engineering: Theories, Tools, and Applications (SETTA 2020)</u></em>, November 24–27, 2020, Guangzhou, China. 
+	  <a href="https://link.springer.com/content/pdf/bfm%3A978-3-030-62822-2%2F1.pdf" target="_blank"><strong>[PDF download]</strong></a> (<em><strong>CCF C</strong></em>) 
+		</li>
+		
+		<li>
+		<strong>Yongwang Zhao</strong>, David Sanan, "Rely-guarantee Reasoning about Concurrent Memory Management in Zephyr RTOS", <em>
+		<u>31st International Conference on Computer-Aided Verification (CAV 2019)</u></em>, July 15-18, 2019, New York City, NY, USA, pp. 515-533 (<em><strong>CCF A, Top-tier conference in formal methods </strong></em>)<a href="https://link.springer.com/content/pdf/10.1007/978-3-030-25543-5_29.pdf" target="_blank"><strong>[PDF download]</strong></a>
+		</li>
+	  
+		<li>
+		<strong>Yongwang Zhao</strong>, David Sanan "Rely-guarantee Reasoning about Concurrent Memory Management: Correctness, Safety and Security", <em>
+		<u>CoRR abs/2309.09997 (2023)</u></em>, <a href="https://doi.org/10.48550/arXiv.2309.09997" target="_blank"><strong>[PDF download]</strong></a>
+		</li>
+		
+		
+		<li>
+		Wenjing Xu, <strong>Yongwang Zhao#</strong>, Dianfu Ma, Yuxin Zhang, "Rely-Guarantee Reasoning about Messaging System for Autonomous Vehicles", <em>
+		<u>14th International Symposium on Theoretical Aspects of Software Engineering (TASE 2020)</u></em>, December 11-13, 2020, Hangzhou, China, pp. xxx-yyy (<em><strong>CCF C</strong></em>) 
+	  <a href="https://ieeexplore.ieee.org/document/9405321" target="_blank"><strong>[PDF download]</strong></a>
+		</li>
+	  
+		</ol>
+	  
+	</div>
+</div>
+
+<div class="panel" id="csimpl" data-role="panel" style="width:100%;">
+	<div class="panel-header" style="background:#dddddd;font-size:14pt;"><span class="fg-darker"><b>CSimpl: A Framework for Verifying Concurrent Programs</b></span></div>
+	<div class="panel-content margin10 fg-dark nlp nrp" style="width:98%;font-size:13pt;margin-top:-5pt;margin-bottom:-5pt">
+	
+	
+	<h3 class="metro"><strong class="metro">Introduction</strong></h3>  <hr />
+	<p>It is essential to deal with the interference of the environment between programs in concurrent program verification. This has led to the development of concurrent program reasoning techniques such as rely-guarantee. However, the source code of the programs to be verified often involves language features such as exceptions and procedures which are not supported by the existing mechanizations of those concurrent reasoning techniques. Schirmer et al. have solved a similar problem for sequential programs by developing a verification framework in the Isabelle/HOL theorem prover called Simpl, which provides a rich sequential language that can encode most of the features in real world programming languages. However Simpl only aims to verify sequential programs, and it does not support the specification nor the verification of concurrent programs. In this paper we introduce CSimpl, an extension of Simpl with concurrency oriented language features and verification techniques. We prove the compositionality of the CSimpl semantics and we provide inference rules for the language constructors to reason about CSimpl programs using rely-guarantee, showing that the inference rules are sound w.r.t. the language semantics. Finally, we run a case study where we use CSimpl to specify and prove functional correctness of an abstract communication model of the XtratuM partitioning separation micro-kernel.
+
+	<h3 class="metro"><strong class="metro">Souce Code</strong></h3>  <hr />
+	<p> The Isabelle 2019 sources of CSimpl can be browsed on web <a href="picorebook/docs/CSimpl/" target="_blank"><strong>here</strong></a>. Please contact me if you are interested the original Isabelle sources.
+
+
+	<h3 class="metro"><strong class="metro">Publications</strong></h3>  <hr />
+		<ol>
+		
+		<li>
+			David Sanan, <strong>Yongwang Zhao#</strong>, Yang Liu, Shangwei Lin, "CSim2 : Compositional Top-down Verification of Concurrent Systems Using Rely-Guarantee", <em>
+			<u>ACM Transactions on Programming Languages and Systems (TOPLAS) </u></em>, Vol. 43, No. 1,  February 2021, pp. 2:1 - 2:46 . 
+		  <a href="https://dl.acm.org/doi/pdf/10.1145/3436808" target="_blank"><strong>[PDF download]</strong></a>
+		  </li>
+	  
+		<li>David Sanan, <strong>Yongwang Zhao</strong>, Zhe Hou, Fuyuan Zhang, Alwen Tiu, Yang Liu, "CSimpl: A Rely-Guarantee-Based Framework for Verifying Concurrent Programs", 
+			<em><u>23rd International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS 2017, ETAPS)</u></em>, 22-29 April 2017, Uppsala, Sweden, pp. 481-498 <a href="https://link.springer.com/content/pdf/10.1007/978-3-662-54577-5_28.pdf" target="_blank"><strong>[PDF download]</strong></a> 
+		</li>
+		</ol>
+		
+	  
+	</div>
+</div>
+						              
+						                    
+                    	
+                    	  </div>
+                    	</div>
+                   </div> 
+                </div> <!-- End first group -->
+
+            </div>
+        </div> <!-- End of tiles -->
+
+        <footer data-load="footer.html">
+            
+        </footer>
+        
+        
+    </div>
+
+    <script src="js/hitua.js"></script>
+
+</body>
+</html>
