@@ -1,0 +1,1249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0244)http://127.0.0.1:50198/c3097003-0149-437b-b27b-41d4929a4424/preview?D%3A%5COneDrive+-+stu.xjtu.edu.cn%5C%E7%A7%91%E7%A0%94%5CPP%E6%A8%A1%E5%9E%8B%E9%A1%B9%E7%9B%AE%5CPP%E8%AE%BA%E6%96%87%5CPP_SecurityModel%28for+the+paper%29%5CSFRs%5CPP_SFR.thy -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/c3097003-0149-437b-b27b-41d4929a4424/fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/c3097003-0149-437b-b27b-41d4929a4424/fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/c3097003-0149-437b-b27b-41d4929a4424/fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/c3097003-0149-437b-b27b-41d4929a4424/fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/c3097003-0149-437b-b27b-41d4929a4424/fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/c3097003-0149-437b-b27b-41d4929a4424/fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/c3097003-0149-437b-b27b-41d4929a4424/fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/c3097003-0149-437b-b27b-41d4929a4424/fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/c3097003-0149-437b-b27b-41d4929a4424/fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/c3097003-0149-437b-b27b-41d4929a4424/fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/c3097003-0149-437b-b27b-41d4929a4424/fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/c3097003-0149-437b-b27b-41d4929a4424/fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('/c3097003-0149-437b-b27b-41d4929a4424/fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.contents { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+</style><title>Theory "PP_SFR"</title></head>
+<body data-new-gr-c-s-check-loaded="14.1149.0" data-gr-ext-installed=""><pre class="source"><span class="comment1">(*This file describes security functional requirements defined in GlobePlatFrom Protection Profile.
+Written by Zhejiang University, Hangzhou, China.*)</span>
+
+
+<span class="keyword1"><span class="command">theory</span></span> PP_SFR
+  <span class="keyword2"><span class="keyword">imports</span></span> Main 
+          <span class="quoted">"PP_RSM"</span>
+          <span class="quoted">"../SOs/PP_Objectives"</span>
+          <span class="quoted">"PP_HCL"</span>
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"SFRs"</span></span></span>
+
+
+
+<span class="comment1">(*
+FMT_SMR.1 Security roles
+
+FMT_SMR.1.1 The TSF shall maintain the roles:
+o TSF
+o TA_User
+o [assignment: the authorized identified roles].
+FMT_SMR.1.2 The TSF shall be able to associate users with roles.
+Application Note:
+The TA_User role is the TSF running on behalf of a TA, upon request from the REE (by Client Applications) or 
+from other TAs.
+*)</span>
+
+
+
+<span class="keyword1"><span class="command">locale</span></span> FMT_SMR <span class="main">=</span>
+  <span class="comment1">(*FMT_SMR.1.1:The TSF shall maintain the roles*)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">TSF</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'r</span>"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">TA_User</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'r</span>"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> <span class="quoted"><span class="quoted">"<span class="free">TSF</span> <span class="main">≠</span> <span class="free">TA_User</span>"</span></span>
+  <span class="comment1">(*FMT_SMR.1.2:The TSF shall be able to associate users with roles*)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">associate</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="tfree">'ta</span><span class="main">,</span><span class="tfree">'ca</span><span class="main">)</span> user <span class="main">⇒</span> <span class="tfree">'r</span> <span class="main">⇒</span> <span class="tfree">'s</span>"</span></span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FMT_SMR
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">metis</span> FMT_SMR_axioms FMT_SMR_def HCL_FMT_SMR_def<span class="main">)</span>
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+<span class="keyword1"><span class="command">print_locale</span></span> FMT_SMR
+
+
+
+<span class="comment1">(*
+FAU_ARP.1 Security alarms
+
+FAU_ARP.1.1 The TSF shall take [assignment: list of actions] upon detection of a potential security violation.
+Refinement:
+The TSF shall take the following actions upon detection of a potential security violation:
+o Detection of consistency violation of TA data, TA code or TEE data: [assignment: associated
+actions]
+o Detection of TEE firmware integrity violation: [assignment: associated actions]
+o [assignment: list of implementation-dependent potential security violations and associated
+actions].
+*)</span>
+<span class="keyword1"><span class="command">locale</span></span> FAU_ARP <span class="main">=</span> 
+    <span class="comment1">(*take actions to a newe state when violation detected*)</span>
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">secure_violation</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'s</span>"</span></span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FAU_ARP
+   <span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+<span class="comment1">(*
+FDP_SDI.2 Stored data integrity monitoring and action
+
+FDP_SDI.2.1 The TSF shall monitor user data stored in containers controlled by the TSF for [assignment:
+integrity errors] on all objects, based on the following attributes: [assignment: user data attributes].
+Refinement:
+The TSF shall monitor TEE runtime data, TEE persistent data, TA data and keys, and TA code stored in 
+containers controlled by the TSF for authenticity and consistency errors on all objects, based on the 
+following attributes: [assignment: list of attributes of TEE runtime data, TEE persistent data, TA data
+and keys, and TA code]
+
+FDP_SDI.2.2 Upon detection of a data integrity error, the TSF shall [assignment: action to be taken].
+Refinement:
+o Upon detection of authenticity or consistency errors in TEE runtime data or TEE persistent data, 
+  the TSF shall [assignment: action that does not depend on the compromised data]
+o Upon detection of TA code authenticity or consistency errors, the TSF shall abort the execution
+  of the TA instance
+o Upon detection of TA data or TA keys authenticity or consistency errors, the TSF shall:  
+   Not give back any compromised data
+ [assignment: action that does not depend on the compromised data]
+o [assignment: other actions to be taken].
+
+Application Note:
+This SFR applies to TEE runtime data in volatile memory (this data is not stored in non-volatile memory) and 
+to TEE persistent data, TA data and keys, and TA code in both volatile and non-volatile memory.
+This SFR is used for both TSF and user data as similar mechanisms are involved to protect the consistency 
+of this data. In FDP_SDI.2.1, attributes stand for the information elements that allow the detection of a possible 
+violation of the authenticity or consistency property, for example a checksum.
+*)</span>
+
+
+
+
+<span class="comment1">(*including FDP_SDI and FPT_TEE*)</span>
+<span class="keyword1"><span class="command">locale</span></span> FDP_SDI <span class="main">=</span> State <span class="main">+</span> 
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">on_detect_TA_code_auth</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span> <span class="main">⇒</span> <span class="tfree">'s</span>"</span></span> <span class="comment1">(* detect the changes of state for TA code in memory, 
+                                                whether after or before the execution of TA instance *)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">verify</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'bc</span><span class="main">⇒</span><span class="tfree">'k</span><span class="main">⇒</span>bool"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">t</span> <span class="bound">ta</span><span class="main">.</span> <span class="free">verify</span> <span class="main">(</span><span class="free">TA_bincode</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">)</span> <span class="main">(</span><span class="free">TA_checkcode</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">)</span> 
+                  <span class="main">∧</span> <span class="bound">t</span> <span class="main">=</span> <span class="free">on_detect_TA_code_auth</span> <span class="bound">s</span> 
+                  <span class="main">∧</span> <span class="main">¬</span> <span class="free">verify</span> <span class="main">(</span><span class="free">TA_bincode</span> <span class="bound">t</span> <span class="bound">ta</span><span class="main">)</span> <span class="main">(</span><span class="free">TA_checkcode</span> <span class="bound">t</span> <span class="bound">ta</span><span class="main">)</span> <span class="main">⟶</span> <span class="free">TA_state</span> <span class="bound">t</span> <span class="bound">ta</span> <span class="main">=</span> <span class="free">TA_state_abort</span>"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">on_detect_TEE_auth</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span> <span class="main">⇒</span> <span class="tfree">'s</span>"</span></span> <span class="comment1">(* detect the changes of state for TEE persistent data in memory*)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">verify2</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'tee_data</span><span class="main">⇒</span>OB_SRT<span class="main">⇒</span>bool"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">t</span><span class="main">.</span> <span class="free">verify2</span> <span class="main">(</span><span class="free">TEE_persist</span> <span class="bound">s</span><span class="main">)</span> <span class="main">(</span><span class="free">getSoc</span> <span class="bound">s</span><span class="main">)</span> 
+                  <span class="main">∧</span> <span class="bound">t</span> <span class="main">=</span> <span class="free">on_detect_TEE_auth</span> <span class="bound">s</span> 
+                  <span class="main">∧</span> <span class="main">¬</span> <span class="free">verify2</span> <span class="main">(</span><span class="free">TEE_persist</span> <span class="bound">t</span><span class="main">)</span> <span class="main">(</span><span class="free">getSoc</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span> <span class="free">TEE_state</span> <span class="bound">t</span> <span class="main">=</span> <span class="free">TEE_state_abort</span>"</span></span>
+          <span class="comment1">(* when state changes, if bincode is authenticated in first state 
+              and not in second state, the TA should be aborted *)</span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FDP_SDI 
+      <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> del_insts<span class="main"><span class="main">)</span></span> FDP_SDI_axioms 
+          FDP_SDI_def HCL_FDP_SDI_def<span class="main">)</span>
+
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+
+
+<span class="comment1">(*
+FPT_TEE.1 Testing of external entities
+FPT_TEE.1.1 The TSF shall run a suite of tests prior to execution and [assignment: other conditions] to 
+check the fulfilment of authenticity of TA code.
+FPT_TEE.1.2 If the test fails, the TSF shall not start the execution of the TA instance.
+*)</span>
+
+<span class="comment1">(*described in FDP_SDI*)</span>
+<span class="keyword1"><span class="command">locale</span></span> FPT_TEE 
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FPT_TEE
+      <span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+
+<span class="keyword2"><span class="keyword">end</span></span>
+<span class="comment1">(*
+FPT_FLS.1 Failure with preservation of secure state
+
+FPT_FLS.1.1 The TSF shall preserve a secure state when the following types of failures occur:
+o Device binding failure
+o Cryptographic operation failure
+o Invalid CA requests, in particular bad-formed requests
+o Panic states
+o TA code, TA data, or TA keys authenticity or consistency failure
+o authenticity or consistency failure of TEE data (in particular TA properties, TEE keys and
+all security attributes)
+o TEE firmware integrity failure
+o TEE initialisation failure
+o Unexpected commands
+o [assignment: list of additional types of failures that may affect the TSF].
+Application Note:
+ For GlobalPlatform TEE Internal Core API, panic states are defined in [IAPI].
+ Device binding failure occurs when (part of) the stored data has not been bound by the same TEE.
+ The ST author shall define the characteristics of the secure state. In particular, the transition between 
+a failure state and the secure state shall protect TEE and user data and keys confidentiality.
+*)</span>
+
+
+<span class="comment1">(*
+=============================
+FCS_COP.1/Internals Cryptographic operation
+
+FCS_COP.1.1 The TSF shall perform [assignment: list of cryptographic operations for the verification of 
+the authenticity of TEE firmware and TA code, for the consistency and the confidentiality of Trusted 
+Storage, and for any other TSF internal function] in accordance with a specified cryptographic algorithm 
+[assignment: cryptographic algorithms] and cryptographic key sizes [assignment: cryptographic key
+sizes] that meet the following: [assignment: [CRec] and list of applicable standards].
+
+Application Note:
+The Security Target shall provide the details of the cryptography used for providing internal TSF functions, 
+which must meet GlobalPlatform’s [CRec]. The ST editor shall provide the information on the keys used for 
+such operations. For instance, the protection of the consistency and confidentiality of Trusted Storage are 
+expected to use the TEE storage root of trust key.
+=============================
+*)</span>
+
+
+<span class="keyword1"><span class="command">locale</span></span> FCS_COP_Internal <span class="main">=</span>
+  <span class="comment1">(*check if the cryptographic operations are allowed*)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">key_check</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'k</span><span class="main">⇒</span><span class="main">(</span><span class="tfree">'operation</span><span class="main">,</span><span class="tfree">'size</span><span class="main">,</span><span class="tfree">'algorithm</span><span class="main">,</span><span class="tfree">'standards</span><span class="main">)</span> restriction<span class="main">⇒</span>bool"</span></span>
+ <span class="comment1">(* assumes key_cor_use:"∀restriction k. (key_check k restriction) = True"*)</span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FCS_COP_Internal 
+        <span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+
+<span class="keyword1"><span class="command">print_locale</span></span> FCS_COP_Internal
+
+
+
+<span class="keyword1"><span class="command">locale</span></span> FPT_FLS <span class="main">=</span>  FDP_SDI <span class="main">+</span> FCS_COP_Internal <span class="main">+</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">device_bind_detect</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'s</span>"</span></span><span class="comment1">(*after detection and related action, the state should be secure*)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">valid_ca_action</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'a</span><span class="main">⇒</span><span class="tfree">'ca</span><span class="main">⇒</span>bool"</span></span>
+  <span class="keyword2"><span class="keyword">and</span></span> <span class="free">valid_ta_action</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'a</span><span class="main">⇒</span><span class="tfree">'ta</span><span class="main">⇒</span>bool"</span></span>
+  <span class="keyword2"><span class="keyword">and</span></span> <span class="free">secure_state</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span>bool"</span></span>
+  <span class="comment1">(* and move_to_secure_state1::"State⇒State" *)</span>
+  <span class="keyword2"><span class="keyword">and</span></span> <span class="free">all_failure_state</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span>bool"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">panic_state</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'ta</span><span class="main">⇒</span>bool"</span></span><span class="comment1">(*for TA state, not whole system state*)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">other_failure</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span>bool"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">move_to_secure_state</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'s</span>"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> bind_secure<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">t</span><span class="main">.</span> <span class="bound">t</span> <span class="main">=</span> <span class="free">device_bind_detect</span> <span class="bound">s</span> <span class="main">⟶</span><span class="free">secure_state</span> <span class="bound">t</span>"</span></span>
+  
+  <span class="comment1">(*Cryptographic operation failure: as key_restrict must be true according to FCS_COP, so ignored here*)</span>
+  
+  <span class="comment1">(*Invalid CA requests, in particular bad-formed requests; Unexpected commands*)</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">a</span> <span class="bound">ta</span> <span class="bound">ca</span><span class="main">.</span> <span class="main">(</span><span class="main">¬</span> <span class="free">valid_ca_action</span> <span class="bound">s</span> <span class="bound">a</span> <span class="bound">ca</span> <span class="main">∨</span> <span class="main">¬</span> <span class="free">valid_ta_action</span> <span class="bound">s</span> <span class="bound">a</span> <span class="bound">ta</span><span class="main">)</span> <span class="main">⟶</span> <span class="free">all_failure_state</span> <span class="bound">s</span>"</span></span>
+  
+  <span class="comment1">(*Panic states *)</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ta</span><span class="main">.</span> <span class="free">panic_state</span> <span class="bound">s</span> <span class="bound">ta</span> <span class="main">⟶</span> <span class="free">all_failure_state</span> <span class="bound">s</span>"</span></span>
+
+  <span class="comment1">(*TA code, TA data, or TA keys authenticity or consistency failure*)</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">t</span><span class="main">.</span> <span class="bound">t</span> <span class="main">=</span> <span class="free">on_detect_TA_code_auth</span> <span class="bound">s</span> <span class="main">⟶</span> <span class="free">secure_state</span> <span class="bound">t</span>"</span></span>
+  <span class="comment1">(*other failure*)</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> <span class="free">other_failure</span> <span class="bound">s</span>  <span class="main">⟶</span> <span class="free">all_failure_state</span> <span class="bound">s</span>"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> <span class="free">all_failure_state</span> <span class="bound">s</span> <span class="main">∧</span> <span class="bound">s'</span> <span class="main">=</span> <span class="free">move_to_secure_state</span> <span class="bound">s</span> <span class="main">⟶</span><span class="free">secure_state</span> <span class="bound">s'</span>"</span></span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FPT_FLS
+      <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> ccfv_SIG<span class="main"><span class="main">)</span></span> FDP_SDI_axioms FDP_SDI_def FPT_FLS.axioms<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> 
+      FPT_FLS_axioms FPT_FLS_axioms_def HCL_FDP_SDI.intro 
+      HCL_FPT_FLS_axioms.intro HCL_FPT_FLS_def<span class="main">)</span>
+   
+       
+<span class="keyword2"><span class="keyword">end</span></span>
+
+
+<span class="keyword1"><span class="command">print_locale</span></span> FPT_FLS
+
+
+
+<span class="comment1">(*notice that it relates to physical part of TEE, which will not be modeled*)</span>
+<span class="keyword1"><span class="command">locale</span></span> FDP_ITT
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FDP_ITT 
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+       
+<span class="keyword2"><span class="keyword">end</span></span>
+
+
+
+<span class="comment1">(*
+FMT_SMF.1 Specification of Management Functions
+FMT_SMF.1.1 The TSF shall be capable of performing the following management functions:
+  o Management of TA keys security attributes
+  o Provision of Trusted Storage security attributes to authorised users.
+*)</span>
+
+<span class="keyword1"><span class="command">locale</span></span> FMT_SMF <span class="main">=</span>
+  <span class="comment1">(*Management of TA keys security attributes*)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">key_manage</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'k</span> <span class="main">⇒</span> <span class="main">(</span><span class="tfree">'ta</span><span class="main">,</span><span class="tfree">'ca</span><span class="main">)</span> user <span class="main">⇒</span>bool"</span></span>
+  <span class="comment1">(*Provision of Trusted Storage security attributes to authorised users.*)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">ts_manage</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'ts</span> <span class="main">⇒</span> <span class="main">(</span><span class="tfree">'ta</span><span class="main">,</span><span class="tfree">'ca</span><span class="main">)</span> user <span class="main">⇒</span>bool"</span></span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FMT_SMF 
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+       
+<span class="keyword2"><span class="keyword">end</span></span>
+
+<span class="keyword1"><span class="command">print_locale</span></span> FMT_SMF
+
+<span class="comment1">(*
+FAU_SAR.1 Audit review
+FAU_SAR.1.1 The TSF shall provide all users with the capability to read the TEE identifier from the audit 
+records.
+FAU_SAR.1.2 The TSF shall provide the audit records in a manner suitable for the user to interpret the 
+information
+*)</span>
+
+<span class="keyword1"><span class="command">locale</span></span> FAU_SAR <span class="main">=</span> State <span class="main">+</span>
+      <span class="comment1">(*The TSF shall provide all users with the capability to read the TEE identifier from the audit 
+      records*)</span>
+      <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">ReadTEEId</span> <span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'ar</span><span class="main">⇒</span>nat"</span></span><span class="comment1">(*ar abbrv audit records*)</span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FAU_SAR 
+      <span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+<span class="comment1">(*
+FAU_STG.1 Protected audit trail storage
+FAU_STG.1.1 The TSF shall protect the stored audit records in the audit trail from unauthorised deletion.
+FAU_STG.1.2 The TSF shall be able to prevent unauthorised modifications to the stored audit records in the 
+audit trail.
+Application Note:
+ The audit record in this SFR refers to the TEE identifier. This unique identifier is stored in the TOE 
+before TOE delivery. It can be generated on-TEE or off-TEE (the Security Target shall specify the 
+generation method).
+ This identifier shall not be modified during the end-usage phase.
+ The Security Target shall indicate in which type of persistent memory it is stored.
+*)</span>
+
+<span class="keyword1"><span class="command">locale</span></span> FAU_STG <span class="main">=</span> FAU_SAR <span class="main">+</span>
+      <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">getAR</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'ar</span>"</span></span>
+      <span class="comment1">(*The TSF shall be able to prevent unauthorised modifications to the stored audit records*)</span>
+      <span class="keyword2"><span class="keyword">assumes</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> <span class="main">(</span><span class="free">ReadTEEId</span><span class="main">∘</span><span class="free">getAR</span><span class="main">)</span> <span class="bound">s</span> <span class="main">=</span> <span class="main">(</span><span class="free">ReadTEEId</span><span class="main">∘</span><span class="free">getAR</span><span class="main">)</span> <span class="bound">s'</span>"</span></span><span class="comment1">(*The audit record in this SFR refers to the TEE identifier.*)</span>
+      
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FAU_STG 
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">meson</span> FAU_STG_axioms FAU_STG_def HCL_FAU_STG.intro<span class="main">)</span>
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+<span class="comment1">(*
+FCS_RNG.1 Random numbers generation
+FCS_RNG.1.1 The TSF shall provide a [selection: physical, non-physical true, deterministic, hybrid,
+hybrid deterministic] random number generator that implements: [assignment: list of security
+capabilities].
+FCS_RNG.1.2 The TSF shall provide random numbers that meet [assignment: a defined quality metric].
+Application Note:
+The ST author shall complete the elements FCS_RNG.1.1 and FCS_RNG_1.2. The ST author should define 
+the quality of the generated random numbers using for instance the min-entropy or Shannon entropy. The 
+assignment of a quality metric shall ensure sufficient randomness of the random numbers near to the uniform 
+distributed random variables. The evaluation of the random number generator shall follow a recognized 
+methodology, e.g. AIS31. This SFR is also used to ensure statistical uniqueness of the TEE identification if it 
+is generated on the TEE.
+*)</span>
+
+<span class="keyword1"><span class="command">locale</span></span> FCS_RNG <span class="main">=</span>
+    <span class="comment1">(*The TSF shall provide a random number generator*)</span>
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">RNGen</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"nat<span class="main">⇒</span>nat"</span></span>
+    <span class="comment1">(*The assignment of a quality metric shall ensure sufficient randomness*)</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> RNdiff <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">x</span> <span class="bound">x'</span><span class="main">.</span> <span class="free">RNGen</span> <span class="bound">x</span> <span class="main">≠</span> <span class="free">RNGen</span> <span class="bound">x'</span>"</span></span>
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FCS_RNG
+  <span class="keyword1"><span class="command">using</span></span> RNdiff <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>  
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+
+
+<span class="comment1">(*
+FPT_INI.1 TSF initialisation
+FPT_INI.1.1 The TOE shall provide an initialization function which is self-protected for integrity and 
+authenticity. 
+Application note: This covers for instance code/data that are stored and executed from non-modifiable 
+memory at boot time, the immutable root-of-trust, and other OTP values such as versions and identifiers. 
+
+FPT_INI.1.2 The TOE initialization function shall ensure that certain properties hold on certain elements 
+immediately before establishing the TSF in a secure initial state, as specified below: 
+    Properties                                  Elements
+1 authenticity and integrity                   TEE firmware
+2 prevention of downgrade to previous versions TEE firmware
+3 integrity                                    TEE Storage Root of Trust
+4 integrity                                    TEE identification data
+…
+[assignment: list of implementation-dependent 
+verifications]
+[assignment: list of firmware, software or data]
+Application note: Firmware downgrade verification has to rely on data residing on the TOE, for instance on 
+One Time Programmable (OTP) memories or EEPROM.
+FPT_INI.1.3 The TOE initialization function shall detect and respond to errors and failures during initialization 
+such that the TOE [selection: is halted, successfully completes initialization with [selection: reduced 
+functionality, signaling error state, [assignment: list of actions]]. 
+FPT_INI.1.4 The TOE initialization function shall only interact with the TSF in [assignment: defined methods]
+during initialization. 
+*)</span>
+
+
+
+<span class="keyword1"><span class="command">locale</span></span> FPT_INI <span class="main">=</span>
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">Init</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"sysconf <span class="main">⇒</span><span class="main">(</span><span class="tfree">'s</span> <span class="main">×</span> bool<span class="main">)</span>"</span></span><span class="comment1">(*an initialization function*)</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">str</span><span class="main">.</span> snd<span class="main">(</span><span class="free">Init</span> <span class="free">sc</span><span class="main">)</span> <span class="main">⟶</span>checkinitcode <span class="free">sc</span> <span class="bound">str</span> <span class="main">∧</span> checkTEEID <span class="free">sc</span> <span class="bound">str</span>  <span class="main">∧</span> checkRoT <span class="free">sc</span> <span class="bound">str</span> "</span></span>
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FPT_INI 
+      <span class="keyword1"><span class="command">using</span></span> checkinitcode_def checkTEEID_def checkRoT_def 
+      <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">meson</span> FPT_INI_axioms FPT_INI_def HCL_FPT_INI.intro<span class="main">)</span>
+  
+<span class="keyword2"><span class="keyword">end</span></span>
+
+
+
+
+<span class="comment1">(*
+FPT_STM.1/Instance time Reliable time stamps
+FPT_STM.1.1/Instance time The TSF shall be able to provide reliable time stamps.
+
+Refinement:
+   The TSF shall be able to provide time stamps to TA instances such that time stamps 
+   are monotonic during the TA instance lifetime
+
+Application Note:
+  The refinement provides the meaning of the expected reliability
+*)</span>
+
+<span class="keyword1"><span class="command">locale</span></span> FPT_STM <span class="main">=</span> State <span class="main">+</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">get_time_stamps</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span>nat"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">get_TA_offset</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'ta</span><span class="main">⇀</span>nat"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">get_TA_time</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'ta</span><span class="main">⇀</span>nat"</span></span>
+  <span class="comment1">(*time stamps are monotonic during the TA instance lifetime*)</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> stamps_monotonic<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">a</span> <span class="bound">t</span><span class="main">.</span> <span class="free">Trans</span> <span class="bound">s</span> <span class="bound">a</span> <span class="main">=</span> <span class="bound">t</span> <span class="main">⟶</span> <span class="main">(</span><span class="free">get_time_stamps</span> <span class="bound">s</span><span class="main">)</span> <span class="main">≤</span> <span class="main">(</span><span class="free">get_time_stamps</span> <span class="bound">t</span><span class="main">)</span>"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> TAoffseteq<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">t</span> <span class="bound">ta</span><span class="main">.</span> <span class="free">get_TA_offset</span> <span class="bound">s</span> <span class="bound">ta</span> <span class="main">=</span> <span class="free">get_TA_offset</span> <span class="bound">t</span> <span class="bound">ta</span>"</span></span>  
+  <span class="keyword2"><span class="keyword">assumes</span></span> TAtimecount<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ta</span><span class="main">.</span> <span class="free">get_TA_offset</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">≠</span>None <span class="main">⟶</span><span class="main">(</span><span class="free">get_TA_time</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">)</span><span class="main">≠</span>None 
+          <span class="main">∧</span><span class="main">(</span> the <span class="main">(</span><span class="free">get_TA_time</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">)</span> <span class="main">=</span><span class="main">(</span><span class="free">get_time_stamps</span> <span class="bound">s</span><span class="main">)</span> <span class="main">+</span> the <span class="main">(</span><span class="free">get_TA_offset</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">)</span><span class="main">)</span>"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> offsettime<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ta</span><span class="main">.</span> <span class="main">(</span><span class="free">get_TA_time</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">)</span><span class="main">≠</span>None<span class="main">⟶</span> <span class="free">get_TA_offset</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">≠</span>None"</span></span>
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FPT_STM
+    <span class="keyword1"><span class="command">using</span></span> HCL_FPT_STM.intro TAoffseteq TAtimecount 
+      offsettime stamps_monotonic <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span> 
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+<span class="keyword1"><span class="command">print_locale</span></span> FPT_STM
+
+
+
+<span class="comment1">(*
+FDP_RIP.1/Runtime Subset residual information protection
+
+FDP_RIP.1.1/Runtime The TSF shall ensure that any previous information content of a resource is made 
+unavailable upon the deallocation of the resource from the following objects: TEE and TA runtime
+objects.
+Application Note:
+This operation particularly applies upon:
+ Failure detection (cf. FPT_FLS.1);
+ TA instance and TA session closing
+
+------------------------------------------------------------------
+
+FPT_ITT.1/Runtime Basic internal TSF data transfer protection
+
+FPT_ITT.1.1/Runtime The TSF shall protect TSF data from disclosure and modification when it is 
+transmitted between separate parts of the TOE.
+Application Note:
+The resources used by the TEE may reside in physically separated parts
+
+//maybe means data transmission in diff domain should be confident and integrete
+*)</span>
+
+
+<span class="keyword1"><span class="command">locale</span></span> FDP_RIP <span class="main">=</span> FPT_FLS <span class="main">+</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">available</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span> <span class="main">⇒</span><span class="tfree">'resource</span><span class="main">⇒</span>bool"</span></span><span class="comment1">(*for example, maps to None then available*)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">getResByInstanceId</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'cid</span><span class="main">⇒</span><span class="tfree">'resource</span>"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">getResBySessionId</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'sid</span><span class="main">⇒</span><span class="tfree">'resource</span>"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">deallocate</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'resource</span><span class="main">⇒</span><span class="tfree">'s</span>"</span></span> 
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">Close_Instance</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'cid</span><span class="main">⇒</span><span class="tfree">'s</span>"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">Close_Session</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'sid</span><span class="main">⇒</span><span class="tfree">'s</span>"</span></span>
+  <span class="comment1">(*relations between close_Session and close_Instance with deallocate*)</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> Ins_res<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">cid</span><span class="main">.</span> <span class="free">res1</span> <span class="main">=</span> <span class="free">getResByInstanceId</span> <span class="bound">s</span> <span class="bound">cid</span> 
+                           <span class="main">∧</span><span class="main">(</span><span class="free">getResByInstanceId</span> <span class="main">(</span><span class="free">Close_Instance</span> <span class="bound">s</span> <span class="bound">cid</span><span class="main">)</span> <span class="bound">cid</span> 
+                                <span class="main">=</span> <span class="free">getResByInstanceId</span> <span class="main">(</span><span class="free">deallocate</span> <span class="bound">s</span> <span class="free">res1</span><span class="main">)</span> <span class="bound">cid</span><span class="main">)</span>"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> Ses_res<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">sid</span><span class="main">.</span> <span class="free">res1</span> <span class="main">=</span> <span class="free">getResBySessionId</span> <span class="bound">s</span> <span class="bound">sid</span> 
+                           <span class="main">∧</span><span class="main">(</span><span class="free">getResBySessionId</span> <span class="main">(</span><span class="free">Close_Session</span> <span class="bound">s</span> <span class="bound">sid</span><span class="main">)</span> <span class="bound">sid</span> 
+                                <span class="main">=</span> <span class="free">getResBySessionId</span> <span class="main">(</span><span class="free">deallocate</span> <span class="bound">s</span> <span class="free">res1</span><span class="main">)</span> <span class="bound">sid</span><span class="main">)</span>"</span></span>
+  <span class="comment1">(*any previous information content of a resource is made unavailable upon the deallocation*)</span>
+  <span class="comment1">(*Failure detection (cf. FPT_FLS.1);*)</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> upon_failure<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">res</span><span class="main">.</span> <span class="free">all_failure_state</span> <span class="bound">s</span> 
+                                     <span class="main">∧</span> <span class="free">s'</span> <span class="main">=</span> <span class="free">deallocate</span> <span class="bound">s</span> <span class="bound">res</span> <span class="main">⟶</span> <span class="main">¬</span><span class="main">(</span><span class="free">available</span> <span class="free">s'</span> <span class="bound">res</span><span class="main">)</span>"</span></span>
+  <span class="comment1">(*TA instance and TA session closing*)</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> upon_ins_closing<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">s'</span> <span class="bound">cid</span><span class="main">.</span> <span class="bound">s'</span> <span class="main">=</span> <span class="free">Close_Instance</span> <span class="bound">s</span> <span class="bound">cid</span> 
+                                            <span class="main">⟶</span> <span class="main">¬</span><span class="main">(</span><span class="free">available</span> <span class="bound">s</span> <span class="main">(</span><span class="free">getResByInstanceId</span> <span class="bound">s</span> <span class="bound">cid</span><span class="main">)</span><span class="main">)</span>"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> upon_ses_closing<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">s'</span> <span class="bound">sid</span><span class="main">.</span> <span class="bound">s'</span> <span class="main">=</span> <span class="free">Close_Session</span> <span class="bound">s</span> <span class="bound">sid</span> 
+                                            <span class="main">⟶</span> <span class="main">¬</span><span class="main">(</span><span class="free">available</span> <span class="bound">s</span> <span class="main">(</span><span class="free">getResBySessionId</span> <span class="bound">s</span> <span class="bound">sid</span><span class="main">)</span><span class="main">)</span>"</span></span>
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FDP_RIP
+<span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> FDP_RIP.axioms<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> FDP_RIP_axioms FDP_RIP_axioms_def FDP_SDI_axioms 
+FDP_SDI_def FPT_FLS.axioms<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> FPT_FLS_axioms FPT_FLS_axioms_def HCL_FDP_RIP.intro 
+HCL_FDP_RIP_axioms_def HCL_FDP_SDI_def HCL_FPT_FLS.intro HCL_FPT_FLS_axioms.intro<span class="main">)</span>
+
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+
+
+<span class="keyword1"><span class="command">print_locale</span></span> FDP_RIP
+
+<span class="comment1">(*TBD:d1 d2 should be parts in TEE, which are not included in this project, so maybe this locale should delete*)</span>
+<span class="keyword1"><span class="command">locale</span></span> FPT_ITT <span class="main">=</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">INTEGRITY</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'property</span>"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">CONFIDENTIALITY</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'property</span>"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">check_property</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'d</span><span class="main">⇒</span><span class="tfree">'d</span><span class="main">⇒</span><span class="tfree">'data</span><span class="main">⇒</span><span class="tfree">'property</span><span class="main">⇒</span>bool"</span></span>
+ 
+  <span class="keyword2"><span class="keyword">assumes</span></span> satisfy<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">d1</span> <span class="bound">d2</span> <span class="bound">data</span><span class="main">.</span> <span class="free">check_property</span> <span class="bound">s</span> <span class="bound">d1</span> <span class="bound">d2</span> <span class="bound">data</span> <span class="free">INTEGRITY</span> 
+                                <span class="main">∧</span> <span class="free">check_property</span> <span class="bound">s</span> <span class="bound">d1</span> <span class="bound">d2</span> <span class="bound">data</span> <span class="free">CONFIDENTIALITY</span>"</span></span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">interpretation</span></span> HCL_FPT_ITT 
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> HCL_FPT_ITT_def satisfy<span class="main">)</span>
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TA Keys Module"</span></span></span>
+<span class="comment1">(*
+FDP_ACC.1/TA_keys Subset access control
+FDP_ACC.1.1/TA_keys The TSF shall enforce the TA Keys Access Control SFP on:
+      o Subjects: S.API, S.TA_INSTANCE and any other subject in the TEE
+      o Objects: OB.TA_KEY
+      o Operations: OP.USE_KEY, OP.EXTRACT_KEY.
+*)</span>
+
+<span class="keyword1"><span class="command">locale</span></span> FDP_ACC_TK
+
+
+<span class="comment1">(*
+FDP_ACF.1/TA_keys Security attribute based access control
+FDP_ACF.1.1/TA_keys The TSF shall enforce the TA Keys Access Control SFP to objects based on the 
+following: OB.TA_KEY.usage, OB.TA_KEY.owner, OB_TA_KEY.isExtractable, and S.API.caller.
+FDP_ACF.1.2/TA_keys The TSF shall enforce the following rules to determine if an operation among 
+controlled subjects and controlled objects is allowed:
+o OP.USE_KEY is allowed if the following conditions hold:
+ The TA instance that requested the operation to the API owns the key (S.API.caller =
+OB.TA_KEY.owner)
+ The intended usage of the key (OB.TA_KEY.usage) matches the requested operation
+o OP.EXTRACT_KEY is allowed if the following conditions hold:
+ The TA instance that requested the operation to the API owns the key (S.API.caller =
+OB.TA_KEY.owner)
+ The operation attempts to extract the public part of OB.TA_KEY or the key is extractable
+(OB.TA_KEY.isExtractable = True).
+FDP_ACF.1.3/TA_keys The TSF shall explicitly authorise access of subjects to objects based on the following 
+additional rules: [assignment: rules, based on security attributes, that explicitly authorise access of
+subjects to objects].
+FDP_ACF.1.4/TA_keys The TSF shall explicitly deny access of subjects to objects based on the following 
+additional rules:
+o Any access to a user key attempted directly from S.TA_INSTANCE or any other subject of
+the TEE that is not S.API
+o Any access to a user key attempted from S.API without valid caller (S.API.caller is
+undefined)
+o [assignment: rules, based on security attributes, that explicitly deny access of subjects to
+objects].
+Application Note:
+This requirement states access conditions to keys through the TEE Internal Core API only: OP.USE_KEY and 
+OP.EXTRACT_KEY stand for operations of the API.
+FDP_ACF.1.3/TA_keys: Note that ownership in the current TEE internal Core API specification is limited to 
+each TA having access to all, and only to, its own objects.
+*)</span>
+
+
+
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">isSUBvalidforkey</span> <span class="main">::</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="tfree">'cid</span><span class="main">,</span><span class="tfree">'d</span><span class="main">)</span> SUBJECT<span class="main">⇒</span>bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span> 
+                  <span class="quoted"><span class="quoted">"<span class="free">isSUBvalidforkey</span> <span class="free"><span class="bound"><span class="entity">sub</span></span></span> <span class="main">≡</span> <span class="keyword1">case</span> <span class="free"><span class="bound"><span class="entity">sub</span></span></span> <span class="keyword1">of</span> api <span class="main"><span class="bound">_</span></span> <span class="main">⇒</span>True
+                                                        <span class="main">|</span><span class="main"><span class="bound">_</span></span><span class="main">⇒</span>False"</span></span>
+
+<span class="keyword1"><span class="command">locale</span></span> FDP_ACF_TK <span class="main">=</span>
+      <span class="comment1">(*FDP_ACF 1.1,1.2,1.3/TA_keys*)</span>
+      <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">opctrl</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span>OPERATION_TK<span class="main">⇒</span><span class="main">(</span><span class="tfree">'usage</span><span class="main">,</span><span class="tfree">'cid</span><span class="main">)</span> OB_TA_KEY<span class="main">⇒</span><span class="tfree">'cid</span> S_API<span class="main">⇒</span>bool"</span></span>
+      
+      <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">opmatch</span><span class="main">::</span><span class="quoted"><span class="quoted">"OPERATION_TK<span class="main">⇒</span><span class="main">(</span><span class="tfree">'usage</span><span class="main">,</span><span class="tfree">'cid</span><span class="main">)</span> OB_TA_KEY<span class="main">⇒</span>bool"</span></span>
+      <span class="keyword2"><span class="keyword">assumes</span></span> usekeyrule1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">key</span> <span class="bound">api</span><span class="main">.</span> <span class="main">(</span><span class="free">opctrl</span> <span class="bound">s</span> OP_USE_KEY <span class="bound">key</span> <span class="bound">api</span><span class="main">)</span> <span class="main">⟶</span> 
+                                owner <span class="bound">key</span> <span class="main">=</span>the<span class="main">(</span> caller <span class="bound">api</span><span class="main">)</span> <span class="main">∧</span> <span class="free">opmatch</span> OP_USE_KEY <span class="bound">key</span>"</span></span>
+      
+      <span class="keyword2"><span class="keyword">assumes</span></span> extractkeyrule1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">key</span> <span class="bound">api</span><span class="main">.</span> <span class="main">(</span><span class="free">opctrl</span> <span class="bound">s</span> OP_EXTRACT_KEY <span class="bound">key</span> <span class="bound">api</span><span class="main">)</span> <span class="main">⟶</span> 
+                                    owner <span class="bound">key</span> <span class="main">=</span> the <span class="main">(</span>caller <span class="bound">api</span><span class="main">)</span> <span class="main">∧</span> 
+                                  <span class="main">(</span><span class="free">opmatch</span> OP_EXTRACT_KEY <span class="bound">key</span> <span class="main">∨</span> <span class="free">isExtractable</span> <span class="bound">key</span><span class="main">)</span>"</span></span>
+<span class="comment1">(*
+      (*FDP_ACF.1.4/TA_keys*)
+      fixes opctrlsub::"'s⇒OPERATION_TK⇒('usage,'cid) OB_TA_KEY⇒('cid,'d) SUBJECT⇒bool"
+      assumes denyrule1:"∀s op sub key. opctrlsub s op key sub⟶isSUBvalidforkey sub"
+*)</span>
+
+
+
+<span class="comment1">(*
+FMT_MSA.1/TA_keys Management of security attributes
+FMT_MSA.1.1/TA_keys The TSF shall enforce the TA Keys Access Control SFP to restrict the ability to 
+change_default, query, and modify the security attributes OB.TA_KEY.usage,
+OB.TA_KEYS.isExtractable, and OB.TA_KEY.owner to the following roles:
+    o change_default, query and modify OB.TA_KEY.usage to TA_User role
+    o query OB.TA_KEY.owner to the TSF role.
+
+FMT_MSA.3/TA_keys Static attribute initialisation
+FMT_MSA.3.1/TA_keys The TSF shall enforce the TA Keys Access Control SFP to provide restrictive
+default values for security attributes that are used to enforce the SFP.
+FMT_MSA.3.2/TA_keys The TSF shall allow the TA_User role, [assignment: the authorised identified
+roles] to specify alternative initial values to override the default values when an object or information is 
+created.
+*)</span>
+
+
+<span class="comment1">(*FMT_MSA.1 FMT_MSA.3*)</span>
+<span class="keyword1"><span class="command">locale</span></span> FMT_MSA_TK <span class="main">=</span> FMT_SMR <span class="quoted"><span class="free">TA_User</span></span> <span class="quoted"><span class="free">TSF</span></span> <span class="quoted"><span class="free">associate</span></span>
+    <span class="keyword2"><span class="keyword">for</span></span> <span class="free">TSF</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'r</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">TA_User</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'r</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">associate</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="tfree">'ta</span><span class="main">,</span><span class="tfree">'ca</span><span class="main">)</span> user <span class="main">⇒</span> <span class="tfree">'r</span> <span class="main">⇒</span> <span class="tfree">'s</span>"</span></span>
+    <span class="main">+</span>
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">rolectrl</span><span class="main">::</span><span class="quoted"><span class="quoted">"AttrAction<span class="main">⇒</span><span class="tfree">'r</span><span class="main">⇒</span>bool"</span></span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> TAkeyrule<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">act</span><span class="main">.</span> <span class="free">rolectrl</span> <span class="bound">act</span> <span class="free">TA_User</span> <span class="main">⟶</span> <span class="bound">act</span> <span class="main">=</span> change_default <span class="main">∨</span> <span class="bound">act</span> <span class="main">=</span> query <span class="main">∨</span> <span class="bound">act</span> <span class="main">=</span> modify"</span></span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> TSFkeyrule<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">act</span><span class="main">.</span> <span class="free">rolectrl</span> <span class="bound">act</span> <span class="free">TSF</span> <span class="main">⟶</span> <span class="bound">act</span> <span class="main">=</span> query2"</span></span>
+
+
+<span class="keyword1"><span class="command">locale</span></span> TA_KEY1 <span class="main">=</span> FDP_ACC_TK <span class="main">+</span> FDP_ACF_TK <span class="main">+</span> FMT_MSA_TK <span class="main">+</span> FMT_SMF
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">interpretation</span></span> TA_KEY
+<span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> del_insts<span class="main"><span class="main">)</span></span> FMT_SMR_axioms FMT_SMR_def HCL_FDP_ACF_TK_def 
+      HCL_FMT_MSA_TK_axioms_def HCL_FMT_MSA_TK_def HCL_FMT_SMR.intro TA_KEY.intro 
+        TAkeyrule TSFkeyrule extractkeyrule1 usekeyrule1<span class="main">)</span>
+ 
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Trusted Storage Module"</span></span></span>
+
+<span class="comment1">(*
+FDP_ACC.1/Trusted Storage Subset access control
+FDP_ACC.1.1/Trusted Storage The TSF shall enforce the Trusted Storage Access Control SFP on:
+o Subjects: S.API
+o Objects: OB.TA_STORAGE, OB.SRT
+o Operations: OP.LOAD, OP.STORE.
+*)</span>
+
+<span class="keyword1"><span class="command">locale</span></span> FDP_ACC_TS
+
+<span class="comment1">(*
+FDP_ACF.1/Trusted Storage Security attribute based access control
+FDP_ACF.1.1/Trusted Storage The TSF shall enforce the Trusted Storage Access Control SFP to objects 
+based on the following: S.API.caller, OB.TA_STORAGE.owner, OB.TA_STORAGE.inExtMem,
+OB.TA_STORAGE.TEE_identity, and OB.SRT.TEE_identity.
+FDP_ACF.1.2/Trusted Storage The TSF shall enforce the following rules to determine if an operation among 
+controlled subjects and controlled objects is allowed:
+    o OP.LOAD of an object from OB.TA_STORAGE is allowed if the following conditions hold:
+     The operation is performed by S.API
+     The load request comes from an instance of the owner of the trusted storage space
+    (S.API.caller = OB.TA_STORAGE.owner)
+     OB.TA_STORAGE is bound to the TEE storage root of trust OB.SRT
+    (OB.TA_STORAGE.TEE_identity = OB.SRT.TEE_identity)
+     If OB.TA_STORAGE is located in external memory accessible to the REE
+    (OB.TA_STORAGE.inExtMem = True) then the object is authenticated and decrypted
+    before load
+    o OP.STORE of an object to OB.TA_STORAGE is allowed if the following conditions hold:
+     The operation is performed by S.API
+     The store request comes from an instance of the owner of the trusted storage space
+    (S.API.caller = OB.TA_STORAGE.owner)
+     OB.TA_STORAGE is bound to the TEE storage root of trust OB.SRT
+    (OB.TA_STORAGE.TEE_identity = OB.SRT.TEE_identity)
+     If OB.TA_STORAGE is located in external memory accessible to the REE
+    (OB.TA_STORAGE.inExtMem = True) then the object is signed and encrypted before
+    storage.
+FDP_ACF.1.3/Trusted Storage The TSF shall explicitly authorise access of subjects to objects based on the 
+following additional rules: [assignment: rules, based on security attributes, that explicitly authorise
+access of subjects to objects].
+FDP_ACF.1.4/Trusted Storage The TSF shall explicitly deny access of subjects to objects based on the 
+following additional rules:
+    o Any access to a trusted storage attempted from S.API without valid caller (S.API.caller =
+    undefined)
+    o Any access to a trusted storage that was bound to a different TEE
+    (OB.TA_STORAGE.TEE_identity different from OB.SRT.TEE_identity)
+    o Any access to a trusted storage from a subject different from S.API
+    o [assignment: rules, based on security attributes, that explicitly deny access of subjects to
+    objects].
+*)</span>
+
+
+<span class="comment1">(*datatype OPERATION_TS = OP_LOAD|OP_STORE*)</span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">checkbind</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'cid</span> OB_TA_STORAGE<span class="main">⇒</span>OB_SRT<span class="main">⇒</span>bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">checkbind</span> <span class="free"><span class="bound"><span class="entity">ts</span></span></span> <span class="free"><span class="bound"><span class="entity">srt</span></span></span> <span class="main">≡</span><span class="keyword1">if</span> <span class="main">(</span>TEE_identity <span class="free"><span class="bound"><span class="entity">ts</span></span></span> <span class="main">=</span> TEE_identity2 <span class="free"><span class="bound"><span class="entity">srt</span></span></span><span class="main">)</span> <span class="keyword1">then</span> True <span class="keyword1">else</span> False"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">tsSecCheck</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'a</span><span class="main">⇒</span><span class="tfree">'cid</span> OB_TA_STORAGE<span class="main">⇒</span><span class="tfree">'cid</span> S_API<span class="main">⇒</span>bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">tsSecCheck</span> <span class="free"><span class="bound"><span class="entity">op1</span></span></span> <span class="free"><span class="bound"><span class="entity">ts</span></span></span> <span class="free"><span class="bound"><span class="entity">api1</span></span></span> <span class="main">≡</span> <span class="keyword1">if</span> <span class="main">(</span>sowner <span class="free"><span class="bound"><span class="entity">ts</span></span></span> <span class="main">=</span>the<span class="main">(</span>caller <span class="free"><span class="bound"><span class="entity">api1</span></span></span><span class="main">)</span><span class="main">)</span> <span class="keyword1">then</span> True <span class="keyword1">else</span> False"</span></span>
+
+
+<span class="keyword1"><span class="command">locale</span></span> FDP_ACF_TS <span class="main">=</span>
+    <span class="comment1">(*the object is authenticated and decrypted before load*)</span>
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">decrypt</span> <span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'cid</span> OB_TA_STORAGE<span class="main">⇒</span>bool"</span></span>
+    <span class="comment1">(*the object is signed and encrypted before storage*)</span>
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">encrypt</span> <span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'cid</span> OB_TA_STORAGE<span class="main">⇒</span>bool"</span></span>
+   <span class="comment1">(* fixes checkbind ::"'cid OB_TA_STORAGE⇒OB_SRT⇒bool"    *)</span>
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">OP_LOAD</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'a</span>"</span></span>
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">OP_STORE</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'a</span>"</span></span>  
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">opctrl_ts</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'a</span><span class="main">⇒</span><span class="tfree">'cid</span> OB_TA_STORAGE<span class="main">⇒</span>OB_SRT<span class="main">⇒</span><span class="tfree">'cid</span> S_API<span class="main">⇒</span>bool"</span></span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> loadrule1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ts</span> <span class="bound">srt</span> <span class="bound">api</span> <span class="main">.</span> <span class="free">opctrl_ts</span> <span class="bound">s</span> <span class="free">OP_LOAD</span> <span class="bound">ts</span> <span class="bound">srt</span> <span class="bound">api</span> <span class="main">⟶</span> 
+                    Some <span class="main">(</span>caller <span class="bound">api</span><span class="main">)</span><span class="main">≠</span>None  <span class="main">∧</span> tsSecCheck <span class="free">OP_LOAD</span> <span class="bound">ts</span> <span class="bound">api</span> 
+                      <span class="main">∧</span> checkbind <span class="bound">ts</span> <span class="bound">srt</span> <span class="main">∧</span> <span class="main">(</span>inExtMem <span class="bound">ts</span> <span class="main">⟶</span> <span class="free">decrypt</span> <span class="bound">ts</span><span class="main">)</span>"</span></span>
+    <span class="comment1">(*Any access to a trusted storage attempted from S.API without valid caller*)</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> storerule1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ts</span> <span class="bound">srt</span> <span class="bound">api</span> <span class="main">.</span> <span class="free">opctrl_ts</span> <span class="bound">s</span> <span class="free">OP_STORE</span> <span class="bound">ts</span> <span class="bound">srt</span> <span class="bound">api</span> <span class="main">⟶</span> 
+                    Some <span class="main">(</span>caller <span class="bound">api</span><span class="main">)</span><span class="main">≠</span>None <span class="main">∧</span> tsSecCheck <span class="free">OP_STORE</span> <span class="bound">ts</span> <span class="bound">api</span> <span class="main">∧</span> 
+                    checkbind <span class="bound">ts</span> <span class="bound">srt</span> <span class="main">∧</span> <span class="main">(</span>inExtMem <span class="bound">ts</span> <span class="main">⟶</span> <span class="free">encrypt</span> <span class="bound">ts</span><span class="main">)</span>"</span></span>
+
+<span class="comment1">(*
+FDP_ROL.1/Trusted Storage Basic rollback
+FDP_ROL.1.1/Trusted Storage The TSF shall enforce Trusted Storage Access Control SFP to permit the 
+rollback of the unsuccessful or interrupted OP.STORE operation on the storage.
+FDP_ROL.1.2/Trusted Storage The TSF shall permit operations to be rolled back within the [assignment:
+boundary limit to which rollback may be performed].
+Application Note:
+This SFR enforces atomicity of any write operation [IAPI].
+*)</span>
+
+<span class="keyword1"><span class="command">locale</span></span> FDP_ROL <span class="main">=</span> State <span class="main">+</span>
+
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">OP_STORE</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'a</span>"</span></span><span class="comment1">(*refering to OP_STORE*)</span>
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">OP_LOAD</span> <span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'a</span>"</span></span>
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">store_detect</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'ta</span><span class="main">⇒</span>bool"</span></span><span class="comment1">(*judge if the unsuccessful or interrupted OP.STORE operation happens*)</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> store_rollback<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">s'</span> <span class="bound">ta</span><span class="main">.</span> <span class="bound">s'</span><span class="main">=</span><span class="free">Trans</span> <span class="bound">s</span> <span class="free">OP_STORE</span> <span class="main">∧</span> <span class="free">store_detect</span> <span class="bound">s'</span> <span class="bound">ta</span>
+                                        <span class="main">⟶</span><span class="free">TA_storage</span> <span class="bound">s</span> <span class="bound">ta</span> <span class="main">=</span> <span class="free">TA_storage</span> <span class="bound">s'</span> <span class="bound">ta</span>"</span></span>
+
+
+<span class="comment1">(*
+FMT_MSA.1/Trusted Storage Management of security attributes
+FMT_MSA.1.1/Trusted Storage The TSF shall enforce the Trusted Storage Access Control SFP to restrict 
+the ability to query the security attributes OB.TA_STORAGE.owner, OB.TA_STORAGE.inExtMem,
+OB.TA_STORAGE.TEE_identity and OB.SRT.TEE_identity to TA_User role.
+FMT_MSA.3/Trusted Storage Static attribute initialisation
+FMT_MSA.3.1/Trusted Storage The TSF shall enforce the Trusted Storage Access Control SFP to provide 
+restrictive default values for security attributes that are used to enforce the SFP.
+FMT_MSA.3.2/Trusted Storage The TSF shall allow the TA_User to specify alternative initial values to 
+override the default values when an object or information is created
+*)</span>
+
+<span class="keyword1"><span class="command">locale</span></span> FMT_MSA_TS <span class="main">=</span> FMT_SMR <span class="quoted"><span class="free">TA_User</span></span> <span class="quoted"><span class="free">TSF</span></span> <span class="quoted"><span class="free">associate</span></span>
+    <span class="keyword2"><span class="keyword">for</span></span> <span class="free">TSF</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'r</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">TA_User</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'r</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">associate</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="tfree">'ta</span><span class="main">,</span><span class="tfree">'ca</span><span class="main">)</span> user <span class="main">⇒</span> <span class="tfree">'r</span> <span class="main">⇒</span> <span class="tfree">'s</span>"</span></span>
+    <span class="main">+</span>
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">query_ts</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'a</span>"</span></span>
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">modify_ts</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'a</span>"</span></span>
+    <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">rolectrl_ts</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'a</span><span class="main">⇒</span><span class="tfree">'r</span><span class="main">⇒</span>bool"</span></span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> TSrule<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="free">rolectrl_ts</span> <span class="free">query_ts</span> <span class="free">TA_User</span> <span class="main">∧</span><span class="free">rolectrl_ts</span> <span class="free">modify_ts</span> <span class="free">TA_User</span> "</span></span>
+    
+
+
+
+
+<span class="keyword1"><span class="command">locale</span></span> STORAGE1 <span class="main">=</span> FDP_ACC_TS 
+           <span class="main">+</span> FDP_ACF_TS <span class="quoted"><span class="free">decrypt</span></span> <span class="quoted"><span class="free">encrypt</span></span> <span class="quoted"><span class="free">OP_LOAD</span></span> <span class="quoted"><span class="free">OP_STORE</span></span> <span class="quoted"><span class="free">opctrl_ts</span></span>
+           <span class="main">+</span> FMT_MSA_TS <span class="quoted"><span class="free">TA_User</span></span> <span class="quoted"><span class="free">TSF</span></span> <span class="quoted"><span class="free">associate</span></span> <span class="quoted"><span class="free">query_ts</span></span> <span class="quoted"><span class="free">modify_ts</span></span> <span class="quoted"><span class="free">rolectrl_ts</span></span> 
+           <span class="main">+</span> FMT_SMF <span class="quoted"><span class="free">key_manage</span></span> <span class="quoted"><span class="free">ts_manage</span></span>
+ <span class="keyword2"><span class="keyword">for</span></span> 
+     <span class="free">decrypt</span> <span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'cid</span> OB_TA_STORAGE<span class="main">⇒</span>bool"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">encrypt</span> <span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'cid</span> OB_TA_STORAGE<span class="main">⇒</span>bool"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">OP_LOAD</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'a</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">OP_STORE</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'a</span>"</span></span>  
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">opctrl_ts</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'a</span><span class="main">⇒</span><span class="tfree">'cid</span> OB_TA_STORAGE<span class="main">⇒</span>OB_SRT<span class="main">⇒</span><span class="tfree">'cid</span> S_API<span class="main">⇒</span>bool"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">TSF</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'r</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">TA_User</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'r</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">associate</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="tfree">'ta</span><span class="main">,</span><span class="tfree">'ca</span><span class="main">)</span> user <span class="main">⇒</span> <span class="tfree">'r</span> <span class="main">⇒</span> <span class="tfree">'s</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">query_ts</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'a</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">modify_ts</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'a</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">rolectrl_ts</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'a</span><span class="main">⇒</span><span class="tfree">'r</span><span class="main">⇒</span>bool"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">key_manage</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'k</span> <span class="main">⇒</span> <span class="main">(</span><span class="tfree">'ta</span><span class="main">,</span><span class="tfree">'ca</span><span class="main">)</span> user <span class="main">⇒</span>bool"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span> <span class="free">ts_manage</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'ts</span> <span class="main">⇒</span> <span class="main">(</span><span class="tfree">'ta</span><span class="main">,</span><span class="tfree">'ca</span><span class="main">)</span> user <span class="main">⇒</span>bool"</span></span>
+    
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">interpretation</span></span> STORAGE
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> FMT_SMR_axioms FMT_SMR_def HCL_FDP_ACF_TS_def 
+      HCL_FMT_MSA_TS.intro HCL_FMT_MSA_TS_axioms.intro HCL_FMT_SMR.intro 
+      PP_HCL.checkbind_def PP_HCL.tsSecCheck_def PP_SFR.checkbind_def 
+      PP_SFR.tsSecCheck_def STORAGE_def TSrule loadrule1 storerule1<span class="main">)</span>
+   
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Identification Module"</span></span></span>
+
+<span class="comment1">(*
+7.1.1.1 Identification
+
+FIA_ATD.1 User attribute definition
+FIA_ATD.1.1 The TSF shall maintain the following list of security attributes belonging to individual users: 
+CA_identity, TA_identity, TA_properties, [assignment: list of security attributes].
+//these reqs have been encoded as fixed params of the locale.
+
+Application Note:
+The lifespan of the attributes in such a list is the following:
+CA_identity: The lifetime of this attribute is that of the lifetime of the client session to the TA.  
+  TA_identity: The lifetime of this attribute is that of the availability of the TA to clients.  
+  TA_properties: The lifetime of this attribute is that of the availability of the TA to clients.
+
+FIA_UID.2 User identification before any action
+FIA_UID.2.1 The TSF shall require each user to be successfully identified before allowing any other 
+TSF-mediated actions on behalf of that user.
+// this req is defined as the act_ident assumption of the locale
+
+FIA_USB.1 User-subject binding
+
+FIA_USB.1.1 The TSF shall associate the following user security attributes with subjects acting on behalf of 
+that user:
+o Client (CA or TA) identity is codified into the client_identity of the requested TA session
+
+FIA_USB.1.2 The TSF shall enforce the following rules on the initial association of user security attributes with 
+subjects acting on behalf of users:
+o If the client is a TA, then the client_identity must be equal to the TA_identity of the TA
+subject that is the client
+
+*)</span> 
+
+     
+<span class="keyword1"><span class="command">locale</span></span> Identification1 <span class="main">=</span> State <span class="quoted"><span class="free">s0</span></span> <span class="quoted"><span class="free">Trans</span></span> 
+  <span class="keyword2"><span class="keyword">for</span></span> <span class="free">s0</span> <span class="main">::</span> <span class="tfree"><span class="quoted"><span class="tfree">'s</span></span></span> <span class="comment1">(* initial state of the system *)</span>
+  <span class="keyword2"><span class="keyword">and</span></span> <span class="free">Trans</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span> <span class="main">⇒</span> <span class="tfree">'a</span> <span class="main">⇒</span> <span class="tfree">'s</span>"</span></span> <span class="comment1">(* state machine of the whole system *)</span>
+ 
+  <span class="main">+</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">TA_client</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="main">(</span><span class="tfree">'ta</span><span class="main">⇀</span><span class="tfree">'cid</span><span class="main">)</span>"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">CA_identity</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span> <span class="main">⇒</span><span class="tfree">'ca</span> <span class="main">⇒</span><span class="tfree">'cid</span>"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">TA_identity</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span> <span class="main">⇒</span><span class="tfree">'ta</span> <span class="main">⇒</span><span class="tfree">'cid</span>"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">TA_properties</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span> <span class="main">⇒</span> <span class="tfree">'ta</span> <span class="main">⇒</span> <span class="tfree">'tap</span>"</span></span> <span class="comment1">(* TA properties *)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">CA_properties</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span> <span class="main">⇒</span> <span class="tfree">'ca</span> <span class="main">⇒</span> <span class="tfree">'cap</span>"</span></span> <span class="comment1">(* CA properties *)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">Client_properties</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span><span class="main">⇒</span><span class="tfree">'cid</span><span class="main">⇒</span><span class="tfree">'tap</span>"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> TA_ident<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ta</span> <span class="bound">ta'</span><span class="main">.</span> <span class="bound">ta</span> <span class="main">≠</span> <span class="bound">ta'</span> <span class="main">⟶</span>  <span class="free">TA_identity</span> <span class="bound">s</span> <span class="bound">ta</span> <span class="main">≠</span> <span class="free">TA_identity</span> <span class="bound">s</span> <span class="bound">ta'</span>"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> CA_ident<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ca</span> <span class="bound">ca'</span><span class="main">.</span> <span class="bound">ca</span> <span class="main">≠</span> <span class="bound">ca'</span> <span class="main">⟶</span>  <span class="free">CA_identity</span> <span class="bound">s</span> <span class="bound">ca</span> <span class="main">≠</span> <span class="free">CA_identity</span> <span class="bound">s</span> <span class="bound">ca'</span>"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> CA_TA_ident<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ta</span> <span class="bound">ca</span><span class="main">.</span>  <span class="free">TA_identity</span> <span class="bound">s</span> <span class="bound">ta</span> <span class="main">≠</span> <span class="free">CA_identity</span> <span class="bound">s</span> <span class="bound">ca</span>"</span></span>
+
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">domain</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span> <span class="main">⇒</span> <span class="tfree">'a</span> <span class="main">⇒</span> <span class="tfree">'d</span>"</span></span> <span class="comment1">(* domain of actions *)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">TEE</span> <span class="main">::</span> <span class="tfree"><span class="quoted"><span class="tfree">'d</span></span></span> <span class="comment1">(* the TEE domain *)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">REE</span> <span class="main">::</span> <span class="tfree"><span class="quoted"><span class="tfree">'d</span></span></span> <span class="comment1">(* the REE domain *)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">TA_domain</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'ta</span> <span class="main">⇒</span> <span class="tfree">'d</span>"</span></span>  <span class="comment1">(* domain id of TAs *)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">CA_domain</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'ca</span> <span class="main">⇒</span> <span class="tfree">'d</span>"</span></span>  <span class="comment1">(* domain id of CAs *)</span> 
+    <span class="comment1">(* CAs as clients have to be identified, as well as their actions, 
+      so we consider each CA as a domain. When define security, we consider them as the whole REE domain  *)</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> <span class="quoted"><span class="quoted">"<span class="free">TEE</span> <span class="main">≠</span> <span class="free">REE</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span>   <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">ta</span><span class="main">.</span> <span class="free">TA_domain</span> <span class="bound">ta</span> <span class="main">≠</span> <span class="free">TEE</span> <span class="main">∧</span> <span class="free">TA_domain</span> <span class="bound">ta</span> <span class="main">≠</span> <span class="free">REE</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span>   <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">ca</span><span class="main">.</span> <span class="free">CA_domain</span> <span class="bound">ca</span> <span class="main">≠</span> <span class="free">TEE</span> <span class="main">∧</span> <span class="free">CA_domain</span> <span class="bound">ca</span> <span class="main">≠</span> <span class="free">REE</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span>   <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">ta</span> <span class="bound">ca</span><span class="main">.</span> <span class="free">TA_domain</span> <span class="bound">ta</span> <span class="main">≠</span> <span class="free">CA_domain</span> <span class="bound">ca</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span>   <span class="quoted"><span class="quoted">"inj <span class="free">TA_domain</span> <span class="main">∧</span> inj <span class="free">CA_domain</span>"</span></span>
+    <span class="keyword2"><span class="keyword">and</span></span>   <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">d</span><span class="main">.</span> <span class="bound">d</span> <span class="main">=</span> <span class="free">TEE</span> <span class="main">∨</span> <span class="bound">d</span> <span class="main">=</span> <span class="free">REE</span> <span class="main">∨</span> <span class="main">(</span><span class="main">∃</span><span class="bound">ta</span><span class="main">.</span> <span class="free">TA_domain</span> <span class="bound">ta</span> <span class="main">=</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∨</span> <span class="main">(</span><span class="main">∃</span><span class="bound">ca</span><span class="main">.</span> <span class="free">CA_domain</span> <span class="bound">ca</span> <span class="main">=</span> <span class="bound">d</span><span class="main">)</span>"</span></span>
+
+  <span class="comment1">(* FIA_USB.1.1 *)</span> <span class="comment1">(* FIA_USB.1.2 *)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">TA_session</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="tfree">'s</span> <span class="main">⇒</span> <span class="tfree">'ta</span> <span class="main">⇒</span> <span class="tfree">'cid</span> TA_INSTANCE_SESSION"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> us_bind<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ta</span> <span class="bound">ta'</span><span class="main">.</span> <span class="free">TA_client</span> <span class="bound">s</span> <span class="bound">ta</span> <span class="main">≠</span> None <span class="main">∧</span> <span class="main">(</span><span class="free">TA_identity</span> <span class="bound">s</span> <span class="bound">ta'</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>the <span class="main">(</span><span class="free">TA_client</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">)</span><span class="main">)</span> 
+              <span class="main">⟶</span>client_identity <span class="main">(</span><span class="free">TA_session</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">)</span> <span class="main">=</span> <span class="free">TA_identity</span> <span class="bound">s</span> <span class="bound">ta'</span>"</span></span> 
+  <span class="comment1">(*TBD:we need this*)</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> us_bind2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ta</span> <span class="bound">ta'</span><span class="main">.</span> <span class="free">TA_client</span> <span class="bound">s</span> <span class="bound">ta</span> <span class="main">≠</span> None <span class="main">∧</span> <span class="main">(</span><span class="free">TA_identity</span> <span class="bound">s</span> <span class="bound">ta'</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>the <span class="main">(</span><span class="free">TA_client</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">)</span><span class="main">)</span> 
+              <span class="main">⟶</span><span class="free">Client_properties</span> <span class="bound">s</span> <span class="main">(</span>client_identity <span class="main">(</span><span class="free">TA_session</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="free">TA_properties</span> <span class="bound">s</span> <span class="bound">ta'</span>"</span></span>
+   
+  
+  <span class="comment1">(* FIA_USB.1.3 *)</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> no_modify<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">ta</span><span class="main">.</span> <span class="bound">s</span><span class="main">≠</span><span class="free">s0</span><span class="main">⟶</span>client_identity <span class="main">(</span><span class="free">TA_session</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">)</span> <span class="main">=</span> client_identity <span class="main">(</span><span class="free">TA_session</span> <span class="free">s0</span> <span class="bound">ta</span><span class="main">)</span>"</span></span>
+
+  <span class="comment1">(* FIA_UID.2.1 *)</span>
+  <span class="keyword2"><span class="keyword">and</span></span> act_ident<span class="main">:</span>  <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">a</span> <span class="bound">t</span> <span class="bound">ta'</span><span class="main">.</span> <span class="free">Trans</span> <span class="bound">s</span> <span class="bound">a</span> <span class="main">=</span> <span class="bound">t</span> <span class="main">∧</span> <span class="free">domain</span> <span class="bound">s</span> <span class="bound">a</span> <span class="main">=</span> <span class="free">d</span> <span class="main">∧</span> <span class="free">d</span> <span class="main">≠</span> <span class="free">TEE</span> <span class="main">∧</span> <span class="free">TA_client</span> <span class="bound">s</span> <span class="bound">ta'</span> <span class="main">≠</span> None  <span class="main">⟶</span> 
+              <span class="main">(</span><span class="main">∃</span><span class="bound">ta</span><span class="main">.</span> <span class="free">TA_domain</span> <span class="bound">ta</span> <span class="main">=</span> <span class="free">d</span> <span class="main">∧</span> <span class="main">(</span>the <span class="main">(</span><span class="free">TA_client</span> <span class="bound">s</span> <span class="bound">ta'</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="free">TA_identity</span> <span class="bound">s</span> <span class="bound">ta</span><span class="main">)</span> <span class="main">∨</span> 
+              <span class="main">(</span><span class="main">∃</span><span class="bound">ca</span><span class="main">.</span> <span class="free">CA_domain</span> <span class="bound">ca</span> <span class="main">=</span> <span class="free">d</span> <span class="main">∧</span> <span class="main">(</span>the <span class="main">(</span><span class="free">TA_client</span> <span class="bound">s</span> <span class="bound">ta'</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="free">CA_identity</span> <span class="bound">s</span> <span class="bound">ca</span><span class="main">)</span>"</span></span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">interpretation</span></span> Identification
+     <span class="keyword1"><span class="command">using</span></span> Identification.intro  Identification_def 
+        Identification1_axioms Identification1_def
+        <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main">(</span>verit<span class="main">)</span><span class="main"><span class="keyword3">,</span></span>timeout<span class="main">=</span>1<span class="main">)</span>
+
+   
+<span class="keyword2"><span class="keyword">end</span></span>
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Information Flow Module"</span></span></span>
+
+                          
+<span class="comment1">(*
+FDP_IFC.2/Runtime Complete information flow control
+
+FDP_IFC.2.1/Runtime The TSF shall enforce the Runtime Data Information Flow Control SFP on:
+o Subjects: S.TA_INSTANCE, S.TA_INSTANCE_SESSION, S.API, S.COMM_AGENT,
+S.RESOURCE, S.RAM_UNIT
+o Information: I.RUNTIME_DATA
+and all operations that cause that information to flow to and from subjects covered by the SFP.
+FDP_IFC.2.2/Runtime The TSF shall ensure that all operations that cause any information in the TOE to flow 
+to and from any subject in the TOE are covered by an information flow control SFP.
+
+Application Note:
+The flow control policy specifies the conditions to communicate runtime data from one subject to another. It 
+applies to operations that are standard interfaces of these subjects.
+*)</span>
+
+
+                          
+<span class="keyword1"><span class="command">locale</span></span> FDP_IFC <span class="main">=</span>
+
+  <span class="comment1">(* all operations that cause any information in the TOE to flow to and from any subject in the TOE
+  are covered by an information flow control SFP*)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">IFCP</span><span class="main">::</span><span class="quoted"><span class="quoted">"RUNTIME_DATA<span class="main">⇒</span><span class="main">(</span><span class="tfree">'cid</span><span class="main">,</span><span class="tfree">'d</span><span class="main">)</span> SUBJECT<span class="main">⇒</span><span class="main">(</span><span class="tfree">'cid</span><span class="main">,</span><span class="tfree">'d</span><span class="main">)</span> SUBJECT<span class="main">⇒</span>bool"</span></span><span class="comment1">(*whether data from sub1 to sub2 is allowed*)</span>
+
+<span class="keyword1"><span class="command">print_locale</span></span> FDP_IFC
+  
+
+<span class="comment1">(*
+FDP_IFF.1/Runtime Simple security attributes
+
+FDP_IFF.1.1/Runtime The TSF shall enforce the Runtime Data Information Flow Control SFP based on 
+the following types of subject and information security attributes: S.RESOURCE.state,
+S.RAM_UNIT.rights and S.API.caller.
+
+FDP_IFF.1.2/Runtime The TSF shall permit an information flow between a controlled subject and controlled 
+information via a controlled operation if the following rules hold:
+o Rules for information flow between S.TA_INSTANCE and S.RAM_UNIT:
+ Flow of I.RUNTIME_DATA from S.TA_INSTANCE to S.RAM_UNIT is allowed only if
+S.RAM_UNIT.rights(S.TA_INSTANCE) is Write or ReadWrite
+ Flow of I.RUNTIME_DATA from S.RAM_UNIT to S.TA_INSTANCE is allowed only if
+S.RAM_UNIT.rights(S.TA_INSTANCE) is Read or ReadWrite
+o Rules for information flow from and to S.COMM_AGENT:
+ Flow of I.RUNTIME_DATA from S.COMM_AGENT to S.RAM_UNIT is allowed only if
+S.RAM_UNIT.rights(REE) is Write or ReadWrite
+ Flow of I.RUNTIME_DATA from S.RAM_UNIT to S.COMM_AGENT is allowed only if
+S.RAM_UNIT.rights(REE) is Read or ReadWrite
+o Rules for information flow from and to S.API:
+ Flow of I.RUNTIME_DATA from S.API to S.RAM_UNIT is allowed only if
+S.RAM_UNIT.rights(S.API.caller) is Write or ReadWrite
+ Flow of I.RUNTIME_DATA from S.RAM_UNIT to S.API is allowed only if
+S.RAM_UNIT.rights(S.API.caller) is Read or ReadWrite
+o Rules for information flow from and to S.RESOURCE:
+ Flow of I.RUNTIME_DATA between S.API and S.RESOURCE is allowed only if the
+resource is under TEE control (S.RESOURCE.state = TEE).
+
+FDP_IFF.1.3/Runtime The TSF shall enforce the [assignment: additional information flow control SFP
+rules].
+
+FDP_IFF.1.4/Runtime The TSF shall explicitly authorise an information flow based on the following rules:
+o Rules for information flow from and to S.TA_INSTANCE_SESSION:
+   Flow of I.RUNTIME_DATA that are parameter or return values is allowed between S.TA_INSTANCE_SESSION and S.COMM_AGENT
+ Flow of I.RUNTIME_DATA that are parameter or return values is allowed between S.TA_INSTANCE_SESSION and S.API.
+
+FDP_IFF.1.5/Runtime The TSF shall explicitly deny an information flow based on the following rules: Any
+information flow involving a TEE subject unless one of the conditions stated in
+FDP_IFF.1.1/1.2/1.3/1.4 holds.
+
+Application Note:
+ The access rights configuration managed by S.RAM_UNIT shall ensure that RAM addressable units 
+used for TSF data are appropriately protected (in integrity for TEE firmware, in integrity and 
+confidentiality for TEE runtime data).
+ RAM units can span over several volatile memories, for example, on-chip RAM, off-chip RAM, 
+registers.
+ TEE-dedicated RAM units may hold copies of the content of temporary memory references passed by 
+the REE.
+*)</span>
+
+
+<span class="keyword1"><span class="command">locale</span></span> FDP_IFF <span class="main">=</span>FDP_IFC <span class="main">+</span>
+  <span class="comment1">(*FDP_IFF.1.1 1.2*)</span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">REE</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'d</span>"</span></span>
+  <span class="keyword2"><span class="keyword">fixes</span></span> <span class="free">TEE</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="tfree">'d</span>"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> ram_ifc_rule1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">data</span> <span class="bound">unit</span> <span class="bound">instance</span><span class="main">.</span> <span class="free">IFCP</span> <span class="bound">data</span> <span class="main">(</span>ram <span class="bound">unit</span><span class="main">)</span> <span class="main">(</span>inst <span class="bound">instance</span><span class="main">)</span> 
+                                                <span class="main">⟶</span> <span class="main">(</span>TArights <span class="bound">unit</span><span class="main">)</span><span class="main">(</span>TA_identity <span class="bound">instance</span><span class="main">)</span> <span class="main">=</span> Read
+                                                <span class="main">∨</span> <span class="main">(</span>TArights <span class="bound">unit</span><span class="main">)</span><span class="main">(</span>TA_identity <span class="bound">instance</span><span class="main">)</span> <span class="main">=</span> ReadWrite"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> ram_ifc_rule12<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">data</span> <span class="bound">unit</span> <span class="bound">instance</span><span class="main">.</span> <span class="free">IFCP</span> <span class="bound">data</span> <span class="main">(</span>inst <span class="bound">instance</span><span class="main">)</span> <span class="main">(</span>ram <span class="bound">unit</span><span class="main">)</span> 
+                                                <span class="main">⟶</span> <span class="main">(</span>TArights <span class="bound">unit</span><span class="main">)</span><span class="main">(</span>TA_identity <span class="bound">instance</span><span class="main">)</span> <span class="main">=</span> Write
+                                                 <span class="main">∨</span> <span class="main">(</span>TArights <span class="bound">unit</span><span class="main">)</span><span class="main">(</span>TA_identity <span class="bound">instance</span><span class="main">)</span> <span class="main">=</span> ReadWrite"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> ram_ifc_rule2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">data</span> <span class="bound">unit</span><span class="main">.</span>  <span class="free">IFCP</span> <span class="bound">data</span> <span class="main">(</span>ram <span class="bound">unit</span><span class="main">)</span> S_COMM_AGENT
+                                    <span class="main">⟶</span><span class="main">(</span>REErights <span class="bound">unit</span><span class="main">)</span> <span class="main">=</span>Read <span class="main">∨</span><span class="main">(</span>REErights <span class="bound">unit</span><span class="main">)</span> <span class="main">=</span> ReadWrite"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> ram_ifc_rule22<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">data</span> <span class="bound">unit</span><span class="main">.</span>  <span class="free">IFCP</span> <span class="bound">data</span> S_COMM_AGENT <span class="main">(</span>ram <span class="bound">unit</span><span class="main">)</span> 
+                                    <span class="main">⟶</span><span class="main">(</span>REErights <span class="bound">unit</span><span class="main">)</span> <span class="main">=</span>Write <span class="main">∨</span><span class="main">(</span>REErights <span class="bound">unit</span><span class="main">)</span> <span class="main">=</span> ReadWrite"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> ram_ifc_rule3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">data</span> <span class="bound">unit</span> <span class="bound">sapi</span><span class="main">.</span> <span class="free">IFCP</span> <span class="bound">data</span> <span class="main">(</span>ram <span class="bound">unit</span><span class="main">)</span> <span class="main">(</span>api <span class="bound">sapi</span><span class="main">)</span> 
+                                      <span class="main">⟶</span> <span class="main">(</span>TArights <span class="bound">unit</span><span class="main">)</span><span class="main">(</span>the<span class="main">(</span>caller <span class="bound">sapi</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> Read
+                                                <span class="main">∨</span><span class="main">(</span>TArights <span class="bound">unit</span><span class="main">)</span><span class="main">(</span>the<span class="main">(</span>caller <span class="bound">sapi</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> ReadWrite"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> ram_ifc_rule32<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">data</span> <span class="bound">unit</span> <span class="bound">sapi</span><span class="main">.</span> <span class="free">IFCP</span> <span class="bound">data</span> <span class="main">(</span>api <span class="bound">sapi</span><span class="main">)</span> <span class="main">(</span>ram <span class="bound">unit</span><span class="main">)</span> 
+                                                <span class="main">⟶</span> <span class="main">(</span>TArights <span class="bound">unit</span><span class="main">)</span> <span class="main">(</span>the<span class="main">(</span>caller <span class="bound">sapi</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> Write
+                                                 <span class="main">∨</span> <span class="main">(</span>TArights <span class="bound">unit</span><span class="main">)</span> <span class="main">(</span>the<span class="main">(</span>caller <span class="bound">sapi</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> ReadWrite"</span></span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> resource_ifc_rule<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">sres</span> <span class="bound">sapi</span><span class="main">.</span> <span class="free">IFCP</span> <span class="free">RUNTIME_DATA_P</span> <span class="main">(</span>res <span class="bound">sres</span><span class="main">)</span> <span class="main">(</span>api <span class="bound">sapi</span><span class="main">)</span> 
+                                        <span class="main">∨</span> <span class="free">IFCP</span> <span class="free">RUNTIME_DATA_P</span> <span class="main">(</span>api <span class="bound">sapi</span><span class="main">)</span> <span class="main">(</span>res <span class="bound">sres</span><span class="main">)</span> 
+                                            <span class="main">⟶</span> Rstate <span class="bound">sres</span> <span class="main">=</span> <span class="free">TEE</span>"</span></span>
+  <span class="comment1">(*FDP_IFF.1.3 1.4 1.5*)</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> ta_session_rule<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">ses</span> <span class="bound">sapi</span><span class="main">.</span> <span class="free">IFCP</span> <span class="free">I_RUNTIME_DATA_P</span> <span class="main">(</span>instses <span class="bound">ses</span><span class="main">)</span> S_COMM_AGENT 
+                                    <span class="main">∧</span> <span class="free">IFCP</span> <span class="free">I_RUNTIME_DATA_P</span> S_COMM_AGENT <span class="main">(</span>instses <span class="bound">ses</span><span class="main">)</span>
+                                    <span class="main">∧</span> <span class="free">IFCP</span> <span class="free">I_RUNTIME_DATA_P</span> <span class="main">(</span>instses <span class="bound">ses</span><span class="main">)</span> <span class="main">(</span>api <span class="bound">sapi</span><span class="main">)</span> 
+                                    <span class="main">∧</span> <span class="free">IFCP</span> <span class="free">I_RUNTIME_DATA_P</span> <span class="main">(</span>api <span class="bound">sapi</span><span class="main">)</span> <span class="main">(</span>instses <span class="bound">ses</span><span class="main">)</span>"</span></span>
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+<span class="keyword1"><span class="command">print_locale</span></span> FDP_IFF
+
+
+<span class="keyword1"><span class="command">locale</span></span> INFORMATION_FLOW1 <span class="main">=</span> FDP_IFC <span class="main">+</span>  FDP_IFF
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">interpretation</span></span> INFORMATION_FLOW
+      <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> HCL_FDP_IFF_def INFORMATION_FLOW.intro 
+      ram_ifc_rule1 ram_ifc_rule12
+     ram_ifc_rule2 ram_ifc_rule22 ram_ifc_rule3 
+      ram_ifc_rule32 resource_ifc_rule ta_session_rule<span class="main">)</span> 
+
+<span class="keyword2"><span class="keyword">end</span></span>
+
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"refinement theorem"</span></span></span>
+
+<span class="comment1">(*Theorem 3 (HCL-Requirement refinement).*)</span>
+
+<span class="keyword1"><span class="command">locale</span></span> PPSFR <span class="main">=</span> FMT_SMR <span class="main">+</span> FAU_ARP <span class="main">+</span> FDP_SDI <span class="main">+</span> FPT_TEE <span class="main">+</span>
+          FCS_COP_Internal <span class="main">+</span> FPT_FLS <span class="main">+</span> FDP_ITT <span class="main">+</span>
+          FMT_SMF <span class="main">+</span> TA_KEY1 <span class="main">+</span> STORAGE1 <span class="main">+</span> INFORMATION_FLOW1 <span class="main">+</span> Identification1
+          <span class="main">+</span> FAU_SAR <span class="main">+</span> FAU_STG <span class="main">+</span> FCS_RNG <span class="main">+</span> FPT_INI <span class="main">+</span>
+          FPT_STM <span class="main">+</span> FDP_RIP <span class="main">+</span> FPT_ITT
+
+<span class="keyword1"><span class="command">sublocale</span></span> PPSFR <span class="main">⊆</span> HCLSFR
+          <span class="keyword1"><span class="command">oops</span></span>
+<span class="comment1">(*sublocale here stand for a theorem*)</span>
+
+
+<span class="comment1">(*Theorem 4 (Rationale correctness).*)</span>
+
+<span class="keyword1"><span class="command">locale</span></span> PPSFR <span class="main">=</span> FMT_SMR <span class="main">+</span> FAU_ARP <span class="main">+</span> FDP_SDI <span class="main">+</span> FPT_TEE <span class="main">+</span>
+          FCS_COP_Internal <span class="main">+</span> FPT_FLS <span class="main">+</span> FDP_ITT <span class="main">+</span>
+          FMT_SMF <span class="main">+</span> TA_KEY1 <span class="main">+</span> STORAGE1 <span class="main">+</span> INFORMATION_FLOW1 <span class="main">+</span> Identification1
+          <span class="main">+</span> FAU_SAR <span class="main">+</span> FAU_STG <span class="main">+</span> FCS_RNG <span class="main">+</span> FPT_INI <span class="main">+</span>
+          FPT_STM <span class="main">+</span> FDP_RIP <span class="main">+</span> FPT_ITT
+
+<span class="keyword1"><span class="command">sublocale</span></span> PPSFR <span class="main">⊆</span> SecurityThreats
+          <span class="keyword1"><span class="command">oops</span></span>
+<span class="comment1">(*sublocale here stand for a theorem*)</span>
+
+
+
+
+
+<span class="keyword2"><span class="keyword">end</span></span>
+</pre>
+<deepl-input-controller><template shadowrootmode="open"><link rel="stylesheet" href="chrome-extension://cofdbpoegempjloogbagkncekinflcnj/build/content.css"><div><div class="dl-input-translation-container svelte-ju4595"><div></div></div></div></template></deepl-input-controller></body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
