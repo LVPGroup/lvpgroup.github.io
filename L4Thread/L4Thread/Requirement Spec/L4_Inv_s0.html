@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/26bc0faa-7540-4229-b677-c1c2fe8f0f45/fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/26bc0faa-7540-4229-b677-c1c2fe8f0f45/fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/26bc0faa-7540-4229-b677-c1c2fe8f0f45/fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/26bc0faa-7540-4229-b677-c1c2fe8f0f45/fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/26bc0faa-7540-4229-b677-c1c2fe8f0f45/fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/26bc0faa-7540-4229-b677-c1c2fe8f0f45/fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/26bc0faa-7540-4229-b677-c1c2fe8f0f45/fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/26bc0faa-7540-4229-b677-c1c2fe8f0f45/fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/26bc0faa-7540-4229-b677-c1c2fe8f0f45/fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/26bc0faa-7540-4229-b677-c1c2fe8f0f45/fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/26bc0faa-7540-4229-b677-c1c2fe8f0f45/fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/26bc0faa-7540-4229-b677-c1c2fe8f0f45/fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('/26bc0faa-7540-4229-b677-c1c2fe8f0f45/fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.theories { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+</style><title>Theory "L4_Inv_s0"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> L4_Inv_s0
+  <span class="keyword2"><span class="keyword">imports</span></span> <span class="quoted">"L4_Thread_Lemmas"</span>
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">section</span></span><span class="quoted"><span class="document"><span class="plain_text">‹s0_req›</span></span></span>
+<span class="keyword1"><span class="command">subsection</span></span><span class="quoted"><span class="document"><span class="plain_text">‹Current›</span></span></span>
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Current_Thread_In_Active<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Current_Thread_In_Active s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Current_Thread_In_Active_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Current_Space_IsNot_None<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Current_Space_IsNot_None s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Current_Space_IsNot_None_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Current<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Current s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> s0_Inv_Current_Thread_In_Active s0_Inv_Current_Space_IsNot_None
+    Inv_Current_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">subsection</span></span><span class="quoted"><span class="document"><span class="plain_text">‹Space›</span></span></span>
+<span class="keyword1"><span class="command">lemma</span></span> Real_HasNo_Father<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"<span class="main">¬</span><span class="free">s</span><span class="main">⊢</span><span class="main">(</span>Real <span class="free">r</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>1</sup></span><span class="free">x</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> direct_path_def <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Real_HasNo_Father_tran<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"<span class="main">¬</span><span class="free">s</span><span class="main">⊢</span><span class="main">(</span>Real <span class="free">r</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>+</sup></span><span class="free">x</span>"</span></span></span>
+  <span class="keyword1"><span class="command">using</span></span> Real_HasNo_Father tran_path.simps <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">blast</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_One_Path_Sigma0Space<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">v_page</span> <span class="main">&lt;</span> page_maxnum <span class="main">⟹</span> s0_req<span class="main">⊢</span><span class="main">(</span>Virtual Sigma0Space <span class="free">v_page</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>1</sup></span><span class="main">(</span>Real <span class="free">v_page</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def direct_path_def
+  <span class="keyword1"><span class="command">using</span></span> PriSpacesConfigLemma
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Tran_Path_Sigma0Space<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">v_page</span> <span class="main">&lt;</span> page_maxnum <span class="main">⟹</span> s0_req<span class="main">⊢</span><span class="main">(</span>Virtual Sigma0Space <span class="free">v_page</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>+</sup></span><span class="main">(</span>Real <span class="free">v_page</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">subst</span> tran_path.simps<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def direct_path_def
+  <span class="keyword1"><span class="command">using</span></span> PriSpacesConfigLemma
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_One_Path_Sigma0Space_Unique<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">v_page</span> <span class="main">≠</span> <span class="free">r</span> <span class="main">⟹</span> <span class="main">¬</span>s0_req<span class="main">⊢</span><span class="main">(</span>Virtual Sigma0Space <span class="free">v_page</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>1</sup></span><span class="main">(</span>Real <span class="free">r</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def direct_path_def
+  <span class="keyword1"><span class="command">using</span></span> PriSpacesConfigLemma
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Tran_Path_Sigma0Space_Unique<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="free">v_page</span> <span class="main">≠</span> <span class="free">r</span> <span class="main">⟹</span> <span class="main">¬</span>s0_req<span class="main">⊢</span><span class="main">(</span>Virtual Sigma0Space <span class="free">v_page</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>+</sup></span><span class="main">(</span>Real <span class="free">r</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">subst</span> tran_path.simps<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> s0_One_Path_Sigma0Space_Unique <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> Space_Father_Is_Unique Real_HasNo_Father_tran S0ReqInit State.simps<span class="main"><span class="main">(</span></span>22<span class="main"><span class="main">)</span></span> System_Init_def one_path option.sel path_space1 s0_One_Path_Sigma0Space<span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_One_Path_RootServerSpace<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="main">¬</span>s0_req<span class="main">⊢</span><span class="main">(</span>Virtual RootServerSpace <span class="free">v_page</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>1</sup></span> <span class="free">x</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def direct_path_def
+  <span class="keyword1"><span class="command">using</span></span> PriSpacesConfigLemma
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Tran_Path_RootServerSpace<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="main">¬</span>s0_req<span class="main">⊢</span><span class="main">(</span>Virtual RootServerSpace <span class="free">v_page</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>+</sup></span> <span class="free">x</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">subst</span> tran_path.simps<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def direct_path_def
+  <span class="keyword1"><span class="command">using</span></span> PriSpacesConfigLemma
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_One_Path_KernelSpace<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="main">¬</span>s0_req<span class="main">⊢</span><span class="main">(</span>Virtual KernelSpace <span class="free">v_page</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>1</sup></span> <span class="free">x</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def direct_path_def
+  <span class="keyword1"><span class="command">using</span></span> PriSpacesConfigLemma
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Tran_Path_KernelSpace<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"<span class="main">¬</span>s0_req<span class="main">⊢</span><span class="main">(</span>Virtual KernelSpace <span class="free">v_page</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>+</sup></span> <span class="free">x</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">subst</span> tran_path.simps<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def direct_path_def
+  <span class="keyword1"><span class="command">using</span></span> PriSpacesConfigLemma
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> Sigm0Space_HasNot_Loop<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"<span class="main">⋀</span><span class="bound">y</span><span class="main">.</span> s0_req<span class="main">⊢</span><span class="main">(</span>Virtual <span class="free">sp</span> <span class="free">v1</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>1</sup></span><span class="bound">y</span> <span class="main">⟹</span>
+         s0_req<span class="main">⊢</span><span class="bound">y</span><span class="main">↝<span class="hidden">⇧</span><sup>+</sup></span><span class="main">(</span>Virtual <span class="free">sp</span> <span class="free">v2</span><span class="main">)</span> <span class="main">⟹</span>
+         <span class="free">sp</span> <span class="main">=</span> Sigma0Space <span class="main">⟹</span> False"</span></span></span>
+<span class="keyword1"><span class="command">proof</span></span><span class="language"><span class="operator">-</span></span>
+  <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">y</span>
+  <span class="keyword3"><span class="command">assume</span></span> 
+    a1<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"s0_req<span class="main">⊢</span><span class="main">(</span>Virtual <span class="free">sp</span> <span class="free">v1</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>1</sup></span><span class="skolem">y</span>"</span></span></span> <span class="keyword2"><span class="keyword">and</span></span>
+    a2<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"s0_req<span class="main">⊢</span><span class="skolem">y</span><span class="main">↝<span class="hidden">⇧</span><sup>+</sup></span><span class="main">(</span>Virtual <span class="free">sp</span> <span class="free">v2</span><span class="main">)</span>"</span></span></span> <span class="keyword2"><span class="keyword">and</span></span>
+    a3<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"<span class="free">sp</span> <span class="main">=</span> Sigma0Space"</span></span></span>
+   <span class="keyword1"><span class="command">have</span></span> a0<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"<span class="free">v1</span> <span class="main">&lt;</span> page_maxnum"</span></span></span> 
+     <span class="keyword1"><span class="command">using</span></span> a1 a3 S0ReqInit System_Init_def direct_path_def
+     <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> State.select_convs<span class="main"><span class="main">(</span></span>22<span class="main"><span class="main">)</span></span> basic5 one_path<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">have</span></span> h1<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"<span class="skolem">y</span> <span class="main">=</span> <span class="main">(</span>Real <span class="free">v1</span><span class="main">)</span>"</span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> a1<span class="main">[</span><span class="language"><span class="operator">unfolded</span> direct_path_def S0ReqInit System_Init_def</span><span class="main">]</span> a3
+    PriSpacesConfigLemma
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+    <span class="keyword1"><span class="command">using</span></span> Space_Father_Is_Unique a0 a1 s0_One_Path_Sigma0Space <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">blast</span></span>
+  <span class="keyword3"><span class="command">show</span></span> <span class="quoted"><span class="language">False</span></span>
+    <span class="keyword1"><span class="command">using</span></span> h1 a2 Real_HasNo_Father_tran <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_HasNot_Loop_One_Path<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"<span class="main">¬</span><span class="main">(</span>s0_req<span class="main">⊢</span><span class="main">(</span>Virtual <span class="free">sp</span> <span class="free">v1</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>1</sup></span><span class="main">(</span><span class="main">(</span>Virtual <span class="free">sp</span> <span class="free">v2</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> direct_path_def S0ReqInit System_Init_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">sp</span> <span class="main">=</span> KernelSpace"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">sp</span> <span class="main">=</span> Sigma0Space"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">sp</span> <span class="main">=</span> RootServerSpace"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_HasNot_Loop_Tran_Path<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"<span class="main">(</span><span class="main">∄</span><span class="bound">y</span><span class="main">.</span> s0_req<span class="main">⊢</span><span class="main">(</span>Virtual <span class="free">sp</span> <span class="free">v1</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>1</sup></span><span class="bound">y</span> <span class="main">∧</span> s0_req<span class="main">⊢</span><span class="bound">y</span><span class="main">↝<span class="hidden">⇧</span><sup>+</sup></span><span class="main">(</span>Virtual <span class="free">sp</span> <span class="free">v2</span><span class="main">)</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">sp</span> <span class="main">=</span> KernelSpace"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">unfolding</span></span> direct_path_def S0ReqInit System_Init_def
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">sp</span> <span class="main">=</span> Sigma0Space"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> Sigm0Space_HasNot_Loop <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">blast</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="free">sp</span> <span class="main">=</span> RootServerSpace"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">unfolding</span></span> direct_path_def S0ReqInit System_Init_def
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> direct_path_def S0ReqInit System_Init_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_HasNot_Loop<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Space_HasNot_Loop s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> Inv_Space_HasNot_Loop_def
+  <span class="keyword1"><span class="command">using</span></span> s0_Inv_Space_HasNot_Loop_One_Path s0_Inv_Space_HasNot_Loop_Tran_Path
+    tran_path.simps
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">blast</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_Valid_Has_Real1<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"s0_req<span class="main">⊢</span><span class="free">x</span> <span class="main">⟹</span> <span class="main">∃</span><span class="bound">r</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Real <span class="bound">r</span> <span class="main">∨</span> s0_req<span class="main">⊢</span><span class="free">x</span><span class="main">↝<span class="hidden">⇧</span><sup>+</sup></span><span class="main">(</span>Real <span class="bound">r</span><span class="main">)</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∃</span><span class="bound">r</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Real <span class="bound">r</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∃</span><span class="bound">v</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Virtual Sigma0Space <span class="bound">v</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">smt</span> S0ReqInit State.simps<span class="main"><span class="main">(</span></span>22<span class="main"><span class="main">)</span></span> System_Init_def ValidVpageMappingNotNone option.sel s0_Tran_Path_Sigma0Space<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∃</span><span class="bound">v</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Virtual RootServerSpace <span class="bound">v</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">unfolding</span></span> valid_page_def
+    <span class="keyword1"><span class="command">using</span></span> s0_One_Path_RootServerSpace
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∃</span><span class="bound">v</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Virtual KernelSpace <span class="bound">v</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">unfolding</span></span> valid_page_def
+    <span class="keyword1"><span class="command">using</span></span> s0_One_Path_KernelSpace
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> valid_page_def direct_path_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">subgoal_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">⋀</span><span class="bound">sp</span> <span class="bound">v_page</span><span class="main">.</span> <span class="main">∄</span><span class="bound">r</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Real <span class="bound">r</span> <span class="main">⟹</span> <span class="main">∄</span><span class="bound">v</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Virtual Sigma0Space <span class="bound">v</span> <span class="main">⟹</span>
+    <span class="main">∄</span><span class="bound">v</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Virtual RootServerSpace <span class="bound">v</span> <span class="main">⟹</span> <span class="main">∄</span><span class="bound">v</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Virtual KernelSpace <span class="bound">v</span> <span class="main">⟹</span> 
+    <span class="free">x</span> <span class="main">=</span> Virtual <span class="bound">sp</span> <span class="bound">v_page</span> <span class="main">⟹</span> space_mapping s0_req <span class="bound">sp</span> <span class="main">=</span> None"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> not_None_eq page_t.exhaust page_t.simps<span class="main">(</span>5<span class="main">)</span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">smt</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_Valid_Has_Real2<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"s0_req<span class="main">⊢</span><span class="free">x</span><span class="main">↝<span class="hidden">⇧</span><sup>+</sup></span><span class="main">(</span>Real <span class="free">r</span><span class="main">)</span> <span class="main">⟹</span> s0_req<span class="main">⊢</span><span class="free">x</span>"</span></span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∃</span><span class="bound">r</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Real <span class="bound">r</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> Real_HasNo_Father_tran
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∃</span><span class="bound">v</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Virtual Sigma0Space <span class="bound">v</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">unfolding</span></span> valid_page_def
+    <span class="keyword1"><span class="command">using</span></span> basic3 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∃</span><span class="bound">v</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Virtual RootServerSpace <span class="bound">v</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> s0_Tran_Path_RootServerSpace
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">cases</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">∃</span><span class="bound">v</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Virtual KernelSpace <span class="bound">v</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> s0_Tran_Path_KernelSpace
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> valid_page_def direct_path_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">subgoal_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="main">⋀</span><span class="bound">sp</span> <span class="bound">v_page</span><span class="main">.</span> <span class="main">∄</span><span class="bound">r</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Real <span class="bound">r</span> <span class="main">⟹</span> <span class="main">∄</span><span class="bound">v</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Virtual Sigma0Space <span class="bound">v</span> <span class="main">⟹</span>
+    <span class="main">∄</span><span class="bound">v</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Virtual RootServerSpace <span class="bound">v</span> <span class="main">⟹</span> <span class="main">∄</span><span class="bound">v</span><span class="main">.</span> <span class="free">x</span> <span class="main">=</span> Virtual KernelSpace <span class="bound">v</span> <span class="main">⟹</span> 
+    <span class="free">x</span> <span class="main">=</span> Virtual <span class="bound">sp</span> <span class="bound">v_page</span> <span class="main">⟹</span> <span class="main">¬</span>s0_req<span class="main">⊢</span><span class="free">x</span><span class="main">↝<span class="hidden">⇧</span><sup>+</sup></span><span class="main">(</span>Real <span class="free">r</span><span class="main">)</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> not_None_eq page_t.exhaust page_t.simps<span class="main">(</span>5<span class="main">)</span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">smt</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">subst</span> tran_path.simps<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def direct_path_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_Valid_Has_Real<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Space_Valid_Has_Real s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> Inv_Space_Valid_Has_Real_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">subst</span> rtran_tran<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> s0_Inv_Space_Valid_Has_Real1 <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> valid_page_def <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command">using</span></span> s0_Inv_Space_Valid_Has_Real2 
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_Father_Is_Unique<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Space_Father_Is_Unique s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> Inv_Space_Father_Is_Unique_def
+ S0ReqInit System_Init_def direct_path_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_Path_Is_Unique<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Space_Path_Is_Unique s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> Inv_Space_Path_Is_Unique_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">sp</span> <span class="main">=</span> KernelSpace"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> s0_Tran_Path_KernelSpace <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">sp</span> <span class="main">=</span> Sigma0Space"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> s0_Tran_Path_Sigma0Space_Unique<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">sp</span> <span class="main">=</span> RootServerSpace"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">using</span></span> s0_Tran_Path_RootServerSpace
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">subgoal_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">sp</span> <span class="main">≠</span> KernelSpace <span class="main">⟹</span> <span class="improper">sp</span> <span class="main">≠</span> Sigma0Space <span class="main">⟹</span> <span class="improper">sp</span> <span class="main">≠</span> RootServerSpace <span class="main">⟹</span>
+  <span class="main">∀</span><span class="bound">r</span><span class="main">.</span> <span class="main">¬</span>s0_req<span class="main">⊢</span><span class="main">(</span>Virtual <span class="improper">sp</span> <span class="improper">v_page</span><span class="main">)</span><span class="main">↝<span class="hidden">⇧</span><sup>+</sup></span><span class="main">(</span>Real <span class="bound">r</span><span class="main">)</span>"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">subst</span> tran_path.simps<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def direct_path_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_Perms_IsNot_Empty<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Space_Perms_IsNot_Empty s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> Inv_Space_Perms_IsNot_Empty_def get_perms_def valid_page_def direct_path_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def PERMS_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">sp</span> <span class="main">=</span> KernelSpace"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">sp</span> <span class="main">=</span> Sigma0Space"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> UNIV_I empty_iff not_None_eq option.simps<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> prod.simps<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">sp</span> <span class="main">=</span> RootServerSpace"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_Spaces_In_Config<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Space_Spaces_In_Config s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Space_Spaces_In_Config_def spaces_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">using</span></span> PriSpacesConfigLemma 
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">x</span> <span class="main">=</span> KernelSpace"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">x</span> <span class="main">=</span> Sigma0Space"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">x</span> <span class="main">=</span> RootServerSpace"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_InitialSpaces_In_Spaces<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Space_InitialSpaces_In_Spaces s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Space_InitialSpaces_In_Spaces_def
+    spaces_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_Spaces_IsNot_None<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Space_Spaces_IsNot_None s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Space_Spaces_IsNot_None_def spaces_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">x</span> <span class="main">=</span> KernelSpace"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">x</span> <span class="main">=</span> Sigma0Space"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">x</span> <span class="main">=</span> RootServerSpace"</span></span></span><span class="main">)</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">meson</span> option.distinct<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span><span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_Perms_Subset<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Space_Perms_Subset s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Space_Perms_Subset_def 
+    direct_path_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space_Range_Vpage<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Space_Vpage_Range s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> Inv_Space_Vpage_Range_def
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">auto</span> <span class="quasi_keyword">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> S0ReqInit System_Init_def valid_page_def direct_path_def<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">case_tac</span> <span class="quoted"><span class="quoted"><span class="language">"<span class="improper">sp</span> <span class="main">≠</span> Sigma0Space"</span></span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">subgoal</span></span></span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> option.distinct<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> option.sel<span class="main">)</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">auto</span> <span class="quasi_keyword">simp</span><span class="main"><span class="main">:</span></span>PriSpacesConfigLemma<span class="main">)</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> option.distinct<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span><span class="main">)</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Space<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Space s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> Inv_Space_def
+  <span class="keyword1"><span class="command">using</span></span> s0_Inv_Space_HasNot_Loop s0_Inv_Space_Valid_Has_Real
+   s0_Inv_Space_Perms_IsNot_Empty s0_Inv_Space_Spaces_In_Config 
+   s0_Inv_Space_Spaces_IsNot_None s0_Inv_Space_Perms_Subset
+   s0_Inv_Space_InitialSpaces_In_Spaces s0_Inv_Space_Range_Vpage
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">subsection</span></span><span class="quoted"><span class="document"><span class="plain_text">‹Thread›</span></span></span>
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Idle_NotIn_Threads<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Idle_NotIn_Threads s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Idle_NotIn_Threads_def
+  <span class="keyword1"><span class="command">using</span></span> PriThreadsConfigLemma
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Sigma0_In_Active<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"Inv_Sigma0_In_Active s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Sigma0_In_Active_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Sigma0_Space<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"Inv_Sigma0_Space s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Sigma0_Space_def
+  <span class="keyword1"><span class="command">using</span></span> PriThreadsConfigLemma
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_IntThreads_Space<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"Inv_IntThreads_Space s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_IntThreads_Space_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_RootServer_Space<span class="main">:</span>
+  <span class="quoted"><span class="quoted"><span class="language">"Inv_RootServer_Space s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_RootServer_Space_def
+  <span class="keyword1"><span class="command">using</span></span> PriThreadsConfigLemma
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Idle_Space_Is_KernelSpace<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Idle_Space_Is_KernelSpace s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Idle_Space_Is_KernelSpace_def
+  <span class="keyword1"><span class="command">using</span></span> PriThreadsConfigLemma
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_RootServer_In_Active<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_RootServer_In_Active s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_RootServer_In_Active_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_IntThreads_In_Active<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_IntThreads_In_Active s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_IntThreads_In_Active_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Threads_Space_Dom<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Threads_Space_Dom s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Threads_Space_Dom_def
+  <span class="keyword1"><span class="command">using</span></span> PriThreadsConfigLemma <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Threads_In_Config<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Threads_In_Config s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Threads_In_Config_def
+  <span class="keyword1"><span class="command">using</span></span> PriThreadsConfigLemma <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Active_In_Threads<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Active_In_Threads s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Active_In_Threads_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_NThreads_Is_None<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_NThreads_Is_None s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_NThreads_Is_None_def
+  <span class="keyword1"><span class="command">using</span></span> PriThreadsConfigLemma <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Threads_IsNot_None<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Threads_IsNot_None s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Threads_IsNot_None_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Threads_Space_In_Spaces<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Threads_Space_In_Spaces s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Threads_Space_In_Spaces_def spaces_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Threads_Eq_Space_Threads<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Threads_Eq_Space_Threads s0_req"</span></span></span>
+<span class="keyword1"><span class="command">proof</span></span><span class="language"><span class="operator">-</span></span>
+  <span class="keyword1"><span class="command">have</span></span> h1<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"spaces s0_req <span class="main">=</span> <span class="main">{</span>KernelSpace<span class="main">,</span> Sigma0Space<span class="main">,</span> RootServerSpace<span class="main">}</span>"</span></span></span>
+    <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def spaces_def <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">meson</span> option.distinct<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span><span class="main">)</span></span>
+  <span class="keyword1"><span class="command">have</span></span> h2<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"thread_space s0_req <span class="main">=</span> <span class="main">(</span><span class="main">(</span><span class="main">λ</span><span class="bound">t</span><span class="main">.</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">t</span> <span class="main">∈</span> kIntThreads
+                        <span class="keyword1">then</span> Some KernelSpace
+                        <span class="keyword1">else</span> 
+                      <span class="keyword1">if</span> <span class="bound">t</span> <span class="main">=</span> kSigma0
+                        <span class="keyword1">then</span> Some Sigma0Space
+                        <span class="keyword1">else</span>
+                      <span class="keyword1">if</span> <span class="bound">t</span> <span class="main">=</span> kRootServer
+                        <span class="keyword1">then</span> Some RootServerSpace
+                        <span class="keyword1">else</span>
+                      <span class="keyword1">if</span> <span class="bound">t</span> <span class="main">=</span> idle
+                        <span class="keyword1">then</span> Some KernelSpace
+                        <span class="keyword1">else</span> None 
+                     <span class="main">)</span>
+                <span class="main">)</span><span class="main">)</span>"</span></span></span> 
+    <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword1"><span class="command">have</span></span> h3<span class="main">:</span><span class="quoted"><span class="quoted"><span class="language">"space_threads s0_req <span class="main">=</span> <span class="main">(</span><span class="main">λ</span><span class="bound">sp</span><span class="main">.</span> <span class="main">(</span><span class="keyword1">if</span> <span class="bound">sp</span> <span class="main">=</span> KernelSpace
+                          <span class="keyword1">then</span> Some <span class="main">(</span>kIntThreads <span class="main">∪</span> <span class="main">{</span>idle<span class="main">}</span><span class="main">)</span>
+                          <span class="keyword1">else</span> 
+                        <span class="keyword1">if</span> <span class="bound">sp</span> <span class="main">=</span> Sigma0Space
+                          <span class="keyword1">then</span> Some <span class="main">{</span>kSigma0<span class="main">}</span>
+                          <span class="keyword1">else</span>
+                        <span class="keyword1">if</span> <span class="bound">sp</span> <span class="main">=</span> RootServerSpace
+                          <span class="keyword1">then</span> Some <span class="main">{</span>kRootServer<span class="main">}</span>
+                          <span class="keyword1">else</span> None<span class="main">)</span><span class="main">)</span>"</span></span></span>
+    <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">simp</span></span>
+  <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="language"><span class="var">?thesis</span></span></span></span> <span class="keyword1"><span class="command">unfolding</span></span> Inv_Threads_Eq_Space_Threads_def
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span><span class="language"><span class="main">(</span><span class="operator">subst</span> h1<span class="main">)</span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span></span>
+    <span class="keyword1"><span class="command">using</span></span> IdleDiff h2 h3 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> PriSpacesConfigLemma Un_insert_right h2 h3 insertCI option.sel option.simps<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span> sup_bot.right_neutral<span class="main">)</span></span>
+    <span class="keyword1"><span class="command">using</span></span> PriSpacesConfigLemma PriThreadsConfigLemma h2 h3 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span>
+    <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> PriSpacesConfigLemma h2 h3 insertCI option.sel option.simps<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span><span class="main">)</span></span>
+    <span class="keyword1"><span class="command">using</span></span> PriThreadsConfigLemma SpaceDiff h2 h3 <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="language"><span class="operator">auto</span><span class="main"><span class="keyword3">[</span></span>1<span class="main"><span class="keyword3">]</span></span></span> 
+    <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="main">(</span><span class="operator">metis</span> SpaceDiff h2 h3 insertCI option.sel option.simps<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span><span class="main">)</span></span>
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Threads_Sche_In_Threads<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Threads_Sche_In_Threads s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Threads_Sche_In_Threads_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_NActive_Utcb_Is_None<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_NActive_Utcb_Is_None s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_NActive_Utcb_Is_None_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Active_Utcb_IsNot_None<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Active_Utcb_IsNot_None s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Active_Utcb_IsNot_None_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_IntThreads_Utcb_Is_None<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_IntThreads_Utcb_Is_None s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_IntThreads_Utcb_Is_None_def
+  <span class="keyword1"><span class="command">using</span></span> PriThreadsConfigLemma
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Threads_Partner_In_Threads<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Threads_Partner_In_Threads s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Threads_Partner_In_Threads_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Threads_Incoming_In_Threads<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Threads_Incoming_In_Threads s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> S0ReqInit System_Init_def Inv_Threads_Incoming_In_Threads_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> s0_Inv_Thread<span class="main">:</span>
+<span class="quoted"><span class="quoted"><span class="language">"Inv_Thread s0_req"</span></span></span>
+  <span class="keyword1"><span class="command">unfolding</span></span> Inv_Thread_def
+  <span class="keyword1"><span class="command">using</span></span> s0_Inv_Idle_NotIn_Threads s0_Inv_Sigma0_In_Active s0_Inv_Idle_Space_Is_KernelSpace
+    s0_Inv_Idle_NotIn_Threads s0_Inv_Idle_Space_Is_KernelSpace
+    s0_Inv_Sigma0_Space s0_Inv_IntThreads_Space
+    s0_Inv_RootServer_Space s0_Inv_Sigma0_In_Active 
+    s0_Inv_RootServer_In_Active s0_Inv_IntThreads_In_Active 
+    s0_Inv_Threads_In_Config s0_Inv_Active_In_Threads 
+    s0_Inv_NThreads_Is_None s0_Inv_Threads_IsNot_None 
+    s0_Inv_Threads_Space_In_Spaces s0_Inv_Threads_Eq_Space_Threads
+    s0_Inv_Threads_Sche_In_Threads s0_Inv_Threads_Space_Dom
+    s0_Inv_NActive_Utcb_Is_None s0_Inv_Active_Utcb_IsNot_None
+    s0_Inv_IntThreads_Utcb_Is_None 
+    s0_Inv_Threads_Partner_In_Threads s0_Inv_Threads_Incoming_In_Threads
+  <span class="keyword1"><span class="command">by</span></span> <span class="language"><span class="operator">auto</span></span>
+<span class="keyword2"><span class="keyword">end</span></span></pre></body>
