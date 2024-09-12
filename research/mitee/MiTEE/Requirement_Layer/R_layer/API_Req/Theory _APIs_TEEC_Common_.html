@@ -1,0 +1,1099 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.contents { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+
+
+/* formal entities */
+
+.entity_def {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.entity_def:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+}
+
+.entity_ref {
+  color: inherit;
+  text-decoration: inherit;
+  border: 0.5px solid rgba(0,0,0,0);
+}
+
+.entity_ref:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+  border: 0.5px solid black;
+}
+</style><title>Theory "APIs_TEEC_Common"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> APIs_TEEC_Common
+<span class="keyword2"><span class="keyword">imports</span></span> <span class="quoted">"../GPTEE_DataStructure"</span>
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TEEC_Common"</span></span></span>
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"auxiliary function"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">newIdFromList</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"nat list <span class="main">⇒</span> nat"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">newIdFromList</span> <span class="free"><span class="bound"><span class="entity">idList</span></span></span> <span class="main">≡</span> <span class="keyword1">SOME</span> <span class="bound">newId</span><span class="main">.</span> <span class="bound">newId</span><span class="main">∈</span><span class="main">(</span><span class="main">{</span><span class="main">(</span><span class="numeral">2</span><span class="main">::</span>nat<span class="main">)</span><span class="main">..}</span> <span class="main">-</span> <span class="main">(</span>set <span class="free"><span class="bound"><span class="entity">idList</span></span></span><span class="main">)</span> <span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">getSessionIdFromMgr</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"TA_MGR_SESSION_TYPE<span class="main">⇒</span>SESSION_ID_TYPE"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">getSessionIdFromMgr</span> <span class="free"><span class="bound"><span class="entity">x</span></span></span> <span class="main">≡</span> session_id <span class="free"><span class="bound"><span class="entity">x</span></span></span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">newSessionId</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State <span class="main">⇒</span> <span class="main">(</span>SESSION_ID_TYPE <span class="main">×</span> TEEC_RESULT<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">newSessionId</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> 
+                    <span class="keyword1">let</span> <span class="bound">lst</span> <span class="main">=</span> mgr_ta_sessions <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="keyword1">in</span>  
+                <span class="main">(</span>newIdFromList <span class="main">(</span>map getSessionIdFromMgr <span class="bound">lst</span><span class="main">)</span><span class="main">,</span> TEEC_SUCCESS<span class="main">)</span>"</span></span>
+                          
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">getFdFromCtx</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"TEE_CONTEXT_TYPE<span class="main">⇒</span>FD_TYPE"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">getFdFromCtx</span> <span class="free"><span class="bound"><span class="entity">x</span></span></span> <span class="main">≡</span> ctx_fd <span class="free"><span class="bound"><span class="entity">x</span></span></span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">newContextFd</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>FD_TYPE"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">newContextFd</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> 
+                <span class="keyword1">let</span> <span class="bound">lst</span> <span class="main">=</span> tee_ctx_list <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="keyword1">in</span>  
+                newIdFromList <span class="main">(</span>map getFdFromCtx <span class="bound">lst</span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">getThreadFromInstance</span> <span class="keyword2"><span class="keyword">where</span></span>
+               <span class="quoted"><span class="quoted">"<span class="free">getThreadFromInstance</span> <span class="free"><span class="bound"><span class="entity">x</span></span></span> <span class="main">≡</span> cur_ta_thread_id <span class="free"><span class="bound"><span class="entity">x</span></span></span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">newInstancethread</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>THREAD_ID_TYPE"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">newInstancethread</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> 
+                <span class="keyword1">let</span> <span class="bound">lst</span> <span class="main">=</span> mgr_ta_instances <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="keyword1">in</span>  
+                newIdFromList <span class="main">(</span>map getThreadFromInstance <span class="bound">lst</span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">getIDFromBlock</span> <span class="keyword2"><span class="keyword">where</span></span>
+                <span class="quoted"><span class="quoted">"<span class="free">getIDFromBlock</span> <span class="free"><span class="bound"><span class="entity">x</span></span></span> <span class="main">≡</span> block_id <span class="free"><span class="bound"><span class="entity">x</span></span></span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">newMemBlockID</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>MEM_BLOCK_ID"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">newMemBlockID</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> 
+                    <span class="keyword1">let</span> <span class="bound">lst</span> <span class="main">=</span> tee_memories <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="keyword1">in</span> 
+                     newIdFromList <span class="main">(</span>map getIDFromBlock <span class="bound">lst</span><span class="main">)</span> "</span></span>
+
+<span class="comment1">(*add 2023.2.21, *)</span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">newMemBlockID3</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span> MEM_BLOCK_ID"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">newMemBlockID3</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> 
+                    <span class="keyword1">let</span> <span class="bound">val</span> <span class="main">=</span> BIDpointer<span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span>
+                        <span class="keyword1">in</span> 
+                        <span class="main">(</span><span class="bound">val</span><span class="main">+</span><span class="main">1</span><span class="main">)</span>"</span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">newMemBlockID2</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span><span class="main">(</span>State <span class="main">×</span> MEM_BLOCK_ID<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">newMemBlockID2</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> 
+                    <span class="keyword1">let</span> <span class="bound">val</span> <span class="main">=</span> BIDpointer<span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                      <span class="bound">mgr</span><span class="main">=</span> ta_mgr<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> 
+                        <span class="keyword1">in</span> 
+                     <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>ta_mgr<span class="main">:=</span><span class="bound">mgr</span><span class="main">⦇</span>BIDpointer<span class="main">:=</span><span class="bound">val</span><span class="main">+</span><span class="main">1</span><span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span><span class="main">,</span><span class="bound">val</span><span class="main">+</span><span class="main">1</span><span class="main">)</span> "</span></span>
+
+                     
+<span class="comment1">(*only for REE to register memory, allocate and so on *)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">newREEMemBlockID</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>MEM_BLOCK_ID"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">newREEMemBlockID</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> 
+                    <span class="keyword1">let</span> <span class="bound">lst</span> <span class="main">=</span> driver_mem <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="keyword1">in</span> 
+                     newIdFromList <span class="main">(</span>map getIDFromBlock <span class="bound">lst</span><span class="main">)</span> "</span></span>
+
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TEEC_OpenSession"</span></span></span>
+<span class="keyword1"><span class="command">text</span></span><span class="quoted"><span class="document"><span class="plain_text">"attention: all the number steps(1.3 etc) refer to those in document-TEE_OpenTASession"</span></span></span>
+
+
+<span class="comment1">(*only check the validity of params, do not transform the params*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_pre_process_operation</span><span class="main">::</span><span class="quoted"><span class="quoted">"TEEC_Operation option<span class="main">⇒</span>TEEC_RESULT"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">TEEC_pre_process_operation</span> <span class="free"><span class="bound"><span class="entity">opt1</span></span></span> <span class="main">≡</span> 
+                                      <span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">opt1</span></span></span> <span class="main">=</span> None <span class="keyword1">then</span> TEEC_SUCCESS
+                                      <span class="keyword1">else</span> TEEC_SUCCESS "</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_post_process_operation</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"TEEC_Operation option<span class="main">⇒</span>TEEC_RESULT"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">TEEC_post_process_operation</span> <span class="free"><span class="bound"><span class="entity">opt1</span></span></span> <span class="main">≡</span> 
+                                       TEEC_SUCCESS "</span></span>
+
+<span class="keyword1"><span class="command">consts</span></span> OpenSessionRelease <span class="main">::</span> <span class="quoted">TEEC_RESULT</span>
+
+
+<span class="comment1">(*set TA's access right towards the related shared memory,operated by TEE*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEE_pre_process</span><span class="main">::</span><span class="quoted"><span class="quoted">"<span class="main">(</span>MemBlock <span class="main">×</span> TEEC_MEMREF_TYPE<span class="main">)</span> <span class="main">⇒</span>THREAD_ID_TYPE
+                                              <span class="main">⇒</span> <span class="main">(</span>MemBlock <span class="main">×</span> TEEC_MEMREF_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">TEE_pre_process</span> <span class="free"><span class="bound"><span class="entity">mem_t</span></span></span> <span class="free"><span class="bound"><span class="entity">tid1</span></span></span> <span class="main">≡</span> 
+                            <span class="main">(</span><span class="keyword1">case</span> <span class="main">(</span>snd <span class="free"><span class="bound"><span class="entity">mem_t</span></span></span><span class="main">)</span> <span class="keyword1">of</span> TEEC_MEMREF_PARTIAL_INPUT  
+                          <span class="main">⇒</span><span class="main">(</span><span class="main">(</span>fst <span class="free"><span class="bound"><span class="entity">mem_t</span></span></span><span class="main">)</span><span class="main">⦇</span>access_right<span class="main">:=</span><span class="main">(</span><span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">(</span><span class="free"><span class="bound"><span class="entity">tid1</span></span></span><span class="main">:=</span> Some READ<span class="main">)</span><span class="main">)</span><span class="main">⦈</span><span class="main">,</span>snd <span class="free"><span class="bound"><span class="entity">mem_t</span></span></span><span class="main">)</span><span class="main">|</span>
+                                              TEEC_MEMREF_PARTIAL_OUTPUT
+                          <span class="main">⇒</span><span class="main">(</span><span class="main">(</span>fst <span class="free"><span class="bound"><span class="entity">mem_t</span></span></span><span class="main">)</span><span class="main">⦇</span>access_right<span class="main">:=</span><span class="main">(</span><span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">(</span><span class="free"><span class="bound"><span class="entity">tid1</span></span></span><span class="main">:=</span> Some WRITE<span class="main">)</span><span class="main">)</span><span class="main">⦈</span><span class="main">,</span>snd <span class="free"><span class="bound"><span class="entity">mem_t</span></span></span><span class="main">)</span><span class="main">|</span>
+                                              TEEC_MEMREF_PARTIAL_INOUT
+                          <span class="main">⇒</span><span class="main">(</span><span class="main">(</span>fst <span class="free"><span class="bound"><span class="entity">mem_t</span></span></span><span class="main">)</span><span class="main">⦇</span>access_right<span class="main">:=</span><span class="main">(</span><span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">(</span><span class="free"><span class="bound"><span class="entity">tid1</span></span></span><span class="main">:=</span> Some READWRITE<span class="main">)</span><span class="main">)</span><span class="main">⦈</span><span class="main">,</span>snd <span class="free"><span class="bound"><span class="entity">mem_t</span></span></span><span class="main">)</span><span class="main">)</span>"</span></span>                    
+
+
+<span class="comment1">(*
+(*set TA's access right towards the related shared memory,operated by TEE*)
+definition TEE_pre_process::"(MemBlock × TEEC_MEMREF_TYPE) ⇒THREAD_ID_TYPE⇒ (MemBlock × TEEC_MEMREF_TYPE)" where
+    "TEE_pre_process mem_t tid1 ≡ let m = fst mem_t in (case (snd mem_t) of TEEC_MEMREF_PARTIAL_INPUT  
+                                    ⇒(⦇block_id=block_id m, size=size m,ownership=ownership m,access_right=((λx. None)(tid1:= Some READ)),is_SecureMem=is_SecureMem m,related=related m⦈,snd mem_t)|
+                                                        TEEC_MEMREF_PARTIAL_OUTPUT
+                                    ⇒(⦇block_id=block_id m, size=size m,ownership=ownership m,access_right=((λx. None)(tid1:= Some WRITE)),is_SecureMem=is_SecureMem m,related=related m⦈,snd mem_t)|
+                                                        TEEC_MEMREF_PARTIAL_INOUT
+                                    ⇒(⦇block_id=block_id m, size=size m,ownership=ownership m,access_right=((λx. None)(tid1:= Some READWRITE)),is_SecureMem=is_SecureMem m,related=related m⦈,snd mem_t))"
+*)</span>
+                                    
+<span class="comment1">(*although set clientid to REE, but actually not initiated, init using InitMgrSession*)</span>
+<span class="comment1">(*2.1 and 4.6 in openTASession*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">addMgrSession</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">addMgrSession</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">≡</span> 
+                                      <span class="keyword1">let</span> <span class="bound">ses_lst</span> <span class="main">=</span> <span class="main">(</span>mgr_ta_sessions <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="keyword1">in</span>
+                                      <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TEE_state <span class="main">:=</span><span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>ta_mgr<span class="main">:=</span>
+                                       <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">⦇</span>mgr_ta_sessions<span class="main">:=</span>
+                                        <span class="main">⦇</span>session_id<span class="main">=</span><span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">,</span>session_ctx<span class="main">=</span>DefaultThreadID<span class="main">,</span>client_id<span class="main">=</span>DefaultClientID<span class="main">⦈</span><span class="main">#</span><span class="bound">ses_lst</span>
+                                      <span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span>"</span></span>
+
+<span class="keyword1"><span class="command">primrec</span></span> <span class="entity">getATTRfromTA</span> <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted">"<span class="free">getATTRfromTA</span> <span class="main">(</span>TAConf <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="free"><span class="bound"><span class="entity">attr</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span><span class="main">)</span> <span class="main">=</span><span class="free"><span class="bound"><span class="entity">attr</span></span></span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">getATTRfromBin</span><span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>TEE_TA_ATTR_TYPE"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">getATTRfromBin</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">uuid</span></span></span> <span class="main">≡</span>getATTRfromTA <span class="main">(</span>the<span class="main">(</span><span class="main">(</span>TA_conf <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">uuid</span></span></span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+
+<span class="comment1">(*4.1-4.5*)</span>
+<span class="comment1">(*the session which created by openSession is added to Instance here*)</span>
+<span class="comment1">(*this function add instance to mgr,and add ta to TAs_state*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">addMgrInstance</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>Sys_Config<span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span><span class="main">(</span>State<span class="main">×</span>THREAD_ID_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">addMgrInstance</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">≡</span> 
+                                <span class="keyword1">let</span> <span class="bound">attr</span> <span class="main">=</span> getATTRfromBin <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span><span class="main">;</span>
+                                    <span class="bound">ins_lst</span> <span class="main">=</span> <span class="main">(</span>mgr_ta_instances <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                    <span class="bound">ctid</span> <span class="main">=</span> <span class="main">(</span>newInstancethread <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="keyword1">in</span>
+                                     <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TEE_state <span class="main">:=</span>
+                                      <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>ta_mgr<span class="main">:=</span>
+                                              <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">⦇</span>mgr_ta_instances<span class="main">:=</span>
+                                          <span class="main">⦇</span>ta_id<span class="main">=</span><span class="free"><span class="bound"><span class="entity">id1</span></span></span><span class="main">,</span>cur_ta_session_list<span class="main">=</span><span class="main">[]</span><span class="main">,</span>reference_cnt<span class="main">=</span><span class="main">1</span><span class="main">,</span>
+                                            busy<span class="main">=</span>True<span class="main">,</span>cur_ta_thread_id<span class="main">=</span><span class="bound">ctid</span><span class="main">,</span>attribute<span class="main">=</span><span class="bound">attr</span><span class="main">⦈</span><span class="main">#</span><span class="bound">ins_lst</span>
+                                       <span class="main">⦈</span><span class="main">⦈</span><span class="main">,</span>TAs_state<span class="main">:=</span><span class="main">(</span><span class="main">(</span>TAs_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">(</span><span class="bound">ctid</span><span class="main">:=</span>Some <span class="main">⦇</span>
+                                       TA_mode<span class="main">=</span>NORMAL<span class="main">,</span>TA_sessions<span class="main">=</span><span class="main">[]</span><span class="main">,</span>TA_instance_init<span class="main">=</span>False<span class="main">,</span>
+                                       attribute<span class="main">=</span><span class="bound">attr</span><span class="main">⦈</span><span class="main">)</span><span class="main">)</span><span class="main">⦈</span>
+                                      <span class="main">,</span> <span class="bound">ctid</span><span class="main">)</span>"</span></span>
+<span class="comment1">(*DELETE the session id here, because this new TA instance is the server TA*)</span>
+
+<span class="comment1">(*used in OpenTASession, add session to client TA's instance in TEE*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">addSesToInstance</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>THREAD_ID_TYPE<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">addSesToInstance</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ctid1</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">≡</span> 
+                          <span class="keyword1">let</span> 
+                             <span class="bound">lst</span> <span class="main">=</span> <span class="main">(</span>mgr_ta_instances <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                              <span class="bound">index</span> <span class="main">=</span><span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">x</span><span class="main">.</span> cur_ta_thread_id <span class="main">(</span><span class="bound">lst</span><span class="main">!</span><span class="bound">x</span><span class="main">)</span><span class="main">=</span><span class="main">(</span><span class="main">1</span><span class="main">::</span>nat<span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                              <span class="bound">x</span><span class="main">=</span><span class="bound">lst</span><span class="main">!</span><span class="bound">index</span> <span class="keyword1">in</span>
+                                     <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>ta_mgr <span class="main">:=</span>
+                                              <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">⦇</span>mgr_ta_instances<span class="main">:=</span>
+                                                                list_update <span class="bound">lst</span> <span class="bound">index</span>
+                                              <span class="main">⦇</span>ta_id<span class="main">=</span>ta_id <span class="bound">x</span><span class="main">,</span>cur_ta_session_list<span class="main">=</span><span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">#</span><span class="main">(</span>cur_ta_session_list <span class="bound">x</span><span class="main">)</span><span class="main">,</span>
+                                                reference_cnt<span class="main">=</span>reference_cnt <span class="bound">x</span><span class="main">,</span>busy<span class="main">=</span>busy <span class="bound">x</span><span class="main">,</span>
+                                                  cur_ta_thread_id<span class="main">=</span> cur_ta_thread_id <span class="bound">x</span><span class="main">,</span>TA_INSTANCE_CTX_TYPE.attribute<span class="main">=</span>TA_INSTANCE_CTX_TYPE.attribute <span class="bound">x</span><span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span>
+                                            <span class="main">⦈</span>"</span></span>
+
+<span class="comment1">(*                                  
+lemma addSesToInstance_Sync:"∀s t ctid ses_id. ta_mgr(TEE_state s) =ta_mgr(TEE_state t) 
+            ⟶ ta_mgr(TEE_state (addSesToInstance s ctid ses_id)) =ta_mgr(TEE_state (addSesToInstance t ctid ses_id))"
+            using addSesToInstance_def someI some_eq_imp
+    by (smt (verit, ccfv_SIG) State.cases State.select_convs(4) State.update_convs(4)
+    TEE_TA_MANAGER.fold_congs(2) TEE_TYPE.cases TEE_TYPE.select_convs(1) TEE_TYPE.update_convs(1)) 
+*)</span>
+
+                                      
+<span class="comment1">(*only for singeInstance attr*)</span>
+<span class="comment1">(*4.7, setbusy failure is out the scope of this func*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">setBusyInstance</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>State"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">setBusyInstance</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="main">≡</span> <span class="keyword1">let</span> <span class="bound">lst</span><span class="main">=</span> mgr_ta_instances <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span> 
+                                      <span class="bound">index</span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">x</span><span class="main">.</span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span><span class="main">=</span>ta_id <span class="main">(</span><span class="bound">lst</span><span class="main">!</span><span class="bound">x</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                      <span class="bound">x</span><span class="main">=</span><span class="bound">lst</span><span class="main">!</span><span class="bound">index</span> <span class="keyword1">in</span>
+                                          <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>ta_mgr <span class="main">:=</span>
+                                              <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">⦇</span>mgr_ta_instances<span class="main">:=</span>
+                                                                list_update <span class="bound">lst</span> <span class="bound">index</span>
+                                              <span class="main">⦇</span>ta_id<span class="main">=</span>ta_id <span class="bound">x</span><span class="main">,</span>cur_ta_session_list<span class="main">=</span>cur_ta_session_list <span class="bound">x</span><span class="main">,</span>
+                                                reference_cnt<span class="main">=</span>reference_cnt <span class="bound">x</span><span class="main">,</span>busy<span class="main">=</span>True<span class="main">,</span>
+                                                  cur_ta_thread_id<span class="main">=</span> cur_ta_thread_id <span class="bound">x</span><span class="main">,</span>TA_INSTANCE_CTX_TYPE.attribute<span class="main">=</span>TA_INSTANCE_CTX_TYPE.attribute <span class="bound">x</span><span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span>
+                                            <span class="main">⦈</span>"</span></span>
+
+
+<span class="comment1">(*for all instance attr, set busy to false*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">unsetBusyInstance</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>THREAD_ID_TYPE<span class="main">⇒</span>State"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">unsetBusyInstance</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">tid1</span></span></span> <span class="main">≡</span> <span class="keyword1">let</span> <span class="bound">lst</span><span class="main">=</span> mgr_ta_instances <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span> 
+                                        <span class="bound">index</span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">x</span><span class="main">.</span> <span class="free"><span class="bound"><span class="entity">tid1</span></span></span><span class="main">=</span>cur_ta_thread_id <span class="main">(</span><span class="bound">lst</span><span class="main">!</span><span class="bound">x</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                        <span class="bound">x</span><span class="main">=</span><span class="bound">lst</span><span class="main">!</span><span class="bound">index</span> <span class="keyword1">in</span>
+                                          <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>ta_mgr <span class="main">:=</span>
+                                              <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">⦇</span>mgr_ta_instances<span class="main">:=</span>
+                                                                list_update <span class="bound">lst</span> <span class="bound">index</span>
+                                              <span class="main">⦇</span>ta_id<span class="main">=</span>ta_id <span class="bound">x</span><span class="main">,</span>cur_ta_session_list<span class="main">=</span>cur_ta_session_list <span class="bound">x</span><span class="main">,</span>
+                                                reference_cnt<span class="main">=</span><span class="main">(</span>reference_cnt <span class="bound">x</span><span class="main">)</span> <span class="main">-</span><span class="main">1</span><span class="main">,</span>busy<span class="main">=</span>False<span class="main">,</span>
+                                                  cur_ta_thread_id<span class="main">=</span> cur_ta_thread_id <span class="bound">x</span>
+                                                  <span class="main">,</span>TA_INSTANCE_CTX_TYPE.attribute<span class="main">=</span>TA_INSTANCE_CTX_TYPE.attribute <span class="bound">x</span><span class="main">⦈</span><span class="main">⦈</span>
+                                                  <span class="main">⦈</span>
+                                            <span class="main">⦈</span>"</span></span>
+
+<span class="comment1">(*2.2.1.1.2, ref_count + 1*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">plusRefInstance</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>State"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">plusRefInstance</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="main">≡</span> <span class="keyword1">let</span> <span class="bound">lst</span><span class="main">=</span> mgr_ta_instances <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span> 
+                                        <span class="bound">index</span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">x</span><span class="main">.</span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span><span class="main">=</span>ta_id <span class="main">(</span><span class="bound">lst</span><span class="main">!</span><span class="bound">x</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                        <span class="bound">x</span><span class="main">=</span><span class="bound">lst</span><span class="main">!</span><span class="bound">index</span> <span class="keyword1">in</span>
+                                          <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>ta_mgr <span class="main">:=</span>
+                                              <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">⦇</span>mgr_ta_instances<span class="main">:=</span>
+                                                                list_update <span class="bound">lst</span> <span class="bound">index</span>
+                                              <span class="main">⦇</span>ta_id<span class="main">=</span>ta_id <span class="bound">x</span><span class="main">,</span>cur_ta_session_list<span class="main">=</span>cur_ta_session_list <span class="bound">x</span><span class="main">,</span>
+                                                reference_cnt<span class="main">=</span><span class="main">(</span>reference_cnt <span class="bound">x</span><span class="main">)</span> <span class="main">+</span><span class="main">1</span><span class="main">,</span>busy<span class="main">=</span>busy <span class="bound">x</span><span class="main">,</span>
+                                                  cur_ta_thread_id<span class="main">=</span> cur_ta_thread_id <span class="bound">x</span>
+                                                  <span class="main">,</span>TA_INSTANCE_CTX_TYPE.attribute<span class="main">=</span>TA_INSTANCE_CTX_TYPE.attribute <span class="bound">x</span><span class="main">⦈</span><span class="main">⦈</span>
+                                                  <span class="main">⦈</span>
+                                            <span class="main">⦈</span>"</span></span>
+
+<span class="comment1">(*judge whether TA instance in TA-mgr ,if so, return the attr*)</span>
+<span class="comment1">(*2.2*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">findInstanceATTRInMgr</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>TEE_TA_ATTR_TYPE option"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">findInstanceATTRInMgr</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="main">≡</span> 
+                                <span class="keyword1">let</span> <span class="bound">ins_lst</span> <span class="main">=</span> <span class="main">(</span>mgr_ta_instances <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                    <span class="bound">r</span> <span class="main">=</span> <span class="main">(</span><span class="main">∃</span><span class="bound">a</span><span class="main">.</span> <span class="bound">a</span><span class="main">∈</span>set <span class="bound">ins_lst</span> <span class="main">∧</span> ta_id <span class="bound">a</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span><span class="main">)</span> <span class="keyword1">in</span> 
+                                        <span class="keyword1">if</span> <span class="bound">r</span> <span class="main">=</span> False <span class="keyword1">then</span> None
+                                        <span class="keyword1">else</span> <span class="main">(</span>Some <span class="main">(</span>TA_INSTANCE_CTX_TYPE.attribute <span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">a</span><span class="main">.</span> <span class="bound">a</span><span class="main">∈</span>set <span class="bound">ins_lst</span><span class="main">∧</span>ta_id <span class="bound">a</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">primrec</span></span> <span class="entity">getTABin</span><span class="main">::</span><span class="quoted"><span class="quoted">"TA_CONF<span class="main">⇒</span>BIN"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">getTABin</span> <span class="main">(</span>TAConf <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="free"><span class="bound"><span class="entity">bin1</span></span></span><span class="main">)</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">bin1</span></span></span> "</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">findBinById</span><span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>BIN option"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">findBinById</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="main">≡</span>
+                             <span class="keyword1">let</span> <span class="bound">x</span><span class="main">=</span><span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">a</span><span class="main">.</span> <span class="main">(</span>TA_conf <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="main">=</span> <span class="bound">a</span><span class="main">)</span> <span class="keyword1">in</span>
+                                    <span class="keyword1">if</span> <span class="main">(</span><span class="main">∃</span><span class="bound">a</span><span class="main">.</span> <span class="main">(</span>TA_conf <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="main">=</span> <span class="bound">a</span><span class="main">)</span>
+                                    <span class="keyword1">then</span>  Some <span class="main">(</span>getTABin <span class="main">(</span>the <span class="bound">x</span><span class="main">)</span><span class="main">)</span> 
+                                    <span class="keyword1">else</span> None "</span></span>
+
+<span class="keyword1"><span class="command">consts</span></span> checkBinCode<span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>BIN<span class="main">⇒</span>bool"</span></span>
+
+
+<span class="comment1">(*init memory for TA instance  when newly created after Load_TA_Service*)</span>
+<span class="comment1">(*one for TA bin and one for TA own execution space*)</span>
+<span class="comment1">(*
+definition TA_Memory_Init :: "State⇒Sys_Config⇒BIN_MEM_SIZE⇒THREAD_ID_TYPE⇒(State × TEEC_RESULT)" where
+        "TA_Memory_Init s sc size1 tid ≡  let
+                                            r1 = newMemBlockID2 s;
+                                            new_total = (tee_total_size (TEE_state s)) -size1;
+                                            new_memList = ⦇block_id = snd r1,size=size1,ownership = tid,
+                                              access_right =(λx. None)(tid:=Some READWRITE) ,is_SecureMem=True,related= None⦈#(tee_memories(TEE_state s));
+                                            s01=fst r1;
+                                            s1 = s01⦇TEE_state:=(TEE_state s01)
+                                                  ⦇tee_total_size := new_total, tee_memories := new_memList⦈⦈ in
+                                            let 
+                                                r2 = (newMemBlockID2 s1);
+                                                new_total1 = (tee_total_size (TEE_state s1)) -size1;
+                                                new_memList1 = ⦇block_id = snd r2,size=size1,ownership = tid,
+                                              access_right = (λx. None)((TEE sc):=Some READ) ,is_SecureMem=True,related =None⦈#(tee_memories(TEE_state s1));
+                                                s11 = fst r2;
+                                                s2 = s11⦇TEE_state:=(TEE_state s11)
+                                                  ⦇tee_total_size := new_total1, tee_memories := new_memList1⦈⦈ in 
+                                                (s2,TEEC_SUCCESS)
+                                          "
+
+let val = BIDpointer(ta_mgr (TEE_state s));
+                      mgr= ta_mgr(TEE_state s) 
+                        in 
+                     (s⦇TEE_state:=(TEE_state s)⦇ta_mgr:=mgr⦇BIDpointer:=val+1⦈⦈⦈
+
+
+*)</span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TA_Memory_Init</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>Sys_Config<span class="main">⇒</span>BIN_MEM_SIZE<span class="main">⇒</span>THREAD_ID_TYPE<span class="main">⇒</span><span class="main">(</span>State <span class="main">×</span> TEEC_RESULT<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">TA_Memory_Init</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">size1</span></span></span> <span class="free"><span class="bound"><span class="entity">tid</span></span></span> <span class="main">≡</span>  <span class="keyword1">let</span>
+      
+                                            <span class="bound">new_total</span> <span class="main">=</span> <span class="main">(</span>tee_total_size <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">-</span><span class="free"><span class="bound"><span class="entity">size1</span></span></span><span class="main">;</span>
+                                            <span class="bound">new_memList</span> <span class="main">=</span> <span class="main">⦇</span>block_id <span class="main">=</span> newMemBlockID3 <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>size<span class="main">=</span><span class="free"><span class="bound"><span class="entity">size1</span></span></span><span class="main">,</span>ownership <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">tid</span></span></span><span class="main">,</span>
+                                              access_right <span class="main">=</span><span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">(</span><span class="free"><span class="bound"><span class="entity">tid</span></span></span><span class="main">:=</span>Some READWRITE<span class="main">)</span> 
+                                                <span class="main">,</span>is_SecureMem<span class="main">=</span>True<span class="main">,</span>related<span class="main">=</span> None<span class="main">⦈</span><span class="main">#</span><span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                            <span class="bound">s1</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span>
+                                                  <span class="main">⦇</span>tee_total_size <span class="main">:=</span> <span class="bound">new_total</span><span class="main">,</span> tee_memories <span class="main">:=</span> <span class="bound">new_memList</span><span class="main">,</span>
+                                                   ta_mgr<span class="main">:=</span>ta_mgr<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>BIDpointer<span class="main">:=</span>BIDpointer<span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">+</span><span class="main">1</span> <span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span> <span class="keyword1">in</span>
+                                            <span class="keyword1">let</span> 
+                 
+                                                <span class="bound">new_total1</span> <span class="main">=</span> <span class="main">(</span>tee_total_size <span class="main">(</span>TEE_state <span class="bound">s1</span><span class="main">)</span><span class="main">)</span> <span class="main">-</span><span class="free"><span class="bound"><span class="entity">size1</span></span></span><span class="main">;</span>
+                                                <span class="bound">new_memList1</span> <span class="main">=</span> <span class="main">⦇</span>block_id <span class="main">=</span> newMemBlockID3 <span class="bound">s1</span><span class="main">,</span>size<span class="main">=</span><span class="free"><span class="bound"><span class="entity">size1</span></span></span><span class="main">,</span>ownership <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">tid</span></span></span><span class="main">,</span>
+                                              access_right <span class="main">=</span> <span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">(</span><span class="main">(</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span><span class="main">:=</span>Some READ<span class="main">)</span> <span class="main">,</span>is_SecureMem<span class="main">=</span>True<span class="main">,</span>related <span class="main">=</span>None<span class="main">⦈</span><span class="main">#</span><span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="bound">s1</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                          
+                                                <span class="bound">s2</span> <span class="main">=</span> <span class="bound">s1</span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="bound">s1</span><span class="main">)</span>
+                                                  <span class="main">⦇</span>tee_total_size <span class="main">:=</span> <span class="bound">new_total1</span><span class="main">,</span> tee_memories <span class="main">:=</span> <span class="bound">new_memList1</span><span class="main">,</span>
+                                                  ta_mgr<span class="main">:=</span>ta_mgr<span class="main">(</span>TEE_state <span class="bound">s1</span><span class="main">)</span><span class="main">⦇</span>BIDpointer<span class="main">:=</span>BIDpointer<span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="bound">s1</span><span class="main">)</span><span class="main">)</span><span class="main">+</span><span class="main">1</span> <span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span> <span class="keyword1">in</span> 
+                                                <span class="main">(</span><span class="bound">s2</span><span class="main">,</span>TEEC_SUCCESS<span class="main">)</span>
+                                          "</span></span>
+
+
+
+<span class="comment1">(*step 3*)</span>
+<span class="keyword1"><span class="command">subsubsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Module: Load TA Service"</span></span></span>
+
+<span class="comment1">(*APIs_TEEC_Common_add.thy add function in APIs_TEEC_Common*)</span>
+
+<span class="keyword1"><span class="command">primrec</span></span> <span class="entity">getTaOffSet</span><span class="main">::</span><span class="quoted"><span class="quoted">"TA_CONF<span class="main">⇒</span>nat"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">getTaOffSet</span> <span class="main">(</span>TAConf <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="free"><span class="bound"><span class="entity">offset</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span><span class="main">)</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">offset</span></span></span> "</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">findTaOffSetById</span><span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span> OFFSET option"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">findTaOffSetById</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="main">≡</span>
+                             <span class="keyword1">let</span> <span class="bound">x</span><span class="main">=</span><span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">a</span><span class="main">.</span> <span class="main">(</span>TA_conf <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="main">=</span> <span class="bound">a</span><span class="main">)</span> <span class="keyword1">in</span>
+                                    <span class="keyword1">if</span> <span class="main">(</span><span class="main">∃</span><span class="bound">a</span><span class="main">.</span> <span class="main">(</span>TA_conf <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="main">=</span> <span class="bound">a</span><span class="main">)</span>
+                                    <span class="keyword1">then</span>  Some <span class="main">(</span>getTaOffSet <span class="main">(</span>the <span class="bound">x</span><span class="main">)</span><span class="main">)</span> 
+                                    <span class="keyword1">else</span> None "</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">f_thread_rpc_cmd</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> TA_UUID_TYPE <span class="main">⇒</span> nat option"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">f_thread_rpc_cmd</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">taId</span></span></span> <span class="main">≡</span>
+    <span class="keyword1">let</span>
+      <span class="bound">taSize</span> <span class="main">=</span> findTaOffSetById <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">taId</span></span></span>
+    <span class="keyword1">in</span>
+      <span class="bound">taSize</span>
+  "</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">alloc_ta_buffer</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> TA_UUID_TYPE option 
+            <span class="main">⇒</span> <span class="main">(</span>MemBlock option <span class="main">×</span> nat option <span class="main">×</span> TEE_RETURN_CODE_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">alloc_ta_buffer</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span> <span class="main">≡</span> 
+    <span class="keyword1">let</span>
+      <span class="bound">vmoSize</span> <span class="main">=</span> f_thread_rpc_cmd <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">(</span>the <span class="free"><span class="bound"><span class="entity">taID</span></span></span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">vmo</span> <span class="main">=</span> <span class="main">⦇</span>block_id <span class="main">=</span> someblockID1<span class="main">,</span> size <span class="main">=</span> <span class="main">(</span>the <span class="bound">vmoSize</span><span class="main">)</span><span class="main">,</span> ownership <span class="main">=</span> <span class="main">(</span>the <span class="free"><span class="bound"><span class="entity">taID</span></span></span><span class="main">)</span><span class="main">,</span> 
+              access_right <span class="main">=</span><span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">(</span><span class="main">(</span><span class="main">1</span><span class="main">::</span>nat<span class="main">)</span><span class="main">:=</span>Some READWRITE<span class="main">)</span> <span class="main">,</span>is_SecureMem<span class="main">=</span>True<span class="main">,</span>related<span class="main">=</span> None<span class="main">⦈</span>
+    <span class="keyword1">in</span>
+      <span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span><span class="main">=</span> None <span class="main">∨</span> <span class="bound">vmoSize</span> <span class="main">=</span> None <span class="keyword1">then</span>
+        <span class="main">(</span>None<span class="main">,</span> <span class="bound">vmoSize</span><span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> 
+        <span class="main">(</span>Some <span class="bound">vmo</span><span class="main">,</span> <span class="bound">vmoSize</span><span class="main">,</span> TEE_SUCCESS<span class="main">)</span>
+  "</span></span>
+
+<span class="keyword1"><span class="command">primrec</span></span> <span class="entity">getTABin2</span><span class="main">::</span><span class="quoted"><span class="quoted">"TA_CONF<span class="main">⇒</span>BIN"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">getTABin2</span> <span class="main">(</span>TAConf <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="free"><span class="bound"><span class="entity">bin</span></span></span><span class="main">)</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">bin</span></span></span> "</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">findBinById2</span><span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>BIN option"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">findBinById2</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="main">≡</span>
+                             <span class="keyword1">let</span> <span class="bound">x</span><span class="main">=</span><span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">a</span><span class="main">.</span> <span class="main">(</span>TA_conf <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="main">=</span> <span class="bound">a</span><span class="main">)</span> <span class="keyword1">in</span>
+                                    <span class="keyword1">if</span> <span class="main">(</span><span class="main">∃</span><span class="bound">a</span><span class="main">.</span> <span class="main">(</span>TA_conf <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="main">=</span> <span class="bound">a</span><span class="main">)</span>
+                                    <span class="keyword1">then</span>  Some <span class="main">(</span>getTABin2 <span class="main">(</span>the <span class="bound">x</span><span class="main">)</span><span class="main">)</span> 
+                                    <span class="keyword1">else</span> None "</span></span>
+
+<span class="keyword1"><span class="command">type_synonym</span></span> MAGIC_NUM <span class="main">=</span> <span class="quoted">nat</span>
+<span class="keyword1"><span class="command">consts</span></span> magic_num <span class="main">::</span> <span class="quoted"><span class="quoted">"MAGIC_NUM"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">isMsgHeadEq2MagicNum</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"MESSAGE_HEAD_TYPE <span class="main">⇒</span> bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">isMsgHeadEq2MagicNum</span> <span class="free"><span class="bound"><span class="entity">head</span></span></span> <span class="main">≡</span>
+    <span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">head</span></span></span> <span class="main">≠</span> magic_num <span class="keyword1">then</span>
+      False
+    <span class="keyword1">else</span> 
+      True 
+  "</span></span>
+
+<span class="keyword1"><span class="command">primrec</span></span> <span class="entity">removeAllVmo</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"DOMAIN_ID <span class="main">⇒</span> MemBlock list <span class="main">⇒</span> MemBlock list"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">removeAllVmo</span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span> <span class="main">[]</span> <span class="main">=</span> <span class="main">[]</span>"</span></span> <span class="main">|</span>
+  <span class="quoted"><span class="quoted">"<span class="free">removeAllVmo</span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">memBlock</span></span></span> <span class="main">#</span> <span class="free"><span class="bound"><span class="entity">memBlockLeft</span></span></span><span class="main">)</span> <span class="main">=</span> 
+    <span class="main">(</span><span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span> <span class="main">=</span> ownership <span class="free"><span class="bound"><span class="entity">memBlock</span></span></span> <span class="keyword1">then</span>
+        <span class="free">removeAllVmo</span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span> <span class="free"><span class="bound"><span class="entity">memBlockLeft</span></span></span>
+     <span class="keyword1">else</span>
+        <span class="free"><span class="bound"><span class="entity">memBlock</span></span></span> <span class="main">#</span> <span class="free">removeAllVmo</span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span> <span class="free"><span class="bound"><span class="entity">memBlockLeft</span></span></span><span class="main">)</span>
+  "</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">removeAllVmoFromMemList</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State <span class="main">⇒</span> MemBlock <span class="main">⇒</span> State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">removeAllVmoFromMemList</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">vmo</span></span></span> <span class="main">≡</span>
+    <span class="keyword1">let</span>
+      <span class="bound">vmoSize</span> <span class="main">=</span> size <span class="free"><span class="bound"><span class="entity">vmo</span></span></span><span class="main">;</span>
+      <span class="bound">taID</span> <span class="main">=</span> ownership <span class="free"><span class="bound"><span class="entity">vmo</span></span></span><span class="main">;</span>
+      <span class="bound">new_total_add</span> <span class="main">=</span> <span class="main">(</span>tee_total_size <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">+</span> <span class="bound">vmoSize</span><span class="main">;</span>
+      <span class="bound">new_memList_removeAllVmo</span> <span class="main">=</span> removeAllVmo <span class="bound">taID</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">s1</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TEE_state<span class="main">:=</span><span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span>
+               <span class="main">⦇</span>tee_total_size <span class="main">:=</span> <span class="bound">new_total_add</span><span class="main">,</span> tee_memories <span class="main">:=</span> <span class="bound">new_memList_removeAllVmo</span><span class="main">⦈</span><span class="main">⦈</span>
+    <span class="keyword1">in</span>
+      <span class="bound">s1</span>
+  "</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">alloc_shdr</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> TA_UUID_TYPE option 
+            <span class="main">⇒</span> <span class="main">(</span>MemBlock option <span class="main">×</span> nat option <span class="main">×</span> TEE_RETURN_CODE_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">alloc_shdr</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span> <span class="main">≡</span> 
+    <span class="keyword1">let</span>
+      <span class="bound">vmoSize</span> <span class="main">=</span> f_thread_rpc_cmd <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">(</span>the <span class="free"><span class="bound"><span class="entity">taID</span></span></span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">vmo</span> <span class="main">=</span> <span class="main">⦇</span>block_id <span class="main">=</span> someblockID2<span class="main">,</span> size <span class="main">=</span> <span class="main">(</span>the <span class="bound">vmoSize</span><span class="main">)</span><span class="main">,</span> ownership <span class="main">=</span> <span class="main">(</span>the <span class="free"><span class="bound"><span class="entity">taID</span></span></span><span class="main">)</span><span class="main">,</span> 
+              access_right <span class="main">=</span><span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">(</span><span class="main">(</span><span class="main">1</span><span class="main">::</span>nat<span class="main">)</span><span class="main">:=</span>Some READWRITE<span class="main">)</span> <span class="main">,</span>is_SecureMem<span class="main">=</span>True<span class="main">,</span>related<span class="main">=</span> None<span class="main">⦈</span>
+    <span class="keyword1">in</span>
+      <span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span><span class="main">=</span> None <span class="main">∨</span> <span class="bound">vmoSize</span> <span class="main">=</span> None <span class="keyword1">then</span>
+        <span class="main">(</span>None<span class="main">,</span> <span class="bound">vmoSize</span><span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> 
+        <span class="main">(</span>Some <span class="bound">vmo</span><span class="main">,</span> <span class="bound">vmoSize</span><span class="main">,</span> TEE_SUCCESS<span class="main">)</span>
+  "</span></span>
+
+<span class="comment1">(* get ta from sysconf and copy ta to vmo. assume only 1 times copy *)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">shdr_alloc_and_copy</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> <span class="main">(</span>MemBlock option <span class="main">×</span> BIN option<span class="main">)</span> 
+    <span class="main">⇒</span> nat option <span class="main">⇒</span> <span class="main">(</span><span class="main">(</span>MemBlock option <span class="main">×</span> BIN option<span class="main">)</span> <span class="main">×</span> TEE_RETURN_CODE_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">shdr_alloc_and_copy</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">ta_buf</span></span></span> <span class="free"><span class="bound"><span class="entity">vmoSize</span></span></span> <span class="main">≡</span>
+    <span class="keyword1">let</span>
+      <span class="bound">vmo</span> <span class="main">=</span> fst <span class="free"><span class="bound"><span class="entity">ta_buf</span></span></span><span class="main">;</span>
+      <span class="bound">bin</span> <span class="main">=</span> snd <span class="free"><span class="bound"><span class="entity">ta_buf</span></span></span><span class="main">;</span>
+      <span class="bound">taID</span> <span class="main">=</span> ownership <span class="main">(</span>the <span class="bound">vmo</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">shdr_vmo</span> <span class="main">=</span> alloc_shdr <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">(</span>Some <span class="bound">taID</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">shdrMem</span> <span class="main">=</span> fst <span class="bound">shdr_vmo</span><span class="main">;</span>
+      <span class="bound">msg_head</span> <span class="main">=</span> message_head <span class="main">(</span>the <span class="bound">bin</span><span class="main">)</span>
+    <span class="keyword1">in</span>
+      <span class="keyword1">if</span> isMsgHeadEq2MagicNum <span class="bound">msg_head</span> <span class="main">=</span> False <span class="keyword1">then</span>
+        <span class="main">(</span><span class="main">(</span>None<span class="main">,</span> None<span class="main">)</span><span class="main">,</span> TEE_ERROR_SECURITY<span class="main">)</span>
+      <span class="keyword1">else</span>
+        <span class="main">(</span><span class="main">(</span><span class="bound">shdrMem</span><span class="main">,</span> <span class="bound">bin</span><span class="main">)</span><span class="main">,</span> TEE_SUCCESS<span class="main">)</span>
+  "</span></span>
+
+<span class="comment1">(* copy taBin to vmo ta_buf *)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">rpc_load</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config  <span class="main">⇒</span> TA_UUID_TYPE option <span class="main">⇒</span> <span class="main">(</span>MemBlock option <span class="main">×</span> BIN option<span class="main">)</span> 
+    <span class="main">⇒</span> nat option <span class="main">⇒</span> <span class="main">(</span>MemBlock option <span class="main">×</span> BIN option<span class="main">)</span> <span class="main">×</span> TEE_RETURN_CODE_TYPE"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">rpc_load</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span> <span class="free"><span class="bound"><span class="entity">ta_buf</span></span></span> <span class="free"><span class="bound"><span class="entity">vmoSize</span></span></span> <span class="main">≡</span>
+  <span class="keyword1">let</span>
+    <span class="bound">vmo</span> <span class="main">=</span> fst <span class="free"><span class="bound"><span class="entity">ta_buf</span></span></span><span class="main">;</span>
+    <span class="bound">bin</span> <span class="main">=</span> snd <span class="free"><span class="bound"><span class="entity">ta_buf</span></span></span>
+  <span class="keyword1">in</span>
+    <span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span> <span class="main">=</span> None <span class="main">∨</span> <span class="bound">vmo</span> <span class="main">=</span> None <span class="main">∨</span> <span class="free"><span class="bound"><span class="entity">vmoSize</span></span></span> <span class="main">=</span> None <span class="keyword1">then</span> 
+      <span class="main">(</span><span class="main">(</span><span class="bound">vmo</span><span class="main">,</span> None<span class="main">)</span><span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+    <span class="keyword1">else</span>
+      <span class="keyword1">let</span>
+        <span class="bound">bin</span> <span class="main">=</span> findBinById2 <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">(</span>the <span class="free"><span class="bound"><span class="entity">taID</span></span></span><span class="main">)</span>
+      <span class="keyword1">in</span>
+      <span class="keyword1">if</span> <span class="bound">bin</span> <span class="main">=</span> None <span class="keyword1">then</span>
+        <span class="main">(</span><span class="main">(</span><span class="bound">vmo</span><span class="main">,</span> None<span class="main">)</span><span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span>
+        <span class="main">(</span><span class="main">(</span><span class="bound">vmo</span><span class="main">,</span> <span class="bound">bin</span><span class="main">)</span><span class="main">,</span> TEE_SUCCESS<span class="main">)</span>
+  "</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">verifySignature</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"BIN option <span class="main">⇒</span> bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">verifySignature</span> <span class="free"><span class="bound"><span class="entity">bin</span></span></span> <span class="main">≡</span>
+   <span class="keyword1">let</span>
+      <span class="bound">curBin</span> <span class="main">=</span> the <span class="free"><span class="bound"><span class="entity">bin</span></span></span><span class="main">;</span>
+      <span class="bound">sum</span> <span class="main">=</span> <span class="main">(</span>message_head <span class="bound">curBin</span><span class="main">)</span> <span class="main">+</span> <span class="main">(</span>bin_result <span class="bound">curBin</span><span class="main">)</span> <span class="main">+</span> <span class="main">(</span>sig_ver <span class="bound">curBin</span><span class="main">)</span> <span class="main">+</span> <span class="main">(</span>algo <span class="bound">curBin</span><span class="main">)</span> <span class="main">+</span>
+          <span class="main">(</span>img_type <span class="bound">curBin</span><span class="main">)</span> <span class="main">+</span> <span class="main">(</span>resv <span class="bound">curBin</span><span class="main">)</span> <span class="main">+</span> <span class="main">(</span>raw_img_size <span class="bound">curBin</span><span class="main">)</span> <span class="main">+</span> <span class="main">(</span>rawing_hash <span class="bound">curBin</span><span class="main">)</span>  <span class="main">+</span> <span class="main">(</span>img_hash <span class="bound">curBin</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">binSig</span> <span class="main">=</span> sig <span class="bound">curBin</span>
+   <span class="keyword1">in</span>
+   <span class="keyword1">if</span> <span class="bound">binSig</span> <span class="main">≠</span> <span class="bound">sum</span> <span class="keyword1">then</span> False
+   <span class="keyword1">else</span> True"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">shdr_verify_signature</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="main">(</span>MemBlock option <span class="main">×</span> BIN option<span class="main">)</span> <span class="main">⇒</span> TEE_RETURN_CODE_TYPE"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">shdr_verify_signature</span> <span class="free"><span class="bound"><span class="entity">shdr</span></span></span> <span class="main">≡</span>
+    <span class="keyword1">let</span>
+      <span class="bound">bin</span> <span class="main">=</span> snd <span class="free"><span class="bound"><span class="entity">shdr</span></span></span>
+    <span class="keyword1">in</span>
+      <span class="keyword1">if</span> verifySignature <span class="bound">bin</span> <span class="main">=</span> True <span class="keyword1">then</span>
+        TEE_SUCCESS
+      <span class="keyword1">else</span>
+        TEE_ERROR_SECURITY
+  "</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">verifyBodyHash</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"BIN option <span class="main">⇒</span> bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">verifyBodyHash</span> <span class="free"><span class="bound"><span class="entity">bin</span></span></span> <span class="main">≡</span>
+    <span class="keyword1">let</span>
+      <span class="bound">curBin</span> <span class="main">=</span> the <span class="free"><span class="bound"><span class="entity">bin</span></span></span><span class="main">;</span>
+      <span class="bound">rawHash</span> <span class="main">=</span> <span class="main">(</span>rawing_hash <span class="bound">curBin</span><span class="main">)</span> <span class="main">*</span> <span class="numeral">10</span><span class="main">;</span>
+      <span class="bound">binBody</span> <span class="main">=</span> bin_body <span class="bound">curBin</span>
+    <span class="keyword1">in</span>
+   <span class="keyword1">if</span> <span class="bound">binBody</span> <span class="main">≠</span> <span class="bound">rawHash</span> <span class="keyword1">then</span> False
+   <span class="keyword1">else</span> True"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">shdr_check_digest</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"<span class="main">(</span>MemBlock option <span class="main">×</span> BIN option<span class="main">)</span> <span class="main">⇒</span> TEE_RETURN_CODE_TYPE"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">shdr_check_digest</span> <span class="free"><span class="bound"><span class="entity">shdr</span></span></span> <span class="main">≡</span>
+    <span class="keyword1">let</span>
+      <span class="bound">bin</span> <span class="main">=</span> snd <span class="free"><span class="bound"><span class="entity">shdr</span></span></span>
+    <span class="keyword1">in</span>
+      <span class="keyword1">if</span> verifyBodyHash <span class="bound">bin</span> <span class="main">=</span> True <span class="keyword1">then</span>
+        TEE_SUCCESS
+      <span class="keyword1">else</span> 
+        TEE_ERROR_SECURITY
+  "</span></span>
+
+<span class="comment1">(* get_ree_fs_ta *)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">get_ree_fs_ta</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> TA_UUID_TYPE option <span class="main">⇒</span> <span class="main">(</span>MemBlock option <span class="main">×</span> BIN option<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">get_ree_fs_ta</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span> <span class="main">≡</span> 
+    <span class="keyword1">let</span>                    
+      <span class="bound">allocTaBuffer</span> <span class="main">=</span> alloc_ta_buffer <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span><span class="main">;</span>
+      <span class="bound">ta_buf0</span> <span class="main">=</span> <span class="main">(</span>fst <span class="bound">allocTaBuffer</span><span class="main">,</span> None<span class="main">)</span><span class="main">;</span>
+      <span class="bound">code_allocTaBuffer</span> <span class="main">=</span> snd<span class="main">(</span>snd <span class="bound">allocTaBuffer</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">vmoSize</span> <span class="main">=</span> fst<span class="main">(</span>snd <span class="bound">allocTaBuffer</span><span class="main">)</span><span class="main">;</span>
+
+      <span class="bound">rpcLoad</span> <span class="main">=</span> rpc_load <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span> <span class="bound">ta_buf0</span> <span class="bound">vmoSize</span><span class="main">;</span>
+      <span class="bound">ta_buf1</span> <span class="main">=</span> fst <span class="bound">rpcLoad</span><span class="main">;</span>
+      <span class="bound">code_rpcLoad</span> <span class="main">=</span> snd <span class="bound">rpcLoad</span><span class="main">;</span>
+      
+      <span class="bound">shdrAllocAndCopy</span> <span class="main">=</span> shdr_alloc_and_copy <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="bound">ta_buf1</span> <span class="bound">vmoSize</span><span class="main">;</span>
+      <span class="bound">shdr</span> <span class="main">=</span> fst <span class="bound">shdrAllocAndCopy</span><span class="main">;</span>
+      <span class="bound">code_shdrAllocAndCopy</span> <span class="main">=</span> snd <span class="bound">shdrAllocAndCopy</span><span class="main">;</span>
+      
+      <span class="bound">shdrVerifySignature</span> <span class="main">=</span> shdr_verify_signature <span class="bound">shdr</span><span class="main">;</span>
+      
+      <span class="bound">shdrCheckDigest</span> <span class="main">=</span> shdr_check_digest <span class="bound">shdr</span><span class="main">;</span>
+      
+      <span class="bound">vmoHandle</span> <span class="main">=</span> <span class="bound">ta_buf1</span>
+    <span class="keyword1">in</span>
+      <span class="keyword1">if</span> <span class="bound">code_allocTaBuffer</span> <span class="main">=</span> TEE_SUCCESS <span class="main">∧</span> <span class="bound">code_rpcLoad</span> <span class="main">=</span> TEE_SUCCESS <span class="main">∧</span> <span class="bound">code_shdrAllocAndCopy</span> <span class="main">=</span> TEE_SUCCESS 
+        <span class="main">∧</span> <span class="bound">shdrVerifySignature</span> <span class="main">=</span> TEE_SUCCESS <span class="main">∧</span> <span class="bound">shdrCheckDigest</span> <span class="main">=</span> TEE_SUCCESS <span class="keyword1">then</span>
+       <span class="bound">vmoHandle</span>
+      <span class="keyword1">else</span>
+       <span class="main">(</span>None<span class="main">,</span> None<span class="main">)</span>"</span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">Load_TA_Service</span><span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> TA_UUID_TYPE option <span class="main">⇒</span> TEEC_RESULT <span class="main">×</span> BIN_Handle option"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">Load_TA_Service</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span> <span class="main">≡</span> 
+    <span class="keyword1">let</span>
+       <span class="bound">getTaBinHandleFromREE</span> <span class="main">=</span> get_ree_fs_ta <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">taID</span></span></span><span class="main">;</span>
+       <span class="bound">memBlock</span> <span class="main">=</span> fst <span class="bound">getTaBinHandleFromREE</span><span class="main">;</span>
+       <span class="bound">taBin</span> <span class="main">=</span> snd <span class="bound">getTaBinHandleFromREE</span>
+    <span class="keyword1">in</span>
+      <span class="keyword1">if</span> <span class="bound">memBlock</span> <span class="main">≠</span> None <span class="main">∧</span> <span class="bound">taBin</span> <span class="main">≠</span> None <span class="keyword1">then</span>
+        <span class="keyword1">let</span>
+          <span class="bound">binHandle_success</span> <span class="main">=</span> <span class="main">⦇</span>mem_block <span class="main">=</span> <span class="bound">memBlock</span><span class="main">,</span> bin <span class="main">=</span> <span class="bound">taBin</span><span class="main">⦈</span>
+        <span class="keyword1">in</span>
+          <span class="main">(</span>TEEC_SUCCESS<span class="main">,</span> Some <span class="bound">binHandle_success</span><span class="main">)</span>
+      <span class="keyword1">else</span>
+        <span class="main">(</span>TEEC_ERROR_SECURITY<span class="main">,</span> None<span class="main">)</span>
+  "</span></span>
+
+<span class="comment1">(*
+definition Load_TA_Service::"Sys_Config⇒TA_UUID_TYPE⇒(TEEC_RESULT×BIN_Handle option)" where
+        "Load_TA_Service sc  id1 ≡ let bin1=findBinById sc id1 in
+                  if bin1 = None then (TEEC_ERROR_BAD_PARAMETERS,None) 
+                  else let ch=checkBinCode sc (the bin1) in 
+                       if ch = False then (TEEC_ERROR_SECURITY,None) 
+                       else   
+                           (TEEC_SUCCESS,binHandle)"
+*)</span>
+
+<span class="comment1">(*
+definition TA_OpenSessionEntryPoint::"Sys_Config⇒State⇒TEEC_Operation⇒THREAD_ID_TYPE⇒State" where
+          "TA_OpenSessionEntryPoint sc s opt tid ≡ 
+                                          SOME x. x∈
+                                          {s1. TAs_state s1 = TAs_state s∧
+                                               REE_state s1 = REE_state s∧
+                                               system_time s1 = system_time s∧
+                                               ta_mgr(TEE_state s1) = ta_mgr(TEE_state s)∧
+                                               tee_ree_ipc_driver(TEE_state s1) = tee_ree_ipc_driver(TEE_state s)∧
+                                               zircon(TEE_state s1) = zircon(TEE_state s)∧
+                                               {x1. x1∈set(tee_memories(TEE_state s1))∧ownership x1≠tid}
+                                                  = {x2. x2∈set(tee_memories(TEE_state s))∧ownership x2≠tid}∧
+                                               tee_total_size(TEE_state s1)≤DefaultTEESize sc - tee_own_size}"
+*)</span>
+
+<span class="comment1">(*
+definition TA_OpenSessionEntryPoint::"Sys_Config⇒State⇒TEEC_Operation⇒THREAD_ID_TYPE⇒State" where
+          "TA_OpenSessionEntryPoint sc s opt tid≡ 
+                                         SOME x. x∈
+                                          {s1.  
+                                               REE_state s1 = REE_state s∧
+                                               ta_mgr(TEE_state s1) = ta_mgr(TEE_state s)∧
+                                              
+                                               {x1. x1∈set(tee_memories(TEE_state s1))∧ownership x1≠tid}
+                                                  = {x2. x2∈set(tee_memories(TEE_state s))∧ownership x2≠tid}
+                                              
+                                             }
+                                               
+                                              "
+*)</span>
+
+<span class="comment1">(*
+definition TA_OpenSessionEntryPoint::"Sys_Config⇒State⇒TEEC_Operation⇒THREAD_ID_TYPE⇒State" where
+          "TA_OpenSessionEntryPoint sc s opt tid≡ 
+                                         SOME s1.
+                                            
+                                               REE_state s1 = REE_state s∧
+                                               ( filter (λx. block_id x=(0::nat)) (tee_memories(TEE_state s1) )  
+                                                  =( filter (λx. block_id x=(0::nat)) (tee_memories(TEE_state s))))∧
+                                              
+                                               ( filter (λx. ownership x≠tid) (tee_memories(TEE_state s1) )  
+                                                  =( filter (λx. ownership x≠tid) (tee_memories(TEE_state s))))
+                                              
+                                             
+                                               
+                                              "
+(*ta_mgr(TEE_state s1) = ta_mgr(TEE_state s)∧*)
+*)</span>
+
+
+<span class="keyword1"><span class="command">subsubsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"others"</span></span></span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TA_OpenSessionEntryPoint</span><span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span>TEEC_Operation<span class="main">⇒</span>THREAD_ID_TYPE<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+          <span class="quoted"><span class="quoted">"<span class="free">TA_OpenSessionEntryPoint</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="free"><span class="bound"><span class="entity">tid</span></span></span><span class="main">≡</span> 
+                                         <span class="keyword1">SOME</span> <span class="bound">s1</span><span class="main">.</span>
+                                            
+                                               REE_state <span class="bound">s1</span> <span class="main">=</span> REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">∧</span>
+                                              <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="bound">s1</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>tee_memories<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span>
+                                                     "</span></span>
+
+
+
+<span class="keyword1"><span class="command">value</span></span><span class="quoted"><span class="quoted">"<span class="main">[</span><span class="main">1</span><span class="main">::</span>nat<span class="main">]</span><span class="main">!</span><span class="main">0</span>"</span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TA_CreateEntryPoint</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>TEEC_Operation<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+          <span class="quoted"><span class="quoted">"<span class="free">TA_CreateEntryPoint</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">to</span></span></span> <span class="main">≡</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">addTASession</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>THREAD_ID_TYPE<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">addTASession</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">tid1</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">≡</span> 
+                                  <span class="keyword1">let</span> <span class="bound">ta_ses</span><span class="main">=</span> <span class="main">(</span>TA_sessions<span class="main">(</span>the<span class="main">(</span><span class="main">(</span>TAs_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">tid1</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                      <span class="bound">ta_attr</span> <span class="main">=</span> <span class="main">(</span>TA_attribute<span class="main">(</span>the<span class="main">(</span><span class="main">(</span>TAs_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">tid1</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="keyword1">in</span>
+                                    <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TAs_state<span class="main">:=</span><span class="main">(</span>TAs_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">(</span><span class="free"><span class="bound"><span class="entity">tid1</span></span></span><span class="main">:=</span>
+                                           Some <span class="main">⦇</span>TA_mode<span class="main">=</span>NORMAL<span class="main">,</span>TA_sessions<span class="main">=</span><span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">#</span><span class="bound">ta_ses</span><span class="main">,</span>
+                                                  TA_instance_init<span class="main">=</span>True<span class="main">,</span>TA_attribute<span class="main">=</span><span class="bound">ta_attr</span><span class="main">⦈</span><span class="main">)</span> <span class="main">⦈</span>"</span></span>
+
+<span class="comment1">(*5.2-5.3, 5.1 ignored*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">initTAProcess</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>TEEC_Operation<span class="main">⇒</span>THREAD_ID_TYPE<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">initTAProcess</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="free"><span class="bound"><span class="entity">tid1</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">≡</span>
+                  <span class="keyword1">let</span> <span class="bound">ta_ses</span><span class="main">=</span> <span class="main">(</span>TA_sessions<span class="main">(</span>the<span class="main">(</span><span class="main">(</span>TAs_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">tid1</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                      <span class="bound">init1</span><span class="main">=</span><span class="main">(</span>TA_instance_init<span class="main">(</span>the<span class="main">(</span><span class="main">(</span>TAs_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">tid1</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="keyword1">in</span> 
+                        <span class="keyword1">if</span> <span class="main">(</span><span class="main">∃</span><span class="bound">a</span><span class="main">.</span> <span class="bound">a</span><span class="main">∈</span>set<span class="main">(</span><span class="bound">ta_ses</span><span class="main">)</span><span class="main">∧</span><span class="bound">a</span><span class="main">=</span><span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">)</span> <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> 
+                        <span class="keyword1">else</span>
+                            <span class="keyword1">let</span> <span class="bound">s1</span> <span class="main">=</span> TA_CreateEntryPoint <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="keyword1">in</span>
+                                <span class="keyword1">if</span> <span class="bound">init1</span> <span class="main">=</span> False <span class="keyword1">then</span> 
+                                     <span class="keyword1">let</span> <span class="bound">s2</span> <span class="main">=</span> <span class="main">(</span>addTASession <span class="bound">s1</span> <span class="free"><span class="bound"><span class="entity">tid1</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">)</span> <span class="keyword1">in</span> <span class="bound">s2</span>
+                                <span class="keyword1">else</span> 
+                                     <span class="keyword1">let</span> <span class="bound">s1</span> <span class="main">=</span> <span class="main">(</span>addTASession <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">tid1</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">)</span> <span class="keyword1">in</span> <span class="bound">s1</span>
+                        "</span></span>
+
+<span class="comment1">(*only care 6.2 and 6.3. but session_cnt is unkwown, so have not modeled . if any other steps fail, return s is enough*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">MgrPostOperation</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>THREAD_ID_TYPE<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">MgrPostOperation</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">tid1</span></span></span> <span class="main">≡</span> unsetBusyInstance <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">tid1</span></span></span>"</span></span>
+
+
+
+<span class="comment1">(*actually designed for client TA to init session in mgr *)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">InitMgrSession</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>CLIENT_TYPE<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span>THREAD_ID_TYPE<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">InitMgrSession</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span>  <span class="free"><span class="bound"><span class="entity">tid1</span></span></span><span class="main">≡</span>
+                                    <span class="keyword1">let</span> <span class="bound">mgr</span> <span class="main">=</span> <span class="main">(</span>ta_mgr<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span> 
+                                        <span class="bound">lst</span> <span class="main">=</span> mgr_ta_sessions <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                        <span class="bound">index</span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">x</span><span class="main">.</span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">=</span>session_id <span class="main">(</span><span class="bound">lst</span><span class="main">!</span><span class="bound">x</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                        <span class="bound">x</span> <span class="main">=</span> <span class="bound">lst</span><span class="main">!</span><span class="bound">index</span> <span class="keyword1">in</span> 
+                                        <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>TEE_state<span class="main">:=</span> <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>ta_mgr<span class="main">:=</span> <span class="bound">mgr</span><span class="main">⦇</span>mgr_ta_sessions<span class="main">:=</span>
+                                          list_update <span class="bound">lst</span> <span class="bound">index</span> <span class="main">⦇</span>session_id<span class="main">=</span>session_id <span class="bound">x</span><span class="main">,</span>session_ctx<span class="main">=</span><span class="free"><span class="bound"><span class="entity">tid1</span></span></span><span class="main">,</span>client_id<span class="main">=</span><span class="free"><span class="bound"><span class="entity">cli</span></span></span><span class="main">⦈</span>
+                                          <span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span>"</span></span>
+
+
+
+<span class="comment1">(*step 3 to step 6, in condition that TA instance is not busy,
+ because this TA instance is newly created, not need to check busy; ignore 5.1*)</span>
+
+
+ <span class="comment1">(*add TEE_pre_process here,12.18*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">LoadNewTA</span><span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>TEEC_Operation<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span>CLIENT_TYPE<span class="main">⇒</span>TEEC_CONTEXT_TYPE
+                                   <span class="main">⇒</span><span class="main">(</span>MemBlock <span class="main">×</span> TEEC_MEMREF_TYPE<span class="main">)</span>  <span class="main">⇒</span> <span class="main">(</span>State<span class="main">×</span>TEEC_RET_ORIGIN<span class="main">×</span>TEEC_RESULT<span class="main">×</span>SESSION_ID_TYPE<span class="main">)</span>"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+                <span class="quoted"><span class="quoted">"<span class="free">LoadNewTA</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s1</span></span></span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span><span class="main">≡</span> 
+                                      <span class="keyword1">let</span> <span class="bound">load</span> <span class="main">=</span> Load_TA_Service <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">(</span>Some <span class="free"><span class="bound"><span class="entity">id1</span></span></span><span class="main">)</span> <span class="keyword1">in</span>
+                                          <span class="keyword1">if</span> fst <span class="main">(</span> <span class="bound">load</span><span class="main">)</span> <span class="main">≠</span> TEEC_SUCCESS <span class="keyword1">then</span> 
+                                               <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s1</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>fst <span class="main">(</span><span class="bound">load</span><span class="main">)</span><span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                          <span class="keyword1">else</span>
+                                               <span class="keyword1">let</span> 
+                                                   <span class="bound">a_res</span> <span class="main">=</span> <span class="main">(</span>addMgrInstance <span class="free"><span class="bound"><span class="entity">s1</span></span></span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">)</span><span class="main">;</span>
+                                                   <span class="bound">s3</span> <span class="main">=</span> fst <span class="bound">a_res</span><span class="main">;</span>
+                                                   <span class="bound">tid1</span> <span class="main">=</span> snd <span class="bound">a_res</span><span class="main">;</span>
+                                                   <span class="bound">s3_1</span> <span class="main">=</span> fst<span class="main">(</span>TA_Memory_Init <span class="bound">s3</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> bin_mem_size <span class="bound">tid1</span><span class="main">)</span><span class="main">;</span>
+                                                     <span class="bound">s4</span> <span class="main">=</span> InitMgrSession <span class="bound">s3_1</span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="bound">tid1</span><span class="main">;</span>
+                                                     <span class="bound">mem_t</span> <span class="main">=</span> TEE_pre_process <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span> <span class="bound">tid1</span><span class="main">;</span>
+                                                     <span class="bound">param</span> <span class="main">=</span> <span class="main">⦇</span>param1<span class="main">=</span>Some <span class="bound">tid1</span><span class="main">,</span>param2<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">,</span>param3<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">opt</span></span></span><span class="main">,</span>param4<span class="main">=</span>None<span class="main">,</span>param5<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span>
+                                                              <span class="main">,</span>param6<span class="main">=</span>None<span class="main">,</span>param7<span class="main">=</span>None<span class="main">,</span>param8<span class="main">=</span>None<span class="main">,</span>param9<span class="main">=</span>None
+                                                              <span class="main">,</span>param10<span class="main">=</span>Some <span class="main">(</span>fst <span class="bound">mem_t</span><span class="main">)</span><span class="main">,</span>param11<span class="main">=</span>Some <span class="main">(</span>snd <span class="bound">mem_t</span><span class="main">)</span>
+                                                              <span class="main">,</span>param12<span class="main">=</span>None<span class="main">,</span>param13<span class="main">=</span>None<span class="main">⦈</span><span class="main">;</span>
+                                                     <span class="bound">s5</span> <span class="main">=</span> <span class="bound">s4</span><span class="main">⦇</span>current<span class="main">:=</span><span class="bound">tid1</span><span class="main">,</span>exec_prime<span class="main">:=</span><span class="main">(</span><span class="bound">param</span><span class="main">,</span>TEEC_OP3<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="bound">s4</span><span class="main">)</span><span class="main">⦈</span>  <span class="keyword1">in</span>
+                                                        <span class="main">(</span><span class="bound">s5</span><span class="main">,</span>TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span>TEEC_SUCCESS<span class="main">,</span><span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">)</span>
+                                              "</span></span>
+<span class="comment1">(*     mem_t = TEE_pre_process mem_t0 tid1; *)</span>
+                                             
+                                              
+                                              
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">LoadNewTA2</span><span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>TEEC_Operation<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span>CLIENT_TYPE<span class="main">⇒</span>TEEC_CONTEXT_TYPE
+                       <span class="main">⇒</span><span class="main">(</span>MemBlock <span class="main">×</span> TEEC_MEMREF_TYPE <span class="main">)</span> <span class="main">⇒</span> <span class="main">(</span>State<span class="main">×</span>TEEC_RET_ORIGIN<span class="main">×</span>TEEC_RESULT<span class="main">×</span>SESSION_ID_TYPE<span class="main">)</span>"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+                <span class="quoted"><span class="quoted">"<span class="free">LoadNewTA2</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s1</span></span></span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span><span class="main">≡</span> 
+                                      <span class="keyword1">let</span> <span class="bound">load</span> <span class="main">=</span> Load_TA_Service <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">(</span>Some <span class="free"><span class="bound"><span class="entity">id1</span></span></span><span class="main">)</span> <span class="keyword1">in</span>
+                                          <span class="keyword1">if</span> fst <span class="main">(</span> <span class="bound">load</span><span class="main">)</span> <span class="main">≠</span> TEEC_SUCCESS <span class="keyword1">then</span> 
+                                               <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s1</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>fst <span class="main">(</span><span class="bound">load</span><span class="main">)</span><span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                          <span class="keyword1">else</span>
+                                               <span class="keyword1">let</span> 
+                                                   <span class="bound">a_res</span> <span class="main">=</span> <span class="main">(</span>addMgrInstance <span class="free"><span class="bound"><span class="entity">s1</span></span></span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">)</span><span class="main">;</span>
+                                                   <span class="bound">s3</span> <span class="main">=</span> fst <span class="bound">a_res</span><span class="main">;</span>
+                                                   <span class="bound">tid1</span> <span class="main">=</span> snd <span class="bound">a_res</span><span class="main">;</span>
+                                                   <span class="bound">s3_1</span> <span class="main">=</span> fst<span class="main">(</span>TA_Memory_Init <span class="bound">s3</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> bin_mem_size <span class="bound">tid1</span><span class="main">)</span><span class="main">;</span>
+                                                     <span class="bound">s4</span> <span class="main">=</span> InitMgrSession <span class="bound">s3_1</span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="bound">tid1</span><span class="main">;</span>
+                                                     <span class="bound">mem_t</span> <span class="main">=</span> TEE_pre_process <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span> <span class="bound">tid1</span><span class="main">;</span>
+                                                     <span class="bound">param</span> <span class="main">=</span> <span class="main">⦇</span>param1<span class="main">=</span>Some <span class="bound">tid1</span><span class="main">,</span>param2<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">,</span>param3<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">opt</span></span></span><span class="main">,</span>param4<span class="main">=</span>None<span class="main">,</span>param5<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span>
+                                                              <span class="main">,</span>param6<span class="main">=</span>None<span class="main">,</span>param7<span class="main">=</span>None<span class="main">,</span>param8<span class="main">=</span>None<span class="main">,</span>param9<span class="main">=</span>None
+                                                              <span class="main">,</span>param10<span class="main">=</span>Some <span class="main">(</span>fst <span class="bound">mem_t</span><span class="main">)</span><span class="main">,</span>param11<span class="main">=</span>Some <span class="main">(</span>snd <span class="bound">mem_t</span><span class="main">)</span>
+                                                              <span class="main">,</span>param12<span class="main">=</span>None<span class="main">,</span>param13<span class="main">=</span>None<span class="main">⦈</span><span class="main">;</span>
+                                                     <span class="bound">s5</span> <span class="main">=</span> <span class="bound">s4</span><span class="main">⦇</span>current<span class="main">:=</span><span class="bound">tid1</span><span class="main">,</span>exec_prime<span class="main">:=</span><span class="main">(</span><span class="bound">param</span><span class="main">,</span>TEE_OP3<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="bound">s4</span><span class="main">)</span><span class="main">⦈</span>  <span class="keyword1">in</span>
+                                                        <span class="main">(</span><span class="bound">s5</span><span class="main">,</span>TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span>TEEC_SUCCESS<span class="main">,</span><span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">)</span>
+                                              "</span></span>
+
+
+<span class="comment1">(*
+definition LoadNewTA::"Sys_Config⇒State⇒TA_UUID_TYPE⇒TEEC_Operation⇒SESSION_ID_TYPE⇒CLIENT_TYPE⇒TEEC_CONTEXT_TYPE
+                                    ⇒ (State×TEEC_RET_ORIGIN×TEEC_RESULT×SESSION_ID_TYPE)"where
+                "LoadNewTA sc s1 id1 opt ses_id cli ctx1≡ 
+                                      let load = Load_TA_Service sc id1 in
+                                          if fst ( load) ≠ TEEC_SUCCESS then 
+                                               (s1,TEEC_ORIGIN_TEE,fst (load),INVALID_SESSION_ID)
+                                          else
+                                               let 
+                                                   a_res = (addMgrInstance s1 sc id1 ses_id);
+                                                   s3 = fst a_res;
+                                                   tid1 = snd a_res;
+                                                   s3_1 = fst(TA_Memory_Init s3 sc bin_mem_size tid1);
+                                                     s4 = InitMgrSession s3_1 cli ses_id tid1  in
+                                                        (s4,TEEC_ORIGIN_TRUSTED_APP,TEEC_SUCCESS,ses_id)
+                                              "
+*)</span>
+
+
+<span class="comment1">(*
+ r3res = snd r3 in
+                                                      if r3res ≠ TEEC_SUCCESS then 
+                                                        (s1,TEEC_ORIGIN_TEE,TEEC_ERROR_OUT_OF_MEMORY,INVALID_SESSION_ID)
+                                                     else
+*)</span>
+
+<span class="comment1">(*no panic in mgr instance data structure*)</span>
+
+<span class="comment1">(*recommmend you to:
+1. transform param_TYPE to TEEC_Operation_Type to reuse this function, 
+2.  and write a function(TEEC→TEE) to transfer the return reuslt and origin*)</span>
+
+<span class="comment1">(*step 2 to step 6, the main body is LoadNewTA, but include new judgement like busy or not*)</span>
+<span class="comment1">(*add TEE_pre_process here ,12.18*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">ioctrl</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>TEEC_Operation<span class="main">⇒</span>CLIENT_TYPE<span class="main">⇒</span>TEEC_CONTEXT_TYPE
+                                <span class="main">⇒</span><span class="main">(</span>MemBlock <span class="main">×</span> TEEC_MEMREF_TYPE <span class="main">)</span><span class="main">⇒</span><span class="main">(</span>State<span class="main">×</span>TEEC_RET_ORIGIN<span class="main">×</span>TEEC_RESULT<span class="main">×</span>SESSION_ID_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+                <span class="quoted"><span class="quoted">"<span class="free">ioctrl</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">uuid</span></span></span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span><span class="main">≡</span> 
+                       <span class="keyword1">let</span> <span class="bound">r1</span> <span class="main">=</span> newSessionId <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">;</span><span class="bound">ses_id</span> <span class="main">=</span> fst <span class="bound">r1</span> <span class="keyword1">in</span>
+                       <span class="keyword1">let</span> <span class="bound">s1</span> <span class="main">=</span> addMgrSession <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="bound">ses_id</span><span class="main">;</span>
+                            <span class="bound">attr</span> <span class="main">=</span> findInstanceATTRInMgr <span class="bound">s1</span> <span class="free"><span class="bound"><span class="entity">uuid</span></span></span> <span class="keyword1">in</span>
+                        <span class="keyword1">if</span> <span class="bound">attr</span> <span class="main">=</span> None <span class="keyword1">then</span>       
+                           <span class="keyword1">let</span> <span class="bound">load_result</span> <span class="main">=</span> LoadNewTA <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="bound">s1</span> <span class="free"><span class="bound"><span class="entity">uuid</span></span></span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="bound">ses_id</span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span> <span class="keyword1">in</span>
+                             <span class="bound">load_result</span>                       
+                        <span class="keyword1">else</span>
+                              <span class="keyword1">let</span> <span class="bound">ins_lst</span> <span class="main">=</span> <span class="main">(</span>mgr_ta_instances <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                  <span class="bound">cur_instance</span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">a</span><span class="main">.</span> <span class="bound">a</span><span class="main">∈</span>set <span class="bound">ins_lst</span> <span class="main">∧</span> ta_id <span class="bound">a</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">uuid</span></span></span><span class="main">)</span><span class="main">;</span>
+                                  <span class="bound">cnt</span> <span class="main">=</span> <span class="main">(</span>reference_cnt <span class="bound">cur_instance</span><span class="main">)</span><span class="main">;</span>
+                                  <span class="bound">b</span> <span class="main">=</span> busy <span class="bound">cur_instance</span><span class="main">;</span>
+                                  <span class="bound">tid1</span> <span class="main">=</span> cur_ta_thread_id <span class="bound">cur_instance</span> <span class="keyword1">in</span>
+                              <span class="keyword1">if</span> singleInstance <span class="main">(</span>the <span class="bound">attr</span><span class="main">)</span> <span class="main">=</span> True <span class="keyword1">then</span>
+                                  <span class="keyword1">if</span> multiSession <span class="main">(</span>the <span class="bound">attr</span><span class="main">)</span> <span class="main">=</span> False <span class="main">∧</span> <span class="bound">cnt</span> <span class="main">≠</span> <span class="main">0</span> <span class="keyword1">then</span> 
+                                      <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                  <span class="keyword1">else</span>
+                                      <span class="keyword1">if</span> <span class="bound">b</span> <span class="main">=</span> True <span class="keyword1">then</span> 
+                                          <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                      <span class="keyword1">else</span> 
+                                          <span class="keyword1">let</span> <span class="bound">s2</span> <span class="main">=</span> plusRefInstance <span class="bound">s1</span> <span class="free"><span class="bound"><span class="entity">uuid</span></span></span><span class="main">;</span>
+                                              <span class="bound">s2_1</span><span class="main">=</span> InitMgrSession <span class="bound">s2</span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="bound">ses_id</span> <span class="bound">tid1</span><span class="main">;</span>
+                                              <span class="bound">s3</span> <span class="main">=</span> setBusyInstance <span class="bound">s2_1</span> <span class="free"><span class="bound"><span class="entity">uuid</span></span></span><span class="main">;</span>
+                                            <span class="bound">mem_t</span><span class="main">=</span>TEE_pre_process <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span> <span class="bound">tid1</span><span class="main">;</span>
+                                              <span class="bound">param</span> <span class="main">=</span> <span class="main">⦇</span>param1<span class="main">=</span>Some <span class="bound">tid1</span><span class="main">,</span>param2<span class="main">=</span>Some <span class="bound">ses_id</span><span class="main">,</span>param3<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">opt</span></span></span><span class="main">,</span>param4<span class="main">=</span>None<span class="main">,</span>param5<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span>
+                                                      <span class="main">,</span>param6<span class="main">=</span>None<span class="main">,</span>param7<span class="main">=</span>None<span class="main">,</span>param8<span class="main">=</span>None<span class="main">,</span>param9<span class="main">=</span>None
+                                                        <span class="main">,</span>param10<span class="main">=</span>Some <span class="main">(</span>fst <span class="bound">mem_t</span><span class="main">)</span><span class="main">,</span>param11<span class="main">=</span>Some <span class="main">(</span>snd <span class="bound">mem_t</span><span class="main">)</span>
+                                                        <span class="main">,</span>param12<span class="main">=</span>None<span class="main">,</span>param13<span class="main">=</span>None<span class="main">⦈</span><span class="main">;</span>
+                                             <span class="bound">s4</span> <span class="main">=</span> <span class="bound">s3</span><span class="main">⦇</span>current<span class="main">:=</span><span class="bound">tid1</span><span class="main">,</span>exec_prime<span class="main">:=</span><span class="main">(</span><span class="bound">param</span><span class="main">,</span>TEEC_OP3<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="bound">s3</span><span class="main">)</span><span class="main">⦈</span>  <span class="keyword1">in</span>
+                                             
+                                                  <span class="main">(</span><span class="bound">s4</span><span class="main">,</span>TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span>TEEC_SUCCESS<span class="main">,</span><span class="bound">ses_id</span><span class="main">)</span>
+                              <span class="keyword1">else</span> 
+                                      <span class="keyword1">let</span> <span class="bound">load_result</span><span class="main">=</span>LoadNewTA <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="bound">s1</span> <span class="free"><span class="bound"><span class="entity">uuid</span></span></span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="bound">ses_id</span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span> <span class="keyword1">in</span>
+                                       <span class="bound">load_result</span>
+                                                   "</span></span>
+<span class="comment1">(*  mem_t=TEE_pre_process mem_t0 tid1;*)</span>
+                                                   
+<span class="comment1">(*   ;s01= addSesToInstance s realctid ses_id*)</span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">ioctrl2</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>TEEC_Operation<span class="main">⇒</span>CLIENT_TYPE<span class="main">⇒</span>TEEC_CONTEXT_TYPE
+                                <span class="main">⇒</span><span class="main">(</span>MemBlock <span class="main">×</span> TEEC_MEMREF_TYPE <span class="main">)</span><span class="main">⇒</span><span class="main">(</span>State<span class="main">×</span>TEEC_RET_ORIGIN<span class="main">×</span>TEEC_RESULT<span class="main">×</span>SESSION_ID_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+                <span class="quoted"><span class="quoted">"<span class="free">ioctrl2</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">realctid</span></span></span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span><span class="main">≡</span> 
+                       <span class="keyword1">let</span> <span class="bound">r1</span> <span class="main">=</span> newSessionId <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">;</span><span class="bound">ses_id</span> <span class="main">=</span> fst <span class="bound">r1</span><span class="main">;</span><span class="bound">uuid</span> <span class="main">=</span>the <span class="main">(</span>id <span class="free"><span class="bound"><span class="entity">cli</span></span></span><span class="main">)</span>
+                     <span class="keyword1">in</span>
+                       <span class="keyword1">let</span> <span class="bound">s1</span> <span class="main">=</span> addMgrSession <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="bound">ses_id</span><span class="main">;</span>
+                            <span class="bound">attr</span> <span class="main">=</span> findInstanceATTRInMgr <span class="bound">s1</span> <span class="bound">uuid</span> <span class="keyword1">in</span>
+                        <span class="keyword1">if</span> <span class="bound">attr</span> <span class="main">=</span> None <span class="keyword1">then</span>       
+                           <span class="keyword1">let</span> <span class="bound">load_result</span> <span class="main">=</span> LoadNewTA2 <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="bound">s1</span> <span class="bound">uuid</span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="bound">ses_id</span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span>
+                                <span class="keyword1">in</span> <span class="bound">load_result</span>
+                                                   
+                        <span class="keyword1">else</span>
+                              <span class="keyword1">let</span> <span class="bound">ins_lst</span> <span class="main">=</span> <span class="main">(</span>mgr_ta_instances <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                  <span class="bound">cur_instance</span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">a</span><span class="main">.</span> <span class="bound">a</span><span class="main">∈</span>set <span class="bound">ins_lst</span> <span class="main">∧</span> ta_id <span class="bound">a</span> <span class="main">=</span> <span class="bound">uuid</span><span class="main">)</span><span class="main">;</span>
+                                  <span class="bound">cnt</span> <span class="main">=</span> <span class="main">(</span>reference_cnt <span class="bound">cur_instance</span><span class="main">)</span><span class="main">;</span>
+                                  <span class="bound">b</span> <span class="main">=</span> busy <span class="bound">cur_instance</span><span class="main">;</span>
+                                  <span class="bound">tid1</span> <span class="main">=</span> cur_ta_thread_id <span class="bound">cur_instance</span> <span class="keyword1">in</span>
+                              <span class="keyword1">if</span> singleInstance <span class="main">(</span>the <span class="bound">attr</span><span class="main">)</span> <span class="main">=</span> True <span class="keyword1">then</span>
+                                  <span class="keyword1">if</span> multiSession <span class="main">(</span>the <span class="bound">attr</span><span class="main">)</span> <span class="main">=</span> False <span class="main">∧</span> <span class="bound">cnt</span> <span class="main">≠</span> <span class="main">0</span> <span class="keyword1">then</span> 
+                                      <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                  <span class="keyword1">else</span>
+                                      <span class="keyword1">if</span> <span class="bound">b</span> <span class="main">=</span> True <span class="keyword1">then</span> 
+                                          <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                      <span class="keyword1">else</span> 
+                                          <span class="keyword1">let</span> <span class="bound">s2</span> <span class="main">=</span> plusRefInstance <span class="bound">s1</span> <span class="bound">uuid</span><span class="main">;</span>
+                                              <span class="bound">s2_1</span><span class="main">=</span> InitMgrSession <span class="bound">s2</span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="bound">ses_id</span> <span class="bound">tid1</span><span class="main">;</span>
+                                              <span class="bound">s3</span> <span class="main">=</span> setBusyInstance <span class="bound">s2_1</span> <span class="bound">uuid</span><span class="main">;</span>
+                                              <span class="bound">mem_t</span><span class="main">=</span>TEE_pre_process <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span> <span class="bound">tid1</span><span class="main">;</span>
+                                              <span class="bound">param</span> <span class="main">=</span> <span class="main">⦇</span>param1<span class="main">=</span>Some <span class="bound">tid1</span><span class="main">,</span>param2<span class="main">=</span>Some <span class="bound">ses_id</span><span class="main">,</span>param3<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">opt</span></span></span><span class="main">,</span>param4<span class="main">=</span>None<span class="main">,</span>param5<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span>
+                                                      <span class="main">,</span>param6<span class="main">=</span>None<span class="main">,</span>param7<span class="main">=</span>None<span class="main">,</span>param8<span class="main">=</span>None<span class="main">,</span>param9<span class="main">=</span>None
+                                                      <span class="main">,</span>param10<span class="main">=</span>Some <span class="main">(</span>fst <span class="bound">mem_t</span><span class="main">)</span><span class="main">,</span>param11<span class="main">=</span>Some <span class="main">(</span>snd <span class="bound">mem_t</span><span class="main">)</span>
+                                                        <span class="main">,</span>param12<span class="main">=</span>None<span class="main">,</span>param13<span class="main">=</span>None<span class="main">⦈</span><span class="main">;</span>
+                                              <span class="bound">s4</span> <span class="main">=</span> <span class="bound">s3</span><span class="main">⦇</span>current<span class="main">:=</span><span class="bound">tid1</span><span class="main">,</span>exec_prime<span class="main">:=</span><span class="main">(</span><span class="bound">param</span><span class="main">,</span>TEE_OP3<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="bound">s3</span><span class="main">)</span><span class="main">⦈</span>
+                                                 <span class="keyword1">in</span>
+                                                  <span class="main">(</span><span class="bound">s4</span><span class="main">,</span>TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span>TEEC_SUCCESS<span class="main">,</span><span class="bound">ses_id</span><span class="main">)</span>
+                              <span class="keyword1">else</span> 
+                                      <span class="keyword1">let</span> <span class="bound">load_result</span><span class="main">=</span>LoadNewTA2 <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="bound">s1</span> <span class="bound">uuid</span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="bound">ses_id</span> <span class="free"><span class="bound"><span class="entity">cli</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="free"><span class="bound"><span class="entity">mem_t0</span></span></span>
+                                      <span class="keyword1">in</span> <span class="bound">load_result</span>
+                                           "</span></span>
+                                           
+<span class="comment1">(*
+2023,2,9: move addSesToInstance to openTASession4
+;sa= addSesToInstance (fst load_result) realctid ses_id in
+                                (sa,fst(snd load_result),fst(snd(snd load_result)),snd(snd(snd load_result)))
+
+
+
+ *)</span>
+
+
+
+
+
+<span class="comment1">(*
+                          if snd r1 ≠ TEEC_SUCCESS then 
+                              (s,TEEC_ORIGIN_TEE,snd r1,INVALID_SESSION_ID)
+                          else
+
+   if fst (snd (snd load_result)) ≠ TEEC_SUCCESS then 
+                                            (s,TEEC_ORIGIN_TEE,fst (snd (snd load_result)),INVALID_SESSION_ID)
+                                       else
+
+
+                               param = ⦇param1=Some tid1,param2=Some ses_id,param3=Some opt,param4=None,param5=Some ctx1,
+                        param6=None,param7=None,param8=None,param9=None⦈;
+                          s4 = s3⦇current:=tid1,exec_prime:=(param,TEEC_OP3)#(exec_prime s3)⦈ 
+
+
+
+*)</span>
+
+
+<span class="comment1">(*
+in TA:
+                                                     s4 = initTAProcess s3_1 opt tid1 ses_id;
+                                                     s5 = TA_OpenSessionEntryPoint s4 opt tid1;
+                                                     s6 = MgrPostOperation s5 tid1 in
+
+
+
+;
+                                                      s4 = initTAProcess s3 opt id1 ses_id;
+                                                      s5 = TA_OpenSessionEntryPoint s4 opt tid1;
+                                                      s6 = MgrPostOperation s5 tid1
+
+
+
+*)</span>
+
+
+
+<span class="comment1">(*add session to REE context, used in TEEC side*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">addREESession</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span>TEEC_CONTEXT_TYPE<span class="main">⇒</span>State"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">addREESession</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="main">≡</span><span class="keyword1">let</span> <span class="bound">lst</span><span class="main">=</span> <span class="main">(</span>tee_ctx_list<span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span> 
+                                        <span class="bound">index</span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">x</span><span class="main">.</span> <span class="main">(</span>ca_fd <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span><span class="main">)</span> <span class="main">=</span> ctx_fd <span class="main">(</span><span class="bound">lst</span><span class="main">!</span><span class="bound">x</span><span class="main">)</span><span class="main">)</span> <span class="keyword1">in</span>
+                                         
+                                          <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>REE_state<span class="main">:=</span><span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>tee_ctx_list <span class="main">:=</span>
+                                            list_update <span class="bound">lst</span> <span class="bound">index</span>
+                                              <span class="main">⦇</span>ctx_fd<span class="main">=</span>ca_fd <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span><span class="main">,</span>tee_reg_mem<span class="main">=</span>reg_mem <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span><span class="main">,</span>
+                                                driver_session_list<span class="main">=</span><span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">#</span><span class="main">(</span>driver_session_list <span class="main">(</span><span class="bound">lst</span><span class="main">!</span><span class="bound">index</span><span class="main">)</span><span class="main">)</span>
+                                                  <span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span>
+                                        "</span></span>
+<span class="comment1">(*
+ if (∃x. (ca_fd ctx1) = ctx_fd (lst!x)) then else s
+*)</span>
+
+
+<span class="keyword2"><span class="keyword">end</span></span></pre></body>
+</html>

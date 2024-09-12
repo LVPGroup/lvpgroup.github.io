@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.contents { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+
+
+/* formal entities */
+
+.entity_def {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.entity_def:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+}
+
+.entity_ref {
+  color: inherit;
+  text-decoration: inherit;
+  border: 0.5px solid rgba(0,0,0,0);
+}
+
+.entity_ref:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+  border: 0.5px solid black;
+}
+</style><title>Theory "APIs_TEEC_IPC"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> APIs_TEEC_IPC
+<span class="keyword2"><span class="keyword">imports</span></span> <span class="quoted">"../GPTEE_DataStructure"</span>  <span class="quoted">"APIs_TEEC_Common"</span> <span class="quoted">"APIs_TEE_Common"</span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TEEC Client API"</span></span></span>
+
+
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TEEC_InitializeContext"</span></span></span>
+
+<span class="keyword1"><span class="command">consts</span></span> TEEC_CloseSession_1 <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span>State"</span></span>
+<span class="comment1">(*we assume that closeSession will finally remove the session in REE list*)</span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">getTEEcontextByFd</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>FD_TYPE<span class="main">⇒</span>TEE_CONTEXT_TYPE"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">getTEEcontextByFd</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span> <span class="main">≡</span> <span class="keyword1">SOME</span> <span class="bound">tee_ctx</span><span class="main">.</span> <span class="bound">tee_ctx</span> <span class="main">∈</span> set<span class="main">(</span>tee_ctx_list <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span> <span class="main">(</span>ctx_fd <span class="bound">tee_ctx</span><span class="main">)</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">REE_getDriverSessionByFd</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>FD_TYPE<span class="main">⇒</span>SESSION_ID_TYPE list "</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+       <span class="quoted"><span class="quoted">"<span class="free">REE_getDriverSessionByFd</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span> <span class="main">≡</span>  driver_session_list <span class="main">(</span>getTEEcontextByFd <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span><span class="main">)</span>"</span></span>
+
+<span class="comment1">(*
+definition REE_getTEECSessionByID :: "SESSION_ID_TYPE⇒TEEC_SESSION_TYPE" where
+        "REE_getTEECSessionByID sid1 ≡ SOME teec_ses1. teec_session_id teec_ses1 = sid1"
+*)</span>
+
+
+<span class="comment1">(*ADD context to tee_ctx_list in REE*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">REE_AddContext</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>FD_TYPE<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">REE_AddContext</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span> <span class="main">≡</span> <span class="keyword1">let</span> <span class="bound">ree</span> <span class="main">=</span> REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="keyword1">in</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>REE_state <span class="main">:=</span> <span class="bound">ree</span><span class="main">⦇</span>
+                                       tee_ctx_list <span class="main">:=</span> <span class="main">⦇</span>ctx_fd <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span><span class="main">,</span>reg_mem <span class="main">=</span> False<span class="main">,</span>session_list <span class="main">=</span> <span class="main">[]</span><span class="main">⦈</span>
+                                                           <span class="main">#</span> <span class="main">(</span>tee_ctx_list <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">⦈</span>
+                                <span class="main">⦈</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">REE_RemoveContext</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>FD_TYPE<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">REE_RemoveContext</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span> <span class="main">≡</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>REE_state <span class="main">:=</span> <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>
+                                     tee_ctx_list <span class="main">:=</span> remove1 <span class="main">(</span>getTEEcontextByFd <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span><span class="main">)</span> <span class="main">(</span>tee_ctx_list <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span>
+                                                  <span class="main">⦈</span>
+                                    <span class="main">⦈</span>"</span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_InitializeContext</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span>TEE_NAME<span class="main">⇒</span>TEEC_CONTEXT_TYPE option<span class="main">⇒</span><span class="main">(</span>State <span class="main">×</span> TEEC_CONTEXT_TYPE <span class="main">×</span> TEEC_RESULT<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">TEEC_InitializeContext</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">name</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="main">≡</span> 
+          <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> 
+                                  <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>the <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span><span class="main">,</span>TEEC_ERROR_BUSY<span class="main">)</span>
+                              <span class="keyword1">else</span>
+                                  <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">≠</span><span class="main">[]</span> 
+                                      <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>the <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span><span class="main">,</span>TEEC_ERROR_BUSY<span class="main">)</span> <span class="keyword1">else</span>
+          <span class="main">(</span><span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="main">=</span> None <span class="keyword1">then</span> 
+                <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span><span class="main">⦇</span>ca_fd <span class="main">=</span> <span class="main">0</span><span class="main">,</span>reg_mem <span class="main">=</span> False<span class="main">⦈</span><span class="main">,</span>TEEC_ERROR_BAD_PARAMETERS<span class="main">)</span>
+           <span class="keyword1">else</span>
+               <span class="main">(</span><span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">name</span></span></span> <span class="main">≠</span> <span class="main">(</span>TEE_name <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="keyword1">then</span>
+                      <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>the <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span><span class="main">,</span>TEEC_ERROR_ITEM_NOT_FOUND<span class="main">)</span>
+                <span class="keyword1">else</span>
+                      <span class="main">(</span>REE_AddContext <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">(</span>newContextFd <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">,</span> <span class="main">⦇</span>ca_fd <span class="main">=</span> <span class="main">(</span>newContextFd <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">,</span>reg_mem <span class="main">=</span> False<span class="main">⦈</span><span class="main">,</span>TEEC_SUCCESS<span class="main">)</span>
+              <span class="main">)</span>
+<span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TEEC_FinalizeContext"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">updateListForTEECCS</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">updateListForTEECCS</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">≡</span> 
+            <span class="keyword1">let</span> <span class="bound">param</span><span class="main">=</span> <span class="main">⦇</span>param1<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">,</span>param2<span class="main">=</span>None<span class="main">,</span>param3<span class="main">=</span>None<span class="main">,</span>
+                        param4<span class="main">=</span>None<span class="main">,</span>param5<span class="main">=</span>None<span class="main">,</span>param6<span class="main">=</span>None<span class="main">,</span>param7<span class="main">=</span>None<span class="main">,</span>param8<span class="main">=</span>None<span class="main">,</span>param9<span class="main">=</span>None<span class="main">,</span>param10<span class="main">=</span>None<span class="main">,</span>param11<span class="main">=</span>None<span class="main">,</span>param12<span class="main">=</span>None<span class="main">,</span>param13<span class="main">=</span>None<span class="main">⦈</span> <span class="keyword1">in</span>
+                <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>exec_prime<span class="main">:=</span><span class="main">(</span><span class="bound">param</span><span class="main">,</span>TEEC_CS1<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦈</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_FinalizeContext</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span>TEEC_CONTEXT_TYPE option<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">TEEC_FinalizeContext</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="main">≡</span> 
+          <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> 
+                                  <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>
+                              <span class="keyword1">else</span>
+                                  <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">≠</span><span class="main">[]</span> 
+                                      <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="keyword1">else</span>
+            <span class="main">(</span><span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="main">=</span> None <span class="keyword1">then</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span>
+            <span class="keyword1">else</span>  
+                   <span class="keyword1">let</span> <span class="bound">IDlst</span> <span class="main">=</span><span class="main">(</span>REE_getDriverSessionByFd <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">(</span>ca_fd <span class="main">(</span>the <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="keyword1">in</span>
+                   <span class="main">(</span>REE_RemoveContext <span class="main">(</span>foldl updateListForTEECCS <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="bound">IDlst</span><span class="main">)</span> <span class="main">(</span>ca_fd <span class="main">(</span>the <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+           <span class="main">)</span>"</span></span>                  
+
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TEEC_OpenSession"</span></span></span>
+
+<span class="comment1">(*
+definition TEEC_OpenSession :: "Sys_Config⇒State⇒TEEC_CONTEXT_TYPE option⇒TEEC_SESSION_TYPE option
+                                ⇒TA_UUID_TYPE⇒Connection_Method⇒Connection_Data⇒TEEC_Operation option
+                                  ⇒(State × SESSION_ID_TYPE × TEEC_RET_ORIGIN × TEEC_RESULT)" where
+          "TEEC_OpenSession sc s ctx1 ses1 id1 md str opt ≡ 
+                             if (ctx1 = None | ses1 = None) then        
+                                (s,INVALID_SESSION_ID,TEEC_ORIGIN_API,TEEC_ERROR_BAD_PARAMETERS)
+                             else
+                                let pre_res = TEEC_pre_process_operation opt in
+                                if pre_res ≠ TEEC_SUCCESS then 
+                                          (s,INVALID_SESSION_ID,TEEC_ORIGIN_API,pre_res)
+                                else  
+                                    let cli = DefaultClientID;
+                                        r = ioctrl sc s id1 (the opt) cli;
+                                        main_origin = fst (snd r);
+                                        main_res = fst (snd (snd r));
+                                        ses = snd (snd (snd r));
+                                        new_s = fst r in
+                                        if main_res ≠ TEEC_SUCCESS then 
+                                            (s,INVALID_SESSION_ID,main_origin,main_res)
+                                        else
+                                            let post_res = TEEC_post_process_operation;
+                                                mem_res = OpenSessionRelease;
+                                                final_s = addREESession new_s ses (the ctx1) in
+                                                  (final_s,ses,TEEC_ORIGIN_TRUSTED_APP,TEEC_SUCCESS)"
+*)</span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_OpenSession1</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span>TEEC_CONTEXT_TYPE option<span class="main">⇒</span>TEEC_SESSION_TYPE option
+                                <span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>Connection_Method<span class="main">⇒</span>Connection_Data
+                                        <span class="main">⇒</span>TEEC_Operation option<span class="main">⇒</span><span class="main">(</span>MemBlock <span class="main">×</span> TEEC_MEMREF_TYPE <span class="main">)</span>
+                                  <span class="main">⇒</span><span class="main">(</span>State <span class="main">×</span> TEEC_RET_ORIGIN <span class="main">×</span> TEEC_RESULT<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+          <span class="quoted"><span class="quoted">"<span class="free">TEEC_OpenSession1</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="free"><span class="bound"><span class="entity">ses1</span></span></span> <span class="free"><span class="bound"><span class="entity">id1</span></span></span> <span class="free"><span class="bound"><span class="entity">md</span></span></span> <span class="free"><span class="bound"><span class="entity">str</span></span></span> <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="free"><span class="bound"><span class="entity">mem_t</span></span></span><span class="main">≡</span> 
+                              <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> 
+                                  <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">)</span>
+                              <span class="keyword1">else</span>
+                                  <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">≠</span><span class="main">[]</span> 
+                                      <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">)</span>
+                                  <span class="keyword1">else</span> 
+                                       <span class="keyword1">if</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">ctx1</span></span></span> <span class="main">=</span> None <span class="main">|</span> <span class="free"><span class="bound"><span class="entity">ses1</span></span></span> <span class="main">=</span> None<span class="main">)</span> <span class="keyword1">then</span>        
+                                          <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_API<span class="main">,</span>TEEC_ERROR_BAD_PARAMETERS<span class="main">)</span>
+                                       <span class="keyword1">else</span>
+                                          <span class="keyword1">let</span> <span class="bound">pre_res</span> <span class="main">=</span> TEEC_pre_process_operation <span class="free"><span class="bound"><span class="entity">opt</span></span></span> <span class="keyword1">in</span>
+                                          <span class="keyword1">if</span> <span class="bound">pre_res</span> <span class="main">≠</span> TEEC_SUCCESS <span class="keyword1">then</span> 
+                                                    <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_API<span class="main">,</span><span class="bound">pre_res</span><span class="main">)</span>
+                                          <span class="keyword1">else</span>  
+                                              <span class="keyword1">let</span> <span class="bound">cli</span> <span class="main">=</span> DefaultClientID<span class="main">;</span>
+                                                  <span class="bound">param</span> <span class="main">=</span> <span class="main">⦇</span>param1<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">id1</span></span></span><span class="main">,</span>param2<span class="main">=</span>None<span class="main">,</span>param3<span class="main">=</span><span class="free"><span class="bound"><span class="entity">opt</span></span></span><span class="main">,</span>
+                                                    param4<span class="main">=</span>Some <span class="bound">cli</span><span class="main">,</span>param5<span class="main">=</span><span class="free"><span class="bound"><span class="entity">ctx1</span></span></span><span class="main">,</span>param6<span class="main">=</span>None<span class="main">,</span>param7<span class="main">=</span>None
+                                                      <span class="main">,</span>param8<span class="main">=</span>None<span class="main">,</span>param9<span class="main">=</span>None<span class="main">,</span>param10<span class="main">=</span>Some <span class="main">(</span>fst <span class="free"><span class="bound"><span class="entity">mem_t</span></span></span><span class="main">)</span><span class="main">,</span>param11<span class="main">=</span>Some <span class="main">(</span>snd <span class="free"><span class="bound"><span class="entity">mem_t</span></span></span><span class="main">)</span><span class="main">,</span>param12<span class="main">=</span>None<span class="main">,</span>param13<span class="main">=</span>None<span class="main">⦈</span><span class="main">;</span>
+                                                  <span class="bound">s1</span><span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>current<span class="main">:=</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">,</span>exec_prime<span class="main">:=</span><span class="main">(</span><span class="bound">param</span><span class="main">,</span>TEEC_OP2<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦈</span>
+                                                  <span class="keyword1">in</span>
+                                                      <span class="main">(</span><span class="bound">s1</span><span class="main">,</span>TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span>TEEC_SUCCESS<span class="main">)</span>"</span></span>
+<span class="comment1">(*
+definition TEEC_OpenSession2 :: "Sys_Config⇒State⇒TA_UUID_TYPE⇒TEEC_Operation option⇒CLIENT_TYPE
+                                ⇒(State × TEEC_RET_ORIGIN × TEEC_RESULT ×SESSION_ID_TYPE)" where
+          "TEEC_OpenSession2 sc s uuid opt cli ≡ ioctrl sc s uuid (the opt) cli"
+*)</span>
+    
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_OpenSession2</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span><span class="main">(</span>State <span class="main">×</span> TEEC_RET_ORIGIN <span class="main">×</span> TEEC_RESULT <span class="main">×</span>SESSION_ID_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+          <span class="quoted"><span class="quoted">"<span class="free">TEEC_OpenSession2</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> 
+                                  <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> 
+                                      <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                  <span class="keyword1">else</span>
+                                      <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">=</span><span class="main">[]</span> 
+                                          <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                      <span class="keyword1">else</span>    
+                                          <span class="keyword1">if</span> snd <span class="main">(</span>hd <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">≠</span>TEEC_OP2
+                                              <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                          <span class="keyword1">else</span>
+                                          <span class="keyword1">let</span> <span class="bound">exec</span> <span class="main">=</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">;</span> 
+                                          <span class="bound">s1</span><span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>exec_prime<span class="main">:=</span>tl <span class="bound">exec</span><span class="main">⦈</span><span class="main">;</span>
+                                          <span class="bound">p</span> <span class="main">=</span> fst <span class="main">(</span>hd <span class="main">(</span><span class="bound">exec</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                          <span class="bound">uuid</span> <span class="main">=</span> the <span class="main">(</span>param1 <span class="bound">p</span><span class="main">)</span><span class="main">;</span>
+                                          <span class="bound">opt</span> <span class="main">=</span> param3 <span class="bound">p</span><span class="main">;</span>
+                                          <span class="bound">cli</span> <span class="main">=</span> the <span class="main">(</span>param4 <span class="bound">p</span><span class="main">)</span><span class="main">;</span>
+                                          <span class="bound">ctx1</span> <span class="main">=</span> param5 <span class="bound">p</span> <span class="main">;</span>
+                                          <span class="bound">mem_t</span> <span class="main">=</span> <span class="main">(</span>the <span class="main">(</span>param10 <span class="bound">p</span><span class="main">)</span><span class="main">,</span>the <span class="main">(</span>param11 <span class="bound">p</span><span class="main">)</span><span class="main">)</span>
+                                           <span class="keyword1">in</span>
+                                          ioctrl <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="bound">s1</span> <span class="bound">uuid</span> <span class="main">(</span>the <span class="bound">opt</span><span class="main">)</span> <span class="bound">cli</span> <span class="main">(</span>the <span class="bound">ctx1</span><span class="main">)</span> <span class="bound">mem_t</span>"</span></span>
+
+<span class="comment1">(*function for TA to call, used to initilize a TA,
+besides, it need to return the session_id and update data in REE.
+note:here we omit OpenSessionRelease*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_OpenSession3</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span><span class="main">(</span>State <span class="main">×</span> TEEC_RET_ORIGIN <span class="main">×</span> TEEC_RESULT <span class="main">×</span>SESSION_ID_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEEC_OpenSession3</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">sid</span></span></span><span class="main">≡</span> 
+                                      <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">=</span><span class="main">[]</span> 
+                                          <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                      <span class="keyword1">else</span>    
+                                          <span class="keyword1">if</span> snd <span class="main">(</span>hd <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">≠</span>TEEC_OP3
+                                              <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                          <span class="keyword1">else</span>  
+                                           <span class="keyword1">let</span> <span class="bound">exec</span> <span class="main">=</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">;</span>
+                                            <span class="bound">s1</span><span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>exec_prime<span class="main">:=</span>tl <span class="bound">exec</span><span class="main">⦈</span><span class="main">;</span>
+                                            <span class="bound">p</span> <span class="main">=</span> fst <span class="main">(</span>hd <span class="main">(</span><span class="bound">exec</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                            <span class="bound">tid1</span> <span class="main">=</span> the <span class="main">(</span>param1 <span class="bound">p</span><span class="main">)</span><span class="main">;</span>
+                                            <span class="bound">ses_id</span> <span class="main">=</span> the <span class="main">(</span>param2 <span class="bound">p</span><span class="main">)</span><span class="main">;</span>
+                                            <span class="bound">opt</span> <span class="main">=</span> param3 <span class="bound">p</span><span class="main">;</span>
+                                            <span class="bound">ctx1</span> <span class="main">=</span> the<span class="main">(</span>param5 <span class="bound">p</span><span class="main">)</span> <span class="keyword1">in</span>
+                                            <span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">sid</span></span></span><span class="main">≠</span><span class="bound">ses_id</span> <span class="main">∨</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">=</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">∨</span>current <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">=</span>REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">∨</span><span class="bound">tid1</span><span class="main">≠</span>current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                            <span class="keyword1">else</span> <span class="keyword1">let</span>
+                                            <span class="bound">s2</span> <span class="main">=</span> initTAProcess <span class="bound">s1</span> <span class="main">(</span>the <span class="bound">opt</span><span class="main">)</span> <span class="bound">tid1</span> <span class="bound">ses_id</span><span class="main">;</span>
+                                            <span class="bound">s3</span> <span class="main">=</span> TA_OpenSessionEntryPoint <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="bound">s2</span> <span class="main">(</span>the <span class="bound">opt</span><span class="main">)</span> <span class="bound">tid1</span><span class="main">;</span>
+                                            
+                                            <span class="bound">param</span><span class="main">=</span><span class="main">⦇</span>param1<span class="main">=</span>Some <span class="bound">tid1</span><span class="main">,</span>param2<span class="main">=</span>Some <span class="bound">ses_id</span><span class="main">,</span>param3<span class="main">=</span>None<span class="main">,</span>param4<span class="main">=</span>None<span class="main">,</span>
+                                                param5<span class="main">=</span>None<span class="main">,</span>param6<span class="main">=</span>None<span class="main">,</span>param7<span class="main">=</span>None<span class="main">,</span>param8<span class="main">=</span>None<span class="main">,</span>param9<span class="main">=</span>None<span class="main">,</span>
+                                                  param10<span class="main">=</span>None<span class="main">,</span>param11<span class="main">=</span>None<span class="main">,</span>param12<span class="main">=</span>Some TEEC_SUCCESS<span class="main">,</span>param13<span class="main">=</span>None<span class="main">⦈</span><span class="main">;</span>
+                                            <span class="bound">s6</span><span class="main">=</span> <span class="bound">s3</span><span class="main">⦇</span>current<span class="main">:=</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">,</span>exec_prime<span class="main">:=</span><span class="main">(</span><span class="bound">param</span><span class="main">,</span>TEEC_OP4<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="bound">s3</span><span class="main">)</span><span class="main">⦈</span> <span class="keyword1">in</span>
+                                                 <span class="main">(</span><span class="bound">s6</span><span class="main">,</span>TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span>TEEC_SUCCESS<span class="main">,</span><span class="bound">ses_id</span><span class="main">)</span>"</span></span>
+
+
+
+
+
+<span class="comment1">(*let post_res = TEEC_post_process_operation opt;*)</span>
+
+
+<span class="comment1">(*
+OP3:
+ r = ioctrl sc s id1 (the opt) cli;
+                                        main_origin = fst (snd r);
+                                        main_res = fst (snd (snd r));
+                                        ses = snd (snd (snd r));
+                                        new_s = fst r in
+                                        if main_res ≠ TEEC_SUCCESS then 
+                                            (s,INVALID_SESSION_ID,main_origin,main_res)
+                                        else
+                                            let post_res = TEEC_post_process_operation;
+                                                mem_res = OpenSessionRelease;
+                                                final_s = addREESession new_s ses (the ctx1)
+
+
+
+s4 = MgrPostOperation s3 tid1;
+                                            s5 = addREESession s4 ses_id ctx1;
+
+
+
+*)</span>
+
+
+<span class="comment1">(*added 2023.1.9*)</span>
+<span class="comment1">(*back to TEE, close the session if openSession3 failed*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_OpenSession4</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span><span class="main">(</span>State <span class="main">×</span> TEEC_RET_ORIGIN <span class="main">×</span> TEEC_RESULT <span class="main">×</span>SESSION_ID_TYPE<span class="main">)</span>"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+          <span class="quoted"><span class="quoted">"<span class="free">TEEC_OpenSession4</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> 
+                                      <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">=</span><span class="main">[]</span> 
+                                          <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                      <span class="keyword1">else</span>    
+                                          <span class="keyword1">if</span> snd <span class="main">(</span>hd <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">≠</span>TEEC_OP4
+                                              <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                          <span class="keyword1">else</span>  
+                                           <span class="keyword1">let</span> <span class="bound">exec</span> <span class="main">=</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">;</span>
+                                            <span class="bound">s1</span><span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>exec_prime<span class="main">:=</span>tl <span class="bound">exec</span><span class="main">⦈</span><span class="main">;</span>
+                                            <span class="bound">p</span> <span class="main">=</span> fst <span class="main">(</span>hd <span class="main">(</span><span class="bound">exec</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                            <span class="bound">tid1</span> <span class="main">=</span> the <span class="main">(</span>param1 <span class="bound">p</span><span class="main">)</span><span class="main">;</span>
+                                            <span class="bound">ses_id</span> <span class="main">=</span> the <span class="main">(</span>param2 <span class="bound">p</span><span class="main">)</span><span class="main">;</span>
+                                            <span class="bound">res3</span><span class="main">=</span> the <span class="main">(</span>param12 <span class="bound">p</span><span class="main">)</span><span class="main">;</span>
+                                            <span class="bound">sa</span><span class="main">=</span>MgrPostOperation <span class="bound">s1</span> <span class="bound">tid1</span><span class="main">;</span>
+                                            <span class="bound">param</span><span class="main">=</span><span class="main">⦇</span>param1<span class="main">=</span>Some <span class="bound">ses_id</span><span class="main">,</span>param2<span class="main">=</span>Some <span class="bound">tid1</span><span class="main">,</span>param3<span class="main">=</span>None<span class="main">,</span>param4<span class="main">=</span>Some <span class="main">⦇</span>login<span class="main">=</span>DTC_IDENTITY<span class="main">,</span>id<span class="main">=</span>Some <span class="main">0</span><span class="main">⦈</span><span class="main">,</span>
+                                                param5<span class="main">=</span>None<span class="main">,</span>param6<span class="main">=</span>None<span class="main">,</span>param7<span class="main">=</span>None<span class="main">,</span>param8<span class="main">=</span>None<span class="main">,</span>param9<span class="main">=</span>None<span class="main">,</span>param10<span class="main">=</span>None<span class="main">,</span>param11<span class="main">=</span>None<span class="main">,</span>param12<span class="main">=</span>None<span class="main">,</span>param13<span class="main">=</span>None<span class="main">⦈</span><span class="main">;</span>
+                                            <span class="bound">s2</span><span class="main">=</span><span class="bound">sa</span><span class="main">⦇</span>current<span class="main">:=</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">,</span>exec_prime<span class="main">:=</span><span class="main">(</span><span class="bound">param</span><span class="main">,</span>TEEC_CS2<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="bound">sa</span><span class="main">)</span><span class="main">⦈</span>
+                                                <span class="keyword1">in</span>
+                                            <span class="keyword1">if</span>  current <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">≠</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span>  <span class="keyword1">then</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                            <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="bound">res3</span><span class="main">≠</span>TEEC_SUCCESS <span class="keyword1">then</span> <span class="main">(</span><span class="bound">s2</span><span class="main">,</span>TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span>INVALID_SESSION_ID<span class="main">)</span>
+                                            <span class="keyword1">else</span>
+                                                 <span class="main">(</span><span class="bound">sa</span><span class="main">,</span>TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span>TEEC_SUCCESS<span class="main">,</span><span class="bound">ses_id</span><span class="main">)</span>"</span></span>
+
+
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TEEC_InvokeCommand"</span></span></span>
+
+<span class="comment1">(*REECtxList means tee_context struct*)</span>
+<span class="keyword1"><span class="command">primrec</span></span> <span class="entity">isSessionInREECtxList</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"TEE_CONTEXT_TYPE list<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span>bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">isSessionInREECtxList</span> <span class="main">[]</span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">=</span> False"</span></span> <span class="main">|</span>
+      <span class="quoted"><span class="quoted">"<span class="free">isSessionInREECtxList</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">ctx</span></span></span><span class="main">#</span><span class="free"><span class="bound"><span class="entity">ctxLeft</span></span></span><span class="main">)</span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">=</span> 
+         <span class="main">(</span><span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">∈</span> set <span class="main">(</span>driver_session_list <span class="free"><span class="bound"><span class="entity">ctx</span></span></span><span class="main">)</span> <span class="keyword1">then</span>
+             True
+         <span class="keyword1">else</span>
+             <span class="free">isSessionInREECtxList</span> <span class="free"><span class="bound"><span class="entity">ctxLeft</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span>
+         <span class="main">)</span>"</span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_InvokeCommand1</span> <span class="main">::</span>
+  <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> SESSION_ID_TYPE option <span class="main">⇒</span> TIMEOUT_TYPE <span class="main">⇒</span> COMMAND_ID_TYPE <span class="main">⇒</span> PARAMS_TYPE <span class="main">⇒</span> PARAMS_TYPE
+  <span class="main">⇒</span> <span class="main">(</span>MemBlock <span class="main">×</span> TEEC_MEMREF_TYPE<span class="main">)</span> <span class="main">⇒</span> State <span class="main">×</span> TEEC_RET_ORIGIN <span class="main">×</span> TEEC_RETURN_CODE_TYPE <span class="main">×</span> PARAMS_TYPE"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEEC_InvokeCommand1</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="free"><span class="bound"><span class="entity">time_out</span></span></span> <span class="free"><span class="bound"><span class="entity">cmd_id</span></span></span> <span class="free"><span class="bound"><span class="entity">in_params</span></span></span> <span class="free"><span class="bound"><span class="entity">out_params</span></span></span> <span class="free"><span class="bound"><span class="entity">memBlock_memRef</span></span></span> <span class="main">≡</span>
+   <span class="keyword1">let</span>
+      <span class="bound">sesin</span> <span class="main">=</span> isSessionInREECtxList <span class="main">(</span>tee_ctx_list <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>the <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">param</span> <span class="main">=</span> <span class="main">⦇</span>param1<span class="main">=</span><span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">,</span>param2<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">time_out</span></span></span><span class="main">,</span>param3<span class="main">=</span>None<span class="main">,</span>param4<span class="main">=</span>None<span class="main">,</span>param5<span class="main">=</span>None<span class="main">,</span>
+                param6<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">cmd_id</span></span></span><span class="main">,</span>param7<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">in_params</span></span></span><span class="main">,</span>param8<span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">out_params</span></span></span><span class="main">,</span>param9<span class="main">=</span>None<span class="main">,</span>
+                param10<span class="main">=</span>Some <span class="main">(</span>fst <span class="free"><span class="bound"><span class="entity">memBlock_memRef</span></span></span><span class="main">)</span><span class="main">,</span> param11<span class="main">=</span>Some <span class="main">(</span>snd <span class="free"><span class="bound"><span class="entity">memBlock_memRef</span></span></span><span class="main">)</span><span class="main">,</span> 
+                param12<span class="main">=</span>None<span class="main">,</span> param13<span class="main">=</span>None<span class="main">⦈</span><span class="main">;</span>
+      <span class="bound">s1</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>current<span class="main">:=</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">,</span>exec_prime<span class="main">:=</span><span class="main">(</span><span class="bound">param</span><span class="main">,</span>TEEC_IC2<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦈</span>
+   <span class="keyword1">in</span>
+      <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="keyword1">then</span> 
+        <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span><span class="free"><span class="bound"><span class="entity">out_params</span></span></span><span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">≠</span><span class="main">[]</span> <span class="keyword1">then</span> 
+        <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_TEE<span class="main">,</span>TEEC_ERROR_BUSY<span class="main">,</span><span class="free"><span class="bound"><span class="entity">out_params</span></span></span><span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">=</span> None<span class="main">∨</span><span class="main">(</span>findSesCliTid <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">(</span>the <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> None <span class="keyword1">then</span> 
+        <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>TEEC_ORIGIN_COMMS<span class="main">,</span>TEEC_ERROR_BAD_PARAMETERS<span class="main">,</span><span class="free"><span class="bound"><span class="entity">out_params</span></span></span><span class="main">)</span> 
+      <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="bound">sesin</span> <span class="main">=</span> False <span class="keyword1">then</span> 
+        <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEEC_ORIGIN_API<span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">,</span><span class="free"><span class="bound"><span class="entity">out_params</span></span></span><span class="main">)</span>
+      <span class="keyword1">else</span>
+        <span class="main">(</span><span class="bound">s1</span><span class="main">,</span>TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span>TEEC_SUCCESS<span class="main">,</span><span class="free"><span class="bound"><span class="entity">out_params</span></span></span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_InvokeCommand2</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State 
+  <span class="main">⇒</span> State <span class="main">×</span> TEE_RETURN_ORIGIN_TYPE <span class="main">×</span> TEEC_RETURN_CODE_TYPE <span class="main">×</span> PARAMS_TYPE option"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEEC_InvokeCommand2</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span>
+   <span class="keyword1">let</span>
+      <span class="bound">exec</span> <span class="main">=</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">p</span> <span class="main">=</span> fst <span class="main">(</span>hd <span class="bound">exec</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">ses_id</span> <span class="main">=</span> param1 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">time_out</span> <span class="main">=</span> param2 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">cmd_id</span> <span class="main">=</span> param6 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">in_params</span> <span class="main">=</span> param7 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">out_params</span> <span class="main">=</span> param8 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">sesID</span> <span class="main">=</span> the <span class="bound">ses_id</span><span class="main">;</span>
+      <span class="bound">s_rev_event</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>exec_prime <span class="main">:=</span> tl <span class="bound">exec</span><span class="main">⦈</span><span class="main">;</span>
+      <span class="bound">s_invoke</span> <span class="main">=</span> tee_invokeTACommand_TEEDomain2 <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="bound">s_rev_event</span> <span class="bound">ses_id</span> <span class="bound">time_out</span> <span class="bound">cmd_id</span> <span class="bound">in_params</span> <span class="bound">out_params</span><span class="main">;</span>
+      <span class="bound">s_state</span> <span class="main">=</span> fst <span class="bound">s_invoke</span><span class="main">;</span>
+      <span class="bound">s_origin</span> <span class="main">=</span> fst<span class="main">(</span>snd <span class="bound">s_invoke</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">s_code</span> <span class="main">=</span> fst<span class="main">(</span>snd <span class="main">(</span>snd <span class="bound">s_invoke</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">s_params</span> <span class="main">=</span> <span class="main">(</span>snd <span class="main">(</span>snd <span class="main">(</span>snd <span class="bound">s_invoke</span><span class="main">)</span><span class="main">)</span><span class="main">)</span>
+   <span class="keyword1">in</span>
+      <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="keyword1">then</span>
+         <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">,</span> <span class="bound">out_params</span><span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">=</span> <span class="main">[]</span> <span class="keyword1">then</span>
+         <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">,</span> <span class="bound">out_params</span><span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> snd <span class="main">(</span>hd <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">≠</span> TEEC_IC2 <span class="keyword1">then</span>
+         <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">,</span> <span class="bound">out_params</span><span class="main">)</span>
+      <span class="keyword1">else</span>
+         <span class="main">(</span><span class="bound">s_state</span><span class="main">,</span> <span class="bound">s_origin</span><span class="main">,</span> <span class="bound">s_code</span><span class="main">,</span> <span class="bound">s_params</span><span class="main">)</span>"</span></span>
+
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_InvokeCommand3</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State 
+  <span class="main">⇒</span> State <span class="main">×</span> TEEC_RET_ORIGIN <span class="main">×</span> TEEC_RETURN_CODE_TYPE <span class="main">×</span> PARAMS_TYPE option"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEEC_InvokeCommand3</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span>
+      <span class="keyword1">let</span>
+        <span class="bound">exec</span> <span class="main">=</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">p</span> <span class="main">=</span> fst <span class="main">(</span>hd <span class="bound">exec</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">ses_id</span> <span class="main">=</span> param1 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">time_out</span> <span class="main">=</span> param2 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">cmd_id</span> <span class="main">=</span> param6 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">in_params</span> <span class="main">=</span> param7 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">out_params</span> <span class="main">=</span> param8 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">sesID</span> <span class="main">=</span> the <span class="bound">ses_id</span><span class="main">;</span>
+        <span class="bound">serverID</span> <span class="main">=</span> findSesServTid <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="bound">sesID</span><span class="main">;</span>
+        <span class="bound">server_tid</span> <span class="main">=</span> the<span class="main">(</span>findSesServTid <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="bound">sesID</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">curServTaState</span> <span class="main">=</span> <span class="main">(</span>TAs_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">(</span>the <span class="bound">serverID</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">curServSessList</span> <span class="main">=</span> TA_sessions <span class="main">(</span>the <span class="bound">curServTaState</span><span class="main">)</span><span class="main">;</span>  
+        <span class="bound">isSessIdInSessList</span> <span class="main">=</span> isSessIdInTaInsSessList <span class="bound">curServSessList</span> <span class="bound">sesID</span><span class="main">;</span>
+        <span class="bound">s_rev_event</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>exec_prime <span class="main">:=</span> tl <span class="bound">exec</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">s_invoke</span> <span class="main">=</span> TA_InvokeCommandEntryPoint <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="bound">s_rev_event</span> <span class="bound">cmd_id</span> <span class="bound">server_tid</span><span class="main">;</span>
+        <span class="bound">s_postOps</span> <span class="main">=</span> TEE_MgrPostOps <span class="bound">s_invoke</span> <span class="bound">server_tid</span><span class="main">;</span>
+        <span class="bound">post_param_ops</span> <span class="main">=</span> TEE_post_param_operation <span class="bound">in_params</span><span class="main">;</span>
+        <span class="bound">param_error</span> <span class="main">=</span> <span class="main">⦇</span>param1 <span class="main">=</span> <span class="bound">ses_id</span><span class="main">,</span> param2 <span class="main">=</span> <span class="bound">time_out</span><span class="main">,</span> param3 <span class="main">=</span> None<span class="main">,</span> param4 <span class="main">=</span> None<span class="main">,</span> param5 <span class="main">=</span> None<span class="main">,</span> 
+              param6 <span class="main">=</span> <span class="bound">cmd_id</span><span class="main">,</span> param7 <span class="main">=</span> <span class="bound">in_params</span><span class="main">,</span> param8 <span class="main">=</span> <span class="bound">out_params</span><span class="main">,</span> param9 <span class="main">=</span> None<span class="main">,</span>
+              param10 <span class="main">=</span> None<span class="main">,</span> param11 <span class="main">=</span> None<span class="main">,</span> param12<span class="main">=</span>Some TEEC_ERROR_BAD_PARAMETERS<span class="main">,</span> param13<span class="main">=</span>None<span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">s_error_ret</span> <span class="main">=</span> setCurDomainAndEvent <span class="bound">s_rev_event</span> <span class="main">(</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="main">(</span><span class="bound">param_error</span><span class="main">,</span> TEEC_IC4<span class="main">)</span><span class="main">;</span>
+        <span class="bound">param_success</span> <span class="main">=</span> <span class="main">⦇</span>param1 <span class="main">=</span> <span class="bound">ses_id</span><span class="main">,</span> param2 <span class="main">=</span> <span class="bound">time_out</span><span class="main">,</span> param3 <span class="main">=</span> None<span class="main">,</span> param4 <span class="main">=</span> None<span class="main">,</span> param5 <span class="main">=</span> None<span class="main">,</span> 
+              param6 <span class="main">=</span> <span class="bound">cmd_id</span><span class="main">,</span> param7 <span class="main">=</span> <span class="bound">in_params</span><span class="main">,</span> param8 <span class="main">=</span> <span class="bound">out_params</span><span class="main">,</span> param9 <span class="main">=</span> None<span class="main">,</span>
+              param10 <span class="main">=</span> None<span class="main">,</span> param11 <span class="main">=</span> None<span class="main">,</span> param12<span class="main">=</span>Some TEEC_SUCCESS<span class="main">,</span> param13<span class="main">=</span>None<span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">s_success_ret</span> <span class="main">=</span> setCurDomainAndEvent <span class="bound">s_postOps</span> <span class="main">(</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="main">(</span><span class="bound">param_success</span><span class="main">,</span> TEEC_IC4<span class="main">)</span>
+        
+      <span class="keyword1">in</span>
+        <span class="keyword1">if</span> <span class="bound">exec</span> <span class="main">=</span> <span class="main">[]</span> <span class="main">∨</span> <span class="bound">ses_id</span> <span class="main">=</span> None <span class="keyword1">then</span>
+          <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">,</span> <span class="bound">out_params</span><span class="main">)</span>
+        <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="bound">serverID</span> <span class="main">=</span> None <span class="main">∨</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">=</span> TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">∨</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">=</span> REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">∨</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> <span class="bound">server_tid</span> <span class="keyword1">then</span>
+          <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">,</span> <span class="bound">out_params</span><span class="main">)</span>
+        <span class="keyword1">else</span> <span class="keyword1">if</span> snd <span class="main">(</span>hd <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">≠</span> TEEC_IC3 <span class="keyword1">then</span>
+          <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">,</span> <span class="bound">out_params</span><span class="main">)</span>
+        <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="bound">ses_id</span> <span class="main">=</span> None <span class="main">∨</span> <span class="bound">cmd_id</span> <span class="main">=</span> None <span class="main">∨</span> <span class="bound">isSessIdInSessList</span> <span class="main">≠</span> True <span class="main">∨</span> <span class="bound">serverID</span> <span class="main">=</span> None <span class="keyword1">then</span> 
+          <span class="main">(</span><span class="bound">s_error_ret</span><span class="main">,</span> TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">,</span> <span class="bound">out_params</span><span class="main">)</span>
+        <span class="keyword1">else</span>
+          <span class="main">(</span><span class="bound">s_success_ret</span><span class="main">,</span> TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span>TEEC_SUCCESS<span class="main">,</span> <span class="bound">out_params</span><span class="main">)</span>"</span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_InvokeCommand4</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State 
+  <span class="main">⇒</span> State <span class="main">×</span> TEEC_RET_ORIGIN <span class="main">×</span> TEEC_RETURN_CODE_TYPE"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEEC_InvokeCommand4</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> 
+  <span class="keyword1">let</span>
+      <span class="bound">exec</span> <span class="main">=</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">p</span> <span class="main">=</span> fst <span class="main">(</span>hd <span class="bound">exec</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">ses_id</span> <span class="main">=</span> param1 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">time_out</span> <span class="main">=</span> param2 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">cmd_id</span> <span class="main">=</span> param6 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">in_params</span> <span class="main">=</span> param7 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">out_params</span> <span class="main">=</span> param8 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">teec_ret_code</span> <span class="main">=</span> param12 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">tee_ret_code</span> <span class="main">=</span> param13 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">s_rev_event</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>exec_prime <span class="main">:=</span> tl <span class="bound">exec</span><span class="main">⦈</span><span class="main">;</span>
+      <span class="bound">param_call_closeSession</span> <span class="main">=</span> <span class="main">⦇</span>param1 <span class="main">=</span> <span class="bound">ses_id</span><span class="main">,</span> param2 <span class="main">=</span> <span class="bound">time_out</span><span class="main">,</span> param3 <span class="main">=</span> None<span class="main">,</span> param4 <span class="main">=</span> Some <span class="main">⦇</span>login<span class="main">=</span>DTC_IDENTITY<span class="main">,</span>id<span class="main">=</span>Some <span class="main">0</span><span class="main">⦈</span><span class="main">,</span> 
+          param5 <span class="main">=</span> None<span class="main">,</span> param6 <span class="main">=</span> <span class="bound">cmd_id</span><span class="main">,</span> param7 <span class="main">=</span> <span class="bound">in_params</span><span class="main">,</span> param8 <span class="main">=</span> <span class="bound">out_params</span><span class="main">,</span> param9 <span class="main">=</span> None<span class="main">,</span>
+          param10 <span class="main">=</span> None<span class="main">,</span> param11 <span class="main">=</span> None<span class="main">,</span> param12<span class="main">=</span><span class="bound">teec_ret_code</span><span class="main">,</span> param13<span class="main">=</span><span class="bound">tee_ret_code</span><span class="main">⦈</span><span class="main">;</span>
+      <span class="bound">s_call_closeSession</span> <span class="main">=</span> setCurDomainAndEvent <span class="bound">s_rev_event</span> <span class="main">(</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="main">(</span><span class="bound">param_call_closeSession</span><span class="main">,</span> TEEC_CS2<span class="main">)</span>
+  <span class="keyword1">in</span>
+    <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">=</span><span class="main">[]</span> <span class="main">∨</span> snd <span class="main">(</span>hd <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">≠</span> TEEC_IC4 <span class="main">∨</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="keyword1">then</span> 
+      <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEEC_ORIGIN_TEE<span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">)</span>
+    <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="bound">teec_ret_code</span> <span class="main">≠</span> <span class="main">(</span>Some TEEC_SUCCESS<span class="main">)</span> <span class="keyword1">then</span> 
+      <span class="main">(</span><span class="bound">s_call_closeSession</span><span class="main">,</span> TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span> TEEC_ERROR_BUSY<span class="main">)</span>
+    <span class="keyword1">else</span> 
+      <span class="main">(</span><span class="bound">s_rev_event</span><span class="main">,</span> TEEC_ORIGIN_TEE<span class="main">,</span> TEEC_SUCCESS<span class="main">)</span>
+  "</span></span>
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TEEC_CloseSession"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">removeSessionInContext</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>FD_TYPE<span class="main">⇒</span>SESSION_ID_TYPE<span class="main">⇒</span>State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">removeSessionInContext</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">≡</span> 
+                                                  <span class="keyword1">let</span> <span class="bound">tmp</span> <span class="main">=</span> <span class="main">(</span>tee_ctx_list <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+                                                      <span class="bound">index</span> <span class="main">=</span> <span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">x</span><span class="main">.</span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span> <span class="main">=</span> ctx_fd <span class="main">(</span><span class="bound">tmp</span><span class="main">!</span><span class="bound">x</span><span class="main">)</span><span class="main">)</span> <span class="keyword1">in</span>
+                                                    <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>REE_state <span class="main">:=</span> <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦇</span>
+                                                        tee_ctx_list <span class="main">:=</span> list_update <span class="bound">tmp</span> <span class="bound">index</span>
+                                                        <span class="main">⦇</span>ctx_fd<span class="main">=</span><span class="free"><span class="bound"><span class="entity">fd</span></span></span><span class="main">,</span>reg_mem<span class="main">=</span>False<span class="main">,</span>
+                                                          driver_session_list<span class="main">=</span>remove1 <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">(</span>driver_session_list <span class="main">(</span><span class="bound">tmp</span><span class="main">!</span><span class="bound">index</span><span class="main">)</span><span class="main">)</span>
+                                                          <span class="main">⦈</span><span class="main">⦈</span><span class="main">⦈</span>"</span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_CloseSession1</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span>FD_TYPE<span class="main">⇒</span> SESSION_ID_TYPE option  <span class="main">⇒</span> PARAMS_TYPE <span class="main">⇒</span> PARAMS_TYPE 
+  <span class="main">⇒</span> <span class="main">(</span>State <span class="main">×</span> TEEC_RET_ORIGIN <span class="main">×</span> TEEC_RETURN_CODE_TYPE<span class="main">)</span> "</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEEC_CloseSession1</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="free"><span class="bound"><span class="entity">in_params</span></span></span> <span class="free"><span class="bound"><span class="entity">out_params</span></span></span> <span class="main">≡</span>
+    <span class="keyword1">let</span>
+      <span class="bound">sesin</span> <span class="main">=</span> isSessionInREECtxList <span class="main">(</span>tee_ctx_list <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>the <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">s_rev_event</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>exec_prime <span class="main">:=</span> tl <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">⦈</span><span class="main">;</span>
+      <span class="bound">s1</span> <span class="main">=</span> removeSessionInContext <span class="bound">s_rev_event</span> <span class="free"><span class="bound"><span class="entity">fd</span></span></span> <span class="main">(</span>the <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">pre_param_ops</span> <span class="main">=</span> TEE_pre_param_operation <span class="main">(</span>Some <span class="free"><span class="bound"><span class="entity">in_params</span></span></span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">ca</span> <span class="main">=</span> DefaultClientID<span class="main">;</span>
+      <span class="bound">nextFuncStepParam</span> <span class="main">=</span> <span class="main">⦇</span>param1 <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span><span class="main">,</span> param2 <span class="main">=</span> None<span class="main">,</span> param3 <span class="main">=</span> None<span class="main">,</span> param4 <span class="main">=</span> Some <span class="bound">ca</span><span class="main">,</span>
+               param5 <span class="main">=</span> None<span class="main">,</span> param6 <span class="main">=</span>None<span class="main">,</span> param7 <span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">in_params</span></span></span><span class="main">,</span> param8 <span class="main">=</span>Some <span class="free"><span class="bound"><span class="entity">out_params</span></span></span><span class="main">,</span> 
+               param9 <span class="main">=</span> None<span class="main">,</span> param10<span class="main">=</span>None<span class="main">,</span> param11<span class="main">=</span>None<span class="main">,</span> param12<span class="main">=</span>None<span class="main">,</span> param13<span class="main">=</span>None<span class="main">⦈</span><span class="main">;</span>
+      <span class="bound">s2</span> <span class="main">=</span> <span class="bound">s1</span><span class="main">⦇</span>current <span class="main">:=</span> TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">,</span> exec_prime <span class="main">:=</span> <span class="main">(</span><span class="bound">nextFuncStepParam</span><span class="main">,</span> TEEC_CS2<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="bound">s1</span><span class="main">)</span><span class="main">⦈</span>
+    <span class="keyword1">in</span>      
+      <span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">ses_id</span></span></span> <span class="main">=</span> None <span class="main">∨</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="keyword1">then</span>
+        <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEEC_ORIGIN_API<span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">≠</span> <span class="main">[]</span><span class="main">∧</span><span class="main">(</span>snd <span class="main">(</span>hd <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">≠</span> TEEC_CS1 <span class="keyword1">then</span>
+        <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="bound">sesin</span> <span class="main">=</span> False <span class="keyword1">then</span> 
+        <span class="main">(</span><span class="bound">s_rev_event</span><span class="main">,</span> TEEC_ORIGIN_API<span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="bound">pre_param_ops</span> <span class="main">≠</span> TEE_SUCCESS <span class="keyword1">then</span>
+        <span class="main">(</span><span class="bound">s1</span><span class="main">,</span> TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span> TEEC_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span>
+        <span class="main">(</span><span class="bound">s2</span><span class="main">,</span> TEEC_ORIGIN_TRUSTED_APP<span class="main">,</span> TEEC_SUCCESS<span class="main">)</span>"</span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">tee_ta_close_session_teeDomain2_pre</span> <span class="main">::</span>                                             
+  <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> SESSION_ID_TYPE option <span class="main">⇒</span> CLIENT_TYPE option
+   <span class="main">⇒</span> PARAMS_TYPE option <span class="main">⇒</span> PARAMS_TYPE option <span class="main">⇒</span> State <span class="main">×</span> TEE_RETURN_CODE_TYPE "</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">tee_ta_close_session_teeDomain2_pre</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">tar_ses_id</span></span></span> <span class="free"><span class="bound"><span class="entity">clientType</span></span></span> <span class="free"><span class="bound"><span class="entity">params_in</span></span></span> <span class="free"><span class="bound"><span class="entity">params_out</span></span></span> <span class="main">≡</span>
+    <span class="keyword1">let</span>
+       <span class="bound">client_type</span> <span class="main">=</span> the <span class="free"><span class="bound"><span class="entity">clientType</span></span></span><span class="main">;</span>
+       <span class="bound">isSesIdinMgrSesIdList</span> <span class="main">=</span> isSesIdinMgrSesList <span class="main">(</span>mgr_ta_sessions <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>the <span class="free"><span class="bound"><span class="entity">tar_ses_id</span></span></span><span class="main">)</span><span class="main">;</span>
+       <span class="bound">ses_id</span> <span class="main">=</span> the <span class="free"><span class="bound"><span class="entity">tar_ses_id</span></span></span><span class="main">;</span>
+       <span class="bound">loginType</span> <span class="main">=</span> login <span class="bound">client_type</span><span class="main">;</span>
+       <span class="bound">clnt_id_input</span> <span class="main">=</span> id <span class="bound">client_type</span><span class="main">;</span>
+       <span class="bound">servTid</span> <span class="main">=</span> the<span class="main">(</span>findSesServTid <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="bound">ses_id</span><span class="main">)</span><span class="main">;</span>
+       <span class="bound">taMgrSes</span> <span class="main">=</span> the<span class="main">(</span>findMgrSessionFromList <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="bound">ses_id</span><span class="main">)</span><span class="main">;</span>
+       <span class="bound">taId_csess</span> <span class="main">=</span> id<span class="main">(</span>client_id <span class="bound">taMgrSes</span><span class="main">)</span><span class="main">;</span>
+       <span class="bound">s_setTaInsBusyByThreadId</span> <span class="main">=</span> setTaInsBusyByThreadId <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="bound">servTid</span> True<span class="main">;</span>
+       <span class="bound">nextFuncStepParam</span> <span class="main">=</span> <span class="main">⦇</span>param1 <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">tar_ses_id</span></span></span><span class="main">,</span> param2 <span class="main">=</span> Some <span class="bound">servTid</span><span class="main">,</span> param3 <span class="main">=</span> None<span class="main">,</span> param4 <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">clientType</span></span></span><span class="main">,</span>
+               param5 <span class="main">=</span> None<span class="main">,</span> param6 <span class="main">=</span>None<span class="main">,</span> param7 <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">params_in</span></span></span><span class="main">,</span> param8 <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">params_out</span></span></span><span class="main">,</span> param9 <span class="main">=</span> None<span class="main">,</span> param10<span class="main">=</span>None<span class="main">,</span> param11<span class="main">=</span>None<span class="main">,</span> param12<span class="main">=</span>None<span class="main">,</span> param13<span class="main">=</span>None<span class="main">⦈</span><span class="main">;</span>
+       <span class="bound">s_callTa</span> <span class="main">=</span> <span class="bound">s_setTaInsBusyByThreadId</span><span class="main">⦇</span>current <span class="main">:=</span> <span class="bound">servTid</span><span class="main">,</span> exec_prime <span class="main">:=</span> <span class="main">(</span><span class="bound">nextFuncStepParam</span><span class="main">,</span> TEEC_CS3<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="bound">s_setTaInsBusyByThreadId</span><span class="main">)</span><span class="main">⦈</span>
+    <span class="keyword1">in</span>
+    <span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">tar_ses_id</span></span></span> <span class="main">=</span> None <span class="main">∨</span> <span class="bound">isSesIdinMgrSesIdList</span> <span class="main">=</span> False <span class="keyword1">then</span>
+       <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ERROR_ITEM_NOT_FOUND<span class="main">)</span>
+    <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span><span class="bound">loginType</span> <span class="main">=</span> REE_PUBLIC <span class="main">∧</span> <span class="bound">clnt_id_input</span> <span class="main">=</span> None<span class="main">)</span> 
+            <span class="main">|</span> <span class="main">(</span><span class="main">(</span><span class="bound">loginType</span> <span class="main">=</span> KERN_IDENTITY <span class="main">|</span> <span class="bound">loginType</span> <span class="main">=</span> DTC_IDENTITY<span class="main">)</span><span class="main">)</span>
+            <span class="main">|</span> <span class="main">(</span><span class="main">(</span><span class="bound">loginType</span> <span class="main">=</span> TRUSTED_APP<span class="main">)</span> <span class="main">∧</span> <span class="bound">clnt_id_input</span> <span class="main">=</span> <span class="bound">taId_csess</span><span class="main">)</span> <span class="keyword1">then</span>
+       <span class="main">(</span><span class="bound">s_callTa</span><span class="main">,</span> TEE_SUCCESS<span class="main">)</span>
+    <span class="keyword1">else</span> 
+       <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_CloseSession2</span> <span class="main">::</span>
+  <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> State <span class="main">×</span> TEE_RETURN_ORIGIN_TYPE <span class="main">×</span> TEE_RETURN_CODE_TYPE "</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+   <span class="quoted"><span class="quoted">"<span class="free">TEEC_CloseSession2</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span>
+   <span class="keyword1">let</span>
+        <span class="bound">exec</span> <span class="main">=</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">p</span> <span class="main">=</span> fst <span class="main">(</span>hd <span class="bound">exec</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">ses_id</span> <span class="main">=</span> param1 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">client_type</span> <span class="main">=</span> param4 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">cmd_id</span> <span class="main">=</span> param6 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">in_params</span> <span class="main">=</span> param7 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">out_params</span> <span class="main">=</span> param8 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">s_rev_event</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>exec_prime <span class="main">:=</span> tl <span class="bound">exec</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">pre_param_ops</span> <span class="main">=</span> TEE_pre_param_operation <span class="bound">in_params</span><span class="main">;</span>
+        <span class="bound">isSesIdinMgrSesIdList</span> <span class="main">=</span> isSesIdinMgrSesList <span class="main">(</span>mgr_ta_sessions <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="bound">s_rev_event</span><span class="main">)</span><span class="main">)</span><span class="main">)</span> <span class="main">(</span>the <span class="bound">ses_id</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">s_ret</span> <span class="main">=</span> tee_ta_close_session_teeDomain2_pre <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="bound">s_rev_event</span> <span class="bound">ses_id</span> <span class="bound">client_type</span> <span class="bound">in_params</span> <span class="bound">out_params</span> 
+     <span class="keyword1">in</span>
+      <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="keyword1">then</span> 
+        <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">=</span> <span class="main">[]</span> <span class="keyword1">then</span>
+        <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> snd <span class="main">(</span>hd <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">≠</span> TEEC_CS2 <span class="keyword1">then</span>
+        <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="bound">pre_param_ops</span> <span class="main">≠</span> TEE_SUCCESS <span class="keyword1">then</span>
+        <span class="main">(</span><span class="bound">s_rev_event</span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="bound">isSesIdinMgrSesIdList</span> <span class="main">=</span> False <span class="keyword1">then</span>
+        <span class="main">(</span><span class="bound">s_rev_event</span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span>
+        <span class="main">(</span>fst <span class="bound">s_ret</span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> snd <span class="bound">s_ret</span><span class="main">)</span> "</span></span>
+
+<span class="comment1">(*
+definition TEEC_CloseSession3 ::
+  "Sys_Config ⇒ State ⇒ State × TEE_RETURN_ORIGIN_TYPE × TEE_RETURN_CODE_TYPE " where
+   "TEEC_CloseSession3 sc s ≡
+    let
+        exec = (exec_prime s);
+        p = fst (hd exec);
+        ses_id = param1 p;
+        in_params = param7 p;
+        out_params = param8 p;
+        servTaIns = param9 p;
+        servTid = cur_ta_thread_id (the servTaIns);
+        s_rev_event = s⦇exec_prime := tl exec⦈;
+        s_destroyContext_ret = tee_ta_destroy_context sc s_rev_event (the servTaIns) (the in_params) (the out_params);
+        s_destroyContext = fst s_destroyContext_ret;
+        s_backToTee = s_destroyContext⦇current := TEE sc⦈;
+        s_return_code = snd s_destroyContext_ret
+     in
+      if current s ≠ servTid then 
+        (s, TEE_ORIGIN_TEE, TEE_ERROR_BAD_PARAMETERS)
+      else if (exec_prime s) = [] then
+        (s, TEE_ORIGIN_TEE, TEE_ERROR_BAD_PARAMETERS)
+      else if snd (hd (exec_prime s)) ≠ TEEC_CS3 then
+        (s, TEE_ORIGIN_TEE, TEE_ERROR_BAD_PARAMETERS)
+      else
+        (s_backToTee, TEE_ORIGIN_TRUSTED_APP, s_return_code)"
+ 
+*)</span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_CloseSession3</span> <span class="main">::</span> 
+  <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> State <span class="main">×</span> TEE_RETURN_ORIGIN_TYPE <span class="main">×</span> TEE_RETURN_CODE_TYPE "</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+   <span class="quoted"><span class="quoted">"<span class="free">TEEC_CloseSession3</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span>
+   <span class="keyword1">let</span>
+        <span class="bound">exec</span> <span class="main">=</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">p</span> <span class="main">=</span> fst <span class="main">(</span>hd <span class="bound">exec</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">ses_id</span> <span class="main">=</span> param1 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">servTid</span> <span class="main">=</span> <span class="main">(</span>param2 <span class="bound">p</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">clientType</span> <span class="main">=</span> param4 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">in_params</span> <span class="main">=</span> param7 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">out_params</span> <span class="main">=</span> param8 <span class="bound">p</span><span class="main">;</span>
+        <span class="bound">s_rev_event</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>exec_prime <span class="main">:=</span> tl <span class="bound">exec</span><span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">isSesIdInTaStateSesList</span> <span class="main">=</span> isSessIdInTaStateSessList <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="bound">ses_id</span> <span class="bound">servTid</span><span class="main">;</span>
+        <span class="bound">nextFuncStepParam</span> <span class="main">=</span> <span class="main">⦇</span>param1 <span class="main">=</span> <span class="bound">ses_id</span><span class="main">,</span> param2 <span class="main">=</span> <span class="bound">servTid</span><span class="main">,</span> param3 <span class="main">=</span> None<span class="main">,</span> param4 <span class="main">=</span> <span class="bound">clientType</span><span class="main">,</span>
+               param5 <span class="main">=</span> None<span class="main">,</span> param6 <span class="main">=</span>None<span class="main">,</span> param7 <span class="main">=</span> <span class="bound">in_params</span><span class="main">,</span> param8 <span class="main">=</span> <span class="bound">out_params</span><span class="main">,</span> 
+               param9 <span class="main">=</span> None<span class="main">,</span> param10<span class="main">=</span>None<span class="main">,</span> param11<span class="main">=</span>None<span class="main">,</span> param12<span class="main">=</span>None<span class="main">,</span> param13<span class="main">=</span>None<span class="main">⦈</span><span class="main">;</span>
+        <span class="bound">s_taCloseSessionEntry</span> <span class="main">=</span> TA_CloseSessionEntryPoint <span class="bound">s_rev_event</span> <span class="main">(</span>the <span class="bound">servTid</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">s_removeSess_inTaState</span> <span class="main">=</span> removeAllSessIdInTaStateSessList <span class="bound">s_taCloseSessionEntry</span> <span class="main">(</span>the <span class="bound">ses_id</span><span class="main">)</span> <span class="main">(</span>the <span class="bound">in_params</span><span class="main">)</span> <span class="main">(</span>the <span class="bound">out_params</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">taState</span> <span class="main">=</span> <span class="main">(</span>TAs_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">(</span>the <span class="bound">servTid</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">taSesListInTaState</span> <span class="main">=</span> <span class="main">(</span>TA_sessions <span class="main">(</span>the <span class="bound">taState</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">ta_attr</span> <span class="main">=</span> TA_attribute <span class="main">(</span>the <span class="bound">taState</span><span class="main">)</span><span class="main">;</span>
+        <span class="bound">isSingleInstance</span> <span class="main">=</span> singleInstance <span class="bound">ta_attr</span><span class="main">;</span>
+        <span class="bound">isKeepAlive</span> <span class="main">=</span> keepAlive <span class="bound">ta_attr</span>
+     <span class="keyword1">in</span>
+      <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> <span class="main">(</span>the <span class="bound">servTid</span><span class="main">)</span> <span class="keyword1">then</span> 
+        <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ORIGIN_TRUSTED_APP<span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">=</span> <span class="main">[]</span> <span class="keyword1">then</span>
+        <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ORIGIN_TRUSTED_APP<span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> snd <span class="main">(</span>hd <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">≠</span> TEEC_CS3 <span class="keyword1">then</span>
+        <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ORIGIN_TRUSTED_APP<span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="bound">isSesIdInTaStateSesList</span> <span class="main">=</span> False <span class="keyword1">then</span>
+        <span class="keyword1">let</span>
+          <span class="bound">s_sesIdNotInTaStateSesList</span> <span class="main">=</span> <span class="bound">s_rev_event</span><span class="main">⦇</span>current <span class="main">:=</span> TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">,</span> exec_prime <span class="main">:=</span> <span class="main">(</span><span class="bound">nextFuncStepParam</span><span class="main">,</span> TEEC_CS4<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="bound">s_rev_event</span><span class="main">)</span><span class="main">⦈</span>
+        <span class="keyword1">in</span>
+        <span class="main">(</span><span class="bound">s_sesIdNotInTaStateSesList</span><span class="main">,</span> TEE_ORIGIN_TRUSTED_APP<span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+      <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">¬</span><span class="main">(</span><span class="bound">isSingleInstance</span> <span class="main">=</span> True <span class="main">∧</span> <span class="bound">isKeepAlive</span> <span class="main">=</span> True<span class="main">)</span> <span class="main">∧</span> <span class="bound">taSesListInTaState</span> <span class="main">=</span> <span class="main">[]</span> <span class="keyword1">then</span>
+        <span class="keyword1">let</span>
+            <span class="bound">s_taDestroyEntryPoint</span> <span class="main">=</span> TA_DestroyEntryPoint <span class="bound">s_removeSess_inTaState</span><span class="main">;</span>
+            <span class="bound">s_deleteTaStateBackTEE</span> <span class="main">=</span> <span class="bound">s_taDestroyEntryPoint</span><span class="main">⦇</span>current <span class="main">:=</span> TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">,</span> exec_prime <span class="main">:=</span> <span class="main">(</span><span class="bound">nextFuncStepParam</span><span class="main">,</span> TEEC_CS4<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="bound">s_taDestroyEntryPoint</span><span class="main">)</span><span class="main">⦈</span>
+        <span class="keyword1">in</span>
+        <span class="main">(</span><span class="bound">s_deleteTaStateBackTEE</span><span class="main">,</span> TEE_ORIGIN_TRUSTED_APP<span class="main">,</span> TEE_SUCCESS<span class="main">)</span>
+      <span class="keyword1">else</span> 
+        <span class="keyword1">let</span>
+            <span class="bound">s_notDeleteTaStateBackTEE</span> <span class="main">=</span> <span class="bound">s_removeSess_inTaState</span><span class="main">⦇</span>current <span class="main">:=</span> TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">,</span> exec_prime <span class="main">:=</span> <span class="main">(</span><span class="bound">nextFuncStepParam</span><span class="main">,</span> TEEC_CS4<span class="main">)</span><span class="main">#</span><span class="main">(</span>exec_prime <span class="bound">s_removeSess_inTaState</span><span class="main">)</span><span class="main">⦈</span>
+        <span class="keyword1">in</span>
+        <span class="main">(</span><span class="bound">s_notDeleteTaStateBackTEE</span><span class="main">,</span> TEE_ORIGIN_TRUSTED_APP<span class="main">,</span> TEE_SUCCESS<span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TEEC_CloseSession4</span> <span class="main">::</span> 
+  <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State <span class="main">⇒</span> State <span class="main">×</span> TEE_RETURN_ORIGIN_TYPE <span class="main">×</span> TEE_RETURN_CODE_TYPE "</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">TEEC_CloseSession4</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span>
+  <span class="keyword1">let</span>
+      <span class="bound">exec</span> <span class="main">=</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">p</span> <span class="main">=</span> fst <span class="main">(</span>hd <span class="bound">exec</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">ses_id</span> <span class="main">=</span> param1 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">servTid</span> <span class="main">=</span> <span class="main">(</span>param2 <span class="bound">p</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">in_params</span> <span class="main">=</span> param7 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">out_params</span> <span class="main">=</span> param8 <span class="bound">p</span><span class="main">;</span>
+      <span class="bound">s_rev_event</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">⦇</span>exec_prime <span class="main">:=</span> tl <span class="bound">exec</span><span class="main">⦈</span><span class="main">;</span>
+      <span class="bound">mgrSes</span> <span class="main">=</span> the<span class="main">(</span>findMgrSessionFromList <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">(</span>the <span class="bound">ses_id</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">clientType</span> <span class="main">=</span> client_id <span class="bound">mgrSes</span><span class="main">;</span>
+      <span class="bound">loginType</span> <span class="main">=</span> login <span class="bound">clientType</span><span class="main">;</span>
+      <span class="bound">mgrTaInsList</span> <span class="main">=</span> mgr_ta_instances <span class="main">(</span>ta_mgr <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">curMgrTaIns</span> <span class="main">=</span> findTaInsInMgrByTid <span class="bound">mgrTaInsList</span> <span class="main">(</span>the <span class="bound">servTid</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">curMgrTaIns_attr</span> <span class="main">=</span> attribute <span class="main">(</span>the <span class="bound">curMgrTaIns</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">isSingleInstance</span> <span class="main">=</span> singleInstance <span class="bound">curMgrTaIns_attr</span><span class="main">;</span>
+      <span class="bound">isKeepAlive</span> <span class="main">=</span> keepAlive <span class="bound">curMgrTaIns_attr</span><span class="main">;</span>
+      <span class="bound">curMgrTaIns_refCnt</span> <span class="main">=</span> reference_cnt <span class="main">(</span>the <span class="bound">curMgrTaIns</span><span class="main">)</span> <span class="main">-</span> <span class="main">1</span><span class="main">;</span>
+      <span class="bound">s_removeSess_inMgrTaSes</span> <span class="main">=</span> removeAllSessionInMgrSesList <span class="bound">s_rev_event</span> <span class="main">(</span>the <span class="bound">ses_id</span><span class="main">)</span><span class="main">;</span>
+      <span class="bound">s_setNotBusy</span> <span class="main">=</span> setTaInsBusyByThreadId <span class="bound">s_removeSess_inMgrTaSes</span> <span class="main">(</span>the <span class="bound">servTid</span><span class="main">)</span> False<span class="main">;</span>
+      <span class="bound">s_subRef</span> <span class="main">=</span> fst<span class="main">(</span>subtractMgrInsRef <span class="bound">s_setNotBusy</span> <span class="main">(</span>the <span class="bound">servTid</span><span class="main">)</span><span class="main">)</span>
+  <span class="keyword1">in</span>
+    <span class="keyword1">if</span> current <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≠</span> <span class="main">(</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="keyword1">then</span> 
+      <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+    <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">=</span> <span class="main">[]</span> <span class="keyword1">then</span>
+      <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+    <span class="keyword1">else</span> <span class="keyword1">if</span> snd <span class="main">(</span>hd <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span> <span class="main">≠</span> TEEC_CS4 <span class="keyword1">then</span>
+      <span class="main">(</span><span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEE_ERROR_BAD_PARAMETERS<span class="main">)</span>
+    <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="bound">curMgrTaIns_refCnt</span> <span class="main">=</span> <span class="main">0</span> <span class="main">∧</span> <span class="main">(</span><span class="main">¬</span><span class="main">(</span><span class="bound">isKeepAlive</span> <span class="main">=</span> True <span class="main">∧</span> <span class="bound">isSingleInstance</span> <span class="main">=</span> True<span class="main">)</span> <span class="main">|</span> <span class="bound">loginType</span> <span class="main">=</span> DTC_IDENTITY<span class="main">)</span> <span class="keyword1">then</span>
+      <span class="keyword1">let</span>
+         <span class="bound">curTa_curTaSessionList</span> <span class="main">=</span> cur_ta_session_list <span class="main">(</span>the <span class="bound">curMgrTaIns</span><span class="main">)</span><span class="main">;</span>
+         <span class="bound">s_removeTaInTaIns</span> <span class="main">=</span> fst <span class="main">(</span>removeTaInsInMgrInsList <span class="bound">s_subRef</span> <span class="main">(</span>the <span class="bound">servTid</span><span class="main">)</span><span class="main">)</span><span class="main">;</span>
+         <span class="bound">s_closeCurTaInsSessList</span> <span class="main">=</span> addCloseSessionEvent2 <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="bound">s_removeTaInTaIns</span> <span class="main">(</span>the <span class="bound">in_params</span><span class="main">)</span> <span class="main">(</span>the <span class="bound">out_params</span><span class="main">)</span> <span class="bound">curTa_curTaSessionList</span><span class="main">;</span>
+         <span class="bound">s_teeState_deleteCurTa</span> <span class="main">=</span> deleteTaStateByThreadId <span class="bound">s_closeCurTaInsSessList</span> <span class="main">(</span>the <span class="bound">servTid</span><span class="main">)</span><span class="main">;</span>
+         <span class="bound">s_removeTaMemInTee</span> <span class="main">=</span> removeTaMemInTeeDomain <span class="bound">s_teeState_deleteCurTa</span> <span class="main">(</span>the <span class="bound">servTid</span><span class="main">)</span>
+      <span class="keyword1">in</span>
+       <span class="main">(</span><span class="bound">s_removeTaMemInTee</span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEE_SUCCESS<span class="main">)</span>
+    <span class="keyword1">else</span> 
+      <span class="main">(</span><span class="bound">s_subRef</span><span class="main">,</span> TEE_ORIGIN_TEE<span class="main">,</span> TEE_SUCCESS<span class="main">)</span>
+  "</span></span>
+
+
+<span class="keyword2"><span class="keyword">end</span></span></pre></body>
+</html>

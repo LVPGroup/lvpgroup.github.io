@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Tacco: A Framework for Ensuring the Security of
+  Real-World TEEs via Formal Verification</title>
+<link media="all" rel="stylesheet" type="text/css" href="isabelle.css"/>
+<style>
+        .wrap{
+            
+            margin:0 auto;
+            overflow: hidden;
+        }
+        #left{
+            width:300px;
+            float: left;
+        }
+        #right{
+            width:700px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="head" ><h1 >Tacco: A Framework for Ensuring the Security of
+  Real-World TEEs via Formal Verification</h1>
+
+<h2>Abstract</h2>
+Trusted Execution Environment (TEE) provides isolation for sensitive data in electronic devices and its compromise can
+lead to enormous losses. TEE’s information-flow security is essential and can be robustly ensured by formal methods. Nevertheless,
+the cross-domain API invocation of TEE is intricate for information-flow analysis, and the service provider on the TEE, i.e., trusted
+application, brings complexity to the TEE specification and verification. Existing research seldom delves into general TEEs that are
+compliant with GlobalPlatform (GP), which is an important and universal TEE standard. Furthermore, they are not in alignment with the
+requirement of Common Criteria certification. In this paper, we propose a TEE-applicable and common criteria-oriented framework to
+specify and verify the information-flow security of GP TEE, which is applied to the verification of the real-world commercial MiTEE. Firstly,
+we present a framework for TEE that aligns with the requirements of Common Criteria’s highest assurance level (EAL 7). It incorporates
+a domain-switch based mechanism to model the cross-domain TEE API invocation and a parameterized modeling approach to handle
+trusted applications. Secondly, we model GlobalPlatform-compliant TEE with the framework as GP TEE security model layer and function
+layer, which are reusable for all GP TEEs. Thirdly, we specify MiTEE as the MiTEE design layer that refines GP TEE model. Lastly, we
+verify the information-flow security of GP TEE and MiTEE via theorem proving and uncover four critical vulnerabilities in MiTEE. This
+work contributes to MiTEE’s acquirement of an EAL 5+ certificate. All works are carried out in Isabelle/HOL, with nearly 32000 lines of
+code.
+
+<h2>Framework Overview</h2>
+<img src="veriMiTEE3.png" alt="Tacco framework Overview" width="1000" height="600"/>
+
+
+<div class="theories">
+<h2>Theories</h2>
+<div class="wrap">
+    <aside id="right">
+
+<div>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-top-width:1px;border-bottom-width:1px;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-top-width:1px;border-bottom-width:1px;border-color:black;}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-0pky">Theory</th>
+    <th class="tg-0pky">Contents</th>
+  </tr>
+  <tr>
+    <td class="tg-0pky"><a href="MiTEE/SecurityModel/SecurityModel_Contents.html">GP TEE SecurityModel Layer</a></td>
+    <td class="tg-0pky">This is the security model of GlobalPlatform-compliant TEE (GP TEE), including several security objectives while this paper focus on the isolation. Information-flow properties are defined here, i.e., noninfluence. State machines for GP TEE and unwinding conditions are also defined.</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"><a href="MiTEE/Requirement_Layer/Requirement_Contents.html">GP TEE Function Layer</a></td>
+    <td class="tg-0pky">This layer includes the definitions of basic data structures and execution model, event specification, the instantiation proof, and security proofs of events. It is the implementation of the GP TEE function layer of our framework Tacco.</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"><a href="MiTEE/Design_Layer/Design_Contents.html">MiTEE Design Layer</a></td>
+    <td class="tg-0pky">This layer includes the model of MiTEE design layer, refinement proof between GP TEE function layer and MiTEE design layer, the security proof on new variables in MiTEE design layer, and the final security proof of MiTEE.</td>
+  </tr>
+
+</table>
+</div>
+</aside>
+
+</div>
+</body>
+</html>

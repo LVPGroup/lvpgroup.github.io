@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('/93dcd2d1-8d26-4203-ad43-4d3ba6befe81/fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.contents { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+
+
+/* formal entities */
+
+.entity_def {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.entity_def:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+}
+
+.entity_ref {
+  color: inherit;
+  text-decoration: inherit;
+  border: 0.5px solid rgba(0,0,0,0);
+}
+
+.entity_ref:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+  border: 0.5px solid black;
+}
+</style><title>Theory "GPTEE_Instantiation"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> GPTEE_Instantiation
+  <span class="keyword2"><span class="keyword">imports</span></span> <span class="quoted">"./APIS_Req/APIs_Memory"</span> 
+          <span class="quoted">"./APIS_Req/APIs_TEE_IPC"</span> 
+          <span class="quoted">"./APIS_Req/APIs_TEEC_IPC"</span> 
+          <span class="quoted">"../GPTEE_SecurityModel/SecurityObjects/GPTEE_Objectives"</span>
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"New Definitions"</span></span></span>
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Utility Functions"</span></span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">get_TA_domain</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>TA_State_Type<span class="main">⇒</span>DOMAIN_ID"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">get_TA_domain</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ta</span></span></span> <span class="main">≡</span> <span class="main">(</span><span class="keyword1">SOME</span> <span class="bound">tid</span><span class="main">.</span>  <span class="main">(</span>the <span class="main">(</span><span class="main">(</span>TAs_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="bound">tid</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">ta</span></span></span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">primrec</span></span> <span class="entity">getTAOffset</span> <span class="main">::</span><span class="quoted"><span class="quoted">"TA_CONF<span class="main">⇒</span>OFFSET"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">getTAOffset</span> <span class="main">(</span>TAConf <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="free"><span class="bound"><span class="entity">offs</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span><span class="main">)</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">offs</span></span></span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">getTAInstanceTime</span><span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>State<span class="main">⇒</span>TA_UUID_TYPE<span class="main">⇒</span>nat"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+  <span class="quoted"><span class="quoted">"<span class="free">getTAInstanceTime</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">tid</span></span></span> <span class="main">≡</span> system_time <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">+</span> getTAOffset <span class="main">(</span>the <span class="main">(</span>TA_conf <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">tid</span></span></span><span class="main">)</span><span class="main">)</span>"</span></span> 
+
+<span class="keyword1"><span class="command">primrec</span></span> <span class="entity">getTAUUID</span><span class="main">::</span><span class="quoted"><span class="quoted">"TA_CONF<span class="main">⇒</span>TA_UUID_TYPE"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">getTAUUID</span> <span class="main">(</span>TAConf <span class="free"><span class="bound"><span class="entity">uuid</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span> <span class="main"><span class="bound"><span class="entity">_</span></span></span><span class="main">)</span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">uuid</span></span></span>"</span></span>
+
+<span class="comment1">(*
+definition getTAbyId::"State⇒tid⇒TA_State_Type"where
+        "getTAbyId s tid ≡the (TAs s tid)"
+
+definition getIdbyTA::"State⇒TA_State_Type⇒tid"where
+        "getIdbyTA s ta ≡ SOME tid1. getTAbyId s tid1 = ta"
+
+definition getTAStateByid::"State⇒tid⇒TA_mode_type"where
+  "getTAStateByid s tid ≡ TA_mode (the (TAs s tid))"
+       
+definition Abort::"State⇒tid⇒State"where
+        "Abort s tid ≡ let ta = TAs s; tastate = the (ta tid) in s⦇TAs := ta(tid := Some (tastate⦇TA_mode := Dead⦈))⦈"
+
+definition Close_Instance::"State⇒tid⇒State"where
+        "Close_Instance s tid ≡ let ta = TAs s; tastate = the (ta tid) in s⦇TAs := ta(tid := Some (tastate⦇TA_mode := Dead⦈))⦈"
+
+definition Close_Session::"State⇒tid⇒session_id⇒State"where
+        "Close_Session s tid sid ≡ let ta = TAs s; tastate = the (ta tid); tasession = TA_sessions tastate; sesstate = the (tasession sid) 
+           in s⦇TAs := ta(tid := Some (tastate⦇TA_sessions := tasession(sid := Some  (sesstate⦇session_mode := Closed⦈))⦈))⦈"
+
+
+
+definition getTABinaryCode::"State⇒tid⇒binary"where
+"getTABinaryCode s tid ≡ TA_code (the (TAs s tid))"
+
+definition getCheckCode::"State⇒key"where
+  "getCheckCode s ≡ checkcode s"
+ 
+*)</span>
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Event specification"</span></span></span>
+
+<span class="comment1">(*tee's default block id is 0 ,stands for tee's own executing space, cant be access by others*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">system_init</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config <span class="main">⇒</span> State"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">system_init</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">≡</span> <span class="main">⦇</span> current <span class="main">=</span>  REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">,</span>
+                        TAs_state <span class="main">=</span> <span class="main">(</span><span class="main">λ</span> <span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">,</span>
+                        REE_state <span class="main">=</span> <span class="main">⦇</span>driver_mem <span class="main">=</span> <span class="main">[]</span><span class="main">,</span>tee_ctx_list<span class="main">=</span><span class="main">[]</span><span class="main">,</span>ree_total_size <span class="main">=</span>DefaultREESize <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">⦈</span><span class="main">,</span>
+                        TEE_state <span class="main">=</span> <span class="main">⦇</span>ta_mgr<span class="main">=</span><span class="main">⦇</span>mgr_ta_sessions <span class="main">=</span><span class="main">[]</span><span class="main">,</span>mgr_ta_instances<span class="main">=</span><span class="main">[]</span><span class="main">,</span>BIDpointer<span class="main">=</span><span class="numeral">2</span><span class="main">⦈</span><span class="main">,</span>tee_ree_ipc_driver <span class="main">=</span><span class="main">0</span><span class="main">,</span>
+                                    zircon<span class="main">=</span><span class="main">⦇</span>property<span class="main">=</span><span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">⦈</span><span class="main">,</span>
+                                    tee_memories<span class="main">=</span><span class="main">[</span><span class="main">⦇</span>block_id <span class="main">=</span> <span class="main">0</span><span class="main">,</span>size<span class="main">=</span>tee_own_size<span class="main">,</span>ownership<span class="main">=</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">,</span>access_right<span class="main">=</span><span class="main">(</span><span class="main">λ</span><span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">(</span><span class="main">(</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span><span class="main">:=</span>Some READWRITE<span class="main">)</span><span class="main">,</span>is_SecureMem <span class="main">=</span> True<span class="main">,</span>related <span class="main">=</span> None<span class="main">⦈</span><span class="main">]</span><span class="main">,</span>
+                                    tee_total_size <span class="main">=</span>DefaultTEESize <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="main">-</span> tee_own_size<span class="main">⦈</span><span class="main">,</span>
+                        system_time <span class="main">=</span> <span class="main">0</span><span class="main">,</span>
+                        exec_prime <span class="main">=</span><span class="main">[]</span>
+                      <span class="main">⦈</span>"</span></span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"Instantiation"</span></span></span>
+
+
+
+<span class="keyword1"><span class="command">consts</span></span> sysconf <span class="main">::</span> <span class="quoted"><span class="quoted">"Sys_Config"</span></span> 
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">sys_config_witness</span> <span class="main">::</span> <span class="quoted">Sys_Config</span> <span class="keyword2"><span class="keyword">where</span></span>              
+<span class="quoted"><span class="quoted">"
+<span class="free">sys_config_witness</span> <span class="main">≡</span> <span class="main">⦇</span> REE <span class="main">=</span> <span class="main">0</span><span class="main">,</span>
+                       TEE <span class="main">=</span> <span class="main">1</span><span class="main">,</span>
+                       TA_conf <span class="main">=</span> <span class="main">(</span><span class="main">λ</span> <span class="bound">x</span><span class="main">.</span> None<span class="main">)</span><span class="main">,</span>
+                       checkcode <span class="main">=</span> <span class="numeral">100</span><span class="main">,</span>
+                       TEE_name <span class="main">=</span><span class="main">0</span><span class="main">,</span>
+                       DefaultREESize <span class="main">=</span> <span class="numeral">100</span><span class="main">,</span>
+                       DefaultTEESize <span class="main">=</span> <span class="numeral">100</span>
+                      <span class="main">⦈</span>
+"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">TA_domain1</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>TA_State_Type<span class="main">⇒</span>DOMAIN_ID"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">TA_domain1</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ta</span></span></span> <span class="main">≡</span> get_TA_domain <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">ta</span></span></span>"</span></span>
+
+<span class="keyword1"><span class="command">specification</span></span> <span class="main">(</span><span class="quoted">sysconf</span><span class="main">)</span>
+  ta_id_conf<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">uuid</span><span class="main">.</span> <span class="main">(</span>TA_conf sysconf<span class="main">)</span> <span class="bound">uuid</span> <span class="main">≠</span> None <span class="main">⟶</span> getTAUUID <span class="main">(</span>the <span class="main">(</span><span class="main">(</span>TA_conf sysconf<span class="main">)</span> <span class="bound">uuid</span><span class="main">)</span><span class="main">)</span> <span class="main">=</span> <span class="bound">uuid</span>"</span></span>
+  tee_no_ree<span class="main">:</span> <span class="quoted"><span class="quoted">"TEE sysconf <span class="main">≠</span>REE sysconf"</span></span>
+  ta_ne_tee<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span>TA_conf sysconf<span class="main">)</span> <span class="free">x</span> <span class="main">≠</span>None<span class="main">⟹</span><span class="free">x</span> <span class="main">≠</span> <span class="main">(</span>TEE sysconf<span class="main">)</span>"</span></span>
+  ta_no_ree<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span>TA_conf sysconf<span class="main">)</span> <span class="free">x</span> <span class="main">≠</span>None<span class="main">⟹</span><span class="free">x</span> <span class="main">≠</span> <span class="main">(</span>REE sysconf<span class="main">)</span>"</span></span> 
+  tee_no_ta<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">x</span> <span class="main">=</span> <span class="main">(</span>TEE sysconf<span class="main">)</span><span class="main">⟹</span><span class="main">(</span>TA_conf sysconf<span class="main">)</span> <span class="free">x</span> <span class="main">=</span> None"</span></span>
+  ree_no_ta<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">x</span> <span class="main">=</span> <span class="main">(</span>REE sysconf<span class="main">)</span><span class="main">⟹</span><span class="main">(</span>TA_conf sysconf<span class="main">)</span> <span class="free">x</span> <span class="main">=</span> None"</span></span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="main">(</span><span class="operator">intro</span> exI<span class="main"><span class="main">[</span></span><span class="operator">of</span> <span class="main"><span class="main">_</span></span> <span class="quoted"><span class="quoted"><span class="quoted">"sys_config_witness"</span></span></span><span class="main"><span class="main">]</span></span> allI impI<span class="main"><span class="keyword3">,</span></span> <span class="operator">simp</span><span class="main">)</span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="main">(</span><span class="operator">rule</span> conjI<span class="main"><span class="keyword3">,</span></span> <span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> sys_config_witness_def<span class="main">)</span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="main">(</span><span class="operator">rule</span> conjI<span class="main"><span class="keyword3">,</span></span> <span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> sys_config_witness_def<span class="main">)</span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> sys_config_witness_def<span class="main">)</span>
+  <span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+
+ <span class="comment1">(* "∀s ta. get_TA_domain s ta ≠ (TEE sysconf) ∧ get_TA_domain s ta ≠ (REE sysconf)"
+  "∀s. inj (get_TA_domain s)"
+  "∀d s. d = TEE sysconf ∨ d = REE sysconf ∨ (∃ta. get_TA_domain s ta = d)" *)</span>
+
+
+<span class="keyword1"><span class="command">consts</span></span> s0t <span class="main">::</span> <span class="quoted">State</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">s0t_witness</span> <span class="main">::</span> <span class="quoted">State</span>
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted">"<span class="free">s0t_witness</span> <span class="main">≡</span> system_init sysconf"</span></span>
+
+<span class="keyword1"><span class="command">specification</span></span> <span class="main">(</span><span class="quoted">s0t</span><span class="main">)</span> 
+  s0t_init<span class="main">:</span> <span class="quoted"><span class="quoted">"s0t <span class="main">=</span> system_init sysconf"</span></span>
+  <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+
+
+<span class="keyword1"><span class="command">datatype</span></span> Hypercall <span class="main">=</span>TEEC_INITIALIZECONTEXT <span class="quoted">TEE_NAME</span> <span class="quoted"><span class="quoted">"TEEC_CONTEXT_TYPE option"</span></span>
+                <span class="main">|</span>TEEC_FINALIZECONTEXT <span class="quoted"><span class="quoted">"TEEC_CONTEXT_TYPE option"</span></span>
+                <span class="main">|</span>TEEC_OPENSESSION1 <span class="quoted"><span class="quoted">"TEEC_CONTEXT_TYPE option"</span></span> <span class="quoted"><span class="quoted">"TEEC_SESSION_TYPE option"</span></span>
+                                <span class="quoted">TA_UUID_TYPE</span> <span class="quoted">Connection_Method</span> <span class="quoted">Connection_Data</span> <span class="quoted"><span class="quoted">"TEEC_Operation option"</span></span> <span class="quoted"><span class="quoted">"<span class="main">(</span>MemBlock <span class="main">×</span> TEEC_MEMREF_TYPE<span class="main">)</span>"</span></span>
+                <span class="main">|</span>TEEC_OPENSESSION2
+                <span class="main">|</span>TEEC_OPENSESSION3 <span class="quoted">SESSION_ID_TYPE</span>
+                <span class="main">|</span>TEEC_OPENSESSION4 
+                <span class="main">|</span>TEEC_CLOSESESSION1 <span class="quoted">FD_TYPE</span> <span class="quoted"><span class="quoted">"SESSION_ID_TYPE option"</span></span> <span class="quoted">PARAMS_TYPE</span> <span class="quoted">PARAMS_TYPE</span>
+                <span class="main">|</span>TEEC_CLOSESESSION2
+                <span class="main">|</span>TEEC_CLOSESESSION3
+                <span class="main">|</span>TEEC_CLOSESESSION4
+                <span class="main">|</span>TEEC_INVOKECOMMAND1 <span class="quoted"><span class="quoted">"SESSION_ID_TYPE option"</span></span>  <span class="quoted">TIMEOUT_TYPE</span> <span class="quoted">COMMAND_ID_TYPE</span> <span class="quoted">PARAMS_TYPE</span> <span class="quoted">PARAMS_TYPE</span> <span class="quoted"><span class="quoted">"MemBlock <span class="main">×</span> TEEC_MEMREF_TYPE"</span></span>
+                <span class="main">|</span>TEEC_INVOKECOMMAND2
+                <span class="main">|</span>TEEC_INVOKECOMMAND3
+                <span class="main">|</span>TEEC_INVOKECOMMAND4
+                <span class="main">|</span>TEEC_REGISTERSHAREDMEMORY <span class="quoted">TEEC_CONTEXT_TYPE</span>  <span class="quoted">TEEC_SharedMemory</span>
+                <span class="main">|</span>TEEC_ALLOCATESHAREDMEMORY <span class="quoted">TEEC_CONTEXT_TYPE</span>  <span class="quoted">TEEC_SharedMemory</span>
+                <span class="main">|</span>TEEC_RELEASESHAREDMEMORY <span class="quoted">TEEC_SharedMemory</span>
+                <span class="main">|</span>TEE_OPENTASESSION1 
+                <span class="main">|</span>TEE_OPENTASESSION2
+                <span class="main">|</span>TEE_OPENTASESSION3 <span class="quoted">SESSION_ID_TYPE</span>
+                <span class="main">|</span>TEE_OPENTASESSION4
+                <span class="main">|</span>TEE_INVOKETACOMMAND1 <span class="quoted"><span class="quoted">"MemBlock <span class="main">×</span> TEEC_MEMREF_TYPE"</span></span>
+                <span class="main">|</span>TEE_INVOKETACOMMAND2
+                <span class="main">|</span>TEE_INVOKETACOMMAND3
+                <span class="main">|</span>TEE_INVOKETACOMMAND4
+                <span class="main">|</span>TEE_CLOSETASESSION1
+                <span class="main">|</span>TEE_CLOSETASESSION2
+                <span class="main">|</span>TEE_CLOSETASESSION3
+                <span class="main">|</span>TEE_CLOSETASESSION4
+                <span class="main">|</span>TEE_CHECKMEMORYACCESSRIGHTS <span class="quoted">accessFlags</span>  <span class="quoted">MemBlock</span>  <span class="quoted">BUFFER_SIZE_TYPE</span>
+                <span class="main">|</span>TEE_MALLOC <span class="quoted">BUFFER_SIZE_TYPE</span> <span class="quoted">hint</span>
+                <span class="main">|</span>TEE_REALLOC <span class="quoted">MemBlock</span> <span class="quoted">BUFFER_SIZE_TYPE</span>
+                <span class="main">|</span>TEE_FREE <span class="quoted">MemBlock</span>
+
+<span class="keyword1"><span class="command">datatype</span></span> Syscall <span class="main">=</span> Reserved
+
+<span class="keyword1"><span class="command">datatype</span></span> Event <span class="main">=</span> hyperc <span class="quoted">Hypercall</span><span class="main">|</span>sys <span class="quoted">Syscall</span>
+<span class="comment1">(*
+definition exec_event :: "Event ⇒ (State × State) set" where
+      "exec_event e ≡ {(s,s'). s'∈ (let s1= 
+                                      (
+                                      let ep = exec_prime s in 
+                                      if ep = [] 
+                                          then s 
+                                      else if (snd (snd (hd ep))) = TA_MEM_INIT 
+                                          then (fst (TA_Memory_Init s sysconf (fst (hd ep)) (fst (snd (hd ep)))))  
+                                      else (fst (TA_Memory_Init s sysconf (fst (hd ep)) (fst (snd (hd ep)))))  
+                                      )
+            in (case e of 
+           hyperc (TEEC_INITIALIZECONTEXT tn tctext) ⇒{fst (TEEC_InitializeContext sysconf s1 tn tctext)}|
+           hyperc (TEEC_FINALIZECONTEXT tctext) ⇒ {(TEEC_FinalizeContext sysconf s1 tctext)}|
+           hyperc (TEEC_OPENSESSION tctext tcsession uuid cm cd tcop) ⇒{fst (TEEC_OpenSession sysconf s1 tctext tcsession uuid cm cd tcop)}|
+           
+           hyperc (TEEC_INVOKECOMMAND sid tt cid pt1 pt2) ⇒{fst (TEEC_InvokeCommand sysconf s1 sid tt cid pt1 pt2)}|
+           
+           hyperc (TEE_INVOKETACOMMAND sid tt cid pt1 pt2) ⇒{fst (TEE_InvokeTACommand sysconf s1 sid tt cid pt1 pt2)}|
+           
+           
+           
+            
+       _ ⇒{s} ))} 
+      "
+*)</span>
+
+
+
+<span class="comment1">(*
+definition exec_event :: "Event ⇒ (State × State) set" where
+      "exec_event e ≡ {(s,s'). s'∈  (case e of 
+           hyperc (TEEC_INITIALIZECONTEXT tn tctext) ⇒{fst (TEEC_InitializeContext sysconf s tn tctext)}|
+           hyperc (TEEC_FINALIZECONTEXT tctext) ⇒ {(TEEC_FinalizeContext sysconf s tctext)}|
+           hyperc (TEEC_OPENSESSION1 tct tst uuid cm cd opt mem_t) ⇒{fst(TEEC_OpenSession1 sysconf s tct tst uuid cm cd opt mem_t)}|
+           hyperc TEEC_OPENSESSION2 ⇒{fst (TEEC_OpenSession2 sysconf s)}|
+           hyperc (TEEC_OPENSESSION3 ses_id)⇒{fst (TEEC_OpenSession3 sysconf s ses_id)}|
+           hyperc (TEEC_OPENSESSION4 res)⇒{fst (TEEC_OpenSession4 sysconf s res)}|
+           hyperc (TEEC_CLOSESESSION1 fd ses_id pt1 pt2) ⇒{fst (TEEC_CloseSession1 sysconf s fd ses_id pt1 pt2)}|
+           hyperc TEEC_CLOSESESSION2 ⇒{fst (TEEC_CloseSession2 sysconf s)}|
+           hyperc TEEC_CLOSESESSION3 ⇒{fst (TEEC_CloseSession3 sysconf s)}|
+           hyperc (TEEC_INVOKECOMMAND1 ses_id timeout cmd pt1 pt2 mem_t) ⇒{fst (TEEC_InvokeCommand1 sysconf s ses_id timeout cmd pt1 pt2 mem_t)}|
+           hyperc TEEC_INVOKECOMMAND2⇒{fst (TEEC_InvokeCommand2 sysconf s)}|
+           hyperc TEEC_INVOKECOMMAND3⇒{fst (TEEC_InvokeCommand3 sysconf s)}|
+           hyperc (TEE_INVOKETACOMMAND1 mem_t)⇒{fst (TEE_InvokeTACommand1 sysconf s mem_t)}|
+           hyperc TEE_INVOKETACOMMAND2⇒{fst (TEE_InvokeTACommand2 sysconf s)}|
+           hyperc TEE_INVOKETACOMMAND3⇒{fst (TEE_InvokeTACommand3 sysconf s)}|
+           hyperc TEE_CLOSETASESSION1⇒{fst (TEE_CloseTASession1 sysconf s)}|
+           hyperc TEE_CLOSETASESSION2⇒{fst (TEE_CloseTASession2 sysconf s)}|
+           hyperc TEE_CLOSETASESSION3⇒{fst (TEE_CloseTASession3 sysconf s)}|
+           hyperc TEE_OPENTASESSION1 ⇒{fst (TEE_OpenTASession1 sysconf s)}|
+           hyperc TEE_OPENTASESSION2⇒{fst (TEE_OpenTASession2 sysconf s)}|
+           hyperc (TEE_OPENTASESSION3 sid)⇒{fst (TEE_OpenTASession3 sysconf s sid)}|
+           hyperc (TEE_OPENTASESSION4 res)⇒{fst (TEE_OpenTASession4 sysconf s res)}|
+           hyperc (TEE_CHECKMEMORYACCESSRIGHTS accessflags  bid bsize) ⇒{s}|
+           hyperc (TEE_MALLOC bsize hi) ⇒{(TEE_Malloc sysconf s bsize hi)}|
+           hyperc (TEE_REALLOC mb bsize) ⇒{(TEE_Realloc sysconf s mb bsize)}|
+           hyperc (TEE_FREE bid) ⇒{(TEE_Free sysconf s bid)}|
+           hyperc (TEEC_REGISTERSHAREDMEMORY tctext shared) ⇒{fst (TEEC_RegisterSharedMemory sysconf s tctext shared)}|
+           hyperc (TEEC_ALLOCATESHAREDMEMORY tctext shared) ⇒{fst (TEEC_AllocateSharedMemory sysconf s tctext shared)}|
+           hyperc (TEEC_RELEASESHAREDMEMORY shared) ⇒{(TEEC_ReleaseSharedMemory sysconf s shared)}|
+   
+ _ ⇒{s} )} 
+      "
+*)</span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">exec_event</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"Event <span class="main">⇒</span> <span class="main">(</span>State <span class="main">×</span> State<span class="main">)</span> set"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+      <span class="quoted"><span class="quoted">"<span class="free">exec_event</span> <span class="free"><span class="bound"><span class="entity">e</span></span></span> <span class="main">≡</span> <span class="main">{</span><span class="main">(</span><span class="bound">s</span><span class="main">,</span><span class="bound">s'</span><span class="main">)</span><span class="main">.</span> <span class="bound">s'</span><span class="main">∈</span>  <span class="main">(</span><span class="keyword1">case</span> <span class="free"><span class="bound"><span class="entity">e</span></span></span> <span class="keyword1">of</span> 
+           hyperc <span class="main">(</span>TEEC_INITIALIZECONTEXT <span class="bound">tn</span> <span class="bound">tctext</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_InitializeContext sysconf <span class="bound">s</span> <span class="bound">tn</span> <span class="bound">tctext</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEEC_FINALIZECONTEXT <span class="bound">tctext</span><span class="main">)</span> <span class="main">⇒</span> <span class="main">{</span><span class="main">(</span>TEEC_FinalizeContext sysconf <span class="bound">s</span> <span class="bound">tctext</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEEC_OPENSESSION1 <span class="bound">tct</span> <span class="bound">tst</span> <span class="bound">uuid</span> <span class="bound">cm</span> <span class="bound">cd</span> <span class="bound">opt</span> <span class="bound">mem_t</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst<span class="main">(</span>TEEC_OpenSession1 sysconf <span class="bound">s</span> <span class="bound">tct</span> <span class="bound">tst</span> <span class="bound">uuid</span> <span class="bound">cm</span> <span class="bound">cd</span> <span class="bound">opt</span> <span class="bound">mem_t</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEEC_OPENSESSION2 <span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_OpenSession2 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEEC_OPENSESSION3 <span class="bound">ses_id</span><span class="main">)</span><span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_OpenSession3 sysconf <span class="bound">s</span> <span class="bound">ses_id</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEEC_OPENSESSION4<span class="main">)</span><span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_OpenSession4 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEE_OPENTASESSION1 <span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_OpenTASession1 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEE_OPENTASESSION2<span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_OpenTASession2 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEE_OPENTASESSION3 <span class="bound">sid</span><span class="main">)</span><span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_OpenTASession3 sysconf <span class="bound">s</span> <span class="bound">sid</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEE_OPENTASESSION4<span class="main">)</span><span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_OpenTASession4 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEEC_CLOSESESSION1 <span class="bound">fd</span> <span class="bound">ses_id</span> <span class="bound">pt1</span> <span class="bound">pt2</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_CloseSession1 sysconf <span class="bound">s</span> <span class="bound">fd</span> <span class="bound">ses_id</span> <span class="bound">pt1</span> <span class="bound">pt2</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEEC_CLOSESESSION2 <span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_CloseSession2 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEEC_CLOSESESSION3 <span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_CloseSession3 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEEC_CLOSESESSION4 <span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_CloseSession4 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEE_CLOSETASESSION1<span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_CloseTASession1 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEE_CLOSETASESSION2<span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_CloseTASession2 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEE_CLOSETASESSION3<span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_CloseTASession3 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEE_CLOSETASESSION4<span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_CloseTASession4 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEEC_INVOKECOMMAND1 <span class="bound">ses_id</span> <span class="bound">timeout</span> <span class="bound">cmd</span> <span class="bound">pt1</span> <span class="bound">pt2</span> <span class="bound">mem_t</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_InvokeCommand1 sysconf <span class="bound">s</span> <span class="bound">ses_id</span> <span class="bound">timeout</span> <span class="bound">cmd</span> <span class="bound">pt1</span> <span class="bound">pt2</span> <span class="bound">mem_t</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEEC_INVOKECOMMAND2<span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_InvokeCommand2 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEEC_INVOKECOMMAND3<span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_InvokeCommand3 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEEC_INVOKECOMMAND4<span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_InvokeCommand4 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEE_INVOKETACOMMAND1 <span class="bound">mem_t</span><span class="main">)</span><span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_InvokeTACommand1 sysconf <span class="bound">s</span> <span class="bound">mem_t</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEE_INVOKETACOMMAND2<span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_InvokeTACommand2 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEE_INVOKETACOMMAND3<span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_InvokeTACommand3 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc TEE_INVOKETACOMMAND4<span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEE_InvokeTACommand4 sysconf <span class="bound">s</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEE_CHECKMEMORYACCESSRIGHTS <span class="bound">accessflags</span>  <span class="bound">bid</span> <span class="bound">bsize</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span><span class="bound">s</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEE_MALLOC <span class="bound">bsize</span> <span class="bound">hi</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span><span class="main">(</span>TEE_Malloc sysconf <span class="bound">s</span> <span class="bound">bsize</span> <span class="bound">hi</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEE_REALLOC <span class="bound">mb</span> <span class="bound">bsize</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span><span class="main">(</span>TEE_Realloc sysconf <span class="bound">s</span> <span class="bound">mb</span> <span class="bound">bsize</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEE_FREE <span class="bound">bid</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span><span class="main">(</span>TEE_Free sysconf <span class="bound">s</span> <span class="bound">bid</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEEC_REGISTERSHAREDMEMORY <span class="bound">tctext</span> <span class="bound">shared</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_RegisterSharedMemory sysconf <span class="bound">s</span> <span class="bound">tctext</span> <span class="bound">shared</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEEC_ALLOCATESHAREDMEMORY <span class="bound">tctext</span> <span class="bound">shared</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span>fst <span class="main">(</span>TEEC_AllocateSharedMemory sysconf <span class="bound">s</span> <span class="bound">tctext</span> <span class="bound">shared</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+           hyperc <span class="main">(</span>TEEC_RELEASESHAREDMEMORY <span class="bound">shared</span><span class="main">)</span> <span class="main">⇒</span><span class="main">{</span><span class="main">(</span>TEEC_ReleaseSharedMemory sysconf <span class="bound">s</span> <span class="bound">shared</span><span class="main">)</span><span class="main">}</span><span class="main">|</span>
+   
+ <span class="main"><span class="bound">_</span></span> <span class="main">⇒</span><span class="main">{</span><span class="bound">s</span><span class="main">}</span> <span class="main">)</span><span class="main">}</span> 
+      "</span></span>
+
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"ISOLATION Instantiation"</span></span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">domain_of_event</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State <span class="main">⇒</span> Event <span class="main">⇒</span> DOMAIN_ID option"</span></span> <span class="keyword2"><span class="keyword">where</span></span> 
+    <span class="quoted"><span class="quoted">"<span class="free">domain_of_event</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">e</span></span></span> <span class="main">≡</span> Some <span class="main">(</span>current <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span>"</span></span>
+<span class="comment1">(*
+ hyperc (TEEC_INITIALIZECONTEXT _ _) ⇒Some (REE sysconf) |
+      hyperc (TEEC_OPENSESSION _ _ _ _ _ _) ⇒Some (REE sysconf)|
+*)</span>
+
+<span class="comment1">(*
+definition get_exec_prime::"State⇒(EVENT_PARAM×EVENT_NAME) list"where
+          "get_exec_prime s ≡ exec_prime s"
+*)</span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">get_exec_prime</span><span class="main">::</span><span class="quoted"><span class="quoted">"State<span class="main">⇒</span><span class="main">(</span><span class="main">(</span>EVENT_PARAM<span class="main">×</span>EVENT_NAME<span class="main">)</span> list <span class="main">×</span>TEE_TA_MANAGER <span class="main">×</span> TAs_State<span class="main">)</span>"</span></span><span class="keyword2"><span class="keyword">where</span></span>
+          <span class="quoted"><span class="quoted">"<span class="free">get_exec_prime</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="main">≡</span> <span class="main">(</span>exec_prime <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">,</span>ta_mgr<span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">,</span>TAs_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">is_TEE</span> <span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>DOMAIN_ID<span class="main">⇒</span>bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">is_TEE</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">nid</span></span></span> <span class="main">≡</span> <span class="main">(</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="main">=</span><span class="free"><span class="bound"><span class="entity">nid</span></span></span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">is_REE</span> <span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>DOMAIN_ID<span class="main">⇒</span>bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">is_REE</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">nid</span></span></span> <span class="main">≡</span> <span class="main">(</span>REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="main">=</span><span class="free"><span class="bound"><span class="entity">nid</span></span></span>"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">is_TA</span> <span class="main">::</span><span class="quoted"><span class="quoted">"Sys_Config<span class="main">⇒</span>DOMAIN_ID<span class="main">⇒</span>bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">is_TA</span> <span class="free"><span class="bound"><span class="entity">sc</span></span></span> <span class="free"><span class="bound"><span class="entity">nid</span></span></span> <span class="main">≡</span> <span class="main">¬</span><span class="main">(</span><span class="main">(</span>TEE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="main">=</span><span class="free"><span class="bound"><span class="entity">nid</span></span></span> <span class="main">∨</span> <span class="main">(</span>REE <span class="free"><span class="bound"><span class="entity">sc</span></span></span><span class="main">)</span> <span class="main">=</span><span class="free"><span class="bound"><span class="entity">nid</span></span></span><span class="main">)</span>"</span></span>
+
+
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">interference1</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"DOMAIN_ID<span class="main">⇒</span>DOMAIN_ID<span class="main">⇒</span>bool"</span></span><span class="main">(</span><span class="quoted">"<span class="keyword3">(</span>_ <span class="keyword1">↝</span> _<span class="keyword3">)</span>"</span><span class="main">)</span><span class="keyword2"><span class="keyword">where</span></span>
+    <span class="quoted"><span class="quoted">"<span class="free">interference1</span> <span class="free"><span class="bound"><span class="entity">d1</span></span></span> <span class="free"><span class="bound"><span class="entity">d2</span></span></span> <span class="main">≡</span>
+                  <span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">d1</span></span></span> <span class="main">=</span> <span class="free"><span class="bound"><span class="entity">d2</span></span></span> <span class="keyword1">then</span> True
+                  <span class="keyword1">else</span> <span class="keyword1">if</span> is_TEE sysconf <span class="free"><span class="bound"><span class="entity">d1</span></span></span> <span class="keyword1">then</span> True
+                  <span class="keyword1">else</span> <span class="keyword1">if</span> is_REE sysconf <span class="free"><span class="bound"><span class="entity">d1</span></span></span> <span class="keyword1">then</span> False
+                  <span class="keyword1">else</span> <span class="keyword1">if</span> is_TA sysconf <span class="free"><span class="bound"><span class="entity">d1</span></span></span> <span class="keyword1">then</span> False
+                  <span class="keyword1">else</span> False"</span></span>
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">non_interference1</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"DOMAIN_ID <span class="main">⇒</span> DOMAIN_ID <span class="main">⇒</span> bool"</span></span> <span class="main">(</span><span class="quoted">"<span class="keyword3">(</span>_ <span class="keyword1">∖↝</span> _<span class="keyword3">)</span>"</span><span class="main">)</span>
+      <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free"><span class="bound"><span class="entity">u</span></span></span> <span class="main"><span class="free">∖↝</span></span>  <span class="free"><span class="bound"><span class="entity">v</span></span></span><span class="main">)</span> <span class="main">≡</span> <span class="main">¬</span> <span class="main">(</span><span class="free"><span class="bound"><span class="entity">u</span></span></span> <span class="main">↝</span> <span class="free"><span class="bound"><span class="entity">v</span></span></span><span class="main">)</span>"</span></span>
+
+
+
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">vpeq_REE</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>DOMAIN_ID<span class="main">⇒</span>State<span class="main">⇒</span>bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">vpeq_REE</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">d</span></span></span> <span class="free"><span class="bound"><span class="entity">t</span></span></span> <span class="main">≡</span> ree_total_size<span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">=</span> ree_total_size <span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">t</span></span></span><span class="main">)</span>
+                          <span class="main">∧</span>driver_mem<span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span> <span class="main">=</span> driver_mem<span class="main">(</span>REE_state <span class="free"><span class="bound"><span class="entity">t</span></span></span><span class="main">)</span> "</span></span>
+
+<span class="comment1">(*for TA, only memory is sensitive data, including TA data and keys*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">vpeq_TA</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>DOMAIN_ID<span class="main">⇒</span>State<span class="main">⇒</span>bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">vpeq_TA</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">d</span></span></span> <span class="free"><span class="bound"><span class="entity">t</span></span></span> <span class="main">≡</span> <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">=</span><span class="free"><span class="bound"><span class="entity">d</span></span></span><span class="main">)</span><span class="main">}</span> <span class="main">=</span>
+                           <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">t</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>ownership <span class="bound">x</span><span class="main">=</span><span class="free"><span class="bound"><span class="entity">d</span></span></span><span class="main">)</span><span class="main">}</span>
+                       "</span></span>
+
+<span class="comment1">(*   ∨{x. x∈set(tee_memories (TEE_state s))∧ (ownership x=d)} ⊆ 
+                            {x. x∈set(tee_memories (TEE_state t))∧ (ownership x=d)}
+                          ∨{x. x∈set(tee_memories (TEE_state t))∧ (ownership x=d)} ⊆
+                            {x. x∈set(tee_memories (TEE_state s))∧ (ownership x=d)}*)</span>
+
+
+<span class="comment1">(*for TEE, only memory is sensitive data,including TEE's own execution space*)</span>
+<span class="comment1">(*In TEE side, mem whose blockid equals 0 belongs to TEE*)</span>
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">vpeq_TEE</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State<span class="main">⇒</span>DOMAIN_ID<span class="main">⇒</span>State<span class="main">⇒</span>bool"</span></span> <span class="keyword2"><span class="keyword">where</span></span>
+        <span class="quoted"><span class="quoted">"<span class="free">vpeq_TEE</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">d</span></span></span> <span class="free"><span class="bound"><span class="entity">t</span></span></span> <span class="main">≡</span> <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">s</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">=</span><span class="main">0</span><span class="main">)</span><span class="main">}</span> <span class="main">=</span>
+                           <span class="main">{</span><span class="bound">x</span><span class="main">.</span> <span class="bound">x</span><span class="main">∈</span>set<span class="main">(</span>tee_memories <span class="main">(</span>TEE_state <span class="free"><span class="bound"><span class="entity">t</span></span></span><span class="main">)</span><span class="main">)</span><span class="main">∧</span> <span class="main">(</span>block_id <span class="bound">x</span><span class="main">=</span><span class="main">0</span><span class="main">)</span><span class="main">}</span>"</span></span>
+
+
+<span class="keyword1"><span class="command">definition</span></span> <span class="entity">vpeq1</span> <span class="main">::</span> <span class="quoted"><span class="quoted">"State <span class="main">⇒</span> DOMAIN_ID <span class="main">⇒</span> State <span class="main">⇒</span> bool"</span></span> <span class="main">(</span><span class="quoted">"<span class="keyword3">(</span>_ <span class="keyword1">∼</span> _ <span class="keyword1">∼</span> _<span class="keyword3">)</span>"</span><span class="main">)</span> 
+  <span class="keyword2"><span class="keyword">where</span></span> <span class="quoted"><span class="quoted">"<span class="free">vpeq1</span> <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">d</span></span></span> <span class="free"><span class="bound"><span class="entity">t</span></span></span> <span class="main">≡</span>  
+         <span class="main">(</span><span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">d</span></span></span> <span class="main">=</span> TEE sysconf <span class="keyword1">then</span> 
+            <span class="main">(</span>vpeq_TEE <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">d</span></span></span> <span class="free"><span class="bound"><span class="entity">t</span></span></span><span class="main">)</span>
+          <span class="keyword1">else</span> <span class="keyword1">if</span> <span class="free"><span class="bound"><span class="entity">d</span></span></span> <span class="main">=</span> REE sysconf <span class="keyword1">then</span>
+            <span class="main">(</span>vpeq_REE <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">d</span></span></span> <span class="free"><span class="bound"><span class="entity">t</span></span></span><span class="main">)</span>
+          <span class="keyword1">else</span> <span class="keyword1">if</span> is_TA sysconf <span class="free"><span class="bound"><span class="entity">d</span></span></span> <span class="keyword1">then</span> 
+            <span class="main">(</span>vpeq_TA <span class="free"><span class="bound"><span class="entity">s</span></span></span> <span class="free"><span class="bound"><span class="entity">d</span></span></span> <span class="free"><span class="bound"><span class="entity">t</span></span></span><span class="main">)</span>
+          <span class="keyword1">else</span> True<span class="main">)</span>"</span></span>
+
+
+<span class="keyword1"><span class="command">declare</span></span> non_interference1_def <span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> interference1_def <span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> domain_of_event_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span>
+      is_TEE_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> is_REE_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> is_TA_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> vpeq_REE_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> vpeq_TA_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span>
+      <span class="keyword2"><span class="keyword">and</span></span> vpeq_TEE_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span> <span class="keyword2"><span class="keyword">and</span></span> vpeq1_def<span class="main">[</span><span class="operator">cong</span><span class="main">]</span>
+
+<span class="comment1">(*
+declare TEEC_InitializeContext_def[cong] TEEC_FinalizeContext_def[cong] 
+TEEC_OpenSession1_def[cong] TEEC_OpenSession2_def[cong] TEEC_OpenSession3_def[cong] TEEC_OpenSession4_def[cong]
+TEEC_CloseSession1_def[cong] TEEC_CloseSession2_def[cong] TEEC_CloseSession3_def[cong] TEEC_CloseSession4_def[cong]
+TEEC_InvokeCommand1_def[cong] TEEC_InvokeCommand2_def[cong] TEEC_InvokeCommand3_def[cong] TEEC_InvokeCommand4_def[cong]
+TEE_OpenTASession1_def[cong] TEE_OpenTASession2_def[cong] TEE_OpenTASession3_def[cong] TEE_OpenTASession4_def[cong]
+TEEC_OpenSession1_def[cong] TEEC_OpenSession2_def[cong] TEEC_OpenSession3_def[cong] TEEC_OpenSession4_def[cong]
+TEEC_OpenSession1_def[cong] TEEC_OpenSession2_def[cong] TEEC_OpenSession3_def[cong] TEEC_OpenSession4_def[cong]
+*)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq_REE_transitive <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">r</span> <span class="bound">t</span> <span class="bound">d</span><span class="main">.</span> vpeq_REE <span class="bound">s</span> <span class="bound">d</span> <span class="bound">t</span> <span class="main">∧</span> vpeq_REE <span class="bound">t</span> <span class="bound">d</span> <span class="bound">r</span><span class="main">⟶</span>vpeq_REE <span class="bound">s</span> <span class="bound">d</span> <span class="bound">r</span>"</span></span> 
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq_REE_symmetric <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">t</span> <span class="bound">d</span><span class="main">.</span> vpeq_REE <span class="bound">s</span> <span class="bound">d</span> <span class="bound">t</span> <span class="main">⟶</span> vpeq_REE <span class="bound">t</span> <span class="bound">d</span> <span class="bound">s</span>"</span></span>
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq_REE_reflexive<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">d</span><span class="main">.</span> vpeq_REE <span class="bound">s</span> <span class="bound">d</span> <span class="bound">s</span>"</span></span>
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq_TA_transitive <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">r</span> <span class="bound">t</span> <span class="bound">d</span><span class="main">.</span> vpeq_TA <span class="bound">s</span> <span class="bound">d</span> <span class="bound">t</span> <span class="main">∧</span> vpeq_TA <span class="bound">t</span> <span class="bound">d</span> <span class="bound">r</span><span class="main">⟶</span>vpeq_TA <span class="bound">s</span> <span class="bound">d</span> <span class="bound">r</span>"</span></span> 
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq_TA_symmetric <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">t</span> <span class="bound">d</span><span class="main">.</span> vpeq_TA <span class="bound">s</span> <span class="bound">d</span> <span class="bound">t</span> <span class="main">⟶</span> vpeq_TA <span class="bound">t</span> <span class="bound">d</span> <span class="bound">s</span>"</span></span>
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq_TA_reflexive<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">d</span><span class="main">.</span> vpeq_TA <span class="bound">s</span> <span class="bound">d</span> <span class="bound">s</span>"</span></span>
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq_TEE_transitive <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">r</span> <span class="bound">t</span> <span class="bound">d</span><span class="main">.</span> vpeq_TEE <span class="bound">s</span> <span class="bound">d</span> <span class="bound">t</span> <span class="main">∧</span> vpeq_TEE <span class="bound">t</span> <span class="bound">d</span> <span class="bound">r</span><span class="main">⟶</span>vpeq_TEE <span class="bound">s</span> <span class="bound">d</span> <span class="bound">r</span>"</span></span> 
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq_TEE_symmetric <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">t</span> <span class="bound">d</span><span class="main">.</span> vpeq_TEE <span class="bound">s</span> <span class="bound">d</span> <span class="bound">t</span> <span class="main">⟶</span> vpeq_TEE <span class="bound">t</span> <span class="bound">d</span> <span class="bound">s</span>"</span></span>
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq_TEE_reflexive<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">d</span><span class="main">.</span> vpeq_TEE <span class="bound">s</span> <span class="bound">d</span> <span class="bound">s</span>"</span></span>
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq1_transitive <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">r</span> <span class="bound">t</span> <span class="bound">d</span><span class="main">.</span> vpeq1 <span class="bound">s</span> <span class="bound">d</span> <span class="bound">t</span> <span class="main">∧</span> vpeq1 <span class="bound">t</span> <span class="bound">d</span> <span class="bound">r</span><span class="main">⟶</span>vpeq1 <span class="bound">s</span> <span class="bound">d</span> <span class="bound">r</span>"</span></span> 
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq1_symmetric <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">t</span> <span class="bound">d</span><span class="main">.</span> vpeq1 <span class="bound">s</span> <span class="bound">d</span> <span class="bound">t</span> <span class="main">⟶</span> vpeq1 <span class="bound">t</span> <span class="bound">d</span> <span class="bound">s</span>"</span></span>
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> vpeq1_reflexive<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">s</span> <span class="bound">d</span><span class="main">.</span> vpeq1 <span class="bound">s</span> <span class="bound">d</span> <span class="bound">s</span>"</span></span>
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> ins_tee_intf_all <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">d</span><span class="main">.</span> interference1 <span class="main">(</span>TEE sysconf<span class="main">)</span> <span class="bound">d</span>"</span></span>
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> ins_no_intf_tee <span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">d</span><span class="main">.</span> interference1 <span class="bound">d</span> <span class="main">(</span>TEE sysconf<span class="main">)</span> <span class="main">⟶</span><span class="bound">d</span><span class="main">=</span><span class="main">(</span>TEE sysconf<span class="main">)</span> "</span></span>
+      <span class="keyword1"><span class="command">using</span></span> interference1_def is_TEE_def <span class="keyword1"><span class="command">by</span></span> <span class="operator">presburger</span>
+      
+<span class="keyword1"><span class="command">lemma</span></span> ins_reachable<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span> <span class="bound">a</span><span class="main">.</span> <span class="main">(</span>O_ISOLATION.reachable0 s0t exec_event<span class="main">)</span> <span class="bound">s</span> <span class="main">⟶</span> <span class="main">(</span><span class="main">∃</span><span class="bound">s'</span><span class="main">.</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_event <span class="bound">a</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+  <span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s</span> <span class="skolem">a</span>
+    <span class="keyword3"><span class="command">assume</span></span> p0<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span>O_ISOLATION.reachable0 s0t exec_event<span class="main">)</span> <span class="skolem">s</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> <span class="quoted"><span class="quoted">"<span class="main">∃</span><span class="bound">s'</span><span class="main">.</span> <span class="main">(</span><span class="skolem">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_event <span class="skolem">a</span>"</span></span>
+      <span class="keyword1"><span class="command">proof</span></span><span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="skolem">a</span></span><span class="main">)</span>
+        <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>hyperc <span class="skolem">x</span><span class="main">)</span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span> 
+          <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="skolem">x</span></span><span class="main">)</span>
+          <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>exec_event_def<span class="main">)</span><span class="main"><span class="keyword3">+</span></span>
+        <span class="keyword1"><span class="command">next</span></span>
+        <span class="keyword3"><span class="command">case</span></span> <span class="main">(</span>sys <span class="skolem">x</span><span class="main">)</span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?case</span></span></span>
+          <span class="keyword1"><span class="command"><span class="improper"><span class="command">apply</span></span></span></span> <span class="main">(</span><span class="operator">induct</span> <span class="quoted"><span class="skolem">x</span></span><span class="main">)</span>
+          <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span>exec_event_def<span class="main">)</span><span class="main"><span class="keyword3">+</span></span>
+      <span class="keyword1"><span class="command">qed</span></span>        
+  <span class="keyword1"><span class="command">}</span></span>
+  <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+  <span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> nintf_neq<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">u</span> <span class="main">∖↝</span>  <span class="free">v</span> <span class="main">⟹</span> <span class="free">u</span> <span class="main">≠</span> <span class="free">v</span>"</span></span>  <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> nintf_reflx<span class="main">:</span> <span class="quoted"><span class="quoted">"interference1 <span class="free">u</span> <span class="free">u</span>"</span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">auto</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> tee_ne_ree<span class="main">:</span> <span class="quoted"><span class="quoted">"TEE sysconf <span class="main">≠</span>REE sysconf"</span></span>
+<span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">simp</span> <span class="quasi_keyword">add</span><span class="main"><span class="main">:</span></span> tee_no_ree<span class="main">)</span>
+                                                                       
+
+<span class="keyword1"><span class="command">interpretation</span></span> O_ISOLATION
+        <span class="quoted">s0t</span> <span class="quoted">exec_event</span> <span class="quoted">domain_of_event</span> <span class="quoted">get_exec_prime</span> <span class="quoted">vpeq1</span> <span class="quoted">interference1</span> <span class="quoted"><span class="quoted">"TEE sysconf"</span></span> <span class="quoted"><span class="quoted">"REE sysconf"</span></span> <span class="quoted">TA_domain1</span>
+        <span class="keyword1"><span class="command">using</span></span>   vpeq1_transitive vpeq1_symmetric vpeq1_reflexive ins_tee_intf_all ins_no_intf_tee
+             nintf_reflx  ins_reachable
+             <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> best<span class="main"><span class="main">)</span></span> O_ISOLATION.intro<span class="main">)</span> 
+
+
+<span class="comment1">(*
+subsection "CA_TA_IDENTIFICATION Instantiation"
+
+subsection "INSTANCE_TIME Instantiation"
+
+lemma time_mono:"∀s a s'. (s,s')∈exec_event a ⟶system_time s = system_time s'" 
+            sorry
+
+interpretation O_INSTANCE_TIME
+              getTAInstanceTime exec_event
+            using time_mono
+            by (simp add: O_INSTANCE_TIME.intro getTAInstanceTime_def) 
+
+
+subsection "KEYS_USAGE Instantiation"
+
+type_synonym KEY = nat
+consts key_checksum::"KEY⇒DOMAIN_ID⇒bool"
+
+interpretation O_KEYS_USAGE 
+                key_checksum
+               done
+
+subsection "OPERATION Instantiation"
+
+lemma action_correct:"∀s a s' d. (s,s')∈exec_event a ∧ domain_of_event s a ≠d ⟶s=s'"
+sorry
+*)</span>
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TA_AUTHENTICITY Instantiation"</span></span></span>
+
+<span class="keyword1"><span class="command">consts</span></span> bin_verify<span class="main">::</span><span class="quoted"><span class="quoted">"BIN<span class="main">⇒</span>CHECKCODE<span class="main">⇒</span>bool"</span></span>
+<span class="keyword1"><span class="command">interpretation</span></span> O_TA_AUTHENTICITY 
+                <span class="quoted">bin_verify</span>
+              <span class="keyword1"><span class="command"><span class="improper"><span class="command">done</span></span></span></span>
+
+<span class="keyword2"><span class="keyword">end</span></span></pre></body>
+</html>

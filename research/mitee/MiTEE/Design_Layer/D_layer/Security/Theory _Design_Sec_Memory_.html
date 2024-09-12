@@ -1,0 +1,763 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0160)http://localhost:60012/e878375a-7f83-431b-a556-7f03b63e3c91/preview?%2FUsers%2Fxywang%2FDesktop%2Fmi-tee%2FMITEE_Design_Layer%2FSecurity%2FDesign_Sec_Memory.thy -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/* Isabelle fonts */
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSans-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-Oblique.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Sans Mono';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSansMono-BoldOblique.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-Italic.ttf') format('truetype');
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Isabelle DejaVu Serif';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/IsabelleDejaVuSerif-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Vacuous';
+  src: url('/e878375a-7f83-431b-a556-7f03b63e3c91/fonts/Vacuous.ttf') format('truetype');
+}
+
+
+/* standard document markup */
+
+dt {
+  float: left;
+  clear: left;
+  padding-right: 0.5em;
+  font-weight: bold;
+}
+
+body {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.head     { background-color: #FFFFFF; }
+.source   {
+  direction: ltr; unicode-bidi: bidi-override;
+  background-color: #FFFFFF;
+  padding: 10px;
+  font-family: "Isabelle DejaVu Sans Mono", monospace;
+}
+
+.contents { background-color: #FFFFFF; padding: 10px; }
+.sessions { background-color: #FFFFFF; padding: 10px; }
+.document { white-space: normal; font-family: "Isabelle DejaVu Serif", serif; }
+
+.name     { font-style: italic; }
+.filename { font-family: "Isabelle DejaVu Sans Mono", monospace; }
+
+
+/* basic syntax markup */
+
+.hidden         { font-family: Vacuous; font-size: 1%; color: rgba(255,255,255,0); }
+.control        { font-weight: bold; font-style: italic; }
+
+.binding        { color: #336655; }
+.tfree          { color: #A020F0; }
+.tvar           { color: #A020F0; }
+.free           { color: #0000FF; }
+.skolem         { color: #D2691E; }
+.bound          { color: #008000; }
+.var            { color: #00009B; }
+.numeral        { }
+.literal        { font-weight: bold; }
+.delimiter      { }
+.inner_numeral  { color: #FF0000; }
+.inner_quoted   { color: #FF00CC; }
+.inner_cartouche { color: #CC6600; }
+.comment1       { color: #CC0000; }
+.comment2       { color: #FF8400; }
+.comment3       { color: #6600CC; }
+.dynamic        { color: #7BA428; }
+.class_parameter_color { color: #D2691E; }
+
+.bold           { font-weight: bold; }
+
+.main           { color: #000000; }
+.command        { font-weight: bold; }
+.keyword        { font-weight: bold; }
+.keyword1       { color: #006699; }
+.keyword2       { color: #009966; }
+.keyword3       { color: #0099FF; }
+.quasi_keyword  { color: #9966FF; }
+.operator       { color: #323232; }
+.string         { color: #FF00CC; }
+.alt_string     { color: #CC00CC; }
+.verbatim       { color: #6600CC; }
+.cartouche      { color: #CC6600; }
+.comment        { color: #CC0000; }
+.improper       { color: #FF5050; }
+.antiquote      { color: #6600CC; }
+.raw_text       { color: #6600CC; }
+.plain_text     { color: #CC6600; }
+.bad            { background-color: #FF6A6A; }
+.quoted         { background-color: rgba(139,139,139,0.05); }
+.antiquoted     { background-color: rgba(255,200,50,0.1); }
+
+
+/* message background */
+
+.writeln_message      { background-color: #F0F0F0; }
+.information_message  { background-color: #DCEAF3; }
+.tracing_message      { background-color: #F0F8FF; }
+.warning_message      { background-color: #EEE8AA; }
+.legacy_message       { background-color: #EEE8AA; }
+.error_message        { background-color: #FFC1C1; }
+
+
+/* message underline */
+
+.writeln { border-bottom: 1px dotted #C0C0C0; }
+.information { border-bottom: 1px dotted #C1DFEE; }
+.warning { border-bottom: 1px dotted #FF8C00; }
+.legacy { border-bottom: 1px dotted #FF8C00; }
+.error { border-bottom: 1px dotted #B22222; }
+
+
+/* tooltips */
+
+.writeln { position: relative; display: inline-block; }
+.information { position: relative; display: inline-block; }
+.warning { position: relative; display: inline-block; }
+.legacy { position: relative; display: inline-block; }
+.error { position: relative; display: inline-block; }
+
+.writeln:hover .tooltip { visibility: visible; }
+.information:hover .tooltip { visibility: visible; }
+.warning:hover .tooltip { visibility: visible; }
+.legacy:hover .tooltip { visibility: visible; }
+.error:hover .tooltip { visibility: visible; }
+
+.tooltip {
+  top: -0.5ex;
+  left: 5em;
+  visibility: hidden;
+  width: 50em;
+  border: 1px solid #808080;
+  padding: 1px 1px;
+  background-color: #FFFFE9;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip pre { margin: 1px; white-space: pre-wrap; }
+
+
+/* formal entities */
+
+.entity_def {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.entity_def:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+}
+
+.entity_ref {
+  color: inherit;
+  text-decoration: inherit;
+  border: 0.5px solid rgba(0,0,0,0);
+}
+
+.entity_ref:hover {
+  color: inherit;
+  text-decoration: inherit;
+  background-color: rgba(50,50,50,20%);
+  border: 0.5px solid black;
+}
+</style><title>Theory "Design_Sec_Memory"</title></head>
+<body><pre class="source"><span class="keyword1"><span class="command">theory</span></span> Design_Sec_Memory
+<span class="keyword2"><span class="keyword">imports</span></span> <span class="quoted">"../Design_Instantiation"</span> <span class="quoted">"../Specification/Design_Memory"</span>
+
+
+<span class="keyword2"><span class="keyword">begin</span></span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"auxiliary lemma"</span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_RegisterSharedMemoryR_notchnew<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">s'</span><span class="main">=</span><span class="main">(</span>fst<span class="main">(</span>TEEC_RegisterSharedMemoryR sysconf <span class="free">s</span> <span class="free">ctx</span> <span class="free">shm</span><span class="main">)</span><span class="main">)</span>"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span> <span class="main">∼.</span> <span class="free">d</span> <span class="keyword1">.∼Δ</span> <span class="free">s'</span><span class="main">)</span>"</span></span> 
+  <span class="keyword1"><span class="command">using</span></span> TEEC_RegisterSharedMemoryR_def abstract_state_def abstract_state_rev_def vpeq_ipc_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> Pair_inject State.ext_inject State.update_convs<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> 
+  State.update_convs<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>4<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>5<span class="main"><span class="main">)</span></span> 
+  State.update_convs<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> StateR.ext_inject StateR.surjective p1 surjective_pairing <span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_AllocateSharedMemoryR_notchnew<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">s'</span><span class="main">=</span><span class="main">(</span>fst<span class="main">(</span>TEEC_AllocateSharedMemoryR sysconf <span class="free">s</span> <span class="free">ctx</span> <span class="free">shm</span><span class="main">)</span><span class="main">)</span>"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span> <span class="main">∼.</span> <span class="free">d</span> <span class="keyword1">.∼Δ</span> <span class="free">s'</span><span class="main">)</span>"</span></span> 
+  <span class="keyword1"><span class="command">using</span></span> TEEC_AllocateSharedMemoryR_def abstract_state_def abstract_state_rev_def vpeq_ipc_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> Pair_inject State.ext_inject State.update_convs<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> 
+  State.update_convs<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>4<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>5<span class="main"><span class="main">)</span></span> 
+  State.update_convs<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> StateR.ext_inject StateR.surjective p1 surjective_pairing <span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_ReleaseSharedMemoryR_notchnew<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">s'</span><span class="main">=</span><span class="main">(</span>TEEC_ReleaseSharedMemoryR sysconf <span class="free">s</span> <span class="free">shared</span><span class="main">)</span>"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span> <span class="main">∼.</span> <span class="free">d</span> <span class="keyword1">.∼Δ</span> <span class="free">s'</span><span class="main">)</span>"</span></span> 
+  <span class="keyword1"><span class="command">using</span></span> TEEC_ReleaseSharedMemoryR_def abstract_state_def abstract_state_rev_def vpeq_ipc_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> Pair_inject State.ext_inject State.update_convs<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> 
+  State.update_convs<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>4<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>5<span class="main"><span class="main">)</span></span> 
+  State.update_convs<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> StateR.ext_inject StateR.surjective p1 surjective_pairing <span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_MallocR_notchnew<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">s'</span><span class="main">=</span><span class="main">(</span>TEE_MallocR sysconf <span class="free">s</span> <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span>"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span> <span class="main">∼.</span> <span class="free">d</span> <span class="keyword1">.∼Δ</span> <span class="free">s'</span><span class="main">)</span>"</span></span> 
+  <span class="keyword1"><span class="command">using</span></span> TEE_MallocR_def abstract_state_def abstract_state_rev_def vpeq_ipc_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> Pair_inject State.ext_inject State.update_convs<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> 
+  State.update_convs<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>4<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>5<span class="main"><span class="main">)</span></span> 
+  State.update_convs<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> StateR.ext_inject StateR.surjective p1 surjective_pairing <span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_ReallocR_notchnew<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">s'</span><span class="main">=</span><span class="main">(</span>TEE_ReallocR sysconf <span class="free">s</span> <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span>"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span> <span class="main">∼.</span> <span class="free">d</span> <span class="keyword1">.∼Δ</span> <span class="free">s'</span><span class="main">)</span>"</span></span> 
+  <span class="keyword1"><span class="command">using</span></span> TEE_ReallocR_def abstract_state_def abstract_state_rev_def vpeq_ipc_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> Pair_inject State.ext_inject State.update_convs<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> 
+  State.update_convs<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>4<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>5<span class="main"><span class="main">)</span></span> 
+  State.update_convs<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> StateR.ext_inject StateR.surjective p1 surjective_pairing <span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_FreeR_notchnew<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">s'</span><span class="main">=</span><span class="main">(</span>TEE_FreeR sysconf <span class="free">s</span> <span class="free">bid</span><span class="main">)</span>"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="free">s</span> <span class="main">∼.</span> <span class="free">d</span> <span class="keyword1">.∼Δ</span> <span class="free">s'</span><span class="main">)</span>"</span></span> 
+  <span class="keyword1"><span class="command">using</span></span> TEE_FreeR_def abstract_state_def abstract_state_rev_def vpeq_ipc_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> Pair_inject State.ext_inject State.update_convs<span class="main"><span class="main">(</span></span>1<span class="main"><span class="main">)</span></span> 
+  State.update_convs<span class="main"><span class="main">(</span></span>2<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>3<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>4<span class="main"><span class="main">)</span></span> State.update_convs<span class="main"><span class="main">(</span></span>5<span class="main"><span class="main">)</span></span> 
+  State.update_convs<span class="main"><span class="main">(</span></span>6<span class="main"><span class="main">)</span></span> StateR.ext_inject StateR.surjective p1 surjective_pairing <span class="main">)</span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TEEC"</span></span></span>
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"refine"</span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_RegisterSharedMemoryR_refine<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> fst <span class="main">(</span>TEEC_RegisterSharedMemory <span class="free">sc</span> <span class="main">(</span><span class="main">⇑</span><span class="bound">s</span><span class="main">)</span> <span class="free">ctx</span> <span class="free">shm</span><span class="main">)</span> <span class="main">=</span> <span class="main">⇑</span><span class="main">(</span>fst <span class="main">(</span>TEEC_RegisterSharedMemoryR <span class="free">sc</span> <span class="bound">s</span> <span class="free">ctx</span> <span class="free">shm</span><span class="main">)</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">using</span></span> TEEC_RegisterSharedMemory_def TEEC_RegisterSharedMemoryR_def abstract_state_def abstract_state_rev_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_AllocateSharedMemoryR_refine<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> fst <span class="main">(</span>TEEC_AllocateSharedMemory <span class="free">sc</span> <span class="main">(</span><span class="main">⇑</span><span class="bound">s</span><span class="main">)</span> <span class="free">ctx</span> <span class="free">shm</span><span class="main">)</span> <span class="main">=</span> <span class="main">⇑</span><span class="main">(</span>fst <span class="main">(</span>TEEC_AllocateSharedMemoryR <span class="free">sc</span> <span class="bound">s</span> <span class="free">ctx</span> <span class="free">shm</span><span class="main">)</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">using</span></span> TEEC_AllocateSharedMemory_def TEEC_AllocateSharedMemoryR_def abstract_state_def abstract_state_rev_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_ReleaseSharedMemoryR_refine<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> <span class="main">(</span>TEEC_ReleaseSharedMemory <span class="free">sc</span> <span class="main">(</span><span class="main">⇑</span><span class="bound">s</span><span class="main">)</span> <span class="free">shm</span><span class="main">)</span> <span class="main">=</span> <span class="main">⇑</span><span class="main">(</span>TEEC_ReleaseSharedMemoryR <span class="free">sc</span> <span class="bound">s</span> <span class="free">shm</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">using</span></span> TEEC_ReleaseSharedMemory_def TEEC_ReleaseSharedMemoryR_def abstract_state_def abstract_state_rev_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="operator">fastforce</span>
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"integrity"</span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_RegisterSharedMemoryR_integrity<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEEC_REGISTERSHAREDMEMORY <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span>"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="bound">d</span><span class="main">)</span> 
+      <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>  <span class="main">⟶</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">s'</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+<span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s'</span> <span class="skolem">s</span> <span class="skolem">d</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span> <span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="skolem">d</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span><span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span>fst <span class="main">(</span>TEEC_RegisterSharedMemoryR sysconf <span class="skolem">s</span> <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span>"</span></span> 
+      <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a3 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">s'</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> TEEC_RegisterSharedMemoryR_notchnew b1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_RegisterSharedMemoryR_integrity_e<span class="main">:</span>
+    <span class="quoted"><span class="quoted">"integrity_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEEC_REGISTERSHAREDMEMORY <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span><span class="main">)</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span> TEEC_RegisterSharedMemoryR_integrity integrity_new_e_def
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span>   
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_AllocateSharedMemoryR_integrity<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEEC_ALLOCATESHAREDMEMORY <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span>"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="bound">d</span><span class="main">)</span> 
+      <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>  <span class="main">⟶</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">s'</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+<span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s'</span> <span class="skolem">s</span> <span class="skolem">d</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span> <span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="skolem">d</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span><span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span>fst <span class="main">(</span>TEEC_AllocateSharedMemoryR sysconf <span class="skolem">s</span> <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span>"</span></span> 
+      <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a3 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">s'</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> TEEC_AllocateSharedMemoryR_notchnew b1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_AllocateSharedMemoryR_integrity_e<span class="main">:</span>
+    <span class="quoted"><span class="quoted">"integrity_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEEC_ALLOCATESHAREDMEMORY <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span><span class="main">)</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span> TEEC_AllocateSharedMemoryR_integrity integrity_new_e_def
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span> 
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_ReleaseSharedMemoryR_integrity<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEEC_RELEASESHAREDMEMORY <span class="free">shared</span><span class="main">)</span>"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="bound">d</span><span class="main">)</span> 
+      <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>  <span class="main">⟶</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">s'</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+<span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s'</span> <span class="skolem">s</span> <span class="skolem">d</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span> <span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="skolem">d</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span><span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="main">(</span>TEEC_ReleaseSharedMemoryR sysconf <span class="skolem">s</span> <span class="free">shared</span><span class="main">)</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a3 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">s'</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> TEEC_ReleaseSharedMemoryR_notchnew b1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_ReleaseSharedMemoryR_integrity_e<span class="main">:</span>
+    <span class="quoted"><span class="quoted">"integrity_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEEC_RELEASESHAREDMEMORY <span class="free">shared</span><span class="main">)</span><span class="main">)</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span> TEEC_ReleaseSharedMemoryR_integrity integrity_new_e_def
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span> 
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"weak"</span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_RegisterSharedMemoryR_weak_confidentiality<span class="main">:</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEEC_REGISTERSHAREDMEMORY <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span>"</span></span>
+  <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">t</span><span class="main">.</span>
+           reachable0 <span class="bound">s</span> <span class="main">∧</span>
+           reachable0 <span class="bound">t</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="bound">t</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span>get_exec_primeR <span class="bound">s</span><span class="main">=</span>get_exec_primeR <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span>
+           <span class="main">(</span><span class="main">∀</span> <span class="bound">s'</span> <span class="bound">t'</span><span class="main">.</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">t</span><span class="main">,</span> <span class="bound">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s'</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">t'</span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+  <span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s</span> <span class="skolem">t</span> <span class="skolem">d</span> <span class="skolem">s'</span> <span class="skolem">t'</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span><span class="main">∼.</span><span class="skolem">d</span><span class="main">.∼</span><span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a31<span class="main">:</span><span class="quoted"><span class="quoted">"exec_prime <span class="skolem">s</span><span class="main">=</span>exec_prime <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a4<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="skolem">t</span> <span class="free">a</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a5<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="skolem">d</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a6<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a7<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span> <span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a8<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">t</span><span class="main">,</span> <span class="skolem">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span>fst<span class="main">(</span>TEEC_RegisterSharedMemoryR sysconf <span class="skolem">s</span> <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a7 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">t'</span><span class="main">=</span>fst<span class="main">(</span>TEEC_RegisterSharedMemoryR sysconf <span class="skolem">t</span> <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a8 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">t'</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b1 b2 TEEC_RegisterSharedMemoryR_notchnew a3 vpeqR_def 
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">meson</span> vpeq_ipc_symmetric_lemma vpeq_ipc_transitive_lemma<span class="main">)</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">using</span></span> get_exec_primeR_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> best<span class="main"><span class="main">)</span></span> prod.inject<span class="main">)</span> 
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_RegisterSharedMemoryR_weak_confidentiality_e<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"weak_confidentiality_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEEC_REGISTERSHAREDMEMORY <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> TEEC_RegisterSharedMemoryR_weak_confidentiality weak_confidentiality_new_e_def get_exec_primeR_def
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> Pair_inject<span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_AllocateSharedMemoryR_weak_confidentiality<span class="main">:</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEEC_ALLOCATESHAREDMEMORY <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span>"</span></span>
+  <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">t</span><span class="main">.</span>
+           reachable0 <span class="bound">s</span> <span class="main">∧</span>
+           reachable0 <span class="bound">t</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="bound">t</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span>get_exec_primeR <span class="bound">s</span><span class="main">=</span>get_exec_primeR <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span>
+           <span class="main">(</span><span class="main">∀</span> <span class="bound">s'</span> <span class="bound">t'</span><span class="main">.</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">t</span><span class="main">,</span> <span class="bound">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s'</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">t'</span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+  <span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s</span> <span class="skolem">t</span> <span class="skolem">d</span> <span class="skolem">s'</span> <span class="skolem">t'</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span><span class="main">∼.</span><span class="skolem">d</span><span class="main">.∼</span><span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a31<span class="main">:</span><span class="quoted"><span class="quoted">"exec_prime <span class="skolem">s</span><span class="main">=</span>exec_prime <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a4<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="skolem">t</span> <span class="free">a</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a5<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="skolem">d</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a6<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a7<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span> <span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a8<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">t</span><span class="main">,</span> <span class="skolem">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span>fst<span class="main">(</span>TEEC_AllocateSharedMemoryR sysconf <span class="skolem">s</span> <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a7 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">t'</span><span class="main">=</span>fst<span class="main">(</span>TEEC_AllocateSharedMemoryR sysconf <span class="skolem">t</span> <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a8 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">t'</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b1 b2 TEEC_AllocateSharedMemoryR_notchnew a3 vpeqR_def 
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">meson</span> vpeq_ipc_symmetric_lemma vpeq_ipc_transitive_lemma<span class="main">)</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">using</span></span> get_exec_primeR_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> best<span class="main"><span class="main">)</span></span> prod.inject<span class="main">)</span> 
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_AllocateSharedMemoryR_weak_confidentiality_e<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"weak_confidentiality_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEEC_ALLOCATESHAREDMEMORY <span class="free">tctext</span> <span class="free">shared</span><span class="main">)</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> TEEC_AllocateSharedMemoryR_weak_confidentiality weak_confidentiality_new_e_def get_exec_primeR_def
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> Pair_inject<span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_ReleaseSharedMemoryR_weak_confidentiality<span class="main">:</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEEC_RELEASESHAREDMEMORY <span class="free">shared</span><span class="main">)</span>"</span></span>
+  <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">t</span><span class="main">.</span>
+           reachable0 <span class="bound">s</span> <span class="main">∧</span>
+           reachable0 <span class="bound">t</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="bound">t</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span>get_exec_primeR <span class="bound">s</span><span class="main">=</span>get_exec_primeR <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span>
+           <span class="main">(</span><span class="main">∀</span> <span class="bound">s'</span> <span class="bound">t'</span><span class="main">.</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">t</span><span class="main">,</span> <span class="bound">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s'</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">t'</span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+  <span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s</span> <span class="skolem">t</span> <span class="skolem">d</span> <span class="skolem">s'</span> <span class="skolem">t'</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span><span class="main">∼.</span><span class="skolem">d</span><span class="main">.∼</span><span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a31<span class="main">:</span><span class="quoted"><span class="quoted">"exec_prime <span class="skolem">s</span><span class="main">=</span>exec_prime <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a4<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="skolem">t</span> <span class="free">a</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a5<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="skolem">d</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a6<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a7<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span> <span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a8<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">t</span><span class="main">,</span> <span class="skolem">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="main">(</span>TEEC_ReleaseSharedMemoryR sysconf <span class="skolem">s</span> <span class="free">shared</span><span class="main">)</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a7 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">t'</span><span class="main">=</span><span class="main">(</span>TEEC_ReleaseSharedMemoryR sysconf <span class="skolem">t</span> <span class="free">shared</span><span class="main">)</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a8 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">t'</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b1 b2 TEEC_ReleaseSharedMemoryR_notchnew a3 vpeqR_def 
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">meson</span> vpeq_ipc_symmetric_lemma vpeq_ipc_transitive_lemma<span class="main">)</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">using</span></span> get_exec_primeR_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> best<span class="main"><span class="main">)</span></span> prod.inject<span class="main">)</span> 
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEEC_ReleaseSharedMemoryR_weak_confidentiality_e<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"weak_confidentiality_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEEC_RELEASESHAREDMEMORY <span class="free">shared</span><span class="main">)</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> TEEC_ReleaseSharedMemoryR_weak_confidentiality weak_confidentiality_new_e_def get_exec_primeR_def
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> Pair_inject<span class="main">)</span>
+
+<span class="keyword1"><span class="command">section</span></span> <span class="quoted"><span class="document"><span class="plain_text">"TEE"</span></span></span>
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"refine"</span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_CheckMemoryAccessRightsR_refine<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> <span class="main">(</span>TEE_CheckMemoryAccessRights <span class="free">sc</span> <span class="main">(</span><span class="main">⇑</span><span class="bound">s</span><span class="main">)</span> <span class="free">aF</span> <span class="free">memblock</span> <span class="free">buffer_size</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>TEE_CheckMemoryAccessRightsR <span class="free">sc</span> <span class="bound">s</span> <span class="free">aF</span> <span class="free">memblock</span> <span class="free">buffer_size</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">using</span></span> TEE_CheckMemoryAccessRights_def TEE_CheckMemoryAccessRightsR_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_MallocR_refine<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> <span class="main">(</span>TEE_Malloc <span class="free">sc</span> <span class="main">(</span><span class="main">⇑</span><span class="bound">s</span><span class="main">)</span> <span class="free">buffer_size</span> <span class="free">h</span><span class="main">)</span> <span class="main">=</span> <span class="main">⇑</span><span class="main">(</span>TEE_MallocR <span class="free">sc</span> <span class="bound">s</span> <span class="free">buffer_size</span> <span class="free">h</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">using</span></span> TEE_Malloc_def TEE_MallocR_def abstract_state_def abstract_state_rev_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_ReallocR_refine<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> <span class="main">(</span>TEE_Realloc <span class="free">sc</span> <span class="main">(</span><span class="main">⇑</span><span class="bound">s</span><span class="main">)</span> <span class="free">memblock</span> <span class="free">new_size</span><span class="main">)</span> <span class="main">=</span> <span class="main">⇑</span><span class="main">(</span>TEE_ReallocR <span class="free">sc</span> <span class="bound">s</span> <span class="free">memblock</span> <span class="free">new_size</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">using</span></span> TEE_Realloc_def TEE_ReallocR_def abstract_state_def abstract_state_rev_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_FreeR_refine<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"<span class="main">∀</span><span class="bound">s</span><span class="main">.</span> <span class="main">(</span>TEE_Free <span class="free">sc</span> <span class="main">(</span><span class="main">⇑</span><span class="bound">s</span><span class="main">)</span> <span class="free">memblock</span><span class="main">)</span> <span class="main">=</span> <span class="main">⇑</span><span class="main">(</span>TEE_FreeR <span class="free">sc</span> <span class="bound">s</span> <span class="free">memblock</span><span class="main">)</span>"</span></span>
+  <span class="keyword1"><span class="command">using</span></span> TEE_Free_def TEE_FreeR_def abstract_state_def abstract_state_rev_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="operator">fastforce</span>
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"integrity"</span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_CheckMemoryAccessRightsR_integrity<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEE_CHECKMEMORYACCESSRIGHTS <span class="free">accessflags</span> <span class="free">bid</span> <span class="free">bsize</span><span class="main">)</span>"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="bound">d</span><span class="main">)</span> 
+      <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>  <span class="main">⟶</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">s'</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+<span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s'</span> <span class="skolem">s</span> <span class="skolem">d</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span> <span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="skolem">d</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span><span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="skolem">s</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a3 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">s'</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_CheckMemoryAccessRightsR_integrity_e<span class="main">:</span>
+    <span class="quoted"><span class="quoted">"integrity_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEE_CHECKMEMORYACCESSRIGHTS <span class="free">accessflags</span> <span class="free">bid</span> <span class="free">bsize</span><span class="main">)</span><span class="main">)</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span> TEE_CheckMemoryAccessRightsR_integrity integrity_new_e_def
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span> 
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_MallocR_integrity<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEE_MALLOC <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span>"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="bound">d</span><span class="main">)</span> 
+      <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>  <span class="main">⟶</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">s'</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+<span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s'</span> <span class="skolem">s</span> <span class="skolem">d</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span> <span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="skolem">d</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span><span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="main">(</span>TEE_MallocR sysconf <span class="skolem">s</span> <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a3 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">s'</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b1 TEE_MallocR_notchnew <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_MallocR_integrity_e<span class="main">:</span>
+    <span class="quoted"><span class="quoted">"integrity_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEE_MALLOC <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span><span class="main">)</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span> TEE_MallocR_integrity integrity_new_e_def
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span> 
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_ReallocR_integrity<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEE_REALLOC <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span>"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="bound">d</span><span class="main">)</span> 
+      <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>  <span class="main">⟶</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">s'</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+<span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s'</span> <span class="skolem">s</span> <span class="skolem">d</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span> <span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="skolem">d</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span><span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="main">(</span>TEE_ReallocR sysconf <span class="skolem">s</span> <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a3 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">s'</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b1 TEE_ReallocR_notchnew <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_ReallocR_integrity_e<span class="main">:</span>
+    <span class="quoted"><span class="quoted">"integrity_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEE_REALLOC <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span><span class="main">)</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span> TEE_ReallocR_integrity integrity_new_e_def
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span> 
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_FreeR_integrity<span class="main">:</span>
+    <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEE_FREE <span class="free">bid</span><span class="main">)</span>"</span></span>
+    <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">s'</span><span class="main">.</span> reachable0 <span class="bound">s</span> <span class="main">∧</span> <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="bound">d</span><span class="main">)</span> 
+      <span class="main">∧</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>  <span class="main">⟶</span> <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">s'</span><span class="main">)</span>"</span></span>
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+<span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s'</span> <span class="skolem">s</span> <span class="skolem">d</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span> <span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∖↝</span> <span class="skolem">d</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span><span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="main">(</span>TEE_FreeR sysconf <span class="skolem">s</span> <span class="free">bid</span><span class="main">)</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a3 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">s'</span><span class="main">)</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b1 TEE_FreeR_notchnew <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">by</span></span> <span class="operator">blast</span>
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_FreeR_integrity_e<span class="main">:</span>
+    <span class="quoted"><span class="quoted">"integrity_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEE_FREE <span class="free">bid</span><span class="main">)</span><span class="main">)</span>"</span></span>
+      <span class="keyword1"><span class="command">using</span></span> TEE_FreeR_integrity integrity_new_e_def
+      <span class="keyword1"><span class="command">by</span></span> <span class="operator">metis</span> 
+
+<span class="keyword1"><span class="command">subsection</span></span> <span class="quoted"><span class="document"><span class="plain_text">"weak"</span></span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_CheckMemoryAccessRightsR_weak_confidentiality<span class="main">:</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEE_CHECKMEMORYACCESSRIGHTS <span class="free">accessflags</span> <span class="free">bid</span> <span class="free">bsize</span><span class="main">)</span>"</span></span>
+  <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">t</span><span class="main">.</span>
+           reachable0 <span class="bound">s</span> <span class="main">∧</span>
+           reachable0 <span class="bound">t</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="bound">t</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span>get_exec_primeR <span class="bound">s</span><span class="main">=</span>get_exec_primeR <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span>
+           <span class="main">(</span><span class="main">∀</span> <span class="bound">s'</span> <span class="bound">t'</span><span class="main">.</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">t</span><span class="main">,</span> <span class="bound">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s'</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">t'</span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+  <span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s</span> <span class="skolem">t</span> <span class="skolem">d</span> <span class="skolem">s'</span> <span class="skolem">t'</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span><span class="main">∼.</span><span class="skolem">d</span><span class="main">.∼</span><span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a31<span class="main">:</span><span class="quoted"><span class="quoted">"exec_prime <span class="skolem">s</span><span class="main">=</span>exec_prime <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a4<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="skolem">t</span> <span class="free">a</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a5<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="skolem">d</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a6<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a7<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span> <span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a8<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">t</span><span class="main">,</span> <span class="skolem">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="skolem">s</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a7 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">t'</span><span class="main">=</span><span class="skolem">t</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a8 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">t'</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b1 b2 a3 vpeqR_def 
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">meson</span> vpeq_ipc_symmetric_lemma vpeq_ipc_transitive_lemma<span class="main">)</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">using</span></span> get_exec_primeR_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> best<span class="main"><span class="main">)</span></span> prod.inject<span class="main">)</span> 
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_CheckMemoryAccessRightsR_weak_confidentiality_e<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"weak_confidentiality_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEE_CHECKMEMORYACCESSRIGHTS <span class="free">accessflags</span> <span class="free">bid</span> <span class="free">bsize</span><span class="main">)</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> TEE_CheckMemoryAccessRightsR_weak_confidentiality weak_confidentiality_new_e_def get_exec_primeR_def
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> Pair_inject<span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_MallocR_weak_confidentiality<span class="main">:</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEE_MALLOC <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span>"</span></span>
+  <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">t</span><span class="main">.</span>
+           reachable0 <span class="bound">s</span> <span class="main">∧</span>
+           reachable0 <span class="bound">t</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="bound">t</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span>get_exec_primeR <span class="bound">s</span><span class="main">=</span>get_exec_primeR <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span>
+           <span class="main">(</span><span class="main">∀</span> <span class="bound">s'</span> <span class="bound">t'</span><span class="main">.</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">t</span><span class="main">,</span> <span class="bound">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s'</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">t'</span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+  <span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s</span> <span class="skolem">t</span> <span class="skolem">d</span> <span class="skolem">s'</span> <span class="skolem">t'</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span><span class="main">∼.</span><span class="skolem">d</span><span class="main">.∼</span><span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a31<span class="main">:</span><span class="quoted"><span class="quoted">"exec_prime <span class="skolem">s</span><span class="main">=</span>exec_prime <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a4<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="skolem">t</span> <span class="free">a</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a5<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="skolem">d</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a6<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a7<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span> <span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a8<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">t</span><span class="main">,</span> <span class="skolem">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="main">(</span>TEE_MallocR sysconf <span class="skolem">s</span> <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a7 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">t'</span><span class="main">=</span><span class="main">(</span>TEE_MallocR sysconf <span class="skolem">t</span> <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a8 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">t'</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b1 b2 TEE_MallocR_notchnew a3 vpeqR_def 
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">meson</span> vpeq_ipc_symmetric_lemma vpeq_ipc_transitive_lemma<span class="main">)</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">using</span></span> get_exec_primeR_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> best<span class="main"><span class="main">)</span></span> prod.inject<span class="main">)</span> 
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_MallocR_weak_confidentiality_e<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"weak_confidentiality_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEE_MALLOC <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> TEE_MallocR_weak_confidentiality weak_confidentiality_new_e_def get_exec_primeR_def
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> Pair_inject<span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_ReallocR_weak_confidentiality<span class="main">:</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEE_REALLOC <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span>"</span></span>
+  <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">t</span><span class="main">.</span>
+           reachable0 <span class="bound">s</span> <span class="main">∧</span>
+           reachable0 <span class="bound">t</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="bound">t</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span>get_exec_primeR <span class="bound">s</span><span class="main">=</span>get_exec_primeR <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span>
+           <span class="main">(</span><span class="main">∀</span> <span class="bound">s'</span> <span class="bound">t'</span><span class="main">.</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">t</span><span class="main">,</span> <span class="bound">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s'</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">t'</span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+  <span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s</span> <span class="skolem">t</span> <span class="skolem">d</span> <span class="skolem">s'</span> <span class="skolem">t'</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span><span class="main">∼.</span><span class="skolem">d</span><span class="main">.∼</span><span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a31<span class="main">:</span><span class="quoted"><span class="quoted">"exec_prime <span class="skolem">s</span><span class="main">=</span>exec_prime <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a4<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="skolem">t</span> <span class="free">a</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a5<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="skolem">d</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a6<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a7<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span> <span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a8<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">t</span><span class="main">,</span> <span class="skolem">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="main">(</span>TEE_ReallocR sysconf <span class="skolem">s</span> <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a7 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">t'</span><span class="main">=</span><span class="main">(</span>TEE_ReallocR sysconf <span class="skolem">t</span> <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a8 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">t'</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b1 b2 TEE_ReallocR_notchnew a3 vpeqR_def 
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">meson</span> vpeq_ipc_symmetric_lemma vpeq_ipc_transitive_lemma<span class="main">)</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">using</span></span> get_exec_primeR_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> best<span class="main"><span class="main">)</span></span> prod.inject<span class="main">)</span> 
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_ReallocR_weak_confidentiality_e<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"weak_confidentiality_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEE_REALLOC <span class="free">bsize</span> <span class="free">hi</span><span class="main">)</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> TEE_ReallocR_weak_confidentiality weak_confidentiality_new_e_def get_exec_primeR_def
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> Pair_inject<span class="main">)</span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_FreeR_weak_confidentiality<span class="main">:</span>
+  <span class="keyword2"><span class="keyword">assumes</span></span> p1<span class="main">:</span> <span class="quoted"><span class="quoted">"<span class="free">a</span> <span class="main">=</span> hyperc' <span class="main">(</span>TEE_FREE <span class="free">bid</span><span class="main">)</span>"</span></span>
+  <span class="keyword2"><span class="keyword">shows</span></span> <span class="quoted"><span class="quoted">"<span class="main">∀</span> <span class="bound">d</span> <span class="bound">s</span> <span class="bound">t</span><span class="main">.</span>
+           reachable0 <span class="bound">s</span> <span class="main">∧</span>
+           reachable0 <span class="bound">t</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="bound">t</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span>get_exec_primeR <span class="bound">s</span><span class="main">=</span>get_exec_primeR <span class="bound">t</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="bound">d</span><span class="main">)</span> <span class="main">∧</span>
+           <span class="main">(</span><span class="bound">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="bound">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="bound">t</span><span class="main">)</span> <span class="main">⟶</span>
+           <span class="main">(</span><span class="main">∀</span> <span class="bound">s'</span> <span class="bound">t'</span><span class="main">.</span> <span class="main">(</span><span class="bound">s</span><span class="main">,</span> <span class="bound">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">∧</span> <span class="main">(</span><span class="bound">t</span><span class="main">,</span> <span class="bound">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span> <span class="main">⟶</span> <span class="main">(</span><span class="bound">s'</span> <span class="main">∼.</span> <span class="bound">d</span> <span class="keyword1">.∼Δ</span> <span class="bound">t'</span><span class="main">)</span><span class="main">)</span>"</span></span>
+
+<span class="keyword1"><span class="command">proof</span></span> <span class="operator">-</span>
+  <span class="keyword1"><span class="command">{</span></span>
+    <span class="keyword3"><span class="command">fix</span></span> <span class="skolem">s</span> <span class="skolem">t</span> <span class="skolem">d</span> <span class="skolem">s'</span> <span class="skolem">t'</span>
+    <span class="keyword3"><span class="command">assume</span></span> a1<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">s</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a2<span class="main">:</span><span class="quoted"><span class="quoted">"reachable0 <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span><span class="main">∼.</span><span class="skolem">d</span><span class="main">.∼</span><span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a31<span class="main">:</span><span class="quoted"><span class="quoted">"exec_prime <span class="skolem">s</span><span class="main">=</span>exec_prime <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a4<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span> <span class="main">=</span> <span class="main">(</span>domain_of_eventR <span class="skolem">t</span> <span class="free">a</span><span class="main">)</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a5<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">↝</span> <span class="skolem">d</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a6<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s</span> <span class="main">∼.</span> <span class="main">(</span>the <span class="main">(</span>domain_of_eventR <span class="skolem">s</span> <span class="free">a</span><span class="main">)</span><span class="main">)</span> <span class="main">.∼</span> <span class="skolem">t</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a7<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">s</span><span class="main">,</span> <span class="skolem">s'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword3"><span class="command">assume</span></span> a8<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="main">(</span><span class="skolem">t</span><span class="main">,</span> <span class="skolem">t'</span><span class="main">)</span> <span class="main">∈</span> exec_eventR <span class="free">a</span>"</span></span>
+    <span class="keyword1"><span class="command">have</span></span> b1<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span><span class="main">=</span><span class="main">(</span>TEE_FreeR sysconf <span class="skolem">s</span> <span class="free">bid</span><span class="main">)</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a7 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b2<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">t'</span><span class="main">=</span><span class="main">(</span>TEE_FreeR sysconf <span class="skolem">t</span> <span class="free">bid</span><span class="main">)</span>"</span></span> 
+        <span class="keyword1"><span class="command">using</span></span> exec_eventR_def a8 p1 <span class="keyword1"><span class="command">by</span></span> <span class="operator">simp</span>
+    <span class="keyword1"><span class="command">have</span></span> b3<span class="main">:</span><span class="quoted"><span class="quoted">"<span class="skolem">s'</span> <span class="main">∼.</span> <span class="skolem">d</span> <span class="keyword1">.∼Δ</span> <span class="skolem">t'</span>"</span></span> <span class="keyword1"><span class="command">using</span></span> b1 b2 TEE_FreeR_notchnew a3 vpeqR_def 
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">meson</span> vpeq_ipc_symmetric_lemma vpeq_ipc_transitive_lemma<span class="main">)</span>
+<span class="keyword1"><span class="command">}</span></span> <span class="keyword1"><span class="command">then</span></span> <span class="keyword3"><span class="command">show</span></span> <span class="var"><span class="quoted"><span class="var">?thesis</span></span></span> <span class="keyword1"><span class="command">using</span></span> get_exec_primeR_def
+  <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">,</span></span> best<span class="main"><span class="main">)</span></span> prod.inject<span class="main">)</span> 
+<span class="keyword1"><span class="command">qed</span></span>
+
+<span class="keyword1"><span class="command">lemma</span></span> TEE_FreeR_weak_confidentiality_e<span class="main">:</span>
+  <span class="quoted"><span class="quoted">"weak_confidentiality_new_e <span class="main">(</span>hyperc' <span class="main">(</span>TEE_FREE <span class="free">bid</span><span class="main">)</span><span class="main">)</span>"</span></span>
+    <span class="keyword1"><span class="command">using</span></span> TEE_FreeR_weak_confidentiality weak_confidentiality_new_e_def get_exec_primeR_def
+    <span class="keyword1"><span class="command">by</span></span> <span class="main">(</span><span class="operator">smt</span> <span class="main"><span class="main">(</span></span>verit<span class="main"><span class="main">)</span></span> Pair_inject<span class="main">)</span>
+
+<span class="keyword2"><span class="keyword">end</span></span></pre>
+</body></html>
