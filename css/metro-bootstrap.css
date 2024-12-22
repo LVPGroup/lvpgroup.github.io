@@ -8397,6 +8397,7 @@ a {
 .metro [data-role=panel] .panel-header {
   cursor: pointer;
 }
+
 .metro [data-role=panel] .panel-header:after {
   font-family: metroSysIcons;
   content: "\e000";
@@ -8408,6 +8409,7 @@ a {
   -o-transform: rotate(180deg);
   transform: rotate(180deg);
 }
+
 .metro [data-role=panel].collapsed .panel-header:after {
   content: "\e000";
   -webkit-transform: rotate(90deg);
@@ -8416,6 +8418,7 @@ a {
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+
 @font-face {
   font-family: 'metroSysIcons';
   src: url('../fonts/metroSysIcons.woff') format('woff'), url('../fonts/metroSysIcons.ttf') format('truetype'), url('../fonts/metroSysIcons.svg#metroSysIcons') format('svg');
