@@ -37,6 +37,30 @@
 			align: center;
 			
 		}
+		
+		#paperList {
+			list-style: none;
+			padding-left: 0;
+		}
+		
+		#paperList li {
+			display: flex;
+			margin-bottom: 15px;
+			align-items: flex-start;
+		}
+		
+		#paperList li .paperlable {
+			flex-shrink: 0;
+			width: 140px;
+			margin-right: 15px;
+			text-align: center;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+		
+		#paperList li .paper-content {
+			flex: 1;
+		}
     </style>
 </head>
 <body class="metro" style="text-align:justify;">
@@ -59,7 +83,16 @@
 <div class="panel" id="journal" data-role="panel" style="width:100%;">
 	<div class="panel-header" style="background:#dddddd;font-size:14pt;"><span class="fg-darker"><b>主要论著 Selected Publication (# Corresponding Author)  [所有论文见<a href="http://dblp.uni-trier.de/pers/hd/z/Zhao:Yongwang" target="_blank"> DBLP Records </a>]</b></span></div>
 	<div class="panel-content margin10 fg-dark nlp nrp" style="width:98%;font-size:13pt;margin-top:-5pt;margin-bottom:-5pt">
-	  <ol>
+	  <div style="margin-bottom: 10px; font-size: 13pt; white-space: nowrap;">
+		<span style="margin-right: 15px;">Sort: </span>
+		<label style="margin-right: 20px; cursor: pointer; display: inline-block;">
+			<input type="radio" name="sortOrder" value="default" checked style="margin-right: 5px; cursor: pointer;">by ranking
+		</label>
+		<label style="cursor: pointer; display: inline-block;">
+			<input type="radio" name="sortOrder" value="year-desc" style="margin-right: 5px; cursor: pointer;">by year
+		</label>
+	  </div>
+	  <ol id="paperList">
 	  <li>
 		<text class="paperlable">[OOPSLA 2025]</text>
 		Shenghao Yuan, Zhuoruo Zhang, Jiayi Lu, David Sanan, Rui Chang, <strong>Yongwang Zhao#</strong>, "A complete formal semantics of eBPF instruction set architecture for Solana", <em>
@@ -86,6 +119,12 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
 		<text class="paperlable">[TOSEM 2025]</text>
 		Jianhong Zhao, <strong>Yongwang Zhao#</strong>, Peisen Yao, Fanlang Zeng, Bohua Zhan, and Kui Ren, "KBX: Verified Model Synchronization via Formal Bidirectional Transformation", <em>
 		<u>ACM Transactions on Software Engineering and Methodology (TOSEM)</u></em>, Volume 34, Issue 2, Article No. 43, January 25, 2025, Pages 1 - 40 (<em><strong>CCF A</strong></em>) 
+	  </li>
+	  
+	  <li>
+		<text class="paperlable">[TOSEM 2026]</text>
+		Hanyun Jiang, Peisen Yao, Jiachen Lu, <strong>Yongwang Zhao</strong>, Kui Ren, "Compiler Optimizations-based SMT Simplifications: An In-Depth Study", <em>
+		<u>ACM Transactions on Software Engineering and Methodology (TOSEM)</u></em>, accepted (<em><strong>CCF A</strong></em>) 
 	  </li>
 	  
 	  <li>
@@ -166,7 +205,7 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
 	  </li>
 	  
 	  <li>
-	  <text class="paperlable">[FCS 2024]</text>
+	  <text class="paperlable">[FCS 2026]</text>
 	  Jinhui Kang, Jianhong Zhao, <strong>Yongwang Zhao#</strong>, "K-SELinux: Formal Analysis and Verification of SELinux Policies via Semantic Execution", <em><u>Frontiers of Computer Science</u></em>, Volume 20, Issue 6, June 2026, pp. XXX - YYY (<em><strong>CCF B</strong></em>) <a href="https://journal.hep.com.cn/fcs/EN/10.1007/s11704-024-40495-7" target="_blank"><strong>[Link]</strong></a> 
 	  </li>
 	  
@@ -182,7 +221,7 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
 	  
 	  <li>
 	  <text class="paperlable">[FAC 2023]</text>
-	  Feng Zhang, Leping Zhang, <strong>Yongwang Zhao#</strong>, Yang Liu, Jun Sun, "Refinement-Based Specification and Analysis of Multi-Core ARINC 653 Using Event-B", <em><u>Formal Aspects of Computing</u></em>, Volume 35, Issue 4, November, 2023, Article No.24, pp 1–29. (<em><strong>CCF B</strong></em>) <a href="https://dl.acm.org/doi/10.1145/3617183" target="_blank"><strong>[PDF download]</strong></a>  
+	  Feng Zhang, Leping Zhang, <strong>Yongwang Zhao#</strong>, Yang Liu, Jun Sun, "Refinement-Based Specification and Analysis of Multi-Core ARINC 653 Using Event-B", <em><u>Formal Aspects of Computing</u></em>, Volume 35, Issue 4, November, 2023, Article No.24, pp 1–29. (<em><strong>CCF B</strong></em>) <a href="https://dl.acm.org/doi/10.1145/3617183" target="_blank"><strong>[PDF download]</strong></a> <a class="fg-cobalt fg-hover-crimson"> <strong>(FAC Editor-in-Chief Selected 2023 Featured Article)</strong></a> 
 	  </li> 
 	  
 	  
@@ -245,18 +284,27 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
 		<a href="https://link.springer.com/chapter/10.1007/978-3-031-17244-1_12" target="_blank"><strong>[PDF download]</strong></a>
 	  </li>
 	  
-	  <li>
+	  <li data-year="2026">
+	  <text class="paperlable">[软件学报 2026]</text>
+	  章乐平, <strong>赵永望#</strong>, 王布阳, 李建欣. "基于Auto-active与交互式集成的L4线程管理形式化验证".软件学报, 2026, 37(9):1-17. 
+	  <a href="https://jos.org.cn/jos/article/abstract/7609" target="_blank"><strong>[PDF download]</strong></a>
+	  </li>
+	  
+	  <li data-year="2023">
+	  <text class="paperlable">[软件学报 2023]</text>
 	  蔡少伟, 陈振邦, 王戟, 詹博华, <strong>赵永望</strong>. "约束求解与定理证明专题前言".软件学报, 2023, 34(8):3465-3466. 
 	  <a href="https://www.jos.org.cn/jos/article/issue/2023_34_8" target="_blank"><strong>[PDF download]</strong></a>
 	  </li>
 	  
-	  <li>
+	  <li data-year="2023">
+	  <text class="paperlable">[软件学报 2023]</text>
 	  章乐平, <strong>赵永望#</strong>, 王布阳, 李悦欣, 冯潇潇. "L4 虚拟内存子系统的形式化验证". 软件学报, 2023年, 第34卷, 第8期. 
 	  <a href="http://www.jos.org.cn/jos/article/abstract/6869" target="_blank"><strong>[PDF download]</strong></a>
 	  </li>
 	  
 	  
-	  <li>
+	  <li data-year="2023">
+	  <text class="paperlable">[软件学报 2023]</text>
 	  曾凡浪, 常瑞, 许浩, 潘少平, <strong>赵永望</strong>. "基于精化的TrustZone多安全分区建模与形式化验证". 软件学报, 2023年, 第34卷, 第8期. 
 	  <a href="http://www.jos.org.cn/jos/article/abstract/6866" target="_blank"><strong>[PDF download]</strong></a>
 	  </li>
@@ -267,12 +315,14 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
 	  </li>-->
 	  
 	  
-	  <li>
+	  <li data-year="2022">
+	  <text class="paperlable">[软件学报 2022]</text>
 	  曹钦翔, 詹博华, <strong>赵永望</strong>. "定理证明理论与应用专题前言".软件学报, 2022, 33(6):2113-2114. 
 	  <a href="http://jos.org.cn/jos/article/issue/2022_33_6" target="_blank"><strong>[PDF download]</strong></a>
 	  </li>
 	  
-	  <li>
+	  <li data-year="2022">
+	  <text class="paperlable">[软件学报 2022]</text>
 	  苗新亮, 常 瑞, 潘少平, <strong>赵永望</strong>, 蒋烈辉. "可信执行环境访问控制建模与安全性分析".软件学报, 2022. 
 	  <a href="http://www.jos.org.cn/jos/article/abstract/6612" target="_blank"><strong>[PDF download]</strong></a>
 	  </li>
@@ -295,12 +345,14 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
 	  <a href="https://ieeexplore.ieee.org/document/9405321" target="_blank"><strong>[PDF download]</strong></a>
 	  </li>
 	  
-	  <li>
+	  <li data-year="2020">
+	  <text class="paperlable">[软件学报 2020]</text>
 	  <strong>赵永望</strong>,刘杨,王戟. "系统软件构造与验证技术专题前言".软件学报, 2020, 31(5):1241-1242. 
 	  <a href="http://www.jos.org.cn/jos/article/issue/2020_31_5" target="_blank"><strong>[PDF download]</strong></a>
 	  </li>
 	  
-	  <li>
+	  <li data-year="2020">
+	  <text class="paperlable">[软件学报 2020]</text>
 	  李鼎基, 糜泽羽, 吴保东, 陈逊, <strong>赵永望</strong>, 丁佐华, 陈海波, "利用跨虚拟机零下陷通信的加速器虚拟化框架", 软件学报,2020,31(10):3019-3037
 	  </li>
 	  
@@ -324,12 +376,14 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
 		<a href="https://link.springer.com/content/pdf/10.1007/978-3-030-35540-1_8.pdf" target="_blank"><strong>[PDF download]</strong></a> (<em><strong>CCF C</strong></em>) 
 	  </li>
 	  
-	  <li>
+	  <li data-year="2019">
+	  <text class="paperlable">[SOFL+MSVL 2019]</text>
 	  	Shahbaz Ali, Hailong Sun, and <strong>Yongwang Zhao#</strong>, "Combining Model Learning and Model Checking to Analyze Java Libraries", <em>
 		<u>9th International Workshop on Structured Object-Oriented  Formal Language and Method (SOFL+MSVL 2019)</u></em>, Shenzhen, China, November 5, 2019, pp. 259-278.
 	  </li>
 	  
-	  <li>
+	  <li data-year="2019">
+	  <text class="paperlable">[ICECCS 2019]</text>
 	  	Ke Jiang, David Sanan, <strong>Yongwang Zhao</strong>, Shuanglong Kan, Yang Liu, "A Formally Verified Buddy Memory Allocation Model", <em>
 		<u>24th International Conference on Engineering of Complex Computer Systems (ICECCS 2019)</u></em>, 10-13 November 2019, Guangzhou, China, pp. 144-153. (<em><strong>CCF C</strong></em>) 
 	  </li>
@@ -352,15 +406,17 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
 -->	  
 	 
 	  
-	  <li>
+	  <li data-year="2017">
+	  <text class="paperlable">[CCF通讯 2017]</text>
 	  <strong>赵永望</strong>, 冯新宇, "防黑客编程", <em><u>中国计算机学会通讯</u></em>, 第13卷, 第10期, 2017年10月 (译文).
 	  </li>
 	  
-	  <li><strong>Yongwang Zhao</strong>, David Sann, Fuyuan Zhang, Yang Liu, "Formal Specification and Analysis of Partitioning Operating Systems by Integrating Ontology and Refinement", <em><u>IEEE Transactions on Industrial Informatics</u></em>, Volume 12, No. 4, August, 2016, pp. 1321 - 1331. (<em>影响因子 8.785</em>) <a href="papers/TII2016.pdf" target="_blank"><strong>[PDF download]</strong></a> </li>
+	  <li data-year="2016"><text class="paperlable">[TII 2016]</text><strong>Yongwang Zhao</strong>, David Sann, Fuyuan Zhang, Yang Liu, "Formal Specification and Analysis of Partitioning Operating Systems by Integrating Ontology and Refinement", <em><u>IEEE Transactions on Industrial Informatics</u></em>, Volume 12, No. 4, August, 2016, pp. 1321 - 1331. (<em>影响因子 8.785</em>) <a href="papers/TII2016.pdf" target="_blank"><strong>[PDF download]</strong></a> </li>
 	  
 	  
 	  
-	  <li>
+	  <li data-year="2017">
+	  <text class="paperlable">[CoRR 2017]</text>
 	  <strong>Yongwang Zhao</strong>, David Sanan, Fuyuan Zhang, Yang Liu, "High-Assurance Separation Kernels: A Survey on Formal Methods", CoRR abs/1701.01535 (2017) <a href="https://arxiv.org/pdf/1701.01535.pdf" target="_blank"><strong>[PDF download]</strong></a>
 	  </li>
 <!--	  
@@ -368,49 +424,59 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
 	  Shuxian Zhang, <strong>Yongwang Zhao</strong>#, Yan Teng, Feng Zhang, "Model-driven Development and Formal Analysis of A GNC Telemetry System", <u>International Journal of Software and Informatics</u> (To appear, recommended by FMAC 2017).
 	  </li>
 -->
-	  <li>
+	  <li data-year="2016">
+	  <text class="paperlable">[CCF通讯 2016]</text>
 	  <strong>赵永望</strong>, 胡春明, "基于公式的软件调试", <em><u>中国计算机学会通讯</u></em>, 第12卷, 第9期, 2016年9月 (译文).
 	  </li>
 	  
 	  
 	 <!-- <li><strong>Yongwang Zhao</strong>, David Sann, Fuyuan Zhang, Yang Liu, &quot;Reasoning About Information Flow Security of Separation Kernels with Channel-based Communication&quot;, CoRR abs/1510.05091 (2015)  <a href="http://arxiv.org/abs/1510.05091" target="_blank">[Link]</a></li>-->
-	  <li>David Sanan, Yang Liu, <strong>Yongwang Zhao</strong>, Zhenchang Xing, Mike Hinchey, &quot;Verifying FreeRTOS' Cyclic Doubly Linked List Implementation: From Abstract Specification to Machine Code&quot;, <em>20th International Conference on Engineering of Complex Computer Systems (ICECCS 2015)</em>, December 9-12, Gold Coast, Australia (<em><strong>CCF C</strong></em>) .</li>
+	  <li data-year="2015"><text class="paperlable">[ICECCS 2015]</text>David Sanan, Yang Liu, <strong>Yongwang Zhao</strong>, Zhenchang Xing, Mike Hinchey, &quot;Verifying FreeRTOS' Cyclic Doubly Linked List Implementation: From Abstract Specification to Machine Code&quot;, <em>20th International Conference on Engineering of Complex Computer Systems (ICECCS 2015)</em>, December 9-12, Gold Coast, Australia (<em><strong>CCF C</strong></em>) .</li>
 	  
-	  <li>
+	  <li data-year="2016">
+	  <text class="paperlable">[JSS 2016]</text>
 	  Kun Cheng, Yuebin Bai, <strong>Yongwang Zhao</strong>#, Yao Ma, Duo Lu, Yuanfeng Peng, Minxuan Zhou, &quot; HV2M: A novel approach to boost inter-VM network performance for Xen-based HVMs &quot;, <em><u>Journal of Systems and Software</u></em>, Volume 114, April 2016, pp.54–68. (<strong><em>CCF B</em></strong>)
 	  </li>
 	  
-	  <li>Zhibin Yang, Jean-Paul Bodeveix, Mamoun Filali,Kai Hu, <strong>Yongwang Zhao</strong>, Dianfu Ma, "Towards a Verified Compiler Prototype for the Synchronous Language SIGNAL", <u><em>Frontiers of Computer Science</em></u>, Volume 10, Issue 1 (February 2016), pp 37–53, Springer  (<strong><em>CCF B</em></strong>) . </li>
-	  <li>
+	  <li data-year="2016"><text class="paperlable">[FCS 2016]</text>Zhibin Yang, Jean-Paul Bodeveix, Mamoun Filali,Kai Hu, <strong>Yongwang Zhao</strong>, Dianfu Ma, "Towards a Verified Compiler Prototype for the Synchronous Language SIGNAL", <u><em>Frontiers of Computer Science</em></u>, Volume 10, Issue 1 (February 2016), pp 37–53, Springer  (<strong><em>CCF B</em></strong>) . </li>
+	  <li data-year="2016">
+	  <text class="paperlable">[软件学报 2016]</text>
 	  杨志斌,<strong>赵永望</strong>,黄志球, 胡凯,马殿富,Jean-Paul BODEVEIX, Mamoun FILALI, "基于同步语言的的时间可预测多线程代码生成方法", <em><u>软件学报</u></em>, 2016, 27(3): 611-632.</li>
-	  <li>
+	  <li data-year="2015">
+	  <text class="paperlable">[软件学报 2015]</text>
 	  杨志斌,胡凯,<strong>赵永望</strong>,马殿富,Jean-Paul BODEVEIX,&quot;基于时间抽象状态机的AADL模型验证&quot;, <u><em>软件学报</em></u>, 2015, 26(2): 202-222.</li>
 	  
-	  <li>
+	  <li data-year="2013">
+	  <text class="paperlable">[Computing 2013]</text>
 	  <strong>Yongwang Zhao</strong>, Zhuqing Li, Hualei Shen, Dianfu Ma, "Development of Global Specification for Dynamically Adaptive Software", 
 	  <em>Computing</em>, Volume 95, Issue 9 (2013), pp. 785-816, Springer (<strong><em>SCI-Indexed</em></strong>) 
 	  <a href="papers/Comp2013.pdf" target="_blank"><strong>[PDF download]</strong></a>.</li>
-	  <li>
+	  <li data-year="2011">
+	  <text class="paperlable">[IJWGS 2011]</text>
 		Jing Li, <strong>Yongwang Zhao</strong>, Hailong Sun, Zibin Zheng, Dianfu Ma, "DH4SS: A Distributed Heuristic for QoS-Based Service Selection", <em>International Journal of Web and Grid Services (IJWGS), </em>Vol.7, No.4, 2011, pp.388-409 (<em><strong>Top journal in web services, SCI-Indexed</strong></em>) </li>
 		
-	  <li>
+	  <li data-year="2014">
+	  <text class="paperlable">[CMPB 2014]</text>
 	  Hualei Shen, Dianfu Ma, <strong>Yongwang Zhao</strong>#, Hailong Sun, Sujun Sun, Rongwei Ye, Lei Huang, Bo Lang, Yan Sun, "MIAPS: a web-based system for remotely accessing and presenting medical images", <em>Computer Methods and Programs in Biomedicine</em>, Volume 113, Issue 1 (January, 2014),  pp. 266–283, Elsevier(<strong><em>SCI-Indexed</em></strong>). </li>
 	  
-	  <li>
+	  <li data-year="2012">
+	  <text class="paperlable">[ESI 2012]</text>
 	  <strong>Yongwang Zhao</strong>, Chunyang Hu, Hualei Shen, Dianfu Ma, Xuan Li, Yonggang Huang, "A Hierarchical Organization Approach of Multi-dimensional Remote Sensing Data for Lightweight Web Map Services", <em>Earth Science Informatics</em>, Volume 5, Issue 1 (2012), pp. 61-75, Springer (<strong><em>SCI-Indexed</em></strong>). </li>
 	  
-	  <li>
+	  <li data-year="2014">
+	  <text class="paperlable">[SOCA 2014]</text>
 		Hao, Zeng, Dianfu Ma, <strong>Yongwang Zhao</strong>, Zhuqing Li, "PBA4WSSP: A Policy-Based Architecture for Web Services Security Processing", <em>Service Oriented Computing and Applications</em>, Volume 8, Issue 1 (March, 2014), pp. 55 - 72, Springer (<em><strong>CCF C</strong></em>). </li>
 						  
 
 	   
-	  <li>Bingyang Zhao, <strong>Yongwang Zhao</strong>, Dianfu Ma, "A Constraint Mechanism for Dynamic Evolution of Service Oriented Systems", <em>15th IEEE symposium on object/component/service-oriented realtime distributed computing(ISORC 2012)</em>, IEEE Computer Society, April 11-13, 2012, Shenzhen, China, pp.103-110. </li>
+	  <li data-year="2012"><text class="paperlable">[ISORC 2012]</text>Bingyang Zhao, <strong>Yongwang Zhao</strong>, Dianfu Ma, "A Constraint Mechanism for Dynamic Evolution of Service Oriented Systems", <em>15th IEEE symposium on object/component/service-oriented realtime distributed computing(ISORC 2012)</em>, IEEE Computer Society, April 11-13, 2012, Shenzhen, China, pp.103-110. </li>
 	  
-	  <li>Ying Wang, Dianfu Ma,<strong> Yongwang Zhao</strong>, Lu Zou, Xianqi Zhao, "Automatic RT-Java code generation from AADL models for ARINC653-based avionics software", <em>36th IEEE Computer Software and Applications Conference (COMPSAC 2012)</em>, IEEE Computer Society, July 16-20, 2012, Izmir, Turkey (<em><strong>CCF B</strong></em>) . </li>
-	  <li>
+	  <li data-year="2012"><text class="paperlable">[COMPSAC 2012]</text>Ying Wang, Dianfu Ma,<strong> Yongwang Zhao</strong>, Lu Zou, Xianqi Zhao, "Automatic RT-Java code generation from AADL models for ARINC653-based avionics software", <em>36th IEEE Computer Software and Applications Conference (COMPSAC 2012)</em>, IEEE Computer Society, July 16-20, 2012, Izmir, Turkey (<em><strong>CCF B</strong></em>) . </li>
+	  <li data-year="2011">
+	  <text class="paperlable">[COMPSAC 2011]</text>
 		Ying Wang, Dianfu Ma, <strong>Yongwang Zhao</strong>, "An AADL-based modeling method for ARINC653-based avionics software", <em>35th IEEE Computer Software and Applications Conference (COMPSAC 2011) </em>, IEEE Computer Society, July 18-22, 2011, Munich, German,  pp.224-229 (<em><strong>CCF B</strong></em>) .</li>
 		
-		<li>Zhuqing Li, Dianfu Ma, <strong>Yongwang Zhao</strong>, Jing Li, Qing Yang, "FSM4WSR: A Formal Model for Verifiable Web Service Runtime", Proceedings of 2011 IEEE Asia-Pacific Services Computing Conference (APSCC 2011), IEEE Computer Society, December 12 - 15, 2011, Jeju, Korea, pp.86-93.
+		<li data-year="2011"><text class="paperlable">[APSCC 2011]</text>Zhuqing Li, Dianfu Ma, <strong>Yongwang Zhao</strong>, Jing Li, Qing Yang, "FSM4WSR: A Formal Model for Verifiable Web Service Runtime", Proceedings of 2011 IEEE Asia-Pacific Services Computing Conference (APSCC 2011), IEEE Computer Society, December 12 - 15, 2011, Jeju, Korea, pp.86-93.
 	 </li>
 	 
 	  </ol>
@@ -436,6 +502,98 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
     </div>
 
     <script src="js/hitua.js"></script>
+    
+    <script>
+    // 为所有论文项添加年份属性（从标签中提取）
+    $(document).ready(function() {
+        // 重构每个论文项：将标签和内容分离到两列
+        $('#paperList li').each(function() {
+            var $li = $(this);
+            
+            // 如果还没有重构过（没有paper-content div）
+            if ($li.find('.paper-content').length === 0) {
+                var $label = $li.find('.paperlable').first();
+                var labelHtml = $label.length ? $label[0].outerHTML : '';
+                
+                // 获取除了标签之外的所有内容
+                var contentHtml = $li.html();
+                if ($label.length) {
+                    // 从HTML中移除标签部分
+                    contentHtml = contentHtml.replace($label[0].outerHTML, '');
+                }
+                
+                // 清空li，重新构建结构
+                $li.empty();
+                if ($label.length) {
+                    $li.append($label.clone());
+                } else {
+                    // 如果没有标签，创建一个空的占位符
+                    $li.append('<span class="paperlable" style="visibility: hidden;">[ ]</span>');
+                }
+                $li.append('<div class="paper-content">' + contentHtml + '</div>');
+            }
+        });
+        
+        // 为已有标签的论文添加data-year属性
+        $('#paperList li').each(function() {
+            var $li = $(this);
+            // 如果还没有data-year属性
+            if (!$li.attr('data-year')) {
+                var labelText = $li.find('.paperlable').text();
+                // 从标签中提取年份，格式如 [OOPSLA 2025] 或 [软件学报 2023]
+                var yearMatch = labelText.match(/(\d{4})/);
+                if (yearMatch) {
+                    $li.attr('data-year', yearMatch[1]);
+                }
+            }
+        });
+        
+        // 修复特殊项
+        var $specialLi = $('li:contains("形式化方法的研究进展与趋势")');
+        if ($specialLi.length && !$specialLi.find('.paperlable').length) {
+            $specialLi.attr('data-year', '2018');
+            var $contentDiv = $specialLi.find('.paper-content');
+            if ($contentDiv.length) {
+                $contentDiv.before('<text class="paperlable">[CCF报告 2018]</text>');
+            } else {
+                // 如果还没有重构，先重构
+                var $label = $specialLi.find('.paperlable').first();
+                var contentHtml = $specialLi.html();
+                if ($label.length) {
+                    contentHtml = contentHtml.replace($label[0].outerHTML, '').trim();
+                }
+                $specialLi.empty();
+                $specialLi.append('<text class="paperlable">[CCF报告 2018]</text>');
+                $specialLi.append('<div class="paper-content">' + contentHtml + '</div>');
+            }
+        }
+        
+        // 保存原始顺序（在重构和修复之后）
+        var $originalItems = $('#paperList li').clone(true);
+        
+        // 排序功能
+        $('input[name="sortOrder"]').on('change', function() {
+            var sortType = $(this).val();
+            var $list = $('#paperList');
+            
+            if (sortType === 'year-desc') {
+                // 按年份降序排序
+                var $items = $list.children('li').detach();
+                var itemsArray = $items.toArray();
+                itemsArray.sort(function(a, b) {
+                    var yearA = parseInt($(a).attr('data-year')) || 0;
+                    var yearB = parseInt($(b).attr('data-year')) || 0;
+                    return yearB - yearA; // 降序
+                });
+                $list.append(itemsArray);
+            } else {
+                // 默认顺序：恢复原始顺序
+                $list.empty();
+                $list.append($originalItems.clone(true));
+            }
+        });
+    });
+    </script>
 
 </body>
 </html>
