@@ -86,10 +86,10 @@
 	  <div style="margin-bottom: 10px; font-size: 13pt; white-space: nowrap;">
 		<span style="margin-right: 15px;">Sort: </span>
 		<label style="margin-right: 20px; cursor: pointer; display: inline-block;">
-			<input type="radio" name="sortOrder" value="default" checked style="margin-right: 5px; cursor: pointer;">by ranking
+			<input type="radio" name="sortOrder" value="default"  style="margin-right: 5px; cursor: pointer;">by ranking
 		</label>
 		<label style="cursor: pointer; display: inline-block;">
-			<input type="radio" name="sortOrder" value="year-desc" style="margin-right: 5px; cursor: pointer;">by year
+			<input type="radio" name="sortOrder" value="year-desc" checked style="margin-right: 5px; cursor: pointer;">by year
 		</label>
 		&nbsp; &nbsp;&nbsp;&nbsp;[所有论文见<a href="http://dblp.uni-trier.de/pers/hd/z/Zhao:Yongwang" target="_blank"> DBLP Records </a>] 
 	  </div>
@@ -205,6 +205,14 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
       </li>
 	  
 	  <li>
+	  <text class="paperlable">[FMCAD 2026]</text>
+	  Liu Jun, Liu Jingxuan, Shenghao Yuan, David Sanan, Chen Kang, Cao Donggang, <strong>Yongwang Zhao #</strong>, "Formal Verification of a Memory Allocator for Rust Hypervisors: From Verified to Deployable Code with Functional Equivalence Guarantees", 
+			<em><u>Formal Methods in Computer-Aided Design (FMCAD 2026)</u></em>, 14-18 September 2026, Graz, Austria, pp. xxx-xxx, accepted(<em><strong>CCF B</strong></em>)  
+			<a href="#" target="_blank"><strong>[PDF download]</strong></a> 
+      </li>
+	  
+	  
+	  <li>
 	  <text class="paperlable">[BCRA 2026]</text>
 	  Jun Liu, Jiayi Lu, Shenghao Yuan, David Sanan, <strong>Yongwang Zhao#</strong>, "A RISC-V JIT Backend for Solana eBPF: Enabling Multi-Architecture Deployment of Blockchain Virtual Machines", <em><u>International Conference on Blockchain Research and Applications (BCRA 2026)</u></em>, Palermo, Sicily, Italy, July 10-15, 2026, pp. xxx - xxx (published in the Journal of Blockchain: Research and Applications - <em><strong>CCF B</strong></em>) <a href="#" target="_blank"><strong>[PDF download]</strong></a> 
 	  </li>
@@ -274,6 +282,21 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
 		<u>International Conference on Web Services (ICWS 2023) </u></em>, JULY 2-8, 2023, CHICAGO, ILLINOIS USA, pp. 71 - 77. 
 		 (<em><strong>CCF B</strong></em>)  <a href="https://ieeexplore.ieee.org/document/10248266/" target="_blank"><strong>[PDF download]</strong></a>.
 	  </li>
+	  
+	  <li>
+	  <text class="paperlable">[SETTA 2026]</text>
+	  Hongbai Su, Di Luo, Zhuoruo Zhang, Rui Chang, <strong>Yongwang Zhao #</strong>, "Verifying Register Protection in AArch64 Hypervisor", <em>
+		<u>12th Symposium on Dependable Software Engineering: Theories, Tools and Applications (SETTA 2026) </u></em>, Singapore, 2–4 December 2026, pp. xxx-xxx. 
+		 (<em><strong>CCF C</strong></em>) <a href="#" target="_blank"><strong>[PDF download]</strong></a>.
+	  </li>
+	  
+	  <li>
+	  <text class="paperlable">[TASE 2026]</text>
+	  Shaojie Wang, Yuting Wang, Qianying Zhang, Weituo Dai, Tian'Ao Xie, Shijun Zhao, <strong>Yongwang Zhao</strong>, "Formal Verification of a Rust-Based Buddy Physical Memory Allocator", <em>
+		<u>20th International Symposium on Theoretical Aspects of Software Engineering (TASE 2026) </u></em>, July 4 - 6, 2026, Shanghai, China, pp. xxx-xxx. 
+		 (<em><strong>CCF C</strong></em>) <a href="#" target="_blank"><strong>[PDF download]</strong></a>.
+	  </li>
+	  
 	  
 	  <li>
 	  <text class="paperlable">[SETTA 2024]</text>
@@ -409,9 +432,6 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
 		<u>24th International Conference on Engineering of Complex Computer Systems (ICECCS 2019)</u></em>, 10-13 November 2019, Guangzhou, China, pp. 144-153. (<em><strong>CCF C</strong></em>) 
 	  </li>
 	  
-	  <li>
-	  <strong>赵永望</strong>等. “形式化方法的研究进展与趋势”. 中国计算机学会CCF 2017-2018中国计算机科学技术发展报告, 1-68, 2018. 机械工业出版社. 
-	  </li>
 <!--	  
 	  <li>
 	  Jianwen Sun, Xiang Long, <strong>Yongwang Zhao#</strong>, "A Verified Capability-based Model for Information Flow Security with Dynamic Policies", 
@@ -592,6 +612,18 @@ Article No.: 80, Pages 1 - 27 (<em><strong>CCF A</strong></em>)
         // 保存原始顺序（在重构和修复之后）
         var $originalItems = $('#paperList li').clone(true);
         
+		// 按年份降序排序
+		var $list = $('#paperList');
+		var $items = $list.children('li').detach();
+		var itemsArray = $items.toArray();
+		itemsArray.sort(function(a, b) {
+			var yearA = parseInt($(a).attr('data-year')) || 0;
+			var yearB = parseInt($(b).attr('data-year')) || 0;
+			return yearB - yearA; // 降序
+		});
+		$list.append(itemsArray);
+				
+				
         // 排序功能
         $('input[name="sortOrder"]').on('change', function() {
             var sortType = $(this).val();
